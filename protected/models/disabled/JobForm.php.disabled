@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * JobForm class.
+ */
+class JobForm extends CFormModel
+{
+	
+	public $title;
+	public $description;
+	public $how_to_apply;
+	public $attachment;
+	public $company;
+	public $company_homepage;
+	public $zipcode;
+	public $city;
+	public $state;
+	public $country;
+	public $is_telecommute;
+	public $is_nation_wide;
+	public $degree_id;
+	public $study;
+	public $sector;
+	public $date_added;
+	public $expiration_date;
+	public $author_id;
+	public $reviewer_id;
+	public $status_id;
+
+	/**
+	 * Declares the validation rules.
+	 */
+	public function rules()
+	{
+		return array(
+			array('title, description, company, status_id', 'required'),
+			array('company_homepage', 'url'),
+			array('degree_id', 'numerical', 'integerOnly'=>true),
+			array('is_nation_wide, is_telecommute', 'boolean'),
+			array('zipcode, city, state, country, study, sector, how_to_apply', 'safe'),
+			array('attachment', 'safe'),
+		);
+	}
+
+	/**
+	 * Declares customized attribute labels.
+	 * If not declared here, an attribute would have a label that is
+	 * the same as its name with the first letter in upper case.
+	 */
+	public function attributeLabels()
+	{
+		return array(
+			'degree_id'=>'Degree',
+			'status_id'=>'Status'
+		);
+	}
+}

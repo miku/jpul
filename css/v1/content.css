@@ -1,0 +1,78 @@
+a {
+	text-decoration: none;
+	color: #3366CC;
+}
+
+a:visited {
+	color: #565656;	
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+#searchbox {
+	margin: 10px 0px 0px 0px;
+}
+
+#searchbox input {
+	padding: 0px;
+	font-size: 12px;
+}
+
+table {
+	font-size: 12px;
+	width: 505px;
+}
+
+tr.even {
+	background: aliceblue;
+}
+
+tr.even-dark {
+	background: #E0E8EF;
+}
+
+td.job-date-added { font-size: 10px;  }
+td.job-title { color: #CC3300; }
+td.job-company { color: black;}
+
+.pagination {
+	float: right;
+	margin-top: 10px;
+}
+
+.pagination a {
+	padding: 3px;
+/*	color: #3366CC;*/
+	color: white;
+	background: #3366CC;
+	text-decoration: none;
+}
+
+.pagination a:hover {
+	padding: 3px;	
+	text-decoration: none;
+}
+
+.pagination .inactive {
+	padding: 3px;	
+	background: #EFEFEF;
+}
+
+.pagination .current-page {
+	background: #EFEFEF;
+	border: solid 1px #9A9A9A;
+	color: black;
+}
+
+.line {
+	margin-top: 15px;
+	margin-bottom: 10px;
+	border-bottom: solid thin gray;
+}
+
+.required {
+	color: orange;
+}
+

@@ -42,13 +42,13 @@ public static function model($className=__CLASS__)
 public function scopes()
 {
 	return array(
-	'published'=>array(
-		'condition'=>'status_id=2',
-		),
-	'recently'=>array(
-		'order'=>'date_added DESC',
-		'limit'=>20,
-		),
+		'published'=>array(
+			'condition'=>'status_id = 2',
+			),
+		'recently'=>array(
+			'order'=>'date_added DESC',
+			'limit'=>20,
+			),
 	);
 }
 

@@ -35,12 +35,11 @@ CREATE TABLE job (
 	sector VARCHAR(255),
 	
 	-- Metadata
+	author_id INTEGER NOT NULL,
 	date_added INTEGER NOT NULL,
 	expiration_date INTEGER NOT NULL,
-
-	author_id INTEGER NOT NULL,
 	reviewer_id INTEGER,
-	
+	source VARCHAR(255),
 	status_id INTEGER NOT NULL
 );
 

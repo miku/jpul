@@ -6,14 +6,14 @@
 <h3><?php echo $model->title ?></h3>
 
 <p>
-	<strong><?php echo $model->company ?> </strong>
+	<strong><?php echo $model->company ?>, <?php echo $model->city ?> </strong>
 	<?php if ($model->company_homepage): ?>
 		<br><span class="small-font"><a style="color: gray; text-decoration:none" href="<?php echo $model->company_homepage ?>"><?php echo $model->company_homepage?></a></span>
 	<?php endif; ?>
 	
 </p>
 
-<p><?php echo $model->description ?></p>
+<p><?php echo $this->textilize($model->description) ?></p>
 
 <p><?php echo $model->how_to_apply ?></p>
 
@@ -22,12 +22,12 @@
 	<p>Attachment: <a href="<?php echo $this->createUrl('job/download', array('id'=>$model->id)); ?>">Download</a></p>
 <?php endif; ?>
 
-<p>Datum der Anzeige: <?php echo strftime('%d.%m.%Y', $model->date_added) ?></p>
-
 <br>
 <br>
 
 <div class="line"></div>
+
+<p class="small">Anzeige erstellt am <?php echo strftime('%d.%m.%Y', $model->date_added) ?></p>
 
 <?php if (Yii::app()->user->getId() != NULL): ?>
 	<a href="<?php echo $this->createUrl('job/update', array('id' => $model->id)); ?>">Angebot bearbeiten</a> | 

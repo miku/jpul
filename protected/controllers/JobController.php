@@ -4,14 +4,30 @@
 Yii::import('application.vendors.*');
 require_once('Zend/Search/Lucene.php');
 
+// Textile subset
+require_once('TextiLite.php');
+
 class JobController extends Controller
 {
 	// jobs per page, defaults to 30
 	const PAGE_SIZE = 30;
 	// 6 * 7 * 24 * 60 * 60 = six weeks
-	const DEFAULT_EXPIRATION_SECONDS = 3628800; 	
-	// Lucene index
-	const SEARCH_INDEX_STORE = '/../runtime/search';
+	const DEFAULT_EXPIRATION_SECONDS = 3628800; 		
+	
+	
+	public function textilize($text) {
+		$t = new TextiLite;
+		return $t->process($text);
+	}
+
+	/**
+	 * Get the path to the uploaded job attachments.
+	 * @return Job attachments upload path
+	 */
+	public function getSearchIndexStore()
+	{
+		return Yii::app()->basePath . '/runtime/search';
+	}
 	
 	/**
 	 * Get the path to the uploaded job attachments.
@@ -232,7 +248,7 @@ class JobController extends Controller
 	public function actionSearch($page = 1) 
 	{
 		if (isset($_GET['q']) && $_GET['q'] != '') {
-			$index = new Zend_Search_Lucene(self::SEARCH_INDEX_STORE);
+			$index = new Zend_Search_Lucene($this->getSearchIndexStore());
 			$original_query = $_GET['q'];
 			$query = trim($original_query) . '*';
 			
@@ -279,7 +295,7 @@ class JobController extends Controller
 	 */	
 	protected function updateSearchIndex($model) {
 		
-		$index = new Zend_Search_Lucene(self::SEARCH_INDEX_STORE, false);
+		$index = new Zend_Search_Lucene($this->getSearchIndexStore(), false);
 		foreach ($index->find('pk:' . $model->id) as $hit) {
     		$index->delete($hit->id);
 		}
@@ -304,7 +320,7 @@ class JobController extends Controller
 	 */	
 	public function actionRebuildSearchIndex() {
 
-		$index = new Zend_Search_Lucene(self::SEARCH_INDEX_STORE, true);
+		$index = new Zend_Search_Lucene($this->getSearchIndexStore(), true);
 		
 		$criteria=new CDbCriteria;
 		$criteria->condition = 'status_id=:status_id';

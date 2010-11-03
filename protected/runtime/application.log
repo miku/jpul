@@ -9746,3 +9746,834 @@ Stack trace:
 #17 /data/homewww/jobp/src/yii-1.1.4.r2429/framework/base/CApplication.php(135): CWebApplication->processRequest()
 #18 /data/homewww/jobp/webdir/index.php(13): CApplication->run()
 #19 {main} REQUEST_URI=/jobportal/index.php/job/index
+2010/11/01 09:46:34 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (202)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:46:41 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (202)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:46:47 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (202)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:46:54 [info] [default] Validating password ...
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/User.php (26)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/components/UserIdentity.php (29)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/LoginForm.php (50)
+2010/11/01 09:46:54 [info] [default] Given: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/User.php (27)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/components/UserIdentity.php (29)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/LoginForm.php (50)
+2010/11/01 09:46:54 [info] [default] Stored salt: 936147e1d23c1bd9cb982862a1a3ffecb284a457
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/User.php (28)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/components/UserIdentity.php (29)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/LoginForm.php (50)
+2010/11/01 09:46:54 [info] [default] Stored password: 93UUzyjNaaV.E
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/User.php (29)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/components/UserIdentity.php (29)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/LoginForm.php (50)
+2010/11/01 09:46:54 [info] [default] Match? ==> 93UUzyjNaaV.E
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/User.php (30)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/components/UserIdentity.php (29)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/LoginForm.php (50)
+2010/11/01 09:46:54 [info] [authenticate] Authenticated.
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/components/UserIdentity.php (35)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/LoginForm.php (50)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/SiteController.php (92)
+2010/11/01 09:46:57 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (72)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:49:49 [error] [php] mkdir(): Permission denied (/Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php:102)
+Stack trace:
+#0 /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php(122): mkdirs()
+#1 /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene.php(517): Zend_Search_Lucene_Storage_Directory_Filesystem->__construct()
+#2 /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php(235): Zend_Search_Lucene->__construct()
+#3 unknown(0): JobController->actionSearch()
+#4 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/actions/CInlineAction.php(47): ReflectionMethod->invokeArgs()
+#5 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(300): CInlineAction->run()
+#6 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/filters/CFilterChain.php(133): JobController->runAction()
+#7 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(283): CFilterChain->run()
+#8 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(257): JobController->runActionWithFilters()
+#9 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CWebApplication.php(324): JobController->run()
+#10 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CWebApplication.php(121): CWebApplication->runController()
+#11 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#12 /Users/ronit/projects/jobportal-uni-leipzig/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/job/search?q=web
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (102)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (101)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (122)
+2010/11/01 09:50:54 [error] [php] mkdir(): Permission denied (/Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php:102)
+Stack trace:
+#0 /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php(122): mkdirs()
+#1 /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene.php(517): Zend_Search_Lucene_Storage_Directory_Filesystem->__construct()
+#2 /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php(235): Zend_Search_Lucene->__construct()
+#3 unknown(0): JobController->actionSearch()
+#4 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/actions/CInlineAction.php(47): ReflectionMethod->invokeArgs()
+#5 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(300): CInlineAction->run()
+#6 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/filters/CFilterChain.php(133): JobController->runAction()
+#7 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(283): CFilterChain->run()
+#8 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(257): JobController->runActionWithFilters()
+#9 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CWebApplication.php(324): JobController->run()
+#10 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CWebApplication.php(121): CWebApplication->runController()
+#11 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#12 /Users/ronit/projects/jobportal-uni-leipzig/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/job/search?q=web
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (102)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (101)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (122)
+2010/11/01 09:50:55 [error] [php] mkdir(): Permission denied (/Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php:102)
+Stack trace:
+#0 /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php(122): mkdirs()
+#1 /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene.php(517): Zend_Search_Lucene_Storage_Directory_Filesystem->__construct()
+#2 /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php(235): Zend_Search_Lucene->__construct()
+#3 unknown(0): JobController->actionSearch()
+#4 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/actions/CInlineAction.php(47): ReflectionMethod->invokeArgs()
+#5 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(300): CInlineAction->run()
+#6 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/filters/CFilterChain.php(133): JobController->runAction()
+#7 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(283): CFilterChain->run()
+#8 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(257): JobController->runActionWithFilters()
+#9 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CWebApplication.php(324): JobController->run()
+#10 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CWebApplication.php(121): CWebApplication->runController()
+#11 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#12 /Users/ronit/projects/jobportal-uni-leipzig/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/job/search?q=web
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (102)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (101)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (122)
+2010/11/01 09:51:31 [error] [php] mkdir(): Permission denied (/Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php:102)
+Stack trace:
+#0 /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php(122): mkdirs()
+#1 /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene.php(517): Zend_Search_Lucene_Storage_Directory_Filesystem->__construct()
+#2 /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php(235): Zend_Search_Lucene->__construct()
+#3 unknown(0): JobController->actionSearch()
+#4 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/actions/CInlineAction.php(47): ReflectionMethod->invokeArgs()
+#5 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(300): CInlineAction->run()
+#6 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/filters/CFilterChain.php(133): JobController->runAction()
+#7 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(283): CFilterChain->run()
+#8 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(257): JobController->runActionWithFilters()
+#9 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CWebApplication.php(324): JobController->run()
+#10 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CWebApplication.php(121): CWebApplication->runController()
+#11 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#12 /Users/ronit/projects/jobportal-uni-leipzig/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/job/search?q=web
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (102)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (101)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (122)
+2010/11/01 09:52:14 [error] [php] mkdir(): Permission denied (/Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php:102)
+Stack trace:
+#0 /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php(122): mkdirs()
+#1 /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene.php(517): Zend_Search_Lucene_Storage_Directory_Filesystem->__construct()
+#2 /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php(235): Zend_Search_Lucene->__construct()
+#3 unknown(0): JobController->actionSearch()
+#4 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/actions/CInlineAction.php(47): ReflectionMethod->invokeArgs()
+#5 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(300): CInlineAction->run()
+#6 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/filters/CFilterChain.php(133): JobController->runAction()
+#7 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(283): CFilterChain->run()
+#8 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(257): JobController->runActionWithFilters()
+#9 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CWebApplication.php(324): JobController->run()
+#10 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CWebApplication.php(121): CWebApplication->runController()
+#11 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#12 /Users/ronit/projects/jobportal-uni-leipzig/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/job/search?q=web
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (102)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (101)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (122)
+2010/11/01 09:52:17 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (202)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:52:24 [error] [php] mkdir(): Permission denied (/Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php:102)
+Stack trace:
+#0 /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php(122): mkdirs()
+#1 /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene.php(517): Zend_Search_Lucene_Storage_Directory_Filesystem->__construct()
+#2 /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php(307): Zend_Search_Lucene->__construct()
+#3 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/actions/CInlineAction.php(50): JobController->actionRebuildSearchIndex()
+#4 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(300): CInlineAction->run()
+#5 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/filters/CFilterChain.php(133): JobController->runAction()
+#6 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(283): CFilterChain->run()
+#7 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(257): JobController->runActionWithFilters()
+#8 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CWebApplication.php(324): JobController->run()
+#9 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CWebApplication.php(121): CWebApplication->runController()
+#10 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#11 /Users/ronit/projects/jobportal-uni-leipzig/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/job/rebuildSearchIndex
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (102)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (101)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (122)
+2010/11/01 09:52:50 [error] [php] mkdir(): Permission denied (/Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php:103)
+Stack trace:
+#0 /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php(123): mkdirs()
+#1 /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene.php(517): Zend_Search_Lucene_Storage_Directory_Filesystem->__construct()
+#2 /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php(307): Zend_Search_Lucene->__construct()
+#3 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/actions/CInlineAction.php(50): JobController->actionRebuildSearchIndex()
+#4 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(300): CInlineAction->run()
+#5 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/filters/CFilterChain.php(133): JobController->runAction()
+#6 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(283): CFilterChain->run()
+#7 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(257): JobController->runActionWithFilters()
+#8 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CWebApplication.php(324): JobController->run()
+#9 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CWebApplication.php(121): CWebApplication->runController()
+#10 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#11 /Users/ronit/projects/jobportal-uni-leipzig/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/job/rebuildSearchIndex
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (103)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (101)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (123)
+2010/11/01 09:54:14 [error] [php] mkdir(): Permission denied (/Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php:102)
+Stack trace:
+#0 /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php(122): mkdirs()
+#1 /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene.php(517): Zend_Search_Lucene_Storage_Directory_Filesystem->__construct()
+#2 /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php(307): Zend_Search_Lucene->__construct()
+#3 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/actions/CInlineAction.php(50): JobController->actionRebuildSearchIndex()
+#4 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(300): CInlineAction->run()
+#5 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/filters/CFilterChain.php(133): JobController->runAction()
+#6 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(283): CFilterChain->run()
+#7 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(257): JobController->runActionWithFilters()
+#8 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CWebApplication.php(324): JobController->run()
+#9 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CWebApplication.php(121): CWebApplication->runController()
+#10 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#11 /Users/ronit/projects/jobportal-uni-leipzig/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/job/rebuildSearchIndex
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (102)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (101)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (122)
+2010/11/01 09:54:15 [error] [php] mkdir(): Permission denied (/Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php:102)
+Stack trace:
+#0 /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php(122): mkdirs()
+#1 /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene.php(517): Zend_Search_Lucene_Storage_Directory_Filesystem->__construct()
+#2 /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php(307): Zend_Search_Lucene->__construct()
+#3 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/actions/CInlineAction.php(50): JobController->actionRebuildSearchIndex()
+#4 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(300): CInlineAction->run()
+#5 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/filters/CFilterChain.php(133): JobController->runAction()
+#6 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(283): CFilterChain->run()
+#7 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(257): JobController->runActionWithFilters()
+#8 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CWebApplication.php(324): JobController->run()
+#9 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CWebApplication.php(121): CWebApplication->runController()
+#10 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#11 /Users/ronit/projects/jobportal-uni-leipzig/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/job/rebuildSearchIndex
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (102)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (101)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (122)
+2010/11/01 09:55:39 [error] [php] mkdir(): Permission denied (/Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php:102)
+Stack trace:
+#0 /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php(122): mkdirs()
+#1 /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene.php(517): Zend_Search_Lucene_Storage_Directory_Filesystem->__construct()
+#2 /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php(314): Zend_Search_Lucene->__construct()
+#3 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/actions/CInlineAction.php(50): JobController->actionRebuildSearchIndex()
+#4 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(300): CInlineAction->run()
+#5 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/filters/CFilterChain.php(133): JobController->runAction()
+#6 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(283): CFilterChain->run()
+#7 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(257): JobController->runActionWithFilters()
+#8 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CWebApplication.php(324): JobController->run()
+#9 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CWebApplication.php(121): CWebApplication->runController()
+#10 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#11 /Users/ronit/projects/jobportal-uni-leipzig/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/job/rebuildSearchIndex
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (102)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (101)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (122)
+2010/11/01 09:55:40 [error] [php] mkdir(): Permission denied (/Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php:102)
+Stack trace:
+#0 /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php(122): mkdirs()
+#1 /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene.php(517): Zend_Search_Lucene_Storage_Directory_Filesystem->__construct()
+#2 /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php(314): Zend_Search_Lucene->__construct()
+#3 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/actions/CInlineAction.php(50): JobController->actionRebuildSearchIndex()
+#4 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(300): CInlineAction->run()
+#5 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/filters/CFilterChain.php(133): JobController->runAction()
+#6 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(283): CFilterChain->run()
+#7 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(257): JobController->runActionWithFilters()
+#8 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CWebApplication.php(324): JobController->run()
+#9 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CWebApplication.php(121): CWebApplication->runController()
+#10 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#11 /Users/ronit/projects/jobportal-uni-leipzig/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/job/rebuildSearchIndex
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (102)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (101)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/vendors/Zend/Search/Lucene/Storage/Directory/Filesystem.php (122)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 2
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 3
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 4
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 5
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 6
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 7
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 8
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 9
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 10
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 11
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 12
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 14
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 15
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 16
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 18
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 19
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 20
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 21
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 22
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 23
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 24
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 25
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 26
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 27
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 28
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 29
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 30
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 31
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 32
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 33
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 35
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 36
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 37
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 38
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:55:59 [info] [actionRebuildSearchIndex] Added document id: 39
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (336)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:56:02 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (209)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:56:22 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (79)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:57:42 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (209)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:57:47 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (209)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:58:14 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (209)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:58:22 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (209)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:58:26 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (209)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:58:34 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (209)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:58:37 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (209)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:58:40 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (209)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:58:51 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (209)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:58:58 [info] [default] Validating password ...
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/User.php (26)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/components/UserIdentity.php (29)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/LoginForm.php (50)
+2010/11/01 09:58:58 [info] [default] Given: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/User.php (27)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/components/UserIdentity.php (29)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/LoginForm.php (50)
+2010/11/01 09:58:58 [info] [default] Stored salt: 936147e1d23c1bd9cb982862a1a3ffecb284a457
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/User.php (28)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/components/UserIdentity.php (29)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/LoginForm.php (50)
+2010/11/01 09:58:58 [info] [default] Stored password: 93UUzyjNaaV.E
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/User.php (29)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/components/UserIdentity.php (29)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/LoginForm.php (50)
+2010/11/01 09:58:58 [info] [default] Match? ==> 93UUzyjNaaV.E
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/User.php (30)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/components/UserIdentity.php (29)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/LoginForm.php (50)
+2010/11/01 09:58:58 [info] [authenticate] Authenticated.
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/components/UserIdentity.php (35)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/LoginForm.php (50)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/SiteController.php (92)
+2010/11/01 09:59:01 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (209)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 09:59:04 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (79)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:45:45 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (209)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:50:19 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (212)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:50:19 [error] [php] Use of undefined constant TextiLite - assumed 'TextiLite' (/Users/ronit/projects/jobportal-uni-leipzig/protected/views/job/view.php:16)
+Stack trace:
+#0 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(798): JobController->renderFile()
+#1 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(739): JobController->renderPartial()
+#2 /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php(213): JobController->render()
+#3 unknown(0): JobController->actionView()
+#4 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/actions/CInlineAction.php(47): ReflectionMethod->invokeArgs()
+#5 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(300): CInlineAction->run()
+#6 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/filters/CFilterChain.php(133): JobController->runAction()
+#7 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(283): CFilterChain->run()
+#8 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(257): JobController->runActionWithFilters()
+#9 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CWebApplication.php(324): JobController->run()
+#10 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CWebApplication.php(121): CWebApplication->runController()
+#11 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#12 /Users/ronit/projects/jobportal-uni-leipzig/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/job/21
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/views/job/view.php (16)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (213)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:51:24 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:51:32 [info] [default] Validating password ...
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/User.php (26)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/components/UserIdentity.php (29)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/LoginForm.php (50)
+2010/11/01 10:51:32 [info] [default] Given: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/User.php (27)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/components/UserIdentity.php (29)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/LoginForm.php (50)
+2010/11/01 10:51:32 [info] [default] Stored salt: 936147e1d23c1bd9cb982862a1a3ffecb284a457
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/User.php (28)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/components/UserIdentity.php (29)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/LoginForm.php (50)
+2010/11/01 10:51:32 [info] [default] Stored password: 93UUzyjNaaV.E
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/User.php (29)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/components/UserIdentity.php (29)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/LoginForm.php (50)
+2010/11/01 10:51:32 [info] [default] Match? ==> 93UUzyjNaaV.E
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/User.php (30)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/components/UserIdentity.php (29)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/LoginForm.php (50)
+2010/11/01 10:51:32 [info] [authenticate] Authenticated.
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/components/UserIdentity.php (35)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/LoginForm.php (50)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/SiteController.php (92)
+2010/11/01 10:51:34 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:51:36 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (88)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:52:00 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (88)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:52:05 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (88)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:52:05 [error] [system.db.CDbCommand] Error in executing SQL: UPDATE 'job' SET "id"=:yp0, "title"=:yp1, "description"=:yp2, "how_to_apply"=:yp3, "attachment"=:yp4, "company"=:yp5, "company_homepage"=:yp6, "zipcode"=:yp7, "city"=:yp8, "state"=:yp9, "country"=:yp10, "is_telecommute"=:yp11, "is_nation_wide"=:yp12, "degree_id"=:yp13, "study"=:yp14, "sector"=:yp15, "date_added"=:yp16, "expiration_date"=:yp17, "author_id"=:yp18, "reviewer_id"=:yp19, "status_id"=:yp20 WHERE 'job'."id"=12
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (196)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (96)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:52:05 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 8 attempt to write a readonly database' in /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/db/CDbCommand.php:234
+Stack trace:
+#0 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/db/ar/CActiveRecord.php(1591): CDbCommand->execute()
+#1 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/db/ar/CActiveRecord.php(1047): CActiveRecord->updateByPk('12', Array)
+#2 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/db/ar/CActiveRecord.php(759): CActiveRecord->update(NULL)
+#3 /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php(196): CActiveRecord->save()
+#4 [internal function]: JobController->actionUpdate('12')
+#5 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/actions/CInlineAction.php(47): ReflectionMethod->invokeArgs(Object(JobController), Array)
+#6 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(300): CInlineAction->run()
+#7 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php(96): CFilterChain->run()
+#9 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/filters/CInlineFilter.php(59): JobController->filterAdminOnly(Object(CFilterChain))
+#10 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(283): CFilterChain->run()
+#12 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CWebApplication.php(324): CController->run('update')
+#14 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CWebApplication.php(121): CWebApplication->runController('job/update')
+#15 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#16 /Users/ronit/projects/jobportal-uni-leipzig/index.php(13): CApplication->run()
+#17 {main} REQUEST_URI=/index.php/job/update/12
+2010/11/01 10:52:20 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (88)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:52:20 [info] [updateSearchIndex] Updated search index for document id: 12
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (314)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (201)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (96)
+2010/11/01 10:52:22 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:52:28 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (88)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:52:56 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (88)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:52:56 [info] [updateSearchIndex] Updated search index for document id: 12
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (314)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (201)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (96)
+2010/11/01 10:52:58 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:54:00 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:54:17 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:54:25 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:54:35 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:54:50 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:54:58 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (88)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:55:29 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (88)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:55:29 [info] [updateSearchIndex] Updated search index for document id: 12
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (314)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (201)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (96)
+2010/11/01 10:55:31 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:55:33 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (88)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:55:46 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (88)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:55:47 [info] [updateSearchIndex] Updated search index for document id: 25
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (314)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (201)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (96)
+2010/11/01 10:55:48 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:56:44 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:56:45 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (88)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:56:45 [info] [default] Set status of record id: 26 to: 4 (deleted)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (234)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (96)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:56:49 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (88)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:58:10 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (88)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:58:14 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (88)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:58:14 [info] [updateSearchIndex] Updated search index for document id: 40
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (314)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (167)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (96)
+2010/11/01 10:58:15 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:58:20 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:58:21 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (88)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:58:37 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (88)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:58:37 [error] [php] move_uploaded_file(/Users/ronit/projects/jobportal-uni-leipzig/protected/../uploads/Attachment_job_40.pdf): failed to open stream: Permission denied (/Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CUploadedFile.php:183)
+Stack trace:
+#0 unknown(0): JobController->actionUpdate()
+#1 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/actions/CInlineAction.php(47): ReflectionMethod->invokeArgs()
+#2 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(300): CInlineAction->run()
+#3 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/filters/CFilterChain.php(133): JobController->runAction()
+#4 /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php(96): CFilterChain->run()
+#5 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/filters/CInlineFilter.php(59): JobController->filterAdminOnly()
+#6 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(283): CFilterChain->run()
+#8 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CController.php(257): JobController->runActionWithFilters()
+#9 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CWebApplication.php(324): JobController->run()
+#10 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/web/CWebApplication.php(121): CWebApplication->runController()
+#11 /Users/ronit/projects/yii-testdrive/yii-1.1.4.r2429/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#12 /Users/ronit/projects/jobportal-uni-leipzig/index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/job/update/40
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (199)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (96)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:58:50 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (88)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:58:50 [info] [updateSearchIndex] Updated search index for document id: 40
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (314)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (201)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (96)
+2010/11/01 10:58:52 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:59:00 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:59:13 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:59:16 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (88)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:59:33 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (88)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 10:59:33 [info] [updateSearchIndex] Updated search index for document id: 40
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (314)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (201)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (96)
+2010/11/01 10:59:34 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:03:11 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:06:24 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:17:16 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:17:28 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:17:32 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:17:40 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:17:42 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:17:47 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:18:03 [info] [default] Validating password ...
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/User.php (26)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/components/UserIdentity.php (29)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/LoginForm.php (50)
+2010/11/01 11:18:03 [info] [default] Given: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/User.php (27)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/components/UserIdentity.php (29)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/LoginForm.php (50)
+2010/11/01 11:18:03 [info] [default] Stored salt: 936147e1d23c1bd9cb982862a1a3ffecb284a457
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/User.php (28)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/components/UserIdentity.php (29)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/LoginForm.php (50)
+2010/11/01 11:18:03 [info] [default] Stored password: 93UUzyjNaaV.E
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/User.php (29)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/components/UserIdentity.php (29)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/LoginForm.php (50)
+2010/11/01 11:18:03 [info] [default] Match? ==> 93UUzyjNaaV.E
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/User.php (30)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/components/UserIdentity.php (29)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/LoginForm.php (50)
+2010/11/01 11:18:03 [info] [authenticate] Authenticated.
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/components/UserIdentity.php (35)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/models/LoginForm.php (50)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/SiteController.php (92)
+2010/11/01 11:18:14 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (88)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:18:58 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (88)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:18:58 [info] [updateSearchIndex] Updated search index for document id: 41
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (314)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (167)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (96)
+2010/11/01 11:18:59 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:19:05 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:21:58 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:22:05 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (88)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:22:56 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (88)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:25:23 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:25:31 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (88)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:26:18 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (88)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:26:18 [info] [updateSearchIndex] Updated search index for document id: 42
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (314)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (167)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (96)
+2010/11/01 11:26:20 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:28:33 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (88)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:29:34 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:29:58 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (88)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:30:10 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (88)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:30:10 [info] [updateSearchIndex] Updated search index for document id: 41
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (314)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (201)
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (96)
+2010/11/01 11:31:33 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:36:40 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:41:43 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:41:48 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:43:27 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:43:33 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (88)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:43:38 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:43:42 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (88)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:43:50 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:43:56 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:44:50 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:44:55 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:46:20 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 11:47:32 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 15:20:03 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 16:49:05 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 16:49:09 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (88)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/01 16:49:12 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/02 09:03:27 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/02 13:50:56 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/02 19:08:45 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/02 22:08:16 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/03 02:05:56 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/03 03:52:58 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/03 09:30:55 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)
+2010/11/03 10:56:40 [info] [actionView] 127.0.0.1
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (218)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (13)

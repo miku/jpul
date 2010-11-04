@@ -89,10 +89,10 @@ class JobController extends Controller
 			Yii::log("User role: " . $user->role, CLogger::LEVEL_INFO, "filterAdminOnly");
 
 			if ($user->role != 'admin') {
-				throw new CHttpException(400, Yii::t('yii','Your request is not valid.'));
+				throw new CHttpException(400, Yii::t('app','Your request is not valid.'));
 			}
 		} else {
-			throw new CHttpException(400, Yii::t('yii','Your request is not valid.'));
+			throw new CHttpException(400, Yii::t('app','Your request is not valid.'));
 		}
 		return $filterChain->run();
 	}	
@@ -140,7 +140,7 @@ class JobController extends Controller
 			$fname = $this->getUploadFilePath('job', $id);
 			$this->renderPartial('download', array('fname'=>$fname), false, true);
 		} else {
-			throw new CHttpException(400, Yii::t('yii', 'Your request is not valid.'));
+			throw new CHttpException(400, Yii::t('app', 'Your request is not valid.'));
 		}
 	}
 
@@ -185,7 +185,7 @@ class JobController extends Controller
 		$model = Job::model()->findByPk($id);
 		
 		if (!$model) {
-			throw new CHttpException(400, Yii::t('yii', 'Your request is not valid.'));
+			throw new CHttpException(400, Yii::t('app', 'Your request is not valid.'));
 		}
 
 		if(isset($_POST['Job']))
@@ -222,7 +222,7 @@ class JobController extends Controller
 	{
 		$model = Job::model()->findByPk($id);
 		if (!$model) {
-			throw new CHttpException(400, Yii::t('yii', 'Your request is not valid.'));
+			throw new CHttpException(400, Yii::t('app', 'Your request is not valid.'));
 		}
 		Yii::log(Yii::app()->request->userHostAddress, CLogger::LEVEL_INFO, "actionView");
 		$this->render('view', array('model' => $model));
@@ -236,14 +236,14 @@ class JobController extends Controller
 		$model = Job::model()->findByPk($id);
 
 		if (!$model) {
-			throw new CHttpException(400, Yii::t('yii', 'Your request is not valid.'));
+			throw new CHttpException(400, Yii::t('app', 'Your request is not valid.'));
 		}
 		$model->status_id = 4;
 		if ($model->save(false)) {
 			Yii::log("Set status of record id: " . $model->id . " to: " . $model->status_id . " (deleted)", CLogger::LEVEL_INFO, "default");	
 		} else {
 			Yii::log("Deleting failed on: " . $model->id, CLogger::LEVEL_INFO, "default");	
-			throw new CHttpException(500, Yii::t('yii', 'Your request is not valid.'));
+			throw new CHttpException(500, Yii::t('app', 'Your request is not valid.'));
 		}
 		
 		

@@ -8,6 +8,8 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Jobportal des Careercenters der Universität Leipzig',
+	
+	'language' => 'de',
 
 	// preloading 'log' component
 	'preload'=>array('log'),

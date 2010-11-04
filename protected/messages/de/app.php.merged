@@ -16,7 +16,7 @@
  * @version $Id: $
  */
 return array (
-  'Submit' => 'Speichern',
+  'Submit' => '',
   'Attachment' => 'Anhang',
   'Author' => 'Autor',
   'City' => 'Stadt',

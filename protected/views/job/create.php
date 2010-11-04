@@ -68,7 +68,7 @@
 		<tr class="even-dark"><td><?php echo $form->labelEx($model,'status_id'); ?> <?php echo $form->dropDownList($model, 'status_id', CHtml::listData(JobStatus::model()->findAll(), 'id', 'status'), array('prompt' => 'Status der Anzeige')); ?></td></tr>
 
 
-		<tr class="even"><td><?php echo CHtml::submitButton('Submit'); ?> or <a href="<?php $this->createUrl('job/index') ?>">cancel</a></td></tr>
+		<tr class="even"><td><?php echo CHtml::submitButton(Yii::t('app', 'Submit')); ?> <?php echo Yii::t('app', 'or') ?> <a href="<?php $this->createUrl('job/index') ?>"><?php echo Yii::t('app', 'cancel') ?></a></td></tr>
 		
 	</table>
 

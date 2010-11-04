@@ -11315,3 +11315,59 @@ in /Users/ronit/projects/jobportal-uni-leipzig/index.php (24)
 2010/11/04 19:00:03 [info] [filterAdminOnly] User role: admin
 in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (89)
 in /Users/ronit/projects/jobportal-uni-leipzig/index.php (24)
+2010/11/04 19:17:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "creates".' in /Users/ronit/src/yii-1.1.4.r2429/framework/web/CController.php:439
+Stack trace:
+#0 /Users/ronit/src/yii-1.1.4.r2429/framework/web/CController.php(262): CController->missingAction('creates')
+#1 /Users/ronit/src/yii-1.1.4.r2429/framework/web/CWebApplication.php(324): CController->run('creates')
+#2 /Users/ronit/src/yii-1.1.4.r2429/framework/web/CWebApplication.php(121): CWebApplication->runController('job/creates')
+#3 /Users/ronit/src/yii-1.1.4.r2429/framework/base/CApplication.php(135): CWebApplication->processRequest()
+#4 /Users/ronit/projects/jobportal-uni-leipzig/index.php(24): CApplication->run()
+#5 {main} REQUEST_URI=/job/creates
+2010/11/04 19:27:20 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (89)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (24)
+2010/11/04 19:31:47 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (89)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (24)
+2010/11/04 19:33:49 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (89)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (24)
+2010/11/04 19:33:50 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (89)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (24)
+2010/11/04 19:33:52 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (89)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (24)
+2010/11/04 19:33:59 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (89)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (24)
+2010/11/04 19:34:12 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (89)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (24)
+2010/11/04 19:37:11 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (89)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (24)
+2010/11/04 19:38:13 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (89)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (24)
+2010/11/04 19:38:14 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (89)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (24)
+2010/11/04 19:38:29 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (89)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (24)
+2010/11/04 19:38:30 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (89)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (24)
+2010/11/04 19:38:35 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (89)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (24)
+2010/11/04 19:39:30 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (89)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (24)
+2010/11/04 19:41:00 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (89)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (24)
+2010/11/04 19:41:37 [info] [filterAdminOnly] User role: admin
+in /Users/ronit/projects/jobportal-uni-leipzig/protected/controllers/JobController.php (89)
+in /Users/ronit/projects/jobportal-uni-leipzig/index.php (24)

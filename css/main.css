@@ -1,230 +1,318 @@
-body
-{
-	margin: 0;
-	padding: 0;
+body {
+	margin: 0px 0px 20px 0px;
+	padding: 0px;
 	color: #767676;
 	font: normal 10pt Verdana,"Helvetica Neue",Arial,sans-serif;
 	background: #FFFFFF;
 }
 
-/*#page
-{
-	margin-top: 5px;
-	margin-bottom: 5px;
-	background: white;
-	border: 1px solid #C9E0ED;
-}
-
-#header
-{
+img {
+	border: 0;
 	margin: 0;
 	padding: 0;
-	border-top: 3px solid #C9E0ED;
 }
 
-#content
-{
-    padding: 20px;
-}
-
-#sidebar
-{
-	padding: 20px 20px 20px 0;
-}
-
-#footer
-{
-	padding: 10px;
-	margin: 10px 20px;
-	font-size: 0.8em;
-	text-align: center;
-	border-top: 1px solid #C9E0ED;
-}
-
-#logo
-{
-	padding: 10px 20px;
-	font-size: 200%;
-}
-
-#mainmenu
-{
-	background:white url(bg.gif) repeat-x left top;
-}
-
-#mainmenu ul
-{
-	padding:6px 20px 5px 20px;
-	margin:0px;
-}
-
-#mainmenu ul li
-{
-	display: inline;
-}
-
-#mainmenu ul li a
-{
-	color:#ffffff;
-	background-color:transparent;
-	font-size:12px;
-	font-weight:bold;
-	text-decoration:none;
-	padding:5px 8px;
-}
-
-#mainmenu ul li a:hover, #mainmenu ul li.active a
-{
-	color: #6399cd;
-	background-color:#EFF4FA;
-	text-decoration:none;
-}
-
-div.flash-error, div.flash-notice, div.flash-success
-{
-	padding:.8em;
-	margin-bottom:1em;
-	border:2px solid #ddd;
-}
-*/
-
-div.flash-error
-{
-	background:#FBE3E4;
-	color:#8a1f11;
-	border-color:#FBC2C4;
-}
-
-div.flash-notice
-{
-	background:#FFF6BF;
-	color:#514721;
-	border-color:#FFD324;
-}
-
-div.flash-success
-{
-	background:#E6EFC2;
-	color:#264409;
-	border-color:#C6D880;
-}
-
-div.flash-error a
-{
-	color:#8a1f11;
-}
-
-div.flash-notice a
-{
-	color:#514721;
-}
-
-div.flash-success a
-{
-	color:#264409;
-}
-
-div.form .rememberMe label
-{
-	display: inline;
-}
-
-div.view
-{
-	padding: 10px;
-	margin: 10px 0;
-	border: 1px solid #C9E0ED;
-}
-
-div.breadcrumbs
-{
-	font-size: 0.9em;
-	padding: 5px 20px;
-}
-
-div.breadcrumbs span
-{
+label {
 	font-weight: bold;
 }
 
-div.search-form
-{
-	padding: 10px;
-	margin: 10px 0;
-	background: #eee;
+/* Stripe for overall-menu on top */
+
+#stripe {
+	font-size: 10px;
+	background: #414141;
+	color: #FFFFFF;
+	height: 21px;
 }
 
-.portlet
-{
-
+#stripe > ul#menu {
+	margin: 0 0 0 20px;
+	padding: 3px 0 0 0;	
+	
 }
 
-.portlet-decoration
-{
-	padding: 3px 8px;
-	background: #B7D6E7;
-	border-left: 5px solid #6FACCF;
+#stripe > ul#menu li {
+	display: inline;
+	padding: 0 4px 0 0;
 }
 
-.portlet-title
-{
+#stripe > ul#menu li a {
+	color: #FFFFFF;
+	text-decoration: none;	
+}
+
+#stripe > ul#menu li a:visited {
+	color: #FFFFFF;
+}
+
+#stripe > ul#menu li a:hover {
+	text-decoration: underline;
+}
+
+/* Header and Header decoration */
+
+#header {
+	background: #C7C9D5;	
+	height: 82px;
+	margin: 0;
+	padding: 0;
+}
+
+#header_bottom {
+	height: 16px;
+	background: url(/images/uni/bg_header-nav.jpg) repeat-x 0px 0px;
+}
+
+
+/* Left, right and Main content */
+
+#wrapper {
+	width: 980px;
+	text-align: left;
+	margin: 6px 0px 0px 0px;
+	padding: 0px;
+	border: 0px;
+}
+
+#left {
+	float: left;
+	width: 200px;
+	margin: 0px 20px 0px 20px;
+	font-size: 15px;
+}
+
+#right {
+	float: left;
+	width: 200px;
+	background: #FFFFFF;
+	margin: 10px 0px 0px 0px;
+	color: #000000;
+	font-size: 12px;
+	line-height: 17px;
+}
+
+#main { 
+	float: left;
+	width: 505px;
+	margin: 0px 20px 0px 0px;
+	font-size: 12px;	
+}
+
+/* Breadcrumbs */
+
+#breadcrumbs {
+	font-size: 10px;
+	padding: 3px 0px 6px 0px;
+}
+
+#breadcrumbs a {
+	text-decoration: none;
+	color: #767676;
+}
+
+#breadcrumbs a:hover {
+	text-decoration: underline;
+	color: #767676;
+}
+
+/* Right column styles */
+
+#right > h3 {
+	background: orange url(/images/uni/bg_teaserbalken_studium.jpg) repeat-x 0px 0px;
+	color: white;
 	font-size: 12px;
 	font-weight: bold;
-	padding: 0;
-	margin: 0;
-	color: #298dcd;
+	margin-bottom: 11px;
+	padding: 0.08em 0.5em 0.08em 5px;	
 }
 
-.portlet-content
-{
-	font-size:0.9em;
-	margin: 0 0 15px 0;
-	padding: 5px 8px;
-	background:#EFFDFF;
+#right > p {
+	padding: 0px 0px 0px 4px;
 }
 
-.portlet-content ul
-{
-	list-style-image:none;
-	list-style-position:outside;
-	list-style-type:none;
-	margin: 0;
-	padding: 0;
-}
-
-.portlet-content li
-{
-	padding: 2px 0 4px 0px;
-}
-
-.operations
-{
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-}
-
-.operations li
-{
-	padding-bottom: 2px;
-}
-
-.operations li a
-{
-	font: bold 12px Arial;
-	color: #0066A4;
-	display: block;
-	padding: 2px 0 2px 8px;
-	line-height: 15px;
+#right > p > a {
 	text-decoration: none;
+	color: #3366CC;
 }
 
-.operations li a:visited
-{
-	color: #0066A4;
+#right > p > a:hover {
+	text-decoration: underline;
 }
 
-.operations li a:hover
-{
-	background: #80CFFF;
+
+
+
+
+/* Utilities */
+
+.clear {
+	clear:both;
 }
+
+.small-font {
+	font-size: 10px;
+}
+
+.normal-font {
+	font-size: 12px;
+}
+
+
+
+/* Left Column Navigation */
+
+/* ################################## */
+/* ######## Linke Navigation ######## */
+/* ################################## */
+ul#column-nav {
+	margin: 0;
+	padding: 0;
+}
+/* ### 1. Ebene ###*/
+/**/
+ul#column-nav li {	
+	font-weight: bold;
+	list-style: none;
+	list-style-position: outside;
+	font-size: .8em;
+}
+
+ul#column-nav li a {
+	padding-left: 16px; 
+	list-style: none;
+	list-style-position: outside;
+	display: block;
+	text-decoration: none;
+	color: #36C;
+}
+ul#column-nav li a:hover {
+	color: #333;
+}
+
+ul#column-nav li a.active{
+	background: transparent url(/images/uni/list_studium.gif) no-repeat left 3px;
+	color: #333;
+}
+
+ul#column-nav li.active {
+	background: transparent url(/images/uni/list_studium.gif) no-repeat left 3px;
+	color: #333;
+/*	margin-left: 10px; */
+	/* 10.10. */
+	margin-left: 16px;
+	padding-left: 16px;
+}
+
+/* ### 2. Ebene ###*/
+ul#column-nav ul {
+	padding-left: 0em;
+/*	margin-bottom: 0.6em; */
+}
+
+ul#column-nav li ul li a {
+	list-style: none;
+	list-style-position: outside;
+}
+
+ul#column-nav ul li {
+	font-weight: normal;
+/*	padding-left: 1em; */
+	font-size: 1em;  
+    margin:0.7em 0pt;
+/*	line-height:1.95em; */
+}
+
+ul#column-nav ul li div.einrueckung{
+	margin-top: -18px;
+	padding-left:1em;
+	line-height:1.1em;
+	display:block;
+}
+
+ul#column-nav ul li .einrueckungN03{
+	margin-top: -18px;
+	line-height:1.1em;
+}
+
+ul#column-nav ul li a.active {
+	color: #333;
+}
+
+/* ### 3. Ebene ###*/
+ul#column-nav li ul li ul{
+/*	margin-bottom: 0.2em; */
+    margin-left: 22px !important;
+}
+
+ul#column-nav li ul li ul li a {
+	margin-left: -16px;
+	list-style: none;
+	list-style-position: outside;
+/*	background: transparent url(/images/list_punkt_grau.gif) no-repeat left center; */
+}
+
+ul#column-nav li ul li ul li a.active {
+	list-style: none;
+	list-style-position: outside;
+	margin-left: -16px;
+/*	background: transparent url(/images/list_punkt_grau.gif) no-repeat left center; */
+}
+
+ul#column-nav li ul li a.active {
+/*	background: transparent url(/images/list_studium_unten.gif) no-repeat left center;
+*/
+}
+
+ul#column-nav li{
+	list-style-position: outside;
+}
+
+ul#column-nav ul li{
+	padding-left:16px;  
+	line-height: 1.2em; 
+}
+
+ul#column-nav ul{
+	margin-left: 0px;
+}
+
+ul#column-nav li ul li a{
+	display: block; 
+}
+
+ul#column-nav ul li a:hover {
+	background:transparent url(/images/uni/list_studium.gif) no-repeat left 3px;
+}
+
+ul#column-nav li ul li ul li {
+    margin-left:16px;
+}
+
+ul#column-nav li ul li ul li.active {
+    margin-left:16px;
+    margin-left: 0px;
+}
+
+ul#column-nav li ul li.active ul li, ul#column-nav li.active ul li{
+    margin-left: 0px;
+}
+
+ul#column-nav ul li{
+    padding-left:0px;
+}
+
+
+ul#column-nav ul, ul#column-nav li, ul#column-nav li.active, ul#column-nav a.active{
+    margin-left: 0px; 
+}
+
+ul#column-nav ul, ul#column-nav ul ul, ul#column-nav li.active ul{
+/*    margin-left: 16px; */
+    margin-left: 10px;
+}
+
+ul#column-nav>li.active ul{
+/*    margin-left: 0px;  */
+    margin-left: -6px;
+}
+

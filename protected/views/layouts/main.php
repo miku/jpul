@@ -2,8 +2,8 @@
 <html lang="de">
 <head>
 	<meta charset="utf-8" />	
-	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/v1/main.css" />
-	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/v1/content.css" />	
+	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
+	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/content.css" />	
 
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.4.3.min.js"charset="utf-8"></script>
 
@@ -87,9 +87,9 @@
 				</p>
 				<p>
 					<strong>Servicezeiten:</strong><br>
-					Mo. 13:00 - 17:00 Uhr<br>
-					Di. bis Do. 9:00 - 17:00 Uhr<br>
-					Fr. 9:00 - 15:00 Uhr<br>
+					Mo. 13:00 &mdash; 17:00 Uhr<br>
+					Di. bis Do. 9:00 &mdash; 17:00 Uhr<br>
+					Fr. 9:00 &mdash; 15:00 Uhr<br>
 				</p>
 				<p>
 					<a href="http://www.zv.uni-leipzig.de/studium/career-center/angebote-fuer-studierende/beratung.html">Informationen zu Beratungszeiten</a>
@@ -100,7 +100,9 @@
 				<p>
 					<a href="<?php echo $this->createUrl('job/index'); ?>">Job Listing</a><br>
 					<?php if (Yii::app()->user->getId() != NULL): ?>
-						<a href="<?php echo $this->createUrl('job/create'); ?>">Neues Angebot einstellen</a><br>
+						<?php if (Yii::app()->user->isAdmin()): ?>
+							<a href="<?php echo $this->createUrl('job/create'); ?>">Neues Angebot einstellen</a><br>
+						<?php endif; ?>
 						Logged in as <a href="#"><?php echo Yii::app()->user->getUsername(); ?></a> | 
 						<a href="<?php echo $this->createUrl('site/logout'); ?>">Logout</a><br>					
 					<?php else: ?>

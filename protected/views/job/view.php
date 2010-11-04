@@ -1,7 +1,9 @@
 <div style="margin-top: 10px"></div>
 
 <!-- <a class="small-font" href="<?php echo $this->createUrl('job/index'); ?>">Zurück zur Übersicht</a> -->
-<a class="small-font" href="javascript:history.go(-1)">Zurück zur Übersicht</a>
+<a class="small-font" href="javascript:history.go(-1)">
+	<div class="micro-nav">Zurück zur Übersicht</div>
+</a>
 
 <h3><?php echo $model->title ?></h3>
 
@@ -13,7 +15,7 @@
 	
 </p>
 
-<p><?php echo $this->textilize($model->description) ?></p>
+<p><?php echo textilize($model->description) ?></p>
 
 <p><?php echo $model->how_to_apply ?></p>
 

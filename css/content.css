@@ -80,3 +80,15 @@ td.job-company { color: black;}
 	font-size: 10px;
 }
 
+.micro-nav {
+	background: #ECECEC;
+	padding: 3px;
+}
+
+.micro-nav:hover {
+	background: #B9B9B9;
+	color: white;
+	padding: 3px;
+}
+
+

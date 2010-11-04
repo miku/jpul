@@ -5,7 +5,8 @@ Yii::import('application.vendors.*');
 require_once('Zend/Search/Lucene.php');
 
 // Textile subset
-require_once('TextiLite.php');
+Yii::import('application.helpers.*');
+require_once('Utils.php');
 
 class JobController extends Controller
 {
@@ -15,10 +16,10 @@ class JobController extends Controller
 	const DEFAULT_EXPIRATION_SECONDS = 3628800; 		
 	
 	
-	public function textilize($text) {
-		$t = new TextiLite;
-		return $t->process($text);
-	}
+	// public function textilize($text) {
+	// 	$t = new TextiLite;
+	// 	return $t->process($text);
+	// }
 
 	/**
 	 * Get the path to the uploaded job attachments.
@@ -151,7 +152,11 @@ class JobController extends Controller
 		$model = new Job;
 
 		if(isset($_POST['Job'])) {
-			$model->attributes = $_POST['Job']; // mass assignment
+			
+			$sanitized_post = array_strip_tags($_POST['Job']);
+			
+			// $model->attributes = $_POST['Job']; // mass assignment
+			$model->attributes = $sanitized_post; 
 			$model->date_added = time();
 			$model->expiration_date = $model->date_added + self::DEFAULT_EXPIRATION_SECONDS;
 			$model->author_id = 0;
@@ -185,7 +190,11 @@ class JobController extends Controller
 
 		if(isset($_POST['Job']))
 		{
-			$model->attributes = $_POST['Job'];
+
+			$sanitized_post = array_strip_tags($_POST['Job']);
+
+			// $model->attributes = $_POST['Job'];			
+			$model->attributes = $sanitized_post;
 			$model->date_added = time();
 			$model->expiration_date = $model->date_added + self::DEFAULT_EXPIRATION_SECONDS;
 			$model->author_id = 0; // default; TODO: adjust

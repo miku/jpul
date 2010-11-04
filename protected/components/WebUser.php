@@ -1,15 +1,12 @@
 <?php
 
-// this file must be stored in:
-// protected/components/WebUser.php
-
 class WebUser extends CWebUser {
 
 	// Store model to not repeat query.
 	private $_model;
 
-	// Return first name.
-	// access it by Yii::app()->user->first_name
+	// Return username.
+	// access it by Yii::app()->user->username;
 	public function getUsername(){
 		$user = $this->loadUser(Yii::app()->user->getId());
 		return $user->username;
@@ -20,13 +17,13 @@ class WebUser extends CWebUser {
 	// access it by Yii::app()->user->isAdmin()
 	function isAdmin(){
 		$user = $this->loadUser(Yii::app()->user->id);
-		return $user->role == "admin";
+		return $user->role === "admin";
 	}
 
 	// Load user model.
 	protected function loadUser($id=null)
 	{
-		if($this->_model===null)
+		if ($this->_model === null)
 		{
 			if ($id !== null)
 				$this->_model=User::model()->findByPk($id);

@@ -238,6 +238,7 @@ class JobController extends Controller
 				}
 			}
 		}
+		
 		$this->render('draft', array('model' => $model));
 	}
 	

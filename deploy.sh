@@ -2,7 +2,8 @@
 
 TARGET=/Volumes/jobp--wwwdup.uni-leipzig.de/webdir
 
-SHA=$(cat .git/refs/heads/master)
+rm -rf $TARGET/*
 
+SHA=$(cat .git/refs/heads/master)
 git archive --format=zip master > $TARGET/$SHA.zip
 

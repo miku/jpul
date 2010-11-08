@@ -1,3 +1,8 @@
 .DS_Store
-protected/runtime/*
-uploads/*
+uploads/*pdf
+
+/protected/runtime/application.log
+/protected/runtime/gii-1.1.4
+/protected/runtime/search
+/protected/runtime/state.bin
+

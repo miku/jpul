@@ -102,14 +102,19 @@ class JobController extends Controller
 	 */
 	public function actionIndex($page = 1) {
 		
+		$current_time = time();
+		
 		if ($page < 1) {
 			$this->redirect(array('index', 'page' => 1));
 		}
 		
 		$criteria = new CDbCriteria;
 		$criteria->order = 'date_added DESC';
-		$criteria->condition = 'status_id=:status_id';
-		$criteria->params=array(':status_id' => 2);
+		
+		if (!Yii::app()->user->isAdmin()) {
+			$criteria->condition = 'status_id=:status_id AND expiration_date > :current_time';
+			$criteria->params=array(':status_id' => 2, ':current_time' => $current_time);
+		}
 
 		$total = count(Job::model()->findAll($criteria));
 		
@@ -158,7 +163,19 @@ class JobController extends Controller
 			// $model->attributes = $_POST['Job']; // mass assignment
 			$model->attributes = $sanitized_post; 
 			$model->date_added = time();
-			$model->expiration_date = $model->date_added + self::DEFAULT_EXPIRATION_SECONDS;
+			
+			if (!isset($sanitized_post['expiration_date']) || $sanitized_post['expiration_date'] === '') {
+				$model->expiration_date = $model->date_added + self::DEFAULT_EXPIRATION_SECONDS;
+			} else {
+				Yii::log("Expiration set manually: " . $sanitized_post['expiration_date'], CLogger::LEVEL_INFO, "actionCreate");
+				$epoch_or_false = strtotime($sanitized_post['expiration_date']);
+				if ($epoch_or_false) {
+					$model->expiration_date = $epoch_or_false;
+				} else {
+					$model->expiration_date = $model->date_added + self::DEFAULT_EXPIRATION_SECONDS;
+				}
+			}
+
 			$model->author_id = 0;
 
 			$model->attachment=CUploadedFile::getInstance($model,'attachment');
@@ -176,6 +193,70 @@ class JobController extends Controller
 		}
 		$this->render('create', array('model' => $model));
 	}
+	
+	/**
+	 * Create a new job posting.
+	 */
+	public function actionDraft()
+	{
+		$model = new Job;
+
+		if(isset($_POST['Job'])) {
+			
+			$sanitized_post = array_strip_tags($_POST['Job']);
+			
+			// $model->attributes = $_POST['Job']; // mass assignment
+			$model->attributes = $sanitized_post; 
+			$model->date_added = time();
+			$model->status_id = 1; // needs review
+			
+			if (!isset($sanitized_post['expiration_date']) || $sanitized_post['expiration_date'] === '') {
+				$model->expiration_date = $model->date_added + self::DEFAULT_EXPIRATION_SECONDS;
+			} else {
+				Yii::log("Expiration set manually: " . $sanitized_post['expiration_date'], CLogger::LEVEL_INFO, "actionCreate");
+				$epoch_or_false = strtotime($sanitized_post['expiration_date']);
+				if ($epoch_or_false) {
+					$model->expiration_date = $epoch_or_false;
+				} else {
+					$model->expiration_date = $model->date_added + self::DEFAULT_EXPIRATION_SECONDS;
+				}
+			}
+
+			$model->author_id = 1000;
+
+			$model->attachment=CUploadedFile::getInstance($model,'attachment');
+
+			if ($model->validate()) {
+				if ($model->save()) {
+					if (isset($model->attachment)) {
+						$filename = $this->getUploadFilePath("job", $model->id);
+						$model->attachment->saveAs($filename);
+					}
+					// $this->updateSearchIndex($model);
+					$this->mailOnDraft($model);
+					$this->redirect(array('index'));
+				}
+			}
+		}
+		$this->render('draft', array('model' => $model));
+	}
+	
+	
+	protected function mailOnDraft($model) {
+		$to      = 'martin.czygan@gmail.com';
+		$subject = 'Neues Jobangebot erstellt (Unternehmen: ' . $model->company . ')';
+		$message = 'Neues Jobangebot erstellt (Unternehmen: ' . $model->company . ')';
+		$headers = 'From: jobportal+careercenter@uni-leipzig.de' . "\r\n" .
+    		'Reply-To: martin.czygan@gmail.com' . "\r\n" .
+    		'X-Mailer: PHP/' . phpversion();
+
+		if (mail($to, $subject, $message, $headers)) {
+			Yii::log("Draft-Mail accepted", CLogger::LEVEL_INFO, "mailOnDraft");
+		} else {
+			Yii::log("Draft-Mail NOT accepted", CLogger::LEVEL_INFO, "mailOnDraft");
+		}
+	}
+
 
 	/**
 	 * Update a new job posting.
@@ -196,7 +277,19 @@ class JobController extends Controller
 			// $model->attributes = $_POST['Job'];			
 			$model->attributes = $sanitized_post;
 			$model->date_added = time();
-			$model->expiration_date = $model->date_added + self::DEFAULT_EXPIRATION_SECONDS;
+
+			if (!isset($sanitized_post['expiration_date']) || $sanitized_post['expiration_date'] === '') {
+				$model->expiration_date = $model->date_added + self::DEFAULT_EXPIRATION_SECONDS;
+			} else {
+				Yii::log("Expiration set manually: " . $sanitized_post['expiration_date'], CLogger::LEVEL_INFO, "actionCreate");
+				$epoch_or_false = strtotime($sanitized_post['expiration_date']);
+				if ($epoch_or_false) {
+					$model->expiration_date = $epoch_or_false;
+				} else {
+					$model->expiration_date = $model->date_added + self::DEFAULT_EXPIRATION_SECONDS;
+				}
+			}
+
 			$model->author_id = 0; // default; TODO: adjust
 
 			$model->attachment = CUploadedFile::getInstance($model, 'attachment');
@@ -229,7 +322,7 @@ class JobController extends Controller
 	}
 
 	/**
-	 * Delete a job, it just gets archived.
+	 * Delete a job; it just gets archived.
 	 */
 	public function actionDelete($id)
 	{
@@ -239,14 +332,16 @@ class JobController extends Controller
 			throw new CHttpException(400, Yii::t('app', 'Your request is not valid.'));
 		}
 		$model->status_id = 4;
+		
+		$this->removeFromSearchIndex($model);
+		
 		if ($model->save(false)) {
 			Yii::log("Set status of record id: " . $model->id . " to: " . $model->status_id . " (deleted)", CLogger::LEVEL_INFO, "default");	
 		} else {
 			Yii::log("Deleting failed on: " . $model->id, CLogger::LEVEL_INFO, "default");	
 			throw new CHttpException(500, Yii::t('app', 'Your request is not valid.'));
 		}
-		
-		
+
 		$this->redirect(array('index'));
 	}
 
@@ -298,6 +393,13 @@ class JobController extends Controller
 			$this->redirect(array('index'));
 		}
 	}
+	
+	protected function removeFromSearchIndex($model) {
+		$index = new Zend_Search_Lucene($this->getSearchIndexStore(), false);
+		foreach ($index->find('pk:' . $model->id) as $hit) {
+    		$index->delete($hit->id);
+		}		
+	}
 
 	/**
 	 * Update search index.
@@ -317,6 +419,9 @@ class JobController extends Controller
 		$doc->addField(Zend_Search_Lucene_Field::UnStored('company', $model->company, 'utf-8'));
 		$doc->addField(Zend_Search_Lucene_Field::UnStored('location', $model->city, 'utf-8'));
 		$doc->addField(Zend_Search_Lucene_Field::UnStored('description', $model->description, 'utf-8'));
+		
+		$doc->addField(Zend_Search_Lucene_Field::UnStored('sector', $model->sector, 'utf-8'));
+		$doc->addField(Zend_Search_Lucene_Field::UnStored('study', $model->study, 'utf-8'));
 
 		$index->addDocument($doc);
 		$index->commit();

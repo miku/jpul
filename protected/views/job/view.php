@@ -12,26 +12,37 @@
 	<?php if ($model->company_homepage): ?>
 		<br><span class="small-font"><a style="color: gray; text-decoration:none" href="<?php echo $model->company_homepage ?>"><?php echo $model->company_homepage?></a></span>
 	<?php endif; ?>
-	
 </p>
 
 <p><?php echo textilize($model->description) ?></p>
 
-<p><?php echo $model->how_to_apply ?></p>
+<p><?php echo textilize($model->how_to_apply) ?></p>
 
 
 <?php if ($model->attachment): ?>
-	<p>Attachment: <a href="<?php echo $this->createUrl('job/download', array('id'=>$model->id)); ?>">Download</a></p>
+	<p>PDF der Anzeige: <a href="<?php echo $this->createUrl('job/download', array('id'=>$model->id)); ?>">Download</a></p>
 <?php endif; ?>
 
 <br>
 <br>
 
+<?php if ($model->study): ?>
+	<p>Studienrichtungen: <?php echo $model->study ?></p>
+<?php endif ?>
+
+<?php if ($model->degree): ?>
+	<p>Abschluß: <?php echo $model->degree->name ?></p>
+<?php endif ?>
+
+
+
+<p>Bewerbungsschluss: <?php echo date("d.m.Y", $model->expiration_date); ?></p>
+
 <div class="line"></div>
 
 <p class="small">Anzeige erstellt am <?php echo strftime('%d.%m.%Y', $model->date_added) ?></p>
 
-<?php if (Yii::app()->user->getId() != NULL): ?>
+<?php if (Yii::app()->user->getId() != NULL && Yii::app()->user->isAdmin()): ?>
 	<a href="<?php echo $this->createUrl('job/update', array('id' => $model->id)); ?>">Angebot bearbeiten</a> | 
 	<a href="<?php echo $this->createUrl('job/delete', array('id' => $model->id)); ?>">Angebot löschen</a><br>
 <?php endif; ?>

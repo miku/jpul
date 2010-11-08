@@ -73,7 +73,7 @@ td.job-company { color: black;}
 }
 
 .required {
-	color: orange;
+	color: darkorange;
 }
 
 .small {
@@ -85,10 +85,36 @@ td.job-company { color: black;}
 	padding: 3px;
 }
 
+a:hover {
+	text-decoration: none;
+}
+
 .micro-nav:hover {
 	background: #B9B9B9;
 	color: white;
 	padding: 3px;
+}
+
+#job-listing tr:hover {
+	background: #FFF380;
+}
+
+tr.help {
+	font-size: 10px;
+}
+
+tr.error {
+	background: #FFFFFF;
+	color: red;
+}
+
+.status-public {
+	color: green;
+	font-weight: bold;
+}
+
+.status-expired {
+	color: lightgray;
 }
 
 

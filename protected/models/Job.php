@@ -51,6 +51,11 @@ class Job extends CActiveRecord
 				),
 		);
 	}
+	
+	public function isExpired() {
+		$current_time = time();
+		return $current_time > $this->expiration_date;
+	}
 
 	/**
 	* @return string the associated database table name
@@ -88,7 +93,10 @@ class Job extends CActiveRecord
 	{
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
-		return array();
+		return array(
+			'degree' => array(self::BELONGS_TO, 'Degree', 'degree_id'),
+			'status' => array(self::BELONGS_TO, 'JobStatus', 'status_id'),
+		);
 	}
 
 	/**

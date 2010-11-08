@@ -6,14 +6,18 @@
 
 <div id="searchbox">
 	<form action="<?php echo $this->createUrl('job/search') ?>" method="get" accept-charset="utf-8">
-		<input size="40" type="text" name="q" value="<?php if (isset($original_query)) echo $original_query ?>" id="search"><input type="submit" value="Search">
+		<input size="60" type="text" name="q" value="<?php if (isset($original_query)) echo $original_query ?>" id="search">
+		&nbsp; <input type="submit" value="Search">
 	</form>
 </div>
 
 
-<h3>Aktuelle Jobangebote <?php if (isset($original_query)) echo 'für ' . $original_query ?></h3>
+<!-- <h3>Aktuelle Jobangebote <?php if (isset($original_query)) echo 'für ' . $original_query ?></h3> -->
 
-<table border="0" cellspacing="2" cellpadding="4">
+<br>
+
+
+<table id="job-listing" border="0" cellspacing="2" cellpadding="4">
 <?php 
 foreach ($models as $i => $model) {
 	$this->renderPartial('_teaser', array('model' => $model, 'index' => $i));

@@ -65,10 +65,17 @@
 		<tr class="even"><td><?php echo $form->fileField($model,'attachment'); ?></td></tr>
 		<tr class="even"><td><?php echo $form->error($model,'attachment'); ?></td></tr>
 		
+		<tr class="even-dark"><td><?php echo $form->labelEx($model,'expiration_date'); ?></td></tr>
+		<tr class="even help"><td>Optional im Format TT.MM.YYYY (Standardlaufzeit: 6 Wochen)</td></tr>		
+		<tr class="even"><td><?php echo $form->textField($model,'expiration_date', array('value' => date('d.m.Y', $model->expiration_date))); ?></td></tr>
+		<tr class="even error"><td><?php echo $form->error($model,'expiration_date'); ?></td></tr>
+
+		
 		<tr class="even-dark"><td><?php echo $form->labelEx($model,'status_id'); ?> <?php echo $form->dropDownList($model, 'status_id', CHtml::listData(JobStatus::model()->findAll(), 'id', 'status'),array('prompt' => 'Status der Anzeige')); ?></td></tr>
 
 
-		<tr class="even"><td><?php echo CHtml::submitButton('Submit'); ?> or <a href="<?php echo $this->createUrl('job/view', array('id' => $model->id)); ?>">cancel</a></td></tr>
+		<tr class="even"><td><?php echo CHtml::submitButton(Yii::t('app', 'Submit')); ?> <?php echo Yii::t('app', 'or') ?> <a href="<?php echo $this->createUrl('job/index') ?>"><?php echo Yii::t('app', 'cancel'); ?></a></td></tr>
+
 		
 	</table>
 

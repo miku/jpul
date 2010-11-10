@@ -412,6 +412,9 @@ class JobController extends Controller
     		$index->delete($hit->id);
 		}
 		
+		// only include public and not expired 
+		if ($model->status_id != 2 || $model->isExpired()) { return; }
+		
 		$doc = new Zend_Search_Lucene_Document();
 		// store job primary key to identify it in the search results
 		$doc->addField(Zend_Search_Lucene_Field::Keyword('pk', $model->id));
@@ -443,6 +446,9 @@ class JobController extends Controller
 		$models = Job::model()->findAll($criteria);
 		
 		foreach ($models as $model) {
+
+			// only include public and not expired 
+			if ($model->status_id != 2 || $model->isExpired()) { continue; }
 
 			$doc = new Zend_Search_Lucene_Document();
  

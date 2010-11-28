@@ -5,6 +5,12 @@ $this->breadcrumbs=array(
 );
 ?>
 
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+  		$("#LoginForm_username").focus();
+	});
+</script>
+
 <h3>Login</h3>
 
 <div class="form">

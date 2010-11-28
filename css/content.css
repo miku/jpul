@@ -118,3 +118,26 @@ tr.error {
 }
 
 
+.buttonlike {
+	float: right;
+	margin-top: 10px;
+}
+
+.buttonlike a {
+	padding: 3px;
+/*	color: #3366CC;*/
+	color: white;
+	background: #3366CC;
+	text-decoration: none;
+}
+
+.buttonlike a:hover {
+	padding: 3px;	
+	text-decoration: none;
+}
+
+.buttonlike .inactive {
+	padding: 3px;	
+	background: #EFEFEF;
+}
+

@@ -15,12 +15,6 @@ class JobController extends Controller
 	// 6 * 7 * 24 * 60 * 60 = six weeks
 	const DEFAULT_EXPIRATION_SECONDS = 3628800; 		
 	
-	
-	// public function textilize($text) {
-	// 	$t = new TextiLite;
-	// 	return $t->process($text);
-	// }
-
 	/**
 	 * Get the path to the uploaded job attachments.
 	 * @return Job attachments upload path
@@ -273,6 +267,15 @@ class JobController extends Controller
 		if(isset($_POST['Job']))
 		{
 
+			Yii::log("Company Homepage before adjustments: " . $_POST['Job']['company_homepage'], CLogger::LEVEL_INFO, "actionUpdate");
+			$company_homepage = $_POST['Job']['company_homepage'];
+			if (!startsWith($company_homepage, "http://")) {
+				$company_homepage = "http://" . $company_homepage;
+				$_POST['Job']['company_homepage'] = $company_homepage;
+			}
+			Yii::log("Company Homepage after adjustments: " . $_POST['Job']['company_homepage'], CLogger::LEVEL_INFO, "actionUpdate");
+			
+			
 			$sanitized_post = array_strip_tags($_POST['Job']);
 
 			// $model->attributes = $_POST['Job'];			

@@ -43,6 +43,8 @@
 <p class="small">Anzeige erstellt am <?php echo strftime('%d.%m.%Y', $model->date_added) ?></p>
 
 <?php if (Yii::app()->user->getId() != NULL && Yii::app()->user->isAdmin()): ?>
-	<a href="<?php echo $this->createUrl('job/update', array('id' => $model->id)); ?>">Angebot bearbeiten</a> | 
-	<a href="<?php echo $this->createUrl('job/delete', array('id' => $model->id)); ?>">Angebot löschen</a><br>
+	<div class="buttonlike">
+		<a href="<?php echo $this->createUrl('job/update', array('id' => $model->id)); ?>">Angebot bearbeiten</a>
+		<a href="<?php echo $this->createUrl('job/delete', array('id' => $model->id)); ?>">Angebot löschen</a>
+	</div><br>
 <?php endif; ?>

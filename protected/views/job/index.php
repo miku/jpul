@@ -6,7 +6,7 @@
 
 <div id="searchbox">
 	<form action="<?php echo $this->createUrl('job/search') ?>" method="get" accept-charset="utf-8">
-		<input size="60" type="text" name="q" value="<?php if (isset($original_query)) echo $original_query ?>" id="search">
+		<input size="45" type="text" name="q" value="<?php if (isset($original_query)) echo $original_query ?>" id="search">
 		&nbsp; <input type="submit" value="Search">
 	</form>
 </div>

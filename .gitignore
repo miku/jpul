@@ -1,5 +1,6 @@
 .DS_Store
 uploads/*
+dumps/*sql
 
 protected/runtime/application.log*
 protected/runtime/gii-1.1.4/*

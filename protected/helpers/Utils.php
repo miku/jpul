@@ -10,6 +10,22 @@
 		// return $t->TextileRestricted($text, $lite=0, $noimage=1, $rel='nofollow');
 	}
 	
+	/**
+	 * Cut the text, without splitting within words.
+	 * @param string the text to be splitted
+	 * @param integer cut to this length (maximum)
+	 * @param string replacement, defaults to '...'
+	 * @return shortened string
+	 */
+	public static function cut_text($string, $length, $replacer = '...') 
+	{ 
+		if(strlen($string) > $length) 
+			return (preg_match('/^(.*)\W.*$/', 
+				substr($string, 0, $length+1), $matches) ? $matches[1] : substr($string, 0, $length)) . $replacer; 
+		return $string; 
+	}
+	
+	
 	function recapchta_passed($privatekey, $remote_addr, $post_hash) 
 	{
 		if (isset($post_hash["recaptcha_challenge_field"])) {

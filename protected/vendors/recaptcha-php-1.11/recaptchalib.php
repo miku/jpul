@@ -93,7 +93,7 @@ function _recaptcha_http_post($host, $path, $data, $port = 80) {
 		} 
 		fclose($proxy_fp);  
 		$result = explode("\r\n\r\n", $result, 2);
-		return $result
+		return $result;
 		
 		// <<<
 

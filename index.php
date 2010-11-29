@@ -1,4 +1,9 @@
 <?php
+	echo gethostname();
+?>
+
+
+<?php
 
 // development hosts
 // using development configuration (see config/main.dev.php)
@@ -11,7 +16,7 @@ if (in_array(gethostname(), $devhosts)) {
 } else {
 	// production environment
 	$yii = dirname(__FILE__) . '/../src/yii-1.1.4.r2429/framework/yii.php';
-	$config=dirname(__FILE__) . '/protected/config/main.php';
+	$config = dirname(__FILE__) . '/protected/config/main.php';
 	define('YII_DEBUG', true);
 }
 

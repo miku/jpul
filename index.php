@@ -1,5 +1,6 @@
 <?php
-	echo gethostname();
+	// echo gethostname();
+	echo "But stdout works";
 ?>
 
 

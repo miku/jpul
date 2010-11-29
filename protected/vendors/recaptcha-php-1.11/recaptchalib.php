@@ -92,8 +92,9 @@ function _recaptcha_http_post($host, $path, $data, $port = 80) {
    			$result .= fgets($proxy_fp, 1160); 
 		} 
 		fclose($proxy_fp);  
+		Yii::log($result, CLogger::LEVEL_INFO, "_recaptcha_http_post");
 		$result = explode("\r\n\r\n", $result, 2);
-		Yii::log("Hello", CLogger::LEVEL_INFO, "default");
+		Yii::log($result, CLogger::LEVEL_INFO, "_recaptcha_http_post");
 		
 		return $result;
 		

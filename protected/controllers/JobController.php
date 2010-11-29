@@ -1,10 +1,10 @@
 <?php
 
-// Zend Lucene Imports
 Yii::import('application.vendors.*');
-require_once('Zend/Search/Lucene.php');
+require_once('Zend/Search/Lucene.php'); // Zend Lucene Imports
+require_once('recaptcha-php-1.11/recaptchalib.php'); // recaptcha
 
-// Textile subset
+// Textile via Utils.php
 Yii::import('application.helpers.*');
 require_once('Utils.php');
 
@@ -218,7 +218,7 @@ class JobController extends Controller
 		$model = new Job;
 
 		if(isset($_POST['Job'])) {
-			
+						
 			$sanitized_post = array_strip_tags($_POST['Job']);
 			
 			// $model->attributes = $_POST['Job']; // mass assignment
@@ -242,7 +242,8 @@ class JobController extends Controller
 
 			$model->attachment=CUploadedFile::getInstance($model,'attachment');
 
-			if ($model->validate()) {
+			if ($model->validate() && recapchta_passed(Yii::app()->params['rc_privatekey'], $_SERVER["REMOTE_ADDR"], $_POST)) 
+			{
 				if ($model->save()) {
 					if (isset($model->attachment)) {
 						$filename = $this->getUploadFilePath("job", $model->id);
@@ -250,6 +251,9 @@ class JobController extends Controller
 					}
 					// $this->updateSearchIndex($model);
 					$this->mailOnDraft($model);
+					
+					Yii::app()->user->setFlash('success', "Ihr Angebot wurde für ein Review vorbereitet. Wenn Sie eine E-Mail Adresse für die Benachrichtigung eingerichtet haben, bekommen Sie auf diese eine Nachricht zugesandt, sobald das Jobangebot geprüft und freigeschaltet wurde; falls nicht, können Sie mit einer Freischaltung in maximal drei Tagen rechnen.");
+					
 					$this->redirect(array('index'));
 				}
 			}
@@ -357,7 +361,7 @@ class JobController extends Controller
 		if (!$model) {
 			throw new CHttpException(400, Yii::t('app', 'Your request is not valid.'));
 		}
-		$model->status_id = 4;
+		$model->status_id = 3;
 		
 		$this->removeFromSearchIndex($model);
 		

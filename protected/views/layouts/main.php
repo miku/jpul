@@ -68,6 +68,12 @@
 				<a href="<?php echo $this->createUrl('job/index'); ?>">
 				<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/uni/jobportal_banner.png" alt="" />
 				</a>
+				<?php if(Yii::app()->user->hasFlash('success')):?>
+    				<div class="flash-info">
+        				<?php echo Yii::app()->user->getFlash('success'); ?>
+    				</div>
+				<?php endif; ?>
+				
 				<?php echo $content; ?>
 				
 			</div>
@@ -106,7 +112,8 @@
 						Logged in as <a href="#"><?php echo Yii::app()->user->getUsername(); ?></a> | 
 						<a href="<?php echo $this->createUrl('site/logout'); ?>">Logout</a><br>					
 					<?php else: ?>
-					<a href="<?php echo $this->createUrl('site/login'); ?>">Login</a><br>
+						<a href="<?php echo $this->createUrl('job/draft'); ?>">Neues Angebot erstellen</a><br>
+						<a href="<?php echo $this->createUrl('site/login'); ?>">Login</a><br>
 					<?php endif; ?>
 
 				</p>

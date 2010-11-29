@@ -1,3 +1,10 @@
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+  		$("#Job_title").focus();
+	});
+</script>
+
+
 <div class="form">
 	
 	<h3>Neues Angebot erstellen</h3>

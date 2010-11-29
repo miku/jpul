@@ -6,7 +6,7 @@
 
 <div class="form">
 	
-	<h3>Angebot bearbeiten</h3>
+	<h3>Angebot <?php echo $model->id ?> bearbeiten</h3>
 
 <?php $form=$this->beginWidget('CActiveForm', 
 	array(	'id'=>'job-create-form', 

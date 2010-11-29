@@ -1,3 +1,10 @@
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+  		$("#Job_title").focus();
+	});
+</script>
+
+
 <div class="form">
 	
 	<h3>Neues Angebot erstellen</h3>
@@ -71,6 +78,11 @@
 		<tr class="even help"><td>Optional im Format TT.MM.YYYY (Standardlaufzeit: 6 Wochen)</td></tr>		
 		<tr class="even"><td><?php echo $form->textField($model,'expiration_date', array('value' => date('d.m.Y', time() + (6 * 7 * 24 * 60 * 60)))); ?></td></tr>
 		<tr class="even error"><td><?php echo $form->error($model,'expiration_date'); ?></td></tr>
+		
+
+		<tr class="even-dark"><td><?php echo $form->labelEx($model,'Sicherheitsfrage'); ?></td></tr>
+		<tr class="even"><td><?php echo recaptcha_get_html(Yii::app()->params['rc_publickey']); ?></td></tr>
+	
 		
 		<tr class="even"><td><?php echo CHtml::submitButton(Yii::t('app', 'Submit')); ?> <?php echo Yii::t('app', 'or') ?> <a href="<?php echo $this->createUrl('job/index') ?>"><?php echo Yii::t('app', 'cancel'); ?></a></td></tr>
 		

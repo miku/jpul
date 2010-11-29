@@ -99,8 +99,11 @@ return array(
 
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']
+	
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'martin.czygan@gmail.com',
+		'rc_publickey' => '6Lc0Lb8SAAAAABowOzl_yZ6KXaMVOmTBFbd1-pfF',
+		'rc_privatekey' => '6Lc0Lb8SAAAAAO2TYsGNXuIz3fGkVrFAknYW-S3l',
 	),
 );

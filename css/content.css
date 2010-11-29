@@ -194,3 +194,8 @@ tr.error {
 	padding: 3px;
 	background: #ECECEC;
 }
+
+.flash-info {
+	padding: 6px;
+	border: dotted 1px green;	
+}

@@ -15,7 +15,5 @@
 		<?php endif ?>
 
 	<?php endif ?>
-
-		
 </tr>
 

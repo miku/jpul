@@ -60,7 +60,6 @@ INSERT INTO user (username, password, salt, email, role) VALUES ('admin', '93UUz
 INSERT INTO job_status (status) VALUES ('Draft');	 -- Needs review
 INSERT INTO job_status (status) VALUES ('Public');   -- Public
 INSERT INTO job_status (status) VALUES ('Archived'); -- Expired
-INSERT INTO job_status (status) VALUES ('Deleted');  -- Deleted
 
 INSERT INTO degree (name) VALUES ('Student');
 INSERT INTO degree (name) VALUES ('Bachelor');

@@ -1,9 +1,16 @@
 <div style="margin-top: 10px"></div>
 
 <!-- <a class="small-font" href="<?php echo $this->createUrl('job/index'); ?>">Zurück zur Übersicht</a> -->
-<a class="small-font" href="javascript:history.go(-1)">
-	<div class="micro-nav">Zurück zur Übersicht</div>
-</a>
+
+<div class="top-actions small">
+	<a href="javascript:history.go(-1)">Zurück zur Übersicht</a>
+	<?php if (Yii::app()->user->getId() != NULL && Yii::app()->user->isAdmin()): ?>
+		<a href="<?php echo $this->createUrl('job/update', array('id' => $model->id)); ?>">Angebot bearbeiten</a>
+		<a class="destructive" href="<?php echo $this->createUrl('job/delete', array('id' => $model->id)); ?>">Angebot archivieren</a>
+	<?php endif; ?>	
+</div>
+
+
 
 <h3><?php echo $model->title ?></h3>
 
@@ -41,10 +48,3 @@
 <div class="line"></div>
 
 <p class="small">Anzeige erstellt am <?php echo strftime('%d.%m.%Y', $model->date_added) ?></p>
-
-<?php if (Yii::app()->user->getId() != NULL && Yii::app()->user->isAdmin()): ?>
-	<div class="buttonlike">
-		<a href="<?php echo $this->createUrl('job/update', array('id' => $model->id)); ?>">Angebot bearbeiten</a>
-		<a href="<?php echo $this->createUrl('job/delete', array('id' => $model->id)); ?>">Angebot löschen</a>
-	</div><br>
-<?php endif; ?>

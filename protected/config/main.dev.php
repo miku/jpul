@@ -29,7 +29,7 @@ return array(
 		),
 		
 	),
-
+	
 	// application components
 	'components'=>array(
 		'user'=>array(
@@ -37,6 +37,14 @@ return array(
 			'allowAutoLogin'=>true,
 			'class' => 'WebUser',
 		),
+		
+		'session'=>array(
+            'class' => 'CDbHttpSession',
+            'connectionID' => 'db',
+            'sessionTableName' => 'dbsession',
+			'timeout' => 3600,
+		),
+
 		
 		'request'=>array(
             'enableCsrfValidation'=>true,

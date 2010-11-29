@@ -94,12 +94,20 @@ class JobController extends Controller
 	/**
 	 * Index action. Default page is 0.
 	 */
-	public function actionIndex($page = 1) {
+	public function actionIndex($page = 1, $showexpired = null) {
 		
 		$current_time = time();
 		
 		if ($page < 1) {
 			$this->redirect(array('index', 'page' => 1));
+		}
+		
+		if ($showexpired == null) {
+			if (Yii::app()->session['showexpired'] != null) {
+				$showexpired = Yii::app()->session['showexpired'];
+			}
+		} else {
+			Yii::app()->session['showexpired'] = $showexpired;
 		}
 		
 		$criteria = new CDbCriteria;
@@ -109,6 +117,12 @@ class JobController extends Controller
 			$criteria->condition = 'status_id=:status_id AND expiration_date > :current_time';
 			$criteria->params=array(':status_id' => 2, ':current_time' => $current_time);
 		}
+		
+		if (Yii::app()->user->isAdmin() && $showexpired == 0) {
+			$criteria->condition = 'expiration_date > :current_time';
+			$criteria->params=array(':current_time' => $current_time);
+		}
+		
 
 		$total = count(Job::model()->findAll($criteria));
 		
@@ -151,6 +165,14 @@ class JobController extends Controller
 		$model = new Job;
 
 		if(isset($_POST['Job'])) {
+			
+			Yii::log("Company Homepage before adjustments: " . $_POST['Job']['company_homepage'], CLogger::LEVEL_INFO, "actionCreate");
+			$company_homepage = $_POST['Job']['company_homepage'];
+			if ($company_homepage != "" && !startsWith($company_homepage, "http://")) {
+				$company_homepage = "http://" . $company_homepage;
+				$_POST['Job']['company_homepage'] = $company_homepage;
+			}
+			Yii::log("Company Homepage after adjustments: " . $_POST['Job']['company_homepage'], CLogger::LEVEL_INFO, "actionCreate");
 			
 			$sanitized_post = array_strip_tags($_POST['Job']);
 			
@@ -269,7 +291,7 @@ class JobController extends Controller
 
 			Yii::log("Company Homepage before adjustments: " . $_POST['Job']['company_homepage'], CLogger::LEVEL_INFO, "actionUpdate");
 			$company_homepage = $_POST['Job']['company_homepage'];
-			if (!startsWith($company_homepage, "http://")) {
+			if ($company_homepage != "" && !startsWith($company_homepage, "http://")) {
 				$company_homepage = "http://" . $company_homepage;
 				$_POST['Job']['company_homepage'] = $company_homepage;
 			}

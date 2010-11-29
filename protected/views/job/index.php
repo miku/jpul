@@ -1,6 +1,10 @@
 <script type="text/javascript" charset="utf-8">
 	$(document).ready(function() {
   		$("#search").focus();
+
+		$(".td-status").click(function() {
+			alert($(this).attr("id"));
+		});
 	});
 </script>
 
@@ -17,10 +21,27 @@
 <br>
 
 
+<?php if (Yii::app()->user->isAdmin()): ?>
+<div class="admin-index-extras small">
+	<?php if (Yii::app()->session['showexpired'] == 0): ?>
+		<a href="<?php echo $this->createUrl('job/index', array('showexpired' => 1)) ?>">Alle anzeigen</a>
+	<?php else: ?>
+		<a href="<?php echo $this->createUrl('job/index', array('showexpired' => 0)) ?>">Nur aktuelle anzeigen</a>
+	<?php endif ?>
+</div>
+<?php endif ?> 
+
+
+
 <table id="job-listing" border="0" cellspacing="2" cellpadding="4">
 <?php 
 foreach ($models as $i => $model) {
-	$this->renderPartial('_teaser', array('model' => $model, 'index' => $i));
+
+	if (Yii::app()->user->isAdmin()) {
+		$this->renderPartial('_teaser_admin', array('model' => $model, 'index' => $i));		
+	} else {
+		$this->renderPartial('_teaser', array('model' => $model, 'index' => $i));
+	}
 }
 ?>
 </table>

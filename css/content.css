@@ -81,8 +81,9 @@ td.job-company { color: black;}
 }
 
 .micro-nav {
-	background: #ECECEC;
+	background: #EFEFEF;
 	padding: 3px;
+	border: solid thin #EFEFEF;
 }
 
 a:hover {
@@ -90,8 +91,9 @@ a:hover {
 }
 
 .micro-nav:hover {
-	background: #B9B9B9;
-	color: white;
+	background: #ECECEC;
+	border: solid thin #ABABAB;
+/*	color: white;*/
 	padding: 3px;
 }
 
@@ -113,8 +115,15 @@ tr.error {
 	font-weight: bold;
 }
 
+.status-draft {
+	color: orange;
+	font-weight: bold;	
+}
+
 .status-expired {
 	color: lightgray;
+	border: solid thin lightgray;
+	background: white;
 }
 
 
@@ -141,3 +150,47 @@ tr.error {
 	background: #EFEFEF;
 }
 
+
+.tr-archived {
+	background: #EFEFEF;
+}
+
+.tr-deleted {
+	background: #EFEFEF;
+}
+
+.tr-public {
+/*	color: green;*/
+	background: #bfeeb5;
+/*	background: #fbffeb;*/
+}
+
+.tr-draft {
+	background: #ffebd7;
+}
+
+.tr-expired {
+	background: #EFEFEF;
+}
+
+.top-actions {
+	margin-bottom: 10px;
+}
+
+.top-actions a {
+	padding: 3px;
+	background: #ECECEC;
+}
+
+.destructive {
+	color: red;
+}
+
+.admin-index-extras {
+	margin-bottom: 10px;
+}
+
+.admin-index-extras a {
+	padding: 3px;
+	background: #ECECEC;
+}

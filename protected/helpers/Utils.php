@@ -17,7 +17,7 @@
 	 * @param string replacement, defaults to '...'
 	 * @return shortened string
 	 */
-	public static function cut_text($string, $length, $replacer = '...') 
+	function cut_text($string, $length, $replacer = '...') 
 	{ 
 		if(strlen($string) > $length) 
 			return (preg_match('/^(.*)\W.*$/', 

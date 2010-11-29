@@ -74,7 +74,9 @@
     				</div>
 				<?php endif; ?>
 				
+				<div id="main-content">
 				<?php echo $content; ?>
+				</div>
 				
 			</div>
 			

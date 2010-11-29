@@ -204,3 +204,7 @@ tr.error {
 	margin-left: 8px;
 	font-weight: bold;
 }
+
+#main-content {
+	color: #343434;
+}

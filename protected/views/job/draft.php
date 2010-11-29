@@ -82,7 +82,9 @@
 
 
 		<tr class="even-dark"><td><label for="captcha_challenge">Sicherheitsfrage</label></td></tr> 
-		<tr class="even"><td><input size="60" name="captcha_challenge" id="captcha_challenge" type="text" maxlength="255" value="" /></td></tr> 
+		<tr class="even"><td>
+			<?php echo get_captcha_html(); ?>
+		</td></tr> 
 		<tr class="even error"><td></td></tr> 	
 		
 		<tr class="even"><td><?php echo CHtml::submitButton(Yii::t('app', 'Submit')); ?> <?php echo Yii::t('app', 'or') ?> <a href="<?php echo $this->createUrl('job/index') ?>"><?php echo Yii::t('app', 'cancel'); ?></a></td></tr>

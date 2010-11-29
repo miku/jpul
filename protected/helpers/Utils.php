@@ -25,9 +25,26 @@
 		return $string; 
 	}
 	
+	function get_captcha_html() {
+		$r = rand(1, 40);
+		$s = rand(1, 40);
+		$challenge_id = 'captcha_challenge_' . uniqid();
+		Yii::app()->session[$challenge_id] = $r + $s;
+		return '<span class="challenge_question">' . $r . ' + ' . $s . '</span><input type="hidden" value="' . $challenge_id . '" name="challenge_id" /><input size="60" name="challenge_answer" id="challenge_answer" type="text" maxlength="255" value="" />'
+	}
+
+	
 	function captcha_passed($post_hash) 
 	{
-		return true; // $post_hash['captcha_challenge'];
+		if (isset($post_hash["challenge_id"]) && isset($post_hash["challenge_answer"])) {
+			$challenge_id = $post_hash["challenge_id"];
+			if (isset(Yii::app()->session[$challenge_id]) {
+				$captcha_passed = ($post_hash["challenge_answer"] == Yii::app()->session[$challenge_id]);
+				unset(Yii::app()->session[$challenge_id]); 
+				return $captcha_passed;
+			}
+		}
+		return false;
 	}
 	
 	function recapchta_passed($privatekey, $remote_addr, $post_hash) 

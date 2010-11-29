@@ -2,6 +2,8 @@
 uploads/*
 dumps/*sql
 
+index.php
+
 protected/runtime/application.log*
 protected/runtime/gii-1.1.4/*
 protected/runtime/search/*

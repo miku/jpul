@@ -35,9 +35,9 @@
 /**
  * The reCAPTCHA server URL's
  */
-define("RECAPTCHA_API_SERVER", "http://www.google.com/recaptcha/api");
-define("RECAPTCHA_API_SECURE_SERVER", "https://www.google.com/recaptcha/api");
-define("RECAPTCHA_VERIFY_SERVER", "www.google.com");
+define("RECAPTCHA_API_SERVER", gethostbyname("http://www.google.com/recaptcha/api"));
+define("RECAPTCHA_API_SECURE_SERVER", gethostbyname("https://www.google.com/recaptcha/api"));
+define("RECAPTCHA_VERIFY_SERVER", gethostbyname("www.google.com"));
 
 /**
  * Encodes the given data into a query string format

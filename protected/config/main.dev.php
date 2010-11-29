@@ -27,7 +27,6 @@ return array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'admin',
 		),
-		
 	),
 	
 	// application components

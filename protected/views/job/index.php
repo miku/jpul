@@ -2,9 +2,9 @@
 	$(document).ready(function() {
   		$("#search").focus();
 
-		$(".td-status").click(function() {
-			alert($(this).attr("id"));
-		});
+		// $(".td-status").click(function() {
+		// 	alert($(this).attr("id"));
+		// });
 	});
 </script>
 

@@ -84,7 +84,7 @@ function _recaptcha_http_post($host, $path, $data, $port = 80) {
 		
 		// proxy support  >>>
 		$proxy = "139.18.1.5"; // proxy IP, change this according to your proxy setting in your IE or NS
-		$proxy_port = 8080; // proxy port, change this according to your proxy setting in your IE or NS
+		$proxy_port = 3128; // proxy port, change this according to your proxy setting in your IE or NS
 		
 		$proxy_fp = fsockopen($proxy,$proxy_port); // connect to proxy 
 		fputs($proxy_fp, $http_request); 

@@ -81,7 +81,7 @@
 		
 
 		<tr class="even-dark"><td><?php echo $form->labelEx($model,'Sicherheitsfrage'); ?></td></tr>
-		<tr class="even"><td><?php echo recaptcha_get_html(Yii::app()->params['rc_publickey']); ?></td></tr>
+		<tr class="even"><td><?php echo $form->textField($model,'captcha_challenge', array('size' => '60')); ?></td></tr>
 	
 		
 		<tr class="even"><td><?php echo CHtml::submitButton(Yii::t('app', 'Submit')); ?> <?php echo Yii::t('app', 'or') ?> <a href="<?php echo $this->createUrl('job/index') ?>"><?php echo Yii::t('app', 'cancel'); ?></a></td></tr>

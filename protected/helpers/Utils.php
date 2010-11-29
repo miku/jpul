@@ -30,7 +30,7 @@
 		$s = rand(1, 40);
 		$challenge_id = 'captcha_challenge_' . uniqid();
 		Yii::app()->session[$challenge_id] = $r + $s;
-		return '<span class="challenge_question">' . $r . ' + ' . $s . '</span><input type="hidden" value="' . $challenge_id . '" name="challenge_id" /><input size="60" name="challenge_answer" id="challenge_answer" type="text" maxlength="255" value="" />';
+		return '<span class="challenge_question">' . $r . ' + ' . $s . ' = </span><input type="hidden" value="' . $challenge_id . '" name="challenge_id" /><input size="8" name="challenge_answer" id="challenge_answer" type="text" maxlength="255" value="" />';
 	}
 
 	
@@ -38,7 +38,7 @@
 	{
 		if (isset($post_hash["challenge_id"]) && isset($post_hash["challenge_answer"])) {
 			$challenge_id = $post_hash["challenge_id"];
-			if (isset(Yii::app()->session[$challenge_id]) {
+			if (isset(Yii::app()->session[$challenge_id])) {
 				$captcha_passed = ($post_hash["challenge_answer"] == Yii::app()->session[$challenge_id]);
 				unset(Yii::app()->session[$challenge_id]); 
 				return $captcha_passed;

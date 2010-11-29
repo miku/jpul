@@ -199,3 +199,8 @@ tr.error {
 	padding: 6px;
 	border: dotted 1px green;	
 }
+
+#challenge_question {
+	margin-left: 8px;
+	font-weight: bold;
+}

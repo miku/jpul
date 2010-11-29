@@ -1,8 +1,8 @@
 <!-- wont work -->
-<?php phpinfo(); ?> 
+<?php // phpinfo(); ?> 
 
 <!-- wont work -->
-<?php echo gethostname(); ?>
+<?php // echo gethostname(); ?>
 
 <!-- wont work? -->
 <?php echo gethostbyname('www.myyn.org'); ?>

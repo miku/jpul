@@ -81,18 +81,34 @@ function _recaptcha_http_post($host, $path, $data, $port = 80) {
         $http_request .= $req;
 
         $response = '';
-        if( false == ( $fs = @fsockopen($host, $port, $errno, $errstr, 10) ) ) {
-                die ('Could not open socket to ' . $host . ", port: " . $port . ", errno: " . $errno . ", errstr: " . $errstr);
-        }
+		
+		// proxy support  >>>
+		$proxy = "139.18.1.5"; // proxy IP, change this according to your proxy setting in your IE or NS
+		$proxy_port = 8080; // proxy port, change this according to your proxy setting in your IE or NS
+		
+		$proxy_fp = fsockopen($proxy,$proxy_port); // connect to proxy 
+		fputs($proxy_fp, $http_request); 
+		while (!feof($proxy_fp)) { 
+   			$result .= fgets($proxy_fp, 1160); 
+		} 
+		fclose($proxy_fp);  
+		$result = explode("\r\n\r\n", $result, 2);
+		return $result
+		
+		// <<<
 
-        fwrite($fs, $http_request);
-
-        while ( !feof($fs) )
-                $response .= fgets($fs, 1160); // One TCP-IP packet
-        fclose($fs);
-        $response = explode("\r\n\r\n", $response, 2);
-
-        return $response;
+        // if( false == ( $fs = @fsockopen($host, $port, $errno, $errstr, 10) ) ) {
+        //         die ('Could not open socket to ' . $host . ", port: " . $port . ", errno: " . $errno . ", errstr: " . $errstr);
+        // }
+        // 
+        // fwrite($fs, $http_request);
+        // 
+        // while ( !feof($fs) )
+        //         $response .= fgets($fs, 1160); // One TCP-IP packet
+        // fclose($fs);
+        // $response = explode("\r\n\r\n", $response, 2);
+        // 
+        // return $response;
 }
 
 

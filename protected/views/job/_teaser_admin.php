@@ -9,7 +9,7 @@
 			<?php echo cut_text($model->title, 40) ?>
 		</a>
 	</td>
-	<td class="job-company"><?php echo cut_text($model->company, 200) ?></td>
+	<td class="job-company"><?php echo cut_text($model->company, 25) ?></td>
 
 	<?php if (Yii::app()->user->isAdmin()): ?>
 		<?php if ($model->isExpired()): ?>

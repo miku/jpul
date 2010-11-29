@@ -40,6 +40,11 @@
 			$challenge_id = $post_hash["challenge_id"];
 			if (isset(Yii::app()->session[$challenge_id])) {
 				$captcha_passed = ($post_hash["challenge_answer"] == Yii::app()->session[$challenge_id]);
+
+				Yii::log($post_hash["challenge_answer"], CLogger::LEVEL_INFO, "captcha_passed");
+				Yii::log(Yii::app()->session[$challenge_id], CLogger::LEVEL_INFO, "captcha_passed");
+				Yii::log($captcha_passed, CLogger::LEVEL_INFO, "captcha_passed");
+				
 				unset(Yii::app()->session[$challenge_id]); 
 				return $captcha_passed;
 			}

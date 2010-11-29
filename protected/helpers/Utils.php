@@ -25,6 +25,10 @@
 		return $string; 
 	}
 	
+	function captcha_passed($post_hash) 
+	{
+		return true; // $post_hash['captcha_challenge'];
+	}
 	
 	function recapchta_passed($privatekey, $remote_addr, $post_hash) 
 	{

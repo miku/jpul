@@ -227,7 +227,7 @@ class JobController extends Controller
 
 			$model->attachment=CUploadedFile::getInstance($model,'attachment');
 
-			if ($model->validate() && recapchta_passed(Yii::app()->params['rc_privatekey'], $_SERVER["REMOTE_ADDR"], $_POST)) 
+			if ($model->validate() && captcha_passed($sanitized_post)) 
 			{
 				if ($model->save()) {
 					if (isset($model->attachment)) {

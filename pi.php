@@ -4,7 +4,8 @@
 <!-- wont work -->
 <?php // echo gethostname(); ?>
 
-<!-- wont work? -->
-<?php echo gethostbyname('www.myyn.org'); ?>
+<!-- works -->
+<?php // echo gethostbyname('www.myyn.org'); ?>
 
-<?php echo "END"; ?>
+<!-- works? -->
+<?php if (extension_loaded('gd') && function_exists('gd_info')) { echo "It looks like GD is installed"; } ?>

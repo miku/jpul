@@ -227,9 +227,9 @@ class JobController extends Controller
 
 			$model->attachment=CUploadedFile::getInstance($model,'attachment');
 
-			if ($model->validate() && captcha_passed($sanitized_post)) 
+			if ($model->validate()) 
 			{
-				if ($model->save()) {
+				if ($model->save() && captcha_passed($_POST)) {
 					if (isset($model->attachment)) {
 						$filename = $this->getUploadFilePath("job", $model->id);
 						$model->attachment->saveAs($filename);

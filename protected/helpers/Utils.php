@@ -26,22 +26,36 @@
 	}
 	
 	function get_captcha_html() {
-		$r = rand(1, 40);
-		$s = rand(1, 40);
-		$challenge_id = 'captcha_challenge_' . uniqid();
+		$r = rand(100, 500);
+		$s = rand(1, 5);
+		$challenge_id = strtoupper('CAPTCHA_CHALLENGE_' . uniqid());
 		Yii::app()->session[$challenge_id] = "" . ($r + $s);
-		return '<span class="challenge_question">' . $r . ' + ' . $s . ' = </span><input type="hidden" value="' . $challenge_id . '" name="challenge_id" /><input size="8" name="challenge_answer" id="challenge_answer" type="text" maxlength="255" value="" />';
+		Yii::log($challenge_id . " ==> " . Yii::app()->session[$challenge_id], CLogger::LEVEL_INFO, "get_captcha_html");
+		
+		return '<span class="CHALLENGE_QUESTION">' . $r . ' + ' . $s . ' = </span>' .
+			'<input type="hidden" value="' . $challenge_id . '" name="CHALLENGE_ID" />' . 
+			'<input size="8" name="CHALLENGE_ANSWER" id="challenge_answer" type="text" maxlength="255" value="" />';
 	}
-
 	
 	function captcha_passed($post_hash) 
 	{
-		if (isset($post_hash["challenge_id"]) && isset($post_hash["challenge_answer"])) {
-			$challenge_id = $post_hash["challenge_id"];
-			if (isset(Yii::app()->session[$challenge_id])) {
-				$captcha_passed = ($post_hash["challenge_answer"] == Yii::app()->session[$challenge_id]);
+		Yii::log("Verifing captcha...", CLogger::LEVEL_INFO, "captcha_passed");
 
-				Yii::log($post_hash["challenge_answer"], CLogger::LEVEL_INFO, "captcha_passed");
+		foreach (array_keys($post_hash) as $k) {
+			Yii::log($k, CLogger::LEVEL_INFO, "captcha_passed");
+		}
+		
+		if (isset($post_hash["CHALLENGE_ID"]) && isset($post_hash["CHALLENGE_ANSWER"])) {
+			
+			Yii::log($post_hash["CHALLENGE_ID"], CLogger::LEVEL_INFO, "captcha_passed");
+			
+			$challenge_id = $post_hash["CHALLENGE_ID"];
+			
+			if (isset(Yii::app()->session[$challenge_id])) {
+				
+				$captcha_passed = ($post_hash["CHALLENGE_ANSWER"] == Yii::app()->session[$challenge_id]);
+
+				Yii::log($post_hash["CHALLENGE_ANSWER"], CLogger::LEVEL_INFO, "captcha_passed");
 				Yii::log(Yii::app()->session[$challenge_id], CLogger::LEVEL_INFO, "captcha_passed");
 				Yii::log($captcha_passed, CLogger::LEVEL_INFO, "captcha_passed");
 				

@@ -78,7 +78,7 @@ function _recaptcha_http_post($host, $path, $data, $port = 80) {
 
         $response = '';
         if( false == ( $fs = @fsockopen($host, $port, $errno, $errstr, 10) ) ) {
-                die ('Could not open socket');
+                die ('Could not open socket, ' . $host . ", " . $port . ", " . $errno . ", " . $errstr);
         }
 
         fwrite($fs, $http_request);

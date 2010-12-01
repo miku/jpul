@@ -1,5 +1,9 @@
 <?php
 
+// Textile via Utils.php
+Yii::import('application.helpers.*');
+require_once('Utils.php');
+
 class SiteController extends Controller
 {
 	/**
@@ -20,7 +24,50 @@ class SiteController extends Controller
 			),
 		);
 	}
+	
+	/**
+	 * Yii filters
+	 * @return Our request filters
+	 */
+	public function filters()
+	{
+		return array('adminOnly + options');
+	}
+	
+	public function actionOptions()
+	{
+		if(isset($_POST["Options"]))
+		{
+			$model = Options::model()->findByAttributes(array("option" => "on-draft-notification-email-addresses"));
+			$emails = $_POST["Options"]["value"];
 
+			if ($emails === '') {
+				$this->redirect(array('index'));
+			}
+			
+			$email_list = split("(,|;)", $emails);
+			$updates_emails = array();
+			
+			foreach ($email_list as $email) {
+				$email = trim($email);
+				if (is_valid_email_address($email)) {
+					array_push($updates_emails, $email);
+				}
+			}
+			$model->value = implode(", ", $updates_emails);
+			$model->save();
+			Yii::log("New emails: " . $model->value, CLogger::LEVEL_INFO, "actionOptions");			
+			Yii::app()->user->setFlash('success', "E-Mail Benachrichtigungen gehen an: " . implode(", ", $updates_emails));
+			$this->redirect(array('index'));
+		} else {
+			$model = Options::model()->findByAttributes(array("option" => "on-draft-notification-email-addresses"));
+		}
+		$this->render('options', array('model' => $model));
+	}
+	
+	
+	
+	
 	/**
 	 * This is the default 'index' action that is invoked
 	 * when an action is not explicitly requested by users.

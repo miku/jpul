@@ -2,7 +2,10 @@
 
 // development hosts
 // using development configuration (see config/main.dev.php)
-$devhosts = array("chiba", "chiba.local", "wlan0355.rz.uni-leipzig.de", "wlan0613.rz.uni-leipzig.de");
+$devhosts = array("chiba", "chiba.local", 
+	"wlan0355.rz.uni-leipzig.de", 
+	"wlan0613.rz.uni-leipzig.de",
+	"wlan1589.rz.uni-leipzig.de");
 
 if (in_array(gethostname(), $devhosts)) {
 	// development environment

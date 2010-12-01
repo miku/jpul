@@ -55,26 +55,6 @@ class JobController extends Controller
 		return array('adminOnly + create, update, delete');
 	}
 
-	/**
-	 * Simple authentication filter. Make sure the user has the role 'admin'
-	 * @return Result of the filter chain
-	 */
-	public function filterAdminOnly($filterChain)
-	{	
-		$userId = Yii::app()->user->getId();
-		if (isset($userId)) {
-			$user = User::model()->findByPk($userId);
-
-			Yii::log("User role: " . $user->role, CLogger::LEVEL_INFO, "filterAdminOnly");
-
-			if ($user->role != 'admin') {
-				throw new CHttpException(400, Yii::t('app','Your request is not valid.'));
-			}
-		} else {
-			throw new CHttpException(400, Yii::t('app','Your request is not valid.'));
-		}
-		return $filterChain->run();
-	}	
 
 	/**
 	 * Index action. Default page is 0.
@@ -249,17 +229,29 @@ class JobController extends Controller
 	
 	
 	protected function mailOnDraft($model) {
-		$to      = 'martin.czygan@gmail.com';
-		$subject = 'Neues Jobangebot erstellt (Unternehmen: ' . $model->company . ')';
-		$message = 'Neues Jobangebot erstellt (Unternehmen: ' . $model->company . ')';
-		$headers = 'From: jobportal+careercenter@uni-leipzig.de' . "\r\n" .
-    		'Reply-To: martin.czygan@gmail.com' . "\r\n" .
-    		'X-Mailer: PHP/' . phpversion();
+		
+		$email_model = Options::model()->findByAttributes(array("option" => "on-draft-notification-email-addresses"));
+		
+		$emails = $email_model->value;
+		
+		if ($emails != '') {
+			$to      = $emails;
+			$subject = '[CC-Jobportal] Neues Jobangebot erstellt (Unternehmen: ' . $model->company . ')';
+			$message = 'Neues Jobangebot erstellt\n' .
+						'Unternehmen: ' . $model->company . ')' .
+						'Ort: ' . $model->city . '\n' .
+						'Ablauf der Bewerbungsfrist: ' . date("d.m.Y", $model->expiration_date) . '\n\n' .
+						'URL im Jobportal: ' . Yii::app()->request->baseUrl . $this->createUrl('job/view', array('id' => $model->id));
+						
+			$headers = 'From: careercenter@uni-leipzig.de' . "\r\n" .
+	    		'Reply-To: careercenter@uni-leipzig.de' . "\r\n" .
+	    		'X-Mailer: PHP/' . phpversion();
 
-		if (mail($to, $subject, $message, $headers)) {
-			Yii::log("Draft-Mail accepted", CLogger::LEVEL_INFO, "mailOnDraft");
-		} else {
-			Yii::log("Draft-Mail NOT accepted", CLogger::LEVEL_INFO, "mailOnDraft");
+			if (mail($to, $subject, $message, $headers)) {
+				Yii::log("Draft-Mail accepted", CLogger::LEVEL_INFO, "mailOnDraft");
+			} else {
+				Yii::log("Draft-Mail NOT accepted", CLogger::LEVEL_INFO, "mailOnDraft");
+			}			
 		}
 	}
 

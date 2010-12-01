@@ -11,17 +11,20 @@
 </div>
 
 
+<div class="view-job-header">
 
-<h3><?php echo $model->title ?></h3>
+	<div class="view-job-title"><?php echo $model->title ?></div>
 
-<p>
-	<strong><?php echo $model->company ?>, <?php echo $model->city ?> </strong>
-	<?php if ($model->company_homepage): ?>
-		<br><span class="small-font"><a style="color: gray; text-decoration:none" href="<?php echo $model->company_homepage ?>"><?php echo $model->company_homepage?></a></span>
-	<?php endif; ?>
-</p>
+		<span class="view-job-company"><?php echo $model->company ?></span> in <span class="view-job-location"><?php echo $model->city ?></span>
+		<?php if ($model->company_homepage): ?>
+			<br><span class="view-job-company-homepage"><a href="<?php echo $model->company_homepage ?>"><?php echo $model->company_homepage?></a></span>
+		<?php endif; ?>
+</div>
 
 <p><?php echo textilize($model->description) ?></p>
+
+<div class="blue-line"></div>
+<p><strong>Bewerbungsweg</strong></p>
 
 <p><?php echo textilize($model->how_to_apply) ?></p>
 
@@ -33,6 +36,15 @@
 <br>
 <br>
 
+<?php if ($model->is_telecommute): ?>
+	Telearbeit möglich.<br>
+<?php endif ?>
+
+<?php if ($model->is_nation_wide): ?>
+	Arbeitsort ist bundesweit.<br>
+<?php endif ?>
+
+
 <?php if ($model->study): ?>
 	<p>Studienrichtungen: <?php echo $model->study ?></p>
 <?php endif ?>
@@ -42,9 +54,8 @@
 <?php endif ?>
 
 
-
-<p>Bewerbungsschluss: <?php echo date("d.m.Y", $model->expiration_date); ?></p>
+<p class="sticky">Bewerbungsschluss: <strong><?php echo date("d.m.Y", $model->expiration_date); ?></strong></p>
 
 <div class="line"></div>
 
-<p class="small">Anzeige erstellt am <?php echo strftime('%d.%m.%Y', $model->date_added) ?></p>
+<p class="small">Anzeige eingestellt am <?php echo strftime('%d.%m.%Y', $model->date_added) ?></p>

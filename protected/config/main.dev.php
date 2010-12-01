@@ -10,7 +10,7 @@ return array(
 	'name'=>'Jobportal des Careercenters der Universität Leipzig',
 	
 	'language' => 'de',
-
+		
 	// preloading 'log' component
 	'preload'=>array('log'),
 
@@ -79,6 +79,7 @@ return array(
 			// use 'site/error' action to display errors
             'errorAction'=>'site/error',
         ),
+
 		'log'=>array(
 			'class'=>'CLogRouter',
 			'routes'=>array(

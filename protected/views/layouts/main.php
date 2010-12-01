@@ -110,6 +110,7 @@
 					<?php if (Yii::app()->user->getId() != NULL): ?>
 						<?php if (Yii::app()->user->isAdmin()): ?>
 							<a href="<?php echo $this->createUrl('job/create'); ?>">Neues Angebot einstellen</a><br>
+							<a href="<?php echo $this->createUrl('site/options'); ?>">Einstellungen</a><br>
 						<?php endif; ?>
 						Logged in as <a href="#"><?php echo Yii::app()->user->getUsername(); ?></a> | 
 						<a href="<?php echo $this->createUrl('site/logout'); ?>">Logout</a><br>					

@@ -208,3 +208,26 @@ tr.error {
 #main-content {
 	color: #343434;
 }
+
+.view-job-header {
+	background: #E0F3F9;
+	padding: 10px;
+	font-family: "Lucida Grande";	
+}
+
+.view-job-title {
+	font-size: 16px;
+	margin-bottom: 8px;
+}
+
+.view-job-company {
+	font-weight: bold;
+}
+
+.sticky {
+	background: #FFF380;
+}
+
+.blue-line {
+	border-top: solid 2px #E0F3F9;
+}

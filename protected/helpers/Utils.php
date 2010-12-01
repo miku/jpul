@@ -2,12 +2,17 @@
 
 	Yii::import('application.vendors.*');
 	require_once('textile-2.0.0/classTextile.php');
-
+	
 	function textilize($text)
 	{	
 		$t = new Textile;
 		return $t->TextileThis($text);
 		// return $t->TextileRestricted($text, $lite=0, $noimage=1, $rel='nofollow');
+	}
+	
+	function is_valid_email_address($email_address)
+	{
+		return eregi("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$", $email_address);
 	}
 	
 	/**

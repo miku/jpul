@@ -22,5 +22,26 @@ class Controller extends CController
 	 */
 	public $breadcrumbs=array();
 	
+	/**
+	 * Simple authentication filter. Make sure the user has the role 'admin'
+	 * @return Result of the filter chain
+	 */
+	public function filterAdminOnly($filterChain)
+	{	
+		$userId = Yii::app()->user->getId();
+		if (isset($userId)) {
+			$user = User::model()->findByPk($userId);
+
+			Yii::log("User role: " . $user->role, CLogger::LEVEL_INFO, "filterAdminOnly");
+
+			if ($user->role != 'admin') {
+				throw new CHttpException(400, Yii::t('app','Your request is not valid.'));
+			}
+		} else {
+			throw new CHttpException(400, Yii::t('app','Your request is not valid.'));
+		}
+		return $filterChain->run();
+	}	
+
 	
 }

@@ -24,10 +24,11 @@
 <p><?php echo textilize($model->description) ?></p>
 
 <div class="blue-line"></div>
-<p><strong>Bewerbungsweg</strong></p>
 
-<p><?php echo textilize($model->how_to_apply) ?></p>
-
+<?php if ($model->how_to_apply): ?>
+	<p><strong>Bewerbungsweg</strong></p>
+	<p><?php echo textilize($model->how_to_apply) ?></p>
+<?php endif ?>
 
 <?php if ($model->attachment): ?>
 	<p>PDF der Anzeige: <a href="<?php echo $this->createUrl('job/download', array('id'=>$model->id)); ?>">Download</a></p>

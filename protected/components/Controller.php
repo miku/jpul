@@ -42,6 +42,20 @@ class Controller extends CController
 		}
 		return $filterChain->run();
 	}	
+	
+	protected function beforeAction($action) {
+		Yii::log("beforeAction: " . $action->getId(), CLogger::LEVEL_INFO, "beforeAction");
 
+		if (isset($_GET['uselayout'])) {
+			Yii::app()->session['uselayout'] = $_GET['uselayout'];
+		}
+		
+		if (isset(Yii::app()->session['uselayout'])) {
+			$this->layout = "//layouts/" . Yii::app()->session['uselayout'];
+		}
+		
+		Yii::log("Layout now: " . Yii::app()->layout, CLogger::LEVEL_INFO, "beforeAction");
+		return parent::beforeAction($action);
+	}
 	
 }

@@ -23,15 +23,6 @@ class JobController extends Controller
 	{
 		return Yii::app()->basePath . '/runtime/search';
 	}
-	
-	/**
-	 * Get the path to the uploaded job attachments.
-	 * @return Job attachments upload path
-	 */
-	public function getUploadPath()
-	{
-		return Yii::app()->basePath . '/../uploads';
-	}
 
 	/**
 	 * Get the path to the uploaded job attachments.

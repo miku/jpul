@@ -58,4 +58,14 @@ class Controller extends CController
 		return parent::beforeAction($action);
 	}
 	
+	/**
+	 * Get the path to the uploaded job attachments.
+	 * @return Job attachments upload path
+	 */
+	public function getUploadPath()
+	{
+		return Yii::app()->basePath . '/../uploads';
+	}
+
+	
 }

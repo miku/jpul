@@ -1,18 +1,47 @@
-
-
 Directories
 -----------
 
 assets/
-	
+	Belongs to Yii.
 	http://stackoverflow.com/questions/1679151/whats-the-proper-way-to-work-with-assets-in-yii
 	
+css/
+	Used by Yii.
+	All css.
 
-Disable the application
------------------------
+docs/ 
+	Documentation and assets. Not Yii-related.
+
+dumps/
+	Our developer DB dumps. Not Yii-related.
+
+ext/
+	External pages for testing and show-casing. Not Yii-related.
+
+images/
+	Used by Yii.
+	
+js/
+	Used by Yii.
+
+protected/
+	All Yii. protected/data holds our current SQL schemes.
+
+themes/
+	Used by Yii, but not used by us.
+
+uploads/
+	Our generic upload folder. Used by Yii.
+
+Temporarily disabling the application
+-------------------------------------
 
 Rename index.php to something else, e.g. index.php.offline; 
 index.html will be dislaying a placeholder nice image instead.
+
+
+Developer Topics
+----------------
 
 Nice URLs?
 ----------

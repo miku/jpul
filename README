@@ -1,3 +1,13 @@
+About jpccul
+============
+
+Job site for University of Leipzig, Career Center.
+
+........................................................................
+
+Developer Topics
+================
+
 Directories
 -----------
 
@@ -31,17 +41,15 @@ themes/
 	Used by Yii, but not used by us.
 
 uploads/
-	Our generic upload folder. Used by Yii.
+	Our generic upload folder. Used by Yii. 
+	protected/components/Controller.php provides a method for 
+	retrieving the path: ``string getUploadPath()``
 
 Temporarily disabling the application
 -------------------------------------
 
 Rename index.php to something else, e.g. index.php.offline; 
 index.html will be dislaying a placeholder nice image instead.
-
-
-Developer Topics
-----------------
 
 Nice URLs?
 ----------

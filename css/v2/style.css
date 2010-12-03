@@ -9,7 +9,7 @@ ul, ol {
 }
 
 body {
-	margin: 0;
+	margin: 0 0 30px 0;
 	padding: 0;
 	color: #333;
 	font: normal 10pt Verdana,"Helvetica Neue",Arial,Tahoma,sans-serif;
@@ -117,6 +117,7 @@ a:hover {
 
 #main-container {
 	width: 770px;
+	float: left;
 }
 
 #main {
@@ -136,13 +137,33 @@ a:hover {
 }
 
 #sidebar-container {
-	margin-left: 780px;
+/*	margin-left: 780px;*/
 	width: 200px;
+	float: right;
 }
 
 #sidebar {
-	background: red;
+	margin-top: 10px;
+	font-size: 12px;
 }
+
+#sidebar h1 {
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    padding:3px 3px 3px 5px;
+    background: orange url(../../images/v2/bg_teaserbalken_studium.jpg) repeat-x scroll 0 0;
+	margin-bottom: 5px;
+}
+
+#sidebar p {
+	line-height: 1.6em;
+    padding:0 5px 0 5px;
+	margin-bottom: 12px;
+}
+
+
+
 
 #content {
 /*	background: #EFEFEF;*/
@@ -254,7 +275,7 @@ label {
 }
 
 .job-count {
-	font-size: 12px;
+	font-size: 8px;
 	color: #808080;
 	margin-bottom: 8px;
 }
@@ -279,3 +300,5 @@ label {
 	background: #EFEFEF;
 	padding: 5px;
 }
+
+/* right sidebar content */

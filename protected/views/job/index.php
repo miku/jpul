@@ -12,8 +12,8 @@ $(document).ready(function() {
 });
 </script>
 
+<div id="main-container">
 <div id="main">
-
 	<div id="main-header">
 		<div id="searchbox">
 			<div class="job-count">
@@ -31,8 +31,6 @@ $(document).ready(function() {
 			</form>
 		</div>
 	</div>
-
-
 	<div id="main-content">
 		<!-- <h3>Aktuelle Jobangebote <?php if (isset($original_query)) echo 'für ' . $original_query ?></h3> -->
 
@@ -94,8 +92,25 @@ $(document).ready(function() {
 
 		</div>
 	<?php endif; ?>
+	</div>
+</div> <!-- main -->
+</div> <!-- main-container -->
 
+<div id="sidebar-container">
+	<div id="sidebar">
+		<h1>Über uns</h1>
+		<p>Dieses Jobportal ist ein Projekt
+			des Career Centers der Uni Leipzig. Wir freuen
+			uns über Feedback jeder Art.</p>
 
+		<p>Als Arbeitgeber haben Sie hier die Möglichkeit,
+			Ihre Angebote einem qualifiziertem Publikum
+			vorzustellen. <a href="#">Mehr lesen...</a></p>
+			
+		<h1>Das Career Center</h1>
+		<p>Berate, qualifizieren, vernetzen.</p>
 
+	</div>	
 </div>
-</div>
+
+

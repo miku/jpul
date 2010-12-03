@@ -25,6 +25,7 @@
   
   <!-- CSS : implied media="all" -->
   <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/v2/style.css" />	
+  <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.4.3.min.js"charset="utf-8"></script>
  
   <!-- Uncomment if you are specifically targeting less enabled mobile browsers                                                                       
   <link rel="stylesheet" media="handheld" href="css/handheld.css?v=2">  --> 
@@ -35,14 +36,26 @@
 			<div id="title-nav">
 				<div id="title-nav-left">
 					<ul>
-						<li><a href="http://uni-leipzig.de/jobportal">Jobportal Homepage</a></li>
-						<li><a href="http://uni-leipzig.de/jobportal">Career Center</a></li>
-						<li><a href="http://www.zv.uni-leipzig.de/service/presse.html">Für Unternehmen</a></li>
+						<li><a href="<?php echo $this->createUrl('job/index'); ?>">Jobportal Homepage</a></li>
+						<li><a href="http://www.zv.uni-leipzig.de/studium/career-center.html">Career Center</a></li>
+						<li><a href="#">Für Unternehmen</a></li>
 					</ul>
 				</div>
 				<div id="title-nav-right">
 					<ul>
-						<li><a href="http://www.zv.uni-leipzig.de/">Intranet</a></li>
+					<?php if (Yii::app()->user->getId() != NULL): ?>
+						<?php if (Yii::app()->user->isAdmin()): ?>
+							<li><a href="<?php echo $this->createUrl('job/create'); ?>">Neues Angebot einstellen</a></li>
+							<li><a href="<?php echo $this->createUrl('site/options'); ?>">Einstellungen</a></li>
+						<?php endif; ?>
+						<li style="color: #CACACA; ">Eingeloggt als <span style="font-weight: bold"><?php echo Yii::app()->user->getUsername(); ?></span></li>
+						<li><a style="background: white; color: black; font-weight: bold;" href="<?php echo $this->createUrl('site/logout'); ?>">Logout</a></li>
+					<?php else: ?>
+						<li><a style="color: white" href="<?php echo $this->createUrl('job/draft'); ?>">Neues Angebot erstellen</a></li>
+						<li><a style="color: white" href="<?php echo $this->createUrl('site/login'); ?>">Intranet</a></li>
+					<?php endif; ?>
+
+						
 					</ul>
 				</div>
 			</div>
@@ -58,3 +71,5 @@
 	</div>
 </body>
 </html>
+
+

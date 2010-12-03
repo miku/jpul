@@ -121,11 +121,13 @@ a:hover {
 
 #main {
 	padding: 10px;
+	width: 750px;
 }
 
 #main-header {
-	padding: 5px 10px 5px 10px;
-	background: #ECECEC;
+	padding: 8px;
+	margin: 0 10px 0 10px;
+	background: #EFEFEF;
 }
 
 #main-content {
@@ -140,4 +142,113 @@ a:hover {
 
 #sidebar {
 	background: red;
+}
+
+#content {
+/*	background: #EFEFEF;*/
+	width: 980px;
+}
+
+/* searchbox */
+
+input#search {
+	font-size: 12px;
+	padding: 2px;
+}
+
+.button {
+	padding: 4px 8px 4px 8px;
+	border: solid thin #ECECEC;
+	color: white;
+	font-weight: bold;
+    background: #FF7b04;
+}
+
+/* Index post partial */
+
+.post {
+	border-bottom: solid thin #ECECEC;
+/*	margin-bottom: 8px;*/
+	padding: 8px;
+}
+
+.post:hover {
+	background: #FFFFEE;
+}
+
+.post-title {
+	font-size: 14px;
+	color: #0077CC;
+	font-weight: bold;
+}
+
+.post-title a {
+	color: #0077CC;
+}
+
+span.post-company {
+	font-size: 10px;
+	color: #343434;
+	margin-left: 10px;
+}
+
+.post-location {
+	font-size: 10px;
+	color: #454545;
+	font-style: italic;
+}
+
+.post-description-teaser {
+	margin-top: 5px;
+	font-size: 12px;
+	color: #ABABAB;
+}
+
+.post-posted {
+	float: right;
+	font-size: 10px;
+	color: #808080;
+	font-weight: normal;
+}
+
+.post-highlighted {
+	background: aliceblue;
+}
+
+
+a.fav-toggle
+{
+    display:block;
+    float:left;
+    height:40px;
+    margin-right:5px;
+    margin-left:2px;
+    padding-top:2px;
+    width:14px;
+    background:url(../../images/v2/fav-star-off.png?v=2) no-repeat 0 1px;
+}
+
+a.fav-toggle.isfav
+{
+    background:url(../../images/v2/fav-star-on.png?v=2) no-repeat 0 1px;
+}
+
+/* default input textfield */
+
+label {
+	font-size: 12px;
+}
+
+.default-input {
+	font-size: 12px;
+	padding: 1px;
+}
+
+.required {
+	font-weight: bold;
+}
+
+.errorMessage {
+	font-size: 12px;
+	color: #fd765e;
 }

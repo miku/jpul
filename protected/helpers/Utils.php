@@ -109,5 +109,62 @@
 			return (strcmp(substr($haystack, 0, strlen($needle)), $needle)===0);
 		}
 		return (strcasecmp(substr($haystack, 0, strlen($needle)), $needle)===0);
-}
+	}
+	
+	function endsWith($haystack,$needle,$case=true) {
+    	if($case){return (strcmp(substr($haystack, strlen($haystack) - strlen($needle)),$needle)===0);}
+    	return (strcasecmp(substr($haystack, strlen($haystack) - strlen($needle)),$needle)===0);
+	}
+	
+	function time_since($original) {
+	    // array of time period chunks
+	    $chunks = array(
+	        array(60 * 60 * 24 * 365 , 'Jahr'),
+	        array(60 * 60 * 24 * 30 , 'Monat'),
+	        array(60 * 60 * 24 * 7, 'Woche'),
+	        array(60 * 60 * 24 , 'Tag'),
+	        array(60 * 60 , 'Stunde'),
+	        array(60 , 'Minute'),
+	    );
+    
+	    $today = time(); /* Current unix time  */
+	    $since = $today - $original;
+	
+		if($since > 604800) {
+			$print = date("M jS", $original);
+	
+			if($since > 31536000) {
+					$print .= ", " . date("Y", $original);
+				}
+
+			return $print;
+
+		}
+    
+	    // $j saves performing the count function each time around the loop
+	    for ($i = 0, $j = count($chunks); $i < $j; $i++) {
+        
+	        $seconds = $chunks[$i][0];
+	        $name = $chunks[$i][1];
+        
+	        // finding the biggest chunk (if the chunk fits, break)
+	        if (($count = floor($since / $seconds)) != 0) {
+	            // DEBUG print "<!-- It's $name -->\n";
+	            break;
+	        }
+	    }
+
+		if ($name === 'Minute' && $count == 0) {
+			$print = "weniger als einer Minute";
+		} else {
+			if (endsWith($name, 'e')) {
+				$print = ($count == 1) ? '1 '.$name : "$count {$name}n";
+			} else {
+				$print = ($count == 1) ? '1 '.$name : "$count {$name}en";
+			}			
+		}
+
+	    return "vor " . $print;
+	}
+	
 ?>

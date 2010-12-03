@@ -11,28 +11,44 @@ $this->breadcrumbs=array(
 	});
 </script>
 
-<h3>Login</h3>
+<div id="main">
+
+<div id="main-header">
+<p>Login</p>	
+</div>
+
+<div id="main-content">
 
 <div class="form">
 <?php $form=$this->beginWidget('CActiveForm', array('id'=>'login-form')); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-	
-	<table border="0" cellspacing="2" cellpadding="4">
+<table border="0" cellspacing="2" cellpadding="3">
 
-	<tr class="even-dark"><td><?php echo $form->labelEx($model,'username'); ?></td></tr>
-	<tr class="even"><td><?php echo $form->textField($model,'username'); ?></td></tr>
-	<tr class="even"><td><?php echo $form->error($model,'username'); ?></td></tr>
+	<tr>
+		
+	</tr>
+	<tr>
+		<td><?php echo $form->labelEx($model,'username'); ?></td>
+		<td><?php echo $form->textField($model,'username', array("class" => "default-input")); ?></td>
+		<td><?php echo $form->error($model,'username'); ?></td>
+	</tr>
+		
+	<tr>
+		
+	</tr>
+	<tr>
+		<td><?php echo $form->labelEx($model,'password'); ?></td>
+		<td><?php echo $form->passwordField($model,'password', array("class" => "default-input")); ?></td>
+		<td><?php echo $form->error($model,'password'); ?></td>
+	</tr>
 
-	<tr class="even-dark"><td><?php echo $form->labelEx($model,'password'); ?></td></tr>
-	<tr class="even"><td><?php echo $form->passwordField($model,'password'); ?></td></tr>
-	<tr class="even"><td><?php echo $form->error($model,'password'); ?></td></tr>
+	<tr><td></td><td><?php echo CHtml::submitButton('Login', array("class" => "button")); ?></td></tr>
 
-	<tr class="even-dark"><td><?php echo CHtml::submitButton('Login'); ?></td></tr>
-
-	<tr class="even"><td><a href="#">Forgot your password?</a></td></tr>
-
-	</table>
+</table>
 
 <?php $this->endWidget(); ?>
 </div><!-- form -->
+
+</div>	
+</div>
+

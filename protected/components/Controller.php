@@ -44,6 +44,9 @@ class Controller extends CController
 	}	
 	
 	protected function beforeAction($action) {
+		
+		CHtml::$afterRequiredLabel = '';
+		
 		Yii::log("beforeAction: " . $action->getId(), CLogger::LEVEL_INFO, "beforeAction");
 
 		if (isset($_GET['uselayout'])) {

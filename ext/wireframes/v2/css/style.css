@@ -115,6 +115,10 @@ a:hover {
 
 /* Main and Sidebar */
 
+#content {
+	width: 980px;
+}
+
 #main-container {
 	width: 770px;
 }

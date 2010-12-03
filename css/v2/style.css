@@ -125,7 +125,7 @@ a:hover {
 }
 
 #main-header {
-	padding: 8px;
+	padding: 10px;
 	margin: 0 10px 0 10px;
 	background: #EFEFEF;
 }
@@ -251,4 +251,31 @@ label {
 .errorMessage {
 	font-size: 12px;
 	color: #fd765e;
+}
+
+.job-count {
+	font-size: 12px;
+	color: #808080;
+	margin-bottom: 8px;
+}
+
+/* pagination */
+
+#pagination {
+	margin-top: 12px;
+	float: right;
+	font-size: 12px;
+}
+
+.current-page {
+	font-weight: bold;
+}
+
+.inactive {
+	color: #ABABAB;
+}
+
+#pagination a {
+	background: #EFEFEF;
+	padding: 5px;
 }

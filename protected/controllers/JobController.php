@@ -11,7 +11,7 @@ require_once('Utils.php');
 class JobController extends Controller
 {
 	// jobs per page, defaults to 30
-	const PAGE_SIZE = 30;
+	const PAGE_SIZE = 20;
 	// 6 * 7 * 24 * 60 * 60 = six weeks
 	const DEFAULT_EXPIRATION_SECONDS = 3628800; 		
 	
@@ -82,6 +82,8 @@ class JobController extends Controller
 
 		$total = count(Job::model()->findAll($criteria));
 		
+		$number_of_pages = ceil($total / self::PAGE_SIZE);
+		
 		$criteria->limit = self::PAGE_SIZE;
 		$criteria->offset = ($page - 1) * self::PAGE_SIZE;;
 
@@ -95,7 +97,8 @@ class JobController extends Controller
 			'total' => $total,
 			'current_start' => $current_start, 
 			'current_end' => $current_end,
-			'page' => $page) );
+			'page' => $page,
+			'number_of_pages' => $number_of_pages) );
 	}
 
 	/**

@@ -10,7 +10,7 @@ class Controller extends CController
 	 * meaning using a single column layout. See 'protected/views/layouts/column1.php'.
 	 */
 	// public $layout='//layouts/column1';
-	public $layout='//layouts/main';
+	public $layout='//layouts/v2/main';
 	/**
 	 * @var array context menu items. This property will be assigned to {@link CMenu::items}.
 	 */

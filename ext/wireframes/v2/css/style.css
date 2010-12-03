@@ -1,0 +1,143 @@
+/* Element specific style */
+ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, body, html, p, blockquote, fieldset, input
+{
+    margin: 0; padding: 0;
+}
+
+ul, ol {
+    list-style-type: none;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	color: #333;
+	font: normal 10pt Verdana,"Helvetica Neue",Arial,Tahoma,sans-serif;
+	background: #ffffff;
+	min-width:985px;
+    font-size:11pt;	
+}
+
+.clear {
+	clear: both;
+}
+
+/* Links */
+a img, :link img, :visited img {
+    border: none;
+}
+
+a {
+    color: #3366CC;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+#title {
+    width: 100%;
+    float: left;
+/*    background: transparent url(../images/header_studium_repeat.jpg) repeat-x scroll right 22px;    */
+	background: transparent url(../scripts/banner-u4.png) repeat-x scroll right 22px;    
+}
+
+
+/* Stripe for overall-menu on top */
+
+#title-nav {
+	background: #414141;
+	color: #ffffff;
+	height: 22px;
+	font-size: 0.7em;
+}
+
+#title-nav-left {
+	float: left;
+	width: 400px;
+}
+
+#title-nav-right {
+	width: 585px;
+	margin-left: 400px;
+	text-align: right;
+}
+
+#title-nav ul {
+	padding: 4px 0 0 14px;
+}
+
+#title-nav ul li {
+	list-style: none;
+	margin: 0;
+	display: inline;
+}
+
+#title-nav ul li a {
+	padding: 3px 0.5em;
+	margin-left: 3px;
+}
+
+#title-nav ul li a:link {
+	color: #ffffff;
+}
+
+#title-nav ul li a:visited {
+	color: #ffffff;
+}
+
+#title-nav ul li a:hover {
+	color: #ffffff;
+}
+
+/* Title header with bg image */
+
+/* Logo */
+#title-logo {
+    clear: both;
+    width: 965px;
+    height: 59px;
+    float: left;
+    padding: 23px 0 0 20px;
+/*    background: #ffffff url(../images/header_studium.jpg) no-repeat scroll right bottom;*/
+	background: #ffffff url(../scripts/banner-u3.png) no-repeat scroll right bottom;
+}
+
+/* Line */
+#title-border {
+    float: left;
+    background: #fff url(../images/bg_header-nav.jpg) repeat-x scroll 0 0;
+    height: 20px;
+    width: 100%;
+}
+
+/* Main and Sidebar */
+
+#main-container {
+	width: 770px;
+}
+
+#main {
+	padding: 10px;
+}
+
+#main-header {
+	padding: 5px 10px 5px 10px;
+	background: #ECECEC;
+}
+
+#main-content {
+	padding: 10px;
+	background: #FFF;	
+}
+
+#sidebar-container {
+	margin-left: 780px;
+	width: 200px;
+}
+
+#sidebar {
+	background: red;
+}

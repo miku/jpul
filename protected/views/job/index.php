@@ -16,20 +16,22 @@ $(document).ready(function() {
 <div id="main">
 	<div id="main-header">
 		<div id="searchbox">
-			<div class="job-count">
-				<?php if ($total == 0): ?>
-					Keine Angebote
-				<?php elseif ($total == 1): ?>
-					<?php echo $total ?> Angebot
-				<?php else: ?>
-					<?php echo $total ?> Angebote
-				<?php endif ?>
-			</div>
 			<form action="<?php echo $this->createUrl('job/search') ?>" method="get" accept-charset="utf-8">
 				<input size="60" type="text" name="q" value="<?php if (isset($original_query)) echo $original_query ?>" id="search">
 				<input type="submit" value="Suchen" class="button">
 			</form>
 		</div>
+		
+		<div id="sortmenu">
+			sortieren nach: 
+			<select baseurl="/jobs?" id="sort" name="sort"><option selected="selected" value="p">Datum</option>
+				<option value="t">Titel</option>
+				<option value="c">Unternehmen</option>
+				<option value="l">Ort</option>
+			</select>
+		</div>
+
+		
 	</div>
 	<div id="main-content">
 		<!-- <h3>Aktuelle Jobangebote <?php if (isset($original_query)) echo 'für ' . $original_query ?></h3> -->
@@ -98,17 +100,25 @@ $(document).ready(function() {
 
 <div id="sidebar-container">
 	<div id="sidebar">
-		<h1>Über uns</h1>
-		<p>Dieses Jobportal ist ein Projekt
-			des Career Centers der Uni Leipzig. Wir freuen
-			uns über Feedback jeder Art.</p>
-
-		<p>Als Arbeitgeber haben Sie hier die Möglichkeit,
-			Ihre Angebote einem qualifiziertem Publikum
-			vorzustellen. <a href="#">Mehr lesen...</a></p>
-			
-		<h1>Das Career Center</h1>
-		<p>Berate, qualifizieren, vernetzen.</p>
+		
+		<h1>Kontakt</h1>
+				<p><strong>Career Center</strong><br>
+					Universität Leipzig<br>
+					Burgstraße 21, 1. Etage<br>
+					04109 Leipzig<br>
+				</p>
+				<p>
+					Telefon: +49 341 97-30030<br>
+					Telefax: +49 341 97-30069<br>
+					<a href="mailto:careercenter@uni-leipzig.de">E-Mail</a>
+				</p>
+				<p>
+					<strong>Servicezeiten:</strong><br>
+					Mo. 13:00 &mdash; 17:00 Uhr<br>
+					Di. bis Do. 9:00 &mdash; 17:00 Uhr<br>
+					Fr. 9:00 &mdash; 15:00 Uhr<br>
+				</p>
+				<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/v2/cc_logo.gif" alt="" />
 
 	</div>	
 </div>

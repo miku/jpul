@@ -41,7 +41,9 @@ a:hover {
     width: 100%;
     float: left;
 /*    background: transparent url(../images/header_studium_repeat.jpg) repeat-x scroll right 22px;    */
-	background: transparent url(../../images/v2/banner-u4.png) repeat-x scroll right 22px;    
+/*	background: transparent url(../../images/v2/banner-u4.png) repeat-x scroll right 22px;    */
+	background: transparent url(../../images/v2/header-jobportal-repeat.jpg) repeat-x scroll right 22px;
+	
 }
 
 
@@ -102,7 +104,8 @@ a:hover {
     float: left;
     padding: 23px 0 0 20px;
 /*    background: #ffffff url(../images/header_studium.jpg) no-repeat scroll right bottom;*/
-	background: #ffffff url(../../images/v2/banner-u3.png) no-repeat scroll right bottom;
+/*	background: #ffffff url(../../images/v2/banner-u3.png) no-repeat scroll right bottom;*/
+	background: #ffffff url(../../images/v2/header-jobportal.jpg) no-repeat scroll right bottom;	
 }
 
 /* Line */
@@ -129,6 +132,7 @@ a:hover {
 	padding: 10px;
 	margin: 0 10px 0 10px;
 	background: #EFEFEF;
+	height: 24px;
 }
 
 #main-content {
@@ -171,6 +175,15 @@ a:hover {
 }
 
 /* searchbox */
+
+#searchbox {
+	float: left;
+}
+
+#sortmenu {
+	float: right;
+	font-size: 10px;
+}
 
 input#search {
 	font-size: 12px;
@@ -301,4 +314,12 @@ label {
 	padding: 5px;
 }
 
-/* right sidebar content */
+/* braodcast */
+
+#broadcast {
+	text-align: center;
+	padding: 8px;
+	background: black;
+	border-bottom: solid thin white;
+	color: white;
+}

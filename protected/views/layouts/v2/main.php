@@ -33,6 +33,7 @@
 <body>
 	<div class="container" id="page">
 		<div id="title">
+			<noscript><div id="broadcast">Bitte aktivieren Sie Javascript.</div></noscript>
 			<div id="title-nav">
 				<div id="title-nav-left">
 					<ul>
@@ -51,11 +52,8 @@
 						<li style="color: #CACACA; ">Eingeloggt als <span style="font-weight: bold"><?php echo Yii::app()->user->getUsername(); ?></span></li>
 						<li><a style="background: white; color: black; font-weight: bold;" href="<?php echo $this->createUrl('site/logout'); ?>">Logout</a></li>
 					<?php else: ?>
-						<li><a style="color: white" href="<?php echo $this->createUrl('job/draft'); ?>">Neues Angebot erstellen</a></li>
 						<li><a style="color: white" href="<?php echo $this->createUrl('site/login'); ?>">Intranet</a></li>
 					<?php endif; ?>
-
-						
 					</ul>
 				</div>
 			</div>
@@ -71,5 +69,3 @@
 	</div>
 </body>
 </html>
-
-

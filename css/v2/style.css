@@ -521,4 +521,11 @@ a.no-underline:hover {
 #static-header {
 	padding: 5px 15px 5px 15px;
 	background: url(../../images/v2/bg_headerbalken_studium.gif) repeat-x scroll 0 0;	
+	font-weight: bold;
+}
+
+span.total {
+	color: darkgray;
+	margin-right: 40px;
+	font-size: 12px;
 }

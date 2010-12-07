@@ -224,7 +224,7 @@ class JobController extends Controller
 						'Unternehmen: ' . $model->company . $newline . 
 						'Ort: ' . $model->city . $newline .
 						'Ablauf der Bewerbungsfrist: ' . date("d.m.Y", $model->expiration_date) . $newline . $newline .
-						'URL im Jobportal: ' . Yii::app()->request->baseUrl . $this->createUrl('job/view', array('id' => $model->id));
+						'URL im Jobportal: http://wwwdup.uni-leipzig.de' . $this->createUrl('job/view', array('id' => $model->id));
 						
 			$headers = 'From: careercenter@uni-leipzig.de' . "\r\n" .
 	    		'Reply-To: careercenter@uni-leipzig.de' . "\r\n" .

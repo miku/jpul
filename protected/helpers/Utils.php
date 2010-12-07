@@ -44,7 +44,6 @@
 		}
 		return $string; 
 	}
-
 	
 	function get_captcha_html() {
 		$r = rand(100, 500);

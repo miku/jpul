@@ -72,10 +72,12 @@
 		<?php $this->renderPartial('_sidebar_contact'); ?>
 		<!-- <?php $this->renderPartial('_sidebar_sharing', array('model' => $model)); ?> -->
 		<?php $this->renderPartial('_sidebar_for_employer'); ?>
-		
+
 		<?php if (Yii::app()->user->isAdmin()): ?>
-			<?php $this->renderPartial('admin/_sidebar_view_actions', array('model' => $model)); ?>
+			<h1>Admin</h1>
+			<p><a href="<?php echo $this->createUrl('admin/update', array('model' => $model)) ?>">Dieses Angebot bearbeiten</a></p>
 		<?php endif ?>
+		
 	</div>	
 </div>
 

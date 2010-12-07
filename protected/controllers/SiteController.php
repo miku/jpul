@@ -80,6 +80,7 @@ class SiteController extends Controller
 		// $this->pageTitle = 'Jobportal der Universität Leipzig - Index';
 		// $this->render('index');
 		if (Yii::app()->user->isAdmin()) {
+			Yii::app()->session['adminindexfilter'] = "pd";
 			Yii::app()->request->redirect($this->createUrl("admin/index"));
 		}
 		else {

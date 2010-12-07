@@ -167,4 +167,34 @@
 	    return "vor " . $print;
 	}
 	
+	function format_model_location($model) {
+		$result = "";
+		if ($model->zipcode) { $result .= $model->zipcode . " "; }
+		if ($model->city) { $result .= $model->city; }
+		if ($model->state) { $result .= ', ' . $model->state; }
+		if ($model->country) { $result .= ', ' . $model->country; }
+		return $result;
+	}
+	
+	function contains($haystack, $needle) {
+		if ($needle === "") { return false; }
+		
+		$pos = strpos($haystack,$needle);
+
+		if($pos === false) {
+ 			return false;
+		}
+		else {
+ 			return true;
+		}
+	}
+
+	function containsDeprecated($str, $content, $ignorecase=true){
+    	if ($ignorecase){
+        	$str = strtolower($str);
+        	$content = strtolower($content);
+    	}  
+    return strpos($content,$str) ? true : false;
+}
+	
 ?>

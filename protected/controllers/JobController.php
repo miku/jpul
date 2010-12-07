@@ -50,55 +50,80 @@ class JobController extends Controller
 	/**
 	 * Index action. Default page is 0.
 	 */
-	public function actionIndex($page = 1, $showexpired = null) {
-		
+	public function actionIndex($page = 1, $sort = 'd') {
+
 		$current_time = time();
-		
-		if ($page < 1) {
-			$this->redirect(array('index', 'page' => 1));
-		}
-		
-		if ($showexpired == null) {
-			if (Yii::app()->session['showexpired'] != null) {
-				$showexpired = Yii::app()->session['showexpired'];
-			}
-		} else {
-			Yii::app()->session['showexpired'] = $showexpired;
-		}
+
+		// catch negative page numbers
+		if ($page < 1) { $this->redirect(array('index', 'page' => 1)); }
 		
 		$criteria = new CDbCriteria;
-		$criteria->order = 'date_added DESC';
-		
-		if (!Yii::app()->user->isAdmin()) {
-			$criteria->condition = 'status_id=:status_id AND expiration_date > :current_time';
-			$criteria->params=array(':status_id' => 2, ':current_time' => $current_time);
-		}
-		
-		if (Yii::app()->user->isAdmin() && $showexpired == 0) {
-			$criteria->condition = 'expiration_date > :current_time';
-			$criteria->params=array(':current_time' => $current_time);
-		}
-		
 
-		$total = count(Job::model()->findAll($criteria));
+		switch ($sort) {
+			case 't': // order by job title
+				$criteria->order = 'title';
+				break;
+			case 'u': // order by company
+				$criteria->order = 'company';
+				break;
+			case 'o': // order by city name
+				$criteria->order = 'city';
+				break;
+			default:
+				$criteria->order = 'date_added DESC';
+				break;
+		}
 		
-		$number_of_pages = ceil($total / self::PAGE_SIZE);
+		// just show the public offers, which are not expired ...
+		$criteria->condition = 'status_id=:status_id AND expiration_date > :current_time';
+		$criteria->params=array(':status_id' => 2, ':current_time' => $current_time);
 		
+		// fix number of offers per page ...
 		$criteria->limit = self::PAGE_SIZE;
 		$criteria->offset = ($page - 1) * self::PAGE_SIZE;;
-
-		$models = Job::model()->findAll($criteria);
 		
-		$current_start = ($page - 1) * self::PAGE_SIZE;;
-		$current_end = ($page - 1) * self::PAGE_SIZE + self::PAGE_SIZE;
+		// if we have a term query ...
+		if (isset($_GET['q']) && $_GET['q'] != '') {
+			$index = new Zend_Search_Lucene($this->getSearchIndexStore());
+			$original_query = $_GET['q'];
+			$query = trim($original_query) . '*';
+		
+			try {
+				$results = $index->find($query);
+			} catch (Exception $e) {
+				$this->redirect(array('index'));
+			}
+		
+			$pks = array();
+ 			foreach ($results as $result) {
+				$pks[] = $result->pk;
+			}
+			
+			$total = count($models = Job::model()->findAllByAttributes(array('id' => $pks), $criteria));
+			$models = Job::model()->findAllByAttributes(array('id' => $pks), $criteria);
+			$current_start = ($page - 1) * self::PAGE_SIZE;;
+			$current_end = ($page - 1) * self::PAGE_SIZE + self::PAGE_SIZE;
+		} else {
+			// just the default index action ...
+			$total = count(Job::model()->findAll($criteria));
+			$models = Job::model()->findAll($criteria);
+			$original_query = null;
+		}
 
+		$number_of_pages = ceil($total / self::PAGE_SIZE);
+		$current_start = ($page - 1) * self::PAGE_SIZE;;
+		$current_end = ($page - 1) * self::PAGE_SIZE + self::PAGE_SIZE;			
+		
 		$this->render('index', array(
 			'models'=>$models, 
 			'total' => $total,
 			'current_start' => $current_start, 
 			'current_end' => $current_end,
 			'page' => $page,
-			'number_of_pages' => $number_of_pages) );
+			'number_of_pages' => $number_of_pages,
+			'sort' => $sort,
+			'original_query' => $original_query) 
+		);
 	}
 
 	/**
@@ -116,59 +141,7 @@ class JobController extends Controller
 		}
 	}
 
-	/**
-	 * Create a new job posting.
-	 */
-	public function actionCreate()
-	{
-		$model = new Job;
 
-		if(isset($_POST['Job'])) {
-			
-			Yii::log("Company Homepage before adjustments: " . $_POST['Job']['company_homepage'], CLogger::LEVEL_INFO, "actionCreate");
-			$company_homepage = $_POST['Job']['company_homepage'];
-			if ($company_homepage != "" && !startsWith($company_homepage, "http://")) {
-				$company_homepage = "http://" . $company_homepage;
-				$_POST['Job']['company_homepage'] = $company_homepage;
-			}
-			Yii::log("Company Homepage after adjustments: " . $_POST['Job']['company_homepage'], CLogger::LEVEL_INFO, "actionCreate");
-			
-			$sanitized_post = array_strip_tags($_POST['Job']);
-			
-			// $model->attributes = $_POST['Job']; // mass assignment
-			$model->attributes = $sanitized_post; 
-			$model->date_added = time();
-			
-			if (!isset($sanitized_post['expiration_date']) || $sanitized_post['expiration_date'] === '') {
-				$model->expiration_date = $model->date_added + self::DEFAULT_EXPIRATION_SECONDS;
-			} else {
-				Yii::log("Expiration set manually: " . $sanitized_post['expiration_date'], CLogger::LEVEL_INFO, "actionCreate");
-				$epoch_or_false = strtotime($sanitized_post['expiration_date']);
-				if ($epoch_or_false) {
-					$model->expiration_date = $epoch_or_false;
-				} else {
-					$model->expiration_date = $model->date_added + self::DEFAULT_EXPIRATION_SECONDS;
-				}
-			}
-
-			$model->author_id = 0;
-
-			$model->attachment=CUploadedFile::getInstance($model,'attachment');
-
-			if ($model->validate()) {
-				if ($model->save()) {
-					if (isset($model->attachment)) {
-						$filename = $this->getUploadFilePath("job", $model->id);
-						$model->attachment->saveAs($filename);
-					}
-					$this->updateSearchIndex($model);
-					$this->redirect(array('index'));
-				}
-			}
-		}
-		$this->render('create', array('model' => $model));
-	}
-	
 	/**
 	 * Create a new job posting.
 	 */
@@ -346,55 +319,9 @@ class JobController extends Controller
 		$this->redirect(array('index'));
 	}
 
-	
-	/**
-	 * Search jobs.
-	 */	
-	public function actionSearch($page = 1) 
-	{
-		if (isset($_GET['q']) && $_GET['q'] != '') {
-			$index = new Zend_Search_Lucene($this->getSearchIndexStore());
-			$original_query = $_GET['q'];
-			$query = trim($original_query) . '*';
-			
-			try {
-				$results = $index->find($query);
-			} catch (Exception $e) {
-				$this->redirect(array('index'));
-			}
-			
-			$pks = array();
-  			foreach ($results as $result) {
-    			$pks[] = $result->pk;
-  			}
 
-			$criteria = new CDbCriteria;
-			$criteria->order = 'date_added DESC';
-			$criteria->condition = 'status_id=:status_id';
-			$criteria->params=array(':status_id' => 2);
+	// Lucene related stuff ... //
 
-			$total = count($models = Job::model()->findAllByAttributes(array('id' => $pks), $criteria));
-
-			$criteria->limit = self::PAGE_SIZE;
-			$criteria->offset = ($page - 1) * self::PAGE_SIZE;;
-			
-			$models = Job::model()->findAllByAttributes(array('id' => $pks), $criteria);
-			
-			$current_start = ($page - 1) * self::PAGE_SIZE;;
-			$current_end = ($page - 1) * self::PAGE_SIZE + self::PAGE_SIZE;
-	
-        	$this->render('index', array(
-				'models' => $models, 
-				'total' => $total,
-				'current_start' => $current_start,
-				'current_end' => $current_end,
-				'page' => $page,
-				'original_query' => $original_query));
-		} else {
-			$this->redirect(array('index'));
-		}
-	}
-	
 	protected function removeFromSearchIndex($model) {
 		$index = new Zend_Search_Lucene($this->getSearchIndexStore(), false);
 		foreach ($index->find('pk:' . $model->id) as $hit) {
@@ -431,7 +358,6 @@ class JobController extends Controller
 		$index->commit();
 		Yii::log("Updated search index for document id: " . $model->id, CLogger::LEVEL_INFO, "updateSearchIndex");		
 	}
-
 	
 	/**
 	 * Rebuild search index.

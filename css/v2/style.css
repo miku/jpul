@@ -13,7 +13,7 @@ body {
 	padding: 0;
 	color: #333;
 	font: normal 10pt Verdana,"Helvetica Neue",Arial,Tahoma,sans-serif;
-	background: #ffffff;
+	background: #fff;
 	min-width:985px;
     font-size:11pt;	
 }
@@ -42,7 +42,8 @@ a:hover {
     float: left;
 /*    background: transparent url(../images/header_studium_repeat.jpg) repeat-x scroll right 22px;    */
 /*	background: transparent url(../../images/v2/banner-u4.png) repeat-x scroll right 22px;    */
-	background: transparent url(../../images/v2/header-jobportal-repeat.jpg) repeat-x scroll right 22px;
+/*	background: transparent url(../../images/v2/header-jobportal-repeat.jpg) repeat-x scroll right 22px;*/
+	background: transparent url(../../images/v2/testme-repeat-x.png) repeat-x scroll right 22px;
 	
 }
 
@@ -135,6 +136,12 @@ a:hover {
 	height: 24px;
 }
 
+#generic-header {
+	padding: 10px;
+	margin: 0 10px 0 10px;
+	background: #EFEFEF;
+}
+
 #main-content {
 	padding: 10px;
 	background: #FFF;	
@@ -166,6 +173,63 @@ a:hover {
 	margin-bottom: 12px;
 }
 
+
+/* view job */
+
+#view-header {
+/*	padding: 10px;*/
+	margin: 0px 0 10px 0;
+}
+
+#view-job-title {
+	color: #FF7b04;
+	font-size: 20px;
+	font-weight: bold;
+	margin: 0 0 10px 0;
+}
+
+#view-job-subtitle {
+	font-size: 12px;
+}
+
+.view-job-company {
+	font-weight: bold;
+}
+
+#view-content {
+	padding: 10px;
+	font-size: 12px;	
+}
+
+#mini-nav {
+	font-size: 10px;
+	border-bottom: solid thin gray;
+	padding: 0 0 10px 0;
+	margin: 0 0 10px 0;	
+	padding-left: 26px;
+    background: url(../../images/v2/arrow-left-orange-dbl.png) no-repeat 0px 0px;
+    margin-right: 18px;
+}
+
+#bottom-nav {
+	font-size: 10px;
+	border-top: solid thin gray;
+	padding: 15px 0 0px 0;
+	margin: 40px 0 0px 0;	
+	padding-left: 26px;
+    background: url(../../images/v2/arrow-left-orange-dbl.png) no-repeat 0px 15px;
+    margin-right: 18px;
+	
+}
+
+#view-download {
+	padding: 10px;
+	background: #ECECEC;
+}
+
+#intext-title {
+	color: #FF7b04;
+}
 
 
 
@@ -218,6 +282,34 @@ input#search {
 
 .post-title a {
 	color: #0077CC;
+}
+
+.post-status {
+	font-size: 10px;
+	font-weight: normal;
+	background: gray;
+	color: white;
+	padding: 0 4px 0 4px;
+}
+
+.post-expired {
+	background: #EFEFEF;
+}
+
+.status-draft {
+	background: #fcfae4;
+}
+
+.status-public {
+	background: #e8fbe6;
+}
+
+.status-tag-public {
+	background: darkgreen;
+}
+
+.status-tag-draft {
+	background: #b39123;
 }
 
 span.post-company {
@@ -280,6 +372,7 @@ label {
 
 .required {
 	font-weight: bold;
+	color: #0077CC;
 }
 
 .errorMessage {
@@ -322,4 +415,74 @@ label {
 	background: black;
 	border-bottom: solid thin white;
 	color: white;
+}
+
+
+.sticky {
+	padding: 0px 5px 0px 5px;
+	background: #FFF380;
+}
+
+.fat {
+	font-weight: bold;
+}
+
+#view-deadline {
+	margin-top: 12px;
+}
+
+
+.spacetop {
+	margin-top: 15px;
+}
+
+.trstyle-dark {
+	
+}
+
+.form-item {
+	margin-bottom: 30px;
+	padding: 10px;
+	background: #EFEFEF;
+}
+
+.form-item input, textarea { 
+	padding: 3px;
+}
+
+.form-item-label p {
+	color: gray;
+	font-size: 10px;
+	margin-top: 5px;
+}
+.form-item-label {
+	width: 190px;
+	float: left;
+	text-align: top;
+}
+
+.form_item_field {
+	margin-left: 200px;
+}
+
+.filterbox {
+	padding: 0px;
+}
+
+.filter-option {
+	padding: 3px;
+	margin-bottom: 3px;
+	background: #EFEFEF;
+	border: solid 1px #EFEFEF;
+	color: gray;
+}
+
+.filter-option-active {
+	color: #3366CC;
+	background: #FFFFEF;	
+	border: solid 1px #EFEFEF;
+}
+
+a.no-underline:hover {
+	text-decoration: none;
 }

@@ -39,7 +39,6 @@
 					<ul>
 						<li><a href="<?php echo $this->createUrl('job/index'); ?>">Jobportal Homepage</a></li>
 						<li><a href="http://www.zv.uni-leipzig.de/studium/career-center.html">Career Center</a></li>
-						<li><a href="#">Für Unternehmen</a></li>
 					</ul>
 				</div>
 				<div id="title-nav-right">
@@ -49,7 +48,13 @@
 							<li><a href="<?php echo $this->createUrl('job/create'); ?>">Neues Angebot einstellen</a></li>
 							<li><a href="<?php echo $this->createUrl('site/options'); ?>">Einstellungen</a></li>
 						<?php endif; ?>
-						<li style="color: #CACACA; ">Eingeloggt als <span style="font-weight: bold"><?php echo Yii::app()->user->getUsername(); ?></span></li>
+						<li style="color: #CACACA; ">
+							<?php if (Yii::app()->user->isAdmin()): ?>
+								Eingeloggt als <span> <a style="background: white; color: black; font-weight: bold;" href="<?php echo $this->createUrl('admin/index'); ?>"><?php echo Yii::app()->user->getUsername(); ?></a></span>
+							<?php else: ?>
+								Eingeloggt als <span style="font-weight: bold"> <?php echo Yii::app()->user->getUsername(); ?></span>
+							<?php endif; ?>
+						</li>
 						<li><a style="background: white; color: black; font-weight: bold;" href="<?php echo $this->createUrl('site/logout'); ?>">Logout</a></li>
 					<?php else: ?>
 						<li><a style="color: white" href="<?php echo $this->createUrl('site/login'); ?>">Intranet</a></li>
@@ -66,6 +71,7 @@
 		<div id="content">
 			<?php echo $content; ?>
 		</div>
+		<div class="clear"></div>
 	</div>
 </body>
 </html>

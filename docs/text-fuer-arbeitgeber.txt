@@ -1,0 +1,96 @@
+[[Kommmentare sind in doppelten eckigen Klammern gesetzt, wie das hier ;)]]
+
+
+Willkommen am Jobportal des Careercenters der Universität Leipzig
+-----------------------------------------------------------------
+
+Die beta-Version unseres Jobportal startete Anfang Dezember 2010. Es
+bietet Arbeitgebern aus Industrie, Gesellschaft und Wissenschaft eine Plattform, um 
+gezielt hoch qualifizierte und motivierte Absolventen der Universität Leipzig (und anderer Hochschulen)
+aus allen Fachrichtungen anzusprechen. 
+
+Studierenden wollen wir bei der Jobsuche helfen, indem wir ein Portal
+anbieten, welches (wie wir hoffen) einfach besser aussieht**, keine
+Angst vor sozialen Netzwerken hat und funktional ist.
+
+Sie sind ein Unternehmen und haben eine Vakanz? Sie
+sind eine öffentliche Einrichtung und möchten eine Angebot bekannt geben?
+Ihr Forschungslabor hat noch zwei offene Doktorandenplätze?
+
+Informieren Sie sich unter ``Wie funktioniert es?``, wie Sie innerhalb
+von wenigen Minuten ein Angebot einstellen können. Natürlich stehen 
+wir Ihnen bei Fragen auch telefonisch zur Verfügung (bitte schauen Sie
+in das Infokästchen rechts). 
+
+Sie haben eine Ausschreibung aber nur als PDF? Kein Problem. Sie können 
+auch eine PDF-Datei hochladen.
+
+...
+
+
+---- Fußnoten:
+
+** Sie sind anderer Meinung? Bitte schreiben Sie uns kurz eine Nachricht unter :'/site/feedback'
+
+
+Wie funktioniert es?
+--------------------
+
+Das Einstellen eines neuen Angebotes ist einfach. 
+
+1. Gehen Sie auf die URL '/job/draft/' - Sie sehen eine Eingabemaske für ein
+	neues Angebot. Es gibt lediglich 5 Pflichtfelder, die Sie ausfüllen müssen
+	(diese Felder sind visuell abgesetzt): 
+	
+	- Jobtitel (z.B. Controller, Statistiker, ...)
+	- Beschreibung - hier können Sie Voraussetzungen, Bewerberprofil, 
+		Firmenprofil, Einsatzdauer, Gehalt und weitere Punkte beschreiben. 
+		Es handelt sich um ein Freitextfeld. Sie können minimale
+		Formattierungen vornehmen, z.B.
+		
+			*der Text zwischen zwei Sternen wird fett dargestellt*
+			
+			*fett* und _alles zwischen einfachen Unterstrichen: kursiv_
+		
+		Stichpunkte können Sie mit Sternen einleiten, z.B. so:
+		
+			Voraussetzungen:
+		
+				* Abgeschlossenenes Hochschulstudium der Geographie, Geologie,
+					Geodäsie, Geoinformatik oder Kartographie
+				* Einschlägige Proaktika
+				* Belastbar, flexibel, teamfähig
+				* Bereitschaft zu Dienstreisen
+		
+	- Unternehmen (der Name Ihres Unternehmens oder Ihrer Institution)
+	- Stadt (der Einsatzort des Jobs)
+	- Bewerbungsschlus bzw. Ablaufdatum der Anzeige (Bis wann soll diese Anzeige 
+		im Jobportal sichtbar sein?)
+		
+	Alle weiteren Felder sind optional, Sie können diese ausfüllen, um 
+	den Benutzern mehr Informationen zu Ihrem Unternehmen oder Ihrer 
+	Institution zur Verfügung zu stellen. Sie können zum Beispiel
+	die Homepage Ihres Unternehmens angeben, die Kandidaten besuchen
+	können, um mehr über Sie zu erfahren.
+	
+	Sie können außerdem Ihr persönlichen Kontaktdaten/E-Mail hinterlegen. Dadurch
+	können wir Sie benachrichtigen, sobald Ihr Angebot freigeschaltet wurde.
+	
+2. Haben Sie alle Felder, die unter 1.) aufgeführt sind, ausgefüllt, klicken
+	Sie auf absenden. Das Jobangebot wird von Mitarbeitern des Career Centers
+	nach einer kurzen Prüfung* freigeschaltet. Haben Sie bei 1.) eine Kontakt-E-Email-
+	Adresse angegeben, senden wir Ihnen eine Benachrichtigung zu, sobald das
+	Jobangebot online einsehbar ist. 
+	
+3. No step 3 (tm).
+
+
+
+---- Fußnoten:
+
+*Die Prüfung des Jobangebot erfolgt lediglich 
+auf Plausibilität bzw. formale Fehler. Allerdings
+behält sich das CC vor, über eine endgültige Veröffentlichung
+zu entscheiden. [[So oder ähnlich]]
+	
+	

@@ -13,7 +13,7 @@ $this->breadcrumbs=array(
 
 <div id="main">
 
-<div id="main-header">
+<div id="generic-header">
 <p>Login</p>	
 </div>
 

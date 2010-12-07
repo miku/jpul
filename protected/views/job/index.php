@@ -9,6 +9,14 @@ $(document).ready(function() {
 			$(this).addClass("isfav");
 		}
 	});
+	
+	$("#sort").change(function() {
+		var sortOrder = $("#sort option:selected").text();
+		var value = sortOrder.substr(0, 1).toLowerCase();
+		var c = $("#sort").attr("baseurl") + "sort=" + value;
+		window.location.replace(c);
+	});
+
 });
 </script>
 
@@ -16,7 +24,7 @@ $(document).ready(function() {
 <div id="main">
 	<div id="main-header">
 		<div id="searchbox">
-			<form action="<?php echo $this->createUrl('job/search') ?>" method="get" accept-charset="utf-8">
+			<form action="<?php echo $this->createUrl('job/index') ?>" method="get" accept-charset="utf-8">
 				<input size="60" type="text" name="q" value="<?php if (isset($original_query)) echo $original_query ?>" id="search">
 				<input type="submit" value="Suchen" class="button">
 			</form>
@@ -24,40 +32,29 @@ $(document).ready(function() {
 		
 		<div id="sortmenu">
 			sortieren nach: 
-			<select baseurl="/jobs?" id="sort" name="sort"><option selected="selected" value="p">Datum</option>
-				<option value="t">Titel</option>
-				<option value="c">Unternehmen</option>
-				<option value="l">Ort</option>
+			<?php if (isset($original_query)): ?>
+				<select baseurl="<?php echo $this->createUrl('job/index', array('q' => $original_query)) ?>&" id="sort" name="sort">
+			<?php else: ?>
+				<select baseurl="<?php echo $this->createUrl('job/index') ?>?" id="sort" name="sort">
+			<?php endif ?>
+				<option <?php if ($sort === "d"): ?>selected="selected" <?php endif; ?> value="d">Datum</option>
+				<option <?php if ($sort === "t"): ?>selected="selected" <?php endif; ?> value="d">Title</option>
+				<option <?php if ($sort === "u"): ?>selected="selected" <?php endif; ?> value="d">Unternehmen</option>
+				<option <?php if ($sort === "o"): ?>selected="selected" <?php endif; ?> value="d">Ort</option>															
 			</select>
 		</div>
 
 		
 	</div>
 	<div id="main-content">
-		<!-- <h3>Aktuelle Jobangebote <?php if (isset($original_query)) echo 'für ' . $original_query ?></h3> -->
-
-		<?php if (Yii::app()->user->isAdmin()): ?>
-			<div class="admin-index-extras small">
-				<?php if (Yii::app()->session['showexpired'] == 0): ?>
-					<a href="<?php echo $this->createUrl('job/index', array('showexpired' => 1)) ?>">Alle anzeigen</a>
-				<?php else: ?>
-					<a href="<?php echo $this->createUrl('job/index', array('showexpired' => 0)) ?>">Nur aktuelle anzeigen</a>
-				<?php endif ?>
-			</div>
-		<?php endif ?> 
-
 
 		<div id="listing">
 			<?php 
-		foreach ($models as $i => $model) {
-			if (Yii::app()->user->isAdmin()) {
-				$this->renderPartial('_teaser_admin', array('model' => $model, 'index' => $i));		
-			} else {
+			foreach ($models as $i => $model) {
 				$this->renderPartial('_post', array('model' => $model, 'index' => $i));
 			}
-		}
-		?>
-	</div>
+			?>
+		</div>
 
 
 	<?php if ($models): ?>
@@ -100,27 +97,8 @@ $(document).ready(function() {
 
 <div id="sidebar-container">
 	<div id="sidebar">
-		
-		<h1>Kontakt</h1>
-				<p><strong>Career Center</strong><br>
-					Universität Leipzig<br>
-					Burgstraße 21, 1. Etage<br>
-					04109 Leipzig<br>
-				</p>
-				<p>
-					Telefon: +49 341 97-30030<br>
-					Telefax: +49 341 97-30069<br>
-					<a href="mailto:careercenter@uni-leipzig.de">E-Mail</a>
-				</p>
-				<p>
-					<strong>Servicezeiten:</strong><br>
-					Mo. 13:00 &mdash; 17:00 Uhr<br>
-					Di. bis Do. 9:00 &mdash; 17:00 Uhr<br>
-					Fr. 9:00 &mdash; 15:00 Uhr<br>
-				</p>
-				<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/v2/cc_logo.gif" alt="" />
-
+		<?php $this->renderPartial('_sidebar_contact'); ?>
+		<?php $this->renderPartial('_sidebar_for_employer'); ?>
 	</div>	
 </div>
-
 

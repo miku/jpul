@@ -63,6 +63,8 @@ return array(
 		
 		'db'=>array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
+			'enableParamLogging'=>true,
+    		'enableProfiling'=>true,
 		),
 		
 		// uncomment the following to use a MySQL database
@@ -85,7 +87,7 @@ return array(
 			'routes'=>array(
 				array(
 					'class'=>'CFileLogRoute',
-					'levels'=>'error, warning, info',
+					'levels'=>'error, warning, info, trace',
 				),
 				// uncomment the following to show log messages on web pages
 				/*
@@ -103,7 +105,5 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'martin.czygan@gmail.com',
-		'rc_publickey' => '6Lc0Lb8SAAAAABowOzl_yZ6KXaMVOmTBFbd1-pfF',
-		'rc_privatekey' => '6Lc0Lb8SAAAAAO2TYsGNXuIz3fGkVrFAknYW-S3l',
 	),
 );

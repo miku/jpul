@@ -33,7 +33,7 @@
 
 			<?php if ($model->how_to_apply): ?>
 				<div id="view-howtoapply">
-					<p class="intext-title">Bewerbungsweg</p>
+					<p id="how-to-apply">Bewerbungsweg</p>
 					<p><?php echo textilize($model->how_to_apply) ?></p>
 				</div>
 			<?php endif ?>

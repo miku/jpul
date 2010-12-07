@@ -3,14 +3,14 @@
 <div id="main">
 
 <div id="generic-header">
-	<p>Something went wrong.</p>
+	<p>Sorry, something went wrong.</p>
 </div>
 
-<div id="main-content">
+<div style="margin: 10px; padding: 10px; background: aliceblue;" id="main-content">
 
-<p>Diese Seite existiert nicht oder ist nicht verfügbar &mdash; HTTP Status <?php echo $code; ?>.</p>
+	<p>Diese Seite existiert nicht oder ist nicht verfügbar &mdash; HTTP Status <?php echo $code; ?>.</p>
 
-<a href="<?php echo $this->createUrl('job/index') ?>">Zur Homepage</a>
+	<a href="<?php echo $this->createUrl('job/index') ?>">Zur Homepage</a>
 
 </div>	
 </div>

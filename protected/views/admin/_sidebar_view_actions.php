@@ -44,6 +44,11 @@ ID <?php echo $model->id; ?>
 			Als Entwurf markieren
 		</div>
 	</a>
+	<a class="no-underline" href="<?php echo $this->createUrl('admin/setStatus', array("id" => $model->id, "status_id" => 4)); ?>">
+		<div class="filter-option filter-option-active">
+			Löschen
+		</div>
+	</a>
 <?php endif ?>
 
 

@@ -60,7 +60,10 @@ $(document).ready(function() {
 			}
 			?>
 			<?php if (!$models): ?>
-				<p class="noresults-box">Keine Ergebnisse gefunden. Versuchen Sie bitte weniger spezifische Suchbegriffe.</p>
+				<p class="noresults-box">
+					Keine Ergebnisse gefunden. Versuchen Sie bitte weniger spezifische Suchbegriffe.
+					Um wieder alle Angebote zu sehen, löschen Sie bitte Ihre Eingabe aus dem Suchfeld und drücken Sie &lt;ENTER&gt;.
+					</p>
 			<?php endif ?>
 		</div>
 

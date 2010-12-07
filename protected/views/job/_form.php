@@ -114,7 +114,7 @@
 
 
 	<div class="form-item">
-		<div class="form_item_label"><label for="captcha_challenge">Sicherheitsfrage</label></div>
+		<div class="form_item_label required"><label for="captcha_challenge">Sicherheitsfrage</label></div>
 		<div class="form_item_field"><?php echo get_captcha_html(); ?></div>
 	</div>
 		 	

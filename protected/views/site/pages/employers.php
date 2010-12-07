@@ -55,7 +55,7 @@ Sie haben auch die Möglichkeit, Ihre Anzeige als pdf-Datei hochzuladen.</p>
 <br>
 <em>Falls Sie Fragen haben oder Hilfe beim Einstellen Ihres Angebotes benötigen, können Sie uns gern unter +49 341 97-30030 oder careercenter@uni-leipzig.de kontaktieren.</em>
 			
-<br><br>Diese Anleitung als PDF: <a href="<?php echo Yii::app()->request->baseUrl; ?>/docs/Einstellung_eines_Angebotes_im_Jobportal_des_Career_Centers.pdf">Einstellung eines Angebotes im Jobportal des Career Centers</a>.
+<br><br>Diese Anleitung als PDF: <strong><a href="<?php echo Yii::app()->request->baseUrl; ?>/docs/Einstellung_eines_Angebotes_im_Jobportal_des_Career_Centers.pdf">Einstellung eines Angebotes im Jobportal des Career Centers</a></strong>.
 		</div>
 	</div>
 </div>

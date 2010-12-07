@@ -75,7 +75,7 @@
 
 		<?php if (Yii::app()->user->isAdmin()): ?>
 			<h1>Admin</h1>
-			<p><a href="<?php echo $this->createUrl('admin/update', array('model' => $model)) ?>">Dieses Angebot bearbeiten</a></p>
+			<p><a href="<?php echo $this->createUrl('admin/update', array('id' => $model->id)) ?>">Dieses Angebot bearbeiten</a></p>
 		<?php endif ?>
 		
 	</div>	

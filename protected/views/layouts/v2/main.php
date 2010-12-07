@@ -13,7 +13,7 @@
   <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> -->
  
   <title>Wireframe v2</title>
-  <meta name="description" content="Wireframe for v2">
+  <meta name="description" content="Jobportal des Career Centers der Universität Leipzig">
   <meta name="author" content="Martin Czygan <martin.czygan@gmail.com">
  
   <!-- Mobile viewport optimized: j.mp/bplateviewport -->

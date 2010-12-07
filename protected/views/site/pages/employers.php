@@ -8,7 +8,9 @@
 
 		<div id="main-content" style="font-size: 12px; margin: 10px 10px 10px 10px;">
 
-<p>Sie sind auf der Suche nach engagierten Nachwuchskräften? Unser Jobportal bietet Ihnen als Arbeitgeber eine Plattform, um gezielt hoch qualifizierte und motivierte Studierende und Absolvent(inn)en aller Fachrichtungen anzusprechen.  Derzeit sind ca. 26.000 Studierende an der Universität Leipzig immatrikuliert und erwerben Fachwissen an den Fakultäten der Erziehungswissenschaft, Theologie, Geschichte, Kunst- und Orientwissenschaft, Sozialwissenschaft und Philosophie, Philologie, Juristik, Wirtschaftswissenschaft, Sportwissenschaft, Medizin, Veterinärmedizin, Biowissenschaften, Pharmazie und Psychologie, Physik und Geowissenschaften, Chemie und Mineralogie sowie Mathematik und Informatik.</p>
+<p>Sie sind auf der Suche nach engagierten Nachwuchskräften? Unser Jobportal bietet Ihnen als Arbeitgeber eine Plattform, um gezielt hoch qualifizierte und motivierte Studierende und Absolvent(inn)en aller Fachrichtungen anzusprechen.</p>  
+<br>
+<p>Derzeit sind ca. 28.000 Studierende an der Universität Leipzig immatrikuliert und erwerben Fachwissen an den Fakultäten der Erziehungswissenschaft, Theologie, Geschichte, Kunst- und Orientwissenschaft, Sozialwissenschaft und Philosophie, Philologie, Juristik, Wirtschaftswissenschaft, Sportwissenschaft, Medizin, Veterinärmedizin, Biowissenschaften, Pharmazie und Psychologie, Physik und Geowissenschaften, Chemie und Mineralogie sowie Mathematik und Informatik.</p>
 <br>
 <p>Stellen Sie unkompliziert und innerhalb weniger Minuten Ihre Stellenanzeigen, Ihre Angebote für Praktika, Traineeships oder eine Tätigkeit als Werkstudent(in) in unserem Jobportal ein. Auch Angebote für Abschlussarbeiten (Diplom-, Master-, Bachelor- und Doktorarbeiten) können Sie auf unserem Jobportal veröffentlichen und somit allen Studierenden der Universität Leipzig unterbreiten. </p>
 <br>
@@ -49,6 +51,12 @@
 <p>
 	<a href="<?php echo $this->createUrl('job/draft') ?>">Jetzt ein Angebot einstellen</a>
 </p>
+
+<h1 class="spacetop">Förderer</h1>
+
+<br>
+<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/v2/8f1c7995c6.jpg" alt="Förderer" />
+
 
 	</div>	
 </div>

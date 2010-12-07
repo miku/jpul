@@ -18,5 +18,6 @@
 <div id="sidebar-container">
 	<div id="sidebar">
 		<?php $this->renderPartial('_sidebar_contact'); ?>
+		<?php $this->renderPartial('_sidebar_supporter'); ?>
 	</div>	
 </div>

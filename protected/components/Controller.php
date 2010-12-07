@@ -52,7 +52,7 @@ class Controller extends CController
 			$request->addr = $_SERVER["REMOTE_ADDR"];
 			$request->request_time = time();
 			$request->user_agent = $_SERVER["HTTP_USER_AGENT"];
-			$request->request_path = $_SERVER['REQUEST_URL'];
+			$request->request_path = $_SERVER['REQUEST_URI'];
 			$request->save();
 		// } catch (Exception $e) {
 		// 	// die gracefully ... 

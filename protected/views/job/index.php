@@ -115,6 +115,7 @@ $(document).ready(function() {
 	<div id="sidebar">
 		<?php $this->renderPartial('_sidebar_contact'); ?>
 		<?php $this->renderPartial('_sidebar_for_employer'); ?>
+		<?php $this->renderPartial('_sidebar_supporter'); ?>
 	</div>	
 </div>
 

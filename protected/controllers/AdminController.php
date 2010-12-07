@@ -204,6 +204,67 @@ class AdminController extends Controller
 		$this->render('create', array('model' => $model));
 	}
 	
+	
+		/**
+	 * Update a new job posting.
+	 */
+	public function actionUpdate($id)
+	{
+		$model = Job::model()->findByPk($id);
+		
+		if (!$model) {
+			throw new CHttpException(400, Yii::t('app', 'Your request is not valid.'));
+		}
+
+		if(isset($_POST['Job']))
+		{
+
+			Yii::log("Company Homepage before adjustments: " . $_POST['Job']['company_homepage'], CLogger::LEVEL_INFO, "actionUpdate");
+			$company_homepage = $_POST['Job']['company_homepage'];
+			if ($company_homepage != "" && !startsWith($company_homepage, "http://")) {
+				$company_homepage = "http://" . $company_homepage;
+				$_POST['Job']['company_homepage'] = $company_homepage;
+			}
+			Yii::log("Company Homepage after adjustments: " . $_POST['Job']['company_homepage'], CLogger::LEVEL_INFO, "actionUpdate");
+			
+			
+			$sanitized_post = array_strip_tags($_POST['Job']);
+
+			// $model->attributes = $_POST['Job'];			
+			$model->attributes = $sanitized_post;
+			$model->date_added = time();
+
+			if (!isset($sanitized_post['expiration_date']) || $sanitized_post['expiration_date'] === '') {
+				$model->expiration_date = $model->date_added + self::DEFAULT_EXPIRATION_SECONDS;
+			} else {
+				Yii::log("Expiration set manually: " . $sanitized_post['expiration_date'], CLogger::LEVEL_INFO, "actionCreate");
+				$epoch_or_false = strtotime($sanitized_post['expiration_date']);
+				if ($epoch_or_false) {
+					$model->expiration_date = $epoch_or_false;
+				} else {
+					$model->expiration_date = $model->date_added + self::DEFAULT_EXPIRATION_SECONDS;
+				}
+			}
+
+			$model->author_id = 0; // default; TODO: adjust
+
+			$model->attachment = CUploadedFile::getInstance($model, 'attachment');
+
+			if ($model->validate()) {
+				if ($model->save()) {
+					if (isset($model->attachment)) {
+						$filename = $this->getUploadFilePath("job", $model->id);
+						$model->attachment->saveAs($filename);
+					}
+					$this->updateSearchIndex($model);
+					$this->redirect(array('index'));
+				}
+			}
+		}
+		$this->render('update', array('model' => $model));
+	}
+
+	
 	/**
 	 * Job details.
 	 */
@@ -216,6 +277,31 @@ class AdminController extends Controller
 		Yii::log(Yii::app()->request->userHostAddress, CLogger::LEVEL_INFO, "actionView");
 		$this->render('view', array('model' => $model));
 	}
+	
+		/**
+	 * Delete a job; it just gets archived.
+	 */
+	public function actionDelete($id)
+	{
+		$model = Job::model()->findByPk($id);
+
+		if (!$model) {
+			throw new CHttpException(400, Yii::t('app', 'Your request is not valid.'));
+		}
+		$model->status_id = 3;
+		
+		$this->removeFromSearchIndex($model);
+		
+		if ($model->save(false)) {
+			Yii::log("Set status of record id: " . $model->id . " to: " . $model->status_id . " (deleted)", CLogger::LEVEL_INFO, "default");	
+		} else {
+			Yii::log("Deleting failed on: " . $model->id, CLogger::LEVEL_INFO, "default");	
+			throw new CHttpException(500, Yii::t('app', 'Your request is not valid.'));
+		}
+
+		$this->redirect(array('index'));
+	}
+
 	
 	
 		// Lucene related stuff ... //

@@ -45,6 +45,19 @@ class Controller extends CController
 	
 	protected function beforeAction($action) {
 		
+		
+		// simple request tracking ...
+		try {
+			$request = new Request();
+			$request->addr = $_SERVER["REMOTE_ADDR"];
+			$request->request_time = time();
+			$request->user_agent = $_SERVER["HTTP_USER_AGENT"];
+			$request->request_path = $_SERVER['REQUEST_URL'];
+			$request->save();
+		} catch (Exception $e) {
+			// die gracefully ... 
+		}
+		
 		CHtml::$afterRequiredLabel = '';
 		
 		Yii::log("beforeAction: " . $action->getId(), CLogger::LEVEL_INFO, "beforeAction");

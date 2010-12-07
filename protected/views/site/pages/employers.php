@@ -8,6 +8,42 @@
 
 		<div id="main-content">
 			
+<h2>Einstellung eines Angebotes im Jobportal des Career Centers</h2>
+
+<p>Im Folgenden zeigen wir Ihnen Schritt für Schritt, wie Sie Ihre Praktikums- oder Stellenanzeige im Jobportal des Career Centers selbst einpflegen können.</p>
+
+1. Gehen Sie auf den Link Jetzt ein Angebot einstellen. Es erscheint die Eingabemaske für ein neues Angebot.<br>
+2. Es gibt lediglich fünf Pflichtfelder, die Sie ausfüllen müssen.<br>
+
+<ul>
+<li>Titel (Jobtitel wie z.B. Controller, Lehrkraft, Praktikant(in), ...)</li>
+<li>Beschreibung (es handelt sich hierbei um ein Freitextfeld, in das Sie Voraussetzungen, Anforderungen, Einsatzdauer, Gehalt etc. eintragen können)</li>
+<li>Name des Unternehmens oder der Institution</li>
+<Li>Stadt bzw. Einsatzort des Angebotes</Li>
+<Li>Ablaufdatum bzw. Bewerbungsschluss der Anzeige im Jobportal</Li>
+</ul>
+
+<p>Alle weiteren Felder sind optional. Sie können diese ausfüllen, um den Studierenden mehr Information zu Ihrem Unternehmen oder Ihrer Institution zur Verfügung zu stellen (z.B. Angabe Ihrer Homepage).
+Zur Gestaltung Ihres Textes unter „Stellenbeschreibung“ haben Sie folgende Möglichkeiten:</p>
+
+	I) *der Text zwischen zwei Sternen wird fett dargestellt* 	
+	II) _der Text zwischen zwei Unterstrichen wird kursiv dargestellt_ 	
+	III) Ihre Stichpunkte können Sie mit einem Stern (*) einleiten
+
+<p>Sie können außerdem Ihre persönlichen Kontaktdaten und Ihre E-Mail hinterlegen. Damit können wir Sie benachrichtigen, sobald Ihr Angebot freigeschaltet wurde.
+Sie haben auch die Möglichkeit, Ihre Anzeige als pdf-Datei hochzuladen.</p>
+
+3. Nachdem Sie Ihre Angaben eingetragen haben, klicken Sie bitte auf „absenden“.<br>
+4. Ihre Anzeige wird von den Mitarbeiter(inne)n des Career Centers nach einer Prüfung freigeschaltet. Die Prüfung erfolgt lediglich auf Plausibilität und formale Fehler. Das Career Center behält sich allerdings vor, über eine endgültige Veröffentlichung zu entscheiden.<br>
+5. Wenn Sie eine Kontakt-E-Mail-Adresse angegeben haben, senden wir Ihnen eine Benachrichtigung über die Freischaltung Ihres Angebotes zu.<br>
+
+<em>Falls Sie Fragen haben oder Hilfe beim Einstellen Ihres Angebotes benötigen, können Sie uns gern unter +49 341 97-30030 oder careercenter@uni-leipzig.de kontaktieren.</em>
+			
+			
+			
+			
+			
+			<a href="<?php echo Yii::app()->request->baseUrl; ?>/docs/Einstellung_eines_Angebotes_im_Jobportal_des_Career_Centers.pdf">Einstellung eines Angebotes im Jobportal des Career Centers</a> (PDF).
 		</div>
 	</div>
 </div>

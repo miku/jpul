@@ -126,7 +126,7 @@
 	</div>
 		 	
 	<div class="form-item" style="font-size: 12px;">
-		<?php echo CHtml::submitButton(Yii::t('app', 'Submit')); ?> <?php echo Yii::t('app', 'or') ?> <a href="<?php echo $this->createUrl('job/index') ?>"><?php echo Yii::t('app', 'cancel'); ?></a>
+		<?php echo CHtml::submitButton(Yii::t('app', 'Submit')); ?> <?php echo Yii::t('app', 'or') ?> <a href="<?php echo $this->createUrl('admin/index') ?>"><?php echo Yii::t('app', 'cancel'); ?></a>
 	</div>
 
 	<?php $this->endWidget(); ?>	

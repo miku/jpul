@@ -67,7 +67,7 @@ $(document).ready(function() {
 	<?php if ($models): ?>
 		<div id="pagination">
 			
-			<span class="total"><?php echo $total ?></span>
+			<span class="total">Insgesamt <?php echo $total ?> Angebote.</span>
 			
 
 			<?php if ($page > 1): ?>

@@ -3,13 +3,11 @@
 	<div id="main">
 
 		<div id="generic-header">
-			Für Arbeitgeber und Institutionen
+			Willkommen im Jobportal des Career Centers der Universität Leipzig
 		</div>
 
 		<div id="main-content" style="font-size: 12px; padding: 10px; margin: 10px 10px 10px 20px;">
 
-<h2>Willkommen im Jobportal des Career Centers der Universität Leipzig</h2>
-<br>
 <br>
 <p>Sie sind auf der Suche nach engagierten Nachwuchskräften? Unser Jobportal bietet Ihnen als Arbeitgeber eine Plattform, um gezielt hoch qualifizierte und motivierte Studierende und Absolvent(inn)en aller Fachrichtungen anzusprechen.  Derzeit sind ca. 26.000 Studierende an der Universität Leipzig immatrikuliert und erwerben Fachwissen an den Fakultäten der Erziehungswissenschaft, Theologie, Geschichte, Kunst- und Orientwissenschaft, Sozialwissenschaft und Philosophie, Philologie, Juristik, Wirtschaftswissenschaft, Sportwissenschaft, Medizin, Veterinärmedizin, Biowissenschaften, Pharmazie und Psychologie, Physik und Geowissenschaften, Chemie und Mineralogie sowie Mathematik und Informatik.</p>
 <br>

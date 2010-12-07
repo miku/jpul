@@ -179,7 +179,7 @@
 	function contains($haystack, $needle) {
 		if ($needle === "") { return false; }
 		
-		$pos = strpos($haystack,$needle);
+		$pos = mb_strpos($haystack,$needle);
 
 		if($pos === false) {
  			return false;
@@ -189,12 +189,6 @@
 		}
 	}
 
-	function containsDeprecated($str, $content, $ignorecase=true){
-    	if ($ignorecase){
-        	$str = strtolower($str);
-        	$content = strtolower($content);
-    	}  
-    return strpos($content,$str) ? true : false;
 }
 	
 ?>

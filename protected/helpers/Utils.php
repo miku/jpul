@@ -22,13 +22,27 @@
 	 * @param string replacement, defaults to '...'
 	 * @return shortened string
 	 */
-	function cut_text($string, $length, $replacer = '...') 
+	function cut_text_wo_wordsplit($string, $length, $replacer = '...') 
 	{ 
 		if(mb_strlen($string) > $length) 
 			return (preg_match('/^(.*)\W.*$/', 
 				mb_substr($string, 0, $length+1), $matches) ? $matches[1] : mb_substr($string, 0, $length)) . $replacer; 
 		return $string; 
 	}
+
+	/**
+	 * Cut the text, without splitting within words.
+	 * @param string the text to be splitted
+	 * @param integer cut to this length (maximum)
+	 * @param string replacement, defaults to '...'
+	 * @return shortened string
+	 */
+	function cut_text($string, $length, $replacer = '...') 
+	{ 
+		$string = mb_substr($string, 0, $length+1) . $replacer;
+		return $string; 
+	}
+
 	
 	function get_captcha_html() {
 		$r = rand(100, 500);

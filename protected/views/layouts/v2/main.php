@@ -46,7 +46,6 @@
 					<ul>
 					<?php if (Yii::app()->user->getId() != NULL): ?>
 						<?php if (Yii::app()->user->isAdmin()): ?>
-							<li><a href="<?php echo $this->createUrl('job/create'); ?>">Neues Angebot einstellen</a></li>
 							<li><a href="<?php echo $this->createUrl('site/options'); ?>">Einstellungen</a></li>
 						<?php endif; ?>
 						<li style="color: #CACACA; ">

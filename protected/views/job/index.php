@@ -51,7 +51,12 @@ $(document).ready(function() {
 		<div id="listing">
 			<?php 
 			foreach ($models as $i => $model) {
-				$this->renderPartial('_post', array('model' => $model, 'index' => $i));
+				if (isset($original_query) && $original_query !== "") {
+					$this->renderPartial('_post', array('model' => $model, 'index' => $i, 'original_query' => $original_query));
+				} else {
+					$this->renderPartial('_post', array('model' => $model, 'index' => $i));
+				}
+				
 			}
 			?>
 			<?php if (!$models): ?>

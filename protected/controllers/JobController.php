@@ -104,8 +104,10 @@ class JobController extends Controller
 			$models = Job::model()->findAllByAttributes(array('id' => $pks), $criteria);
 			$current_start = ($page - 1) * self::PAGE_SIZE;;
 			$current_end = ($page - 1) * self::PAGE_SIZE + self::PAGE_SIZE;
-		} else {
 			
+			Yii::app()->session['snapBackSearchTerm'] = $original_query;
+		} else {
+
 			$total = count(Job::model()->findAll($criteria));
 
 			// fix number of offers per page ...
@@ -116,7 +118,10 @@ class JobController extends Controller
 			$models = Job::model()->findAll($criteria);
 			
 			$original_query = null;
+			Yii::app()->session['snapBackSearchTerm'] = '';
 		}
+		
+		Yii::app()->session['snapBackPage'] = $page;
 
 		$number_of_pages = ceil($total / self::PAGE_SIZE);
 		$current_start = ($page - 1) * self::PAGE_SIZE;;
@@ -234,7 +239,7 @@ class JobController extends Controller
 	/**
 	 * Job details.
 	 */
-	public function actionView($id)
+	public function actionView($id, $from = '')
 	{
 		$model = Job::model()->findByPk($id);
 		if (!$model) {
@@ -245,3 +250,4 @@ class JobController extends Controller
 	}
 	
 } // EOF
+

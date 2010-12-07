@@ -3,10 +3,25 @@
 		<div id="view-content">
 
 			<div id="view-header">
-				<div id="mini-nav">
-					<a href="<?php echo $this->createUrl('job/index'); ?>">Zurück zur Übersicht</a>
-				</div>
 
+				<div id="mini-nav">
+					<?php
+						$_params = array();
+						if (Yii::app()->session['snapBackSearchTerm'] !== "") {
+							$_params['q'] = Yii::app()->session['snapBackSearchTerm'];
+						}
+						if (Yii::app()->session['snapBackPage'] !== "") {
+							$_params['page'] = Yii::app()->session['snapBackPage'];
+						}
+						
+					?>
+					<?php if (Yii::app()->session['snapBackSearchTerm'] !== ""): ?>
+						<a href="<?php echo $this->createUrl('job/index', $_params); ?>">Zurück zu den Ergebnissen</a>
+					<?php else: ?>
+						<a href="<?php echo $this->createUrl('job/index'); ?>">Zurück zur Übersicht</a>
+					<?php endif ?>
+					
+				</div>
 
 				<div id="view-job-title"><?php echo $model->title ?></div>
 
@@ -60,7 +75,12 @@
 			</div>
 			
 			<div id="bottom-nav">
-				<a href="<?php echo $this->createUrl('job/index'); ?>">Zurück zur Übersicht</a>
+				<?php if (Yii::app()->session['snapBackSearchTerm'] !== ""): ?>
+					<a href="<?php echo $this->createUrl('job/index', $_params); ?>">Zurück zu den Ergebnissen</a>
+				<?php else: ?>
+					<a href="<?php echo $this->createUrl('job/index'); ?>">Zurück zur Übersicht</a>
+				<?php endif ?>
+
 			</div>
 		</div>  
 	</div>

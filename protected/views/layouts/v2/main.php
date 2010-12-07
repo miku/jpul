@@ -12,9 +12,10 @@
        Remove this if you use the .htaccess -->
   <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> -->
  
-  <title>Wireframe v2</title>
-  <meta name="description" content="Jobportal des Career Centers der Universität Leipzig">
-  <meta name="author" content="Martin Czygan <martin.czygan@gmail.com">
+  <title>Jobportal des Career Centers der Universität Leipzig.</title>
+  <meta name="description" content="Jobportal des Career Centers der Universität Leipzig.">
+  <meta name="author" content="Career Center, careercenter@uni-leipzig.de">
+  <meta name="keywords" content="Arbeitsangebote, Job, Studenten, Absolventen, Hochschule, Jobportal, Listing">
  
   <!-- Mobile viewport optimized: j.mp/bplateviewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">

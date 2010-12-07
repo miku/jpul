@@ -39,7 +39,9 @@
 	 */
 	function cut_text($string, $length, $replacer = '...') 
 	{ 
-		$string = mb_substr($string, 0, $length+1) . $replacer;
+		if (mb_strlen($string) > $length) {
+			$string = mb_substr($string, 0, $length+1) . $replacer;
+		}
 		return $string; 
 	}
 

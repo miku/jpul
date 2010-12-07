@@ -2,7 +2,14 @@
 <div class="post">
 	<a class="fav-toggle" href="#"></a>
 	<p class="post-title">
-		<a href="<?php echo $this->createUrl('job/view', array('id' => $model->id)); ?>" title="<?php echo $model->title; ?>"><?php echo cut_text($model->title, 50); ?></a> 
+		<?php if (isset($original_query) && $original_query !== ""): ?>
+			<a href="<?php echo $this->createUrl('job/view', array('id' => $model->id, 'from' => $original_query)); ?>" title="<?php echo $model->title; ?>">
+				<?php echo cut_text($model->title, 50); ?></a> 
+		<?php else: ?>
+			<a href="<?php echo $this->createUrl('job/view', array('id' => $model->id)); ?>" title="<?php echo $model->title; ?>">
+				<?php echo cut_text($model->title, 50); ?></a> 
+		<?php endif ?>
+				
 		<span class="post-company"><?php echo cut_text($model->company, 40) ?></span>
 		<span class="post-posted"><?php echo time_since($model->date_added) ?></span>
 	</p>

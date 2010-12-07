@@ -86,7 +86,6 @@
 	</div>
 </div>
 
-
 <div id="sidebar-container">
 	<div id="sidebar">
 		<?php $this->renderPartial('_sidebar_contact'); ?>

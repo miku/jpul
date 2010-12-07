@@ -10,7 +10,7 @@
 				<?php echo cut_text($model->title, 50); ?></a> 
 		<?php endif ?>
 				
-		<span class="post-company"><?php echo cut_text($model->company, 40) ?></span>
+		<span class="post-company"><?php echo cut_text($model->company, 30) ?></span>
 		<span class="post-posted"><?php echo time_since($model->date_added) ?></span>
 	</p>
 	<p class="post-location">

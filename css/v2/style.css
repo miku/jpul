@@ -377,7 +377,7 @@ label {
 
 .errorMessage {
 	font-size: 12px;
-	color: #fd765e;
+	color: #F88635;
 }
 
 .job-count {
@@ -441,7 +441,7 @@ label {
 }
 
 .form-item {
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 	padding: 10px;
 	background: #EFEFEF;
 }
@@ -450,12 +450,12 @@ label {
 	padding: 3px;
 }
 
-.form-item-label p {
+.form-item p {
 	color: gray;
 	font-size: 10px;
 	margin-top: 5px;
 }
-.form-item-label {
+.form_item_label {
 	width: 190px;
 	float: left;
 	text-align: top;
@@ -463,6 +463,14 @@ label {
 
 .form_item_field {
 	margin-left: 200px;
+}
+
+.form_item_head {
+	background: white;
+	padding: 5px 10px 5px 10px;
+	border: solid 2px #EFEFEF;
+	font-size: 12px;
+	color: gray;
 }
 
 .filterbox {
@@ -485,4 +493,10 @@ label {
 
 a.no-underline:hover {
 	text-decoration: none;
+}
+
+.errorSummary {
+	color: #F88635;
+	padding: 0 10px 5px 10px;
+	font-size: 12px;
 }

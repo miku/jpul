@@ -14,6 +14,29 @@ class AdminController extends Controller
 	const PAGE_SIZE = 20;
 	// 6 * 7 * 24 * 60 * 60 = six weeks
 	const DEFAULT_EXPIRATION_SECONDS = 3628800; 	
+	
+	
+	/**
+	 * Get the path to the uploaded job attachments.
+	 * @return Job attachments upload path
+	 */
+	public function getSearchIndexStore()
+	{
+		return Yii::app()->basePath . '/runtime/search';
+	}
+
+	/**
+	 * Get the path to the uploaded job attachments.
+	 * @param string name of the model (here 'job')
+	 * @param integer id of the model instance
+	 * @param string file extension, defaults to 'pdf'
+	 * @return Job attachments upload path for a particular model
+	 */
+	public function getUploadFilePath($modelName, $id, $extension = 'pdf')
+	{
+		return $this->getUploadPath() . '/Attachment_' . $modelName . '_' . $id . '.' . $extension;
+	}
+
 
 	public function actionFilter($filter = "") {
 
@@ -193,4 +216,82 @@ class AdminController extends Controller
 		Yii::log(Yii::app()->request->userHostAddress, CLogger::LEVEL_INFO, "actionView");
 		$this->render('view', array('model' => $model));
 	}
+	
+	
+		// Lucene related stuff ... //
+
+	protected function removeFromSearchIndex($model) {
+		$index = new Zend_Search_Lucene($this->getSearchIndexStore(), false);
+		foreach ($index->find('pk:' . $model->id) as $hit) {
+    		$index->delete($hit->id);
+		}		
+	}
+
+	/**
+	 * Update search index.
+	 */	
+	protected function updateSearchIndex($model) {
+		
+		$index = new Zend_Search_Lucene($this->getSearchIndexStore(), false);
+		foreach ($index->find('pk:' . $model->id) as $hit) {
+    		$index->delete($hit->id);
+		}
+		
+		// only include public and not expired 
+		if ($model->status_id != 2 || $model->isExpired()) { return; }
+		
+		$doc = new Zend_Search_Lucene_Document();
+		// store job primary key to identify it in the search results
+		$doc->addField(Zend_Search_Lucene_Field::Keyword('pk', $model->id));
+		// index job fields
+		$doc->addField(Zend_Search_Lucene_Field::UnStored('position', $model->title, 'utf-8'));
+		$doc->addField(Zend_Search_Lucene_Field::UnStored('company', $model->company, 'utf-8'));
+		$doc->addField(Zend_Search_Lucene_Field::UnStored('location', $model->city, 'utf-8'));
+		$doc->addField(Zend_Search_Lucene_Field::UnStored('description', $model->description, 'utf-8'));
+		
+		$doc->addField(Zend_Search_Lucene_Field::UnStored('sector', $model->sector, 'utf-8'));
+		$doc->addField(Zend_Search_Lucene_Field::UnStored('study', $model->study, 'utf-8'));
+
+		$index->addDocument($doc);
+		$index->commit();
+		Yii::log("Updated search index for document id: " . $model->id, CLogger::LEVEL_INFO, "updateSearchIndex");		
+	}
+	
+	/**
+	 * Rebuild search index.
+	 */	
+	public function actionRebuildSearchIndex() {
+
+		$index = new Zend_Search_Lucene($this->getSearchIndexStore(), true);
+		
+		$criteria=new CDbCriteria;
+		$criteria->condition = 'status_id=:status_id';
+		$criteria->params=array(':status_id'=>2);
+		$models = Job::model()->findAll($criteria);
+		
+		foreach ($models as $model) {
+
+			// only include public and not expired 
+			if ($model->status_id != 2 || $model->isExpired()) { continue; }
+
+			$doc = new Zend_Search_Lucene_Document();
+ 
+			// store job primary key to identify it in the search results
+			$doc->addField(Zend_Search_Lucene_Field::Keyword('pk', $model->id));
+
+			// index job fields
+			$doc->addField(Zend_Search_Lucene_Field::UnStored('position', $model->title, 'utf-8'));
+			$doc->addField(Zend_Search_Lucene_Field::UnStored('company', $model->company, 'utf-8'));
+			$doc->addField(Zend_Search_Lucene_Field::UnStored('location', $model->city, 'utf-8'));
+			$doc->addField(Zend_Search_Lucene_Field::UnStored('description', $model->description, 'utf-8'));
+
+			$index->addDocument($doc);
+			
+			Yii::log("Added document id: " . $model->id, CLogger::LEVEL_INFO, "actionRebuildSearchIndex");
+		}
+
+		$index->commit();
+		$this->redirect(array('index'));
+	}
+
 }

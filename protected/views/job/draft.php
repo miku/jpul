@@ -1,3 +1,9 @@
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+  		$("#Job_title").focus();
+	});
+</script>
+
 <div id="main-container">
 	<div id="main">	
 		<div id="generic-header">Neues Angebot erstellen</div>
@@ -9,10 +15,8 @@
 	</div> <!-- main -->
 </div> <!-- main-container -->
 
-<?php $this->renderPartial('_sidebar'); ?>
-
-<script type="text/javascript" charset="utf-8">
-	$(document).ready(function() {
-  		$("#Job_title").focus();
-	});
-</script>
+<div id="sidebar-container">
+	<div id="sidebar">
+		<?php $this->renderPartial('_sidebar_contact'); ?>
+	</div>	
+</div>

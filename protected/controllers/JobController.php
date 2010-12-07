@@ -155,6 +155,7 @@ class JobController extends Controller
 	 */
 	public function actionDraft()
 	{
+		$current_time = time();
 		$model = new Job;
 
 		if(isset($_POST['Job'])) {
@@ -172,6 +173,7 @@ class JobController extends Controller
 				Yii::log("Expiration set manually: " . $sanitized_post['expiration_date'], CLogger::LEVEL_INFO, "actionCreate");
 				$epoch_or_false = strtotime($sanitized_post['expiration_date']);
 				if ($epoch_or_false) {
+					
 					$model->expiration_date = $epoch_or_false;
 				} else {
 					$model->expiration_date = $model->date_added + self::DEFAULT_EXPIRATION_SECONDS;
@@ -324,83 +326,6 @@ class JobController extends Controller
 			throw new CHttpException(500, Yii::t('app', 'Your request is not valid.'));
 		}
 
-		$this->redirect(array('index'));
-	}
-
-
-	// Lucene related stuff ... //
-
-	protected function removeFromSearchIndex($model) {
-		$index = new Zend_Search_Lucene($this->getSearchIndexStore(), false);
-		foreach ($index->find('pk:' . $model->id) as $hit) {
-    		$index->delete($hit->id);
-		}		
-	}
-
-	/**
-	 * Update search index.
-	 */	
-	protected function updateSearchIndex($model) {
-		
-		$index = new Zend_Search_Lucene($this->getSearchIndexStore(), false);
-		foreach ($index->find('pk:' . $model->id) as $hit) {
-    		$index->delete($hit->id);
-		}
-		
-		// only include public and not expired 
-		if ($model->status_id != 2 || $model->isExpired()) { return; }
-		
-		$doc = new Zend_Search_Lucene_Document();
-		// store job primary key to identify it in the search results
-		$doc->addField(Zend_Search_Lucene_Field::Keyword('pk', $model->id));
-		// index job fields
-		$doc->addField(Zend_Search_Lucene_Field::UnStored('position', $model->title, 'utf-8'));
-		$doc->addField(Zend_Search_Lucene_Field::UnStored('company', $model->company, 'utf-8'));
-		$doc->addField(Zend_Search_Lucene_Field::UnStored('location', $model->city, 'utf-8'));
-		$doc->addField(Zend_Search_Lucene_Field::UnStored('description', $model->description, 'utf-8'));
-		
-		$doc->addField(Zend_Search_Lucene_Field::UnStored('sector', $model->sector, 'utf-8'));
-		$doc->addField(Zend_Search_Lucene_Field::UnStored('study', $model->study, 'utf-8'));
-
-		$index->addDocument($doc);
-		$index->commit();
-		Yii::log("Updated search index for document id: " . $model->id, CLogger::LEVEL_INFO, "updateSearchIndex");		
-	}
-	
-	/**
-	 * Rebuild search index.
-	 */	
-	public function actionRebuildSearchIndex() {
-
-		$index = new Zend_Search_Lucene($this->getSearchIndexStore(), true);
-		
-		$criteria=new CDbCriteria;
-		$criteria->condition = 'status_id=:status_id';
-		$criteria->params=array(':status_id'=>2);
-		$models = Job::model()->findAll($criteria);
-		
-		foreach ($models as $model) {
-
-			// only include public and not expired 
-			if ($model->status_id != 2 || $model->isExpired()) { continue; }
-
-			$doc = new Zend_Search_Lucene_Document();
- 
-			// store job primary key to identify it in the search results
-			$doc->addField(Zend_Search_Lucene_Field::Keyword('pk', $model->id));
-
-			// index job fields
-			$doc->addField(Zend_Search_Lucene_Field::UnStored('position', $model->title, 'utf-8'));
-			$doc->addField(Zend_Search_Lucene_Field::UnStored('company', $model->company, 'utf-8'));
-			$doc->addField(Zend_Search_Lucene_Field::UnStored('location', $model->city, 'utf-8'));
-			$doc->addField(Zend_Search_Lucene_Field::UnStored('description', $model->description, 'utf-8'));
-
-			$index->addDocument($doc);
-			
-			Yii::log("Added document id: " . $model->id, CLogger::LEVEL_INFO, "actionRebuildSearchIndex");
-		}
-
-		$index->commit();
 		$this->redirect(array('index'));
 	}
 	

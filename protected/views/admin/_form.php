@@ -117,6 +117,11 @@
 		<div class="form_item_label"><label for="captcha_challenge">Sicherheitsfrage</label></div>
 		<div class="form_item_field"><?php echo get_captcha_html(); ?></div>
 	</div>
+
+	<div class="form-item">
+		<div class="form_item_label"> <?php echo $form->labelEx($model,'status_id'); ?> </div>
+		<div class="form_item_field"><?php echo $form->dropDownList($model, 'status_id', CHtml::listData(JobStatus::model()->findAll(), 'id', 'status'),array('prompt' => 'Status der Anzeige')); ?></div>
+	</div>
 		 	
 	<div class="form-item" style="font-size: 12px;">
 		<?php echo CHtml::submitButton(Yii::t('app', 'Submit')); ?> <?php echo Yii::t('app', 'or') ?> <a href="<?php echo $this->createUrl('job/index') ?>"><?php echo Yii::t('app', 'cancel'); ?></a>

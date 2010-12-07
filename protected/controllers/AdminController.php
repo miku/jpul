@@ -28,6 +28,15 @@ class AdminController extends Controller
 	public function getAdminSearchIndexStore() {
 		return Yii::app()->basePath . '/runtime/adminsearch';
 	}
+	
+	/**
+	 * Yii filters
+	 * @return Our request filters
+	 */
+	public function filters()
+	{
+		return array('adminOnly');
+	}
 
 
 	/**

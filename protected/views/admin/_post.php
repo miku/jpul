@@ -19,5 +19,5 @@
 	<p class="post-location">
 		<?php echo format_model_location($model); ?>		
 	</p>
-	<p class="post-description-teaser"><?php echo cut_text($model->description, 110) ?></p>
+	<p class="post-description-teaser"><?php echo cut_text($model->description, 100) ?></p>
 </div>

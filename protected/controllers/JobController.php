@@ -11,7 +11,7 @@ require_once('Utils.php');
 class JobController extends Controller
 {
 	// jobs per page, defaults to 30
-	const PAGE_SIZE = 20;
+	const PAGE_SIZE = 5;
 	// 6 * 7 * 24 * 60 * 60 = six weeks
 	const DEFAULT_EXPIRATION_SECONDS = 3628800; 		
 	
@@ -50,7 +50,7 @@ class JobController extends Controller
 	/**
 	 * Index action. Default page is 0.
 	 */
-	public function actionIndex($page = 1, $sort = 'd') {
+	public function actionIndex($page = 1, $sort = null) {
 
 		$current_time = time();
 
@@ -77,11 +77,7 @@ class JobController extends Controller
 		// just show the public offers, which are not expired ...
 		$criteria->condition = 'status_id=:status_id AND expiration_date > :current_time';
 		$criteria->params=array(':status_id' => 2, ':current_time' => $current_time);
-		
-		// fix number of offers per page ...
-		$criteria->limit = self::PAGE_SIZE;
-		$criteria->offset = ($page - 1) * self::PAGE_SIZE;;
-		
+				
 		// if we have a term query ...
 		if (isset($_GET['q']) && $_GET['q'] != '') {
 			$index = new Zend_Search_Lucene($this->getSearchIndexStore());
@@ -98,15 +94,27 @@ class JobController extends Controller
  			foreach ($results as $result) {
 				$pks[] = $result->pk;
 			}
+
+			$total = count(Job::model()->findAllByAttributes(array('id' => $pks), $criteria));
+
+			// fix number of offers per page ...
+			$criteria->limit = self::PAGE_SIZE;
+			$criteria->offset = ($page - 1) * self::PAGE_SIZE;;
 			
-			$total = count($models = Job::model()->findAllByAttributes(array('id' => $pks), $criteria));
 			$models = Job::model()->findAllByAttributes(array('id' => $pks), $criteria);
 			$current_start = ($page - 1) * self::PAGE_SIZE;;
 			$current_end = ($page - 1) * self::PAGE_SIZE + self::PAGE_SIZE;
 		} else {
-			// just the default index action ...
+			
 			$total = count(Job::model()->findAll($criteria));
+
+			// fix number of offers per page ...
+			$criteria->limit = self::PAGE_SIZE;
+			$criteria->offset = ($page - 1) * self::PAGE_SIZE;;
+
+			// just the default index action ...
 			$models = Job::model()->findAll($criteria);
+			
 			$original_query = null;
 		}
 

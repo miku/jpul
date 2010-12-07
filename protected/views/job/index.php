@@ -9,7 +9,7 @@ $(document).ready(function() {
 			$(this).addClass("isfav");
 		}
 	});
-	
+
 	$("#sort").change(function() {
 		var sortOrder = $("#sort option:selected").text();
 		var value = sortOrder.substr(0, 1).toLowerCase();
@@ -22,6 +22,7 @@ $(document).ready(function() {
 
 <div id="main-container">
 <div id="main">
+
 	<div id="main-header">
 		<div id="searchbox">
 			<form action="<?php echo $this->createUrl('job/index') ?>" method="get" accept-charset="utf-8">
@@ -43,9 +44,8 @@ $(document).ready(function() {
 				<option <?php if ($sort === "o"): ?>selected="selected" <?php endif; ?> value="d">Ort</option>															
 			</select>
 		</div>
-
-		
 	</div>
+
 	<div id="main-content">
 
 		<div id="listing">
@@ -56,41 +56,43 @@ $(document).ready(function() {
 			?>
 		</div>
 
-
 	<?php if ($models): ?>
 		<div id="pagination">
 
 			<?php if ($page > 1): ?>
-
-				<?php if (isset($original_query)): ?>
-					<a href="<?php echo $this->createUrl('job/search', array('page' => $page - 1, 'q' => $original_query)) ?>">< Vorherige</a>
-				<?php else: ?>
-					<a href="<?php echo $this->createUrl('job/index', array('page' => $page - 1)) ?>">< Vorherige</a>
-				<?php endif ?>
-
+				<?php
+					$_params = array();
+					if (isset($original_query)) { $_params['q'] = $original_query; }
+					if (isset($sort)) { $_params['sort'] = $sort; }
+					$_params['page'] = $page - 1;
+				?>
+				<a href="<?php echo $this->createUrl('job/index', $_params); ?>">&lt; Vorherige</a>
 			<?php else: ?>
-				<span class="inactive">< Vorherige</span>
+				<span class="inactive">&lt; Vorherige</span>
 			<?php endif; ?>
 
-			<?php if (isset($original_query)): ?>			
-				<a class="current-page" href="<?php echo $this->createUrl('job/search', array('page' => $page, 'q' => $original_query)) ?>"><?php echo $page ?></a>
-			<?php else: ?>
-				<a class="current-page" href="<?php echo $this->createUrl('job/index', array('page' => $page)) ?>"><?php echo $page ?></a>
-			<?php endif ?>
+			<?php
+				$_params = array();
+				if (isset($original_query)) { $_params['q'] = $original_query; }
+				if (isset($sort)) { $_params['sort'] = $sort; }
+				$_params['page'] = $page;
+			?>
+			<a class="current-page" href="<?php echo $this->createUrl('job/index', $_params) ?>"><?php echo $page ?></a>
 
 			<?php if ($current_end < $total): ?>
-				<?php if (isset($original_query)): ?>
-					<a href="<?php echo $this->createUrl('job/search', array('page' => $page + 1, 'q' => $original_query)) ?>">Nächste ></a>
-				<?php else: ?>
-					<a href="<?php echo $this->createUrl('job/index', array('page' => $page + 1)) ?>">Nächste ></a>
-				<?php endif; ?>
-
+				<?php
+					$_params = array();
+					if (isset($original_query)) { $_params['q'] = $original_query; }
+					if (isset($sort)) { $_params['sort'] = $sort; }
+					$_params['page'] = $page + 1;
+				?>
+				<a href="<?php echo $this->createUrl('job/index', $_params) ?>">Nächste &gt;</a>
 			<?php else: ?>
-				<span class="inactive">Nächste ></span>
+				<span class="inactive">Nächste &gt;</span>
 			<?php endif; ?>
-
 		</div>
 	<?php endif; ?>
+	
 	</div>
 </div> <!-- main -->
 </div> <!-- main-container -->

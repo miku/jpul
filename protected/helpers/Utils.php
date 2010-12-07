@@ -24,7 +24,7 @@
 	 */
 	function cut_text($string, $length, $replacer = '...') 
 	{ 
-		if(strlen($string) > $length) 
+		if(mb_strlen($string) > $length) 
 			return (preg_match('/^(.*)\W.*$/', 
 				mb_substr($string, 0, $length+1), $matches) ? $matches[1] : mb_substr($string, 0, $length)) . $replacer; 
 		return $string; 

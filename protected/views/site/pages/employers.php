@@ -2,7 +2,7 @@
 <div id="main-container">
 	<div id="main">
 
-		<div id="generic-header">
+		<div id="static-header">
 			Willkommen im Jobportal des Career Centers der Universität Leipzig
 		</div>
 
@@ -12,7 +12,7 @@
 <br>
 <p>Stellen Sie unkompliziert und innerhalb weniger Minuten Ihre Stellenanzeigen, Ihre Angebote für Praktika, Traineeships oder eine Tätigkeit als Werkstudent(in) in unserem Jobportal ein. Auch Angebote für Abschlussarbeiten (Diplom-, Master-, Bachelor- und Doktorarbeiten) können Sie auf unserem Jobportal veröffentlichen und somit allen Studierenden der Universität Leipzig unterbreiten. </p>
 <br>
-<p>Informieren Sie sich <a href="<?php echo Yii::app()->request->baseUrl; ?>/docs/Einstellung_eines_Angebotes_im_Jobportal_des_Career_Centers.pdf">hier</a>, wie das Eingeben Ihrer Anzeige erfolgt. Bei Fragen stehen wir Ihnen selbstverständlich gern telefonisch oder <a href="mailto:careercenter@uni-leipzig.de">per Mail</a> zur Verfügung.</p>
+<p>Informieren Sie sich <a href="<?php echo Yii::app()->request->baseUrl; ?>/docs/Einstellung_eines_Angebotes_im_Jobportal_des_Career_Centers.pdf">hier</a>, wie das Eingeben Ihrer Anzeige erfolgt. Bei Fragen stehen wir Ihnen selbstverständlich gern telefonisch oder per <a href="mailto:careercenter@uni-leipzig.de">Mail</a> zur Verfügung.</p>
 <br>
 <p>Wir freuen uns auf Ihre Angebote!</p>
 

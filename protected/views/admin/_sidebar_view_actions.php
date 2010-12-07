@@ -47,6 +47,15 @@ ID <?php echo $model->id; ?>
 <?php endif ?>
 
 
+<?php if ($model->status->status === "Deleted"): ?>
+	<a class="no-underline" href="<?php echo $this->createUrl('admin/setStatus', array("id" => $model->id, "status_id" => 3)); ?>">
+		<div class="filter-option filter-option-active">
+			Ins Archiv zurückholen
+		</div>
+	</a>
+<?php endif ?>
+
+
 <h1 class="spacetop">Bearbeiten</h1>
 
 <a class="no-underline" href="<?php echo $this->createUrl('admin/update', array("id" => $model->id)); ?>">

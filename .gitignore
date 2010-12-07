@@ -2,7 +2,7 @@
 uploads/*
 dumps/*sql
 
-index.php
+./index.php
 
 protected/runtime/application.log*
 protected/runtime/gii-1.1.4/*

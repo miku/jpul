@@ -26,7 +26,7 @@ $(document).ready(function() {
 	<div id="main-header">
 		<div id="searchbox">
 			<form action="<?php echo $this->createUrl('job/index') ?>" method="get" accept-charset="utf-8">
-				<input size="60" type="text" name="q" value="<?php if (isset($original_query)) echo $original_query ?>" id="search">
+				<input size="50" type="text" name="q" value="<?php if (isset($original_query)) echo $original_query ?>" id="search">
 				<input type="submit" value="Suchen" class="button">
 			</form>
 		</div>
@@ -66,6 +66,9 @@ $(document).ready(function() {
 
 	<?php if ($models): ?>
 		<div id="pagination">
+			
+			<span class="total"><?php echo $total ?></span>
+			
 
 			<?php if ($page > 1): ?>
 				<?php

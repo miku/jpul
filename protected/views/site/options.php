@@ -25,7 +25,7 @@
 		<tr class="even"><td><?php echo $form->textField($model,'value', array('size' => '60')); ?></td></tr>
 		<tr class="even error"><td><?php echo $form->error($model,'option'); ?></td></tr>
 
-		<tr class="even-dark"><td><input type="submit" value="Speichern"> oder <a style="font-size: 12px" href="<?php echo $this->createUrl('admin/index'); ?>">Abbrechen</a></td></tr>
+		<tr class="even-dark"><td><input type="submit" value="Speichern"> <span style="font-size:12px;">oder</span> <a style="font-size: 12px" href="<?php echo $this->createUrl('admin/index'); ?>">Abbrechen</a></td></tr>
 
 	<?php $this->endWidget(); ?>
 	</table>

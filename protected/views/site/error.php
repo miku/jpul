@@ -3,7 +3,7 @@
 <div id="main">
 
 <div id="generic-header">
-<p>Login</p>	
+	<p>Something went wrong.</p>
 </div>
 
 <div id="main-content">

@@ -63,7 +63,7 @@
 				</div>
 			</div>
 			<div id="title-logo">
-				<a href="http://www.uni-leipzig.de" title="Universität Leipzig"><img src="/images/v2/logo.jpg" alt="Universität Leipzig" /></a>
+				<a href="http://www.uni-leipzig.de" title="Universität Leipzig"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/v2/logo.jpg" alt="Universität Leipzig" /></a>
 			</div>			 
       		<div id="title-border">&nbsp;</div> 
 		</div>

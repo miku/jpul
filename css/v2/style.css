@@ -216,6 +216,7 @@ a:hover {
 	font-size: 14px;
 	color: #FF7b04;
 	margin-bottom: 5px;
+	font-weight: bold;
 }
 
 #mini-nav {
@@ -240,8 +241,8 @@ a:hover {
 }
 
 #view-download {
-	padding: 10px;
-	background: #ECECEC;
+	padding: 10px 10px 10px 20px;
+	background: #EAEAEA;
 }
 
 #intext-title {

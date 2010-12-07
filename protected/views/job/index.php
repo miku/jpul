@@ -39,7 +39,7 @@ $(document).ready(function() {
 				<select baseurl="<?php echo $this->createUrl('job/index') ?>?" id="sort" name="sort">
 			<?php endif ?>
 				<option <?php if ($sort === "d"): ?>selected="selected" <?php endif; ?> value="d">Datum</option>
-				<option <?php if ($sort === "t"): ?>selected="selected" <?php endif; ?> value="d">Title</option>
+				<option <?php if ($sort === "t"): ?>selected="selected" <?php endif; ?> value="d">Titel</option>
 				<option <?php if ($sort === "u"): ?>selected="selected" <?php endif; ?> value="d">Unternehmen</option>
 				<option <?php if ($sort === "o"): ?>selected="selected" <?php endif; ?> value="d">Ort</option>															
 			</select>

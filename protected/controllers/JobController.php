@@ -211,6 +211,8 @@ class JobController extends Controller
 	
 	protected function mailOnDraft($model) {
 		
+		$newline = chr(13) . chr(10);
+		
 		$email_model = Options::model()->findByAttributes(array("option" => "on-draft-notification-email-addresses"));
 		
 		$emails = $email_model->value;
@@ -218,10 +220,10 @@ class JobController extends Controller
 		if ($emails != '') {
 			$to      = $emails;
 			$subject = '[CC-Jobportal] Neues Jobangebot erstellt (Unternehmen: ' . $model->company . ')';
-			$message = 'Neues Jobangebot erstellt\n' .
-						'Unternehmen: ' . $model->company . ')' .
-						'Ort: ' . $model->city . '\n' .
-						'Ablauf der Bewerbungsfrist: ' . date("d.m.Y", $model->expiration_date) . '\n\n' .
+			$message = 'Neues Jobangebot erstellt' . $newline . 
+						'Unternehmen: ' . $model->company . $newline . 
+						'Ort: ' . $model->city . $newline .
+						'Ablauf der Bewerbungsfrist: ' . date("d.m.Y", $model->expiration_date) . $newline . $newline .
 						'URL im Jobportal: ' . Yii::app()->request->baseUrl . $this->createUrl('job/view', array('id' => $model->id));
 						
 			$headers = 'From: careercenter@uni-leipzig.de' . "\r\n" .

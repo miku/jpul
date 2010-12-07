@@ -517,3 +517,8 @@ a.no-underline:hover {
 	padding: 4px;
 	margin: 10px;
 }
+
+#static-header {
+	padding: 5px 15px 5px 15px;
+	background: url(../../images/v2/bg_headerbalken_studium.gif) repeat-x scroll 0 0;	
+}

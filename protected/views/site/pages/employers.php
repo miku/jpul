@@ -6,7 +6,7 @@
 			Für Arbeitgeber und Institutionen
 		</div>
 
-		<div id="main-content">
+		<div id="main-content" style="font-size: 12px; padding: 10px; margin: 10px;">
 			
 <h2>Einstellung eines Angebotes im Jobportal des Career Centers</h2>
 

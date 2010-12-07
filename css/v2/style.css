@@ -206,6 +206,12 @@ a:hover {
 	padding: 8px 25px 8px 25px;
 }
 
+#view-howtoapply {
+	margin-top: 5px;
+	background: #EFEFEE;
+	padding: 8px 25px 8px 25px;
+}
+
 #mini-nav {
 	font-size: 10px;
 	border-bottom: solid thin gray;

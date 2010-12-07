@@ -72,6 +72,10 @@
 		<?php $this->renderPartial('_sidebar_contact'); ?>
 		<!-- <?php $this->renderPartial('_sidebar_sharing', array('model' => $model)); ?> -->
 		<?php $this->renderPartial('_sidebar_for_employer'); ?>
+		
+		<?php if (Yii::app()->user->isAdmin()): ?>
+			<?php $this->renderPartial('admin/_sidebar_view_actions', array('model' => $model)); ?>
+		<?php endif ?>
 	</div>	
 </div>
 

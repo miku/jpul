@@ -47,16 +47,16 @@ class Controller extends CController
 		
 		
 		// simple request tracking ...
-		try {
+		// try {
 			$request = new Request();
 			$request->addr = $_SERVER["REMOTE_ADDR"];
 			$request->request_time = time();
 			$request->user_agent = $_SERVER["HTTP_USER_AGENT"];
 			$request->request_path = $_SERVER['REQUEST_URL'];
 			$request->save();
-		} catch (Exception $e) {
-			// die gracefully ... 
-		}
+		// } catch (Exception $e) {
+		// 	// die gracefully ... 
+		// }
 		
 		CHtml::$afterRequiredLabel = '';
 		

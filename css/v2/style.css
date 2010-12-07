@@ -4,10 +4,10 @@ ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, body, html, p, blockquote, fields
     margin: 0; padding: 0;
 }
 
-ul, ol {
+/*ul, ol {
     list-style-type: none;
 }
-
+*/
 body {
 	margin: 0 0 30px 0;
 	padding: 0;
@@ -199,6 +199,11 @@ a:hover {
 #view-content {
 	padding: 10px;
 	font-size: 12px;	
+}
+
+#view-description {
+	background: #EFEFEE;
+	padding: 8px 25px 8px 25px;
 }
 
 #mini-nav {
@@ -499,4 +504,16 @@ a.no-underline:hover {
 	color: #F88635;
 	padding: 0 10px 5px 10px;
 	font-size: 12px;
+}
+
+.noresults-box {
+	padding: 10px;
+	font-size: 12px;
+	background: #EFEFEF;
+}
+
+.sidebar-box {
+	background: #EFEFEF;
+	padding: 4px;
+	margin: 10px;
 }

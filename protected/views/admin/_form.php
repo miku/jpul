@@ -113,10 +113,12 @@
 	</div>
 
 
+<!--	
 	<div class="form-item">
 		<div class="form_item_label"><label for="captcha_challenge">Sicherheitsfrage</label></div>
 		<div class="form_item_field"><?php echo get_captcha_html(); ?></div>
 	</div>
+-->
 
 	<div class="form-item">
 		<div class="form_item_label"> <?php echo $form->labelEx($model,'status_id'); ?> </div>

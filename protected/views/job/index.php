@@ -54,6 +54,9 @@ $(document).ready(function() {
 				$this->renderPartial('_post', array('model' => $model, 'index' => $i));
 			}
 			?>
+			<?php if (!$models): ?>
+				<p class="noresults-box">Keine Ergebnisse gefunden. Versuchen Sie bitte weniger spezifische Suchbegriffe.</p>
+			<?php endif ?>
 		</div>
 
 	<?php if ($models): ?>

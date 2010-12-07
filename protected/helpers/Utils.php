@@ -6,8 +6,8 @@
 	function textilize($text)
 	{	
 		$t = new Textile;
-		return $t->TextileThis($text);
-		// return $t->TextileRestricted($text, $lite=0, $noimage=1, $rel='nofollow');
+		// return $t->TextileThis($text);
+		return $t->TextileRestricted($text, $lite=0, $noimage=1, $rel='nofollow');
 	}
 	
 	function is_valid_email_address($email_address)

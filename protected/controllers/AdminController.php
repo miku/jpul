@@ -24,6 +24,11 @@ class AdminController extends Controller
 	{
 		return Yii::app()->basePath . '/runtime/search';
 	}
+	
+	public function getAdminSearchIndexStore() {
+		return Yii::app()->basePath . '/runtime/adminsearch';
+	}
+
 
 	/**
 	 * Get the path to the uploaded job attachments.
@@ -128,18 +133,50 @@ class AdminController extends Controller
 		
 		Yii::log($_condition_string, CLogger::LEVEL_INFO, "actionIndex");
 
-		$total = count(Job::model()->findAll($criteria));
+		// if we have a term query ...
+		if (isset($_GET['q']) && $_GET['q'] != '') {
+			$index = new Zend_Search_Lucene($this->getAdminSearchIndexStore());
+			$original_query = $_GET['q'];
+			$query = trim($original_query) . '*';
 		
-		$number_of_pages = ceil($total / self::PAGE_SIZE);
+			try {
+				$results = $index->find($query);
+			} catch (Exception $e) {
+				$this->redirect(array('index'));
+			}
 		
-		$criteria->limit = self::PAGE_SIZE;
-		$criteria->offset = ($page - 1) * self::PAGE_SIZE;;
+			$pks = array();
+ 			foreach ($results as $result) {
+				$pks[] = $result->pk;
+			}
 
-		$models = Job::model()->findAll($criteria);
-		
+			$total = count(Job::model()->findAllByAttributes(array('id' => $pks), $criteria));
+
+			// fix number of offers per page ...
+			$criteria->limit = self::PAGE_SIZE;
+			$criteria->offset = ($page - 1) * self::PAGE_SIZE;;
+			
+			$models = Job::model()->findAllByAttributes(array('id' => $pks), $criteria);
+			$current_start = ($page - 1) * self::PAGE_SIZE;;
+			$current_end = ($page - 1) * self::PAGE_SIZE + self::PAGE_SIZE;
+		} else {
+			
+			$total = count(Job::model()->findAll($criteria));
+
+			// fix number of offers per page ...
+			$criteria->limit = self::PAGE_SIZE;
+			$criteria->offset = ($page - 1) * self::PAGE_SIZE;;
+
+			// just the default index action ...
+			$models = Job::model()->findAll($criteria);
+			
+			$original_query = null;
+		}
+
+		$number_of_pages = ceil($total / self::PAGE_SIZE);
 		$current_start = ($page - 1) * self::PAGE_SIZE;;
 		$current_end = ($page - 1) * self::PAGE_SIZE + self::PAGE_SIZE;
-
+		
 		$this->render('index', array(
 			'models'=>$models, 
 			'total' => $total,
@@ -197,6 +234,8 @@ class AdminController extends Controller
 						$model->attachment->saveAs($filename);
 					}
 					$this->updateSearchIndex($model);
+					$this->updateSearchIndex($model, "admin");
+					
 					$this->redirect(array('index'));
 				}
 			}
@@ -257,11 +296,23 @@ class AdminController extends Controller
 						$model->attachment->saveAs($filename);
 					}
 					$this->updateSearchIndex($model);
+					$this->updateSearchIndex($model, "admin");
+					
 					$this->redirect(array('index'));
 				}
 			}
 		}
 		$this->render('update', array('model' => $model));
+	}
+	
+	public function actionSetStatus($id, $status_id) {
+		$model = Job::model()->findByPk($id);
+		if (!$model) {
+			throw new CHttpException(400, Yii::t('app', 'Your request is not valid.'));
+		}
+		$model->status_id = $status_id;
+		$model->save();
+		$this->redirect(array('admin/view', 'id' => $id));
 	}
 
 	
@@ -291,6 +342,7 @@ class AdminController extends Controller
 		$model->status_id = 3;
 		
 		$this->removeFromSearchIndex($model);
+		$this->removeFromSearchIndex($model, "admin");
 		
 		if ($model->save(false)) {
 			Yii::log("Set status of record id: " . $model->id . " to: " . $model->status_id . " (deleted)", CLogger::LEVEL_INFO, "default");	
@@ -306,8 +358,13 @@ class AdminController extends Controller
 	
 		// Lucene related stuff ... //
 
-	protected function removeFromSearchIndex($model) {
-		$index = new Zend_Search_Lucene($this->getSearchIndexStore(), false);
+	protected function removeFromSearchIndex($model, $useIndex = "default") {
+		if ($useIndex === "admin") {
+			$index = new Zend_Search_Lucene($this->getAdminSearchIndexStore(), false);
+		} else {
+			$index = new Zend_Search_Lucene($this->getSearchIndexStore(), false);
+		}
+		
 		foreach ($index->find('pk:' . $model->id) as $hit) {
     		$index->delete($hit->id);
 		}		
@@ -316,15 +373,21 @@ class AdminController extends Controller
 	/**
 	 * Update search index.
 	 */	
-	protected function updateSearchIndex($model) {
+	protected function updateSearchIndex($model, $useIndex = "default") {
 		
-		$index = new Zend_Search_Lucene($this->getSearchIndexStore(), false);
+		if ($useIndex === "admin") {
+			$index = new Zend_Search_Lucene($this->getAdminSearchIndexStore(), false);
+		} else {
+			$index = new Zend_Search_Lucene($this->getSearchIndexStore(), false);
+		}
+
 		foreach ($index->find('pk:' . $model->id) as $hit) {
     		$index->delete($hit->id);
 		}
-		
-		// only include public and not expired 
-		if ($model->status_id != 2 || $model->isExpired()) { return; }
+
+		if ($useIndex !== "admin") {
+			if ($model->status_id != 2 || $model->isExpired()) { return; }
+		}
 		
 		$doc = new Zend_Search_Lucene_Document();
 		// store job primary key to identify it in the search results
@@ -346,19 +409,29 @@ class AdminController extends Controller
 	/**
 	 * Rebuild search index.
 	 */	
-	public function actionRebuildSearchIndex() {
+	public function actionRebuildSearchIndex($useIndex = "default") {
 
-		$index = new Zend_Search_Lucene($this->getSearchIndexStore(), true);
+		if ($useIndex === "admin") {
+			$index = new Zend_Search_Lucene($this->getAdminSearchIndexStore(), true);
+		} else {
+			$index = new Zend_Search_Lucene($this->getSearchIndexStore(), true);
+		}
 		
 		$criteria=new CDbCriteria;
-		$criteria->condition = 'status_id=:status_id';
-		$criteria->params=array(':status_id'=>2);
+
+		if ($useIndex !== "admin") {
+			$criteria->condition = 'status_id=:status_id';
+			$criteria->params=array(':status_id'=>2);
+		}
+
 		$models = Job::model()->findAll($criteria);
 		
 		foreach ($models as $model) {
 
-			// only include public and not expired 
-			if ($model->status_id != 2 || $model->isExpired()) { continue; }
+			if ($useIndex !== "admin") {
+				// only include public and not expired 
+				if ($model->status_id != 2 || $model->isExpired()) { continue; }
+			}
 
 			$doc = new Zend_Search_Lucene_Document();
  
@@ -366,6 +439,7 @@ class AdminController extends Controller
 			$doc->addField(Zend_Search_Lucene_Field::Keyword('pk', $model->id));
 
 			// index job fields
+			// $doc->addField(Zend_Search_Lucene_Field::UnStored('id', $model->id, 'utf-8'));
 			$doc->addField(Zend_Search_Lucene_Field::UnStored('position', $model->title, 'utf-8'));
 			$doc->addField(Zend_Search_Lucene_Field::UnStored('company', $model->company, 'utf-8'));
 			$doc->addField(Zend_Search_Lucene_Field::UnStored('location', $model->city, 'utf-8'));

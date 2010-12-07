@@ -8,7 +8,7 @@
 	<p class="post-title">
 		<span class="post-status status-tag-<?php echo strtolower($model->status->status); ?>"><?php echo $model->status->status ?></span>
 		<?php if ($model->isExpired()): ?>
-			<span class="post-status">Abgelaufen</span>
+			<span class="post-status">Expired</span>
 		<?php endif ?>
 
 		<a href="<?php echo $this->createUrl('admin/view', array('id' => $model->id)); ?>" 

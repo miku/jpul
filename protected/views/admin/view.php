@@ -34,7 +34,7 @@
 			<?php if ($model->how_to_apply): ?>
 				<div id="view-howtoapply">
 					<p class="intext-title">Bewerbungsweg</p>
-					<p><?php echo $model->how_to_apply ?></p>
+					<p><?php echo textilize($model->how_to_apply) ?></p>
 				</div>
 			<?php endif ?>
 
@@ -60,7 +60,7 @@
 			</div>
 			
 			<div id="bottom-nav">
-				<a href="<?php echo $this->createUrl('job/index'); ?>">Zurück zur Übersicht</a>
+				<a href="<?php echo $this->createUrl('admin/index'); ?>">Zurück zur Übersicht</a>
 			</div>
 		</div>  
 	</div>
@@ -70,7 +70,7 @@
 <div id="sidebar-container">
 	<div id="sidebar">
 		<?php $this->renderPartial('_sidebar_filter'); ?>
-		<?php $this->renderPartial('_sidebar_actions'); ?>
+		<?php $this->renderPartial('_sidebar_view_actions', array("model" => $model)); ?>
 	</div>	
 </div>
 

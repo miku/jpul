@@ -245,6 +245,10 @@ a:hover {
 	background: #EAEAEA;
 }
 
+#view-content p {
+	margin-bottom: 8px;
+}
+
 #intext-title {
 	color: #FF7b04;
 }

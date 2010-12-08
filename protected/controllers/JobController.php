@@ -164,7 +164,7 @@ class JobController extends Controller
 
 		if(isset($_POST['Job'])) {
 						
-			$sanitized_post = array_strip_tags($_POST['Job']);
+			$sanitized_post = array_strip_tags($_POST['Job'], '<br>');
 			
 			// $model->attributes = $_POST['Job']; // mass assignment
 			$model->attributes = $sanitized_post; 

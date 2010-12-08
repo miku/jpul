@@ -214,7 +214,7 @@ class AdminController extends Controller
 			}
 			Yii::log("Company Homepage after adjustments: " . $_POST['Job']['company_homepage'], CLogger::LEVEL_INFO, "actionCreate");
 			
-			$sanitized_post = array_strip_tags($_POST['Job']);
+			$sanitized_post = array_strip_tags($_POST['Job'], '<br>');
 			
 			// $model->attributes = $_POST['Job']; // mass assignment
 			$model->attributes = $sanitized_post; 
@@ -276,7 +276,7 @@ class AdminController extends Controller
 			Yii::log("Company Homepage after adjustments: " . $_POST['Job']['company_homepage'], CLogger::LEVEL_INFO, "actionUpdate");
 			
 			
-			$sanitized_post = array_strip_tags($_POST['Job']);
+			$sanitized_post = array_strip_tags($_POST['Job'], '<br>');
 
 			// $model->attributes = $_POST['Job'];			
 			$model->attributes = $sanitized_post;

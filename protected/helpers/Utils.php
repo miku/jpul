@@ -100,7 +100,7 @@
 		return true;
 	}
 
-	function array_strip_tags($ary)
+	function array_strip_tags($ary, $allowable = '')
 	{
 		$sanitized = $ary;
 		try 
@@ -108,7 +108,7 @@
 			foreach ($sanitized as $key => $value) 
 			{	
 				if (!is_string($value)) continue;
-				$sanitized[$key] = strip_tags($value);
+				$sanitized[$key] = strip_tags($value, $allowable);
 			}
 		} 
 		catch (Exception $e) 

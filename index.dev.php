@@ -7,7 +7,8 @@ $devhosts = array("chiba", "chiba.local",
 	"wlan0613.rz.uni-leipzig.de",
 	"wlan1589.rz.uni-leipzig.de",
 	"wlan0715.rz.uni-leipzig.de",
-	"wlan1595.rz.uni-leipzig.de");
+	"wlan1595.rz.uni-leipzig.de",
+	"wlan0104.rz.uni-leipzig.de");
 
 if (in_array(gethostname(), $devhosts)) {
 	// development environment

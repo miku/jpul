@@ -145,7 +145,7 @@
 	    $today = time(); /* Current unix time  */
 	    $since = $today - $original;
 	
-		if($since > 604800) {
+		if($since > 3628800) {
 			$print = date("M jS", $original);
 	
 			if($since > 31536000) {

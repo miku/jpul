@@ -153,6 +153,61 @@ class JobController extends Controller
 			throw new CHttpException(400, Yii::t('app', 'Your request is not valid.'));
 		}
 	}
+	
+	public function actionToggleFavorite($id) {
+		
+		$userFavsKey = "ufk__v1";
+		
+		Yii::log("Favorite: " . $id, CLogger::LEVEL_INFO, "actionToggleFavorite");
+		
+		if (!isset(Yii::app()->session[$userFavsKey])) {
+			Yii::app()->session[$userFavsKey] = array();
+		}
+		
+		$userFavs = Yii::app()->session[$userFavsKey];
+		
+		$removed = false;
+		
+		foreach ($userFavs as $key => $value) {
+			Yii::log("kv, id: " . $key . " => " . $value . " ;; " . $id, CLogger::LEVEL_INFO, "actionToggleFavorite");
+			
+			if ($value == $id) {
+				
+				unset($userFavs[$key]);
+				$removed = true;
+				Yii::log("Removed item: " . $id, CLogger::LEVEL_INFO, "default");
+				
+			}
+		}
+		
+		if (!$removed) {
+			array_push($userFavs, $id);
+		}
+		
+		Yii::app()->session[$userFavsKey] = $userFavs;
+		
+		$data = implode(", ", $userFavs);
+		
+		// $userFavsArray = split(",", $userFavs);
+		// 
+		// foreach ($userFavsArray as $key => $value) {
+		// 	Yii::log("userFavsArray, Key, Value: " . $key . " => " . $value, CLogger::LEVEL_INFO, "actionToggleFavorite");
+		// }
+		// 
+		// if (in_array($id, $userFavsArray)) {
+		// 	unset($userFavsArray[$id]);
+		// } else {
+		// 	$id; // doesn't really matter
+		// }
+		// Yii::log("User favorites: " . count($userFavsArray), CLogger::LEVEL_INFO, "actionToggleFavorite");
+		// 
+		// Yii::app()->session[$userFavsKey] = implode(",", $userFavsArray);		
+		// $data = Yii::app()->session[$userFavsKey];
+		
+		$this->renderPartial('_toggle_favorite', array('data'=>$data), false, true);
+		// $this->render('_toggle_favorite');
+		
+	}
 
 	/**
 	 * Create a new job posting.

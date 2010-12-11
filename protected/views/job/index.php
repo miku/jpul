@@ -48,7 +48,7 @@ $(document).ready(function() {
 		<div class="clear"></div>
 	</div>
 	
-	<div id="fav-subbar" style="font-size: 10px; margin: 0 10px 0 10px; padding: 10px 10px 10px 10px; background: aliceblue;">
+	<div id="fav-subbar" style="border: solid thin #EFEFEF; font-size: 10px; margin: 0 10px 0 10px; padding: 10px 10px 10px 10px; background: aliceblue;">
 		<?php $this->renderPartial('_favbar') ?>
 	</div>
 		

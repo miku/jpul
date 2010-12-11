@@ -104,6 +104,7 @@ return array(
 	
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'martin.czygan@gmail.com',
+		'adminEmail' => 'martin.czygan@gmail.com',
+		'favStore' => 'ccul__favs__v1',
 	),
 );

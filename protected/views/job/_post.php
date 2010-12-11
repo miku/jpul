@@ -4,7 +4,7 @@
 <!-- <a class="fav-toggle" href="<?php echo $this->createUrl('job/toggleFavorite', array('id' => $model->id));?>"></a> -->
 
 
-<?php if (isset(Yii::app()->session['ufk__v3']) && in_array_2($model->id, Yii::app()->session['ufk__v3'])): ?>
+<?php if (isset(Yii::app()->session[Yii::app()->params['favStore']]) && in_array_2($model->id, Yii::app()->session[Yii::app()->params['favStore']])): ?>
 	<?php echo CHtml::ajaxLink("", 
                               $this->createUrl('job/toggleFavorite', array('id' => $model->id)), 
                               array('update' => '#fav-subbar'),

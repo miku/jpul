@@ -43,8 +43,6 @@ $(document).ready(function() {
 		
 	</div>	
 	<div id="main-content">
-		<!-- <h3>Aktuelle Jobangebote <?php if (isset($original_query)) echo 'für ' . $original_query ?></h3> -->
-
 		<div id="listing">
 			<?php 
 		foreach ($models as $i => $model) {

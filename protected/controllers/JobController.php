@@ -46,19 +46,50 @@ class JobController extends Controller
 		return array('adminOnly + create, update, delete');
 	}
 
-
 	/**
-	 * Index action. Default page is 0.
+	 * Index action. Default page is 1.
+	 *
+	 * 'Index' serves different views for the sake of URL simplicity:
+	 * 
+	 *  (1) The default listing view,
+	 *  (2) search result view
+	 *  (3) favorites views.
+	 * 
+	 *  All three differ slightly in the way, the $models variable is
+	 *  built up. 
+	 * 
+	 *  (1) The default view uses 'normal' active record queries, with
+	 *      parameters concerning the page-number.
+	 *  (2) 'Search' uses the zend_lucene index to find matching records:
+	 *      
+	 *          $index->find($query);
+	 * 
+	 *      An array of primary keys is built up from the results and
+	 *      passed on to the 'normal' active record query procedure.
+	 *
+	 *  (3) Favorites are stored in a session variable, which is configured
+	 *      as param in config/main.php as favStore:
+	 *
+	 *          'favStore' => 'ccul__favs__v1',
+	 *      
+	 *      To access the favorites, use anywhere:
+	 * 
+	 *          Yii::app()->params['favStore']
+	 *
+	 *      The favorites are a list of hashes, like so:
+	 *
+	 *      (0 => ('id' => 3, 'title' => 'Junior Programmer (m/f)', 'url' => '/job/21'))
+	 *
+	 *      Even though, we just use the id at the moment, we store all the stuff. 
+	 *      If it's clear, we don't need it: TODO simplify 'favStore'.
+	 *      
 	 */
 	public function actionIndex($page = 1, $sort = null) {
 
 		$current_time = time();
-
-		// catch negative page numbers
-		// if ($page < 1) { $this->redirect(array('index', 'page' => 1)); }
-		
 		$criteria = new CDbCriteria;
 
+		// sort criteria ...
 		switch ($sort) {
 			case 't': // order by job title
 				$criteria->order = 'title';
@@ -78,7 +109,9 @@ class JobController extends Controller
 		$criteria->condition = 'status_id=:status_id AND expiration_date > :current_time';
 		$criteria->params=array(':status_id' => 2, ':current_time' => $current_time);
 		
+		// 
 		$useDefaultView = true;
+		
 		$viewName = null;
 				
 		// if we have a term query ...
@@ -118,13 +151,13 @@ class JobController extends Controller
 		
 		// special pages, likes favorite filter
 		if (isset($_GET['s']) && $_GET['s'] != '' && 
-			isset(Yii::app()->session['ufk__v3'])) {
+			isset(Yii::app()->session[Yii::app()->params['favStore']])) {
 				
-			if (count(Yii::app()->session['ufk__v3']) == 0) {
+			if (count(Yii::app()->session[Yii::app()->params['favStore']]) == 0) {
 				$this->redirect('index');
 			}
 
-			$favList = Yii::app()->session['ufk__v3'];
+			$favList = Yii::app()->session[Yii::app()->params['favStore']];
 			$models = array();
 			foreach ($favList as $key => $value) {
 				Yii::log($key . " => " . $value['id'], CLogger::LEVEL_INFO, "actionIndex");
@@ -202,24 +235,14 @@ class JobController extends Controller
 			throw new CHttpException(400, Yii::t('app', 'Your request is not valid.'));
 		}
 	}
-	
-	public function actionJobTitle($id) {
-		$model = Job::model()->findByPk($id);
-		if (!$model) {
-			throw new CHttpException(400, Yii::t('app', 'Your request is not valid.'));
-		}
-		Yii::log(Yii::app()->request->userHostAddress, CLogger::LEVEL_INFO, "actionView");
-		$this->renderPartial('_job_title', array('model' => $model));
-	}
-	
+		
 	public function actionToggleFavorite($id) {
 		
-		$userFavsKey = "ufk__v3";
-		if (!isset(Yii::app()->session[$userFavsKey])) {
-			Yii::app()->session[$userFavsKey] = array();
+		if (!isset(Yii::app()->session[Yii::app()->params['favStore']])) {
+			Yii::app()->session[Yii::app()->params['favStore']] = array();
 		}
 		
-		$userFavs = Yii::app()->session[$userFavsKey];
+		$userFavs = Yii::app()->session[Yii::app()->params['favStore']];
 		$removed = false;
 		foreach ($userFavs as $key => $value) {
 			if ($value["id"] == $id) {
@@ -243,30 +266,8 @@ class JobController extends Controller
 			}
 		}
 		
-		Yii::app()->session[$userFavsKey] = $userFavs;
-		
-		$data = "Bogus!"; // implode(", ", $userFavs);
-		
-		// $userFavsArray = split(",", $userFavs);
-		// 
-		// foreach ($userFavsArray as $key => $value) {
-		// 	Yii::log("userFavsArray, Key, Value: " . $key . " => " . $value, CLogger::LEVEL_INFO, "actionToggleFavorite");
-		// }
-		// 
-		// if (in_array($id, $userFavsArray)) {
-		// 	unset($userFavsArray[$id]);
-		// } else {
-		// 	$id; // doesn't really matter
-		// }
-		// Yii::log("User favorites: " . count($userFavsArray), CLogger::LEVEL_INFO, "actionToggleFavorite");
-		// 
-		// Yii::app()->session[$userFavsKey] = implode(",", $userFavsArray);		
-		// $data = Yii::app()->session[$userFavsKey];
-		
-		// $this->renderPartial('_sidebar_user_favorites', array('data'=>$data), false, true);
+		Yii::app()->session[Yii::app()->params['favStore']] = $userFavs;
 		$this->renderPartial('_favbar');
-		// $this->render('_toggle_favorite');
-		
 	}
 
 	/**

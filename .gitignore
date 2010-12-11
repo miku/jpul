@@ -7,6 +7,7 @@ dumps/*sql
 protected/runtime/application.log*
 protected/runtime/gii-1.1.4/*
 protected/runtime/search/*
+protected/runtime/adminsearch/*
 protected/runtime/state.bin
 
 protected/data/*sql

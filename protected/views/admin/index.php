@@ -39,6 +39,7 @@ $(document).ready(function() {
 			</select>
 		</div>
 
+		<div class="clear"></div>
 		
 	</div>	
 	<div id="main-content">

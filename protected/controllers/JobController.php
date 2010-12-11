@@ -11,7 +11,7 @@ require_once('Utils.php');
 class JobController extends Controller
 {
 	// jobs per page, defaults to 30
-	const PAGE_SIZE = 20;
+	const PAGE_SIZE = 8;
 	// 6 * 7 * 24 * 60 * 60 = six weeks
 	const DEFAULT_EXPIRATION_SECONDS = 3628800; 		
 	
@@ -108,6 +108,8 @@ class JobController extends Controller
 			$current_start = ($page - 1) * self::PAGE_SIZE;;
 			$current_end = ($page - 1) * self::PAGE_SIZE + self::PAGE_SIZE;
 			
+			$number_of_pages = ceil($total / self::PAGE_SIZE);
+			
 			Yii::app()->session['snapBackSearchTerm'] = $original_query;
 			$useDefaultView = false;
 			
@@ -130,7 +132,8 @@ class JobController extends Controller
 			}
 			
 			$total = count($models);
-
+			
+			$page = 1;
 			// fix number of offers per page ...
 			// $criteria->limit = self::PAGE_SIZE;
 			// $criteria->offset = ($page - 1) * self::PAGE_SIZE;;
@@ -163,13 +166,14 @@ class JobController extends Controller
 			Yii::app()->session['detailSnapBackUrl'] = $this->createUrl('job/index', array('page' => $page));
 			
 			$viewName = "default";
+			
+			$number_of_pages = ceil($total / self::PAGE_SIZE);
+			$current_start = ($page - 1) * self::PAGE_SIZE;;
+			$current_end = ($page - 1) * self::PAGE_SIZE + self::PAGE_SIZE;			
+
 		}
 		
 		Yii::app()->session['snapBackPage'] = $page;
-
-		$number_of_pages = ceil($total / self::PAGE_SIZE);
-		$current_start = ($page - 1) * self::PAGE_SIZE;;
-		$current_end = ($page - 1) * self::PAGE_SIZE + self::PAGE_SIZE;			
 		
 		$this->render('index', array(
 			'models'=>$models, 

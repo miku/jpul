@@ -4,7 +4,8 @@
 		<?php if (count(Yii::app()->session['ufk__v3']) == 0): ?>
 			<a class="fav-link" href="<?php echo $this->createUrl('job/index') ?>">Zurück zur Übersicht</a>
 		<?php else: ?>
-			<a class="fav-link" href="<?php echo $this->createUrl('job/index', array('s' => "favs")) ?>">Meine Favoriten anzeigen (<strong><?php echo count(Yii::app()->session['ufk__v3']) ?></strong>)</a>			
+			<a class="fav-link" href="<?php echo $this->createUrl('job/index', array('s' => "favs")) ?>">Meine Favoriten anzeigen (<strong><?php echo count(Yii::app()->session['ufk__v3']) ?></strong>)</a>
+			| <a href="<?php echo $this->createUrl('job/index') ?>">Zurück zur Übersicht</a>
 		<?php endif ?>
 	<?php else: ?>
 		<?php if (count(Yii::app()->session['ufk__v3']) > 0): ?>

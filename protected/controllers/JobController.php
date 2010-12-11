@@ -11,7 +11,7 @@ require_once('Utils.php');
 class JobController extends Controller
 {
 	// jobs per page, defaults to 30
-	const PAGE_SIZE = 8;
+	const PAGE_SIZE = 20;
 	// 6 * 7 * 24 * 60 * 60 = six weeks
 	const DEFAULT_EXPIRATION_SECONDS = 3628800; 		
 	

@@ -104,7 +104,7 @@
 	<div class="form_item_head">
 		Standardlaufzeit: 6 Wochen. Optional können Sie taggenau
 		eine Ablauffrist Ihrer Anzeige im Format <strong>TT.MM.YYYY</strong>
-		angeben.  
+		angeben, z.B. 31.12.2010.  
 		<?php echo $form->error($model,'expiration_date'); ?>
 	</div>
 	<div class="form-item">
@@ -112,14 +112,13 @@
 		<div class="form_item_field"><?php echo $form->textField($model,'expiration_date', array('value' => date('d.m.Y', time() + (6 * 7 * 24 * 60 * 60)))); ?></div>
 	</div>
 
-
 	<div class="form-item">
 		<div class="form_item_label required"><label for="captcha_challenge">Sicherheitsfrage</label></div>
 		<div class="form_item_field"><?php echo get_captcha_html(); ?></div>
 	</div>
 		 	
 	<div class="form-item" style="font-size: 12px;">
-		<?php echo CHtml::submitButton(Yii::t('app', 'Submit')); ?> <?php echo Yii::t('app', 'or') ?> <a href="<?php echo $this->createUrl('job/index') ?>"><?php echo Yii::t('app', 'cancel'); ?></a>
+		<?php echo CHtml::submitButton(Yii::t('app', 'Submit')); ?> <?php echo Yii::t('app', 'or') ?> <a href="<?php echo $this->createUrl('job/index') ?>"><?php echo Yii::t('app', 'cancel'); ?>.</a>
 	</div>
 
 	<?php $this->endWidget(); ?>	

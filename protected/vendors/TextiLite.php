@@ -23,7 +23,7 @@ class TextiLite{
         $paragraphs = explode("\n\n", $text);
         $output = null;
         foreach($paragraphs as $paragraph) {
-            $output .= "\n<p>".$paragraph."</p>\n";
+            $output .= "\n<p>".$paragraph."</p><br>\n";
         }
         return $output;
     }
@@ -37,7 +37,7 @@ class TextiLite{
             '/(")(.*?)(").*?((?:http|https)(?::\\/{2}[\\w]+)(?:[\\/|\\.]?)(?:[^\\s"]*))/', 
         ); 
         $replace = array(
-            "$1<br/>$2",
+            "$1<br/>XXX<br/>$2",
             "<strong>$1</strong>",
             "<em>$1</em>",
             "<img src=\"$2\"/>",

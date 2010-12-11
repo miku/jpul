@@ -79,7 +79,7 @@ class JobController extends Controller
 		$criteria->params=array(':status_id' => 2, ':current_time' => $current_time);
 		
 		$useDefaultView = true;
-		$fav_view = false;
+		$viewName = null;
 				
 		// if we have a term query ...
 		if (isset($_GET['q']) && $_GET['q'] != '') {
@@ -116,7 +116,11 @@ class JobController extends Controller
 		
 		// special pages, likes favorite filter
 		if (isset($_GET['s']) && $_GET['s'] != '' && 
-			isset(Yii::app()->session['ufk__v3']) && count(Yii::app()->session['ufk__v3']) > 0) {
+			isset(Yii::app()->session['ufk__v3'])) {
+				
+			if (count(Yii::app()->session['ufk__v3']) == 0) {
+				$this->redirect('index');
+			}
 
 			$favList = Yii::app()->session['ufk__v3'];
 			$models = array();
@@ -132,7 +136,7 @@ class JobController extends Controller
 			$criteria->offset = ($page - 1) * self::PAGE_SIZE;;
 
 			$original_query = null;
-			$fav_view = true;
+			$viewName = "favs";
 			$useDefaultView = false;
 			
 			Yii::app()->session['detailSnapBackUrl'] = $this->createUrl('job/index', array('s' => 'favs'));
@@ -152,6 +156,8 @@ class JobController extends Controller
 			$original_query = null;
 			Yii::app()->session['snapBackSearchTerm'] = '';
 			Yii::app()->session['detailSnapBackUrl'] = $this->createUrl('job/index', array('page' => $page));
+			
+			$viewName = "default";
 		}
 		
 		Yii::app()->session['snapBackPage'] = $page;
@@ -169,7 +175,7 @@ class JobController extends Controller
 			'number_of_pages' => $number_of_pages,
 			'sort' => $sort,
 			'original_query' => $original_query,
-			'fav_view' => $fav_view) 
+			'viewName' => $viewName) 
 		);
 	}
 

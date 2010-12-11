@@ -1,6 +1,7 @@
 .DS_Store
 uploads/*
 dumps/*sql
+dumps/webdir*zip
 
 ./index.php
 

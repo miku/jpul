@@ -132,12 +132,17 @@ class JobController extends Controller
 			$total = count($models);
 
 			// fix number of offers per page ...
-			$criteria->limit = self::PAGE_SIZE;
-			$criteria->offset = ($page - 1) * self::PAGE_SIZE;;
+			// $criteria->limit = self::PAGE_SIZE;
+			// $criteria->offset = ($page - 1) * self::PAGE_SIZE;;
 
 			$original_query = null;
 			$viewName = "favs";
 			$useDefaultView = false;
+			
+			$number_of_pages = 1;
+			$current_start = 0;
+			$current_end = $total;
+
 			
 			Yii::app()->session['detailSnapBackUrl'] = $this->createUrl('job/index', array('s' => 'favs'));
 		}

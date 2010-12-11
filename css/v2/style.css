@@ -133,7 +133,7 @@ a:hover {
 	padding: 10px;
 	margin: 0 10px 0 10px;
 	background: #EFEFEF;
-	height: 24px;
+/*	height: 24px;*/
 }
 
 #generic-header {
@@ -378,6 +378,15 @@ a.fav-toggle
 
 a.fav-toggle.isfav
 {
+    background:url(../../images/v2/fav-star-on.png?v=2) no-repeat 0 1px;
+}
+
+a.fav-link {
+    height:40px;
+    margin-right:5px;
+    margin-left:0px;
+    padding-top:2px;
+	padding-left: 20px;
     background:url(../../images/v2/fav-star-on.png?v=2) no-repeat 0 1px;
 }
 

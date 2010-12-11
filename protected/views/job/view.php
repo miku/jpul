@@ -15,11 +15,12 @@
 						}
 						
 					?>
-					<?php if (Yii::app()->session['snapBackSearchTerm'] !== ""): ?>
-						<a href="<?php echo $this->createUrl('job/index', $_params); ?>">Zurück zu den Ergebnissen</a>
+						
+					<?php if (isset(Yii::app()->session['detailSnapBackUrl'])): ?>
+						<a href="<?php echo Yii::app()->session['detailSnapBackUrl']; ?>">Zurück zu den Ergebnissen</a>
 					<?php else: ?>
 						<a href="<?php echo $this->createUrl('job/index'); ?>">Zurück zur Übersicht</a>
-					<?php endif ?>
+					<?php endif; ?>
 					
 				</div>
 
@@ -74,14 +75,16 @@
 				<span class="fat">Bewerbungsschluss: <span class="sticky"><?php echo date("d.m.Y", $model->expiration_date); ?></span></span>
 			</div>
 			
-			<div id="bottom-nav">
-				<?php if (Yii::app()->session['snapBackSearchTerm'] !== ""): ?>
-					<a href="<?php echo $this->createUrl('job/index', $_params); ?>">Zurück zu den Ergebnissen</a>
+			<div id="bottom-nav">					
+				<?php if (isset(Yii::app()->session['detailSnapBackUrl'])): ?>
+					<a href="<?php echo Yii::app()->session['detailSnapBackUrl']; ?>">Zurück zu den Ergebnissen</a>
 				<?php else: ?>
 					<a href="<?php echo $this->createUrl('job/index'); ?>">Zurück zur Übersicht</a>
 				<?php endif ?>
-
 			</div>
+			
+			
+			
 		</div>  
 	</div>
 </div>

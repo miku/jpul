@@ -1,24 +1,22 @@
 <!-- <div class="post post-highlighted">	 -->
 <div class="post" name="post-<?php echo $model->id; ?>">
 	
-	<!-- <a class="fav-toggle" href="<?php echo $this->createUrl('job/toggleFavorite', array('id' => $model->id));?>"></a> -->
+<!-- <a class="fav-toggle" href="<?php echo $this->createUrl('job/toggleFavorite', array('id' => $model->id));?>"></a> -->
 
 
-<?php if (isset(Yii::app()->session['ufk__v1']) && in_array($model->id, Yii::app()->session['ufk__v1'])): ?>
+<?php if (isset(Yii::app()->session['ufk__v3']) && in_array_2($model->id, Yii::app()->session['ufk__v3'])): ?>
 	<?php echo CHtml::ajaxLink("", 
                               $this->createUrl('job/toggleFavorite', array('id' => $model->id)), 
-                              array('update' => '#userFavs'),
+                              array('update' => '#fav-subbar'),
 							  array('class' => 'fav-toggle isfav', 'href' => '#post' . $model->id )); ?>
 <?php else: ?>
 	<?php echo CHtml::ajaxLink("", 
                               $this->createUrl('job/toggleFavorite', array('id' => $model->id)), 
-                              array('update' => '#userFavs'),
+                              array('update' => '#fav-subbar'),
 							  array('class' => 'fav-toggle', 'href' => '#post' . $model->id )); ?>
 <?php endif ?>
 
 
-	<!-- <a class="fav-toggle" href="<?php echo $this->createUrl('job/toggleFavorite', array('id' => $model->id));?>"></a> -->
-	
 	
 	<p class="post-title">
 		<?php if (isset($original_query) && $original_query !== ""): ?>

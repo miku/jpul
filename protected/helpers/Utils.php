@@ -15,6 +15,31 @@
 		return eregi("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$", $email_address);
 	}
 	
+	function in_array_2($needle, $haystack) {
+		foreach ($haystack as $key => $value) {
+			if (in_array($needle, $value)) {
+				return true;
+			}
+ 		}
+		return false;
+	}
+
+	// buggy
+	function in_array_recursive($needle, $haystack) {
+		$found = false;
+		foreach ($haystack as $key => $value) {
+			if (is_array($value)) {
+				return in_array_recursive($needle, $value);
+			} else {
+				if ($value == $needle) {
+					$found = true;
+				}
+			}
+		}
+		return $found;
+	}
+
+
 	/**
 	 * Cut the text, without splitting within words.
 	 * @param string the text to be splitted

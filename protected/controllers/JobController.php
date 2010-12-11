@@ -55,7 +55,7 @@ class JobController extends Controller
 		$current_time = time();
 
 		// catch negative page numbers
-		if ($page < 1) { $this->redirect(array('index', 'page' => 1)); }
+		// if ($page < 1) { $this->redirect(array('index', 'page' => 1)); }
 		
 		$criteria = new CDbCriteria;
 
@@ -77,6 +77,9 @@ class JobController extends Controller
 		// just show the public offers, which are not expired ...
 		$criteria->condition = 'status_id=:status_id AND expiration_date > :current_time';
 		$criteria->params=array(':status_id' => 2, ':current_time' => $current_time);
+		
+		$useDefaultView = true;
+		$fav_view = false;
 				
 		// if we have a term query ...
 		if (isset($_GET['q']) && $_GET['q'] != '') {
@@ -106,7 +109,36 @@ class JobController extends Controller
 			$current_end = ($page - 1) * self::PAGE_SIZE + self::PAGE_SIZE;
 			
 			Yii::app()->session['snapBackSearchTerm'] = $original_query;
-		} else {
+			$useDefaultView = false;
+			
+			Yii::app()->session['detailSnapBackUrl'] = $this->createUrl('job/index', array('q' => $original_query, 'page' => $page));
+		}	
+		
+		// special pages, likes favorite filter
+		if (isset($_GET['s']) && $_GET['s'] != '' && 
+			isset(Yii::app()->session['ufk__v3']) && count(Yii::app()->session['ufk__v3']) > 0) {
+
+			$favList = Yii::app()->session['ufk__v3'];
+			$models = array();
+			foreach ($favList as $key => $value) {
+				Yii::log($key . " => " . $value['id'], CLogger::LEVEL_INFO, "actionIndex");
+				array_push($models, Job::model()->findByPk($value['id']));
+			}
+			
+			$total = count($models);
+
+			// fix number of offers per page ...
+			$criteria->limit = self::PAGE_SIZE;
+			$criteria->offset = ($page - 1) * self::PAGE_SIZE;;
+
+			$original_query = null;
+			$fav_view = true;
+			$useDefaultView = false;
+			
+			Yii::app()->session['detailSnapBackUrl'] = $this->createUrl('job/index', array('s' => 'favs'));
+		}
+			
+		if ($useDefaultView) {
 
 			$total = count(Job::model()->findAll($criteria));
 
@@ -119,6 +151,7 @@ class JobController extends Controller
 			
 			$original_query = null;
 			Yii::app()->session['snapBackSearchTerm'] = '';
+			Yii::app()->session['detailSnapBackUrl'] = $this->createUrl('job/index', array('page' => $page));
 		}
 		
 		Yii::app()->session['snapBackPage'] = $page;
@@ -135,7 +168,8 @@ class JobController extends Controller
 			'page' => $page,
 			'number_of_pages' => $number_of_pages,
 			'sort' => $sort,
-			'original_query' => $original_query) 
+			'original_query' => $original_query,
+			'fav_view' => $fav_view) 
 		);
 	}
 
@@ -154,39 +188,49 @@ class JobController extends Controller
 		}
 	}
 	
+	public function actionJobTitle($id) {
+		$model = Job::model()->findByPk($id);
+		if (!$model) {
+			throw new CHttpException(400, Yii::t('app', 'Your request is not valid.'));
+		}
+		Yii::log(Yii::app()->request->userHostAddress, CLogger::LEVEL_INFO, "actionView");
+		$this->renderPartial('_job_title', array('model' => $model));
+	}
+	
 	public function actionToggleFavorite($id) {
 		
-		$userFavsKey = "ufk__v1";
-		
-		Yii::log("Favorite: " . $id, CLogger::LEVEL_INFO, "actionToggleFavorite");
-		
+		$userFavsKey = "ufk__v3";
 		if (!isset(Yii::app()->session[$userFavsKey])) {
 			Yii::app()->session[$userFavsKey] = array();
 		}
 		
 		$userFavs = Yii::app()->session[$userFavsKey];
-		
 		$removed = false;
-		
 		foreach ($userFavs as $key => $value) {
-			Yii::log("kv, id: " . $key . " => " . $value . " ;; " . $id, CLogger::LEVEL_INFO, "actionToggleFavorite");
-			
-			if ($value == $id) {
-				
+			if ($value["id"] == $id) {
 				unset($userFavs[$key]);
 				$removed = true;
-				Yii::log("Removed item: " . $id, CLogger::LEVEL_INFO, "default");
-				
 			}
 		}
 		
 		if (!$removed) {
-			array_push($userFavs, $id);
+			$model = Job::model()->findByPk($id);
+			if (!$model) {
+				throw new CHttpException(400, Yii::t('app', 'Your request is not valid.'));
+			} else {
+				array_push($userFavs, 
+					array(
+						"id" => $id, 
+						"title" => $model->title, 
+						"url" => $this->createUrl('view', array('id' => $id))
+					)
+				);
+			}
 		}
 		
 		Yii::app()->session[$userFavsKey] = $userFavs;
 		
-		$data = implode(", ", $userFavs);
+		$data = "Bogus!"; // implode(", ", $userFavs);
 		
 		// $userFavsArray = split(",", $userFavs);
 		// 
@@ -204,7 +248,8 @@ class JobController extends Controller
 		// Yii::app()->session[$userFavsKey] = implode(",", $userFavsArray);		
 		// $data = Yii::app()->session[$userFavsKey];
 		
-		$this->renderPartial('_toggle_favorite', array('data'=>$data), false, true);
+		// $this->renderPartial('_sidebar_user_favorites', array('data'=>$data), false, true);
+		$this->renderPartial('_favbar');
 		// $this->render('_toggle_favorite');
 		
 	}

@@ -44,7 +44,22 @@ $(document).ready(function() {
 				<option <?php if ($sort === "o"): ?>selected="selected" <?php endif; ?> value="d">Ort</option>															
 			</select>
 		</div>
+		
+		<div class="clear"></div>
 	</div>
+	
+	<div id="fav-subbar" style="font-size: 10px; margin: 0 10px 0 10px; padding: 10px 10px 10px 10px; background: aliceblue;">
+		<?php if (isset(Yii::app()->session['ufk__v3']) && count(Yii::app()->session['ufk__v3']) > 0): ?>
+			<?php if (isset($fav_view) && ($fav_view)): ?>
+				<a class="fav-link" href="<?php echo $this->createUrl('job/index') ?>">Zurück zur Übersicht</a>
+			<?php else: ?>
+				<a class="fav-link" href="<?php echo $this->createUrl('job/index', array('s' => "favs")) ?>">Meine Favoriten anzeigen (<?php echo count(Yii::app()->session['ufk__v3']) ?>)</a>			
+			<?php endif ?>
+		<?php else: ?>
+		<?php endif ?>
+	</div>
+		
+
 
 	<div id="main-content">
 

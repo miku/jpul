@@ -1,0 +1,1 @@
+<?php echo cut_text($model->title, 20); ?>

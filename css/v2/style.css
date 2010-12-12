@@ -576,6 +576,16 @@ span.total {
 	color: #767676;
 }
 
-.small {
+.post-attachment {
+	margin-top: 10px;
 	font-size: 10px;
+	margin-bottom: 3px;
+}
+
+a.pdf {
+    margin-right:5px;
+    margin-left:2px;
+	padding-left: 20px;
+    padding-top: 5px;
+	background:url(../../images/v2/pdf.gif) no-repeat 0 1px;
 }

@@ -213,8 +213,9 @@ class JobController extends Controller
 		if ($model) {
 			$fname = $this->getUploadFilePath('job', $id);
 			if (file_exists($fname)) {
-				$target_fname = slugify("Jobportal-UL-" . $id . "-" . $model->title) . ".pdf";
+				$target_fname = slugify($model->attachment . "-idtag-" . $model->id) . ".pdf";
 				$this->renderPartial('download', 
+					// array('fname' => $fname, 'target_fname' => $target_fname), 
 					array('fname' => $fname, 'target_fname' => $target_fname), 
 					false, true);
 			} else {

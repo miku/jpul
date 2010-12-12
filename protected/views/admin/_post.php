@@ -20,4 +20,8 @@
 		<?php echo format_model_location($model); ?>		
 	</p>
 	<p class="post-description-teaser"><?php echo cut_text($model->description, 100) ?></p>
+	<?php if ($model->attachment): ?>
+		Attachment: <a href="<?php echo $this->createUrl('job/download', array('id' => $model->id)); ?>"><?php echo $model->attachment ?></a>
+	<?php endif ?>
+	<p></p>
 </div>

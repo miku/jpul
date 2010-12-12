@@ -21,10 +21,10 @@
 	<p class="post-title">
 		<?php if (isset($original_query) && $original_query !== ""): ?>
 			<a href="<?php echo $this->createUrl('job/view', array('id' => $model->id, 'from' => $original_query)); ?>" title="<?php echo $model->title; ?>">
-				<?php echo cut_text($model->title, 50); ?></a> 
+				<?php echo cut_text($model->title, 45); ?></a> 
 		<?php else: ?>
 			<a href="<?php echo $this->createUrl('job/view', array('id' => $model->id)); ?>" title="<?php echo $model->title; ?>">
-				<?php echo cut_text($model->title, 50); ?></a> 
+				<?php echo cut_text($model->title, 45); ?></a> 
 		<?php endif ?>
 				
 		<span class="post-company"><?php echo cut_text($model->company, 30) ?></span>

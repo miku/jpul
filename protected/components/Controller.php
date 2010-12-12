@@ -107,8 +107,9 @@ class Controller extends CController
 		$filepath = $this->getUploadFilePath($modelName, $id, $extension);
 		if (file_exists($filepath)) {
 			return formatBytes(filesize($filepath));
+		} else {
+			return "Could not determine size.";
 		}
-		return 0;
 	}
 	
 	

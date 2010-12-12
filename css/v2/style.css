@@ -575,3 +575,7 @@ span.total {
 	margin-left: 5px;
 	color: #767676;
 }
+
+.small {
+	font-size: 10px;
+}

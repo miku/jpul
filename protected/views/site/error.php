@@ -11,9 +11,9 @@
 	<p>Diese Seite existiert nicht oder ist nicht verfügbar &mdash; HTTP Status <?php echo $code; ?>.</p>
 	<br>
 	<a href="<?php echo $this->createUrl('job/index') ?>">Zur Homepage</a>
-	
-	<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/v2/404.png" alt="" />
-	
-
 </div>	
+
+<div style="margin: 10px">
+	<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/v2/404.png" alt="" />
+</div>
 </div>

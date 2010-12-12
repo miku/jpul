@@ -89,6 +89,11 @@ $(document).ready(function() {
 					$_params['page'] = $page - 1;
 				?>
 				<a href="<?php echo $this->createUrl('job/index', $_params); ?>">&lt; Vorherige</a>
+				
+				<!-- shortcut -->
+				<?php $_params['page'] = 1; ?>
+				<a href="<?php echo $this->createUrl('job/index', $_params); ?>">1</a>
+				
 			<?php else: ?>
 				<span class="inactive">&lt; Vorherige</span>
 			<?php endif; ?>

@@ -108,7 +108,8 @@ class Controller extends CController
 		if (file_exists($filepath)) {
 			return formatBytes(filesize($filepath));
 		} else {
-			return "Could not determine size for: $filepath";
+			// return "Could not determine size for: $filepath";
+			return "";
 		}
 	}
 	

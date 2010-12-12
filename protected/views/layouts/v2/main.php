@@ -26,7 +26,7 @@
   
   <!-- CSS : implied media="all" -->
   <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/v2/style.css" />	
-  <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.4.3.min.js"charset="utf-8"></script>
+  <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.4.3.min.js" charset="utf-8"></script>
  
   <!-- Uncomment if you are specifically targeting less enabled mobile browsers                                                                       
   <link rel="stylesheet" media="handheld" href="css/handheld.css?v=2">  --> 

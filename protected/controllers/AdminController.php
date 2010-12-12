@@ -14,21 +14,7 @@ class AdminController extends Controller
 	const PAGE_SIZE = 20;
 	// 6 * 7 * 24 * 60 * 60 = six weeks
 	const DEFAULT_EXPIRATION_SECONDS = 3628800; 	
-	
-	
-	/**
-	 * Get the path to the uploaded job attachments.
-	 * @return Job attachments upload path
-	 */
-	public function getSearchIndexStore()
-	{
-		return Yii::app()->basePath . '/runtime/search';
-	}
-	
-	public function getAdminSearchIndexStore() {
-		return Yii::app()->basePath . '/runtime/adminsearch';
-	}
-	
+		
 	/**
 	 * Yii filters
 	 * @return Our request filters
@@ -253,7 +239,7 @@ class AdminController extends Controller
 	}
 	
 	
-		/**
+	/**
 	 * Update a new job posting.
 	 */
 	public function actionUpdate($id)
@@ -261,20 +247,26 @@ class AdminController extends Controller
 		$model = Job::model()->findByPk($id);
 		
 		if (!$model) {
+			Yii::log("No such model: " . $id, CLogger::LEVEL_INFO, "actionUpdate");
 			throw new CHttpException(400, Yii::t('app', 'Your request is not valid.'));
 		}
+
+		// store current value ...
+		$model_attachment = $model->attachment;
 
 		if(isset($_POST['Job']))
 		{
 
-			Yii::log("Company Homepage before adjustments: " . $_POST['Job']['company_homepage'], CLogger::LEVEL_INFO, "actionUpdate");
+			// Sanitize homepage URL ...
+			Yii::log("Company homepage before adjustments: " . $_POST['Job']['company_homepage'], CLogger::LEVEL_INFO, "actionUpdate");
+			
 			$company_homepage = $_POST['Job']['company_homepage'];
 			if ($company_homepage != "" && !startsWith($company_homepage, "http://")) {
 				$company_homepage = "http://" . $company_homepage;
 				$_POST['Job']['company_homepage'] = $company_homepage;
 			}
-			Yii::log("Company Homepage after adjustments: " . $_POST['Job']['company_homepage'], CLogger::LEVEL_INFO, "actionUpdate");
 			
+			Yii::log("Company homepage after adjustments: " . $_POST['Job']['company_homepage'], CLogger::LEVEL_INFO, "actionUpdate");
 			
 			$sanitized_post = array_strip_tags($_POST['Job'], '<br>');
 
@@ -282,10 +274,13 @@ class AdminController extends Controller
 			$model->attributes = $sanitized_post;
 			$model->date_added = time();
 
+			// Expiration date ...
 			if (!isset($sanitized_post['expiration_date']) || $sanitized_post['expiration_date'] === '') {
 				$model->expiration_date = $model->date_added + self::DEFAULT_EXPIRATION_SECONDS;
-			} else {
-				Yii::log("Expiration set manually: " . $sanitized_post['expiration_date'], CLogger::LEVEL_INFO, "actionCreate");
+			} else {				
+				Yii::log("Expiration date set manually or per default: " . 
+					$sanitized_post['expiration_date'], CLogger::LEVEL_INFO, "actionUpdate");				
+				// if we can't parse the date, we set it to the default
 				$epoch_or_false = strtotime($sanitized_post['expiration_date']);
 				if ($epoch_or_false) {
 					$model->expiration_date = $epoch_or_false;
@@ -294,23 +289,34 @@ class AdminController extends Controller
 				}
 			}
 
+			// 0 means admin, but at the moment, we don't use this value for anything
 			$model->author_id = 0; // default; TODO: adjust
-
+			
 			$model->attachment = CUploadedFile::getInstance($model, 'attachment');
 
-			if ($model->validate()) {
+			if ($model->attachment == null && isset($_POST['keep_file'])) {
+				Yii::log("keep_file: " . $_POST['keep_file'], CLogger::LEVEL_INFO, "actionUpdate");
+				$model->attachment = $model_attachment;
+			} else {
+				$_POST['keep_file'] = false;
+			}
+
+			if ($model->validate()) {				
 				if ($model->save()) {
-					if (isset($model->attachment)) {
+					if (isset($model->attachment) && !$_POST['keep_file']) {
+						
+						Yii::log("Storing uploaded file...", CLogger::LEVEL_INFO, "actionUpdate");
+						
 						$filename = $this->getUploadFilePath("job", $model->id);
 						$model->attachment->saveAs($filename);
 					}
 					$this->updateSearchIndex($model);
 					$this->updateSearchIndex($model, "admin");
-					
 					$this->redirect(array('index'));
 				}
 			}
 		}
+		
 		$this->render('update', array('model' => $model));
 	}
 	
@@ -324,7 +330,6 @@ class AdminController extends Controller
 		$this->redirect(array('admin/view', 'id' => $id));
 	}
 
-	
 	/**
 	 * Job details.
 	 */
@@ -365,7 +370,7 @@ class AdminController extends Controller
 
 	
 	
-		// Lucene related stuff ... //
+	// Lucene related stuff ... //
 
 	protected function removeFromSearchIndex($model, $useIndex = "default") {
 		if ($useIndex === "admin") {
@@ -377,42 +382,6 @@ class AdminController extends Controller
 		foreach ($index->find('pk:' . $model->id) as $hit) {
     		$index->delete($hit->id);
 		}		
-	}
-
-	/**
-	 * Update search index.
-	 */	
-	protected function updateSearchIndex($model, $useIndex = "default") {
-		
-		if ($useIndex === "admin") {
-			$index = new Zend_Search_Lucene($this->getAdminSearchIndexStore(), false);
-		} else {
-			$index = new Zend_Search_Lucene($this->getSearchIndexStore(), false);
-		}
-
-		foreach ($index->find('pk:' . $model->id) as $hit) {
-    		$index->delete($hit->id);
-		}
-
-		if ($useIndex !== "admin") {
-			if ($model->status_id != 2 || $model->isExpired()) { return; }
-		}
-		
-		$doc = new Zend_Search_Lucene_Document();
-		// store job primary key to identify it in the search results
-		$doc->addField(Zend_Search_Lucene_Field::Keyword('pk', $model->id));
-		// index job fields
-		$doc->addField(Zend_Search_Lucene_Field::UnStored('position', $model->title, 'utf-8'));
-		$doc->addField(Zend_Search_Lucene_Field::UnStored('company', $model->company, 'utf-8'));
-		$doc->addField(Zend_Search_Lucene_Field::UnStored('location', $model->city, 'utf-8'));
-		$doc->addField(Zend_Search_Lucene_Field::UnStored('description', $model->description, 'utf-8'));
-		
-		$doc->addField(Zend_Search_Lucene_Field::UnStored('sector', $model->sector, 'utf-8'));
-		$doc->addField(Zend_Search_Lucene_Field::UnStored('study', $model->study, 'utf-8'));
-
-		$index->addDocument($doc);
-		$index->commit();
-		Yii::log("Updated search index for document id: " . $model->id, CLogger::LEVEL_INFO, "updateSearchIndex");		
 	}
 	
 	/**
@@ -462,5 +431,4 @@ class AdminController extends Controller
 		$index->commit();
 		$this->redirect(array('index'));
 	}
-
 }

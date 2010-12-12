@@ -206,6 +206,12 @@ a:hover {
 	padding: 8px 25px 8px 25px;
 }
 
+#view-degree {
+	margin-top: 5px;
+	background: #EFEFEE;	
+	padding: 8px 25px 8px 25px;
+}
+
 #view-howtoapply {
 	margin-top: 5px;
 	background: #EFEFEE;
@@ -554,4 +560,18 @@ span.total {
 	color: darkgray;
 	margin-right: 40px;
 	font-size: 12px;
+}
+
+.keep-file {
+	margin-top: 5px;
+	color: #454545;
+	font-size: 12px;
+	background: white;
+	padding: 5px;
+}
+
+.file-size {
+	font-size: 10px;
+	margin-left: 5px;
+	color: #767676;
 }

@@ -30,6 +30,8 @@
 */
 class Job extends CActiveRecord
 {
+	// public $attachment;
+	
 	/**
 	* Returns the static model of the specified AR class.
 	* @return Job the static model class

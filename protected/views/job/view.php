@@ -39,6 +39,13 @@
 			</div>
 
 			<div id="view-description"><?php echo textilize($model->description) ?></div>
+			
+			<?php if ($model->degree): ?>
+				<div id="view-degree">
+					<p>Abschluß: <?php echo $model->degree->name ?></p>
+				</div>
+			<?php endif ?>
+
 
 			<?php if ($model->attachment): ?>
 				<div id="view-download">
@@ -54,21 +61,6 @@
 				</div>
 			<?php endif ?>
 
-			<?php if ($model->is_telecommute): ?>
-				Telearbeit möglich.<br>
-			<?php endif ?>
-
-			<?php if ($model->is_nation_wide): ?>
-				Arbeitsort ist bundesweit.<br>
-			<?php endif ?>
-
-			<?php if ($model->study): ?>
-				<p>Studienrichtungen: <?php echo $model->study ?></p>
-			<?php endif ?>
-
-			<?php if ($model->degree): ?>
-				<p>Abschluß: <?php echo $model->degree->name ?></p>
-			<?php endif ?>
 
 
 			<div id="view-deadline">

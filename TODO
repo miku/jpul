@@ -22,3 +22,57 @@ SNIPPETS
 	<?php endif ?>
 <?php else: ?>
 <?php endif ?>
+
+
+// debug ...
+Yii::log("[2 ==>] Sanitized POST: ", CLogger::LEVEL_INFO, "actionUpdate");			
+foreach ($sanitized_post as $key => $value) {
+	Yii::log($key . " => " . $value . "(type: " . gettype($value) . ")", CLogger::LEVEL_INFO, "actionUpdate");
+}
+
+// debug ...
+Yii::log("[3 ==> \$_FILES]: ", CLogger::LEVEL_INFO, "actionUpdate");			
+foreach ($_FILES as $key => $value) {
+	Yii::log($key . " => " . $value . "(type: " . gettype($value) . ")", CLogger::LEVEL_INFO, "actionUpdate");
+	if (is_array($value)) {
+		foreach ($value as $k => $v) {
+			Yii::log("\t" . $k . " => " . $v . "(type: " . gettype($v) . ")", CLogger::LEVEL_INFO, "actionUpdate");
+			if (is_array($v)) {
+				foreach ($v as $kk => $vv) {
+					Yii::log("\t\t" . $kk . " => " . $vv . "(type: " . gettype($vv) . ")", CLogger::LEVEL_INFO, "actionUpdate");
+				}
+			}
+		}
+	}
+}
+
+
+
+// debug ...
+Yii::log("[1 ==>] Sanitized POST: ", CLogger::LEVEL_INFO, "actionUpdate");			
+foreach ($sanitized_post as $key => $value) {
+	Yii::log($key . " => " . $value . "(type: " . gettype($value) . ")", CLogger::LEVEL_INFO, "actionUpdate");
+}
+
+
+
+// // attachment handling			
+if ($_FILES['Job']['name']['attachment'] != '') {
+
+	Yii::log("Got a file: " . $_FILES['Job']['name']['attachment'], CLogger::LEVEL_INFO, "actionUpdate");
+
+	$upload_name = $_FILES['Job']['name']['attachment'];
+	$upload_type = $_FILES['Job']['type']['attachment'];
+	$upload_size = $_FILES['Job']['size']['attachment'];
+	$upload_tmp_name = $_FILES['Job']['tmp_name']['attachment'];
+	$upload_error = $_FILES['Job']['error']['attachment'];
+	
+	Yii::log("Upload: " . $upload_name, CLogger::LEVEL_INFO, "actionUpdate");
+	Yii::log("Upload: " . $upload_type, CLogger::LEVEL_INFO, "actionUpdate");
+	Yii::log("Upload: " . $upload_size, CLogger::LEVEL_INFO, "actionUpdate");
+	Yii::log("Upload: " . $upload_tmp_name, CLogger::LEVEL_INFO, "actionUpdate");
+	Yii::log("Upload: " . $upload_error, CLogger::LEVEL_INFO, "actionUpdate");
+	
+} else {
+	Yii::log("No file.", CLogger::LEVEL_INFO, "actionUpdate");				
+}

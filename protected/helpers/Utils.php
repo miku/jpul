@@ -229,4 +229,49 @@
 		}
 	}
 	
+	/**
+	 * Modifies a string to remove all non ASCII characters and spaces.
+	 */
+	function slugify($text)
+	{
+	    // replace non letter or digits by -
+	    $text = preg_replace('~[^\\pL\d]+~u', '-', $text);
+ 
+	    // trim
+	    $text = trim($text, '-');
+ 
+	    // transliterate
+	    if (function_exists('iconv'))
+	    {
+	        $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+	    }
+ 
+	    // lowercase
+	    $text = strtolower($text);
+ 
+	    // remove unwanted characters
+	    $text = preg_replace('~[^-\w]+~', '', $text);
+ 
+	    if (empty($text))
+	    {
+	        return 'n-a';
+	    }
+ 
+	    return $text;
+	}
+	
+	function formatBytes($bytes, $precision = 2) { 
+  	  	$units = array('B', 'KB', 'MB', 'GB', 'TB'); 
+
+	    $bytes = max($bytes, 0); 
+	    $pow = floor(($bytes ? log($bytes) : 0) / log(1024)); 
+	    $pow = min($pow, count($units) - 1); 
+
+	    // Uncomment one of the following alternatives
+	    // $bytes /= pow(1024, $pow);
+	    $bytes /= (1 << (10 * $pow)); 
+
+    	return round($bytes, $precision) . ' ' . $units[$pow]; 
+	} 
+	
 ?>

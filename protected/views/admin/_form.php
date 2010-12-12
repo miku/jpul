@@ -96,8 +96,17 @@
 
 	<div class="form_item_head"> PDF-Datei mit Ihrer Ausschreibung oder weiteren Informationen. <?php echo $form->error($model,'attachment'); ?></div>
 	<div class="form-item">
-		<div class="form_item_label"><?php echo $form->labelEx($model,'attachment'); ?></div>
-		<div class="form_item_field"><?php echo $form->fileField($model,'attachment'); ?></div>
+		<div class="form_item_label"><?php echo $form->labelEx($model, 'attachment'); ?></div>
+		<div class="form_item_field"><?php echo $form->fileField($model, 'attachment'); ?>
+		</div>
+		<?php if ($model->attachment != ''): ?>
+			<div class="keep-file">
+				<input type="checkbox" name="keep_file" checked value="<?php echo $model->attachment ?>" id="keep_file">
+				&nbsp;<a href="<?php echo $this->createUrl('job/download', array('id' => $model->id)); ?>"><?php echo $model->attachment ?></a> 
+				<span class="file-size"><?php echo $this->getUploadFileSize("Job", $model->id); ?></span>
+			</div>
+		<?php endif ?>
+		
 	</div>
 
 
@@ -109,16 +118,12 @@
 	</div>
 	<div class="form-item">
 		<div class="form_item_label"><?php echo $form->labelEx($model,'expiration_date'); ?></div>
-		<div class="form_item_field"><?php echo $form->textField($model,'expiration_date', array('value' => date('d.m.Y', time() + (6 * 7 * 24 * 60 * 60)))); ?></div>
+		<?php if ($model->expiration_date != ''): ?>
+			<div class="form_item_field"><?php echo $form->textField($model, 'expiration_date', array('value' => date('d.m.Y', $model->expiration_date))); ?></div>
+		<?php else: ?>
+			<div class="form_item_field"><?php echo $form->textField($model,'expiration_date', array('value' => date('d.m.Y', time() + (6 * 7 * 24 * 60 * 60)))); ?></div>
+		<?php endif ?>		
 	</div>
-
-
-<!--	
-	<div class="form-item">
-		<div class="form_item_label"><label for="captcha_challenge">Sicherheitsfrage</label></div>
-		<div class="form_item_field"><?php echo get_captcha_html(); ?></div>
-	</div>
--->
 
 	<div class="form-item">
 		<div class="form_item_label"> <?php echo $form->labelEx($model,'status_id'); ?> </div>

@@ -16,37 +16,6 @@ class JobController extends Controller
 	const DEFAULT_EXPIRATION_SECONDS = 3628800; 		
 	
 	/**
-	 * Get the path to the uploaded job attachments.
-	 * @return Job attachments upload path
-	 */
-	public function getSearchIndexStore()
-	{
-		return Yii::app()->basePath . '/runtime/search';
-	}
-
-	/**
-	 * Get the path to the uploaded job attachments.
-	 * @param string name of the model (here 'job')
-	 * @param integer id of the model instance
-	 * @param string file extension, defaults to 'pdf'
-	 * @return Job attachments upload path for a particular model
-	 */
-	public function getUploadFilePath($modelName, $id, $extension = 'pdf')
-	{
-		return $this->getUploadPath() . '/Attachment_' . $modelName . '_' . $id . '.' . $extension;
-	}
-
-
-	/**
-	 * Yii filters
-	 * @return Our request filters
-	 */
-	public function filters()
-	{
-		return array('adminOnly + create, update, delete');
-	}
-
-	/**
 	 * Index action. Default page is 1.
 	 *
 	 * 'Index' serves different views for the sake of URL simplicity:
@@ -182,7 +151,8 @@ class JobController extends Controller
 			
 			Yii::app()->session['detailSnapBackUrl'] = $this->createUrl('job/index', array('s' => 'favs'));
 		}
-			
+		
+		// if the user neither searched or requested her favs, use the default view ...	
 		if ($useDefaultView) {
 
 			$total = count(Job::model()->findAll($criteria));
@@ -203,7 +173,6 @@ class JobController extends Controller
 			$number_of_pages = ceil($total / self::PAGE_SIZE);
 			$current_start = ($page - 1) * self::PAGE_SIZE;;
 			$current_end = ($page - 1) * self::PAGE_SIZE + self::PAGE_SIZE;			
-
 		}
 		
 		Yii::app()->session['snapBackPage'] = $page;
@@ -220,6 +189,19 @@ class JobController extends Controller
 			'viewName' => $viewName) 
 		);
 	}
+	
+	/**
+	 * Job details.
+	 */
+	public function actionView($id, $from = '')
+	{
+		$model = Job::model()->findByPk($id);
+		if (!$model) {
+			throw new CHttpException(400, Yii::t('app', 'Your request is not valid.'));
+		}
+		Yii::log(Yii::app()->request->userHostAddress, CLogger::LEVEL_INFO, "actionView");
+		$this->render('view', array('model' => $model));
+	}
 
 	/**
 	 * Download job attachment.
@@ -230,12 +212,81 @@ class JobController extends Controller
 		$model = Job::model()->findByPk($id);
 		if ($model) {
 			$fname = $this->getUploadFilePath('job', $id);
-			$this->renderPartial('download', array('fname'=>$fname), false, true);
+			if (file_exists($fname)) {
+				$target_fname = slugify("Jobportal-UL-" . $id . "-" . $model->title) . ".pdf";
+				$this->renderPartial('download', 
+					array('fname' => $fname, 'target_fname' => $target_fname), 
+					false, true);
+			} else {
+				throw new CHttpException(400, Yii::t('app', 'File could not be found, sorry.'));
+			}
 		} else {
 			throw new CHttpException(400, Yii::t('app', 'Your request is not valid.'));
 		}
 	}
+	
+	/**
+	 * Create a new job posting.
+	 */
+	public function actionDraft()
+	{
+		$current_time = time();
+		$model = new Job;
+
+		if(isset($_POST['Job'])) {
+
+			// strip every html tag out of every field, except '<br>'
+			$sanitized_post = array_strip_tags($_POST['Job'], '<br>');
+
+			// $model->attributes = $_POST['Job']; // mass assignment			
+			$model->attributes = $sanitized_post; 
+
+			$model->date_added = time();
+			$model->status_id = 1; // needs review
+			
+			if (!isset($sanitized_post['expiration_date']) || $sanitized_post['expiration_date'] === '') {
+				$model->expiration_date = $model->date_added + self::DEFAULT_EXPIRATION_SECONDS;
+			} else {
+				Yii::log("Expiration set manually: " . $sanitized_post['expiration_date'], CLogger::LEVEL_INFO, "actionDraft");
+				$epoch_or_false = strtotime($sanitized_post['expiration_date']);
+				if ($epoch_or_false) {
+					$model->expiration_date = $epoch_or_false;
+				} else {
+					$model->expiration_date = $model->date_added + self::DEFAULT_EXPIRATION_SECONDS;
+				}
+			}
+
+			// generic anonymous number
+			$model->author_id = 1000;
+
+			$model->attachment=CUploadedFile::getInstance($model, 'attachment');
+
+			if ($model->validate()) {
+				if ($model->save() && captcha_passed($_POST)) {
+					if (isset($model->attachment)) {
+						$filename = $this->getUploadFilePath("job", $model->id);
+						$model->attachment->saveAs($filename);
+					}
+					$this->updateSearchIndex($model, "admin");
+					$this->mailOnDraft($model);
+					
+					Yii::app()->user->setFlash('success', "Ihr Angebot wurde für ein Review vorbereitet. Wenn Sie eine E-Mail Adresse für die Benachrichtigung eingerichtet haben, bekommen Sie auf diese eine Nachricht zugesandt, sobald das Jobangebot geprüft und freigeschaltet wurde; falls nicht, können Sie mit einer Freischaltung in maximal drei Tagen rechnen.");
+					
+					$this->redirect(array('index'));
+				}
+			}
+		}
 		
+		$this->render('draft', array('model' => $model));
+	}
+
+
+	/**
+	 * An asynchronous view. Adds or removes job with $id to or from the
+	 * users favorite list. 
+	 * 
+	 * @param integer the id of the model, whose attachment is requested
+	 */		
 	public function actionToggleFavorite($id) {
 		
 		if (!isset(Yii::app()->session[Yii::app()->params['favStore']])) {
@@ -244,6 +295,7 @@ class JobController extends Controller
 		
 		$userFavs = Yii::app()->session[Yii::app()->params['favStore']];
 		$removed = false;
+
 		foreach ($userFavs as $key => $value) {
 			if ($value["id"] == $id) {
 				unset($userFavs[$key]);
@@ -268,68 +320,18 @@ class JobController extends Controller
 		
 		Yii::app()->session[Yii::app()->params['favStore']] = $userFavs;
 		$this->renderPartial('_favbar');
-	}
-
-	/**
-	 * Create a new job posting.
-	 */
-	public function actionDraft()
-	{
-		$current_time = time();
-		$model = new Job;
-
-		if(isset($_POST['Job'])) {
-						
-			$sanitized_post = array_strip_tags($_POST['Job'], '<br>');
-			
-			// $model->attributes = $_POST['Job']; // mass assignment
-			$model->attributes = $sanitized_post; 
-			$model->date_added = time();
-			$model->status_id = 1; // needs review
-			
-			if (!isset($sanitized_post['expiration_date']) || $sanitized_post['expiration_date'] === '') {
-				$model->expiration_date = $model->date_added + self::DEFAULT_EXPIRATION_SECONDS;
-			} else {
-				Yii::log("Expiration set manually: " . $sanitized_post['expiration_date'], CLogger::LEVEL_INFO, "actionCreate");
-				$epoch_or_false = strtotime($sanitized_post['expiration_date']);
-				if ($epoch_or_false) {
-					
-					$model->expiration_date = $epoch_or_false;
-				} else {
-					$model->expiration_date = $model->date_added + self::DEFAULT_EXPIRATION_SECONDS;
-				}
-			}
-
-			$model->author_id = 1000;
-
-			$model->attachment=CUploadedFile::getInstance($model,'attachment');
-
-			if ($model->validate()) 
-			{
-				if ($model->save() && captcha_passed($_POST)) {
-					if (isset($model->attachment)) {
-						$filename = $this->getUploadFilePath("job", $model->id);
-						$model->attachment->saveAs($filename);
-					}
-					// $this->updateSearchIndex($model);
-					$this->mailOnDraft($model);
-					
-					Yii::app()->user->setFlash('success', "Ihr Angebot wurde für ein Review vorbereitet. Wenn Sie eine E-Mail Adresse für die Benachrichtigung eingerichtet haben, bekommen Sie auf diese eine Nachricht zugesandt, sobald das Jobangebot geprüft und freigeschaltet wurde; falls nicht, können Sie mit einer Freischaltung in maximal drei Tagen rechnen.");
-					
-					$this->redirect(array('index'));
-				}
-			}
-		}
-		
-		$this->render('draft', array('model' => $model));
-	}
-	
+	}	
 	
 	protected function mailOnDraft($model) {
 		
 		$newline = chr(13) . chr(10);
 		
-		$email_model = Options::model()->findByAttributes(array("option" => "on-draft-notification-email-addresses"));
+		// Email addresses are stored as string value in the options table,
+		// which is simply a dumb key resp. option-value store. 
+		// The key for the 'mailOnDraft' action is:
+		//     on-draft-notification-email-addresses
+		$email_model = Options::model()->findByAttributes(
+				array("option" => "on-draft-notification-email-addresses"));
 		
 		$emails = $email_model->value;
 		
@@ -347,24 +349,11 @@ class JobController extends Controller
 	    		'X-Mailer: PHP/' . phpversion();
 
 			if (mail($to, $subject, $message, $headers)) {
-				Yii::log("Draft-Mail accepted", CLogger::LEVEL_INFO, "mailOnDraft");
+				Yii::log("Draft-Mail accepted. Sent to: " . $emails, CLogger::LEVEL_INFO, "mailOnDraft");
 			} else {
-				Yii::log("Draft-Mail NOT accepted", CLogger::LEVEL_INFO, "mailOnDraft");
-			}			
+				Yii::log("Draft-Mail NOT accepted.", CLogger::LEVEL_INFO, "mailOnDraft");
+			}
 		}
-	}
-
-	/**
-	 * Job details.
-	 */
-	public function actionView($id, $from = '')
-	{
-		$model = Job::model()->findByPk($id);
-		if (!$model) {
-			throw new CHttpException(400, Yii::t('app', 'Your request is not valid.'));
-		}
-		Yii::log(Yii::app()->request->userHostAddress, CLogger::LEVEL_INFO, "actionView");
-		$this->render('view', array('model' => $model));
 	}
 	
 } // EOF

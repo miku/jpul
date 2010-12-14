@@ -5,6 +5,10 @@ require_once('Utils.php');
 
 class StatsController extends Controller
 {
+	
+	public function actionIndex() {
+		$this->render("index");
+	}
 		
 	public function actionTrack($b = '', $ref= '', $ww = '', $wh = '') {
 

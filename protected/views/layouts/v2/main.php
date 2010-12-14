@@ -25,11 +25,8 @@
   <!-- <link rel="apple-touch-icon" href="/apple-touch-icon.png"> -->
   
   <!-- CSS : implied media="all" -->
-  <?php
-	Yii::app()->clientScript->scriptMap=array(
-       	'jquery.js'=>false,
-	);
-  ?>
+  <!-- Suppress Yii's jquery.js -->
+  <?php Yii::app()->clientScript->scriptMap=array('jquery.js'=>false); ?>
 
   <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/v2/style.min.css" />	
   <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.4.3.min.js" charset="utf-8"></script>

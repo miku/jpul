@@ -73,5 +73,12 @@
 		</div>
 		<div class="clear"></div>
 	</div>
+	
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+  		$.get('<?php echo $this->createUrl("stats/track"); ?>' + '?b=' + document.location + '&ref=' + document.referrer + '&ww=' + $(window).width() + '&wh=' + $(window).height());
+	});
+</script>
+
 </body>
 </html>

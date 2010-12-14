@@ -106,5 +106,6 @@ return array(
 		// this is used in contact page
 		'adminEmail' => 'martin.czygan@gmail.com',
 		'favStore' => 'ccul__favs__v1',
+		'trackStore' => 'ccul_stats_v1',
 	),
 );

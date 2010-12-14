@@ -1,8 +1,10 @@
 .DS_Store
 assets/*
 uploads/*
-dumps/*sql
-dumps/webdir*zip
+
+dumps/*.sql
+dumps/webdir*.zip
+dumps/*.db
 
 /index.php
 

@@ -27,6 +27,7 @@
   <!-- CSS : implied media="all" -->
   <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/v2/style.css" />	
   <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.4.3.min.js" charset="utf-8"></script>
+  <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/browserdetect.js" charset="utf-8"></script>
  
   <!-- Uncomment if you are specifically targeting less enabled mobile browsers                                                                       
   <link rel="stylesheet" media="handheld" href="css/handheld.css?v=2">  --> 
@@ -76,7 +77,19 @@
 	
 <script type="text/javascript" charset="utf-8">
 	$(document).ready(function() {
-  		$.get('<?php echo $this->createUrl("stats/track"); ?>' + '?b=' + document.location + '&ref=' + document.referrer + '&ww=' + $(window).width() + '&wh=' + $(window).height());
+  		$.get('<?php echo $this->createUrl("stats/track"); ?>' + 
+			'?b=' + document.location + 
+			'&ref=' + document.referrer + 
+			'&ww=' + $(window).width() + 
+			'&wh=' + $(window).height() +
+			'&sw=' + screen.width + 
+			'&sh=' + screen.height + 
+			'&cd=' + screen.colorDepth + 
+			'&av=' + navigator.appVersion +
+			'&btb=' + BrowserDetect.browser + 
+			'&btv=' + BrowserDetect.version + 
+			'&btos=' + BrowserDetect.OS 
+		);
 	});
 </script>
 

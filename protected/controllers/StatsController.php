@@ -29,7 +29,9 @@ class StatsController extends Controller
 			);
 		}
 		
-		Yii::log("base: " . $b . "; ref: " . $ref . "; dim: " . $ww . "x" . $wh, CLogger::LEVEL_INFO, "actionTrack");
+		Yii::log("[**] request-uri: " . $request_uri, CLogger::LEVEL_INFO, "actionTrack");
+		
+		Yii::log("[**] base: " . $b . "; ref: " . $ref . "; dim: " . $ww . "x" . $wh, CLogger::LEVEL_INFO, "actionTrack");
 		
 	}
 }

@@ -1,4 +1,4 @@
-
+// From http://www.quirksmode.org/js/detect.html
 var BrowserDetect = {
 	init: function () {
 		this.browser = this.searchString(this.dataBrowser) || "An unknown browser";
@@ -115,3 +115,20 @@ var BrowserDetect = {
 
 };
 BrowserDetect.init();
+
+// ccul_track - poor man's analytics
+function ccul_track(beaconSink) {
+ 	$.get(beaconSink + 
+		'?b=' + document.location +         // the current URL
+		'&ref=' + document.referrer +       // previous page
+		'&ww=' + $(window).width() +        
+		'&wh=' + $(window).height() +
+		'&sw=' + screen.width + 
+		'&sh=' + screen.height + 
+		'&cd=' + screen.colorDepth + 
+		'&av=' + navigator.appVersion +
+		'&btb=' + BrowserDetect.browser + 
+		'&btv=' + BrowserDetect.version + 
+		'&btos=' + BrowserDetect.OS 
+	);
+}

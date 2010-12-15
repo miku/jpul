@@ -31,7 +31,7 @@
 		<span class="post-posted"><?php echo time_since($model->date_added) ?></span>
 	</p>
 	<p class="post-location">
-		<?php echo format_model_location($model); ?>		
+		<?php echo cut_text(format_model_location($model), 90); ?>		
 	</p>
 	<p class="post-description-teaser"><?php echo cut_text($model->description, 100) ?></p>
 </div>

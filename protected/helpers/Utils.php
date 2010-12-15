@@ -16,6 +16,7 @@
 	}
 	
 	function in_array_2($needle, $haystack) {
+		if ($need == null || $haystack == null) { return false; } 
 		foreach ($haystack as $key => $value) {
 			if (in_array($needle, $value)) {
 				return true;

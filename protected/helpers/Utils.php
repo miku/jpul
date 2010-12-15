@@ -15,6 +15,16 @@
 		return eregi("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$", $email_address);
 	}
 	
+	// make links clickable
+	function text_to_links($text) {
+		// hyperlinks, starting with ...://
+		$text = ereg_replace("[[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/]","<a href=\"\\0\">\\0</a>", $text);
+		// email addresses
+		// http://stackoverflow.com/questions/201323/what-is-the-best-regular-expression-for-validating-email-addresses
+		$text = ereg_replace("[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})", "<a href=\"mailto:\\0\">\\0</a>", $text);
+		return $text;
+	}
+	
 	function in_array_2($needle, $haystack) {
 		if ($needle == null || $haystack == null) { return false; } 
 		foreach ($haystack as $key => $value) {

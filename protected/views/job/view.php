@@ -39,7 +39,7 @@
 			</div>
 
 			<div id="view-description">
-				<?php echo textilize($model->description) ?>
+				<?php echo text_to_links(textilize($model->description)) ?>
 				<?php if ($model->degree): ?>
 					<p><strong>Abschluß:</strong> <?php echo $model->degree->name ?></p>
 				<?php endif ?>
@@ -55,7 +55,7 @@
 			<?php if ($model->how_to_apply): ?>
 				<div id="view-howtoapply">
 					<p id="how-to-apply">Bewerbungsweg</p>
-					<p><?php echo textilize($model->how_to_apply) ?></p>
+					<p><?php echo text_to_links(textilize($model->how_to_apply)) ?></p>
 				</div>
 			<?php endif ?>
 

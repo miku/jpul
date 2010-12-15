@@ -58,7 +58,6 @@ class Controller extends CController
 		} 
 		// try to avoid ugly URLs like
 		// wwwdup.uni-leipzig.de/jobportal/index.php/job/137?PHPSESSID ...
-		
 				
 		CHtml::$afterRequiredLabel = '';
 		

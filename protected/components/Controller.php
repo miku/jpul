@@ -49,6 +49,16 @@ class Controller extends CController
 	}	
 	
 	protected function beforeAction($action) {
+		
+		// See if the user agent is Googlebot
+		$isGoogle = stripos($_SERVER['HTTP_USER_AGENT'], 'Googlebot');
+		// If it is, use ini_set to only allow cookies for the session variable
+		if ($isGoogle !== false) {
+			ini_set('session.use_only_cookies', '1');
+		} 
+		// try to avoid ugly URLs like
+		// wwwdup.uni-leipzig.de/jobportal/index.php/job/137?PHPSESSID ...
+		
 				
 		CHtml::$afterRequiredLabel = '';
 		

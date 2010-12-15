@@ -44,8 +44,10 @@ class StatsController extends Controller
 		
 		try {
 			$request = new Request();
+			$request->tracking_version = "2"; // version "1" was untagged
 			
 			$request->remote_addr = isset($_SERVER["REMOTE_ADDR"]) ? $_SERVER["REMOTE_ADDR"] : '';
+			$request->remote_host = isset($_SERVER["REMOTE_HOST"]) ? $_SERVER["REMOTE_HOST"] : '';
 			$request->request_time = time();
 			$request->http_user_agent = isset($_SERVER["HTTP_USER_AGENT"]) ? $_SERVER["HTTP_USER_AGENT"] : '';
 			$request->request_uri = $b; // we want to track the previous page ...

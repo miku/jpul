@@ -31,6 +31,8 @@
  * @property string $bt_os
  * @property string $request_uri_wo_qs
  * @property string $request_uri_wo_qs_and_hostname
+ * @property string $tracking_version
+ * @property string $remote_host
  *
  * The followings are the available model relations:
  */
@@ -63,14 +65,15 @@ class Request extends CActiveRecord
 		return array(
 			array('request_time', 'numerical', 'integerOnly'=>true),
 			array('remote_addr', 'length', 'max'=>255),
-			array('request_uri, http_user_agent, tracking_id, request_method, http_referer, http_accept, http_accept_charset, http_accept_encoding, http_accept_language, http_connection, http_host, request_uri_wo_qs, request_uri_wo_qs_and_hostname', 'length', 'max'=>512),
+			array('request_uri, http_user_agent, tracking_id, request_method, http_referer, http_accept, http_accept_charset, http_accept_encoding, http_accept_language, http_connection, http_host, request_uri_wo_qs, request_uri_wo_qs_and_hostname, remote_host', 'length', 'max'=>512),
 			array('more_info, navigator_appversion, bt_browser, bt_version', 'length', 'max'=>1024),
 			array('remote_port', 'length', 'max'=>32),
 			array('window_height, window_width, screen_height, screen_width, screen_colordepth', 'length', 'max'=>64),
 			array('bt_os', 'length', 'max'=>128),
+			array('tracking_version', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, remote_addr, request_time, request_uri, http_user_agent, more_info, tracking_id, request_method, http_referer, http_accept, http_accept_charset, http_accept_encoding, http_accept_language, http_connection, http_host, remote_port, window_height, window_width, screen_height, screen_width, screen_colordepth, navigator_appversion, bt_browser, bt_version, bt_os, request_uri_wo_qs, request_uri_wo_qs_and_hostname', 'safe', 'on'=>'search'),
+			array('id, remote_addr, request_time, request_uri, http_user_agent, more_info, tracking_id, request_method, http_referer, http_accept, http_accept_charset, http_accept_encoding, http_accept_language, http_connection, http_host, remote_port, window_height, window_width, screen_height, screen_width, screen_colordepth, navigator_appversion, bt_browser, bt_version, bt_os, request_uri_wo_qs, request_uri_wo_qs_and_hostname, tracking_version, remote_host', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -118,6 +121,8 @@ class Request extends CActiveRecord
 			'bt_os' => 'Bt Os',
 			'request_uri_wo_qs' => 'Request Uri Wo Qs',
 			'request_uri_wo_qs_and_hostname' => 'Request Uri Wo Qs And Hostname',
+			'tracking_version' => 'Tracking Version',
+			'remote_host' => 'Remote Host',
 		);
 	}
 
@@ -159,6 +164,8 @@ class Request extends CActiveRecord
 		$criteria->compare('bt_os',$this->bt_os,true);
 		$criteria->compare('request_uri_wo_qs',$this->request_uri_wo_qs,true);
 		$criteria->compare('request_uri_wo_qs_and_hostname',$this->request_uri_wo_qs_and_hostname,true);
+		$criteria->compare('tracking_version',$this->tracking_version,true);
+		$criteria->compare('remote_host',$this->remote_host,true);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,

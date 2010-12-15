@@ -5,11 +5,30 @@
  *
  * The followings are the available columns in table 'request':
  * @property integer $id
- * @property string $addr
+ * @property string $remote_addr
  * @property integer $request_time
- * @property string $request_path
- * @property string $user_agent
+ * @property string $request_uri
+ * @property string $http_user_agent
  * @property string $more_info
+ * @property string $tracking_id
+ * @property string $request_method
+ * @property string $http_referrer
+ * @property string $http_accept
+ * @property string $http_accept_charset
+ * @property string $http_accept_encoding
+ * @property string $http_accept_language
+ * @property string $http_connection
+ * @property string $http_host
+ * @property string $remote_port
+ * @property string $window_height
+ * @property string $window_width
+ * @property string $screen_height
+ * @property string $screen_width
+ * @property string $screen_colordepth
+ * @property string $navigator_appversion
+ * @property string $bt_browser
+ * @property string $bt_version
+ * @property string $bt_os
  *
  * The followings are the available model relations:
  */
@@ -41,12 +60,15 @@ class Request extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('request_time', 'numerical', 'integerOnly'=>true),
-			array('addr', 'length', 'max'=>255),
-			array('request_path, user_agent', 'length', 'max'=>512),
-			array('more_info', 'length', 'max'=>1024),
+			array('remote_addr', 'length', 'max'=>255),
+			array('request_uri, http_user_agent, tracking_id, request_method, http_referrer, http_accept, http_accept_charset, http_accept_encoding, http_accept_language, http_connection, http_host', 'length', 'max'=>512),
+			array('more_info, navigator_appversion, bt_browser, bt_version', 'length', 'max'=>1024),
+			array('remote_port', 'length', 'max'=>32),
+			array('window_height, window_width, screen_height, screen_width, screen_colordepth', 'length', 'max'=>64),
+			array('bt_os', 'length', 'max'=>128),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, addr, request_time, request_path, user_agent, more_info', 'safe', 'on'=>'search'),
+			array('id, remote_addr, request_time, request_uri, http_user_agent, more_info, tracking_id, request_method, http_referrer, http_accept, http_accept_charset, http_accept_encoding, http_accept_language, http_connection, http_host, remote_port, window_height, window_width, screen_height, screen_width, screen_colordepth, navigator_appversion, bt_browser, bt_version, bt_os', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -68,11 +90,30 @@ class Request extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'addr' => 'Addr',
+			'remote_addr' => 'Remote Addr',
 			'request_time' => 'Request Time',
-			'request_path' => 'Request Path',
-			'user_agent' => 'User Agent',
+			'request_uri' => 'Request Uri',
+			'http_user_agent' => 'Http User Agent',
 			'more_info' => 'More Info',
+			'tracking_id' => 'Tracking',
+			'request_method' => 'Request Method',
+			'http_referrer' => 'Http Referrer',
+			'http_accept' => 'Http Accept',
+			'http_accept_charset' => 'Http Accept Charset',
+			'http_accept_encoding' => 'Http Accept Encoding',
+			'http_accept_language' => 'Http Accept Language',
+			'http_connection' => 'Http Connection',
+			'http_host' => 'Http Host',
+			'remote_port' => 'Remote Port',
+			'window_height' => 'Window Height',
+			'window_width' => 'Window Width',
+			'screen_height' => 'Screen Height',
+			'screen_width' => 'Screen Width',
+			'screen_colordepth' => 'Screen Colordepth',
+			'navigator_appversion' => 'Navigator Appversion',
+			'bt_browser' => 'Bt Browser',
+			'bt_version' => 'Bt Version',
+			'bt_os' => 'Bt Os',
 		);
 	}
 
@@ -88,11 +129,30 @@ class Request extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('addr',$this->addr,true);
+		$criteria->compare('remote_addr',$this->remote_addr,true);
 		$criteria->compare('request_time',$this->request_time);
-		$criteria->compare('request_path',$this->request_path,true);
-		$criteria->compare('user_agent',$this->user_agent,true);
+		$criteria->compare('request_uri',$this->request_uri,true);
+		$criteria->compare('http_user_agent',$this->http_user_agent,true);
 		$criteria->compare('more_info',$this->more_info,true);
+		$criteria->compare('tracking_id',$this->tracking_id,true);
+		$criteria->compare('request_method',$this->request_method,true);
+		$criteria->compare('http_referrer',$this->http_referrer,true);
+		$criteria->compare('http_accept',$this->http_accept,true);
+		$criteria->compare('http_accept_charset',$this->http_accept_charset,true);
+		$criteria->compare('http_accept_encoding',$this->http_accept_encoding,true);
+		$criteria->compare('http_accept_language',$this->http_accept_language,true);
+		$criteria->compare('http_connection',$this->http_connection,true);
+		$criteria->compare('http_host',$this->http_host,true);
+		$criteria->compare('remote_port',$this->remote_port,true);
+		$criteria->compare('window_height',$this->window_height,true);
+		$criteria->compare('window_width',$this->window_width,true);
+		$criteria->compare('screen_height',$this->screen_height,true);
+		$criteria->compare('screen_width',$this->screen_width,true);
+		$criteria->compare('screen_colordepth',$this->screen_colordepth,true);
+		$criteria->compare('navigator_appversion',$this->navigator_appversion,true);
+		$criteria->compare('bt_browser',$this->bt_browser,true);
+		$criteria->compare('bt_version',$this->bt_version,true);
+		$criteria->compare('bt_os',$this->bt_os,true);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,

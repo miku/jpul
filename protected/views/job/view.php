@@ -38,15 +38,13 @@
 				</div>		
 			</div>
 
-			<div id="view-description"><?php echo textilize($model->description) ?></div>
+			<div id="view-description">
+				<?php echo textilize($model->description) ?>
+				<?php if ($model->degree): ?>
+					<p><strong>Abschluß:</strong> <?php echo $model->degree->name ?></p>
+				<?php endif ?>
+			</div>
 			
-			<?php if ($model->degree): ?>
-				<div id="view-degree">
-					<p>Abschluß: <?php echo $model->degree->name ?></p>
-				</div>
-			<?php endif ?>
-
-
 			<?php if ($model->attachment): ?>
 				<div id="view-download">
 					<a href="<?php echo $this->createUrl('job/download', array('id'=>$model->id)); ?>">PDF dieser Anzeige</a>
@@ -67,6 +65,14 @@
 				<span class="fat">Bewerbungsschluss: <span class="sticky"><?php echo date("d.m.Y", $model->expiration_date); ?></span></span>
 			</div>
 			
+			<?php if (isset($view_count)): ?>
+			<div id="view-count">
+				<p>Dieses Angebot wurde 
+					<?php echo ($view_count == 0) ? 1 : $view_count; ?> 
+				mal angesehen.</p>
+			</div>				
+			<?php endif ?>
+			
 			<div id="bottom-nav">					
 				<?php if (isset(Yii::app()->session['detailSnapBackUrl'])): ?>
 					<a href="<?php echo Yii::app()->session['detailSnapBackUrl']; ?>">Zurück zu den Ergebnissen</a>
@@ -74,9 +80,7 @@
 					<a href="<?php echo $this->createUrl('job/index'); ?>">Zurück zur Übersicht</a>
 				<?php endif ?>
 			</div>
-			
-			
-			
+				
 		</div>  
 	</div>
 </div>

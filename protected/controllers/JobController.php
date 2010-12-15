@@ -199,8 +199,31 @@ class JobController extends Controller
 		if (!$model) {
 			throw new CHttpException(400, Yii::t('app', 'Your request is not valid.'));
 		}
+
+		// job view count:
+		// select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
+		try {
+			// $sql = "select distinct COUNT(tracking_id) as view_count from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '" . $this->createUrl('job/view', array("id" => $id)) . "';";
+
+			$sql = "select count(*) as view_count from (
+				select distinct tracking_id, request_uri_wo_qs_and_hostname from 
+				request where
+					(tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND
+            		request_uri_wo_qs_and_hostname = '". $this->createUrl('job/view', array("id" => $id)) . "') as Q;";
+
+			// Yii::log($sql, CLogger::LEVEL_INFO, "actionView");
+			
+			$connection = Yii::app()->db;
+			$command = $connection->createCommand($sql);
+			$dataReader = $command->queryRow();
+			$view_count = $dataReader['view_count'];
+		} catch (Exception $e) {
+			Yii::log($e, CLogger::LEVEL_INFO, "actionView");
+			$view_count = null;
+		}
+		
 		Yii::log(Yii::app()->request->userHostAddress, CLogger::LEVEL_INFO, "actionView");
-		$this->render('view', array('model' => $model));
+		$this->render('view', array('model' => $model, 'view_count' => $view_count));
 	}
 
 	/**

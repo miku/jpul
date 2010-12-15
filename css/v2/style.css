@@ -209,7 +209,8 @@ a:hover {
 #view-degree {
 	margin-top: 5px;
 	background: #EFEFEE;	
-	padding: 8px 25px 8px 25px;
+	padding: 3px 25px 1px 25px;
+	margin-bottom: 5px;
 }
 
 #view-howtoapply {
@@ -249,6 +250,13 @@ a:hover {
 #view-download {
 	padding: 10px 10px 10px 25px;
 	background: #EAEAEA;
+	font-weight: bold;
+}
+
+#view-count {
+	margin: 20px 0 0 0;
+	padding: 0 0 0 0;
+	color: #BCBCBC;
 }
 
 #view-content p {
@@ -465,7 +473,9 @@ label {
 }
 
 #view-deadline {
-	margin-top: 12px;
+	margin: 12px 0px 0px 0px;
+	padding: 8px 25px 8px 25px;
+	background: aliceblue;
 }
 
 

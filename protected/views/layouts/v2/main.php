@@ -28,9 +28,9 @@
   <!-- Suppress Yii's jquery.js -->
   <?php Yii::app()->clientScript->scriptMap=array('jquery.js'=>false); ?>
 
-  <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/v2/style.min.css" />	
+  <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/v2/style.css" />	
   <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.4.3.min.js" charset="utf-8"></script>
-  <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/tracker.min.js" charset="utf-8"></script>
+  <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/tracker.js" charset="utf-8"></script>
   <script charset="utf-8">
   	$(document).ready(function() {
 		ccul_track('<?php echo $this->createUrl("stats/track"); ?>');

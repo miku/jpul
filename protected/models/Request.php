@@ -12,7 +12,7 @@
  * @property string $more_info
  * @property string $tracking_id
  * @property string $request_method
- * @property string $http_referrer
+ * @property string $http_referer
  * @property string $http_accept
  * @property string $http_accept_charset
  * @property string $http_accept_encoding
@@ -29,6 +29,8 @@
  * @property string $bt_browser
  * @property string $bt_version
  * @property string $bt_os
+ * @property string $request_uri_wo_qs
+ * @property string $request_uri_wo_qs_and_hostname
  *
  * The followings are the available model relations:
  */
@@ -61,14 +63,14 @@ class Request extends CActiveRecord
 		return array(
 			array('request_time', 'numerical', 'integerOnly'=>true),
 			array('remote_addr', 'length', 'max'=>255),
-			array('request_uri, http_user_agent, tracking_id, request_method, http_referrer, http_accept, http_accept_charset, http_accept_encoding, http_accept_language, http_connection, http_host', 'length', 'max'=>512),
+			array('request_uri, http_user_agent, tracking_id, request_method, http_referer, http_accept, http_accept_charset, http_accept_encoding, http_accept_language, http_connection, http_host, request_uri_wo_qs, request_uri_wo_qs_and_hostname', 'length', 'max'=>512),
 			array('more_info, navigator_appversion, bt_browser, bt_version', 'length', 'max'=>1024),
 			array('remote_port', 'length', 'max'=>32),
 			array('window_height, window_width, screen_height, screen_width, screen_colordepth', 'length', 'max'=>64),
 			array('bt_os', 'length', 'max'=>128),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, remote_addr, request_time, request_uri, http_user_agent, more_info, tracking_id, request_method, http_referrer, http_accept, http_accept_charset, http_accept_encoding, http_accept_language, http_connection, http_host, remote_port, window_height, window_width, screen_height, screen_width, screen_colordepth, navigator_appversion, bt_browser, bt_version, bt_os', 'safe', 'on'=>'search'),
+			array('id, remote_addr, request_time, request_uri, http_user_agent, more_info, tracking_id, request_method, http_referer, http_accept, http_accept_charset, http_accept_encoding, http_accept_language, http_connection, http_host, remote_port, window_height, window_width, screen_height, screen_width, screen_colordepth, navigator_appversion, bt_browser, bt_version, bt_os, request_uri_wo_qs, request_uri_wo_qs_and_hostname', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -97,7 +99,7 @@ class Request extends CActiveRecord
 			'more_info' => 'More Info',
 			'tracking_id' => 'Tracking',
 			'request_method' => 'Request Method',
-			'http_referrer' => 'Http Referrer',
+			'http_referer' => 'Http Referer',
 			'http_accept' => 'Http Accept',
 			'http_accept_charset' => 'Http Accept Charset',
 			'http_accept_encoding' => 'Http Accept Encoding',
@@ -114,6 +116,8 @@ class Request extends CActiveRecord
 			'bt_browser' => 'Bt Browser',
 			'bt_version' => 'Bt Version',
 			'bt_os' => 'Bt Os',
+			'request_uri_wo_qs' => 'Request Uri Wo Qs',
+			'request_uri_wo_qs_and_hostname' => 'Request Uri Wo Qs And Hostname',
 		);
 	}
 
@@ -136,7 +140,7 @@ class Request extends CActiveRecord
 		$criteria->compare('more_info',$this->more_info,true);
 		$criteria->compare('tracking_id',$this->tracking_id,true);
 		$criteria->compare('request_method',$this->request_method,true);
-		$criteria->compare('http_referrer',$this->http_referrer,true);
+		$criteria->compare('http_referer',$this->http_referer,true);
 		$criteria->compare('http_accept',$this->http_accept,true);
 		$criteria->compare('http_accept_charset',$this->http_accept_charset,true);
 		$criteria->compare('http_accept_encoding',$this->http_accept_encoding,true);
@@ -153,6 +157,8 @@ class Request extends CActiveRecord
 		$criteria->compare('bt_browser',$this->bt_browser,true);
 		$criteria->compare('bt_version',$this->bt_version,true);
 		$criteria->compare('bt_os',$this->bt_os,true);
+		$criteria->compare('request_uri_wo_qs',$this->request_uri_wo_qs,true);
+		$criteria->compare('request_uri_wo_qs_and_hostname',$this->request_uri_wo_qs_and_hostname,true);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,

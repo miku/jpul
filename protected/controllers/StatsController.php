@@ -10,29 +10,26 @@ class StatsController extends Controller
 		$this->render("index");
 	}
 		
-	public function actionTrack($b = '', $ref= '', $ww = '', $wh = '') {
+	public function actionTrack(
+		$b = '', $ref= '', $ww = '', $wh = '', 
+		$sw = '', $sh= '', $cd = '', $av = '', 
+		$btb = '', $btv= '', $btos = '') {		
+		// '?b=' + document.location +         // the current URL
+		// '&ref=' + document.referrer +       // previous page
+		// '&ww=' + $(window).width() +        
+		// '&wh=' + $(window).height() +
+		// '&sw=' + screen.width + 
+		// '&sh=' + screen.height + 
+		// '&cd=' + screen.colorDepth + 
+		// '&av=' + navigator.appVersion +
+		// '&btb=' + BrowserDetect.browser + 
+		// '&btv=' + BrowserDetect.version + 
+		// '&btos=' + BrowserDetect.OS 
 
-		$request_time = time();
-
-		$remote_addr = $_SERVER["REMOTE_ADDR"];
-		$http_ua = $_SERVER["HTTP_USER_AGENT"];
-		$http_referer = $_SERVER["HTTP_REFERER"];
-		
-		$request_uri = $_SERVER['REQUEST_URI'];
-		$query_string = $_SERVER['QUERY_STRING'];
-
-		// $request_uri_wo_qs = str_replace("?" + $query_string, "", $request_uri);
-		$request_uri_wo_qs = preg_replace("/([?].*)/", "", $http_referer);
-
-		$script_filename = $_SERVER['SCRIPT_FILENAME'];
-
-		$request_method = $_SERVER['REQUEST_METHOD'];
-		$http_accept = $_SERVER['HTTP_ACCEPT'];
-
-		if (isset(Yii::app()->session['tracker'])) {
-			$xtracker = Yii::app()->session[Yii::app()->params['ccul_stats_v1']];			
-			$xtracker['last-access'] = time();
-			Yii::app()->session[Yii::app()->params['ccul_stats_v1']] = $xtracker;
+		if (isset(Yii::app()->session[Yii::app()->params['ccul_stats_v1']])) {
+			$beacon = Yii::app()->session[Yii::app()->params['ccul_stats_v1']];			
+			$beacon['last-access'] = time();
+			Yii::app()->session[Yii::app()->params['ccul_stats_v1']] = $beacon;
 		} else {
 			Yii::app()->session[Yii::app()->params['ccul_stats_v1']] = array(
 				"id" => uniqid(), 
@@ -40,13 +37,50 @@ class StatsController extends Controller
 				"last-access" => time()
 			);
 		}
-
-		Yii::log("---------------- >>>> ", CLogger::LEVEL_INFO, "actionTrack");
-		Yii::log("[**] request_uri_wo_qs: " . $request_uri_wo_qs, CLogger::LEVEL_INFO, "actionTrack");
-		Yii::log("[**] script_filename: " . $script_filename, CLogger::LEVEL_INFO, "actionTrack");
-		Yii::log("[**] query_string: " . $query_string, CLogger::LEVEL_INFO, "actionTrack");
-		Yii::log("[**] request-uri: " . $request_uri, CLogger::LEVEL_INFO, "actionTrack");		
-		Yii::log("[**] base: " . $b . "; ref: " . $ref . "; dim: " . $ww . "x" . $wh, CLogger::LEVEL_INFO, "actionTrack");
-
+		
+		$beacon = Yii::app()->session[Yii::app()->params['ccul_stats_v1']];
+		
+		if ( !(isset($beacon)) || $beacon == null ) { return; }
+		
+		try {
+			$request = new Request();
+			
+			$request->remote_addr = isset($_SERVER["REMOTE_ADDR"]) ? $_SERVER["REMOTE_ADDR"] : '';
+			$request->request_time = time();
+			$request->http_user_agent = isset($_SERVER["HTTP_USER_AGENT"]) ? $_SERVER["HTTP_USER_AGENT"] : '';
+			$request->request_uri = $b; // we want to track the previous page ...
+			
+			// request url without query string
+			$request->request_uri_wo_qs = preg_replace("/([?].*)/", "", $b);
+			if (isset($_SERVER['HTTP_HOST'])) {
+				$request->request_uri_wo_qs_and_hostname = str_replace("http://" . $_SERVER['HTTP_HOST'], "", $request->request_uri_wo_qs);
+			}
+			
+			
+			$request->tracking_id = $beacon['id'];
+			$request->request_uri = $b;
+			$request->request_method = isset($_SERVER['REQUEST_METHOD']) ? $_SERVER['REQUEST_METHOD'] : '';
+			$request->http_referer = $ref; // and the page before the previous page
+			$request->http_accept = isset($_SERVER['HTTP_ACCEPT']) ? $_SERVER['HTTP_ACCEPT'] : '';
+			$request->http_accept_charset = isset($_SERVER['HTTP_ACCEPT_CHARSET']) ? $_SERVER['HTTP_ACCEPT_CHARSET'] : '';
+			$request->http_accept_encoding = isset($_SERVER['HTTP_ACCEPT_ENCODING']) ? $_SERVER['HTTP_ACCEPT_ENCODING'] : '';
+			$request->http_accept_language = isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? $_SERVER['HTTP_ACCEPT_LANGUAGE'] : '';
+			$request->http_connection = isset($_SERVER['HTTP_CONNECTION']) ? $_SERVER['HTTP_CONNECTION'] : '';
+			$request->http_host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '';
+			$request->remote_port = isset($_SERVER['REMOTE_PORT']) ? $_SERVER['REMOTE_PORT'] : '';
+			$request->window_width = $ww;
+			$request->window_height = $wh;
+			$request->screen_width = $sw;
+			$request->screen_height = $sh;
+			$request->screen_colordepth = $cd;
+			$request->navigator_appversion = $av;
+			$request->bt_browser = $btb;
+			$request->bt_version = $btv;
+			$request->bt_os = $btos;
+						
+			$request->save();
+		} catch (Exception $e) {
+			Yii::log("Failed to record request: " . $e, CLogger::LEVEL_INFO, "beforeAction");
+		}
 	}
 }

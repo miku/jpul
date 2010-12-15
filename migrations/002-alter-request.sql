@@ -27,7 +27,7 @@ ALTER TABLE `request` ADD COLUMN `tracking_id` varchar(512) default NULL;
 
 -- mainly $_SERVER
 ALTER TABLE `request` ADD COLUMN `request_method` varchar(512) default NULL;
-ALTER TABLE `request` ADD COLUMN `http_referrer` varchar(512) default NULL;
+ALTER TABLE `request` ADD COLUMN `http_referer` varchar(512) default NULL;
 ALTER TABLE `request` ADD COLUMN `http_accept` varchar(512) default NULL;
 ALTER TABLE `request` ADD COLUMN `http_accept_charset` varchar(512) default NULL;
 ALTER TABLE `request` ADD COLUMN `http_accept_encoding` varchar(512) default NULL;

@@ -27,6 +27,7 @@
   <!-- CSS : implied media="all" -->
   <!-- Suppress Yii's jquery.js -->
   <?php Yii::app()->clientScript->scriptMap=array('jquery.js'=>false); ?>
+  <?php Yii::app()->clientScript->scriptMap=array('jquery.min.js'=>false); ?>
 
   <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/v2/style.min.css" />	
   <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.4.3.min.js" charset="utf-8"></script>

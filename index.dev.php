@@ -12,7 +12,8 @@ $devhosts = array("chiba", "chiba.local",
 	"wlan0715.rz.uni-leipzig.de",
 	"wlan1589.rz.uni-leipzig.de",
 	"wlan1595.rz.uni-leipzig.de",
-	"wlan1976.rz.uni-leipzig.de"
+	"wlan1976.rz.uni-leipzig.de",
+	"wlan2033.rz.uni-leipzig.de"
 );
 
 if (in_array(gethostname(), $devhosts)) {
@@ -23,7 +24,7 @@ if (in_array(gethostname(), $devhosts)) {
 	// production environment
 	$yii = dirname(__FILE__) . '/../src/yii-1.1.4.r2429/framework/yii.php';
 	$config = dirname(__FILE__) . '/protected/config/main.php';
-	define('YII_DEBUG', true);
+	define('YII_DEBUG', false);
 }
 
 // remove the following lines when in production mode

@@ -81,10 +81,10 @@ class SiteController extends Controller
 		// $this->render('index');
 		if (Yii::app()->user->isAdmin()) {
 			Yii::app()->session['adminindexfilter'] = "pd";
-			Yii::app()->request->redirect($this->createUrl("admin/index"));
+			$this->redirect($this->createUrl("admin/index"));
 		}
 		else {
-			Yii::app()->request->redirect($this->createUrl("job/index"));	
+			$this->redirect($this->createUrl("job/index"));	
 		}
 	}
 

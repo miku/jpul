@@ -60,7 +60,7 @@ class Controller extends CController
 			$request->request_path = $_SERVER['REQUEST_URI'];
 			$request->save();
 		} catch (Exception $e) {
-			// die gracefully ... 
+			Yii::log("failed to record request: " . $e, CLogger::LEVEL_INFO, "beforeAction");
 		}
 		
 		CHtml::$afterRequiredLabel = '';

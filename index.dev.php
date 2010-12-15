@@ -1,5 +1,7 @@
 <?php
 
+$main = "main.dev.mysql.php";
+
 // development hosts
 // using development configuration (see config/main.dev.php)
 $devhosts = array("chiba", "chiba.local", 
@@ -16,7 +18,7 @@ $devhosts = array("chiba", "chiba.local",
 if (in_array(gethostname(), $devhosts)) {
 	// development environment
 	$yii = '/Users/ronit/src/yii-1.1.4.r2429/framework/yii.php';
-	$config = dirname(__FILE__) . '/protected/config/main.dev.php';
+	$config = dirname(__FILE__) . '/protected/config/' . $main;
 } else {
 	// production environment
 	$yii = dirname(__FILE__) . '/../src/yii-1.1.4.r2429/framework/yii.php';

@@ -26,6 +26,8 @@ grep -v ' KEY "' |
 grep -v ' UNIQUE KEY "' |
 grep -v ' PRIMARY KEY ' |
 
+
+sed 's/ TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP/ DATETIME DEFAULT CURRENT_TIMESTAMP/g' |
 sed 's/ENGINE=MyISAM/ /g' |
 sed 's/DEFAULT/ /g' |
 sed 's/CHARSET=[a-zA-Z0-9]*/ /g' |

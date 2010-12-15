@@ -3,7 +3,7 @@
 // production environment
 $yii = dirname(__FILE__) . '/../src/yii-1.1.4.r2429/framework/yii.php';
 $config = dirname(__FILE__) . '/protected/config/main.php';
-define('YII_DEBUG', false);
+define('YII_DEBUG', true);
 
 // remove the following lines when in production mode
 defined('YII_DEBUG') or define('YII_DEBUG', true);

@@ -1,6 +1,6 @@
 <?php
 
-	echo "Hello, World!";
-	echo date();
+	echo "Hello, World!\n";
+	echo date(DATE_RFC822) . "\n";
 
 ?>

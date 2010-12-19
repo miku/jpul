@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ContentFilters</key>
+	<dict/>
+	<key>auto_connect</key>
+	<true/>
+	<key>data</key>
+	<dict>
+		<key>connection</key>
+		<dict>
+			<key>database</key>
+			<string>jobportal</string>
+			<key>host</key>
+			<string>127.0.0.1</string>
+			<key>kcid</key>
+			<string>1235123123336422783</string>
+			<key>name</key>
+			<string>Jobportal</string>
+			<key>port</key>
+			<integer>8889</integer>
+			<key>type</key>
+			<string>SPTCPIPConnection</string>
+			<key>user</key>
+			<string>dbjobportal</string>
+		</dict>
+		<key>session</key>
+		<dict>
+			<key>connectionEncoding</key>
+			<string>latin1</string>
+			<key>contentFilter</key>
+			<dict/>
+			<key>contentPageNumber</key>
+			<integer>1</integer>
+			<key>contentSelectedIndexSet</key>
+			<array>
+				<integer>6</integer>
+			</array>
+			<key>contentSortCol</key>
+			<string>id</string>
+			<key>contentSortColIsAsc</key>
+			<false/>
+			<key>contentViewport</key>
+			<string>{{0, 0}, {1233, 666}}</string>
+			<key>isToolbarVisible</key>
+			<true/>
+			<key>queries</key>
+			<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
+
+-- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
+
+-- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
+
+select count(*) as cnt from (
+	select distinct tracking_id, request_uri_wo_qs_and_hostname 
+	from request 
+	where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164'
+) as Q;
+</string>
+			<key>table</key>
+			<string>request</string>
+			<key>view</key>
+			<string>SP_VIEW_CUSTOMQUERY</string>
+		</dict>
+	</dict>
+	<key>encrypted</key>
+	<false/>
+	<key>format</key>
+	<string>connection</string>
+	<key>queryFavorites</key>
+	<array/>
+	<key>queryHistory</key>
+	<array>
+		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
+
+-- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
+
+-- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
+
+select count(*) as cnt from (
+	select distinct tracking_id, request_uri_wo_qs_and_hostname 
+	from request 
+	where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164'
+) as Q</string>
+		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
+
+-- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
+
+-- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
+
+select count(*) as cnt from (
+	select distinct tracking_id, request_uri_wo_qs_and_hostname 
+	from request 
+	where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164'
+)</string>
+		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
+
+-- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
+
+-- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
+
+select count(*) as cnt, (
+	select distinct tracking_id, request_uri_wo_qs_and_hostname 
+	from request 
+	where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164'
+)</string>
+		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
+
+-- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
+
+-- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
+
+select count(*) as cnt, (
+	select distinct tracking_id, request_uri_wo_qs_and_hostname 
+	from request 
+	where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164'</string>
+		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
+
+-- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
+
+-- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
+
+select count(*) as cnt, (
+	select distinct tracking_id, request_uri_wo_qs_and_hostname 
+	from request 
+	where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164' as Q</string>
+		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
+
+-- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
+
+-- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
+
+select count() from (
+	select distinct tracking_id, request_uri_wo_qs_and_hostname 
+	from request 
+	where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164' as Q</string>
+		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
+
+-- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
+
+-- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
+
+select distinct tracking_id, request_uri_wo_qs_and_hostname from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164' group by tracking_id</string>
+		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
+
+-- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
+
+-- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
+
+select distinct tracking_id from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164' group by tracking_id</string>
+		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
+
+-- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
+
+-- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
+
+select distinct tracking_id, count(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164' group by tracking_id</string>
+		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
+
+-- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
+
+-- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
+
+select distinct tracking_id, count(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164' group by request_uri_wo_qs_and_hostname</string>
+		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
+
+-- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
+
+-- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
+
+select distinct count(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164' group by request_uri_wo_qs_and_hostname</string>
+		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
+
+-- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
+
+-- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
+
+select distinct count(request_uri_wo_qs_and_hostname) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164' group by request_uri_wo_qs_and_hostname</string>
+		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
+
+-- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
+
+-- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
+
+select distinct count(request_uri_wo_qs_and_hostname) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164' group by tracking_id</string>
+		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
+
+-- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
+
+-- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
+
+select distinct count(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164' group by tracking_id</string>
+		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
+
+-- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
+
+-- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
+
+select distinct tracking_id, request_uri_wo_qs_and_hostname from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164'</string>
+		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
+
+-- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
+
+-- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
+
+select distinct count(*) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164'</string>
+		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
+
+-- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
+
+-- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
+
+select distinct count(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164'</string>
+		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
+
+-- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
+
+-- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
+
+select distinct tracking_id from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164'</string>
+		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
+
+select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL</string>
+		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
+
+select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL;
+-- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';</string>
+	</array>
+	<key>rdbms_type</key>
+	<string>mysql</string>
+	<key>rdbms_version</key>
+	<string>5.1.44</string>
+	<key>version</key>
+	<integer>1</integer>
+</dict>
+</plist>

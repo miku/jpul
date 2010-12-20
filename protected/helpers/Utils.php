@@ -144,7 +144,7 @@
 			foreach ($sanitized as $key => $value) 
 			{	
 				if (!is_string($value)) continue;
-				$sanitized[$key] = strip_tags($value, $allowable);
+				$sanitized[$key] = trim(strip_tags($value, $allowable));
 			}
 		} 
 		catch (Exception $e) 

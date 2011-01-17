@@ -10,6 +10,9 @@ return array(
 	'name'=>'Jobportal des Careercenters der Universität Leipzig',
 	
 	'language' => 'de',
+	
+	'onBeginRequest'=>create_function('$event', 'return ob_start("ob_gzhandler");'),
+    'onEndRequest'=>create_function('$event', 'return ob_end_flush();'),
 		
 	// preloading 'log' component
 	'preload'=>array('log'),

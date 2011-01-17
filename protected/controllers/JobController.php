@@ -223,6 +223,7 @@ class JobController extends Controller
 		}
 		
 		Yii::log(Yii::app()->request->userHostAddress, CLogger::LEVEL_INFO, "actionView");
+		$this->pageTitle = 'Jobs - ' . cut_text($model->title, 50) . ' - ' . strftime("%d.%m.%Y", $model->date_added);
 		$this->render('view', array('model' => $model, 'view_count' => $view_count));
 	}
 

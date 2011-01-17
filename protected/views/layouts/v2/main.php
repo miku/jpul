@@ -12,7 +12,7 @@
        Remove this if you use the .htaccess -->
   <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> -->
  
-  <title>Jobportal des Career Centers der Universität Leipzig.</title>
+  <title><?php echo CHtml::encode($this->pageTitle); ?></title>
   <meta name="description" content="Jobportal des Career Centers der Universität Leipzig.">
   <meta name="author" content="Career Center, careercenter@uni-leipzig.de">
   <meta name="keywords" content="Arbeitsangebote, Job, Studenten, Absolventen, Hochschule, Jobportal, Listing">

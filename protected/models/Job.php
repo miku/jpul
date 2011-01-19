@@ -73,15 +73,17 @@ class Job extends CActiveRecord
 			array('id, title, description, how_to_apply, attachment, company, company_homepage, zipcode, city, state, country, is_telecommute, is_nation_wide, degree_id, study, sector, author_id, date_added, expiration_date, reviewer_id, source, status_id, is_fulltime, is_parttime, is_internship, is_voluntary_service, is_regular_job, is_scientific_position', 'safe', 'on'=>'search'),
 		);
 	}
-
-	/**
-	 * @return array relational rules.
-	 */
+	
+		/**
+	* @return array relational rules.
+	*/
 	public function relations()
 	{
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'degree' => array(self::BELONGS_TO, 'Degree', 'degree_id'),
+			'status' => array(self::BELONGS_TO, 'JobStatus', 'status_id'),
 		);
 	}
 

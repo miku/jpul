@@ -23,20 +23,19 @@
   <!-- Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
   <link rel="shortcut icon" href="/favicon.ico">
   <!-- <link rel="apple-touch-icon" href="/apple-touch-icon.png"> -->
-  
+
+  <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/v2/style.min.css" />	
+
   <!-- CSS : implied media="all" -->
   <!-- Suppress Yii's jquery.js -->
   <?php Yii::app()->clientScript->scriptMap=array('jquery.js'=>false); ?>
   <?php Yii::app()->clientScript->scriptMap=array('jquery.min.js'=>false); ?>
 
-  <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/v2/style.min.css" />	
-  <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.4.3.min.js" charset="utf-8"></script>
-  <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/tracker.min.js" charset="utf-8"></script>
-  <script charset="utf-8">
-  	$(document).ready(function() {
-		ccul_track('<?php echo $this->createUrl("stats/track"); ?>');
-	});
-  </script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script> 
+  <script>if (typeof jQuery == 'undefined') { document.write(unescape("%3Cscript src='<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.4.3.min.js' type='text/javascript'%3E%3C/script%3E")); }</script>
+
+  <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/tracker.min.js"></script>
+  <script>$(document).ready(function() { ccul_track('<?php echo $this->createUrl("stats/track"); ?>'); });</script>
  
   <!-- Uncomment if you are specifically targeting less enabled mobile browsers                                                                       
   <link rel="stylesheet" media="handheld" href="css/handheld.css?v=2">  --> 

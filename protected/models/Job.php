@@ -32,6 +32,7 @@
  * @property integer $is_voluntary_service
  * @property integer $is_regular_job
  * @property integer $is_scientific_position
+ * @property integer $is_working_student_position
  *
  * The followings are the available model relations:
  */
@@ -63,18 +64,18 @@ class Job extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('title, description, company, author_id, date_added, expiration_date, status_id', 'required'),
-			array('is_telecommute, is_nation_wide, degree_id, author_id, date_added, expiration_date, reviewer_id, status_id, is_fulltime, is_parttime, is_internship, is_voluntary_service, is_regular_job, is_scientific_position', 'numerical', 'integerOnly'=>true),
+			array('is_telecommute, is_nation_wide, degree_id, author_id, date_added, expiration_date, reviewer_id, status_id, is_fulltime, is_parttime, is_internship, is_voluntary_service, is_regular_job, is_scientific_position, is_working_student_position', 'numerical', 'integerOnly'=>true),
 			array('title, attachment, company_homepage, city, state, country, study, sector, source', 'length', 'max'=>255),
 			array('company', 'length', 'max'=>1000),
 			array('zipcode', 'length', 'max'=>10),
 			array('how_to_apply', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, description, how_to_apply, attachment, company, company_homepage, zipcode, city, state, country, is_telecommute, is_nation_wide, degree_id, study, sector, author_id, date_added, expiration_date, reviewer_id, source, status_id, is_fulltime, is_parttime, is_internship, is_voluntary_service, is_regular_job, is_scientific_position', 'safe', 'on'=>'search'),
+			array('id, title, description, how_to_apply, attachment, company, company_homepage, zipcode, city, state, country, is_telecommute, is_nation_wide, degree_id, study, sector, author_id, date_added, expiration_date, reviewer_id, source, status_id, is_fulltime, is_parttime, is_internship, is_voluntary_service, is_regular_job, is_scientific_position, is_working_student_position', 'safe', 'on'=>'search'),
 		);
 	}
-	
-		/**
+
+	/**
 	* @return array relational rules.
 	*/
 	public function relations()
@@ -121,6 +122,7 @@ class Job extends CActiveRecord
 			'is_voluntary_service' => 'Is Voluntary Service',
 			'is_regular_job' => 'Is Regular Job',
 			'is_scientific_position' => 'Is Scientific Position',
+			'is_working_student_position' => 'Is Working Student Position',
 		);
 	}
 
@@ -163,6 +165,7 @@ class Job extends CActiveRecord
 		$criteria->compare('is_voluntary_service',$this->is_voluntary_service);
 		$criteria->compare('is_regular_job',$this->is_regular_job);
 		$criteria->compare('is_scientific_position',$this->is_scientific_position);
+		$criteria->compare('is_working_student_position',$this->is_working_student_position);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,

@@ -1,0 +1,63 @@
+README js/
+==========
+
+Minimization
+------------
+
+	Example:
+
+	$ yuicompress -v --type js tracker.js -o tracker.min.js
+	
+	`yuicompress` is just a shell wrapper around YUI compress 
+	(http://developer.yahoo.com/yui/compressor/):
+	
+		#!/usr/bin/env bash
+
+		YUIC_HOME=$HOME/src/yuicompressor-2.4.2
+		java -jar $YUIC_HOME/build/yuicompressor-2.4.2.jar $@
+
+
+jquery.<version>.min.js
+-----------------------
+
+	Currently used version: 1.4.3
+
+	Current jQuery version, as can be obtained from
+	http://docs.jquery.com/Downloading_jQuery
+	
+	By default use Google's CDN version, if that fails
+	for some reason, use our local copy:
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script> 
+	<script>if (typeof jQuery == 'undefined') { 
+		document.write(unescape("%3Cscript src='<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.4.3.min.js' type='text/javascript'%3E%3C/script%3E")); }
+	</script>
+	
+	See also: http://stackoverflow.com/q/1014203/89391
+
+
+tracker.js / tracker.min.js
+---------------------------
+
+	Our stats callback. 
+	`ccul_track(beaconSink)` will just create a GET request to 
+	the URL specified in `beaconSink`.
+	
+	In our main layout `main.php`:
+	
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/tracker.min.js"></script>
+	<script charset="utf-8"> 
+  		$(document).ready(function() {
+			ccul_track('/jobportal/stats/track');
+		});
+	</script>
+	
+	Respectively:
+	
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/tracker.min.js"></script>
+	<script>
+		$(document).ready(function() { 
+			ccul_track('<?php echo $this->createUrl("stats/track"); ?>'); 
+		});
+	</script>
+

@@ -1,0 +1,71 @@
+/* Page Setup
+/* ------------ */
+
+body {
+  padding: 50px;
+  color:#444;
+  font-family:"HelveticaNeue", Helvetica, Arial, sans-serif;
+  font-size:14px;
+  line-height:1.5em;
+}
+
+* {
+  box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+}
+
+.clear { clear: both; }
+
+:focus {
+  outline: 0;
+}
+
+html {overflow:auto;}
+a { color:rgba(148,207,13,1);text-decoration:none; }
+h1 { margin-left: 10px; color:rgba(148,207,13,1); }
+
+.credits {
+  margin-top: 80px;
+  margin-left: 10px;
+  color: #ccc;
+}
+
+#main {
+  float: left;
+  width: 45%;
+}
+
+#source {
+  float: left;
+  margin-left: 20px;
+  margin-top: 70px;
+  width: 45%;
+  height: 300px;
+  padding: 5px;
+  font-family: monospace;
+  font-size: 13px;
+  color: #777;
+  background: #eee;
+  -webkit-border-radius:5px;
+  -moz-border-radius:   5px;
+  border-radius:        5px;
+}
+
+code { font-family: Monaco, Consolas; font-size: 11px; padding: 0px 3px; background: #eee; }
+
+i { background: #eee; padding: 2px; }
+em { background: #eee; padding: 2px; }
+
+.content { 
+  margin-top: 40px; padding: 10px;
+  -webkit-border-radius:5px;
+  -moz-border-radius:   5px;
+  border-radius:        5px;
+  border: 1px dashed transparent;
+}
+
+.content:hover {
+  border: 1px dashed #eee;
+}
+.content[contenteditable=true] { border-color: #aaa; }

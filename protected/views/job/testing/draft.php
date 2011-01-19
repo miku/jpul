@@ -1,3 +1,8 @@
+<!-- Assume jquery is loaded -->
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/underscore.min.js"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/sanitize.min.js"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/proper.min.js"></script>
+
 <div id="main-container">
 	<div id="main">	
 		<div id="generic-header">Neues Angebot erstellen</div>

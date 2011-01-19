@@ -31,9 +31,9 @@
   <?php Yii::app()->clientScript->scriptMap=array('jquery.js'=>false); ?>
   <?php Yii::app()->clientScript->scriptMap=array('jquery.min.js'=>false); ?>
 
+  <!-- Always load jquery (via CDN or fallback (and trckr) -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script> 
   <script>if (typeof jQuery == 'undefined') { document.write(unescape("%3Cscript src='<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.4.3.min.js' type='text/javascript'%3E%3C/script%3E")); }</script>
-
   <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/tracker.min.js"></script>
   <script>$(document).ready(function() { ccul_track('<?php echo $this->createUrl("stats/track"); ?>'); });</script>
  

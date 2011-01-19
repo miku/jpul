@@ -314,7 +314,8 @@ class JobController extends Controller
 			}
 		}
 		
-		$this->render('draft', array('model' => $model));
+		// $this->render('draft', array('model' => $model));
+		$this->render('testing/draft', array('model' => $model));
 	}
 
 

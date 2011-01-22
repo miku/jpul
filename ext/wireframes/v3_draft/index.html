@@ -1,0 +1,120 @@
+<!DOCTYPE html> 
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html lang="de" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="de" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="de" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="de" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="de" class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>Draft Draft v3</title>
+		<!-- Styles -->
+	<link href="stylesheets/page.css" media="screen" rel="stylesheet" type="text/css" />
+	<link href="stylesheets/proper.css" media="screen" rel="stylesheet" type="text/css" />
+
+	<!-- Libraries -->
+	<script src="lib/jquery-1.4.3.min.js"></script>
+	<script src="lib/underscore.js"></script>
+	<script src="lib/sanitize.js"></script>
+
+	<!-- Source -->
+	<script src="lib/proper.js"></script>
+
+	<script>
+	// Proper Init
+	$(function() {
+		window.editor = new Proper();
+
+		$('.content').click(function() {
+			editor.activate($(this));
+		});
+	});
+	</script>
+	<style>
+	body {
+		margin: 0;
+		padding: 0;
+		color: #333;
+		font: normal 10pt Verdana,"Helvetica Neue",Arial,Tahoma,sans-serif;
+		background: #fff;
+		min-width:985px;
+		font-size:11pt;	
+	}
+	form { background: #F9F9F6; padding: 10px; border-radius: 15px;}
+	#main { margin: 10px 0 0 100px; }
+	input { font-size: 14px; padding: 3px;}
+	.fi { padding: 10px;}
+	.fi-l { font-size: 12px; font-weight: bold; color: orange; padding: 0 0 4px 0px;}
+	.fi-f { font-size: 14px; margin: 0 0 0 0;}
+	</style>
+
+</head>
+<body>
+
+	<div id="main">
+		
+		<h1>Neues Angebot erstellen</h1>
+		
+		<form action="#" method="get" accept-charset="utf-8">
+
+			<div class="fi">
+				<div class="fi-l">Titel</div>
+				<div class="fi-f"><input size="60" type="text" name="title" placeholder="Title" value="" id="some_name"></div>
+			</div>
+
+			<div class="fi">
+				<div class="fi-l">Beschreibung</div>
+				<div class="content">
+					<p>Bikezone-Sizilien veranstaltet seit 5 Jahren Wander- und Biketouren auf Sizilien. Neben der Radstation betreuen wir auch namhafte Hotelketten mit unserem Programm. Für diverse Veranstalter bieten wir auch Transalp Touren, sowohl im Bikebereich als auch im Wanderbereich mit von uns ausgewählten Wanderrouten, jeweils eine light- und eine sportliche Version. Am Abend treffen sich die Gruppen
+wieder zum Essen und um den Abend gemeinsam gemütlich ausklingen zu lassen. Wir bieten Transalptouren von der Zugspitze zum Gardasee und vom Bodensee zum Lago Maggiore.
+
+<ul>
+<li>Wir suchen Dich als Wanderguide (Italien und Alpen)!</li>
+</ul>
+In Sizilien unterstützt Du unser Wander-Tagesgeschäft (April bis Oktober) mit der Organisation, Erkundung und Durchführung von Wandertouren, sowie bei der Betreuung und Kontaktpflege von Leistungsträgern. Auch gehören Abrechnung und Planung der Wochen zu Deinen Tätigkeiten.
+
+In den Alpen bist Du für das Guiding von Gruppen in ausgewählten Routen verantwortlich. Hier gehören auch Organisation, Durchführung von Wandertouren und die Betreuung der Gäste zu Deinen Aufgaben. Es werden 2 Touren in 2 Schwierigkeitsstufen angeboten, eine Light- und eine Sportversion, daher sind hier Pärchen bevorzugt.
+
+Du besitzt einen Führerschein und einen 1. Hilfe-Schein! Dann freuen wir uns auf Deine Kurzbewerbung!
+
+Zeitraum: 1.04.- 31.10.2011 (Sizilien), Transalp im Juni und Juli
+Einsatzdauer: mindestens 6 Wochen
+Konditionen und weitere Infos auf Anfrage</p>
+				</div>
+			</div>
+			
+			<div class="fi">
+				<div class="fi-l">Unternehmen</div>
+				<div class="fi-f"><input size="60" type="text" name="title" placeholder="Unternehmen" value="" id="some_name"></div>
+			</div>
+
+			<div class="fi">
+				<div class="fi-l">Homepage des Unternehmens</div>
+				<div class="fi-f"><input size="60" type="text" name="title" placeholder="Homepage" value="" id="some_name"></div>
+			</div>
+
+			<div class="fi">
+				<div class="fi-l">Ausbildungsgrad</div>
+				<div class="fi-f">
+					<input type="checkbox" name="1" value="" id="1"><label for="1">Student</label><br>
+					<input type="checkbox" name="2" value="" id="2"><label for="2">Bachelor</label><br>
+					<input type="checkbox" name="3" value="" id="3"><label for="3">Master</label><br>
+					<input type="checkbox" name="4" value="" id="4"><label for="4">Magister</label><br>
+					<input type="checkbox" name="5" value="" id="5"><label for="5">PhD</label><br>
+					<input type="checkbox" name="6" value="" id="6"><label for="6">Postdoc</label><br>
+				</div>
+			</div>
+
+			<div class="fi">
+				<div class="fi-l">Attachment</div>
+				<div class="fi-f"><input size="60" type="file" name="title" placeholder="Datei" value="" id="some_name"></div>
+			</div>
+
+
+			<br>
+			<input type="submit" value="Absenden">
+		</form>
+	</div>
+	<br><br>
+</body>
+</html>

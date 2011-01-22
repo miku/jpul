@@ -1,4 +1,4 @@
-<!doctype html> 
+<!DOCTYPE html> 
  <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7 ]> <html lang="de" class="no-js ie6"> <![endif]-->
 <!--[if IE 7 ]>    <html lang="de" class="no-js ie7"> <![endif]-->

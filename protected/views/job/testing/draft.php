@@ -9,6 +9,7 @@
 		<div id="main-content">
 			
 			Hello new FORM!
+			<?php $this->renderPartial('testing/_form', array("model" => $model)); ?>
 
 		</div> <!-- main-content -->
 	</div> <!-- main -->

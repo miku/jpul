@@ -1,11 +1,11 @@
 /* Element specific style */
 ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, body, html, p, blockquote, fieldset, input
 {
-    margin: 0; padding: 0;
+	margin: 0; padding: 0;
 }
 
 /*ul, ol {
-    list-style-type: none;
+list-style-type: none;
 }
 */
 body {
@@ -15,7 +15,7 @@ body {
 	font: normal 10pt Verdana,"Helvetica Neue",Arial,Tahoma,sans-serif;
 	background: #fff;
 	min-width:985px;
-    font-size:11pt;	
+	font-size:11pt;	
 }
 
 .clear {
@@ -24,27 +24,27 @@ body {
 
 /* Links */
 a img, :link img, :visited img {
-    border: none;
+	border: none;
 }
 
 a {
-    color: #3366CC;
-    text-decoration: none;
+	color: #3366CC;
+	text-decoration: none;
 }
 
 a:hover {
-    text-decoration: underline;
+	text-decoration: underline;
 }
 
 
 #title {
-    width: 100%;
-    float: left;
-/*    background: transparent url(../images/header_studium_repeat.jpg) repeat-x scroll right 22px;    */
-/*	background: transparent url(../../images/v2/banner-u4.png) repeat-x scroll right 22px;    */
-/*	background: transparent url(../../images/v2/header-jobportal-repeat.jpg) repeat-x scroll right 22px;*/
+	width: 100%;
+	float: left;
+	/*    background: transparent url(../images/header_studium_repeat.jpg) repeat-x scroll right 22px;    */
+	/*	background: transparent url(../../images/v2/banner-u4.png) repeat-x scroll right 22px;    */
+	/*	background: transparent url(../../images/v2/header-jobportal-repeat.jpg) repeat-x scroll right 22px;*/
 	background: transparent url(../../images/v2/testme-repeat-x.png) repeat-x scroll right 22px;
-	
+
 }
 
 
@@ -99,22 +99,22 @@ a:hover {
 
 /* Logo */
 #title-logo {
-    clear: both;
-    width: 965px;
-    height: 59px;
-    float: left;
-    padding: 23px 0 0 20px;
-/*    background: #ffffff url(../images/header_studium.jpg) no-repeat scroll right bottom;*/
-/*	background: #ffffff url(../../images/v2/banner-u3.png) no-repeat scroll right bottom;*/
+	clear: both;
+	width: 965px;
+	height: 59px;
+	float: left;
+	padding: 23px 0 0 20px;
+	/*    background: #ffffff url(../images/header_studium.jpg) no-repeat scroll right bottom;*/
+	/*	background: #ffffff url(../../images/v2/banner-u3.png) no-repeat scroll right bottom;*/
 	background: #ffffff url(../../images/v2/header-jobportal.jpg) no-repeat scroll right bottom;	
 }
 
 /* Line */
 #title-border {
-    float: left;
-    background: #fff url(../../images/v2/bg_header-nav.jpg) repeat-x scroll 0 0;
-    height: 20px;
-    width: 100%;
+	float: left;
+	background: #fff url(../../images/v2/bg_header-nav.jpg) repeat-x scroll 0 0;
+	height: 20px;
+	width: 100%;
 }
 
 /* Main and Sidebar */
@@ -133,7 +133,7 @@ a:hover {
 	padding: 10px;
 	margin: 0 10px 0 10px;
 	background: #EFEFEF;
-/*	height: 24px;*/
+	/*	height: 24px;*/
 }
 
 #generic-header {
@@ -149,8 +149,8 @@ a:hover {
 
 #sidebar-container {
 /*	margin-left: 780px;*/
-	width: 200px;
-	float: right;
+width: 200px;
+float: right;
 }
 
 #sidebar {
@@ -159,17 +159,17 @@ a:hover {
 }
 
 #sidebar h1 {
-    color: #fff;
-    font-size: 12px;
-    font-weight: bold;
-    padding:3px 3px 3px 5px;
-    background: orange url(../../images/v2/bg_teaserbalken_studium.jpg) repeat-x scroll 0 0;
+	color: #fff;
+	font-size: 12px;
+	font-weight: bold;
+	padding:3px 3px 3px 5px;
+	background: orange url(../../images/v2/bg_teaserbalken_studium.jpg) repeat-x scroll 0 0;
 	margin-bottom: 5px;
 }
 
 #sidebar p {
 	line-height: 1.6em;
-    padding:0 5px 0 5px;
+	padding:0 5px 0 5px;
 	margin-bottom: 12px;
 }
 
@@ -178,7 +178,7 @@ a:hover {
 
 #view-header {
 /*	padding: 10px;*/
-	margin: 0px 0 10px 0;
+margin: 0px 0 10px 0;
 }
 
 #view-job-title {
@@ -232,8 +232,8 @@ a:hover {
 	padding: 0 0 10px 0;
 	margin: 0 0 10px 0;	
 	padding-left: 26px;
-    background: url(../../images/v2/arrow-left-orange-dbl.png) no-repeat 0px 0px;
-    margin-right: 18px;
+	background: url(../../images/v2/arrow-left-orange-dbl.png) no-repeat 0px 0px;
+	margin-right: 18px;
 }
 
 #bottom-nav {
@@ -242,9 +242,9 @@ a:hover {
 	padding: 15px 0 0px 0;
 	margin: 40px 0 0px 0;	
 	padding-left: 26px;
-    background: url(../../images/v2/arrow-left-orange-dbl.png) no-repeat 0px 15px;
-    margin-right: 18px;
-	
+	background: url(../../images/v2/arrow-left-orange-dbl.png) no-repeat 0px 15px;
+	margin-right: 18px;
+
 }
 
 #view-download {
@@ -271,7 +271,7 @@ a:hover {
 
 #content {
 /*	background: #EFEFEF;*/
-	width: 980px;
+width: 980px;
 }
 
 /* searchbox */
@@ -295,14 +295,14 @@ input#search {
 	border: solid thin #ECECEC;
 	color: white;
 	font-weight: bold;
-    background: #FF7b04;
+	background: #FF7b04;
 }
 
 /* Index post partial */
 
 .post {
 	border-bottom: solid thin #ECECEC;
-/*	margin-bottom: 8px;*/
+	/*	margin-bottom: 8px;*/
 	padding: 8px;
 }
 
@@ -380,28 +380,28 @@ span.post-company {
 
 a.fav-toggle
 {
-    display:block;
-    float:left;
-    height:40px;
-    margin-right:5px;
-    margin-left:2px;
-    padding-top:2px;
-    width:14px;
-    background:url(../../images/v2/fav-star-off.png?v=2) no-repeat 0 1px;
+	display:block;
+	float:left;
+	height:40px;
+	margin-right:5px;
+	margin-left:2px;
+	padding-top:2px;
+	width:14px;
+	background:url(../../images/v2/fav-star-off.png?v=2) no-repeat 0 1px;
 }
 
 a.fav-toggle.isfav
 {
-    background:url(../../images/v2/fav-star-on.png?v=2) no-repeat 0 1px;
+	background:url(../../images/v2/fav-star-on.png?v=2) no-repeat 0 1px;
 }
 
 a.fav-link {
-    height:40px;
-    margin-right:5px;
-    margin-left:0px;
-    padding-top:2px;
+	height:40px;
+	margin-right:5px;
+	margin-left:0px;
+	padding-top:2px;
 	padding-left: 20px;
-    background:url(../../images/v2/fav-star-on.png?v=2) no-repeat 0 1px;
+	background:url(../../images/v2/fav-star-on.png?v=2) no-repeat 0 1px;
 }
 
 /* default input textfield */
@@ -484,7 +484,7 @@ label {
 }
 
 .trstyle-dark {
-	
+
 }
 
 .form-item {
@@ -593,56 +593,60 @@ span.total {
 }
 
 a.pdf {
-    margin-right:5px;
-    margin-left:2px;
+	margin-right:5px;
+	margin-left:2px;
 	padding-left: 20px;
-    padding-top: 5px;
+	padding-top: 5px;
 	background:url(../../images/v2/pdf.gif) no-repeat 0 1px;
 }
 
 
 
-/* Proper commands */
+/* 
+Proper commands 
+
+*/
+
 .proper-commands { position: absolute; }
 
 .proper-commands .command {
-  position:relative;
-  float:left;
-  width:30px;
-  height:30px;
-  margin:0 2px 0 0;
-  color:#999;
-  font-size:9px;
-  text-align:center;
-  text-indent:-5000px;
-  text-transform:uppercase;
-  background:rgba(0,0,0,0.05);
+	position:relative;
+	float:left;
+	width:30px;
+	height:30px;
+	margin:0 2px 0 0;
+	color:#999;
+	font-size:9px;
+	text-align:center;
+	text-indent:-5000px;
+	text-transform:uppercase;
+	background:rgba(0,0,0,0.05);
 
-  -webkit-border-radius:5px;
-  -moz-border-radius:   5px;
-  border-radius:        5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:   5px;
+	border-radius:        5px;
 
-  -webkit-box-shadow: 0px 1px 0px rgba(255,255,255,0.75), inset 0px 1px 0px rgba(0,0,0,0.03);
-  -moz-box-shadow:    0px 1px 0px rgba(255,255,255,0.75), inset 0px 1px 0px rgba(0,0,0,0.03);
-  box-shadow:         0px 1px 0px rgba(255,255,255,0.75), inset 0px 1px 0px rgba(0,0,0,0.03);
-  
-  cursor:pointer;
-  overflow:hidden;
+	-webkit-box-shadow: 0px 1px 0px rgba(255,255,255,0.75), inset 0px 1px 0px rgba(0,0,0,0.03);
+	-moz-box-shadow:    0px 1px 0px rgba(255,255,255,0.75), inset 0px 1px 0px rgba(0,0,0,0.03);
+	box-shadow:         0px 1px 0px rgba(255,255,255,0.75), inset 0px 1px 0px rgba(0,0,0,0.03);
+
+	cursor:pointer;
+	overflow:hidden;
 }
 
 .proper-commands .command:hover {
-  background:rgba(0,0,0,0.08);
+	background:rgba(0,0,0,0.08);
 }
 
 .proper-commands .command:active {
-  background:rgba(0,0,0,0.12);
+	background:rgba(0,0,0,0.12);
 }
 
 .proper-commands .command.selected {
-  background:rgba(0,0,0,0.12);
-  -webkit-box-shadow: inset 0px 1px 4px rgba(0,0,0,0.2), inset 0px 2px 2px rgba(0,0,0,0.04), 0px 1px 0px rgba(255,255,255,0.5);
-  -moz-box-shadow:    inset 0px 1px 4px rgba(0,0,0,0.2), inset 0px 2px 2px rgba(0,0,0,0.04), 0px 1px 0px rgba(255,255,255,0.5);
-  box-shadow:         inset 0px 1px 4px rgba(0,0,0,0.2), inset 0px 2px 2px rgba(0,0,0,0.04), 0px 1px 0px rgba(255,255,255,0.5);
+	background:rgba(0,0,0,0.12);
+	-webkit-box-shadow: inset 0px 1px 4px rgba(0,0,0,0.2), inset 0px 2px 2px rgba(0,0,0,0.04), 0px 1px 0px rgba(255,255,255,0.5);
+	-moz-box-shadow:    inset 0px 1px 4px rgba(0,0,0,0.2), inset 0px 2px 2px rgba(0,0,0,0.04), 0px 1px 0px rgba(255,255,255,0.5);
+	box-shadow:         inset 0px 1px 4px rgba(0,0,0,0.2), inset 0px 2px 2px rgba(0,0,0,0.04), 0px 1px 0px rgba(255,255,255,0.5);
 }
 
 .proper-commands a.command > div {position:relative; width:100%; height:100%; }
@@ -658,15 +662,64 @@ a.pdf {
 .proper-commands a.command.code         > div {  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAZFJREFUeNpi/P//P8NAAMaRazEjIyOYDgz0oYlF69dvAdNwj4IYMA6Qtgfik0DL/4MAiIaxYXx0cVzyaOpOgsxGto8FzWErgFiCBh42g5otCRNgQlMgQcNoRTGbiWGAwKjFoxbTp+T6T+PyE2gHwr6BspgqQf3xz3uGyAuu9I/jT7/fM4izHaOOxUufzWKQ2ccIxoff7UHhg9gg0Ha3Asz3OK3KIMfJjKHv0uezuG1Gq53gwPMU6//vf9////D7PgofhEFsEIg4zw6mb35Z97/3Hi9cHUgPSCzzihuykf/x1U5g8Oj7PQYXEQ4GDiYBMEbmgwCIDRIz5WcD83lZDFD0WR1TZhBnZ2KwEBDD6WGsFstxKsETDTY+shgIXPoECVIBVkEwfdXuL+FIxhXUFz/N+6+8nxGMN79chcIHsUHg0Nu6/9J7Gf77nRH9P/WBLIoYCC95OhNnUI/wAgQo+IxWlqKbjWLx06dPc4AKXtLA0pcgs/E1b0GpnAPEpbbdQPwDiP9gjWN6AAyLR0wXBiDAAIPLpMwQ9FqMAAAAAElFTkSuQmCC) no-repeat center center;  }
 
 .proper-commands .separator {
-  position:relative;
-  float:left;
-  width:1px;
-  height:38px;
-  margin:0 6px 0 4px;
-  text-align:center;
-  text-indent:-5000px;
-  background:rgba(0,0,0,0.04);
-  -webkit-box-shadow: 1px 0px 0px rgba(255,255,255,0.5);
-  -moz-box-shadow:    1px 0px 0px rgba(255,255,255,0.5);
-  box-shadow:         1px 0px 0px rgba(255,255,255,0.5);
+	position:relative;
+	float:left;
+	width:1px;
+	height:38px;
+	margin:0 6px 0 4px;
+	text-align:center;
+	text-indent:-5000px;
+	background:rgba(0,0,0,0.04);
+	-webkit-box-shadow: 1px 0px 0px rgba(255,255,255,0.5);
+	-moz-box-shadow:    1px 0px 0px rgba(255,255,255,0.5);
+	box-shadow:         1px 0px 0px rgba(255,255,255,0.5);
 }
+
+/* 
+Page setup for proper / draft
+*/
+
+.clear { clear: both; }
+
+:focus {
+	outline: 0;
+}
+
+html {overflow:auto;}
+
+code { font-family: Monaco, Consolas; font-size: 11px; padding: 0px 3px; background: #eee; }
+
+i { background: #eee; padding: 2px; }
+em { background: #eee; padding: 2px; }
+
+.content { 
+	margin-top: 40px; padding: 20px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:   5px;
+	border-radius:        5px;
+	border: 1px dashed transparent;
+}
+
+.content {
+	border: 1px dashed #eee;
+}
+
+.content[contenteditable=true] { border-color: #aaa; }
+
+
+/* 
+Draft page css
+TODO: refactor
+*/
+
+form { background: aliceblue; }
+input { font-size: 14px; padding: 3px;}
+.fi { padding: 10px;}
+.fi-l { font-size: 14px; font-weight: bold; color: orange; padding: 0 0 4px 0px;}
+.fi-h { font-size: 10px; color: #787878; padding: 0 0 5px 0; width: 380px;}
+.fi-f { font-size: 14px; margin: 0 0 0 0;}
+.content { padding: 10px; background: white;}
+.hsep { background: white; height: 20px;}
+
+ul, li { margin: 0 0 0 10px; padding: 2px;}
+label { margin: 0 10px 0 0px; padding: 5px;}

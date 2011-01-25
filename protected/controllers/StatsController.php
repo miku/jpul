@@ -80,10 +80,9 @@ class StatsController extends Controller
 			$request->bt_os = $btos;
 
 			$request->save();
+			Yii::log("Recorded request.", CLogger::LEVEL_INFO, __FUNCTION__);
 		} catch (Exception $e) {
 			Yii::log("Failed to record request: " . $e, CLogger::LEVEL_INFO, __FUNCTION__);
-		} else {
-			Yii::log("Recorded request.", CLogger::LEVEL_INFO, __FUNCTION__);
-		}
+		} 
 	}
 }

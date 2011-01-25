@@ -16,7 +16,15 @@
  * @version $Id: $
  */
 return array (
-  'Submit' => '',
+  'File could not be found, sorry.' => '',
+  'Is Fulltime' => '',
+  'Is Internship' => '',
+  'Is Parttime' => '',
+  'Is Regular Job' => '',
+  'Is Scientific Position' => '',
+  'Is Voluntary Service' => '',
+  'Is Working Student Position' => '',
+  'Source' => '',
   'Attachment' => 'Anhang',
   'Author' => 'Autor',
   'City' => 'Stadt',
@@ -36,6 +44,7 @@ return array (
   'State' => 'Bundesland',
   'Status' => 'Status',
   'Study' => 'Studienrichtungen',
+  'Submit' => 'Absenden',
   'Title' => 'Titel',
   'Your request is not valid.' => 'Ungültige Anfrage',
   'Zipcode' => 'Postleitzahl',

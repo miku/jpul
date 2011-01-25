@@ -9,7 +9,7 @@
 	<meta charset="utf-8">
 	<title>Draft Draft v3</title>
 		<!-- Styles -->
-	<link href="stylesheets/page.css" media="screen" rel="stylesheet" type="text/css" />
+	<link href="stylesheets/page-bare.css" media="screen" rel="stylesheet" type="text/css" />
 	<link href="stylesheets/proper.css" media="screen" rel="stylesheet" type="text/css" />
 
 	<!-- Libraries -->
@@ -40,20 +40,24 @@
 		min-width:985px;
 		font-size:11pt;	
 	}
-	form { background: #F9F9F6; padding: 10px; border-radius: 15px;}
-	#main { margin: 10px 0 0 100px; }
+	form { background: #EFEFEF; }
+	#main { 
+		margin: 20px 0 0 20px; 
+		width: 750px;
+	}
 	input { font-size: 14px; padding: 3px;}
 	.fi { padding: 10px;}
-	.fi-l { font-size: 12px; font-weight: bold; color: orange; padding: 0 0 4px 0px;}
+	.fi-l { font-size: 14px; font-weight: bold; color: orange; padding: 0 0 4px 0px;}
+	.fi-h { font-size: 10px; color: #787878;}
 	.fi-f { font-size: 14px; margin: 0 0 0 0;}
+	.content { background: white;}
+	.hsep { background: white; height: 20px;}
 	</style>
 
 </head>
 <body>
 
 	<div id="main">
-		
-		<h1>Neues Angebot erstellen</h1>
 		
 		<form action="#" method="get" accept-charset="utf-8">
 
@@ -83,36 +87,72 @@ Konditionen und weitere Infos auf Anfrage</p>
 				</div>
 			</div>
 			
+			<div class="hsep"></div>
+			
 			<div class="fi">
 				<div class="fi-l">Unternehmen</div>
-				<div class="fi-f"><input size="60" type="text" name="title" placeholder="Unternehmen" value="" id="some_name"></div>
+				<div class="fi-f"><input size="60" type="text" name="title" placeholder="Name des Unternehmen" value="" id="some_name"></div>
 			</div>
 
 			<div class="fi">
 				<div class="fi-l">Homepage des Unternehmens</div>
-				<div class="fi-f"><input size="60" type="text" name="title" placeholder="Homepage" value="" id="some_name"></div>
+				<div class="fi-f"><input size="60" type="text" name="title" placeholder="http://enterprise.com" value="" id="some_name"></div>
 			</div>
+
+			<div class="fi">
+				<div class="fi-l">E-Mail-Adresse</div>
+				<div class="fi-h"></div>
+				<div class="fi-f"><input size="60" type="text" name="title" placeholder="info@enterprise.com" value="" id="some_name"></div>
+			</div>
+
+
+			<div class="hsep"></div>
+			
+			<div class="fi">
+				<div class="fi-l">Postleitzahl und Ort</div>
+				<div class="fi-f"><input size="8" type="text" name="title" placeholder="PLZ" value="" id="some_name"><input size="60" type="text" name="title" placeholder="Ort, z.B. Berlin oder Berlin, Deutschland" value="" id="some_name"></div>
+				<div class="fi-f"><br><input type="checkbox" name="12" value="" id="12"><label for="12">Bundesweit</label><br></div>
+			</div>
+
+			
+			<div class="hsep"></div>
 
 			<div class="fi">
 				<div class="fi-l">Ausbildungsgrad</div>
 				<div class="fi-f">
-					<input type="checkbox" name="1" value="" id="1"><label for="1">Student</label><br>
-					<input type="checkbox" name="2" value="" id="2"><label for="2">Bachelor</label><br>
-					<input type="checkbox" name="3" value="" id="3"><label for="3">Master</label><br>
-					<input type="checkbox" name="4" value="" id="4"><label for="4">Magister</label><br>
-					<input type="checkbox" name="5" value="" id="5"><label for="5">PhD</label><br>
-					<input type="checkbox" name="6" value="" id="6"><label for="6">Postdoc</label><br>
+						<input type="checkbox" name="1" value="" id="1"><label for="1">Student</label>
+						<input type="checkbox" name="2" value="" id="2"><label for="2">Bachelor</label>
+						<input type="checkbox" name="3" value="" id="3"><label for="3">Master</label>
+						<input type="checkbox" name="4" value="" id="4"><label for="4">M.A.</label>
+						<input type="checkbox" name="5" value="" id="5"><label for="5">PhD</label>
+						<input type="checkbox" name="6" value="" id="6"><label for="6">Postdoc</label>
 				</div>
+				<br>
+				<div class="fi-l">Art der Stelle</div>
+				<div class="fi-f">
+						<input type="checkbox" name="1" value="" id="7"><label for="7">Vollzeit</label>
+						<input type="checkbox" name="2" value="" id="8"><label for="8">Teilzeit</label>
+						<input type="checkbox" name="3" value="" id="9"><label for="9">Praktikum</label>
+						<input type="checkbox" name="3" value="" id="10"><label for="10">Werksstudent/in</label>
+						<input type="checkbox" name="4" value="" id="11"><label for="11">Volontariat</label>
+				</div>
+
 			</div>
+			
+			<div class="hsep"></div>
 
 			<div class="fi">
 				<div class="fi-l">Attachment</div>
 				<div class="fi-f"><input size="60" type="file" name="title" placeholder="Datei" value="" id="some_name"></div>
 			</div>
 
+			<div class="hsep"></div>
 
 			<br>
-			<input type="submit" value="Absenden">
+			<div class="fi">
+				<div class="fi-f"><input type="submit" value="Absenden"></div>
+			</div>
+			
 		</form>
 	</div>
 	<br><br>

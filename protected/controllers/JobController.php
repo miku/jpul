@@ -218,11 +218,11 @@ class JobController extends Controller
 			$dataReader = $command->queryRow();
 			$view_count = $dataReader['view_count'];
 		} catch (Exception $e) {
-			Yii::log($e, CLogger::LEVEL_INFO, "actionView");
+			Yii::log($e, CLogger::LEVEL_INFO, __FUNCTION__);
 			$view_count = null;
 		}
 		
-		Yii::log(Yii::app()->request->userHostAddress, CLogger::LEVEL_INFO, "actionView");
+		Yii::log(Yii::app()->request->userHostAddress, CLogger::LEVEL_INFO, __FILE__ . ' | ' . __FUNCTION__ . ' | ' . __LINE__);
 		$this->pageTitle = 'Jobs - ' . cut_text($model->title, 50) . ' - ' . strftime("%d.%m.%Y", $model->date_added);
 		$this->render('view', array('model' => $model, 'view_count' => $view_count));
 	}

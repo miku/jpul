@@ -270,6 +270,7 @@
     
     $controls = $(controlsTpl),                // the controls panel
     $controls.prependTo($('body')).hide();
+    $controls.prependTo($('body'));
     
     // Bind events for controls
     $('.proper-commands a.command').click(function(e) {

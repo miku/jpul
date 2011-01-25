@@ -81,7 +81,9 @@ class StatsController extends Controller
 
 			$request->save();
 		} catch (Exception $e) {
-			Yii::log("Failed to record request: " . $e, CLogger::LEVEL_INFO, "beforeAction");
+			Yii::log("Failed to record request: " . $e, CLogger::LEVEL_INFO, __FUNCTION__);
+		} else {
+			Yii::log("Recorded request.", CLogger::LEVEL_INFO, __FUNCTION__);
 		}
 	}
 }

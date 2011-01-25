@@ -36,9 +36,7 @@ class Controller extends CController
 		$userId = Yii::app()->user->getId();
 		if (isset($userId)) {
 			$user = User::model()->findByPk($userId);
-
-			Yii::log("User role: " . $user->role, CLogger::LEVEL_INFO, "filterAdminOnly");
-
+			Yii::log("User role: " . $user->role, CLogger::LEVEL_INFO, __FUNCTION__);
 			if ($user->role != 'admin') {
 				throw new CHttpException(400, Yii::t('app','Your request is not valid.'));
 			}
@@ -51,27 +49,34 @@ class Controller extends CController
 	protected function beforeAction($action) {
 		
 		// See if the user agent is Googlebot
+		// try to avoid ugly URLs like
+		// wwwdup.uni-leipzig.de/jobportal/index.php/job/137?PHPSESSID ...
 		$isGoogle = stripos($_SERVER['HTTP_USER_AGENT'], 'Googlebot');
 		// If it is, use ini_set to only allow cookies for the session variable
 		if ($isGoogle !== false) {
 			ini_set('session.use_only_cookies', '1');
 		} 
-		// try to avoid ugly URLs like
-		// wwwdup.uni-leipzig.de/jobportal/index.php/job/137?PHPSESSID ...
 				
 		CHtml::$afterRequiredLabel = '';
 		
-		Yii::log("beforeAction: " . $action->getId(), CLogger::LEVEL_INFO, "beforeAction");
+		Yii::log("beforeAction: " . $action->getId(), CLogger::LEVEL_INFO, __FUNCTION__);
 
+		// This section provides a helper GET parameter, to test new views
+		// Simply put ?uselayout=<layoutname> into your request url, to 
+		// switch over to a new view for this session.
+		// <layoutname> should be 16 chars long or less.
 		if (isset($_GET['uselayout'])) {
 			Yii::app()->session['uselayout'] = $_GET['uselayout'];
 		}
 		
 		if (isset(Yii::app()->session['uselayout'])) {
-			$this->layout = "//layouts/" . Yii::app()->session['uselayout'];
+			if (preg_match("/[a-zA-z\/]{1,16}/", Yii::app()->session['uselayout'])) {
+				Yii::log("Setting Layout for this session: " . Yii::app()->session['uselayout'], CLogger::LEVEL_INFO, __FUNCTION__);
+				$this->layout = "//layouts/" . Yii::app()->session['uselayout'];
+			} else {
+				$this->layout = "//layouts/v2/main";
+			}
 		}
-		
-		Yii::log("Layout now: " . Yii::app()->layout, CLogger::LEVEL_INFO, "beforeAction");
 		return parent::beforeAction($action);
 	}
 	

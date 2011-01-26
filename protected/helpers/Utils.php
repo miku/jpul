@@ -88,7 +88,7 @@
 		Yii::app()->session[$challenge_id] = "" . ($r + $s);
 		Yii::log($challenge_id . " ==> " . Yii::app()->session[$challenge_id], CLogger::LEVEL_INFO, "get_captcha_html");
 		
-		return '<span class="CHALLENGE_QUESTION">' . $r . ' + ' . $s . ' = </span>' .
+		return '<span class="CHALLENGE_QUESTION">' . $r . ' plus ' . $s . ' ist gleich </span>' .
 			'<input type="hidden" value="' . $challenge_id . '" name="CHALLENGE_ID" />' . 
 			'<input size="8" name="CHALLENGE_ANSWER" id="challenge_answer" type="text" maxlength="255" value="" />';
 	}

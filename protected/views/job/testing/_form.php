@@ -9,22 +9,14 @@
 
 <div class="fi bb">
 	<div class="fi-l"><?php echo $form->labelEx($model,'description'); ?></div>
-	<div class="content">
-		<p>Wir suchen Sie. Sie sind ein Arbeitgeber, der</p>
-		<br>
-		<p><ul>
-			<li>eine Arbeitsstelle, Praktikum oder Volontariat inserieren möchte,</li>
-			<li>sich über einen kostenlosen Service der Universität Leipzig freut und</li>
-			<li>über 20000 Studenten ein interessantes Angebot anbieten kann.</li>
-		</ul></p>
-		<br>
-		<p><strong>Interessiert?</strong></p>
-		<br>
-		<p>Sie sind nur noch wenige Schritte von der Veröffentlichung Ihrer Anzeige entfernt.
-			Bitte editieren Sie diesen Text und füllen Sie die restlichen Felder aus. Absenden.
-			Fertig.
-		</p>
-		<br>
+	<div class="fi-e"><?php echo $form->error($model,'description'); ?></div>
+	
+	<div class="hidden">
+		<?php echo $form->textArea($model,'description', array("rows" => "35", "cols" => "60", "class" => "contentDescriptionHidden")); ?>
+	</div>
+	
+	<div class="content" id="contentDescription">
+	
 	</div>
 </div>
 
@@ -168,9 +160,27 @@
 	<div class="hsep"></div>
 
 <div class="fs bt">
-	<div class="fi" style="font-size: 12px;">
-		<?php echo CHtml::submitButton(Yii::t('app', 'Submit')); ?> <?php echo Yii::t('app', 'or') ?> <a href="<?php echo $this->createUrl('job/index') ?>"><?php echo Yii::t('app', 'cancel'); ?>.</a>
+		
+	<div class="buttons" style="min-height: 30px; padding: 10px;">
+		
+	    <button type="submit" class="positive" name="save" id="submitDraft">
+	        <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/v2/apply2.png" alt=""/>
+	        Speichern
+	    </button>
+
+	    <a href="" class="regular"><!-- class="regular"-->
+	        <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/v2/textfield_key.png" alt=""/>
+	        Vorschau
+	    </a>
+
+	    <a href="#" class="negative">
+	        <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/v2/cross.png" alt=""/>
+	        Abbrechen
+	    </a>
+	
+	
 	</div>
+		
 </div>
 
 </div>

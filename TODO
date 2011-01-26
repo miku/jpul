@@ -76,3 +76,9 @@ if ($_FILES['Job']['name']['attachment'] != '') {
 } else {
 	Yii::log("No file.", CLogger::LEVEL_INFO, "actionUpdate");				
 }
+
+
+
+
+<div class="fi" style="font-size: 12px;">
+	<?php echo CHtml::submitButton(Yii::t('app', 'Submit'), array('id' => 'submitDraft')); ?> <?php echo Yii::t('app', 'or') ?> <a href="<?php echo $this->createUrl('job/index') ?>"><?php echo Yii::t('app', 'cancel'); ?>.</a>

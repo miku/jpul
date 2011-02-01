@@ -257,6 +257,7 @@ class JobController extends Controller
 	{
 		$current_time = time();
 		$model = new Job;
+		$captcha_error = false;
 
 		if(isset($_POST['Job'])) {
 			
@@ -271,15 +272,11 @@ class JobController extends Controller
 			
 			Yii::log("Company homepage after adjustments: " . $_POST['Job']['company_homepage'], CLogger::LEVEL_INFO, __FUNCTION__);
 
-
 			// strip every html tag out of every field, except '<br>'
 			// $sanitized_post = array_strip_tags($_POST['Job'], '<br>');
 			$sanitized_post = $_POST['Job'];
 			
-			
 			Yii::log("Job description: " . $_POST['Job']['description'], CLogger::LEVEL_INFO, __FUNCTION__);
-			
-			
 
 			// $model->attributes = $_POST['Job']; // mass assignment			
 			$model->attributes = $sanitized_post; 
@@ -299,13 +296,18 @@ class JobController extends Controller
 				}
 			}
 
-			// generic anonymous number
+			// generic anonymous author id
 			$model->author_id = 1000;
 
 			$model->attachment=CUploadedFile::getInstance($model, 'attachment');
 
 			if ($model->validate()) {
-				if ($model->save() && captcha_passed($_POST)) {
+				Yii::log("Model validated successfully.", CLogger::LEVEL_INFO, __FUNCTION__);
+				
+				if (captcha_passed($_POST) && $model->save()) {
+					
+					Yii::log("Captcha passed. Model saved.", CLogger::LEVEL_INFO, __FUNCTION__);
+					
 					if (isset($model->attachment)) {
 						$filename = $this->getUploadFilePath("job", $model->id);
 						$model->attachment->saveAs($filename);
@@ -313,15 +315,17 @@ class JobController extends Controller
 					$this->updateSearchIndex($model, "admin");
 					$this->mailOnDraft($model);
 					
-					Yii::app()->user->setFlash('success', "Ihr Angebot wurde für ein Review vorbereitet. Wenn Sie eine E-Mail Adresse für die Benachrichtigung eingerichtet haben, bekommen Sie auf diese eine Nachricht zugesandt, sobald das Jobangebot geprüft und freigeschaltet wurde; falls nicht, können Sie mit einer Freischaltung in maximal drei Tagen rechnen.");
-					
+					// Yii::app()->user->setFlash('success', "Ihr Angebot wurde für ein Review vorbereitet. Wenn Sie eine E-Mail Adresse für die Benachrichtigung eingerichtet haben, bekommen Sie auf diese eine Nachricht zugesandt, sobald das Jobangebot geprüft und freigeschaltet wurde; falls nicht, können Sie mit einer Freischaltung in maximal drei Tagen rechnen.");
 					$this->redirect(array('index'));
+				} else {
+					Yii::log("Captcha error or failed to save model.", CLogger::LEVEL_INFO, __FUNCTION__);
+					$captcha_error = true;
 				}
 			}
 		}
-		
+
 		// $this->render('draft', array('model' => $model));
-		$this->render('testing/draft', array('model' => $model));
+		$this->render('testing/draft', array('model' => $model, 'captcha_error' => $captcha_error));
 	}
 
 

@@ -51,4 +51,6 @@ return array (
   'Zipcode' => 'Postleitzahl',
   'cancel' => 'Abbrechen',
   'or' => 'oder',
+
+  '{attribute} cannot be blank.' => '{attribute} ist ein Pflichtfeld.',
 );

@@ -41,7 +41,7 @@
 	<!-- assert jquery != undefined -->
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/underscore.min.js"></script>
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/sanitize.min.js"></script>
-	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/proper.min.js"></script>
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/proper.js"></script>
 
 
 	<!-- Uncomment if you are specifically targeting less enabled mobile browsers                                                                       

@@ -730,15 +730,14 @@ input { font-size: 14px; padding: 3px;}
 .fi-l, .fi-l label { font-size: 14px; font-weight: bold; color: orange; padding: 0 0 4px 0px;}
 .fi-h { font-size: 10px; color: #787878; padding: 0 0 5px 0; width: 380px;}
 .fi-f { font-size: 14px; margin: 0 0 0 0;}
-.fi-e { padding: 0 0 4px 0; color: red; }
-.errorMessage { color: red; font-weight: bold; }
+.fi-e { color: red; font-size: 10px; font-weight: normal; padding: 0 0 4px 0;  }
+.errorMessage { color: red; }
 .content { padding: 10px; background: white;}
 .hsep { background: white; height: 20px;}
 .hidden { display: none; }
 
 ul, li { margin: 0 0 0 10px; padding: 2px;}
 .horizontal label { margin: 0 10px 0 0px; padding: 5px;}
-
 
 
 /* 

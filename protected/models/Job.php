@@ -63,7 +63,7 @@ class Job extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, description, company, author_id, date_added, expiration_date, status_id', 'required'),
+			array('title, description, company, city, author_id, date_added, expiration_date, status_id', 'required'),
 			array('is_telecommute, is_nation_wide, degree_id, author_id, date_added, expiration_date, reviewer_id, status_id, is_fulltime, is_parttime, is_internship, is_voluntary_service, is_regular_job, is_scientific_position, is_working_student_position', 'numerical', 'integerOnly'=>true),
 			array('title, attachment, company_homepage, city, state, country, study, sector, source', 'length', 'max'=>255),
 			array('company', 'length', 'max'=>1000),

@@ -9,14 +9,26 @@
 
 <div class="fi bb">
 	<div class="fi-l"><?php echo $form->labelEx($model,'description'); ?></div>
+	<div class="fi-h">Hier können Sie Ihre Jobangebot beschreiben. Voraussetzungen,
+		Informationen über Ihr Unternehmen, Bewerbungsweg, etc. Zur Formatierung
+		können Sie die folgengen Buttons verwenden (Kursiv, Fett, Liste, Link).</div>
 	<div class="fi-e"><?php echo $form->error($model,'description'); ?></div>
 	
 	<div class="hidden">
-		<?php echo $form->textArea($model,'description', array("rows" => "35", "cols" => "60", "class" => "contentDescriptionHidden")); ?>
+		<?php echo $form->textArea($model,'description', array("encode" => false, "rows" => "35", "cols" => "60", "class" => "contentDescriptionHidden")); ?>
 	</div>
 	
 	<div class="content" id="contentDescription">
-	
+		<?php 
+			// Get the initial value out of the model. Will contain a 
+			// limited set of HTML markup.
+			$text = CHtml::resolveValue($model, 'description'); 
+			if ($text == "") {
+				echo "<br><br><br>";
+			} else {
+				echo $text;
+			}
+		?>
 	</div>
 </div>
 
@@ -27,11 +39,13 @@
 <div class="bb bt">
 	<div class="fi">
 		<div class="fi-l"><?php echo $form->labelEx($model,'company'); ?></div>
-		<div class="fi-f"><?php echo $form->textField($model,'company', array('size' => '60')); ?></div>
+		<div class="fi-e"><?php echo $form->error($model,'company'); ?></div>
+		<div class="fi-f"><?php echo $form->textField($model,'company', array('size' => '60', 'placeholder' => 'Name Ihres Unternehmens oder Institution')); ?></div>
 	</div>
 
 	<div class="fi">
 		<div class="fi-l"><?php echo $form->labelEx($model,'company_homepage'); ?></div>
+		<div class="fi-e"><?php echo $form->error($model,'company_homepage'); ?></div>
 		<div class="fi-f"><?php echo $form->textField($model,'company_homepage', array('size' => '60', 'placeholder' => 'http://example.com')); ?></div>
 	</div>
 </div>
@@ -42,14 +56,15 @@
 
 <div class="fi bb bt">
 	<div class="fi-l"><?php echo $form->labelEx($model,'zipcode'); ?>  <?php echo $form->labelEx($model,'city'); ?></div>
+	<div class="fi-e"><?php echo $form->error($model,'zipcode'); ?> <?php echo $form->error($model,'city'); ?></div>
 	<div class="fi-h">
 		Postleitzahl und Ort der Arbeitsstelle sind zwei Pflichtfelder.
 		Falls es dieser Job Reisenbereitschaft erfordert, wählen Sie zusätzlich
 		das entsprechende Häkchen aus.
 	</div>
 	<div class="fi-f">
-		<?php echo $form->textField($model,'zipcode', array('size' => '8', 'style' => 'margin-right:10px;')); ?>
-		<?php echo $form->textField($model,'city', array('size' => '60')); ?>
+		<?php echo $form->textField($model,'zipcode', array('size' => '8', 'style' => 'margin-right:10px;', 'placeholder' => '01234')); ?>
+		<?php echo $form->textField($model,'city', array('size' => '60', 'placeholder' => 'Leipzig')); ?>
 	</div>
 	<div class="fi-f horizontal">
 		<br>
@@ -121,6 +136,9 @@
 		<div class="fi-h">Es tut uns leid, aber wir benötigen die Antwort 
 			auf die folgende Sicherheitsfrage.
 		</div>
+		<?php if ($captcha_error): ?>
+			<div class="fi-e">Bitte beantworten Sie die Additionsaufgabe.</div>
+		<?php endif ?>
 		<div class="fi-f">
 			<?php echo get_captcha_html(); ?>
 		</div>

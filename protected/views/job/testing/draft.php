@@ -1,6 +1,6 @@
 <div id="main-container">
 		<div id="main-content">
-			<?php $this->renderPartial('testing/_form', array("model" => $model)); ?>
+			<?php $this->renderPartial('testing/_form', array("model" => $model, "captcha_error" => $captcha_error)); ?>
 		</div> <!-- main-content -->
 </div> <!-- main-container -->
 
@@ -17,11 +17,13 @@ $(function() {
 	$('.content').click(function() { 
 		editor.activate($(this)); 
 		editor.bind('changed', function() {
-			console.log(editor.content());
+			// console.log("Editor content: " + editor.content());
+			// console.log("Payload prep: " + $(".contentDescriptionHidden").html());
 			$(".contentDescriptionHidden").html(editor.content());
 		});
 	});
 	$('.content').trigger('click');
+	
 	$('#Job_title').focus();
 	
 

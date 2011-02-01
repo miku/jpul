@@ -1,4 +1,3 @@
-
 .DS_Store
 assets/*
 uploads/*
@@ -21,3 +20,5 @@ protected/data/*.default
 
 docs/Anzeigen-*
 docs/Anzeigen/*
+
+docs/Agile.*pdf

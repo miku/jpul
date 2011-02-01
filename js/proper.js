@@ -76,7 +76,7 @@
   Sanitize.Config = {}
   Sanitize.Config.BASIC = {
     elements: [
-       'a', 'b', 'br', 'em', 'i', 'li', 'ol', 'p', 'strong', 'code', 'ul'],
+       'a', 'b', 'br', 'em', 'i', 'li', 'ol', 'p', 'strong', 'code', 'ul', 'div'],
 
      attributes: {
        'a': ['href'],
@@ -91,20 +91,33 @@
   // Initial Setup
   // -------------
 
+  // Original controls
+  // -----------------
+
+  // controlsTpl = ' \
+  //   <div class="proper-commands"> \
+  //     <a href="#" title="Emphasis" class="command em" command="em"><div>Emphasis</div></a> \
+  //     <a href="#" title="Strong" class="command strong" command="strong"><div>Strong</div></a> \
+  //     <a href="#" title="Code" class="command code" command="code"><div>Code</div></a> \
+  //     <div class="separator">|</div> \
+  //     <a href="#" title="Bullet List" class="command ul" command="ul"><div>Bullets List</div></a> \
+  //     <a href="#" title="Numbered List" class="command ol" command="ol"><div>Numbered List</div></a> \
+  //     <a href="#" title="Indent" class="command indent" command="indent"><div>Indent</div></a> \
+  //     <a href="#" title="Outdent" class="command outdent" command="outdent"><div>Outdent</div></a> \
+  //     <div class="separator">|</div> \
+  //     <a title="List" href="#" class="command link" command="link"><div>Link</div></a> \
+  //   </div> \
+  // ';
+
   controlsTpl = ' \
     <div class="proper-commands"> \
-      <a href="#" title="Emphasis" class="command em" command="em"><div>Emphasis</div></a> \
-      <a href="#" title="Strong" class="command strong" command="strong"><div>Strong</div></a> \
-      <a href="#" title="Code" class="command code" command="code"><div>Code</div></a> \
-      <div class="separator">|</div> \
-      <a href="#" title="Bullet List" class="command ul" command="ul"><div>Bullets List</div></a> \
-      <a href="#" title="Numbered List" class="command ol" command="ol"><div>Numbered List</div></a> \
-      <a href="#" title="Indent" class="command indent" command="indent"><div>Indent</div></a> \
-      <a href="#" title="Outdent" class="command outdent" command="outdent"><div>Outdent</div></a> \
-      <div class="separator">|</div> \
-      <a title="List" href="#" class="command link" command="link"><div>Link</div></a> \
+      <a href="#" title="Kursiv" class="command em" command="em"><div>Emphasis</div></a> \
+      <a href="#" title="Fett" class="command strong" command="strong"><div>Strong</div></a> \
+      <a href="#" title="Liste" class="command ul" command="ul"><div>Bullets List</div></a> \
+      <a title="Link" href="#" class="command link" command="link"><div>Link</div></a> \
     </div> \
   ';
+
   
   // Proper
   // -----------
@@ -170,12 +183,14 @@
     
     // Clean up the mess produced by contenteditable
     function sanitize(element) {
+	
       var s = new Sanitize(Sanitize.Config.BASIC);
       var content = s.clean_node(element);
       $('#proper_content').html(content);
     }
     
     function semantify(element) {
+	  	
       $(element).find('b').each(function() {
         $(this).replaceWith($('<strong>').html($(this).html()));
       });
@@ -183,6 +198,7 @@
       $(element).find('i').each(function() {
         $(this).replaceWith($('<em>').html($(this).html()));
       });
+
     }
     
     function bindEvents(el) {
@@ -194,7 +210,10 @@
         }, 10);
       });
       
-      $(el).bind('keyup', function() {
+      $(el).bind('keyup', function(event) {
+	
+		// console.log("KeyUp: " + event.keyCode);
+	
         // Trigger change events, but consolidate them to 200ms time slices
         setTimeout(function() {
           // Skip if there's already a change pending
@@ -206,6 +225,10 @@
               // Sanitize on every keystroke
               sanitize($(activeElement)[0]);
               semantify($('#proper_content')[0]);
+
+			if (event.keyCode == 13) { 
+				$($(activeElement)[0]).append("<br>");
+			}
               
               self.trigger('changed');
             }, 200);

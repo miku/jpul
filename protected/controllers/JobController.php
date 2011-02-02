@@ -223,9 +223,14 @@ class JobController extends Controller
 			$view_count = null;
 		}
 		
+		$job_version = $model->job_version;
+		if ($job_version == null) {
+			$job_version = 1;
+		}
+		
 		Yii::log(Yii::app()->request->userHostAddress, CLogger::LEVEL_INFO, __FILE__ . ' | ' . __FUNCTION__ . ' | ' . __LINE__);
 		$this->pageTitle = 'Jobs - ' . cut_text($model->title, 50) . ' - ' . strftime("%d.%m.%Y", $model->date_added);
-		$this->render('v' . $model->job_version . '/view', array('model' => $model, 'view_count' => $view_count));
+		$this->render('v' . $job_version . '/view', array('model' => $model, 'view_count' => $view_count));
 	}
 
 	/**
@@ -276,6 +281,12 @@ class JobController extends Controller
 			$sanitized_post = $_POST['Job'];
 			// $model->attributes = $_POST['Job']; // mass assignment			
 			$model->attributes = $sanitized_post; 
+			
+			Yii::log("Job version = " . $model->job_version, CLogger::LEVEL_INFO, __FUNCTION__);
+			
+			if (!isset($model->job_version) || $model->job_version == null || $model->job_version == '') {
+				$model->job_version = 2;
+			}
 
 			$model->date_added = time();
 			$model->status_id = 1; // "1" means draft; needs review

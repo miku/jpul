@@ -23,7 +23,7 @@ $(document).ready(function() {
 			value += "" + ( $(this).attr('checked') ? 1 : 0 );
 		});
 		var c = $("#sort").attr("baseurl") + "type=" + value;
-		window.location.replace(c);
+		// window.location.replace(c);
 	})
 
 });

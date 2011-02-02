@@ -116,7 +116,15 @@
 	<div class="fi">
 		<div class="fi-l"><?php echo $form->labelEx($model,'attachment'); ?></div>
 		<div class="fi-h">Hier können Sie eine PDF-Datei Ihrer Ausschreibung hochladen. Optional.</div>
-		<div class="fi-f"><input style="font-size: 12px" size="60" type="file" name="title" placeholder="Datei" value="" id="some_name"></div>
+		<div class="fi-f"><?php echo $form->fileField($model, 'attachment', array("style" => "font-size:12px;")); ?></div>
+				<?php if ($model->attachment != ''): ?>
+		<div class="keep-file">
+			<input type="checkbox" name="keep_file" checked value="<?php echo $model->attachment ?>" id="keep_file">
+			&nbsp;<a href="<?php echo $this->createUrl('job/download', array('id' => $model->id)); ?>"><?php echo $model->attachment ?></a> 
+			<span class="file-size"><?php echo $this->getUploadFileSize("Job", $model->id); ?></span>
+		</div>
+		<?php endif ?>
+
 	</div>
 </div>
 
@@ -137,22 +145,6 @@
 
 	<div class="hsep"></div>
 
-<div class="bb bt">
-	<div class="fi">
-		<div class="fi-l"><label>Willkommen Webbots!</label></div>
-		<div class="fi-h">Es tut uns leid, aber wir benötigen die Antwort 
-			auf die folgende Sicherheitsfrage.
-		</div>
-		<?php if ($captcha_error): ?>
-			<div class="fi-e">Bitte beantworten Sie die Additionsaufgabe.</div>
-		<?php endif ?>
-		<div class="fi-f">
-			<?php echo get_captcha_html(); ?>
-		</div>
-	</div>
-</div>
-
-	<div class="hsep"></div>
 
 
 <div class="bb bt">
@@ -184,6 +176,16 @@
 
 	<div class="hsep"></div>
 
+
+	<div class="fi bt bb">
+		<div class="fi-l"><?php echo $form->labelEx($model,'status_id'); ?></div>
+		<div class="fi-h"></div>
+		<div class="fi-f"><?php echo $form->dropDownList($model, 'status_id', CHtml::listData(JobStatus::model()->findAll(), 'id', 'status'),array('prompt' => 'Status der Anzeige')); ?></div>
+	</div>
+		
+	<div class="hsep"></div>
+	
+
 <div class="fs bt">
 		
 	<div class="buttons" style="min-height: 30px; padding: 10px;">
@@ -198,7 +200,7 @@
 	        Vorschau
 	    </a> -->
 
-	    <a href="<?php echo $this->createUrl('job/index'); ?>" class="negative">
+	    <a href="<?php echo $this->createUrl('admin/index'); ?>" class="negative">
 	        <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/v2/cross.png" alt=""/>
 	        Abbrechen
 	    </a>

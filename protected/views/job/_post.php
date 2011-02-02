@@ -33,5 +33,5 @@
 	<p class="post-location">
 		<?php echo cut_text(format_model_location($model), 90); ?>		
 	</p>
-	<p class="post-description-teaser"><?php echo cut_text($model->description, 90) ?></p>
+	<p class="post-description-teaser"><?php echo cut_text(strip_tags($model->description), 90) ?></p>
 </div>

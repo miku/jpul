@@ -258,17 +258,8 @@ class AdminController extends Controller
 		{
 
 			// Sanitize homepage URL ...
-			Yii::log("Company homepage before adjustments: " . $_POST['Job']['company_homepage'], CLogger::LEVEL_INFO, "actionUpdate");
-			
-			$company_homepage = $_POST['Job']['company_homepage'];
-			if ($company_homepage != "" && !startsWith($company_homepage, "http://")) {
-				$company_homepage = "http://" . $company_homepage;
-				$_POST['Job']['company_homepage'] = $company_homepage;
-			}
-			
-			Yii::log("Company homepage after adjustments: " . $_POST['Job']['company_homepage'], CLogger::LEVEL_INFO, "actionUpdate");
-			
-			$sanitized_post = array_strip_tags($_POST['Job'], '<br>');
+			$_POST['Job']['company_homepage'] = sanitize_url($_POST['Job']['company_homepage']);
+			$sanitized_post = $_POST['Job']; // array_strip_tags($_POST['Job'], '<br>');
 
 			// $model->attributes = $_POST['Job'];			
 			$model->attributes = $sanitized_post;
@@ -295,7 +286,7 @@ class AdminController extends Controller
 			$model->attachment = CUploadedFile::getInstance($model, 'attachment');
 
 			if ($model->attachment == null && isset($_POST['keep_file'])) {
-				Yii::log("keep_file: " . $_POST['keep_file'], CLogger::LEVEL_INFO, "actionUpdate");
+				Yii::log("keep_file: " . $_POST['keep_file'], CLogger::LEVEL_INFO, __FUNCTION__);
 				$model->attachment = $model_attachment;
 			} else {
 				$_POST['keep_file'] = false;
@@ -305,7 +296,7 @@ class AdminController extends Controller
 				if ($model->save()) {
 					if (isset($model->attachment) && !$_POST['keep_file']) {
 						
-						Yii::log("Storing uploaded file...", CLogger::LEVEL_INFO, "actionUpdate");
+						Yii::log("Storing uploaded file...", CLogger::LEVEL_INFO, __FUNCTION__);
 						
 						$filename = $this->getUploadFilePath("job", $model->id);
 						$model->attachment->saveAs($filename);
@@ -317,7 +308,7 @@ class AdminController extends Controller
 			}
 		}
 		
-		$this->render('update', array('model' => $model));
+		$this->render('v' . $model->job_version . '/update', array('model' => $model));
 	}
 	
 	public function actionSetStatus($id, $status_id) {
@@ -327,6 +318,10 @@ class AdminController extends Controller
 		}
 		$model->status_id = $status_id;
 		$model->save();
+		
+		$this->updateSearchIndex($model);
+		$this->updateSearchIndex($model, "admin");
+		
 		$this->redirect(array('admin/view', 'id' => $id));
 	}
 
@@ -340,7 +335,7 @@ class AdminController extends Controller
 			throw new CHttpException(400, Yii::t('app', 'Your request is not valid.'));
 		}
 		Yii::log(Yii::app()->request->userHostAddress, CLogger::LEVEL_INFO, "actionView");
-		$this->render('view', array('model' => $model));
+		$this->render('v' . $model->job_version . '/view', array('model' => $model));
 	}
 	
 		/**

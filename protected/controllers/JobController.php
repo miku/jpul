@@ -195,6 +195,7 @@ class JobController extends Controller
 	 */
 	public function actionView($id, $from = '')
 	{
+		
 		$model = Job::model()->findByPk($id);
 		if (!$model) {
 			throw new CHttpException(400, Yii::t('app', 'Your request is not valid.'));
@@ -224,7 +225,7 @@ class JobController extends Controller
 		
 		Yii::log(Yii::app()->request->userHostAddress, CLogger::LEVEL_INFO, __FILE__ . ' | ' . __FUNCTION__ . ' | ' . __LINE__);
 		$this->pageTitle = 'Jobs - ' . cut_text($model->title, 50) . ' - ' . strftime("%d.%m.%Y", $model->date_added);
-		$this->render('view', array('model' => $model, 'view_count' => $view_count));
+		$this->render('v' . $model->job_version . '/view', array('model' => $model, 'view_count' => $view_count));
 	}
 
 	/**

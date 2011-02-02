@@ -50,6 +50,17 @@ uploads/
 	Our generic upload folder. Used by Yii. 
 	protected/components/Controller.php provides a method for 
 	retrieving the path: ``string getUploadPath()``
+	
+Rolling out new code
+--------------------
+
+OS X
+....
+	
+	_ Log in to wwwdup.uni-leipzig.de (via MacFuse / MacFusion)
+	_ cd in jobp's home
+	_ $ zip -r webdir.`epoch`.zip webdir/
+		
 
 Temporarily disabling the application
 -------------------------------------

@@ -16,6 +16,15 @@ $(document).ready(function() {
 		var c = $("#sort").attr("baseurl") + "sort=" + value;
 		window.location.replace(c);
 	});
+	
+	$(".type-filter").click(function() {
+		var value = "";
+		$(".type-filter").each(function(index, element) {
+			value += "" + ( $(this).attr('checked') ? 1 : 0 );
+		});
+		var c = $("#sort").attr("baseurl") + "type=" + value;
+		window.location.replace(c);
+	})
 
 });
 </script>
@@ -47,11 +56,19 @@ $(document).ready(function() {
 		
 		<div class="clear"></div>
 	</div>
+
+	<!-- <div id="filter-subbar" style="border-left: solid thin #EFEFEF; border-right: solid thin #EFEFEF; font-size: 10px; margin: 0 10px 0 10px; padding: 10px 10px 10px 10px; background: aliceblue;">
+		<input class="type-filter" type="checkbox" name="filter-fulltime" id="filter-fulltime"><label style="margin: 0 10px 0 3px;" for="filter-fulltime">Vollzeit</label>
+		<input class="type-filter" type="checkbox" name="filter-parttime" id="filter-parttime"><label style="margin: 0 10px 0 3px;" for="filter-parttime">Teilzeit</label>
+		<input class="type-filter" type="checkbox" name="filter-internship" id="filter-internship"><label style="margin: 0 10px 0 3px;" for="filter-internship">Praktika</label>
+		<input class="type-filter" type="checkbox" name="filter-working-student" id="filter-working-student"><label style="margin: 0 10px 0 3px;" for="filter-working-student">Werkstudenten</label>
+		<input class="type-filter" type="checkbox" name="filter-scholarship" id="filter-scholarship"><label style="margin: 0 10px 0 3px;" for="filter-scholarship">Stipedien</label>
+		<input class="type-filter" type="checkbox" name="filter-thesis" id="filter-thesis"><label style="margin: 0 10px 0 3px;" for="filter-thesis">Abschlussarbeiten</label>
+	</div> -->
 	
-	<div id="fav-subbar" style="border: solid thin #EFEFEF; font-size: 10px; margin: 0 10px 0 10px; padding: 10px 10px 10px 10px; background: aliceblue;">
+	<div id="fav-subbar" style="border: solid thin #EFEFEF; font-size: 10px; margin: 0 10px 0 10px; padding: 10px 10px 10px 10px; background: aliceblue;">		
 		<?php $this->renderPartial('_favbar') ?>
 	</div>
-		
 
 
 	<div id="main-content">

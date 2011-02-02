@@ -58,8 +58,24 @@ OS X
 ....
 	
 	_ Log in to wwwdup.uni-leipzig.de (via MacFuse / MacFusion)
-	_ cd in jobp's home
+	
+		jobp@wwwdup.uni-leipzig.de: on /Volumes/jobp--wwwdup.uni-leipzig.de (fusefs, nodev, nosuid, synchronous, mounted by <username>)
+
+	_ $ cd /Volumes/jobp--wwwdup.uni-leipzig.de
 	_ $ zip -r webdir.`epoch`.zip webdir/
+	_ $ cp webdir.1296641156.zip ~/projects/jobportal-uni-leipzig/dumps
+	
+	Create a full dump of the MySQL DB (via phpmysql) - compatibility mode = NONE.
+	
+	Now check, if there are any outstanding DB migrations (take a look at
+	the schema_version column).
+	
+	Is the site still up? Good. 
+	
+	Now pull the source directly into webdir, so ...
+	
+	_ cd /Volumes/jobp--wwwdup.uni-leipzig.de/webdir
+	
 		
 
 Temporarily disabling the application

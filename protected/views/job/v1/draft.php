@@ -6,7 +6,7 @@
 
 <div id="main-container">
 	<div id="main">	
-		<p style="font-size:10px; width: 300px; margin: 10px; padding: 5px; background: #FFF380;">Sie können Ihr Angebot in einer ansprechenderen Maske eingeben, wenn Sie modernen Browser, wie z.B.
+		<p style="font-size:10px; width: 300px; margin: 10px; padding: 5px; background: #FFF380;">Sie können Ihr Angebot in einer ansprechenderen Maske eingeben, wenn Sie einen modernen Browser, wie z.B.
 			Firefox, Safari oder Chrome verwenden.
 		</p>
 		<div id="generic-header">Neues Angebot erstellen</div>

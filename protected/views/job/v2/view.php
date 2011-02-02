@@ -96,6 +96,8 @@
 			<h1>Admin</h1>
 			<p><a href="<?php echo $this->createUrl('admin/update', array('id' => $model->id)) ?>">Dieses Angebot bearbeiten</a></p>
 		<?php endif ?>
+		
+		<?php $this->renderPartial('_sidebar_fb'); ?>
 		<?php $this->renderPartial('_sidebar_supporter'); ?>
 		
 	</div>	

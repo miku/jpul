@@ -1,5 +1,8 @@
 <?php $form=$this->beginWidget('CActiveForm', array('id'=>'job-create-form', 'htmlOptions'=>array('enctype'=>'multipart/form-data'))); ?>
 
+
+	<?php echo $form->hiddenField($model,'job_version', array('value' => '2')); ?>
+
 <div class="shadow">
 <div class="fi">
 	<div class="fi-l"><?php echo $form->labelEx($model,'title'); ?></div>

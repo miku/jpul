@@ -266,6 +266,8 @@ class JobController extends Controller
 
 		if(isset($_POST['Job'])) {
 			
+			$model->job_version = $version;
+
 			// Sanitize homepage URL ...
 			$_POST['Job']['company_homepage'] = sanitize_url($_POST['Job']['company_homepage']);
 			
@@ -277,7 +279,6 @@ class JobController extends Controller
 
 			$model->date_added = time();
 			$model->status_id = 1; // "1" means draft; needs review
-			$model->job_version = $version;
 			
 			if (!isset($sanitized_post['expiration_date']) || $sanitized_post['expiration_date'] === '') {
 				$model->expiration_date = $model->date_added + self::DEFAULT_EXPIRATION_SECONDS;

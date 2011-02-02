@@ -74,7 +74,12 @@ OS X
 	
 	Now pull the source directly into webdir, so ...
 	
-	_ cd /Volumes/jobp--wwwdup.uni-leipzig.de/webdir
+	_ $ cd /Volumes/jobp--wwwdup.uni-leipzig.de/webdir
+	_ $ git st
+	
+	Deal with any outstanding live commit or untracked file.
+	
+	_ $ git pull origin master
 	
 		
 

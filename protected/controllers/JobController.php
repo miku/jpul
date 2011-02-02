@@ -87,7 +87,13 @@ class JobController extends Controller
 		if (isset($_GET['q']) && $_GET['q'] != '') {
 			$index = new Zend_Search_Lucene($this->getSearchIndexStore());
 			$original_query = $_GET['q'];
+			
 			$query = trim($original_query) . '*';
+			$query = preg_replace("/\s+/", "* AND ", $query);
+			
+			Yii::log("Q: " . $query, CLogger::LEVEL_INFO, __FUNCTION__);
+			
+			// $query = trim($original_query) . '*';
 		
 			try {
 				$results = $index->find($query);

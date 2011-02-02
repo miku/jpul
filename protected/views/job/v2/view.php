@@ -1,5 +1,4 @@
-
-
+<!-- jv:2 -->
 <div id="main-container">
 	<div id="main">
 		<div id="view-content">

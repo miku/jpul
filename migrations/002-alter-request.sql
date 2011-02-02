@@ -1,3 +1,5 @@
+START TRANSACTION;
+
 -- ======================
 -- ======================
 -- Original request table
@@ -48,3 +50,5 @@ ALTER TABLE `request` ADD COLUMN `bt_version` varchar(1024) default NULL;
 ALTER TABLE `request` ADD COLUMN `bt_os` varchar(128) default NULL;
 
 INSERT INTO schema_version(`migration_code`, `extra_notes`) VALUES ('002', 'alter request table');
+
+COMMIT;

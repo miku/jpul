@@ -15,6 +15,13 @@
 		return eregi("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$", $email_address);
 	}
 	
+	function sanitize_url($url) {
+		if ($url != "" && !startsWith($url, "http://")) {
+			$url = "http://" . $url;
+		}
+		return $url;
+	}
+	
 	// make links clickable
 	function text_to_links($text) {
 		// hyperlinks, starting with ...://

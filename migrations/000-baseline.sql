@@ -10,6 +10,8 @@
 -- Database: `jobportal`
 -- 
 
+
+START TRANSACTION;
 -- --------------------------------------------------------
 
 -- 
@@ -124,3 +126,43 @@ CREATE TABLE IF NOT EXISTS `user` (
   `profile` text,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+
+
+
+
+-- 
+-- Dumping data for table `degree`
+-- 
+
+INSERT INTO `degree` VALUES (1, 'Student');
+INSERT INTO `degree` VALUES (2, 'Bachelor');
+INSERT INTO `degree` VALUES (3, 'Master');
+INSERT INTO `degree` VALUES (4, 'Magister');
+INSERT INTO `degree` VALUES (5, 'Diplom');
+INSERT INTO `degree` VALUES (6, 'PhD');
+INSERT INTO `degree` VALUES (7, 'Post-Doc');
+
+
+
+-- 
+-- Dumping data for table `job_status`
+-- 
+
+INSERT INTO `job_status` VALUES (1, 'Draft');
+INSERT INTO `job_status` VALUES (2, 'Public');
+INSERT INTO `job_status` VALUES (3, 'Archived');
+INSERT INTO `job_status` VALUES (4, 'Deleted');
+
+-- 
+-- Dumping data for table `options`
+-- 
+INSERT INTO `options` VALUES (1, 'on-draft-notification-email-addresses', '');
+
+-- 
+-- Dumping data for table `user`
+-- 
+INSERT INTO `user` VALUES (1, 'test', 'dbjGUUwcNHYNU', 'dbe335cb3e9f9a565584d12285e32cc8400b5309', 'martin.czygan@gmail.com', 'something', NULL);
+INSERT INTO `user` VALUES (2, 'admin', '93444RmLeAihQ', '936147e1d23c1bd9cb982862a1a3ffecb284a457', 'martin.czygan@gmail.com', 'admin', NULL);
+
+COMMIT;

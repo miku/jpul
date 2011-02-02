@@ -10,7 +10,7 @@
 -- Database: `jobportal`
 -- 
 
-
+START TRANSACTION;
 --
 -- Add schema version table
 -- Inspired by: http://blog.cherouvim.com/a-table-that-should-exist-in-all-projects-with-a-database/
@@ -24,3 +24,5 @@ CREATE TABLE IF NOT EXISTS `schema_version` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 INSERT INTO schema_version(`migration_code`, `extra_notes`) VALUES ('001', 'add schema_version table');
+
+COMMIT;

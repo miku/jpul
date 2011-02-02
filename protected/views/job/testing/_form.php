@@ -68,7 +68,8 @@
 	</div>
 	<div class="fi-f horizontal">
 		<br>
-		<input type="checkbox" name="12" value="" id="12"><label for="12">Bundesweit/Reise</label><br>
+		
+		<?php echo $form->checkBox($model, 'is_nation_wide')?><?php echo $form->labelEx($model,'is_nation_wide'); ?>
 	</div>
 </div>
 
@@ -77,29 +78,35 @@
 
 
 <div class="fi bb bt">
-	<div class="fi-l"><?php echo $form->labelEx($model,'degree_id'); ?></div>
+	<div class="fi-l">Abschluss</div>
 
 	<div class="fi-h">Mehrfachauswahl möglich. Auswahl optional.</div>
 
 	<div class="fi-f horizontal">
-		<input type="checkbox" name="1" value="" id="1"><label for="1">Student</label>
-		<input type="checkbox" name="2" value="" id="2"><label for="2">Bachelor</label>
-		<input type="checkbox" name="3" value="" id="3"><label for="3">Master</label>
-		<input type="checkbox" name="4" value="" id="4"><label for="4">M.A.</label>
-		<input type="checkbox" name="5" value="" id="5"><label for="5">PhD</label>
-		<input type="checkbox" name="6" value="" id="6"><label for="6">Postdoc</label>
+		
+		
+		<?php echo $form->checkBox($model, 'degree_student')?><?php echo $form->labelEx($model,'degree_student'); ?>
+		<?php echo $form->checkBox($model, 'degree_bachelor')?><?php echo $form->labelEx($model,'degree_bachelor'); ?>
+		<?php echo $form->checkBox($model, 'degree_master')?><?php echo $form->labelEx($model,'degree_master'); ?>
+		<?php echo $form->checkBox($model, 'degree_ma')?><?php echo $form->labelEx($model,'degree_ma'); ?>
+		<?php echo $form->checkBox($model, 'degree_diploma')?><?php echo $form->labelEx($model,'degree_diploma'); ?>
+		<?php echo $form->checkBox($model, 'degree_phd')?><?php echo $form->labelEx($model,'degree_phd'); ?>
+		<?php echo $form->checkBox($model, 'degree_postdoc')?><?php echo $form->labelEx($model,'degree_postdoc'); ?>
+		
 	</div>
 	<br>
 
-	<div class="fi-l"><?php echo $form->labelEx($model,'jobtype'); ?></div>
+	<div class="fi-l">Art des Jobs</div>
 	<div class="fi-h">Um was für eine Stelle handelt es sich? Mehrfache Auswahl ist möglich. Falls
 		keine der Optionen zutrifft, brauchen Sie nichts auszuwählen.</div>
 		<div class="fi-f horizontal">
-			<input type="checkbox" name="1" value="" id="7"><label for="7">Vollzeit</label>
-			<input type="checkbox" name="2" value="" id="8"><label for="8">Teilzeit</label>
-			<input type="checkbox" name="3" value="" id="9"><label for="9">Praktikum</label>
-			<input type="checkbox" name="3" value="" id="10"><label for="10">Werksstudent/in</label>
-			<input type="checkbox" name="4" value="" id="11"><label for="11">Abschlussarbeit</label>
+			
+			<?php echo $form->checkBox($model, 'is_fulltime')?><?php echo $form->labelEx($model,'is_fulltime'); ?>
+			<?php echo $form->checkBox($model, 'is_parttime')?><?php echo $form->labelEx($model,'is_parttime'); ?>
+			<?php echo $form->checkBox($model, 'is_internship')?><?php echo $form->labelEx($model,'is_internship'); ?>
+			<?php echo $form->checkBox($model, 'is_working_student')?><?php echo $form->labelEx($model,'is_working_student'); ?>
+			<?php echo $form->checkBox($model, 'is_thesis')?><?php echo $form->labelEx($model,'is_thesis'); ?>
+			<?php echo $form->checkBox($model, 'is_scholarship')?><?php echo $form->labelEx($model,'is_scholarship'); ?>
 		</div>
 	</div>
 

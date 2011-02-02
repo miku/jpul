@@ -257,26 +257,22 @@ class JobController extends Controller
 	{
 		$current_time = time();
 		$model = new Job;
+		
 		$captcha_error = false;
 
 		if(isset($_POST['Job'])) {
 			
 			// Sanitize homepage URL ...
-			Yii::log("Company homepage before adjustments: " . $_POST['Job']['company_homepage'], CLogger::LEVEL_INFO, __FUNCTION__);
-			
-			$company_homepage = $_POST['Job']['company_homepage'];
-			if ($company_homepage != "" && !startsWith($company_homepage, "http://")) {
-				$company_homepage = "http://" . $company_homepage;
-				$_POST['Job']['company_homepage'] = $company_homepage;
-			}
-			
-			Yii::log("Company homepage after adjustments: " . $_POST['Job']['company_homepage'], CLogger::LEVEL_INFO, __FUNCTION__);
+			$_POST['Job']['company_homepage'] = sanitize_url($_POST['Job']['company_homepage']);
 
 			// strip every html tag out of every field, except '<br>'
 			// $sanitized_post = array_strip_tags($_POST['Job'], '<br>');
 			$sanitized_post = $_POST['Job'];
+
 			
-			Yii::log("Job description: " . $_POST['Job']['description'], CLogger::LEVEL_INFO, __FUNCTION__);
+			Yii::log("", CLogger::LEVEL_INFO, "default");
+			
+			
 
 			// $model->attributes = $_POST['Job']; // mass assignment			
 			$model->attributes = $sanitized_post; 

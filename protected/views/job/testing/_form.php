@@ -99,7 +99,7 @@
 			<input type="checkbox" name="2" value="" id="8"><label for="8">Teilzeit</label>
 			<input type="checkbox" name="3" value="" id="9"><label for="9">Praktikum</label>
 			<input type="checkbox" name="3" value="" id="10"><label for="10">Werksstudent/in</label>
-			<input type="checkbox" name="4" value="" id="11"><label for="11">Volontariat</label>
+			<input type="checkbox" name="4" value="" id="11"><label for="11">Abschlussarbeit</label>
 		</div>
 	</div>
 

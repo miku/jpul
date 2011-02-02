@@ -9,7 +9,7 @@
 		<div id="generic-header">Neues Angebot erstellen</div>
 		<div id="main-content">
 
-		<?php $this->renderPartial('_form', array("model" => $model)); ?>
+		<?php $this->renderPartial('v1/_form', array("model" => $model)); ?>
 
 		</div> <!-- main-content -->
 	</div> <!-- main -->

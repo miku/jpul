@@ -67,6 +67,12 @@ class Job extends CActiveRecord
 	{
 		return 'job';
 	}
+	
+	public function isExpired() {
+		$current_time = time();
+		return $current_time > $this->expiration_date;
+	}
+
 
 	/**
 	 * @return array validation rules for model attributes.
@@ -76,7 +82,7 @@ class Job extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, description, company, author_id, date_added, expiration_date, status_id', 'required'),
+			array('title, description, company, author_id, city, date_added, expiration_date, status_id', 'required'),
 			array('is_telecommute, is_nation_wide, degree_id, author_id, date_added, expiration_date, reviewer_id, status_id, degree_student, degree_bachelor, degree_master, degree_ma, degree_diploma, degree_phd, degree_postdoc, degree_encoded, is_fulltime, is_parttime, is_internship, is_working_student, is_thesis, is_scholarship, is_regular_job, is_scientific_position', 'numerical', 'integerOnly'=>true),
 			array('title, attachment, company_homepage, city, state, country, study, sector, source', 'length', 'max'=>255),
 			array('company', 'length', 'max'=>1000),

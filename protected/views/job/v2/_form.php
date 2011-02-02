@@ -202,10 +202,7 @@
 	        <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/v2/cross.png" alt=""/>
 	        Abbrechen
 	    </a>
-	
-	
-	</div>
-		
+	</div>	
 </div>
 
 </div>

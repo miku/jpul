@@ -253,39 +253,37 @@ class JobController extends Controller
 	/**
 	 * Create a new job posting.
 	 */
-	public function actionDraft()
+	public function actionDraft($version = "2")
 	{
 		$current_time = time();
 		$model = new Job;
-		
 		$captcha_error = false;
+		
+		if ($version != "2" && $version != "1") {
+			$version = 2;
+		}
 
 		if(isset($_POST['Job'])) {
 			
 			// Sanitize homepage URL ...
 			$_POST['Job']['company_homepage'] = sanitize_url($_POST['Job']['company_homepage']);
-
+			
 			// strip every html tag out of every field, except '<br>'
 			// $sanitized_post = array_strip_tags($_POST['Job'], '<br>');
 			$sanitized_post = $_POST['Job'];
-
-			
-			Yii::log("", CLogger::LEVEL_INFO, "default");
-			
-			
-
 			// $model->attributes = $_POST['Job']; // mass assignment			
 			$model->attributes = $sanitized_post; 
 
 			$model->date_added = time();
-			$model->status_id = 1; // needs review
+			$model->status_id = 1; // "1" means draft; needs review
+			$model->job_version = $version;
 			
 			if (!isset($sanitized_post['expiration_date']) || $sanitized_post['expiration_date'] === '') {
 				$model->expiration_date = $model->date_added + self::DEFAULT_EXPIRATION_SECONDS;
 			} else {
 				Yii::log("Expiration set manually: " . $sanitized_post['expiration_date'], CLogger::LEVEL_INFO, "actionDraft");
 				$epoch_or_false = strtotime($sanitized_post['expiration_date']);
-				if ($epoch_or_false) {
+				if ($epoch_or_false && $epoch_or_false < $model->date_added + self::DEFAULT_EXPIRATION_SECONDS) {
 					$model->expiration_date = $epoch_or_false;
 				} else {
 					$model->expiration_date = $model->date_added + self::DEFAULT_EXPIRATION_SECONDS;
@@ -299,18 +297,14 @@ class JobController extends Controller
 
 			if ($model->validate()) {
 				Yii::log("Model validated successfully.", CLogger::LEVEL_INFO, __FUNCTION__);
-				
 				if (captcha_passed($_POST) && $model->save()) {
-					
 					Yii::log("Captcha passed. Model saved.", CLogger::LEVEL_INFO, __FUNCTION__);
-					
 					if (isset($model->attachment)) {
 						$filename = $this->getUploadFilePath("job", $model->id);
 						$model->attachment->saveAs($filename);
 					}
 					$this->updateSearchIndex($model, "admin");
 					$this->mailOnDraft($model);
-					
 					// Yii::app()->user->setFlash('success', "Ihr Angebot wurde für ein Review vorbereitet. Wenn Sie eine E-Mail Adresse für die Benachrichtigung eingerichtet haben, bekommen Sie auf diese eine Nachricht zugesandt, sobald das Jobangebot geprüft und freigeschaltet wurde; falls nicht, können Sie mit einer Freischaltung in maximal drei Tagen rechnen.");
 					$this->redirect(array('index'));
 				} else {
@@ -321,7 +315,7 @@ class JobController extends Controller
 		}
 
 		// $this->render('draft', array('model' => $model));
-		$this->render('testing/draft', array('model' => $model, 'captcha_error' => $captcha_error));
+		$this->render('v' . $version .'/draft', array('model' => $model, 'captcha_error' => $captcha_error));
 	}
 
 

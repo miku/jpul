@@ -1,6 +1,6 @@
 <div id="main-container">
 		<div id="main-content">
-			<?php $this->renderPartial('testing/_form', array("model" => $model, "captcha_error" => $captcha_error)); ?>
+			<?php $this->renderPartial('v2/_form', array("model" => $model, "captcha_error" => $captcha_error)); ?>
 		</div> <!-- main-content -->
 </div> <!-- main-container -->
 

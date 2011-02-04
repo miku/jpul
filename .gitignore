@@ -3,6 +3,7 @@ assets/*
 uploads/*
 
 dumps/*.sql
+dumps/*.sql.gz
 dumps/webdir*.zip
 dumps/*.db
 

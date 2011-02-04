@@ -54,6 +54,10 @@ class JobController extends Controller
 	 *      
 	 */
 	public function actionIndex($page = 1, $sort = null) {
+		
+		Zend_Search_Lucene_Analysis_Analyzer::setDefault(
+    		new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8());
+
 
 		$current_time = time();
 		$criteria = new CDbCriteria;
@@ -216,8 +220,10 @@ class JobController extends Controller
 				select distinct tracking_id, request_uri_wo_qs_and_hostname from 
 				request where
 					(tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND
-            		request_uri_wo_qs_and_hostname = '". $this->createUrl('job/view', array("id" => $id)) . "') as Q;";
+            		request_uri_wo_qs_and_hostname LIKE '%". $this->createUrl('job/view', array("id" => $id)) . "') as Q;";
 
+			Yii::log("SQL: " . $sql, CLogger::LEVEL_INFO, __FUNCTION__);
+			
 			// Yii::log($sql, CLogger::LEVEL_INFO, "actionView");
 			
 			$connection = Yii::app()->db;

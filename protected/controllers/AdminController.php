@@ -383,6 +383,10 @@ class AdminController extends Controller
 	 * Rebuild search index.
 	 */	
 	public function actionRebuildSearchIndex($useIndex = "default") {
+		
+		Zend_Search_Lucene_Analysis_Analyzer::setDefault(
+    		new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8());
+		
 
 		if ($useIndex === "admin") {
 			$index = new Zend_Search_Lucene($this->getAdminSearchIndexStore(), true);

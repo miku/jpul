@@ -4,3 +4,11 @@
 			Neues Angebot einstellen
 		</div>
 		</a>
+		
+		<a class="no-underline" href="<?php echo $this->createUrl('admin/rebuildAllSearchIndices'); ?>">
+		<div class="filter-option filter-option-active">
+			Suchindizes neu aufbauen
+		</div>
+		</a>
+
+		

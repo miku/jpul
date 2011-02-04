@@ -26,7 +26,7 @@
 <div class="col-by-total">
 <?php foreach ($dataReader as $key => $value): ?>
 	<!-- <li><a href="<?php echo $this->createUrl('job/index', array('q' => preg_replace('/\(|\)|\./', ' ', $value["company"]))); ?>"><?php echo $value["company"] ?></a> (<?php echo $value["total"] ?>)</li> -->
-	<li><a href="<?php echo urldecode($this->createUrl('job/index', array('q' => 'cc:' . slugify($value["company"], '') ))); ?>"><?php echo $value["company"] ?></a> (<?php echo $value["total"] ?>)</li>
+	<li><a href="<?php echo urldecode($this->createUrl('job/index', array('q' => 'cc:' . purify($value["company"], '') ))); ?>"><?php echo $value["company"] ?></a> (<?php echo $value["total"] ?>)</li>
 <?php endforeach ?>
 </div>
 

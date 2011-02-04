@@ -253,6 +253,12 @@
 		}
 	}
 	
+	function purify($text, $replacement = '-') {
+		$im = slugify($text, $replacement);
+		$text = preg_replace('/[\d]/', '', $im);
+		return $text;
+	} 
+	
 	/**
 	 * Modifies a string to remove all non ASCII characters and spaces.
 	 */

@@ -725,7 +725,7 @@ Draft page css
 TODO: refactor
 */
 
-form { background: aliceblue; }
+#job-create-form { background: aliceblue; }
 input { font-size: 14px; padding: 3px;}
 .bt { border-top: solid thin #EFEFEF; }
 .bb { border-bottom: solid thin #EFEFEF; }

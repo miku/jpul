@@ -385,7 +385,7 @@ class AdminController extends Controller
 	public function actionRebuildSearchIndex($useIndex = "default") {
 		
 		Zend_Search_Lucene_Analysis_Analyzer::setDefault(
-    		new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8());
+    		new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8_CaseInsensitive());
 		
 
 		if ($useIndex === "admin") {

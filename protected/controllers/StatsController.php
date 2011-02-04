@@ -6,8 +6,28 @@ require_once('Utils.php');
 class StatsController extends Controller
 {
 	
+	
+	
 	public function actionIndex() {
-		$this->render("index");
+		
+		$stats = array();
+		
+		$sql = "select avg(q.r) as avg from (select distinct tracking_id, count(request_uri) as r from request where tracking_id is not null group by tracking_id) as q;";
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand($sql);
+		$dataReader = $command->queryRow();
+
+		$stats["Average Page Views"] = $dataReader["avg"];
+
+
+		$sql = "select count(distinct tracking_id) as uniq from request where tracking_id is not null;";
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand($sql);
+		$dataReader = $command->queryRow();
+
+		$stats["Unique Visitors"] = $dataReader["uniq"];
+		
+		$this->render("index", array("stats" => $stats));
 	}
 		
 	public function actionTrack(

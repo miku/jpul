@@ -56,8 +56,7 @@ class JobController extends Controller
 	public function actionIndex($page = 1, $sort = null) {
 		
 		Zend_Search_Lucene_Analysis_Analyzer::setDefault(
-    		new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8());
-
+    		new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8_CaseInsensitive());
 
 		$current_time = time();
 		$criteria = new CDbCriteria;
@@ -91,9 +90,13 @@ class JobController extends Controller
 		if (isset($_GET['q']) && $_GET['q'] != '') {
 			$index = new Zend_Search_Lucene($this->getSearchIndexStore());
 			$original_query = $_GET['q'];
-			
-			$query = trim($original_query) . '*';
-			$query = preg_replace("/\s+/", "* AND ", $query);
+
+			if (preg_match("/( OR | AND )/", $original_query) == 0) {
+				$query = trim($original_query) . '*';
+				$query = preg_replace("/\s+/", "* AND ", $query);
+			} else {
+				$query = $original_query;
+			}
 			
 			Yii::log("Q: " . $query, CLogger::LEVEL_INFO, __FUNCTION__);
 			

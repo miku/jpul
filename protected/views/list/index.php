@@ -13,7 +13,7 @@
 <div id="main-container">
 <div id="main">
 	<div id="main-header">
-			<h4><?php echo count($dataReader); ?> Firmen haben aktuelle Jobangebote auf unserem Portal veröffentlicht</h4>
+			<p><?php echo count($dataReader); ?> Unternehmen und Institutionen haben aktuelle Angebote auf unserem Portal veröffentlicht.</p>
 			<br>
 			<p class="small">Sortieren 
 				<a href="<?php echo $this->createUrl('list/companies', array('sort' => 'name')); ?>">nach Name</a>, 
@@ -26,7 +26,7 @@
 <div class="col-by-total">
 <?php foreach ($dataReader as $key => $value): ?>
 	<!-- <li><a href="<?php echo $this->createUrl('job/index', array('q' => preg_replace('/\(|\)|\./', ' ', $value["company"]))); ?>"><?php echo $value["company"] ?></a> (<?php echo $value["total"] ?>)</li> -->
-	<li><a href="<?php echo $this->createUrl('job/index', array('q' => 'cc:' . slugify($value["company"], '') )); ?>"><?php echo $value["company"] ?></a> (<?php echo $value["total"] ?>)</li>
+	<li><a href="<?php echo urldecode($this->createUrl('job/index', array('q' => 'cc:' . slugify($value["company"], '') ))); ?>"><?php echo $value["company"] ?></a> (<?php echo $value["total"] ?>)</li>
 <?php endforeach ?>
 </div>
 

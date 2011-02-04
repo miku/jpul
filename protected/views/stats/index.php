@@ -13,7 +13,7 @@
 <div id="main-container">
 <div id="main">
 	<div id="main-header">
-			<p>Stats / 15.12.2010 &mdash;</p>
+			<p>Stats / 15.12.2010 &mdash; <?php echo date("d.m.Y") ?></p>
 	</div>
 <div id="main-content">
 

@@ -26,6 +26,21 @@ class StatsController extends Controller
 		$dataReader = $command->queryRow();
 
 		$stats["Unique Visitors"] = $dataReader["uniq"];
+
+		// $sql = "select count(distinct tracking_id) as uniq_today from request where tracking_id is not null and request_time;";
+		// $connection = Yii::app()->db;
+		// $command = $connection->createCommand($sql);
+		// $dataReader = $command->queryRow();
+		// 
+		// $stats["Unique Visitors Today"] = $dataReader["uniq_today"];
+
+
+		$sql = "select count(tracking_id) as events from request where tracking_id is not null;";
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand($sql);
+		$dataReader = $command->queryRow();
+
+		$stats["Events/Requests captured"] = $dataReader["events"];
 		
 		$this->render("index", array("stats" => $stats));
 	}

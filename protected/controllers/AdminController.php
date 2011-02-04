@@ -417,6 +417,7 @@ class AdminController extends Controller
 
 			// index job fields
 			// $doc->addField(Zend_Search_Lucene_Field::UnStored('id', $model->id, 'utf-8'));
+			$doc->addField(Zend_Search_Lucene_Field::UnStored('cc', slugify($model->company, ''), 'utf-8'));
 			$doc->addField(Zend_Search_Lucene_Field::UnStored('position', $model->title, 'utf-8'));
 			$doc->addField(Zend_Search_Lucene_Field::UnStored('company', $model->company, 'utf-8'));
 			$doc->addField(Zend_Search_Lucene_Field::UnStored('location', $model->city, 'utf-8'));

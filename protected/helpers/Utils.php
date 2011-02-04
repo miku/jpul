@@ -256,10 +256,10 @@
 	/**
 	 * Modifies a string to remove all non ASCII characters and spaces.
 	 */
-	function slugify($text)
+	function slugify($text, $replacement = '-')
 	{
 	    // replace non letter or digits by -
-	    $text = preg_replace('~[^\\pL\d]+~u', '-', $text);
+	    $text = preg_replace('~[^\\pL\d]+~u', $replacement, $text);
  
 	    // trim
 	    $text = trim($text, '-');

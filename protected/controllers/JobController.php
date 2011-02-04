@@ -58,6 +58,8 @@ class JobController extends Controller
 		Zend_Search_Lucene_Analysis_Analyzer::setDefault(
     		new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8_CaseInsensitive());
 
+		Zend_Search_Lucene_Search_QueryParser::setDefaultEncoding('utf-8');
+
 		$current_time = time();
 		$criteria = new CDbCriteria;
 

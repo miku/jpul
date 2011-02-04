@@ -13,7 +13,7 @@
 <div id="main-container">
 <div id="main">
 	<div id="main-header">
-			<p>Statistiken</p>
+			<p>Stats / 15.12.2010 &mdash;</p>
 	</div>
 <div id="main-content">
 

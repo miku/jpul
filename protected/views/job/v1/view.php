@@ -16,13 +16,9 @@
 						}
 						
 					?>
-						
-					<?php if (isset(Yii::app()->session['detailSnapBackUrl'])): ?>
-						<a href="<?php echo Yii::app()->session['detailSnapBackUrl']; ?>">Zurück zu den Ergebnissen</a>
-					<?php else: ?>
-						<a href="<?php echo $this->createUrl('job/index'); ?>">Zurück zur Übersicht</a>
-					<?php endif; ?>
 					
+					<a href="javascript:history.go(-1)">Zurück zur Übersicht</a>
+											
 				</div>
 
 				<div id="view-job-title"><?php echo $model->title ?></div>
@@ -74,12 +70,9 @@
 			</div>				
 			<?php endif ?>
 			
-			<div id="bottom-nav">					
-				<?php if (isset(Yii::app()->session['detailSnapBackUrl'])): ?>
-					<a href="<?php echo Yii::app()->session['detailSnapBackUrl']; ?>">Zurück zu den Ergebnissen</a>
-				<?php else: ?>
-					<a href="<?php echo $this->createUrl('job/index'); ?>">Zurück zur Übersicht</a>
-				<?php endif ?>
+			<div id="bottom-nav">	
+				
+				<a href="javascript:history.go(-1)">Zurück zur Übersicht</a>
 			</div>
 				
 		</div>  

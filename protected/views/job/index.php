@@ -83,6 +83,19 @@ $(document).ready(function() {
 	<div id="fav-subbar" style="border: solid thin #EFEFEF; font-size: 10px; margin: 0 10px 0 10px; padding: 10px 10px 10px 10px; background: aliceblue;">		
 		<?php $this->renderPartial('_favbar') ?>
 	</div>
+	
+	<div id="query-stats">
+		<p class="alignleft">
+			Finden Sie passende Angebot über Suchbegriffe, z.B.
+			<a href="<?php echo $this->createUrl('job/index', array('q' => "marketing")) ?>">marketing</a>,
+			<a href="<?php echo $this->createUrl('job/index', array('q' => "software leipzig")) ?>">software leipzig</a>,
+			<a href="<?php echo $this->createUrl('job/index', array('q' => "wissenschaft")) ?>">wissenschaft</a>,
+			<a href="<?php echo $this->createUrl('job/index', array('q' => "berlin")) ?>">berlin</a>, 
+			<a href="<?php echo $this->createUrl('job/index', array('q' => "praktik")) ?>">praktik</a>, etc.
+		</p>
+		<p class="alignright"><?php echo $total; ?> Ergebnisse.</p>
+		<div class="clear"></div>
+	</div>
 
 
 	<div id="main-content">

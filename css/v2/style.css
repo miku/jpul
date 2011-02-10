@@ -306,7 +306,7 @@ input#search {
 .post {
 	border-bottom: solid thin #ECECEC;
 	/*	margin-bottom: 8px;*/
-	padding: 8px;
+	padding: 10px;
 }
 
 .post:hover {
@@ -354,10 +354,11 @@ input#search {
 span.post-company {
 	font-size: 10px;
 	color: #343434;
-	margin-left: 10px;
+/*	margin-left: 10px;*/
+	font-weight: bold;
 }
 
-.post-location {
+span.post-location {
 	font-size: 10px;
 	color: #454545;
 	font-style: italic;
@@ -378,6 +379,15 @@ span.post-company {
 
 .post-highlighted {
 	background: aliceblue;
+}
+
+#query-stats {
+	margin: 10px;
+	padding: 5px 0 10px 0;
+	font-size: 10px;
+	color: #ABABAB;
+	margin: 10px;
+	border-bottom: solid thin #ABABAB;
 }
 
 

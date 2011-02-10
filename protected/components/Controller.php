@@ -27,8 +27,8 @@ class Controller extends CController
 	 */
 	public $breadcrumbs=array();
 	
-	// The number of items per page
-	public $items_per_page = 20;
+	// The number of items per page (only 10, 20 or 50 as possible at the moment!)
+	public $items_per_page = 10;
 	
 	/**
 	 * Simple authentication filter. Make sure the user has the role 'admin'

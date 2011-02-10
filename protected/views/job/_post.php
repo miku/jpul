@@ -21,17 +21,18 @@
 	<p class="post-title">
 		<?php if (isset($original_query) && $original_query !== ""): ?>
 			<a href="<?php echo $this->createUrl('job/view', array('id' => $model->id, 'from' => $original_query)); ?>" title="<?php echo $model->title; ?>">
-				<?php echo cut_text($model->title, 45); ?></a> 
+				<?php echo cut_text($model->title, 65); ?></a> 
 		<?php else: ?>
 			<a href="<?php echo $this->createUrl('job/view', array('id' => $model->id)); ?>" title="<?php echo $model->title; ?>">
-				<?php echo cut_text($model->title, 45); ?></a> 
+				<?php echo cut_text($model->title, 65); ?></a> 
 		<?php endif ?>
 				
-		<span class="post-company"><?php echo cut_text($model->company, 30) ?></span>
+		
 		<span class="post-posted"><?php echo time_since($model->date_added) ?></span>
 	</p>
-	<p class="post-location">
-		<?php echo cut_text(format_model_location($model), 90); ?>		
+	<p>
+		<span class="post-location"><?php echo cut_text(format_model_location($model), 80); ?> &middot;</span>
+		<span class="post-company"><?php echo cut_text($model->company, 40) ?></span>
 	</p>
 	<p class="post-description-teaser"><?php echo cut_text(strip_tags($model->description), 90) ?></p>
 </div>

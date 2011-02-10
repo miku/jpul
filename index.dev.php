@@ -18,6 +18,7 @@ $devhosts = array("chiba", "chiba.local",
 	"wlan1017.rz.uni-leipzig.de",
 	"wlan0345.rz.uni-leipzig.de",
 	"wlan0886.rz.uni-leipzig.de",
+	"wlan0740.rz.uni-leipzig.de",
 );
 
 if (in_array(gethostname(), $devhosts)) {

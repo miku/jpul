@@ -1,4 +1,5 @@
 <script type="text/javascript" charset="utf-8">
+
 $(document).ready(function() {
 	$("#search").focus();
 
@@ -18,13 +19,26 @@ $(document).ready(function() {
 	});
 	
 	$(".type-filter").click(function() {
-		var value = "";
+		var filter = new Array();
 		$(".type-filter").each(function(index, element) {
-			value += "" + ( $(this).attr('checked') ? 1 : 0 );
+			// value += "" + ( $(this).attr('checked') ? 1 : 0 ) + ",";
+			if ($(this).attr('checked')) {
+				filter.push($(this).attr('id'));
+			}
 		});
+		var value = filter.join("~");
 		var c = $("#sort").attr("baseurl") + "type=" + value;
-		// window.location.replace(c);
-	})
+		window.location.replace(c);
+	});
+	
+	var activeTypes = new Array();
+	
+	if ($.url.param('type') != undefined) {
+		activeTypes = $.url.param('type').split('~');
+		for (var i = activeTypes.length - 1; i >= 0; i--) {
+			$('#' + activeTypes[i]).attr('checked', true);
+		}
+	}
 
 });
 </script>
@@ -57,15 +71,15 @@ $(document).ready(function() {
 		<div class="clear"></div>
 	</div>
 
-	<!-- <div id="filter-subbar" style="border-left: solid thin #EFEFEF; border-right: solid thin #EFEFEF; font-size: 10px; margin: 0 10px 0 10px; padding: 10px 10px 10px 10px; background: aliceblue;">
-		<input class="type-filter" type="checkbox" name="filter-fulltime" id="filter-fulltime"><label style="margin: 0 10px 0 3px;" for="filter-fulltime">Vollzeit</label>
-		<input class="type-filter" type="checkbox" name="filter-parttime" id="filter-parttime"><label style="margin: 0 10px 0 3px;" for="filter-parttime">Teilzeit</label>
-		<input class="type-filter" type="checkbox" name="filter-internship" id="filter-internship"><label style="margin: 0 10px 0 3px;" for="filter-internship">Praktika</label>
-		<input class="type-filter" type="checkbox" name="filter-working-student" id="filter-working-student"><label style="margin: 0 10px 0 3px;" for="filter-working-student">Werkstudenten</label>
-		<input class="type-filter" type="checkbox" name="filter-scholarship" id="filter-scholarship"><label style="margin: 0 10px 0 3px;" for="filter-scholarship">Stipedien</label>
-		<input class="type-filter" type="checkbox" name="filter-thesis" id="filter-thesis"><label style="margin: 0 10px 0 3px;" for="filter-thesis">Abschlussarbeiten</label>
-	</div> -->
-	
+<!-- 	 <div id="filter-subbar" style="border-left: solid thin #EFEFEF; border-right: solid thin #EFEFEF; font-size: 10px; margin: 0 10px 0 10px; padding: 10px 10px 10px 10px; background: aliceblue;">
+		<input class="type-filter" type="checkbox" name="f-fu" id="frfu"><label style="margin: 0 10px 0 3px;" for="filter-fulltime">Vollzeit</label>
+		<input class="type-filter" type="checkbox" name="f-pa" id="frpa"><label style="margin: 0 10px 0 3px;" for="filter-parttime">Teilzeit</label>
+		<input class="type-filter" type="checkbox" name="f-in" id="frin"><label style="margin: 0 10px 0 3px;" for="filter-internship">Praktika</label>
+		<input class="type-filter" type="checkbox" name="f-wo" id="frwo"><label style="margin: 0 10px 0 3px;" for="filter-working-student">Werkstudenten</label>
+		<input class="type-filter" type="checkbox" name="f-sc" id="frsc"><label style="margin: 0 10px 0 3px;" for="filter-scholarship">Stipedien</label>
+		<input class="type-filter" type="checkbox" name="f-th" id="frth"><label style="margin: 0 10px 0 3px;" for="filter-thesis">Abschlussarbeiten</label>
+	</div> 
+	 -->
 	<div id="fav-subbar" style="border: solid thin #EFEFEF; font-size: 10px; margin: 0 10px 0 10px; padding: 10px 10px 10px 10px; background: aliceblue;">		
 		<?php $this->renderPartial('_favbar') ?>
 	</div>
@@ -92,50 +106,15 @@ $(document).ready(function() {
 			<?php endif ?>
 		</div>
 
-	<?php if ($models): ?>
-		<div id="pagination">
-			
-			<span class="total">Insgesamt <?php echo $total ?> Angebote.</span>
-			
-
-			<?php if ($page > 1): ?>
-				<?php
-					$_params = array();
-					if (isset($original_query)) { $_params['q'] = $original_query; }
-					if (isset($sort)) { $_params['sort'] = $sort; }
-					$_params['page'] = $page - 1;
-				?>
-				<a href="<?php echo $this->createUrl('job/index', $_params); ?>">&lt; Vorherige</a>
-				
-				<!-- shortcut -->
-				<?php $_params['page'] = 1; ?>
-				<a href="<?php echo $this->createUrl('job/index', $_params); ?>">1</a>
-				
-			<?php else: ?>
-				<span class="inactive">&lt; Vorherige</span>
-			<?php endif; ?>
-
-			<?php
-				$_params = array();
-				if (isset($original_query)) { $_params['q'] = $original_query; }
-				if (isset($sort)) { $_params['sort'] = $sort; }
-				$_params['page'] = $page;
-			?>
-			<a class="current-page" href="<?php echo $this->createUrl('job/index', $_params) ?>"><?php echo $page ?></a>
-
-			<?php if ($current_end < $total): ?>
-				<?php
-					$_params = array();
-					if (isset($original_query)) { $_params['q'] = $original_query; }
-					if (isset($sort)) { $_params['sort'] = $sort; }
-					$_params['page'] = $page + 1;
-				?>
-				<a href="<?php echo $this->createUrl('job/index', $_params) ?>">Nächste &gt;</a>
-			<?php else: ?>
-				<span class="inactive">Nächste &gt;</span>
-			<?php endif; ?>
-		</div>
-	<?php endif; ?>
+		<?php
+			$this->renderPartial('_better_pagination', array(
+				'models' => $models, 
+				'original_query', $original_query,
+				'total' => $total)
+			);
+		?>
+		
+	
 	
 	</div>
 </div> <!-- main -->

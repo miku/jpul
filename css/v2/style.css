@@ -437,16 +437,31 @@ label {
 /* pagination */
 
 #pagination {
-	margin-top: 12px;
-	float: right;
+	margin-top: 25px;
 	font-size: 12px;
 }
 
 .current-page {
+	color: orange;
 	font-weight: bold;
+	border: solid thin orange;
+}
+
+.alignleft {
+float: left;
+}
+
+.alignright {
+float: right;
 }
 
 .inactive {
+	color: #ABABAB;
+	border: dotted thin #ABABAB;
+	padding: 5px;
+}
+
+.dimmed { 
 	color: #ABABAB;
 }
 

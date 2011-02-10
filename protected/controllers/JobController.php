@@ -2,7 +2,6 @@
 
 Yii::import('application.vendors.*');
 require_once('Zend/Search/Lucene.php'); // Zend Lucene Imports
-require_once('recaptcha-php-1.11/recaptchalib.php'); // recaptcha
 
 // Textile via Utils.php
 Yii::import('application.helpers.*');
@@ -54,10 +53,9 @@ class JobController extends Controller
 	 *      
 	 */
 	public function actionIndex($page = 1, $sort = null) {
-		
+
 		Zend_Search_Lucene_Analysis_Analyzer::setDefault(
     		new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8_CaseInsensitive());
-
 		Zend_Search_Lucene_Search_QueryParser::setDefaultEncoding('utf-8');
 
 		$current_time = time();
@@ -78,19 +76,27 @@ class JobController extends Controller
 				$criteria->order = 'date_added DESC';
 				break;
 		}
-		
+
 		// just show the public offers, which are not expired ...
 		$criteria->condition = 'status_id=:status_id AND expiration_date > :current_time';
 		$criteria->params=array(':status_id' => 2, ':current_time' => $current_time);
-		
-		// 
-		$useDefaultView = true;
-		
-		$viewName = null;
-				
-		// if we have a term query ...
+
+		// Determine the view to use ...
+		$viewName = "default";
+
 		if (isset($_GET['q']) && $_GET['q'] != '') {
+			$viewName = "search";
+		}
+
+		if (isset($_GET['s']) && $_GET['s'] != '' && 
+			isset(Yii::app()->session[Yii::app()->params['favStore']])) {
+			$viewName = "favs";
+		}
+
+		// if we have a term query ...
+		if ($viewName == "search") {
 			$index = new Zend_Search_Lucene($this->getSearchIndexStore());
+
 			$original_query = $_GET['q'];
 
 			if (preg_match("/( OR | AND )/", $original_query) == 0) {
@@ -99,17 +105,14 @@ class JobController extends Controller
 			} else {
 				$query = $original_query;
 			}
-			
-			Yii::log("Q: " . $query, CLogger::LEVEL_INFO, __FUNCTION__);
-			
-			// $query = trim($original_query) . '*';
 		
 			try {
 				$results = $index->find($query);
 			} catch (Exception $e) {
+				Yii::log("Failed Query: " . $query, CLogger::LEVEL_INFO, __FUNCTION__);
 				$this->redirect(array('index'));
 			}
-		
+
 			$pks = array();
  			foreach ($results as $result) {
 				$pks[] = $result->pk;
@@ -118,24 +121,21 @@ class JobController extends Controller
 			$total = count(Job::model()->findAllByAttributes(array('id' => $pks), $criteria));
 
 			// fix number of offers per page ...
-			$criteria->limit = self::PAGE_SIZE;
-			$criteria->offset = ($page - 1) * self::PAGE_SIZE;;
-			
+			$criteria->limit = $this->items_per_page; # self::PAGE_SIZE;
+			$criteria->offset = ($page - 1) * $this->items_per_page; # self::PAGE_SIZE;;
+
 			$models = Job::model()->findAllByAttributes(array('id' => $pks), $criteria);
 			$current_start = ($page - 1) * self::PAGE_SIZE;;
 			$current_end = ($page - 1) * self::PAGE_SIZE + self::PAGE_SIZE;
-			
+
 			$number_of_pages = ceil($total / self::PAGE_SIZE);
 			
-			Yii::app()->session['snapBackSearchTerm'] = $original_query;
-			$useDefaultView = false;
-			
+			Yii::app()->session['snapBackSearchTerm'] = $original_query;			
 			Yii::app()->session['detailSnapBackUrl'] = $this->createUrl('job/index', array('q' => $original_query, 'page' => $page));
 		}	
-		
+
 		// special pages, likes favorite filter
-		if (isset($_GET['s']) && $_GET['s'] != '' && 
-			isset(Yii::app()->session[Yii::app()->params['favStore']])) {
+		if ($viewName == "favs") {
 				
 			if (count(Yii::app()->session[Yii::app()->params['favStore']]) == 0) {
 				$this->redirect('index');
@@ -147,34 +147,33 @@ class JobController extends Controller
 				Yii::log($key . " => " . $value['id'], CLogger::LEVEL_INFO, "actionIndex");
 				array_push($models, Job::model()->findByPk($value['id']));
 			}
-			
-			$total = count($models);
-			
-			$page = 1;
-			// fix number of offers per page ...
-			// $criteria->limit = self::PAGE_SIZE;
-			// $criteria->offset = ($page - 1) * self::PAGE_SIZE;;
 
+			$total = count($models);
+
+			// Favorites only have one big page
+			$page = 1;
 			$original_query = null;
-			$viewName = "favs";
-			$useDefaultView = false;
 			
-			$number_of_pages = 1;
+			// pagination
+			$number_of_pages = 1;			
 			$current_start = 0;
 			$current_end = $total;
 
-			
+
 			Yii::app()->session['detailSnapBackUrl'] = $this->createUrl('job/index', array('s' => 'favs'));
 		}
 		
 		// if the user neither searched or requested her favs, use the default view ...	
-		if ($useDefaultView) {
+		if ($viewName == "default") {
 
 			$total = count(Job::model()->findAll($criteria));
 
 			// fix number of offers per page ...
-			$criteria->limit = self::PAGE_SIZE;
-			$criteria->offset = ($page - 1) * self::PAGE_SIZE;;
+			$criteria->limit = $this->items_per_page; # self::PAGE_SIZE;
+			$criteria->offset = ($page - 1) * $this->items_per_page; # self::PAGE_SIZE;;
+
+			// $criteria->limit = self::PAGE_SIZE;
+			// $criteria->offset = ($page - 1) * self::PAGE_SIZE;;
 
 			// just the default index action ...
 			$models = Job::model()->findAll($criteria);
@@ -183,14 +182,15 @@ class JobController extends Controller
 			Yii::app()->session['snapBackSearchTerm'] = '';
 			Yii::app()->session['detailSnapBackUrl'] = $this->createUrl('job/index', array('page' => $page));
 			
-			$viewName = "default";
-			
+			// pagination
 			$number_of_pages = ceil($total / self::PAGE_SIZE);
 			$current_start = ($page - 1) * self::PAGE_SIZE;;
 			$current_end = ($page - 1) * self::PAGE_SIZE + self::PAGE_SIZE;			
 		}
 		
 		Yii::app()->session['snapBackPage'] = $page;
+		Yii::log("snapBackPage: " . $page, CLogger::LEVEL_INFO, __FUNCTION__);
+		
 		
 		$this->render('index', array(
 			'models'=>$models, 
@@ -217,9 +217,13 @@ class JobController extends Controller
 		}
 
 		// job view count:
-		// select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
+		// select distinct COUNT(tracking_id) from request where 
+		// (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL
+		// AND request_uri_wo_qs_and_hostname = '/job/164';
 		try {
-			// $sql = "select distinct COUNT(tracking_id) as view_count from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '" . $this->createUrl('job/view', array("id" => $id)) . "';";
+			// $sql = "select distinct COUNT(tracking_id) as view_count 
+			// from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL 
+			// AND request_uri_wo_qs_and_hostname = '" . $this->createUrl('job/view', array("id" => $id)) . "';";
 
 			$sql = "select count(*) as view_count from (
 				select distinct tracking_id, request_uri_wo_qs_and_hostname from 
@@ -335,7 +339,6 @@ class JobController extends Controller
 					}
 					$this->updateSearchIndex($model, "admin");
 					$this->mailOnDraft($model);
-					// Yii::app()->user->setFlash('success', "Ihr Angebot wurde für ein Review vorbereitet. Wenn Sie eine E-Mail Adresse für die Benachrichtigung eingerichtet haben, bekommen Sie auf diese eine Nachricht zugesandt, sobald das Jobangebot geprüft und freigeschaltet wurde; falls nicht, können Sie mit einer Freischaltung in maximal drei Tagen rechnen.");
 					$this->redirect(array('index'));
 				} else {
 					Yii::log("Captcha error or failed to save model.", CLogger::LEVEL_INFO, __FUNCTION__);

@@ -27,6 +27,9 @@ class Controller extends CController
 	 */
 	public $breadcrumbs=array();
 	
+	// The number of items per page
+	public $items_per_page = 20;
+	
 	/**
 	 * Simple authentication filter. Make sure the user has the role 'admin'
 	 * @return Result of the filter chain
@@ -47,36 +50,57 @@ class Controller extends CController
 	}	
 	
 	protected function beforeAction($action) {
-		
-		// See if the user agent is Googlebot
+
+		Yii::log("Entering beforeAction." . $action->getId(), CLogger::LEVEL_INFO, __FUNCTION__);		
+
+		// See if the user agent is Googlebot and
 		// try to avoid ugly URLs like
 		// wwwdup.uni-leipzig.de/jobportal/index.php/job/137?PHPSESSID ...
 		$isGoogle = stripos($_SERVER['HTTP_USER_AGENT'], 'Googlebot');
 		// If it is, use ini_set to only allow cookies for the session variable
 		if ($isGoogle !== false) {
+			Yii::log("Hello Googlebot!", CLogger::LEVEL_INFO, __FUNCTION__);
 			ini_set('session.use_only_cookies', '1');
 		} 
-				
+
+		// No '*' after required fields
 		CHtml::$afterRequiredLabel = '';
 		
-		Yii::log("beforeAction: " . $action->getId(), CLogger::LEVEL_INFO, __FUNCTION__);
-
 		// This section provides a helper GET parameter, to test new views
-		// Simply put ?uselayout=<layoutname> into your request url, to 
+		// Simply put ?useLayout=<layoutname> into your request url, to 
 		// switch over to a new view for this session.
 		// <layoutname> should be 16 chars long or less.
-		if (isset($_GET['uselayout'])) {
-			Yii::app()->session['uselayout'] = $_GET['uselayout'];
+		if (isset($_GET['useLayout'])) {
+			Yii::app()->session['useLayout'] = $_GET['useLayout'];
 		}
-		
-		if (isset(Yii::app()->session['uselayout'])) {
-			if (preg_match("/[a-zA-z\/]{1,16}/", Yii::app()->session['uselayout'])) {
-				Yii::log("Setting Layout for this session: " . Yii::app()->session['uselayout'], CLogger::LEVEL_INFO, __FUNCTION__);
-				$this->layout = "//layouts/" . Yii::app()->session['uselayout'];
+		if (isset(Yii::app()->session['useLayout'])) {
+			$useLayout = Yii::app()->session['useLayout'];
+			if (preg_match("/[a-zA-z\/]{1,16}/", $useLayout)) {
+				Yii::log("Setting Layout for this session to " . $useLayout, 
+					CLogger::LEVEL_INFO, __FUNCTION__);
+				$this->layout = "//layouts/" . $useLayout;
 			} else {
 				$this->layout = "//layouts/v2/main";
 			}
 		}
+		
+		// Adjust items per page
+		if (isset($_GET['ipp'])) {
+			Yii::app()->session['items_per_page'] = $_GET['ipp'];
+		}
+		if (isset(Yii::app()->session['items_per_page'])) {
+			$items_per_page = Yii::app()->session['items_per_page'];
+			if (preg_match("/[\d]{1,3}/", $items_per_page)) {
+				Yii::log("Setting items_per_page for this session to " . $items_per_page, 
+					CLogger::LEVEL_INFO, __FUNCTION__);
+				$this->items_per_page = $items_per_page;
+			} else {
+				$this->items_per_page = $items_per_page;
+			}
+		}
+		
+		
+		
 		return parent::beforeAction($action);
 	}
 	
@@ -88,7 +112,6 @@ class Controller extends CController
 	{
 		return Yii::app()->basePath . '/../uploads';
 	}
-
 
 	/**
 	 * Get the path to the uploaded job attachments.
@@ -102,7 +125,6 @@ class Controller extends CController
 		return $this->getUploadPath() . '/Attachment_' . $modelName . '_' . $id . '.' . $extension;
 	}
 	
-
 	public function getUploadFileSize($modelName, $id, $extension = 'pdf')
 	{
 		$filepath = $this->getUploadFilePath($modelName, $id, $extension);
@@ -113,7 +135,6 @@ class Controller extends CController
 			return "";
 		}
 	}
-	
 	
 	/**
 	 * Get the path to the uploaded job attachments.
@@ -129,42 +150,42 @@ class Controller extends CController
 	}
 
 	
-	/**
-	 * Update search index.
-	 */	
-	protected function updateSearchIndex($model, $useIndex = "default") {
-		
-		if ($useIndex === "admin") {
-			$index = new Zend_Search_Lucene($this->getAdminSearchIndexStore(), false);
-		} else {
-			$index = new Zend_Search_Lucene($this->getSearchIndexStore(), false);
-		}
-
-		foreach ($index->find('pk:' . $model->id) as $hit) {
-    		$index->delete($hit->id);
-		}
-
-		if ($useIndex !== "admin") {
-			if ($model->status_id != 2 || $model->isExpired()) { return; }
-		}
-		
-		$doc = new Zend_Search_Lucene_Document();
-		// store job primary key to identify it in the search results
-		$doc->addField(Zend_Search_Lucene_Field::Keyword('pk', $model->id));
-		// index job fields
-		$doc->addField(Zend_Search_Lucene_Field::UnStored('position', $model->title, 'utf-8'));
-		$doc->addField(Zend_Search_Lucene_Field::UnStored('company', $model->company, 'utf-8'));
-		$doc->addField(Zend_Search_Lucene_Field::UnStored('location', $model->city, 'utf-8'));
-		$doc->addField(Zend_Search_Lucene_Field::UnStored('description', $model->description, 'utf-8'));
-		
-		$doc->addField(Zend_Search_Lucene_Field::UnStored('sector', $model->sector, 'utf-8'));
-		$doc->addField(Zend_Search_Lucene_Field::UnStored('study', $model->study, 'utf-8'));
-
-		$index->addDocument($doc);
-		$index->commit();
-		Yii::log("Updated search index for document id: " . $model->id, CLogger::LEVEL_INFO, "updateSearchIndex");		
-	}
-
+	// /**
+	//  * Update search index.
+	//  */	
+	// protected function updateSearchIndex($model, $useIndex = "default") {
+	// 	
+	// 	if ($useIndex === "admin") {
+	// 		$index = new Zend_Search_Lucene($this->getAdminSearchIndexStore(), false);
+	// 	} else {
+	// 		$index = new Zend_Search_Lucene($this->getSearchIndexStore(), false);
+	// 	}
+	// 
+	// 	foreach ($index->find('pk:' . $model->id) as $hit) {
+	//     		$index->delete($hit->id);
+	// 	}
+	// 
+	// 	if ($useIndex !== "admin") {
+	// 		if ($model->status_id != 2 || $model->isExpired()) { return; }
+	// 	}
+	// 	
+	// 	$doc = new Zend_Search_Lucene_Document();
+	// 	// store job primary key to identify it in the search results
+	// 	$doc->addField(Zend_Search_Lucene_Field::Keyword('pk', $model->id));
+	// 	// index job fields
+	// 	$doc->addField(Zend_Search_Lucene_Field::UnStored('position', $model->title, 'utf-8'));
+	// 	$doc->addField(Zend_Search_Lucene_Field::UnStored('company', $model->company, 'utf-8'));
+	// 	$doc->addField(Zend_Search_Lucene_Field::UnStored('location', $model->city, 'utf-8'));
+	// 	$doc->addField(Zend_Search_Lucene_Field::UnStored('description', $model->description, 'utf-8'));
+	// 	
+	// 	$doc->addField(Zend_Search_Lucene_Field::UnStored('sector', $model->sector, 'utf-8'));
+	// 	$doc->addField(Zend_Search_Lucene_Field::UnStored('study', $model->study, 'utf-8'));
+	// 
+	// 	$index->addDocument($doc);
+	// 	$index->commit();
+	// 	Yii::log("Updated search index for document id: " . $model->id, CLogger::LEVEL_INFO, "updateSearchIndex");		
+	// }
+	// 
 
 	
 }

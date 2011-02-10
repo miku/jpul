@@ -83,7 +83,7 @@
 				
 				<span style="">&middot;&middot;&middot;</span>
 				
-				<?php for ($i = $number_of_pages - 2; $i < $number_of_pages; $i++): ?>
+				<?php for ($i = $number_of_pages - 2; $i <= $number_of_pages; $i++): ?>
 					<?php $params_for_page = $params; $params_for_page["page"] = $i ?>
 					<a class="<?php if ($i == $current_page) { echo 'current-page'; } ?>" href="<?php echo $this->createUrl('job/index', $params_for_page) ?>">
 					<?php echo $params_for_page["page"] ?></a>

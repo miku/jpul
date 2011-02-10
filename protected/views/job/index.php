@@ -84,16 +84,46 @@ $(document).ready(function() {
 		<?php $this->renderPartial('_favbar') ?>
 	</div>
 	
-	<div id="query-stats">
+	<div id="info-subbar">
 		<p class="alignleft">
-			Finden Sie passende Angebot über Suchbegriffe, z.B.
-			<a href="<?php echo $this->createUrl('job/index', array('q' => "marketing")) ?>">marketing</a>,
-			<a href="<?php echo $this->createUrl('job/index', array('q' => "software leipzig")) ?>">software leipzig</a>,
-			<a href="<?php echo $this->createUrl('job/index', array('q' => "wissenschaft")) ?>">wissenschaft</a>,
-			<a href="<?php echo $this->createUrl('job/index', array('q' => "berlin")) ?>">berlin</a>, 
-			<a href="<?php echo $this->createUrl('job/index', array('q' => "praktik")) ?>">praktik</a>, etc.
+			
+			<?php if (rand(1, 100) > 60): ?>
+				Finden Sie passende Angebote über Suchbegriffe, z.B.
+				<a href="<?php echo $this->createUrl('job/index', array('q' => "marketing")) ?>">marketing</a>,
+				<a href="<?php echo $this->createUrl('job/index', array('q' => "software leipzig")) ?>">software leipzig</a>,
+				<a href="<?php echo $this->createUrl('job/index', array('q' => "wissenschaft")) ?>">wissenschaft</a>,
+				<a href="<?php echo $this->createUrl('job/index', array('q' => "berlin")) ?>">berlin</a>, 
+				<a href="<?php echo $this->createUrl('job/index', array('q' => "praktik")) ?>">praktik</a>, etc.
+			<?php else: ?>
+				<?php
+					include("t-simple-html-dom.php");
+					error_reporting(0);
+					$html = file_get_html('http://www.zv.uni-leipzig.de/studium/career-center/aktuelles.html');
+					
+					$offers = array();
+					foreach($html->find('p') as $e) {
+						if (strpos($e->innertext, "qualifizierungsangebote")) { 
+							array_push($offers, $e->innertext); 
+						}
+					}
+					if (count($offers) > 0) {
+						$item = $offers[array_rand($offers)];
+						$item = preg_replace("/<br[^>]*>/", " ", $item);
+						echo "Aktuelle Qualifizierungsangebote: " . strip_tags($item, "<a><strong>");
+					} else { ?>
+						Finden Sie passende Angebote über Suchbegriffe, z.B.
+						<a href="<?php echo $this->createUrl('job/index', array('q' => "marketing")) ?>">marketing</a>,
+						<a href="<?php echo $this->createUrl('job/index', array('q' => "software leipzig")) ?>">software leipzig</a>,
+						<a href="<?php echo $this->createUrl('job/index', array('q' => "wissenschaft")) ?>">wissenschaft</a>,
+						<a href="<?php echo $this->createUrl('job/index', array('q' => "berlin")) ?>">berlin</a>, 
+						<a href="<?php echo $this->createUrl('job/index', array('q' => "praktik")) ?>">praktik</a>, etc.
+				  <?php }
+					error_reporting(E_ALL);
+				 ?>
+				
+			<?php endif ?>
 		</p>
-		<p class="alignright"><?php echo $total; ?> Ergebnisse.</p>
+		<p class="alignright"><strong><?php echo $total; ?></strong> Ergebnisse</p>
 		<div class="clear"></div>
 	</div>
 
@@ -126,8 +156,6 @@ $(document).ready(function() {
 				'total' => $total)
 			);
 		?>
-		
-	
 	
 	</div>
 </div> <!-- main -->

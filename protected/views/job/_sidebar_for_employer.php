@@ -1,7 +1,8 @@
 <h1 class="spacetop">Für Arbeitgeber</h1>
 <p>Als Arbeitgeber haben Sie die Möglichkeit,
 	Ausschreibungen auf unserer Jobportal-Plattform
-	zu veröffentlichen. <a href="<?php echo Yii::app()->request->baseUrl; ?>/job/index?r=site/page&view=employers">Mehr lesen...</a>
+	zu veröffentlichen. Lesen Sie unsere
+	<a href="/docs/2011_02_07_Einstellung_eines_Angebotes_im_Jobportal.pdf">Anleitung als PDF</a>.
 </p>
 
 <script>

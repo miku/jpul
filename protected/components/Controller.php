@@ -86,10 +86,15 @@ class Controller extends CController
 		
 		// Adjust items per page
 		if (isset($_GET['ipp'])) {
-			Yii::app()->session['items_per_page'] = $_GET['ipp'];
+			$allowed = array("10", "20", "50");
+			if (in_array($_GET['ipp'], $allowed)) {
+				Yii::app()->session['items_per_page'] = $_GET['ipp'];
+			} else {
+				Yii::app()->session['items_per_page'] = 10;
+			}
 		}
 		if (isset(Yii::app()->session['items_per_page'])) {
-			$items_per_page = Yii::app()->session['items_per_page'];
+			$items_per_page = Yii::app()->session['items_per_page'];			
 			if (preg_match("/[\d]{1,3}/", $items_per_page)) {
 				Yii::log("Setting items_per_page for this session to " . $items_per_page, 
 					CLogger::LEVEL_INFO, __FUNCTION__);

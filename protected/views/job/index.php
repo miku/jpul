@@ -124,7 +124,7 @@ $(document).ready(function() {
 				
 			<?php endif ?>
 		</p>
-		<p class="alignright"><strong><span style="color: orange"><?php echo $total; ?></span></strong> Ergebnis<?php if ($total > 1) { echo "se"; } ?></p>
+		<p class="alignright"><strong><span style="background: gray; color: white; padding:2px;"><?php echo $total; ?></span></strong> Ergebnis<?php if ($total > 1) { echo "se"; } ?></p>
 		<div class="clear"></div>
 	</div>
 

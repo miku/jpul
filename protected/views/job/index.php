@@ -87,7 +87,7 @@ $(document).ready(function() {
 	<div id="info-subbar">
 		<p class="alignleft">
 			
-			<?php if (rand(1, 100) > 60): ?>
+			<?php if (rand(1, 100) > 40): ?>
 				Finden Sie passende Angebote über Suchbegriffe, z.B.
 				<a href="<?php echo $this->createUrl('job/index', array('q' => "marketing")) ?>">marketing</a>,
 				<a href="<?php echo $this->createUrl('job/index', array('q' => "software leipzig")) ?>">software leipzig</a>,
@@ -103,9 +103,10 @@ $(document).ready(function() {
 					$offers = array();
 					foreach($html->find('p') as $e) {
 						if (strpos($e->innertext, "qualifizierungsangebote")) { 
-							array_push($offers, $e->innertext); 
+							array_push($offers, preg_replace("/href=\"studium/", "href=\"http://www.zv.uni-leipzig.de/studium", $e->innertext)); 
 						}
 					}
+					
 					if (count($offers) > 0) {
 						$item = $offers[array_rand($offers)];
 						$item = preg_replace("/<br[^>]*>/", " ", $item);
@@ -123,7 +124,7 @@ $(document).ready(function() {
 				
 			<?php endif ?>
 		</p>
-		<p class="alignright"><strong><?php echo $total; ?></strong> Ergebnisse</p>
+		<p class="alignright"><strong><?php echo $total; ?></strong> Ergebnis<?php if ($total > 1) { echo "se"; } ?></p>
 		<div class="clear"></div>
 	</div>
 
@@ -145,16 +146,21 @@ $(document).ready(function() {
 				<p class="noresults-box">
 					Keine Ergebnisse gefunden. Versuchen Sie bitte weniger spezifische Suchbegriffe.
 					Um wieder alle Angebote zu sehen, löschen Sie bitte Ihre Eingabe aus dem Suchfeld und drücken Sie &lt;ENTER&gt;.
+					<br>
+						Hier ein paar exemplarische Suchbegriffe:
+				<a href="<?php echo $this->createUrl('job/index', array('q' => "marketing")) ?>">marketing</a>,
+				<a href="<?php echo $this->createUrl('job/index', array('q' => "software leipzig")) ?>">software leipzig</a>,
+				<a href="<?php echo $this->createUrl('job/index', array('q' => "wissenschaft")) ?>">wissenschaft</a>,
+				<a href="<?php echo $this->createUrl('job/index', array('q' => "berlin")) ?>">berlin</a>, 
+				<a href="<?php echo $this->createUrl('job/index', array('q' => "praktik")) ?>">praktik</a>, etc.
+					
 					</p>
 			<?php endif ?>
 		</div>
 
 		<?php
 			$this->renderPartial('_better_pagination', array(
-				'models' => $models, 
-				'original_query', $original_query,
-				'total' => $total)
-			);
+				'models' => $models, 'total' => $total));
 		?>
 	
 	</div>

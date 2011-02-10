@@ -16,8 +16,8 @@
 		<span class="post-company"><?php echo cut_text($model->company, 40) ?></span>
 		<span class="post-posted"><?php echo time_since($model->date_added) ?></span>
 	</p>
-	<p class="post-location">
-		<?php echo format_model_location($model); ?>		
+	<p>
+		<span class="post-location"><?php echo format_model_location($model); ?></span>
 	</p>
 	<p class="post-description-teaser"><?php echo cut_text(strip_tags($model->description), 100) ?></p>
 	<p class="post-attachment"><?php if ($model->attachment): ?>

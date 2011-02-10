@@ -164,6 +164,30 @@ $(document).ready(function() {
 		?>
 	
 	</div>
+	
+	
+	<div id="footer">
+		<p>(C) 2010 &mdash; <?php echo date("Y"); ?> Career Center der Universität Leipzig</p>
+
+		<br>
+		<p><strong>Listenansichten</strong> &middot;
+		
+			<a href="<?php echo $this->createUrl('list/companies'); ?>">Liste der Unternehmen</a> &middot;
+			<a href="<?php echo $this->createUrl('list/cities'); ?>">Liste der Orte</a>
+		</p>
+		<br>
+		<p><strong>Beispielsuchen</strong> &middot;
+			<a href="<?php echo $this->createUrl('job/index', array("q" => "english OR englisch ")); ?>">Englische Sprachkenntisse</a> &middot;
+			<a href="<?php echo $this->createUrl('job/index', array("q" => "french OR spanish OR chinese OR französisch OR spanisch OR russisch OR chinesisch")); ?>">Sprachen außer Englisch</a> &middot;
+			<a href="<?php echo $this->createUrl('job/index', array("q" => "übersetz")); ?>">Übersetzung</a> &middot;
+			<a href="<?php echo $this->createUrl('job/index', array("q" => "software OR informatik")); ?>">IT und Informatik</a> &middot;
+			<a href="<?php echo $this->createUrl('job/index', array("q" => "public relation")); ?>">PR Jobs</a> &middot;
+			<a href="<?php echo $this->createUrl('job/index', array("q" => "marketing")); ?>">Marketing</a> &middot;
+			<a href="<?php echo $this->createUrl('job/index', array("q" => "sport")); ?>">Jobs im Sport</a> &middot;
+		</p>
+			
+	</div>
+	
 </div> <!-- main -->
 </div> <!-- main-container -->
 

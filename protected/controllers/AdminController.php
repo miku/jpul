@@ -11,7 +11,7 @@ require_once('Utils.php');
 class AdminController extends Controller
 {
 	// jobs per page, defaults to 30
-	const PAGE_SIZE = 20;
+	const PAGE_SIZE = 20; // unused TODO
 	// 6 * 7 * 24 * 60 * 60 = six weeks
 	const DEFAULT_EXPIRATION_SECONDS = 3628800; 	
 		
@@ -148,8 +148,10 @@ class AdminController extends Controller
 			$total = count(Job::model()->findAllByAttributes(array('id' => $pks), $criteria));
 
 			// fix number of offers per page ...
-			$criteria->limit = self::PAGE_SIZE;
-			$criteria->offset = ($page - 1) * self::PAGE_SIZE;;
+			$criteria->limit = $this->items_per_page; # self::PAGE_SIZE;
+			$criteria->offset = ($page - 1) * $this->items_per_page; # self::PAGE_SIZE;;
+			// $criteria->limit = self::PAGE_SIZE;
+			// $criteria->offset = ($page - 1) * self::PAGE_SIZE;;
 			
 			$models = Job::model()->findAllByAttributes(array('id' => $pks), $criteria);
 			$current_start = ($page - 1) * self::PAGE_SIZE;;
@@ -159,8 +161,12 @@ class AdminController extends Controller
 			$total = count(Job::model()->findAll($criteria));
 
 			// fix number of offers per page ...
-			$criteria->limit = self::PAGE_SIZE;
-			$criteria->offset = ($page - 1) * self::PAGE_SIZE;;
+			// fix number of offers per page ...
+			$criteria->limit = $this->items_per_page; # self::PAGE_SIZE;
+			$criteria->offset = ($page - 1) * $this->items_per_page; # self::PAGE_SIZE;;
+			// 
+			// $criteria->limit = self::PAGE_SIZE;
+			// $criteria->offset = ($page - 1) * self::PAGE_SIZE;;
 
 			// just the default index action ...
 			$models = Job::model()->findAll($criteria);
@@ -423,9 +429,9 @@ class AdminController extends Controller
 			// index job fields
 			// $doc->addField(Zend_Search_Lucene_Field::UnStored('id', $model->id, 'utf-8'));
 			$doc->addField(Zend_Search_Lucene_Field::UnStored('cc', purify($model->company, ''), 'utf-8'));
-			$doc->addField(Zend_Search_Lucene_Field::UnStored('position', $model->title, 'utf-8'));
+			$doc->addField(Zend_Search_Lucene_Field::UnStored('title', $model->title, 'utf-8'));
 			$doc->addField(Zend_Search_Lucene_Field::UnStored('company', $model->company, 'utf-8'));
-			$doc->addField(Zend_Search_Lucene_Field::UnStored('location', $model->city, 'utf-8'));
+			$doc->addField(Zend_Search_Lucene_Field::UnStored('city', $model->city, 'utf-8'));
 			$doc->addField(Zend_Search_Lucene_Field::UnStored('description', $model->description, 'utf-8'));
 
 			$index->addDocument($doc);

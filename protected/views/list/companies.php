@@ -8,6 +8,10 @@
 	.small {
 		font-size: 10px;
 	}
+	li {
+		color: gray;
+	}
+
 </style>
 
 <div id="main-container">

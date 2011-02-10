@@ -643,6 +643,15 @@ a.pdf {
 	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color='#000000');
 }
 
+#footer {
+	margin: 10px;
+	padding: 10px 0 10px 0;
+	font-size: 10px;
+	color: #ABABAB;
+	margin: 10px;
+	border-top: solid thin #ABABAB;
+}
+
 
 
 /* 

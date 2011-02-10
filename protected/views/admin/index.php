@@ -56,43 +56,11 @@ $(document).ready(function() {
 	</div>
 
 
-	<?php if ($models): ?>
-		<div id="pagination">
+		<?php
+			$this->renderPartial('_better_pagination', array(
+				'models' => $models, 'total' => $total));
+		?>
 
-			<?php if ($page > 1): ?>
-				<?php
-					$_params = array();
-					if (isset($original_query)) { $_params['q'] = $original_query; }
-					if (isset($sort)) { $_params['sort'] = $sort; }
-					$_params['page'] = $page - 1;
-				?>
-				<a href="<?php echo $this->createUrl('admin/index', $_params); ?>">&lt; Vorherige</a>
-			<?php else: ?>
-				<span class="inactive">&lt; Vorherige</span>
-			<?php endif; ?>
-
-			<?php
-				$_params = array();
-				if (isset($original_query)) { $_params['q'] = $original_query; }
-				if (isset($sort)) { $_params['sort'] = $sort; }
-				$_params['page'] = $page;
-			?>
-			<a class="current-page" href="<?php echo $this->createUrl('admin/index', $_params) ?>"><?php echo $page ?></a>
-
-			<?php if ($current_end < $total): ?>
-				<?php
-					$_params = array();
-					if (isset($original_query)) { $_params['q'] = $original_query; }
-					if (isset($sort)) { $_params['sort'] = $sort; }
-					$_params['page'] = $page + 1;
-				?>
-				<a href="<?php echo $this->createUrl('admin/index', $_params) ?>">Nächste &gt;</a>
-			<?php else: ?>
-				<span class="inactive">Nächste &gt;</span>
-			<?php endif; ?>
-
-		</div>
-	<?php endif; ?>
 	</div>
 </div> <!-- main -->
 </div> <!-- main-container -->

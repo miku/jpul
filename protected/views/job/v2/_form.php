@@ -12,7 +12,7 @@
 
 <div class="fi bb">
 	<div class="fi-l"><?php echo $form->labelEx($model,'description'); ?></div>
-	<div class="fi-h">Hier können Sie Ihre Jobangebot beschreiben. Voraussetzungen,
+	<div class="fi-h">Hier können Sie Ihr Jobangebot beschreiben. Voraussetzungen,
 		Informationen über Ihr Unternehmen, Bewerbungsweg, etc. Zur Formatierung
 		können Sie die folgengen Buttons verwenden (Kursiv, Fett, Liste, Link).</div>
 	<div class="fi-e"><?php echo $form->error($model,'description'); ?></div>
@@ -61,8 +61,8 @@
 	<div class="fi-l"><?php echo $form->labelEx($model,'zipcode'); ?>  <?php echo $form->labelEx($model,'city'); ?></div>
 	<div class="fi-e"><?php echo $form->error($model,'zipcode'); ?> <?php echo $form->error($model,'city'); ?></div>
 	<div class="fi-h">
-		Postleitzahl und Ort der Arbeitsstelle sind zwei Pflichtfelder.
-		Falls es dieser Job Reisenbereitschaft erfordert, wählen Sie zusätzlich
+		Postleitzahl und Ort. Ort ist ein Pflichtfeld.
+		Falls es dieser Job Reisebereitschaft erfordert, wählen Sie zusätzlich
 		das entsprechende Häkchen aus.
 	</div>
 	<div class="fi-f">
@@ -142,7 +142,7 @@
 
 <div class="bb bt">
 	<div class="fi">
-		<div class="fi-l"><label>Willkommen Webbots!</label></div>
+		<div class="fi-l"><label>Sicherheitsabfrage</label></div>
 		<div class="fi-h">Es tut uns leid, aber wir benötigen die Antwort 
 			auf die folgende Sicherheitsfrage.
 		</div>
@@ -160,9 +160,12 @@
 
 <div class="bb bt">
 	<div class="fi">
-		<div class="fi-h">In den folgenden drei Feldern bitten wir Sie, ihre
-			Kontaktdaten zu hinterlassen. Diese helfen uns Sie zu kontaktieren,
-			falls wir Fragen zu Ihrem Angebot haben. Vielen Dank. 
+		<div class="fi-h">
+			In den folgendenFeldern bitten wir Sie, uns Ihren Namen, 
+			Telefonnummer und/oder E-Mail-Adresse zu hinterlassen. 
+			So haben wir die Möglichkeiten, 
+			Sie bei inhaltlichen Fragen zu Ihrem Stellenangebot zu kontaktieren. 
+			Vielen Dank.
 		</div>
 	</div>
 
@@ -181,7 +184,7 @@
 	<div class="fi">
 		<div class="fi-l">E-Mail-Adresse</div>
 		<div class="fi-h"></div>
-		<div class="fi-f"><input size="60" type="text" name="title" placeholder="info@enterprise.com" value="" id="some_name"></div>
+		<div class="fi-f"><input size="60" type="text" name="title" placeholder="" value="" id="some_name"></div>
 	</div>
 </div>
 

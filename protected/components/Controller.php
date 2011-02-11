@@ -155,42 +155,43 @@ class Controller extends CController
 	}
 
 	
-	// /**
-	//  * Update search index.
-	//  */	
-	// protected function updateSearchIndex($model, $useIndex = "default") {
-	// 	
-	// 	if ($useIndex === "admin") {
-	// 		$index = new Zend_Search_Lucene($this->getAdminSearchIndexStore(), false);
-	// 	} else {
-	// 		$index = new Zend_Search_Lucene($this->getSearchIndexStore(), false);
-	// 	}
-	// 
-	// 	foreach ($index->find('pk:' . $model->id) as $hit) {
-	//     		$index->delete($hit->id);
-	// 	}
-	// 
-	// 	if ($useIndex !== "admin") {
-	// 		if ($model->status_id != 2 || $model->isExpired()) { return; }
-	// 	}
-	// 	
-	// 	$doc = new Zend_Search_Lucene_Document();
-	// 	// store job primary key to identify it in the search results
-	// 	$doc->addField(Zend_Search_Lucene_Field::Keyword('pk', $model->id));
-	// 	// index job fields
-	// 	$doc->addField(Zend_Search_Lucene_Field::UnStored('position', $model->title, 'utf-8'));
-	// 	$doc->addField(Zend_Search_Lucene_Field::UnStored('company', $model->company, 'utf-8'));
-	// 	$doc->addField(Zend_Search_Lucene_Field::UnStored('location', $model->city, 'utf-8'));
-	// 	$doc->addField(Zend_Search_Lucene_Field::UnStored('description', $model->description, 'utf-8'));
-	// 	
-	// 	$doc->addField(Zend_Search_Lucene_Field::UnStored('sector', $model->sector, 'utf-8'));
-	// 	$doc->addField(Zend_Search_Lucene_Field::UnStored('study', $model->study, 'utf-8'));
-	// 
-	// 	$index->addDocument($doc);
-	// 	$index->commit();
-	// 	Yii::log("Updated search index for document id: " . $model->id, CLogger::LEVEL_INFO, "updateSearchIndex");		
-	// }
-	// 
+	/**
+	 * Update search index.
+	 */	
+	protected function updateSearchIndex($model, $useIndex = "default") {
+		
+		if ($useIndex === "admin") {
+			$index = new Zend_Search_Lucene($this->getAdminSearchIndexStore(), false);
+		} else {
+			$index = new Zend_Search_Lucene($this->getSearchIndexStore(), false);
+		}
+	
+		foreach ($index->find('pk:' . $model->id) as $hit) {
+	    		$index->delete($hit->id);
+		}
+	
+		if ($useIndex !== "admin") {
+			if ($model->status_id != 2 || $model->isExpired()) { return; }
+		}
+		
+		$doc = new Zend_Search_Lucene_Document();
+		// store job primary key to identify it in the search results
+		$doc->addField(Zend_Search_Lucene_Field::Keyword('pk', $model->id));
+		// index job fields
+		$doc->addField(Zend_Search_Lucene_Field::UnStored('cc', purify($model->company, ''), 'utf-8'));		
+		$doc->addField(Zend_Search_Lucene_Field::UnStored('title', $model->title, 'utf-8'));
+		$doc->addField(Zend_Search_Lucene_Field::UnStored('company', $model->company, 'utf-8'));
+		$doc->addField(Zend_Search_Lucene_Field::UnStored('city', $model->city, 'utf-8'));
+		$doc->addField(Zend_Search_Lucene_Field::UnStored('description', $model->description, 'utf-8'));
+		
+		$doc->addField(Zend_Search_Lucene_Field::UnStored('sector', $model->sector, 'utf-8'));
+		$doc->addField(Zend_Search_Lucene_Field::UnStored('study', $model->study, 'utf-8'));
+	
+		$index->addDocument($doc);
+		$index->commit();
+		Yii::log("Updated search index for document id: " . $model->id, CLogger::LEVEL_INFO, "updateSearchIndex");		
+	}
+	
 
 	
 }

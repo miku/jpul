@@ -149,7 +149,6 @@ $(document).ready(function() {
 					<br>
 						Hier ein paar exemplarische Suchbegriffe:
 				<a href="<?php echo $this->createUrl('job/index', array('q' => "marketing")) ?>">marketing</a>,
-				<a href="<?php echo $this->createUrl('job/index', array('q' => "software leipzig")) ?>">software leipzig</a>,
 				<a href="<?php echo $this->createUrl('job/index', array('q' => "wissenschaft")) ?>">wissenschaft</a>,
 				<a href="<?php echo $this->createUrl('job/index', array('q' => "berlin")) ?>">berlin</a>, 
 				<a href="<?php echo $this->createUrl('job/index', array('q' => "praktik")) ?>">praktik</a>, etc.
@@ -182,7 +181,6 @@ $(document).ready(function() {
 			<a href="<?php echo $this->createUrl('job/index', array("q" => "übersetz")); ?>">Übersetzung</a> &middot;
 			<a href="<?php echo $this->createUrl('job/index', array("q" => "software OR informatik")); ?>">IT und Informatik</a> &middot;
 			<a href="<?php echo $this->createUrl('job/index', array("q" => "public relation")); ?>">PR Jobs</a> &middot;
-			<a href="<?php echo $this->createUrl('job/index', array("q" => "marketing")); ?>">Marketing</a> &middot;
 			<a href="<?php echo $this->createUrl('job/index', array("q" => "sport")); ?>">Jobs im Sport</a> &middot;
 		</p>
 			

@@ -90,7 +90,6 @@ $(document).ready(function() {
 			<?php if (rand(1, 100) > 40): ?>
 				Finden Sie passende Angebote über Suchbegriffe, z.B.
 				<a href="<?php echo $this->createUrl('job/index', array('q' => "marketing")) ?>">marketing</a>,
-				<a href="<?php echo $this->createUrl('job/index', array('q' => "software leipzig")) ?>">software leipzig</a>,
 				<a href="<?php echo $this->createUrl('job/index', array('q' => "wissenschaft")) ?>">wissenschaft</a>,
 				<a href="<?php echo $this->createUrl('job/index', array('q' => "berlin")) ?>">berlin</a>, 
 				<a href="<?php echo $this->createUrl('job/index', array('q' => "praktik")) ?>">praktik</a>, etc.
@@ -114,7 +113,6 @@ $(document).ready(function() {
 					} else { ?>
 						Finden Sie passende Angebote über Suchbegriffe, z.B.
 						<a href="<?php echo $this->createUrl('job/index', array('q' => "marketing")) ?>">marketing</a>,
-						<a href="<?php echo $this->createUrl('job/index', array('q' => "software leipzig")) ?>">software leipzig</a>,
 						<a href="<?php echo $this->createUrl('job/index', array('q' => "wissenschaft")) ?>">wissenschaft</a>,
 						<a href="<?php echo $this->createUrl('job/index', array('q' => "berlin")) ?>">berlin</a>, 
 						<a href="<?php echo $this->createUrl('job/index', array('q' => "praktik")) ?>">praktik</a>, etc.

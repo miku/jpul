@@ -409,7 +409,7 @@ class JobController extends Controller
 		if ($emails != '') {
 			$to      = $emails;
 			$subject = '[CC-Jobportal] Neues Jobangebot erstellt (Unternehmen: ' . $model->company . ')';
-			$message = 'Neues Jobangebot erstellt' . $newline . 
+			$message = 'Neues Jobangebot erstellt (' . $model->title . ')' . $newline . 
 						'Unternehmen: ' . $model->company . $newline . 
 						'Ort: ' . $model->city . $newline .
 						'Ablauf der Bewerbungsfrist: ' . date("d.m.Y", $model->expiration_date) . $newline . $newline .

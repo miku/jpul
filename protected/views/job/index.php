@@ -179,7 +179,11 @@ $(document).ready(function() {
 			<a href="<?php echo $this->createUrl('job/index', array("q" => "übersetz")); ?>">Übersetzung</a> &middot;
 			<a href="<?php echo $this->createUrl('job/index', array("q" => "software OR informatik")); ?>">IT und Informatik</a> &middot;
 			<a href="<?php echo $this->createUrl('job/index', array("q" => "public relation")); ?>">PR Jobs</a> &middot;
-			<a href="<?php echo $this->createUrl('job/index', array("q" => "sport")); ?>">Jobs im Sport</a> &middot;
+			<a href="<?php echo $this->createUrl('job/index', array("q" => "sport")); ?>">Jobs im Sport</a>
+		</p>
+
+		<p><strong>Jobportal Widget und API</strong> &middot;
+			<a href="http://wwwdup.uni-leipzig.de/jobportal/docs/embed.html">Anleitung</a>
 		</p>
 			
 	</div>

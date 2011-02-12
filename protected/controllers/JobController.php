@@ -273,7 +273,7 @@ class JobController extends Controller
 		}
 		
 		Yii::log(Yii::app()->request->userHostAddress, CLogger::LEVEL_INFO, __FILE__ . ' | ' . __FUNCTION__ . ' | ' . __LINE__);
-		$this->pageTitle = 'Jobs - ' . cut_text($model->title, 50) . ' - ' . strftime("%d.%m.%Y", $model->date_added);
+		$this->pageTitle = 'Jobs - ' . cut_text($model->title, 50) . ' in ' . cut_text($model->city, 40) . ' - ' . strftime("%d.%m.%Y", $model->date_added);
 		$this->render('v' . $job_version . '/view', array('model' => $model, 'view_count' => $view_count));
 	}
 

@@ -52,7 +52,7 @@ class JobController extends Controller
 	 *      If it's clear, we don't need it: TODO simplify 'favStore'.
 	 *      
 	 */
-	public function actionIndex($page = 1, $sort = null) {
+	public function actionIndex($page = 1, $sort = null, $v = "browser") {
 
 		Zend_Search_Lucene_Analysis_Analyzer::setDefault(
     		new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8_CaseInsensitive());
@@ -191,18 +191,41 @@ class JobController extends Controller
 		Yii::app()->session['snapBackPage'] = $page;
 		Yii::log("snapBackPage: " . $page, CLogger::LEVEL_INFO, __FUNCTION__);
 		
-		
-		$this->render('index', array(
-			'models'=>$models, 
-			'total' => $total,
-			'current_start' => $current_start, 
-			'current_end' => $current_end,
-			'page' => $page,
-			'number_of_pages' => $number_of_pages,
-			'sort' => $sort,
-			'original_query' => $original_query,
-			'viewName' => $viewName) 
-		);
+		if ($v == "browser") {
+			$this->render('index', array(
+				'models'=>$models, 
+				'total' => $total,
+				'current_start' => $current_start, 
+				'current_end' => $current_end,
+				'page' => $page,
+				'number_of_pages' => $number_of_pages,
+				'sort' => $sort,
+				'original_query' => $original_query,
+				'viewName' => $viewName) 
+			);
+		} elseif ($v == "json") {
+			$this->layout = "v2/plain";
+			$this->render('index_json', array(
+				'models'=>$models, 
+				'total' => $total,
+				'page' => $page,
+				'number_of_pages' => $number_of_pages,
+				'sort' => $sort,
+				'original_query' => $original_query,
+				'viewName' => $viewName) 
+			);
+		} elseif ($v == "embed") {			
+			$this->layout = "v2/plain";
+			$this->render('index_embed', array(
+				'models'=>$models, 
+				'total' => $total,
+				'page' => $page,
+				'number_of_pages' => $number_of_pages,
+				'sort' => $sort,
+				'original_query' => $original_query,
+				'viewName' => $viewName) 
+			);
+		}
 	}
 	
 	/**
@@ -276,7 +299,7 @@ class JobController extends Controller
 			throw new CHttpException(400, Yii::t('app', 'Your request is not valid.'));
 		}
 	}
-	
+		
 	/**
 	 * Create a new job posting.
 	 */

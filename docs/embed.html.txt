@@ -1,0 +1,70 @@
+<!DOCTYPE html> 
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html lang="de" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="de" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="de" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="de" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="de" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>Jobportal-Widget</title>
+    <meta name="description" content="Embedded Jobportal des Career Centers der Universität Leipzig.">
+    <meta name="author" content="Career Center, careercenter@uni-leipzig.de">
+    <meta name="keywords" content="Arbeitsangebote, Job, Studenten, Absolventen, Hochschule, Jobportal, Listing, Widget">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+    <script>if (typeof jQuery == 'undefined') { document.write(unescape("%3Cscript src='../js/jquery-1.4.3.min.js' type='text/javascript'%3E%3C/script%3E")); }</script>
+    <style>
+        body { 
+            margin: 0 0 0 50px;
+            font: normal 10pt Verdana,"Helvetica Neue",Arial,Tahoma,sans-serif; 
+        }
+        #main {
+            width: 600px;
+        }
+        .em { font-weight: bold; }
+        .line { margin: 15px 0 15px 0; border-bottom: solid thin #ABABAB; }
+    </style>    
+</head>
+<body>
+    <div id="main">
+        
+        <p class="em">Sie können aktuelle Angebote des Career Center Jobportals auch 
+        in Ihre Seite einbetten. Nutzen Sie dazu unser Widget.</p>
+        <p>Das Widget finden Sie unter
+            <a href="http://localhost:10000/job/index?v=embed">http://localhost:10000/job/index?v=embed</a>
+        </p>
+    
+        <p>Als Beispiel für die Einbettung schauen Sie in den Quellcode dieser Seite.</p>
+        
+        <script type="text/javascript" charset="utf-8">
+            $(document).ready(function() {
+                $.get('http://localhost:10000/job/index?v=embed', function(data) {
+                    $('#target1').html(data);
+                });
+            });
+        </script>
+    
+        <div id="target1"></div>
+        
+        <div class="line"></div> <!-- ================================= -->
+    
+        <p>Sie können das Widget anpassen, indem Sie in der URL Suchbegriffe übergeben, die 
+            die Resultate entsprechend einschränken. Folgende URL liefert das Widget mit den aktuellen
+            Angeboten, in denen der Begriff "Sport" vorkommt.</p>
+            
+        <p><a href="http://localhost:10000/job/index?v=embed&q=sport">http://localhost:10000/job/index?v=embed&q=sport</a></p>
+
+        <script type="text/javascript" charset="utf-8">
+            $(document).ready(function() {
+                $.get('http://localhost:10000/job/index?v=embed&q=sport', function(data) {
+                    $('#target2').html(data);
+                });
+            });
+        </script>
+        <div id="target2"></div>    
+        
+    </div>
+</body>
+</html>

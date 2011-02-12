@@ -1,0 +1,106 @@
+<!DOCTYPE html> 
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html lang="de" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="de" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="de" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="de" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="de" class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>Jobportal Widget und API - Career Center - Universität Leipzig</title>
+	<meta name="description" content="Embedded Jobportal des Career Centers der Universität Leipzig.">
+	<meta name="author" content="Career Center, careercenter@uni-leipzig.de">
+	<meta name="keywords" content="Arbeitsangebote, Job, Studenten, Absolventen, Hochschule, Jobportal, Listing, Widget">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+	<script>if (typeof jQuery == 'undefined') { document.write(unescape("%3Cscript src='../js/jquery-1.4.3.min.js' type='text/javascript'%3E%3C/script%3E")); }</script>
+	<style>
+		body { 
+			margin: 0 0 30px 50px;
+/*			font: normal 10pt Verdana,"Helvetica Neue",Arial,Tahoma,sans-serif; */
+		}
+		#main {
+			width: 600px;
+		}
+		.em { font-weight: bold; }
+		.line { margin: 15px 0 15px 0; border-bottom: solid thin #ABABAB; }
+	</style>	
+</head>
+<body>
+	<div id="main">
+		
+		<h2>Jobportal Widgets und API</h2>
+		
+		<p>Sie können aktuelle Angebote des <a href="http://localhost:10000/">Career Center Jobportals</a> auch 
+		in Ihre Seite einbetten. Nutzen Sie dazu unser Widget.</p>
+		<p>Das Widget finden Sie unter
+			<a href="http://localhost:10000/job/index?v=embed">http://localhost:10000/job/index?v=embed</a>
+		</p>
+	
+		<p>Als Beispiel für die Einbettung schauen Sie in den <a href="embed.html.txt">Quellcode</a> dieser Seite.</p>
+		
+		<script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+				$.get('http://localhost:10000/job/index?v=embed', function(data) {
+		  			$('#target1').html(data);
+				});
+			});
+		</script>
+	
+		<div id="target1"></div>
+		
+		<div class="line"></div> <!-- ================================= -->
+	
+		<p>Sie können das Widget anpassen, indem Sie in der URL Suchbegriffe übergeben, die 
+			die Resultate entsprechend einschränken. Folgende URL liefert das Widget mit den aktuellen
+			Angeboten, in denen der Begriff "Sport" vorkommt.</p>
+			
+		<p><a href="http://localhost:10000/job/index?v=embed&q=sport">http://localhost:10000/job/index?v=embed&q=sport</a></p>
+
+		<script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+				$.get('http://localhost:10000/job/index?v=embed&q=sport', function(data) {
+		  			$('#target2').html(data);
+				});
+			});
+		</script>
+		<div id="target2"></div>	
+		
+		<div class="line"></div> <!-- ================================= -->
+		
+		Eine weitere Möglichkeit aktuelle Jobangebote vom Jobportal zu exportieren
+		ist über eine JSON-Schnittstelle. Probieren Sie sie aus:
+		
+		<pre><code>
+$ curl "http://localhost:10000/job/index?v=json&q=sport"
+
+[{"id":"458","title":"Marketing Assistenz Social
+Media","url":"http:\/\/localhost:10000\/job\/458"},
+{"id":"440","title":"Tourismus Praktikum im
+Produktmanagement","url":"http:\/\/localhost:10000\/job\/440"},
+{"id":"439","title":"Tourismus Praktikum im Online
+Marketing","url":"http:\/\/localhost:10000\/job\/439"},
+{"id":"438","title":"Praktikant(in) oder Trainee im Sportmarketing \/
+Vertrieb","url":"http:\/\/localhost:10000\/job\/438"},
+{"id":"436","title":"Trainee Sales & Kooperationen
+(m\/w)","url":"http:\/\/localhost:10000\/job\/436"},
+{"id":"348","title":"Freiwilligenarbeit \/ Praktikum \/ Sprachkurs in Costa
+Rica","url":"http:\/\/localhost:10000\/job\/348"},
+{"id":"335","title":"Reiseleiter- Bikeguide (auch Transalp!) \/ Reiseleiter
+\u2013 Wanderguide (auch
+Transalp!)","url":"http:\/\/localhost:10000\/job\/335"},
+{"id":"284","title":"Praxissemester im Bereich Public Relations (w\/m) bei der
+Ruder-Bundesliga","url":"http:\/\/localhost:10000\/job\/284"},
+{"id":"285","title":"Praktikum im Bereich Online-Redaktion \/
+Content-Management \/ Web-Design (w\/m) bei der
+Ruder-Bundesliga","url":"http:\/\/localhost:10000\/job\/285"},
+{"id":"283","title":"Praxissemester im Bereich Mediendesign \/
+Kommunikationsdesign (w\/m) bei der
+Ruder-Bundesliga","url":"http:\/\/localhost:10000\/job\/283"}]
+
+</code></pre>
+		
+	</div>
+</body>
+</html>

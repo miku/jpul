@@ -45,6 +45,8 @@
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/sanitize.min.js"></script>
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/proper.js"></script>
 
+	<!-- http://code.google.com/p/ie6-upgrade-warning/ -->
+	<!--[if lte IE 6]><script src="<?php echo Yii::app()->request->baseUrl; ?>/js/ie6/warning.js"></script><script>window.onload=function(){e("<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/ie6/")}</script><![endif]-->
 
 	<!-- Uncomment if you are specifically targeting less enabled mobile browsers                                                                       
 	<link rel="stylesheet" media="handheld" href="css/handheld.css?v=2">  --> 

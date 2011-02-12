@@ -283,7 +283,7 @@ class JobController extends Controller
 	 */
 	public function actionDownload($id)
 	{
-		$model = Job::model()->findByPk($id);
+		$model = Job::model()->findByPk($id);		
 		if ($model) {
 			$fname = $this->getUploadFilePath('job', $id);
 			if (file_exists($fname)) {
@@ -369,6 +369,9 @@ class JobController extends Controller
 				}
 			}
 		}
+
+		
+		$this->pageTitle = 'Jobangebot einstellen - Career Center, Universität Leipzig';
 
 		// $this->render('draft', array('model' => $model));
 		$this->render('v' . $version .'/draft', array('model' => $model, 'captcha_error' => $captcha_error));

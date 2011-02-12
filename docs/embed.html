@@ -29,20 +29,20 @@
 </head>
 <body>
 	<div id="main">
-		
+	http://wwwdup.uni-leipzig.de/jobportal	
 		<h2>Jobportal Widgets und API</h2>
 		
-		<p>Sie können aktuelle Angebote des <a href="http://localhost:10000/">Career Center Jobportals</a> auch 
+		<p>Sie können aktuelle Angebote des <a href="http://wwwdup.uni-leipzig.de/jobportal/">Career Center Jobportals</a> auch 
 		in Ihre Seite einbetten. Nutzen Sie dazu unser experimentelles Widget.</p>
 		<p>Das Widget finden Sie unter
-			<a href="http://localhost:10000/job/index?v=embed">http://localhost:10000/job/index?v=embed</a>
+			<a href="http://wwwdup.uni-leipzig.de/jobportal/job/index?v=embed">http://wwwdup.uni-leipzig.de/jobportal/job/index?v=embed</a>
 		</p>
 	
 		<p>Als Beispiel für die Einbettung schauen Sie in den <a href="embed.html.txt">Quellcode</a> dieser Seite.</p>
 		
 		<script type="text/javascript" charset="utf-8">
 			$(document).ready(function() {
-				$.get('http://localhost:10000/job/index?v=embed', function(data) {
+				$.get('http://wwwdup.uni-leipzig.de/jobportal/job/index?v=embed', function(data) {
 		  			$('#target1').html(data);
 				});
 			});
@@ -56,11 +56,11 @@
 			die Resultate entsprechend einschränken. Folgende URL liefert das Widget mit den aktuellen
 			Angeboten, in denen der Begriff "Sport" vorkommt.</p>
 			
-		<p><a href="http://localhost:10000/job/index?v=embed&q=sport">http://localhost:10000/job/index?v=embed&q=sport</a></p>
+		<p><a href="http://wwwdup.uni-leipzig.de/jobportal/job/index?v=embed&q=sport">http://wwwdup.uni-leipzig.de/jobportal/job/index?v=embed&q=sport</a></p>
 
 		<script type="text/javascript" charset="utf-8">
 			$(document).ready(function() {
-				$.get('http://localhost:10000/job/index?v=embed&q=sport', function(data) {
+				$.get('http://wwwdup.uni-leipzig.de/jobportal/job/index?v=embed&q=sport', function(data) {
 		  			$('#target2').html(data);
 				});
 			});
@@ -73,7 +73,7 @@
 		ist über eine <a href="http://www.json.org/">JSON</a>-Schnittstelle. Probieren Sie sie aus:
 		
 		<pre><code>
-$ curl "http://localhost:10000/job/index?v=json&q=sport"
+$ curl "http://wwwdup.uni-leipzig.de/jobportal/job/index?v=json&q=sport"
 
 [{"id":"458","title":"Marketing Assistenz Social
 Media","url":"http:\/\/localhost:10000\/job\/458"},

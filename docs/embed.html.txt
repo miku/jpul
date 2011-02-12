@@ -33,7 +33,7 @@
         <p class="em">Sie können aktuelle Angebote des Career Center Jobportals auch 
         in Ihre Seite einbetten. Nutzen Sie dazu unser Widget.</p>
         <p>Das Widget finden Sie unter
-            <a href="http://localhost:10000/job/index?v=embed">http://localhost:10000/job/index?v=embed</a>
+            <a href="http://wwwdup.uni-leipzig.de/jobportal/job/index?v=embed">http://wwwdup.uni-leipzig.de/jobportal/job/index?v=embed</a>
         </p>
     
         <p>Als Beispiel für die Einbettung schauen Sie in den Quellcode dieser Seite.</p>
@@ -52,7 +52,7 @@
 
         <script type="text/javascript" charset="utf-8">
             $(document).ready(function() {
-                $.get('http://localhost:10000/job/index?v=embed', function(data) {
+                $.get('http://wwwdup.uni-leipzig.de/jobportal/job/index?v=embed', function(data) {
                     $('#target1').html(data);
                 });
             });
@@ -79,11 +79,11 @@
             die Resultate entsprechend einschränken. Folgende URL liefert das Widget mit den aktuellen
             Angeboten, in denen der Begriff "Sport" vorkommt.</p>
             
-        <p><a href="http://localhost:10000/job/index?v=embed&q=sport">http://localhost:10000/job/index?v=embed&q=sport</a></p>
+        <p><a href="http://wwwdup.uni-leipzig.de/jobportal/job/index?v=embed&q=sport">http://wwwdup.uni-leipzig.de/jobportal/job/index?v=embed&q=sport</a></p>
 
         <script type="text/javascript" charset="utf-8">
             $(document).ready(function() {
-                $.get('http://localhost:10000/job/index?v=embed&q=sport', function(data) {
+                $.get('http://wwwdup.uni-leipzig.de/jobportal/job/index?v=embed&q=sport', function(data) {
                     $('#target2').html(data);
                 });
             });

@@ -37,7 +37,19 @@
         </p>
     
         <p>Als Beispiel für die Einbettung schauen Sie in den Quellcode dieser Seite.</p>
-        
+
+        <!-- 
+           ;;;;.
+           ;;;;;
+           ;;;;;
+           ;;;;;
+           ;;;;;
+           ;;;;;
+         ..;;;;;..
+          ':::::'
+            '.` 
+        -->
+
         <script type="text/javascript" charset="utf-8">
             $(document).ready(function() {
                 $.get('http://localhost:10000/job/index?v=embed', function(data) {
@@ -47,7 +59,20 @@
         </script>
     
         <div id="target1"></div>
-        
+
+        <!-- 
+             .
+           .:;:.
+         .:;;;;;:.
+           ;;;;;
+           ;;;;;
+           ;;;;;
+           ;;;;;
+           ;:;;;
+           : ;;;
+
+        -->
+   
         <div class="line"></div> <!-- ================================= -->
     
         <p>Sie können das Widget anpassen, indem Sie in der URL Suchbegriffe übergeben, die 

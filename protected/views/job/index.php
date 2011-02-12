@@ -45,7 +45,7 @@ $(document).ready(function() {
 
 <div id="main-container">
 <div id="main">
-
+	
 	<div id="main-header">
 		<div id="searchbox">
 			<form action="<?php echo $this->createUrl('job/index') ?>" method="get" accept-charset="utf-8">

@@ -190,8 +190,18 @@ class JobController extends Controller
 		
 		Yii::app()->session['snapBackPage'] = $page;
 		Yii::log("snapBackPage: " . $page, CLogger::LEVEL_INFO, __FUNCTION__);
-		
+
 		if ($v == "browser") {
+
+			$this->pageTitle = 'Jobportal des Career Centers der Universität Leipzig';
+			
+			if (isset($original_query) && $original_query != '' ) {
+				$this->pageTitle .= ' - ' . $original_query;
+			}
+			if (isset($page) && $page > 1) {
+				$this->pageTitle .= ' - Seite ' . $page;
+			} 
+			
 			$this->render('index', array(
 				'models'=>$models, 
 				'total' => $total,
@@ -203,6 +213,7 @@ class JobController extends Controller
 				'original_query' => $original_query,
 				'viewName' => $viewName) 
 			);
+			
 		} elseif ($v == "json") {
 			$this->layout = "v2/plain";
 			$this->render('index_json', array(
@@ -214,6 +225,7 @@ class JobController extends Controller
 				'original_query' => $original_query,
 				'viewName' => $viewName) 
 			);
+			
 		} elseif ($v == "embed") {			
 			$this->layout = "v2/plain";
 			$this->render('index_embed', array(
@@ -371,7 +383,7 @@ class JobController extends Controller
 		}
 
 		
-		$this->pageTitle = 'Jobangebot einstellen - Career Center, Universität Leipzig';
+		$this->pageTitle = 'Jobangebot einstellen - Career Center Universität Leipzig';
 
 		// $this->render('draft', array('model' => $model));
 		$this->render('v' . $version .'/draft', array('model' => $model, 'captcha_error' => $captcha_error));

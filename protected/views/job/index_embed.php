@@ -1,37 +1,42 @@
+<?php
+	// https://developer.mozilla.org/En/Server-Side_Access_Control
+	header('Access-Control-Allow-Origin: *');
+	header('Content-type: text/html');	
+?>
 
-	<?php 
-		
-		$kvlist = explode('&', urldecode(Yii::app()->request->queryString)); 
-		$params = array("page" => 1);
-		foreach ($kvlist as $index => $kvitem) {
-			$kv = explode('=', $kvitem);
-			if (count($kv) == 2) {
-				$params[$kv[0]] = $kv[1];
-			}
-		}
-		if (isset($params["page"])) {
-			if ($params["page"] < 1) {
-				$params["page"] = 1;
-			}
-			$params["page"] = preg_replace("/[^\d]/", "", $params["page"]);
-			if ($params["page"] > ($total / $this->items_per_page)) {
-				$params["page"] = ceil($total / $this->items_per_page);
-			}
-		}
-		if (isset($params["ipp"])) {
-			unset($params["ipp"]);
-		}
-		
-		$number_of_pages = ceil($total / $this->items_per_page);
-		$current_page = $params["page"];
-	?>
+<?php 
 	
-	<?php
-		$params_headline_link = $params;
-		if (isset($params_headline_link["v"])) {
-			unset($params_headline_link["v"]);
+	$kvlist = explode('&', urldecode(Yii::app()->request->queryString)); 
+	$params = array("page" => 1);
+	foreach ($kvlist as $index => $kvitem) {
+		$kv = explode('=', $kvitem);
+		if (count($kv) == 2) {
+			$params[$kv[0]] = $kv[1];
 		}
-	 ?>
+	}
+	if (isset($params["page"])) {
+		if ($params["page"] < 1) {
+			$params["page"] = 1;
+		}
+		$params["page"] = preg_replace("/[^\d]/", "", $params["page"]);
+		if ($params["page"] > ($total / $this->items_per_page)) {
+			$params["page"] = ceil($total / $this->items_per_page);
+		}
+	}
+	if (isset($params["ipp"])) {
+		unset($params["ipp"]);
+	}
+	
+	$number_of_pages = ceil($total / $this->items_per_page);
+	$current_page = $params["page"];
+?>
+
+<?php
+	$params_headline_link = $params;
+	if (isset($params_headline_link["v"])) {
+		unset($params_headline_link["v"]);
+	}
+ ?>
 
 <?php if (count($models) > 0): ?>
 	<style type="text/css" media="screen">

@@ -87,29 +87,49 @@ class JobController extends Controller
 		if (isset($_GET['q']) && $_GET['q'] != '') {
 			$viewName = "search";
 		}
+		
+		if (isset($_GET['q']) && $_GET['q'] != '' && preg_match("/^\d+$/", $_GET['q'])) {
+			$viewName = "direct";
+		}
 
 		if (isset($_GET['s']) && $_GET['s'] != '' && 
 			isset(Yii::app()->session[Yii::app()->params['favStore']])) {
 			$viewName = "favs";
 		}
+		
+		if ($viewName == "direct") {
+			$original_query = $_GET['q'];
+			Yii::log("Direct to: " . $original_query, CLogger::LEVEL_INFO, __FUNCTION__);
+			$criteria->condition='id=:id';
+			$criteria->params=array(':id'=>$original_query);
+			$model = Job::model()->find($criteria);
+			if ($model->expiration_date > $current_time && $model->status_id == 2) {
+				$this->redirect($this->createUrl('job/view', array('id' => $original_query)));
+			} else {
+				$this->redirect($this->createUrl('job/index'));
+			}
+		}
 
 		// if we have a term query ...
 		if ($viewName == "search") {
+			
 			$index = new Zend_Search_Lucene($this->getSearchIndexStore());
 
 			$original_query = $_GET['q'];
 
-			if (preg_match("/( OR | AND )/", $original_query) == 0) {
+			if (preg_match("/( OR | AND |\"|:|~|-|\*| NOT )/", $original_query) == 0) {
 				$query = trim($original_query) . '*';
 				$query = preg_replace("/\s+/", "* AND ", $query);
 			} else {
 				$query = $original_query;
 			}
-		
+			
+			Yii::log("Q: " . $query, CLogger::LEVEL_INFO, __FUNCTION__);
+			
 			try {
 				$results = $index->find($query);
 			} catch (Exception $e) {
-				Yii::log("Failed Query: " . $query, CLogger::LEVEL_INFO, __FUNCTION__);
+				Yii::log("Failed Query: '" . $query . "' - Exception: " . $e, CLogger::LEVEL_INFO, __FUNCTION__);
 				$this->redirect(array('index'));
 			}
 
@@ -193,7 +213,7 @@ class JobController extends Controller
 
 		if ($v == "browser") {
 
-			$this->pageTitle = 'Jobportal des Career Centers der Universität Leipzig (' . $total . ' Angebote)';
+			$this->pageTitle = 'Jobportal des Career Centers der Universität Leipzig (' . $total . ' aktuelle Jobangebote)';
 			
 			if (isset($original_query) && $original_query != '' ) {
 				$this->pageTitle .= ' - ' . $original_query;

@@ -1,4 +1,7 @@
 <?php 
+	header('Access-Control-Allow-Origin: *');
+	header('Content-type: application/json');	
+	
 	$payload = array();
 	foreach ($models as $model) {
 		$item = array();

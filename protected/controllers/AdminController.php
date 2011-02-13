@@ -427,7 +427,7 @@ class AdminController extends Controller
 			$doc->addField(Zend_Search_Lucene_Field::Keyword('pk', $model->id));
 
 			// index job fields
-			// $doc->addField(Zend_Search_Lucene_Field::UnStored('id', $model->id, 'utf-8'));
+			$doc->addField(Zend_Search_Lucene_Field::UnStored('id', $model->id, 'utf-8'));
 			$doc->addField(Zend_Search_Lucene_Field::UnStored('cc', purify($model->company, ''), 'utf-8'));
 			$doc->addField(Zend_Search_Lucene_Field::UnStored('title', $model->title, 'utf-8'));
 			$doc->addField(Zend_Search_Lucene_Field::UnStored('company', $model->company, 'utf-8'));

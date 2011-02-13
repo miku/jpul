@@ -174,12 +174,16 @@ $(document).ready(function() {
 		</p>
 		<br>
 		<p><strong>Beispielsuchen</strong> &middot;
-			<a href="<?php echo $this->createUrl('job/index', array("q" => "english OR englisch ")); ?>">Englische Sprachkenntisse</a> &middot;
+			<a href="<?php echo $this->createUrl('job/index', array("q" => "english OR englisch ")); ?>">Englischkenntnisse</a> &middot;
 			<a href="<?php echo $this->createUrl('job/index', array("q" => "french OR spanish OR chinese OR französisch OR spanisch OR russisch OR chinesisch")); ?>">Sprachen außer Englisch</a> &middot;
-			<a href="<?php echo $this->createUrl('job/index', array("q" => "übersetz")); ?>">Übersetzung</a> &middot;
-			<a href="<?php echo $this->createUrl('job/index', array("q" => "software OR informatik")); ?>">IT und Informatik</a> &middot;
+			<a href="<?php echo $this->createUrl('job/index', array("q" => "übersetz OR translate OR translation")); ?>">Übersetzung</a> &middot;
 			<a href="<?php echo $this->createUrl('job/index', array("q" => "public relation")); ?>">PR Jobs</a> &middot;
-			<a href="<?php echo $this->createUrl('job/index', array("q" => "sport")); ?>">Jobs im Sport</a>
+			<a href="<?php echo $this->createUrl('job/index', array("q" => "sport")); ?>">Jobs im Sport</a> &middot;
+			<a href="<?php echo $this->createUrl('job/index', array("q" => "informatik -praktik*")); ?>">Informatik (ohne Praktika)</a> &middot;
+		</p>
+		<br>
+		<p><strong>Suchoperatoren</strong> &middot;
+			Ausschluß: -suchbegriff &middot; AND, OR, NOT &middot; Position: "nach Vereinbarung",  Fuzzy: suchbergiff~
 		</p>
 		<br>
 		<p><strong>Jobportal Widget und API</strong> &middot;

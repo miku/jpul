@@ -19,6 +19,7 @@
 
 	<!-- Mobile viewport optimized: j.mp/bplateviewport -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="google-site-verification" content="P-Sv0jsBB44YjC-6whsD8npmjnUHBRubEvdGNBiU5yc" />
 
 	<!-- Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
 	<link rel="shortcut icon" href="/favicon.ico">

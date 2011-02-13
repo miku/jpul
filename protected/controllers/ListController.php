@@ -41,6 +41,7 @@ class ListController extends Controller
 		$command = $connection->createCommand($sql);
 		$dataReader = $command->queryAll();
 
+		$this->pageTitle = 'Jobangebote von ' . count($dataReader) . ' Unternehmen und Institutionen - Jobportal des Career Centers der Universität Leipzig';
 		$this->render("companies", array("dataReader" => $dataReader));
 	}
 	
@@ -77,7 +78,14 @@ class ListController extends Controller
 		$connection = Yii::app()->db;
 		$command = $connection->createCommand($sql);
 		$dataReader = $command->queryAll();
+		
+		$top = array_slice($dataReader, 0, min(5, count($dataReader)));
+		$topCities = array();
+		foreach ($top as $key => $value) {
+			array_push($topCities, $value['city']);
+		}
 
+		$this->pageTitle = 'Jobs aus ' . count($dataReader) . ' Regionen - ' . implode(', ', $topCities) . '... - Jobportal des Career Centers der Universität Leipzig';
 		$this->render("cities", array("dataReader" => $dataReader));
 	}
 

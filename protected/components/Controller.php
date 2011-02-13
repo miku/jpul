@@ -51,7 +51,7 @@ class Controller extends CController
 	
 	protected function beforeAction($action) {
 
-		Yii::log("Entering beforeAction." . $action->getId(), CLogger::LEVEL_INFO, __FUNCTION__);		
+		Yii::log("Entering beforeAction:" . $action->getId(), CLogger::LEVEL_INFO, __FUNCTION__);		
 
 		// See if the user agent is Googlebot and
 		// try to avoid ugly URLs like

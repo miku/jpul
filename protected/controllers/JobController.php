@@ -213,7 +213,7 @@ class JobController extends Controller
 
 		if ($v == "browser") {
 
-			$this->pageTitle = 'Jobportal des Career Centers der Universität Leipzig (' . $total . ' aktuelle Jobangebote)';
+			$this->pageTitle = 'Jobportal Universität Leipzig (' . $total . ' aktuelle Jobangebote)';
 			
 			if (isset($original_query) && $original_query != '' ) {
 				$this->pageTitle .= ' - ' . $original_query;

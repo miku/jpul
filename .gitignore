@@ -24,4 +24,4 @@ docs/Anzeigen/*
 
 docs/Agile.*pdf
 benchmarks/*
-patches/*
+*.patch

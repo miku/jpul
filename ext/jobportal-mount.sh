@@ -91,7 +91,8 @@ fi
 
 # https://git.wiki.kernel.org/index.php/GitFaq#Why_does_git_clone.2C_git_pull.2C_etc._fail_when_run_on_a_partition_mounted_with_sshfs_.28FUSE.29.3F
 sshfs -oauto_cache,reconnect,volname=$HOST -ossh_command=tsocksssh \
-		-oworkaround=rename $USER@$HOST: $TARGET 2> $ERROR_LOG
+        -ocompression=yes -oworkaround=rename \
+        $USER@$HOST: $TARGET 2> $ERROR_LOG
 
 E_SSHFS=$?
 

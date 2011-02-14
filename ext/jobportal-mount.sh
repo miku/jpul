@@ -73,10 +73,15 @@
 #   chmod +x ~/bin/tsocksssh
 # 
 # 4) Run this script. Done.
- 
+
+# ==== Adjust ============
+
 USER=jobp
 HOST=wwwdup.uni-leipzig.de
 TARGET=/Volumes/wwwdup.uni-leipzig.de
+
+# ========================
+
 ERROR_LOG=/tmp/$(basename $0)-errors.log
 
 if [ ! -d "$TARGET" ]; then

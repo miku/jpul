@@ -1,25 +1,25 @@
 About jpccul
 ============
 
-Job site for University of Leipzig, Career Center.
+Jobboard, University of Leipzig, Career Center.
 
 ........................................................................
 
 Developer Topics
 ================
 
-Broswershots
-------------
-
-http://browsershots.org/http://wwwdup.uni-leipzig.de/jobportal/index.php/job/index
-
-
 Directories
 -----------
+
+apache/
+	Apache conf for local development, adjust at your discretion.
 
 assets/
 	Belongs to Yii.
 	http://stackoverflow.com/questions/1679151/whats-the-proper-way-to-work-with-assets-in-yii
+
+benchmarks/
+	Untracked. Just some `ab` stats.
 	
 css/
 	Used by Yii.
@@ -33,12 +33,27 @@ dumps/
 
 ext/
 	External pages for testing and show-casing. Not Yii-related.
+	Includes some helper scripts now, mainly: `jobportal-mount`, which 
+	establishes a ssh-in-ssh connection through transparent sockets.
 
 images/
 	Used by Yii.
 	
 js/
 	Used by Yii.
+
+migrations/
+	DB migrations. Filename format: XXX-short-description.sql
+	These migrations are the means of DB updates. SQL should not
+	be applied manually on the DB, but with a specified migration. 
+	This way, all changes are documented. Each migration must end
+	with an INSERT into the schema_version table. E.g.
+
+		INSERT INTO schema_version(`migration_code`, `extra_notes`) 
+			VALUES ('010', 'cleanup test jobs');
+	
+	If one has to rebuild a DB-schema from scratch, `cat` all migrations
+	in one big SQL, which is ready for import. 
 
 protected/
 	All Yii. protected/data holds our current SQL schemes.
@@ -51,21 +66,30 @@ uploads/
 	protected/components/Controller.php provides a method for 
 	retrieving the path: ``string getUploadPath()``
 	
+
+
+
 Rolling out new code
 --------------------
 
 OS X
 ....
 	
-	_ Log in to wwwdup.uni-leipzig.de (via MacFuse / MacFusion)
-	
-		jobp@wwwdup.uni-leipzig.de: on /Volumes/jobp--wwwdup.uni-leipzig.de (fusefs, nodev, nosuid, synchronous, mounted by <username>)
+	Log in to wwwdup.uni-leipzig.de (via MacFuse / MacFusion)
+	The script ext/jobportal-mount can be used  
+	(just adjust your TARGET directory). There is a short story
+	in that script, too, about how use an ssh proxy for ssh itself.
 
-	_ $ cd /Volumes/jobp--wwwdup.uni-leipzig.de
-	_ $ zip -r webdir.`epoch`.zip webdir/
-	_ $ cp webdir.1296641156.zip ~/projects/jobportal-uni-leipzig/dumps
+		$ cd /Volumes/jobp--wwwdup.uni-leipzig.de
+		$ # or whatever TARGET~
+
+	Create a dump. Always.
 	
-	Create a full dump of the MySQL DB (via phpmysql) - compatibility mode = NONE.
+		$ zip -r webdir.`epoch`.zip webdir/  
+		$ cp webdir.1296641156.zip ~/projects/jobportal-uni-leipzig/dumps
+	
+	Create a full dump of the MySQL DB (via phpmysql) - 
+		with COMPATIBILITY MODE = NONE.
 	
 	Now check, if there are any outstanding DB migrations (take a look at
 	the schema_version column).
@@ -74,15 +98,35 @@ OS X
 	
 	Now pull the source directly into webdir, so ...
 	
-	_ $ cd /Volumes/jobp--wwwdup.uni-leipzig.de/webdir
-	_ $ git st
+		$ cd /Volumes/jobp--wwwdup.uni-leipzig.de/webdir
+		$ git st
 	
-	Deal with any outstanding live commit or untracked file.
+	Deal with any outstanding live changes or untracked file.
 	
-	_ $ git pull origin master
+		$ git pull origin master
 	
-		
+	================
+	
+	Using patches to updates.
+	
+	sshfs is flaky on pulls with more than only a few commits (why?). To
+	counteract this, you can update production via patches.
+	
+	Create a patch on your development machine. The last commit on production
+	should be the starting point. 
+	
+		$ git format-patch --stdout 6f74cc68..$(cat .git/refs/heads/master) > update.patch
+	
+	Copy the patch to your TARGET. Check the patch:
+	
+		$ git apply --check update.check
+	
+	If everything is fine, apply: 
+	
+		$ git apply update.check
 
+
+	
 Temporarily disabling the application
 -------------------------------------
 

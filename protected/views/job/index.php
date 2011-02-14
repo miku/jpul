@@ -176,10 +176,10 @@ $(document).ready(function() {
 		<p><strong>Beispielsuchen</strong> &middot;
 			<a href="<?php echo $this->createUrl('job/index', array("q" => "english OR englisch ")); ?>">Englischkenntnisse</a> &middot;
 			<a href="<?php echo $this->createUrl('job/index', array("q" => "french OR spanish OR chinese OR französisch OR spanisch OR russisch OR chinesisch")); ?>">Sprachen außer Englisch</a> &middot;
-			<a href="<?php echo $this->createUrl('job/index', array("q" => "übersetz* OR translate OR translation")); ?>">Übersetzung</a> &middot;
+			<a href="<?php echo urldecode($this->createUrl('job/index', array("q" => "übersetz*+OR+translate+OR+translation"))); ?>">Übersetzung</a> &middot;
 			<a href="<?php echo $this->createUrl('job/index', array("q" => "public relation")); ?>">PR Jobs</a> &middot;
 			<a href="<?php echo $this->createUrl('job/index', array("q" => "sport")); ?>">Jobs im Sport</a> &middot;
-			<a href="<?php echo $this->createUrl('job/index', array("q" => "informatik -praktik*")); ?>">Informatik (ohne Praktika)</a> &middot;
+			<a href="<?php echo urldecode($this->createUrl('job/index', array("q" => "informatik+-praktik*"))); ?>">Informatik (ohne Praktika)</a> &middot;
 		</p>
 		<br>
 		<p><strong>Suchoperatoren</strong> &middot;

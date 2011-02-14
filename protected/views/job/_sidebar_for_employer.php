@@ -29,9 +29,9 @@ var ie = (function(){
 
 	<script type="text/javascript" charset="utf-8">
 		if (ie === undefined) {
-			document.write("<a href=\"<?php echo $this->createUrl('job/draft') ?>\">Jetzt ein Angebot einstellen</a>");
+			document.write("<a href=\"<?php echo $this->createUrl('job/draft') ?>\">Jetzt ein Angebot einstellen...</a>");
 		} else {
-			document.write("<a href=\"<?php echo $this->createUrl('job/draft', array('version' => '1')) ?>\">Jetzt ein Angebot einstellen</a>");
+			document.write("<a href=\"<?php echo $this->createUrl('job/draft', array('version' => '1')) ?>\">Jetzt ein Angebot einstellen...</a>");
 		}
 	</script>
 

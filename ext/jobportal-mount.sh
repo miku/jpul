@@ -89,14 +89,15 @@ else
     mkdir -p $TARGET    
 fi
 
-sshfs $USER@$HOST: $TARGET -oauto_cache,reconnect,volname=$HOST \
-    -ossh_command=tsocksssh 2> $ERROR_LOG
+# https://git.wiki.kernel.org/index.php/GitFaq#Why_does_git_clone.2C_git_pull.2C_etc._fail_when_run_on_a_partition_mounted_with_sshfs_.28FUSE.29.3F
+sshfs -oauto_cache,reconnect,volname=$HOST -ossh_command=tsocksssh \
+		-oworkaround=rename $USER@$HOST: $TARGET 2> $ERROR_LOG
 
 E_SSHFS=$?
 
 if [ 0 -eq $E_SSHFS ]; then
     echo "Successfully mounted $USER@$HOST at $TARGET"
-	cat <<'LAMBDASHUTTLE'
+    cat <<'LAMBDASHUTTLE'
                        .-----. 
                        | |.-\ \ 
                        | ||_|\ \ 
@@ -133,16 +134,17 @@ if [ 0 -eq $E_SSHFS ]; then
     
 LAMBDASHUTTLE
 # http://ascii-art.surfhome.de/content.php?id=sw
-	if [ "Darwin" == `uname -s` ]; then
-		echo "cd $TARGET" | pbcopy 
-		echo
-		# http://www.youtube.com/watch?v=Q7oqZ-_-O6Y#t=44s
-		echo "You are cleared to proceed. Start you approach with CMD-V."
-		echo
-	fi
+    if [ "Darwin" == `uname -s` ]; then
+        echo "cd $TARGET" | pbcopy 
+        echo
+        # http://www.youtube.com/watch?v=Q7oqZ-_-O6Y#t=44s
+        echo "You are cleared to proceed. Start you approach with CMD-V."
+        echo
+    fi
 else
     echo "Could't mount $USER@$HOST at $TARGET"
     echo "sshfs said: $E_SSHFS"
+    echo "Try to rerun the command once again."
 fi
 
 # EOF

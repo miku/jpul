@@ -32,7 +32,7 @@ def main(args):
     """ Example usage of experimenatal jobportal API. 
     """
     query = urllib.urlencode(
-        {'ipp' : 20, 'v' : 'json', 'q' : ' '.join(args) })
+        {'size' : 20, 'v' : 'json', 'q' : ' '.join(args) })
     result = json.loads(
         urllib.urlopen("{0}?{1}".format(BASEURL, query)).read())
 

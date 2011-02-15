@@ -8,12 +8,12 @@
 	<?php echo CHtml::ajaxLink("", 
                               $this->createUrl('job/toggleFavorite', array('id' => $model->id)), 
                               array('update' => '#fav-subbar'),
-							  array('class' => 'fav-toggle isfav', 'href' => '#post' . $model->id )); ?>
+							  array('class' => 'fav-toggle isfav', 'href' => '#post' . $model->id, 'title' => "Aus der Favoritenliste entfernen" )); ?>
 <?php else: ?>
 	<?php echo CHtml::ajaxLink("", 
                               $this->createUrl('job/toggleFavorite', array('id' => $model->id)), 
                               array('update' => '#fav-subbar'),
-							  array('class' => 'fav-toggle', 'href' => '#post' . $model->id )); ?>
+							  array('class' => 'fav-toggle', 'href' => '#post' . $model->id, 'title' => "Zu meinen Favoriten hinzufügen" )); ?>
 <?php endif ?>
 
 

@@ -23,8 +23,8 @@
 			$params["page"] = ceil($total / $this->items_per_page);
 		}
 	}
-	if (isset($params["ipp"])) {
-		unset($params["ipp"]);
+	if (isset($params["size"])) {
+		unset($params["size"]);
 	}
 	
 	$number_of_pages = ceil($total / $this->items_per_page);

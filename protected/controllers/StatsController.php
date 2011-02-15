@@ -6,6 +6,15 @@ require_once('Utils.php');
 class StatsController extends Controller
 {
 	
+	public function actionReferer() {
+		$sql = "select count(*) as cnt, http_referer as referer from request where http_referer is NOT null and http_referer != '' and http_referer not like '%wwwdup%' and http_referer not like '%localhost%' group by http_referer order by cnt desc;";
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand($sql);
+		$dataReader = $command->queryAll();
+
+		$this->render("referer", array("stats" => $dataReader));
+
+	}
 	
 	
 	public function actionIndex() {
@@ -113,8 +122,6 @@ class StatsController extends Controller
 		}
 		
 		$gcurl_os .= "&chd=t:" . $chd . "&chl=" . $chl;
-
-
 
 		
 		$this->render("index", array("stats" => $stats, 

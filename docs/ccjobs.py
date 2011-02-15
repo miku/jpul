@@ -10,7 +10,6 @@ import urllib
 
 BASEURL= 'http://wwwdup.uni-leipzig.de/jobportal/job/index?'
 BASEURL_JOBS = 'http://wwwdup.uni-leipzig.de/jobportal/job'
-BASEURL= 'http://localhost:10000/job/index?'
 
 class bcolors:
 	HEADER = '\033[95m'

@@ -18,10 +18,11 @@ protected/runtime/state.bin
 protected/data/*sql
 protected/data/*.db
 protected/data/*.default
-
+protected/config/main.*php
 docs/Anzeigen-*
 docs/Anzeigen/*
 
 docs/Agile.*pdf
 benchmarks/*
 *.patch
+

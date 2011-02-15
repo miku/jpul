@@ -1,4 +1,17 @@
+<html>
+<head>
 <style>
+	body {
+		margin: 10px;
+		padding: 0;
+		color: #333;
+		font: normal 10pt Verdana,"Helvetica Neue",Arial,Tahoma,sans-serif;
+		background: #fff;
+		min-width:985px;
+		max-width:985px;
+		font-size:11pt;	
+	}
+
 	.col-by-total {
 		font-size: 12px;
 	}
@@ -26,30 +39,64 @@
 		border-top: solid thin #BCBCBC;
 		border-bottom: solid thin #BCBCBC;
 	}
+	.addr { color: black;}
+	.uri { }
 </style>
 
-<script type="text/javascript" charset="utf-8">
-	$(document).ready(function() {
-		function refresh() {
-			window.location.href = '<?php $this->createUrl("stats/activity"); ?>';
-		}
-		setTimeout(refresh, 30000); 
-	});
-</script>
+<script language="javascript">
 
+	var countdown;
+	var countdown_number;
+
+	function countdown_init() {
+	    countdown_number = 31;
+	    countdown_trigger();
+	}
+
+	function countdown_trigger() {
+	    if(countdown_number > 0) {
+	        countdown_number--;
+	        document.getElementById('countdown_text').innerHTML = countdown_number;
+	        if(countdown_number > 0) {
+	            countdown = setTimeout('countdown_trigger()', 1000);
+	        } else {
+				reload_page();
+			}
+	    }
+	}
+	
+	function reload_page() {
+		window.location.href = '<?php echo $this->createUrl("stats/activity"); ?>';
+	}
+	
+	function pause() {
+		countdown_clear();
+		document.getElementById('switch').innerHTML = "Restart";
+		document.getElementById('switch').onclick = reload_page;
+		return false;
+	}
+
+	function countdown_clear() {
+	    clearTimeout(countdown);
+	}
+
+</script>
+	
+</head>
+<body onload="countdown_init();">
 
 <div id="main-container">
 	<div id="main">
 		<div id="main-header">
 				<p>Stats - Activity</p>
-				<p class="small">Diese Seite wird automatisch aller 30 Sekunden neu geladen.</p>
+				<p class="small">Diese Seite wird in <span id="countdown_text">30</span> Sekunden neu geladen. <a id="switch" href="#" onclick="pause();">Pause</a></p>
 		</div>
 		<div id="main-content">
 
 			<div class="col-by-total">
 			<?php foreach ($stats as $key => $value): ?>
 				<div class="activity-item">
-					<?php echo $value['request_uri']; ?>
+					<span class="uri"><?php echo $value['request_uri']; ?></span>
 					<div class="referer small dimmed">
 						<?php if ($value['http_referer'] != ''): ?>
 							From: <span class="small dimmed"><?php echo $value['http_referer']; ?> </span>
@@ -59,7 +106,7 @@
 					</div>
 					<div class="small dimmed">
 						
-						<?php echo $value['remote_addr']; ?> 
+						<span class="addr"><?php echo $value['remote_addr']; ?> </span>
 						| <span class="hilite"><?php echo time_since($value['request_time']); ?></span> 
 						| <?php echo $value['bt_os']; ?> 
 						& <?php echo $value['bt_browser']; ?> <?php echo $value['bt_version']; ?>
@@ -72,4 +119,7 @@
 		</div>
 	</div>
 </div>
+	
+</body>
+</html>
 

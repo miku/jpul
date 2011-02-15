@@ -12,6 +12,7 @@ class StatsController extends Controller
 		$command = $connection->createCommand($sql);
 		$dataReader = $command->queryAll();
 
+		$this->layout = "v2/plain";
 		$this->render("activity", array("stats" => $dataReader));
 
 	}

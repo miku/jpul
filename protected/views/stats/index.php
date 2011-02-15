@@ -8,12 +8,19 @@
 	.small {
 		font-size: 10px;
 	}
+	.normal { font-size: 12px;}
 </style>
 
 <div id="main-container">
 	<div id="main">
 		<div id="main-header">
 				<p>Stats / 15.12.2010 &mdash; <?php echo date("d.m.Y") ?></p>
+				<br>
+				<p class="normal">
+					<a href="<?php echo $this->createUrl('stats/searches') ?>">Searches</a> |
+					<a href="<?php echo $this->createUrl('stats/referer') ?>">Referrer</a> |
+					<a href="<?php echo $this->createUrl('stats/activity') ?>">Activity</a>
+				</p>				
 		</div>
 		<div id="main-content">
 

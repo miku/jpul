@@ -1,6 +1,8 @@
 <div class="form">
 	<?php $form=$this->beginWidget('CActiveForm', array('id'=>'job-create-form', 'htmlOptions'=>array('enctype'=>'multipart/form-data'))); ?>
 	
+	<?php echo $form->hiddenField($model,'job_version', array('value' => '1')); ?>
+	
 	<div class="errorSummary">
 		<!-- <?php if ($form->errorSummary($model)): ?>
 			<?php echo $form->errorSummary($model); ?>

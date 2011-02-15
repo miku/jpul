@@ -338,7 +338,7 @@ class AdminController extends Controller
 	{
 		$model = Job::model()->findByPk($id);
 		if (!$model) {
-			throw new CHttpException(400, Yii::t('app', 'Your request is not valid.'));
+			throw new CHttpException(404, Yii::t('app', 'Your request is not valid.'));
 		}
 		Yii::log(Yii::app()->request->userHostAddress, CLogger::LEVEL_INFO, "actionView");
 		$this->render('v' . $model->job_version . '/view', array('model' => $model));

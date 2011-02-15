@@ -11,6 +11,8 @@
 		max-width:985px;
 		font-size:11pt;	
 	}
+	
+	a { text-decoration: none; color: gray; font-weight: bold;}
 
 	.col-by-total {
 		font-size: 12px;
@@ -121,7 +123,7 @@
 					</div>
 					<div class="small dimmed">
 						
-						<span class="addr"><?php echo $value['remote_addr']; ?> </span>
+						<span class="addr"><a href="http://myyn.org/iai/index?q=<?php echo $value['remote_addr']; ?>"><?php echo $value['remote_addr']; ?></a> </span>
 						| <span class="hilite"><?php echo time_since($value['request_time']); ?></span> 
 						
 						| <?php echo $value['bt_os']; ?> 

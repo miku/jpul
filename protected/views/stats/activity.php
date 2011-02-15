@@ -106,8 +106,8 @@
 			<?php foreach ($stats as $key => $value): ?>
 				<div class="activity-item 
 					<?php 
-						if ($value['request_time'] < $threshold) { echo 'recent'; }
-						if ($value['request_time'] > $threshold_recent) { echo 'fresh'; }
+						if ($value['request_time'] > $threshold_recent) { echo 'fresh'; } 
+						elseif ($value['request_time'] > $threshold) { echo 'recent'; }
 					 ?>
 				">
 					

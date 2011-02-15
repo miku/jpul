@@ -113,7 +113,10 @@
 					 ?>
 				">
 					
-					<span class="uri"><?php echo $value['request_uri']; ?></span>
+					<span class="uri">
+						<?php echo preg_replace('/^(http:\/\/[^\/]*)(.*)/', '$1<strong>$2</strong>', $value['request_uri']); ?>
+					</span>
+					
 					<div class="referer small dimmed">
 						<?php if ($value['http_referer'] != ''): ?>
 							From: <span class="small dimmed"><?php echo $value['http_referer']; ?> </span>

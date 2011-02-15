@@ -126,6 +126,11 @@ OS X
 		$ git apply update.check
 
 
+Search query language
+---------------------
+
+	See: http://framework.zend.com/manual/en/zend.search.lucene.query-language.html
+
 	
 Temporarily disabling the application
 -------------------------------------

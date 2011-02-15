@@ -16,6 +16,37 @@ class StatsController extends Controller
 
 	}
 	
+	public function actionSearches() {
+		$sql = "select count(*) as cnt, request_uri as uri from request where 
+			request_uri is NOT null and
+			request_uri not like '%q=' and
+			request_uri not like '%admin%' and 
+			request_uri not like 'localhost%' and 
+			request_uri not like '%localhost%' and 
+			request_uri like '%q=%' 
+			group by request_uri 
+			order by cnt desc;";
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand($sql);
+		$searches = $command->queryAll();
+
+		$sql = "select request_uri as uri, request_time from request where 
+			request_uri is NOT null and
+			request_uri not like '%q=' and
+			request_uri not like '%admin%' and 
+			request_uri not like 'localhost%' and 
+			request_uri not like '%localhost%' and 
+			request_uri like '%q=%' 
+			order by request_time desc limit 25;";
+
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand($sql);
+		$recent = $command->queryAll();
+	
+		$this->render("searches", array("searches" => $searches, "recent" => $recent));
+	
+	}
+	
 	
 	public function actionIndex() {
 		

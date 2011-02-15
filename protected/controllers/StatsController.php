@@ -5,6 +5,16 @@ require_once('Utils.php');
 
 class StatsController extends Controller
 {
+	public function actionActivity() {
+		$sql = "select * from request order by request_time desc limit 50;";
+
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand($sql);
+		$dataReader = $command->queryAll();
+
+		$this->render("activity", array("stats" => $dataReader));
+
+	}
 	
 	public function actionReferer() {
 		$sql = "select count(*) as cnt, http_referer as referer from request where http_referer is NOT null and http_referer != '' and http_referer not like '%wwwdup%' and http_referer not like '%localhost%' group by http_referer order by cnt desc;";
@@ -58,7 +68,7 @@ class StatsController extends Controller
 		$_1w = 604800;
 		$_2w = 1209600;
 		$_30d = 18144000;
-		$_30d = 36288000;
+		$_60d = 36288000;
 
 		// Average pageviews
 		$sql = "select avg(q.r) as avg from (select distinct tracking_id, count(request_uri) as r from request where tracking_id is not null group by tracking_id) as q;";

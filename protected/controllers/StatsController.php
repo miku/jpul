@@ -6,7 +6,7 @@ require_once('Utils.php');
 class StatsController extends Controller
 {
 	public function actionActivity() {
-		$sql = "select * from request order by request_time desc limit 50;";
+		$sql = "select * from request where request_uri not like '%stats%' and request_uri not like '%activity%' order by request_time desc limit 50;";
 
 		$connection = Yii::app()->db;
 		$command = $connection->createCommand($sql);

@@ -14,10 +14,17 @@
 	.activity-item {
 		background: #EFEFEF;
 		padding: 5px;
-		margin: 5px 0 5px 0;
+		margin: 8px 0 8px 0;
 	}
 	.hilite {
+		font-weight: bold;
 		color: green;
+	}
+	.referer {
+		margin: 3px 0 3px 0;
+		padding: 3px 0 3px 0;
+		border-top: solid thin #BCBCBC;
+		border-bottom: solid thin #BCBCBC;
 	}
 </style>
 
@@ -42,12 +49,21 @@
 			<div class="col-by-total">
 			<?php foreach ($stats as $key => $value): ?>
 				<div class="activity-item">
-					<?php echo $value['request_uri']; ?> &larr; <span class="small dimmed"><?php echo $value['http_referer']; ?> </span>
-					<div class="small dimmed"><?php echo $value['id']; ?> 
-						| <?php echo $value['remote_addr']; ?> 
+					<?php echo $value['request_uri']; ?>
+					<div class="referer small dimmed">
+						<?php if ($value['http_referer'] != ''): ?>
+							From: <span class="small dimmed"><?php echo $value['http_referer']; ?> </span>
+						<?php else: ?>
+							&empty; HTTP_REFERER
+						<?php endif ?>
+					</div>
+					<div class="small dimmed">
+						
+						<?php echo $value['remote_addr']; ?> 
 						| <span class="hilite"><?php echo time_since($value['request_time']); ?></span> 
 						| <?php echo $value['bt_os']; ?> 
 						& <?php echo $value['bt_browser']; ?> <?php echo $value['bt_version']; ?>
+						| <?php echo $value['id']; ?> 
 					</div> 	
 				</div>
 			<?php endforeach ?>

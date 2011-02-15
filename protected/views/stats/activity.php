@@ -32,7 +32,7 @@
 		margin: 8px 0 8px 0;
 	}
 	.hilite {
-		font-weight: bold;
+/*		font-weight: bold;*/
 		color: green;
 	}
 	.referer {
@@ -44,6 +44,15 @@
 	.addr { color: black;}
 	.recent { background: white; border: dashed thin #ABABAB; }
 	.fresh { background: #FFF380; }
+	.alignleft {
+	float: left;
+	}
+
+	.alignright {
+	float: right;
+	}
+	.clear { clear: both;}
+
 </style>
 
 <script language="javascript">
@@ -113,9 +122,13 @@
 					 ?>
 				">
 					
-					<span class="uri">
+					<div class="top-row">
+					<div class="uri alignleft">
 						<?php echo preg_replace('/^(http:\/\/[^\/]*)(.*)/', '$1<strong>$2</strong>', $value['request_uri']); ?>
-					</span>
+					</div>
+					<div class="alignright"><span class="hilite small"><?php echo time_since($value['request_time']); ?></span> </div>
+					<div class="clear"></div>
+					</div>
 					
 					<div class="referer small dimmed">
 						<?php if ($value['http_referer'] != ''): ?>
@@ -127,7 +140,6 @@
 					<div class="small dimmed">
 						
 						<span class="addr"><a href="http://myyn.org/iai/index?q=<?php echo $value['remote_addr']; ?>"><?php echo $value['remote_addr']; ?></a> </span>
-						| <span class="hilite"><?php echo time_since($value['request_time']); ?></span> 
 						
 						| <?php echo $value['bt_os']; ?> 
 						& <?php echo $value['bt_browser']; ?> <?php echo $value['bt_version']; ?>

@@ -141,8 +141,13 @@ class JobController extends Controller
 			$total = count(Job::model()->findAllByAttributes(array('id' => $pks), $criteria));
 
 			// fix number of offers per page ...
-			$criteria->limit = $this->items_per_page; # self::PAGE_SIZE;
-			$criteria->offset = ($page - 1) * $this->items_per_page; # self::PAGE_SIZE;;
+			if ($v == "embed") {
+				$criteria->limit = 10; # self::PAGE_SIZE;
+				$criteria->offset = ($page - 1) * 10; # self::PAGE_SIZE;;
+			} else {
+				$criteria->limit = $this->items_per_page; # self::PAGE_SIZE;
+				$criteria->offset = ($page - 1) * $this->items_per_page; # self::PAGE_SIZE;;
+			}
 
 			$models = Job::model()->findAllByAttributes(array('id' => $pks), $criteria);
 			$current_start = ($page - 1) * self::PAGE_SIZE;;
@@ -189,8 +194,13 @@ class JobController extends Controller
 			$total = count(Job::model()->findAll($criteria));
 
 			// fix number of offers per page ...
-			$criteria->limit = $this->items_per_page; # self::PAGE_SIZE;
-			$criteria->offset = ($page - 1) * $this->items_per_page; # self::PAGE_SIZE;;
+			if ($v == "embed") {
+				$criteria->limit = 10; # self::PAGE_SIZE;
+				$criteria->offset = ($page - 1) * 10; # self::PAGE_SIZE;;
+			} else {
+				$criteria->limit = $this->items_per_page; # self::PAGE_SIZE;
+				$criteria->offset = ($page - 1) * $this->items_per_page; # self::PAGE_SIZE;;
+			}
 
 			// $criteria->limit = self::PAGE_SIZE;
 			// $criteria->offset = ($page - 1) * self::PAGE_SIZE;;

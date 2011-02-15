@@ -86,12 +86,12 @@ ERROR_LOG=/tmp/$(basename $0)-errors.log
 
 if [ ! -d "$TARGET" ]; then
     echo "Creating mountpoint at $TARGET..."        
-    mkdir -p $TARGET
+    mkdir -p "$TARGET"
 else
     echo "Trying to umount $TARGET first..."
-    umount -fv $TARGET 2> $ERROR_LOG
+    umount -fv "$TARGET" 2> $ERROR_LOG
     echo "Creating mountpoint at $TARGET..."    
-    mkdir -p $TARGET    
+    mkdir -p "$TARGET"    
 fi
 
 # https://git.wiki.kernel.org/index.php/GitFaq#Why_does_git_clone.2C_git_pull.2C_etc._fail_when_run_on_a_partition_mounted_with_sshfs_.28FUSE.29.3F

@@ -268,7 +268,11 @@ class JobController extends Controller
 		
 		$model = Job::model()->findByPk($id);
 		if (!$model) {
-			throw new CHttpException(400, Yii::t('app', 'Your request is not valid.'));
+			throw new CHttpException(404, Yii::t('app', 'Your request is not valid.'));
+		}
+
+		if ($model->status_id != 2) {
+			throw new CHttpException(404, 'Kein Angebot mit dieser ID gefunden.');
 		}
 
 		// job view count:
@@ -325,10 +329,10 @@ class JobController extends Controller
 					array('fname' => $fname, 'target_fname' => $target_fname), 
 					false, true);
 			} else {
-				throw new CHttpException(400, Yii::t('app', 'File could not be found, sorry.'));
+				throw new CHttpException(404, Yii::t('app', 'File could not be found, sorry.'));
 			}
 		} else {
-			throw new CHttpException(400, Yii::t('app', 'Your request is not valid.'));
+			throw new CHttpException(404, Yii::t('app', 'Your request is not valid.'));
 		}
 	}
 		
@@ -435,7 +439,7 @@ class JobController extends Controller
 		if (!$removed) {
 			$model = Job::model()->findByPk($id);
 			if (!$model) {
-				throw new CHttpException(400, Yii::t('app', 'Your request is not valid.'));
+				throw new CHttpException(404, Yii::t('app', 'Your request is not valid.'));
 			} else {
 				array_push($userFavs, 
 					array(

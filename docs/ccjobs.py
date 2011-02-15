@@ -16,7 +16,7 @@ import subprocess
 import sys
 import urllib
 
-BASEURL = 'http://wwwdup.uni-leipzig.de/jobportal/job/index?'
+BASEURL = 'http://wwwdup.uni-leipzig.de/jobportal/job/index'
 BASEURL_JOBS = 'http://wwwdup.uni-leipzig.de/jobportal/job'
 
 class Colors(object):
@@ -42,7 +42,10 @@ def main(args):
         return
     
     print Colors.OKGREEN
-    print "{0} Jobs gefunden.\n".format(len(result)), Colors.ENDC
+    if len(result) == 1:
+        print "{0} Job gefunden.\n".format(len(result)), Colors.ENDC
+    else:
+        print "{0} Jobs gefunden.\n".format(len(result)), Colors.ENDC
     
     shard = result[0]['date']
     for item in result:

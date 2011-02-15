@@ -41,6 +41,7 @@
 	}
 	.addr { color: black;}
 	.recent { background: white; border: dashed thin #ABABAB; }
+	.fresh { background: #FFF380; }
 </style>
 
 <script language="javascript">
@@ -85,8 +86,11 @@
 
 <?php 
 	$current_time = time();
+	$_30s = 30;
 	$_30m = 1800;
 	$threshold = $current_time - $_30m;
+	$threshold_recent = $current_time - $_30s;
+	
  ?>
 <body onload="countdown_init();">
 
@@ -100,7 +104,13 @@
 
 			<div class="col-by-total">
 			<?php foreach ($stats as $key => $value): ?>
-				<div class="activity-item <?php if ($value['request_time'] > $threshold) { echo 'recent'; } ?>">
+				<div class="activity-item 
+					<?php 
+						if ($value['request_time'] < $threshold) { echo 'recent'; }
+						if ($value['request_time'] > $threshold_recent) { echo 'fresh'; }
+					 ?>
+				">
+					
 					<span class="uri"><?php echo $value['request_uri']; ?></span>
 					<div class="referer small dimmed">
 						<?php if ($value['http_referer'] != ''): ?>

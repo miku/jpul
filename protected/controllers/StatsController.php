@@ -11,7 +11,16 @@ class StatsController extends Controller
 	public function actionIndex() {
 		
 		$stats = array();
+		$current_time = time();
 		
+		$_24h = 86400;
+		$_48h = 172800;
+		$_1w = 604800;
+		$_2w = 1209600;
+		$_30d = 18144000;
+		$_30d = 36288000;
+
+		// Average pageviews
 		$sql = "select avg(q.r) as avg from (select distinct tracking_id, count(request_uri) as r from request where tracking_id is not null group by tracking_id) as q;";
 		$connection = Yii::app()->db;
 		$command = $connection->createCommand($sql);
@@ -19,22 +28,42 @@ class StatsController extends Controller
 
 		$stats["Average Page Views"] = $dataReader["avg"];
 
-
+		// Unique Visitors
 		$sql = "select count(distinct tracking_id) as uniq from request where tracking_id is not null;";
 		$connection = Yii::app()->db;
 		$command = $connection->createCommand($sql);
 		$dataReader = $command->queryRow();
 
-		$stats["Unique Visitors"] = $dataReader["uniq"];
-
-		// $sql = "select count(distinct tracking_id) as uniq_today from request where tracking_id is not null and request_time;";
-		// $connection = Yii::app()->db;
-		// $command = $connection->createCommand($sql);
-		// $dataReader = $command->queryRow();
-		// 
-		// $stats["Unique Visitors Today"] = $dataReader["uniq_today"];
+		$stats["Unique Visitors Total"] = $dataReader["uniq"];
 
 
+		// Unique Visitors 24h
+		$sql = "select count(distinct tracking_id) as uniq from request where tracking_id is not null and request_time > ". ($current_time - $_24h) . ";";
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand($sql);
+		$dataReader = $command->queryRow();
+
+		$stats["Unique Visitors Last Day"] = $dataReader["uniq"];
+
+
+		// Unique Visitors 1w
+		$sql = "select count(distinct tracking_id) as uniq from request where tracking_id is not null and request_time > ". ($current_time - $_1w) . ";";
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand($sql);
+		$dataReader = $command->queryRow();
+
+		$stats["Unique Visitors Last Week"] = $dataReader["uniq"];
+
+		// Unique Visitors 30d
+		$sql = "select count(distinct tracking_id) as uniq from request where tracking_id is not null and request_time > ". ($current_time - $_30d) . ";";
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand($sql);
+		$dataReader = $command->queryRow();
+
+		$stats["Unique Visitors Last Month"] = $dataReader["uniq"];
+
+
+		// Events
 		$sql = "select count(tracking_id) as events from request where tracking_id is not null;";
 		$connection = Yii::app()->db;
 		$command = $connection->createCommand($sql);
@@ -42,7 +71,54 @@ class StatsController extends Controller
 
 		$stats["Events/Requests captured"] = $dataReader["events"];
 		
-		$this->render("index", array("stats" => $stats));
+		// browser distribution		
+		$sql = "select count(*) as cnt, bt_browser as browser from request where bt_browser is NOT null and bt_browser != '' group by bt_browser;";
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand($sql);
+		$dataReader = $command->queryAll();
+		
+		$gcurl_browser = "https://chart.googleapis.com/chart?chs=350x140&cht=p3";
+		$chd = "";
+		$chl = "";
+		$resultLength = count($dataReader);
+		foreach ($dataReader as $key => $value) {
+			$chd .= $value['cnt'];
+			$chl .= $value['browser'];
+			if ($resultLength - 1 != $key) {
+				$chd .= ','; 
+				$chl .= '|';
+			}
+		}
+		
+		$gcurl_browser .= "&chd=t:" . $chd . "&chl=" . $chl;
+
+
+		// OS distribution
+		$sql = "select count(*) as cnt, bt_os as os from request where bt_os is NOT null and bt_os != '' group by bt_os;";
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand($sql);
+		$dataReader = $command->queryAll();
+		
+		$gcurl_os = "https://chart.googleapis.com/chart?chs=350x140&cht=p3";
+		$chd = "";
+		$chl = "";
+		$resultLength = count($dataReader);
+		foreach ($dataReader as $key => $value) {
+			$chd .= $value['cnt'];
+			$chl .= $value['os'];
+			if ($resultLength - 1 != $key) {
+				$chd .= ','; 
+				$chl .= '|';
+			}
+		}
+		
+		$gcurl_os .= "&chd=t:" . $chd . "&chl=" . $chl;
+
+
+
+		
+		$this->render("index", array("stats" => $stats, 
+			'gcurl_os' => $gcurl_os, 'gcurl_browser' => $gcurl_browser));
 	}
 		
 	public function actionTrack(

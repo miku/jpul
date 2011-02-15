@@ -132,7 +132,7 @@
 					
 					<div class="referer small dimmed">
 						<?php if ($value['http_referer'] != ''): ?>
-							From: <span class="small dimmed"><?php echo $value['http_referer']; ?> </span>
+							From: <span class="small dimmed"><?php echo preg_replace('/([^\/]*\/\/)([^\/]*)(.*)/', '$1<strong>$2</strong>$3', $value['http_referer']); ?> </span>
 						<?php else: ?>
 							&empty; HTTP_REFERER
 						<?php endif ?>

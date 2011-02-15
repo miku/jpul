@@ -211,6 +211,7 @@ class AdminController extends Controller
 			// $model->attributes = $_POST['Job']; // mass assignment
 			$model->attributes = $sanitized_post; 
 			$model->date_added = time();
+			$model->job_version = $_POST['Job']['job_version'];
 			
 			if (!isset($sanitized_post['expiration_date']) || $sanitized_post['expiration_date'] === '') {
 				$model->expiration_date = $model->date_added + self::DEFAULT_EXPIRATION_SECONDS;

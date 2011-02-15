@@ -40,7 +40,7 @@
 		border-bottom: solid thin #BCBCBC;
 	}
 	.addr { color: black;}
-	.uri { }
+	.recent { background: white; border: dashed thin #ABABAB; }
 </style>
 
 <script language="javascript">
@@ -81,8 +81,13 @@
 	}
 
 </script>
-	
 </head>
+
+<?php 
+	$current_time = time();
+	$_30m = 1800;
+	$threshold = $current_time - $_30m;
+ ?>
 <body onload="countdown_init();">
 
 <div id="main-container">
@@ -95,7 +100,7 @@
 
 			<div class="col-by-total">
 			<?php foreach ($stats as $key => $value): ?>
-				<div class="activity-item">
+				<div class="activity-item <?php if ($value['request_time'] > $threshold) { echo 'recent'; } ?>">
 					<span class="uri"><?php echo $value['request_uri']; ?></span>
 					<div class="referer small dimmed">
 						<?php if ($value['http_referer'] != ''): ?>
@@ -108,6 +113,7 @@
 						
 						<span class="addr"><?php echo $value['remote_addr']; ?> </span>
 						| <span class="hilite"><?php echo time_since($value['request_time']); ?></span> 
+						
 						| <?php echo $value['bt_os']; ?> 
 						& <?php echo $value['bt_browser']; ?> <?php echo $value['bt_version']; ?>
 						| <?php echo $value['id']; ?> 

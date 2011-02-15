@@ -2,14 +2,18 @@
 <head>
 <style>
 	body {
-		margin: 10px;
+		margin-top: 30px;
 		padding: 0;
 		color: #333;
 		font: normal 10pt Verdana,"Helvetica Neue",Arial,Tahoma,sans-serif;
 		background: #fff;
-		min-width:985px;
-		max-width:985px;
+		min-width:700px;
+		max-width:700px;
 		font-size:11pt;	
+		margin: auto;
+	}
+	#main-container {
+		margin-top: 15px;
 	}
 	
 	a { text-decoration: none; color: gray; font-weight: bold;}

@@ -38,11 +38,11 @@
 	.referer {
 		margin: 3px 0 3px 0;
 		padding: 3px 0 3px 0;
-		border-top: solid thin #BCBCBC;
-		border-bottom: solid thin #BCBCBC;
+		border-top: solid thin #DEDEDE;
+		border-bottom: solid thin #DEDEDE;
 	}
 	.addr { color: black;}
-	.recent { background: white; border: dashed thin #ABABAB; }
+	.recent { background: white; border: solid thin #CDCDCD; }
 	.fresh { background: #FFF380; }
 	.alignleft {
 	float: left;

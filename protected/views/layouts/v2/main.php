@@ -29,6 +29,8 @@
 	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/v2/reset.css" />	
 	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/v2/style.css" />
 	
+	<!-- <link rel="canonical" href="<?php echo Yii::app()->request->url; ?>"/> -->
+	
 	<!-- CSS : implied media="all" -->
 	<!-- Suppress Yii's jquery.js -->
 	<?php Yii::app()->clientScript->scriptMap=array('jquery.js'=>false); ?>

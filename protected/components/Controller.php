@@ -61,6 +61,9 @@ class Controller extends CController
 		if ($isGoogle !== false) {
 			Yii::log("Hello Googlebot!", CLogger::LEVEL_INFO, __FUNCTION__);
 			ini_set('session.use_only_cookies', '1');
+			// experimental ...
+			ini_set('session.use_trans_sid', false);
+			ini_set("url_rewriter.tags",""); 			
 		} 
 
 		// No '*' after required fields

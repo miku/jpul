@@ -25,6 +25,12 @@ class SiteController extends Controller
 		);
 	}
 	
+	public function actionSitemap() {
+		$models = Job::model()->findAll();
+		$this->layout = "v2/plain";
+		$this->render('sitemap', array('models' => $models));
+	}
+	
 	/**
 	 * Yii filters
 	 * @return Our request filters

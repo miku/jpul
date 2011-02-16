@@ -2,11 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <?php $current_time = time(); ?>
 <url>
-<loc>http://uni-leipzig.de/jobportal</loc>
-<lastmod><?php echo strftime("%Y-%m-%d"); ?></lastmod>
-<priority>1.0</priority>
-</url>
-<url>
 <loc><?php echo 'http://' . Yii::app()->request->serverName .  $this->createUrl('job/index'); ?></loc>
 <lastmod><?php echo strftime("%Y-%m-%d"); ?></lastmod>
 <priority>0.5</priority>

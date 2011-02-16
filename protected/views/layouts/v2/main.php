@@ -26,8 +26,8 @@
 	<!-- <link rel="apple-touch-icon" href="/apple-touch-icon.png"> -->
 
 	<!-- <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/v2/style.min.css" />	 -->
-	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/v2/reset.css" />	
-	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/v2/style.css" />
+	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/v2/reset.min.css" />	
+	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/v2/style.min.css" />
 	
 	<!-- <link rel="canonical" href="<?php echo Yii::app()->request->url; ?>"/> -->
 	
@@ -46,7 +46,7 @@
 	<!-- assert =|= jquery != undefined -->
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/underscore.min.js"></script>
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/sanitize.min.js"></script>
-	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/proper.js"></script>
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/proper.min.js"></script>
 
 	<!-- http://code.google.com/p/ie6-upgrade-warning/ -->
 	<!--[if lte IE 6]><script src="<?php echo Yii::app()->request->baseUrl; ?>/js/ie6/warning.js"></script><script>window.onload=function(){e("<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/ie6/")}</script><![endif]-->

@@ -36,19 +36,6 @@
 	<?php Yii::app()->clientScript->scriptMap=array('jquery.js'=>false); ?>
 	<?php Yii::app()->clientScript->scriptMap=array('jquery.min.js'=>false); ?>
 
-	<!-- Always load jquery (via CDN or fallback (and trckr) -->
-	<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script> -->
-	<script type="text/javascript" src="https://www.google.com/jsapi?key=ABQIAAAAwZHBf7XN4DXK4QBh4sq4rxSq_2kWzEPveyg2_i9v3i3ALbSyFhRlqWoPkNMIMdTjcY7d2DNMQ5vRsg"></script>
-	<script>if (typeof jQuery == 'undefined') { document.write(unescape("%3Cscript src='<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.4.3.min.js' type='text/javascript'%3E%3C/script%3E")); }</script>
-
-	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/tracker.min.js"></script>
-	<script>$(document).ready(function() { ccul_track('<?php echo $this->createUrl("stats/track"); ?>'); });</script>
-
-	<!-- assert =|= jquery != undefined -->
-	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/underscore.min.js"></script>
-	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/sanitize.min.js"></script>
-	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/proper.min.js"></script>
-
 	<!-- http://code.google.com/p/ie6-upgrade-warning/ -->
 	<!--[if lte IE 6]><script src="<?php echo Yii::app()->request->baseUrl; ?>/js/ie6/warning.js"></script><script>window.onload=function(){e("<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/ie6/")}</script><![endif]-->
 
@@ -99,3 +86,16 @@
 	</div>
 </body>
 </html>
+
+<!-- Always load jquery (via CDN or fallback (and trckr) -->
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script> -->
+<script type="text/javascript" src="https://www.google.com/jsapi?key=ABQIAAAAwZHBf7XN4DXK4QBh4sq4rxSq_2kWzEPveyg2_i9v3i3ALbSyFhRlqWoPkNMIMdTjcY7d2DNMQ5vRsg"></script>
+<script>if (typeof jQuery == 'undefined') { document.write(unescape("%3Cscript src='<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.4.3.min.js' type='text/javascript'%3E%3C/script%3E")); }</script>
+
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/tracker.min.js"></script>
+<script>$(document).ready(function() { ccul_track('<?php echo $this->createUrl("stats/track"); ?>'); });</script>
+
+<!-- assert =|= jquery != undefined -->
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/underscore.min.js"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/sanitize.min.js"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/proper.min.js"></script>

@@ -1,51 +1,5 @@
-<script type="text/javascript" charset="utf-8">
-
-$(document).ready(function() {
-	$("#search").focus();
-
-	$("a.fav-toggle").click(function(){
-		if ($(this).hasClass("isfav")) {
-			$(this).removeClass("isfav");
-		} else {
-			$(this).addClass("isfav");
-		}
-	});
-
-	$("#sort").change(function() {
-		var sortOrder = $("#sort option:selected").text();
-		var value = sortOrder.substr(0, 1).toLowerCase();
-		var c = $("#sort").attr("baseurl") + "sort=" + value;
-		window.location.replace(c);
-	});
-	
-	$(".type-filter").click(function() {
-		var filter = new Array();
-		$(".type-filter").each(function(index, element) {
-			// value += "" + ( $(this).attr('checked') ? 1 : 0 ) + ",";
-			if ($(this).attr('checked')) {
-				filter.push($(this).attr('id'));
-			}
-		});
-		var value = filter.join("~");
-		var c = $("#sort").attr("baseurl") + "type=" + value;
-		window.location.replace(c);
-	});
-	
-	var activeTypes = new Array();
-	
-	if ($.url.param('type') != undefined) {
-		activeTypes = $.url.param('type').split('~');
-		for (var i = activeTypes.length - 1; i >= 0; i--) {
-			$('#' + activeTypes[i]).attr('checked', true);
-		}
-	}
-
-});
-</script>
-
 <div id="main-container">
-<div id="main">
-	
+<div id="main">	
 	<div id="main-header">
 		<div id="searchbox">
 			<form action="<?php echo $this->createUrl('job/index') ?>" method="get" accept-charset="utf-8">
@@ -71,15 +25,6 @@ $(document).ready(function() {
 		<div class="clear"></div>
 	</div>
 
-<!-- 	 <div id="filter-subbar" style="border-left: solid thin #EFEFEF; border-right: solid thin #EFEFEF; font-size: 10px; margin: 0 10px 0 10px; padding: 10px 10px 10px 10px; background: aliceblue;">
-		<input class="type-filter" type="checkbox" name="f-fu" id="frfu"><label style="margin: 0 10px 0 3px;" for="filter-fulltime">Vollzeit</label>
-		<input class="type-filter" type="checkbox" name="f-pa" id="frpa"><label style="margin: 0 10px 0 3px;" for="filter-parttime">Teilzeit</label>
-		<input class="type-filter" type="checkbox" name="f-in" id="frin"><label style="margin: 0 10px 0 3px;" for="filter-internship">Praktika</label>
-		<input class="type-filter" type="checkbox" name="f-wo" id="frwo"><label style="margin: 0 10px 0 3px;" for="filter-working-student">Werkstudenten</label>
-		<input class="type-filter" type="checkbox" name="f-sc" id="frsc"><label style="margin: 0 10px 0 3px;" for="filter-scholarship">Stipedien</label>
-		<input class="type-filter" type="checkbox" name="f-th" id="frth"><label style="margin: 0 10px 0 3px;" for="filter-thesis">Abschlussarbeiten</label>
-	</div> 
-	 -->
 	<div id="fav-subbar" style="border: solid thin #EFEFEF; font-size: 10px; margin: 0 10px 0 10px; padding: 10px 10px 10px 10px; background: aliceblue;">		
 		<?php $this->renderPartial('_favbar') ?>
 	</div>
@@ -204,3 +149,25 @@ $(document).ready(function() {
 	</div>	
 </div>
 
+<script type="text/javascript" charset="utf-8">
+
+$(document).ready(function() {
+	$("#search").focus();
+
+	$("a.fav-toggle").click(function(){
+		if ($(this).hasClass("isfav")) {
+			$(this).removeClass("isfav");
+		} else {
+			$(this).addClass("isfav");
+		}
+	});
+
+	$("#sort").change(function() {
+		var sortOrder = $("#sort option:selected").text();
+		var value = sortOrder.substr(0, 1).toLowerCase();
+		var c = $("#sort").attr("baseurl") + "sort=" + value;
+		window.location.replace(c);
+	});
+	
+});
+</script>

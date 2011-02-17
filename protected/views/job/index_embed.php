@@ -47,7 +47,7 @@
 		border: dashed thin #ABABAB;
 		padding: 10px;
 	}
-	.ul-jobportal-box-date {
+	.ul-jobportal-box .date {
 		font-size: 50%;
 		color: gray;
 	}
@@ -68,6 +68,10 @@
 	.ul-jobportal-box li.even {
 		background: aliceblue;
 	}
+	.ul-jobportal-box img {
+		border: none;
+	}
+
 </style>
 
 <div class="ul-jobportal-box">
@@ -80,7 +84,7 @@
 	<ul>
 	<?php foreach ($models as $index => $model): ?>
 		<li class="<?php if ($index % 2 == 0) { echo 'even'; } ?>"><a href="<?php echo Yii::app()->request->hostInfo . $this->createUrl('job/view', array('id' => $model->id)); ?>">
-			<?php echo cut_text($model->title, 40); ?></a> <span class="ul-jobportal-box-date"><?php echo strftime("%d.%m.%Y", $model->date_added); ?></span></li>
+			<?php echo cut_text($model->title, 40); ?></a> <span class="date"><?php echo strftime("%d.%m.%Y", $model->date_added); ?></span></li>
 	<?php endforeach ?>
 	</ul>
 	<br>

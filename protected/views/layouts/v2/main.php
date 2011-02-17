@@ -41,6 +41,21 @@
 
 	<!-- Uncomment if you are specifically targeting less enabled mobile browsers                                                                       
 	<link rel="stylesheet" media="handheld" href="css/handheld.css?v=2">  --> 
+	
+	<!-- Always load jquery (via CDN or fallback (and trckr) -->
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script> -->
+	<script>google.load("jquery", "1.4.3");</script>
+	<script type="text/javascript" src="https://www.google.com/jsapi?key=ABQIAAAAwZHBf7XN4DXK4QBh4sq4rxSq_2kWzEPveyg2_i9v3i3ALbSyFhRlqWoPkNMIMdTjcY7d2DNMQ5vRsg"></script>
+	<script>if (typeof jQuery == 'undefined') { document.write(unescape("%3Cscript src='<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.4.3.min.js' type='text/javascript'%3E%3C/script%3E")); }</script>
+
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/tracker.min.js"></script>
+	<script>$(document).ready(function() { ccul_track('<?php echo $this->createUrl("stats/track"); ?>'); });</script>
+
+	<!-- assert =|= jquery != undefined -->
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/underscore.min.js"></script>
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/sanitize.min.js"></script>
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/proper.min.js"></script>
+
 </head>
 <body>
 	<div class="container" id="page">
@@ -86,16 +101,3 @@
 	</div>
 </body>
 </html>
-
-<!-- Always load jquery (via CDN or fallback (and trckr) -->
-<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script> -->
-<script type="text/javascript" src="https://www.google.com/jsapi?key=ABQIAAAAwZHBf7XN4DXK4QBh4sq4rxSq_2kWzEPveyg2_i9v3i3ALbSyFhRlqWoPkNMIMdTjcY7d2DNMQ5vRsg"></script>
-<script>if (typeof jQuery == 'undefined') { document.write(unescape("%3Cscript src='<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.4.3.min.js' type='text/javascript'%3E%3C/script%3E")); }</script>
-
-<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/tracker.min.js"></script>
-<script>$(document).ready(function() { ccul_track('<?php echo $this->createUrl("stats/track"); ?>'); });</script>
-
-<!-- assert =|= jquery != undefined -->
-<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/underscore.min.js"></script>
-<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/sanitize.min.js"></script>
-<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/proper.min.js"></script>

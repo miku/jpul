@@ -149,6 +149,7 @@
 	</div>	
 </div>
 
+
 <script type="text/javascript" charset="utf-8">
 
 $(document).ready(function() {
@@ -168,6 +169,6 @@ $(document).ready(function() {
 		var c = $("#sort").attr("baseurl") + "sort=" + value;
 		window.location.replace(c);
 	});
-	
+
 });
 </script>

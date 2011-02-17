@@ -71,6 +71,14 @@ class StatsController extends Controller
 		$_30d = 2592000;
 		$_60d = 5184000;
 
+		// Events
+		$sql = "select count(tracking_id) as events from request where tracking_id is not null;";
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand($sql);
+		$dataReader = $command->queryRow();
+
+		$stats["Pageviews Total"] = $dataReader["events"];
+
 		// Average pageviews
 		$sql = "select avg(q.r) as avg from (select distinct tracking_id, count(request_uri) as r from request where tracking_id is not null group by tracking_id) as q;";
 		$connection = Yii::app()->db;
@@ -113,14 +121,6 @@ class StatsController extends Controller
 
 		$stats["Unique Visitors Last 30 days"] = $dataReader["uniq"];
 
-
-		// Events
-		$sql = "select count(tracking_id) as events from request where tracking_id is not null;";
-		$connection = Yii::app()->db;
-		$command = $connection->createCommand($sql);
-		$dataReader = $command->queryRow();
-
-		$stats["Pageviews Total"] = $dataReader["events"];
 		
 		// browser distribution		
 		$sql = "select count(*) as cnt, bt_browser as browser from request where bt_browser is NOT null and bt_browser != '' group by bt_browser;";

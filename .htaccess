@@ -8,6 +8,12 @@
 # Header set Expires "max-age=172800, public"
 #</FilesMatch>
 
+<IfModule mod_deflate.c>
+	<FilesMatch "\.(js|css)$">
+		SetOutputFilter DEFLATE
+	</FilesMatch>
+</IfModule>
+
 <IfModule mod_expires.c>
    <FilesMatch ".(ico|flv|jpg|jpeg|png|gif|js|css|swf)$">
        ExpiresActive on
@@ -15,9 +21,9 @@
    </FilesMatch>
 </IfModule>
 
-<IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/xhtml text/html text/plain text/xml text/javascript application/x-javascript text/css
-</IfModule>
+# <IfModule mod_deflate.c>
+#   AddOutputFilterByType DEFLATE text/xhtml text/html text/plain text/xml text/javascript application/x-javascript text/css
+# </IfModule>
 
 FileETag none
 

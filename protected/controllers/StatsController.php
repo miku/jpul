@@ -120,7 +120,7 @@ class StatsController extends Controller
 		$command = $connection->createCommand($sql);
 		$dataReader = $command->queryRow();
 
-		$stats["Events/Requests captured"] = $dataReader["events"];
+		$stats["Pageviews Total"] = $dataReader["events"];
 		
 		// browser distribution		
 		$sql = "select count(*) as cnt, bt_browser as browser from request where bt_browser is NOT null and bt_browser != '' group by bt_browser;";

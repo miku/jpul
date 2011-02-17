@@ -94,7 +94,7 @@ class StatsController extends Controller
 		$command = $connection->createCommand($sql);
 		$dataReader = $command->queryRow();
 
-		$stats["Unique Visitors Last Day"] = $dataReader["uniq"];
+		$stats["Unique Visitors Last 24h"] = $dataReader["uniq"];
 
 
 		// Unique Visitors 1w
@@ -103,7 +103,7 @@ class StatsController extends Controller
 		$command = $connection->createCommand($sql);
 		$dataReader = $command->queryRow();
 
-		$stats["Unique Visitors Last Week"] = $dataReader["uniq"];
+		$stats["Unique Visitors Last 7 days"] = $dataReader["uniq"];
 
 		// Unique Visitors 30d
 		$sql = "select count(distinct tracking_id) as uniq from request where tracking_id is not null and request_time > ". ($current_time - $_30d) . ";";
@@ -111,7 +111,7 @@ class StatsController extends Controller
 		$command = $connection->createCommand($sql);
 		$dataReader = $command->queryRow();
 
-		$stats["Unique Visitors Last Month"] = $dataReader["uniq"];
+		$stats["Unique Visitors Last 30 days"] = $dataReader["uniq"];
 
 
 		// Events

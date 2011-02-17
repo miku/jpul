@@ -68,8 +68,8 @@ class StatsController extends Controller
 		$_48h = 172800;
 		$_1w = 604800;
 		$_2w = 1209600;
-		$_30d = 18144000;
-		$_60d = 36288000;
+		$_30d = 2592000;
+		$_60d = 5184000;
 
 		// Average pageviews
 		$sql = "select avg(q.r) as avg from (select distinct tracking_id, count(request_uri) as r from request where tracking_id is not null group by tracking_id) as q;";

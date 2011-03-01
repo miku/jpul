@@ -5,6 +5,18 @@ require_once('Utils.php');
 
 class StatsController extends Controller
 {
+	
+	public function actionChronological() {
+		// Show #pageviews, #visitors and #jobs for the last three month
+		
+		
+		
+		
+		
+		
+	}
+	
+	
 	public function actionActivity() {
 		$sql = "select * from request where request_uri not like '%stats%' and request_uri not like '%activity%' order by request_time desc limit 50;";
 

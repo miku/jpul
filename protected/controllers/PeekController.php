@@ -3,7 +3,7 @@
 Yii::import('application.helpers.*');
 require_once('Utils.php');
 
-class StatsController extends Controller
+class PeekController extends Controller
 {
 	
 	public function actionChronology() {

@@ -25,8 +25,6 @@
 		</div>
 		<div id="main-content">
 
-			<?php echo print_r($recent); ?>
-			
 			<div class="col-by-total">
 				<p>Letzte Suchanfragen</p><br>
 			<?php foreach ($recent as $key => $value): ?>

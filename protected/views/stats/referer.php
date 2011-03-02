@@ -13,8 +13,11 @@
 <div id="main-container">
 	<div id="main">
 		<div id="main-header">
-				<p>Stats - Referer / 15.12.2010 &mdash; <?php echo date("d.m.Y") ?></p>
+			<span class="alignleft"><p>Stats - Referer / 15.12.2010 &mdash; <?php echo date("d.m.Y") ?></p></span>
+			<span class="alignright"><a href="<?php echo $this->createUrl('stats/index') ?>">Zurück zur Übersicht</a></span>
+			<div class="clear"></div>
 		</div>
+				
 		<div id="main-content">
 
 			<div class="col-by-total">

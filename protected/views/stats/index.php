@@ -19,7 +19,8 @@
 				<p class="normal">
 					<a href="<?php echo $this->createUrl('stats/searches') ?>">Searches</a> |
 					<a href="<?php echo $this->createUrl('stats/referer') ?>">Referrer</a> |
-					<a href="<?php echo $this->createUrl('stats/activity') ?>">Activity</a>
+					<a href="<?php echo $this->createUrl('stats/activity') ?>">Activity</a> |
+					<a href="<?php echo $this->createUrl('stats/chronology') ?>">Chronology</a>
 				</p>				
 		</div>
 		<div id="main-content">

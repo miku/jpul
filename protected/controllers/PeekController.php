@@ -139,10 +139,10 @@ class StatsController extends Controller
 	
 		krsort($stats);
 		$this->render("chronology", array('stats' => $stats));
-	
+
 	}
-	
-	
+
+
 	public function actionActivity() {
 		$sql = "select * from request where request_uri not like '%stats%' and request_uri not like '%activity%' order by request_time desc limit 50;";
 

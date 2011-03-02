@@ -36,7 +36,7 @@
 				Finden Sie passende Angebote über Suchbegriffe, z.B.
 				<a href="<?php echo $this->createUrl('job/index', array('q' => "marketing")) ?>">marketing</a>,
 				<a href="<?php echo $this->createUrl('job/index', array('q' => "wissenschaft")) ?>">wissenschaft</a>,
-				<a href="<?php echo $this->createUrl('job/index', array('q' => "berlin")) ?>">berlin</a>, 
+				<a href="<?php echo $this->createUrl('job/index', array('q' => "leipzig")) ?>">leipzig</a>, 
 				<a href="<?php echo $this->createUrl('job/index', array('q' => "praktik")) ?>">praktik</a>, etc.
 			<?php else: ?>
 				<?php
@@ -59,7 +59,7 @@
 						Finden Sie passende Angebote über Suchbegriffe, z.B.
 						<a href="<?php echo $this->createUrl('job/index', array('q' => "marketing")) ?>">marketing</a>,
 						<a href="<?php echo $this->createUrl('job/index', array('q' => "wissenschaft")) ?>">wissenschaft</a>,
-						<a href="<?php echo $this->createUrl('job/index', array('q' => "berlin")) ?>">berlin</a>, 
+						<a href="<?php echo $this->createUrl('job/index', array('q' => "leipzig")) ?>">leipzig</a>, 
 						<a href="<?php echo $this->createUrl('job/index', array('q' => "praktik")) ?>">praktik</a>, etc.
 				  <?php }
 					error_reporting(E_ALL);
@@ -93,7 +93,7 @@
 						Hier ein paar exemplarische Suchbegriffe:
 				<a href="<?php echo $this->createUrl('job/index', array('q' => "marketing")) ?>">marketing</a>,
 				<a href="<?php echo $this->createUrl('job/index', array('q' => "wissenschaft")) ?>">wissenschaft</a>,
-				<a href="<?php echo $this->createUrl('job/index', array('q' => "berlin")) ?>">berlin</a>, 
+				<a href="<?php echo $this->createUrl('job/index', array('q' => "leipzig")) ?>">leipzig</a>, 
 				<a href="<?php echo $this->createUrl('job/index', array('q' => "praktik")) ?>">praktik</a>, etc.
 					
 					</p>

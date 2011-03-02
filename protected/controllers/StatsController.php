@@ -142,6 +142,7 @@ class StatsController extends Controller
 		}
 	
 		krsort($stats);
+		$this->layout = "v2/main";
 		$this->render("chronology", array('stats' => $stats));
 	
 	}
@@ -165,6 +166,7 @@ class StatsController extends Controller
 		$command = $connection->createCommand($sql);
 		$dataReader = $command->queryAll();
 	
+		$this->layout = "v2/main";
 		$this->render("referer", array("stats" => $dataReader));
 	
 	}
@@ -196,6 +198,7 @@ class StatsController extends Controller
 		$command = $connection->createCommand($sql);
 		$recent = $command->queryAll();
 	
+		$this->layout = "v2/main";
 		$this->render("searches", array("searches" => $searches, "recent" => $recent));
 	
 	}
@@ -307,7 +310,7 @@ class StatsController extends Controller
 		
 		$gcurl_os .= "&chd=t:" . $chd . "&chl=" . $chl;
 	
-		
+		$this->layout = "v2/main";
 		$this->render("index", array("stats" => $stats, 
 			'gcurl_os' => $gcurl_os, 'gcurl_browser' => $gcurl_browser));
 	}

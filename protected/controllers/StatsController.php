@@ -6,142 +6,142 @@ require_once('Utils.php');
 class StatsController extends Controller
 {
 	
-	// public function actionChronology() {
-	// 	// Show #pageviews, #visitors and #jobs for the last three month
-	// 	$cutoff_timestamp = date('U', mktime(0, 0, 0, 12, 16, 2010));
-	// 
-	// 	$current_year = date("Y");
-	// 	$current_month = date("n");
-	// 	
-	// 	$ranges = array();
-	// 	
-	// 	// Yearly stats
-	// 	
-	// 	// Upper timestamp
-	// 	$upper = date('U', mktime(0, 0, 0, 12, 31, $current_year));
-	// 	for ($i = $current_year; $i >= date('Y', $cutoff_timestamp); $i--) { 
-	// 		Yii::log("Stats for year: " . $i, CLogger::LEVEL_INFO, __FUNCTION__);
-	// 		
-	// 		$lower = date('U', mktime(0, 0, 0, 1, 1, $i));
-	// 		$item = array("lower" => $lower, "upper" => $upper);
-	// 		$ranges[$i] = $item;
-	// 		$upper = $lower;
-	// 	}
-	// 
-	// 	// Monthly stats
-	// 	for ($i = $current_year; $i >= date('Y', $cutoff_timestamp); $i--) {
-	// 
-	// 		if ($current_year == $i) {
-	// 			
-	// 			$upper = date('U', mktime(0, 0, 0, $current_month, 31, $i));
-	// 			
-	// 			for ($j = $current_month; $j >= 1; $j--) { 
-	// 				
-	// 				if (mktime(0, 0, 0, $j, 31, $i) >= date('U', $cutoff_timestamp)) {
-	// 				
-	// 					Yii::log("Stats for month: " . $i . "/" .$j, CLogger::LEVEL_INFO, __FUNCTION__);
-	// 				
-	// 					$lower = date('U', mktime(0, 0, 0, $j, 1, $i));
-	// 					$item = array("lower" => $lower, "upper" => $upper);
-	// 					$ranges[$i . "/" . $j] = $item;
-	// 					$upper = $lower;
-	// 				
-	// 				} else { break; } 
-	// 				
-	// 			}
-	// 		} else {
-	// 			
-	// 			$upper = date('U', mktime(0, 0, 0, 12, 31, $i));
-	// 			
-	// 			for ($j = 12; $j >= 1; $j--) { 
-	// 				
-	// 				if (mktime(0, 0, 0, $j, 31, $i) >= date('U', $cutoff_timestamp)) {
-	// 					
-	// 					Yii::log("Stats for month: " . $i . "/" .$j, CLogger::LEVEL_INFO, __FUNCTION__);
-	// 					
-	// 					$lower = date('U', mktime(0, 0, 0, $j, 1, $i));
-	// 					$item = array("lower" => $lower, "upper" => $upper);
-	// 					$ranges[$i . "/" . $j] = $item;
-	// 					$upper = $lower;
-	// 
-	// 				} else { break; }
-	// 			}
-	// 		
-	// 		}
-	// 	}
-	// 	
-	// 	foreach ($ranges as $key => $value) {
-	// 		Yii::log($key . ": " . $value['lower'] . " <==> " . $value['upper'], CLogger::LEVEL_INFO, __FUNCTION__);
-	// 		
-	// 	}
-	// 	
-	// 	// Now we want to know:
-	// 	// - #pageviews
-	// 	// - #visitors
-	// 	// - #jobs created
-	// 
-	// 	// print_r($ranges);
-	// 	
-	// 	$stats = array();
-	// 	
-	// 	
-	// 	foreach ($ranges as $key => $value) {
-	// 
-	// 		// Pageviews
-	// 		$sql = "select count(*) as pageviews from request where tracking_id is not null 
-	// 				and request_time > :lower 
-	// 				and request_time < :upper ;";
-	// 
-	// 		$connection = Yii::app()->db;
-	// 		$command = $connection->createCommand($sql);
-	// 		
-	// 		$command->bindParam(":lower", $value['lower'], PDO::PARAM_INT);
-	// 		$command->bindParam(":upper", $value['upper'], PDO::PARAM_INT);
-	// 		
-	// 		$dataReader = $command->queryRow();
-	// 
-	// 		// $stats["Pageviews " . $key] = $dataReader["pageviews"];
-	// 		$stats[$key . " Pageviews"] = $dataReader["pageviews"];
-	// 	
-	// 		// Unique Visitors
-	// 		$sql = "select count(distinct tracking_id) as uniq from request where tracking_id is not null
-	// 				and request_time > :lower 
-	// 				and request_time < :upper ;";
-	// 
-	// 		$connection = Yii::app()->db;
-	// 		$command = $connection->createCommand($sql);
-	// 		
-	// 		$command->bindParam(":lower", $value['lower'], PDO::PARAM_INT);
-	// 		$command->bindParam(":upper", $value['upper'], PDO::PARAM_INT);
-	// 
-	// 		$dataReader = $command->queryRow();
-	// 
-	// 		// $stats["Unique Visitors " . $key] = $dataReader["uniq"];
-	// 		$stats[$key . " Unique"] = $dataReader["uniq"];
-	// 
-	// 
-	// 		// Jobs added
-	// 		$sql = "select count(*) as jobs_added from job where 
-	// 				date_added > :lower 
-	// 				and date_added < :upper ;";
-	// 
-	// 		$connection = Yii::app()->db;
-	// 		$command = $connection->createCommand($sql);
-	// 		
-	// 		$command->bindParam(":lower", $value['lower'], PDO::PARAM_INT);
-	// 		$command->bindParam(":upper", $value['upper'], PDO::PARAM_INT);
-	// 
-	// 		$dataReader = $command->queryRow();
-	// 
-	// 		$stats[$key . " Jobs"] = $dataReader["jobs_added"];
-	// 
-	// 	}
-	// 
-	// 	krsort($stats);
-	// 	$this->render("chronology", array('stats' => $stats));
-	// 
-	// }
-	// 
+	public function actionChronology() {
+		// Show #pageviews, #visitors and #jobs for the last three month
+		$cutoff_timestamp = date('U', mktime(0, 0, 0, 12, 16, 2010));
+	
+		$current_year = date("Y");
+		$current_month = date("n");
+		
+		$ranges = array();
+		
+		// Yearly stats
+		
+		// Upper timestamp
+		$upper = date('U', mktime(0, 0, 0, 12, 31, $current_year));
+		for ($i = $current_year; $i >= date('Y', $cutoff_timestamp); $i--) { 
+			Yii::log("Stats for year: " . $i, CLogger::LEVEL_INFO, __FUNCTION__);
+			
+			$lower = date('U', mktime(0, 0, 0, 1, 1, $i));
+			$item = array("lower" => $lower, "upper" => $upper);
+			$ranges[$i] = $item;
+			$upper = $lower;
+		}
+	
+		// Monthly stats
+		for ($i = $current_year; $i >= date('Y', $cutoff_timestamp); $i--) {
+	
+			if ($current_year == $i) {
+				
+				$upper = date('U', mktime(0, 0, 0, $current_month, 31, $i));
+				
+				for ($j = $current_month; $j >= 1; $j--) { 
+					
+					if (mktime(0, 0, 0, $j, 31, $i) >= date('U', $cutoff_timestamp)) {
+					
+						Yii::log("Stats for month: " . $i . "/" .$j, CLogger::LEVEL_INFO, __FUNCTION__);
+					
+						$lower = date('U', mktime(0, 0, 0, $j, 1, $i));
+						$item = array("lower" => $lower, "upper" => $upper);
+						$ranges[$i . "/" . $j] = $item;
+						$upper = $lower;
+					
+					} else { break; } 
+					
+				}
+			} else {
+				
+				$upper = date('U', mktime(0, 0, 0, 12, 31, $i));
+				
+				for ($j = 12; $j >= 1; $j--) { 
+					
+					if (mktime(0, 0, 0, $j, 31, $i) >= date('U', $cutoff_timestamp)) {
+						
+						Yii::log("Stats for month: " . $i . "/" .$j, CLogger::LEVEL_INFO, __FUNCTION__);
+						
+						$lower = date('U', mktime(0, 0, 0, $j, 1, $i));
+						$item = array("lower" => $lower, "upper" => $upper);
+						$ranges[$i . "/" . $j] = $item;
+						$upper = $lower;
+	
+					} else { break; }
+				}
+			
+			}
+		}
+		
+		foreach ($ranges as $key => $value) {
+			Yii::log($key . ": " . $value['lower'] . " <==> " . $value['upper'], CLogger::LEVEL_INFO, __FUNCTION__);
+			
+		}
+		
+		// Now we want to know:
+		// - #pageviews
+		// - #visitors
+		// - #jobs created
+	
+		// print_r($ranges);
+		
+		$stats = array();
+		
+		
+		foreach ($ranges as $key => $value) {
+	
+			// Pageviews
+			$sql = "select count(*) as pageviews from request where tracking_id is not null 
+					and request_time > :lower 
+					and request_time < :upper ;";
+	
+			$connection = Yii::app()->db;
+			$command = $connection->createCommand($sql);
+			
+			$command->bindParam(":lower", $value['lower'], PDO::PARAM_INT);
+			$command->bindParam(":upper", $value['upper'], PDO::PARAM_INT);
+			
+			$dataReader = $command->queryRow();
+	
+			// $stats["Pageviews " . $key] = $dataReader["pageviews"];
+			$stats[$key . " Pageviews"] = $dataReader["pageviews"];
+		
+			// Unique Visitors
+			$sql = "select count(distinct tracking_id) as uniq from request where tracking_id is not null
+					and request_time > :lower 
+					and request_time < :upper ;";
+	
+			$connection = Yii::app()->db;
+			$command = $connection->createCommand($sql);
+			
+			$command->bindParam(":lower", $value['lower'], PDO::PARAM_INT);
+			$command->bindParam(":upper", $value['upper'], PDO::PARAM_INT);
+	
+			$dataReader = $command->queryRow();
+	
+			// $stats["Unique Visitors " . $key] = $dataReader["uniq"];
+			$stats[$key . " Unique"] = $dataReader["uniq"];
+	
+	
+			// Jobs added
+			$sql = "select count(*) as jobs_added from job where 
+					date_added > :lower 
+					and date_added < :upper ;";
+	
+			$connection = Yii::app()->db;
+			$command = $connection->createCommand($sql);
+			
+			$command->bindParam(":lower", $value['lower'], PDO::PARAM_INT);
+			$command->bindParam(":upper", $value['upper'], PDO::PARAM_INT);
+	
+			$dataReader = $command->queryRow();
+	
+			$stats[$key . " Jobs"] = $dataReader["jobs_added"];
+	
+		}
+	
+		krsort($stats);
+		$this->render("chronology", array('stats' => $stats));
+	
+	}
+	
 	
 	public function actionActivity() {
 		$sql = "select * from request where request_uri not like '%stats%' and request_uri not like '%activity%' order by request_time desc limit 50;";

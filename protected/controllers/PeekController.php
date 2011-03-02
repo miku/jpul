@@ -1,7 +1,7 @@
 <?php
 
-Yii::import('application.helpers.*');
-require_once('Utils.php');
+// Yii::import('application.helpers.*');
+// require_once('Utils.php');
 
 class PeekController extends Controller
 {

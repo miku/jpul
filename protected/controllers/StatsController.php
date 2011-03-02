@@ -3,7 +3,7 @@
 // Yii::import('application.helpers.*');
 // require_once('Utils.php');
 
-class PeekController extends Controller
+class StatsController extends Controller
 {
 
 	// public function actionIndex() {

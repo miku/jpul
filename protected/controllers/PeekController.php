@@ -5,11 +5,11 @@
 
 class PeekController extends Controller
 {
-	
+
 	public function actionIndex() {
 		$this->render("empty");
 	}
-	
+
 	// public function actionChronology() {
 	// 	// Show #pageviews, #visitors and #jobs for the last three month
 	// 	$cutoff_timestamp = date('U', mktime(0, 0, 0, 12, 16, 2010));

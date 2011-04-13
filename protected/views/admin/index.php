@@ -57,7 +57,7 @@ $(document).ready(function() {
 
 
 		<?php
-			$this->renderPartial('_better_pagination', array(
+			$this->renderPartial('_pagination', array(
 				'models' => $models, 'total' => $total));
 		?>
 

@@ -81,17 +81,17 @@
 
 <div id="sidebar-container">
 	<div id="sidebar">
-		<?php $this->renderPartial('_sidebar_contact'); ?>
+		<?php $this->renderPartial('_sidebar_view_actions', array('model' => $model)); ?>
 		<?php // $this->renderPartial('_sidebar_sharing', array('model' => $model)); ?>
-		<?php $this->renderPartial('_sidebar_for_employer'); ?>
+		<?php // $this->renderPartial('_sidebar_for_employer'); ?>
 
 		<?php if (Yii::app()->user->isAdmin()): ?>
 			<h1>Admin</h1>
 			<p><a href="<?php echo $this->createUrl('admin/update', array('id' => $model->id)) ?>">Dieses Angebot bearbeiten</a></p>
 		<?php endif ?>
 		
-		<?php $this->renderPartial('_sidebar_fb'); ?>
-		<?php $this->renderPartial('_sidebar_supporter'); ?>
+		<?php // $this->renderPartial('_sidebar_fb'); ?>
+		<?php // $this->renderPartial('_sidebar_supporter'); ?>
 		
 	</div>	
 </div>

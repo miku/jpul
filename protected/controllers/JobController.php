@@ -345,18 +345,32 @@ class JobController extends Controller
 			throw new CHttpException(404, Yii::t('app', 'Your request is not valid.'));
 		}
 	}
-		
+	
+	
 	/**
 	 * Create a new job posting.
 	 */
-	public function actionDraft($version = "2")
+	public function actionDraft($id = null, $version = "3")
 	{
+		
+		if (isset($id) && $id != null) {
+			// Edit Draft
+			$model = Job::model()->findByPk($id);
+			if (!$model) {
+				Yii::log("No such model: " . $id, CLogger::LEVEL_INFO, "actionUpdate");
+				throw new CHttpException(400, Yii::t('app', 'Your request is not valid.'));
+			}
+			
+		} else {
+			// New Draft
+			$model = new Job;
+		}
+		
 		$current_time = time();
-		$model = new Job;
 		$captcha_error = false;
 		
-		if ($version != "2" && $version != "1") {
-			$version = 2;
+		if ($version != "3" && $version != "2" && $version != "1") {
+			$version = 3;
 		}
 
 		if(isset($_POST['Job'])) {
@@ -368,7 +382,8 @@ class JobController extends Controller
 			
 			// strip every html tag out of every field, except '<br>'
 			// $sanitized_post = array_strip_tags($_POST['Job'], '<br>');
-			$sanitized_post = $_POST['Job'];
+			$sanitized_post = array_strip_tags($_POST['Job'], '<br>');
+			
 			// $model->attributes = $_POST['Job']; // mass assignment			
 			$model->attributes = $sanitized_post; 
 			
@@ -416,7 +431,6 @@ class JobController extends Controller
 			}
 		}
 
-		
 		$this->pageTitle = 'Jobangebot einstellen - Career Center Universität Leipzig';
 
 		// $this->render('draft', array('model' => $model));

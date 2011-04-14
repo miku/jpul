@@ -1,26 +1,6 @@
 <!doctype html> 
 
 <script type="text/javascript" charset="utf-8" src="jquery-1.5.2.min.js"></script>
-<script type="text/javascript" charset="utf-8">
-$(document).ready(function() {
-    $('input[type="text"], input[type="file"], textarea').addClass("idleField");
-	$('input[type="text"], input[type="file"], textarea').focus(function() {
-		$(this).parent().parent().removeClass("idleField").addClass("focusField");
-    	//         if (this.value == this.defaultValue){
-    	//         	this.value = '';
-    	// }
-    	//         if(this.value != this.defaultValue){
-    	// 	    	this.select();
-    	//         }
-    });
-    $('input[type="text"], input[type="file"], textarea').blur(function() {
-    	$(this).parent().parent().removeClass("focusField").addClass("idleField");
-    	//         if ($.trim(this.value == '')){
-    	//         	this.value = (this.defaultValue ? this.defaultValue : '');
-    	// }
-    });
-});
-</script>
 <head>
 	<meta charset="utf-8">
 	<title>Wireframe Draft v3</title>

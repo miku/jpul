@@ -1,0 +1,260 @@
+<!doctype html> 
+
+<script type="text/javascript" charset="utf-8" src="jquery-1.5.2.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function() {
+    $('input[type="text"], input[type="file"], textarea').addClass("idleField");
+	$('input[type="text"], input[type="file"], textarea').focus(function() {
+		$(this).parent().parent().removeClass("idleField").addClass("focusField");
+    	//         if (this.value == this.defaultValue){
+    	//         	this.value = '';
+    	// }
+    	//         if(this.value != this.defaultValue){
+    	// 	    	this.select();
+    	//         }
+    });
+    $('input[type="text"], input[type="file"], textarea').blur(function() {
+    	$(this).parent().parent().removeClass("focusField").addClass("idleField");
+    	//         if ($.trim(this.value == '')){
+    	//         	this.value = (this.defaultValue ? this.defaultValue : '');
+    	// }
+    });
+});
+</script>
+<head>
+	<meta charset="utf-8">
+	<title>Wireframe Draft v3</title>
+	<style type="text/css" media="screen">
+	
+		.idleField { background: ; }
+		.focusField { background: #F3F0F1; }
+	
+		* { font-family: Verdana, Arial, sans-serif; }
+		body { width: 750px; background: white; }
+		form { font-size: 12px; background: #F8F8F8; padding: 10px;}
+		form ol { list-style: none; }
+		input[type=text] { font-size: 12px; padding: 4px; }
+		textarea { font-size: 12px; padding: 4px; color: #343434; }
+		
+		div.help table tr th { color: black; }
+		div.help table { background: #FAFAFA; }
+
+		form label {
+  			display: block;
+  			float: left;
+  			width: 130px;
+  			padding: 3px 5px;
+  			margin: 0 0 5px 0;
+  			text-align: right;
+			color: #676767;
+		}
+		
+		form div.help {
+			margin: 0 0 0 138px;
+			padding: 8px;
+			color: gray;
+			font-size: 10px;
+		}
+		
+		li {
+			margin: 0 0 10px 0 ;
+			clear: both;
+		}
+		fieldset { 
+			border: none; margin: 0 0 10px 0; padding: 10px 0 10px 0;
+			background: #FAFAFA; border-top: solid thin gray;
+		}
+		legend { font-weight: bold; margin: 0 0 0 140px; color: gray; padding: 0 10px 0 10px;   }
+		
+		.shadow {
+	-moz-box-shadow: 2px 2px 4px #000;
+	-webkit-box-shadow: 2px 2px 3px #000;
+	box-shadow: 2px 2px 4px #000;
+	/* For IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color='#000000')";
+	/* For IE 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color='#000000');
+}
+
+		
+	</style>
+</head>
+<body>
+
+	<!-- TODO add multipart -->
+	<form class="shadow" action="#" method="post" accept-charset="utf-8">
+		
+		<ol>
+
+<fieldset>
+	<legend>Jobbezeichnung, Beschreibung und Bewerbungsweg</legend>
+	
+		<li>
+			<label for="title">Titel</label>		
+			<input size=70 type="text" name="title" value="" id="titel">
+			<div class="help">Titel des Angebots, z.B. <em>Praktikant im Bereich Marketing/BWL</em>, <em>Softwareentwickler/Software-Entwickler Java/PHP (m/w)</em>, etc.</div>
+		</li>
+		
+		<li>
+			<label for="description">Beschreibung</label>
+			<textarea cols=80 rows=40 id="description"></textarea>
+			<div class="help">
+				<p><strong>Formattierungshinweise</strong>: Das obige Textfeld unterstützt keine WYSIWYG Formattierung, dennoch ist
+				es über ein <em>Markup</em> möglich, Elemente Ihrer Anzeige (z.B. die Sektionen "Voraussetzungen", "Ihre Aufgaben", etc.) 
+				hervorzuheben. Folgende Markup-Hilfen stehen Ihnen zur Verfügung:</p>
+				
+				<table border="0" cellspacing="0" cellpadding="5">
+					<tr><th>Art des Markup</th><th>im Text</th> <th>in der Anzeige</th></tr>
+					
+					<tr><td>Kursiver Text</td> <td>*kursiv*</td> <td><em>kursiv</em></td></tr>
+					<tr><td>Fetter Text</td> <td>**fett**</td> <td><strong>fett</strong></td></tr>
+					
+					<tr><td>Stichpunkte</td><td>* schnell<br>* zuverlässig</td> 
+						<td><ul><li>schnell</li><li>zuverlässig</li></ul></td></tr>						
+				</table>				
+				
+				<p>Sie möchten ein Beispiel sehen? Kopieren Sie einen <a href="#">Beispieltext</a>
+					in das Textfeld.</p>
+				
+			</div>
+		</li>
+		<li>
+			<label for="how_to_apply">Bewerbungsweg</label>
+			<textarea cols=80 rows=10 id="how_to_apply"></textarea>
+			<div class="help">
+				<p><strong>Formattierungshinweise</strong>: Das obige Textfeld unterstützt keine WYSIWYG Formattierung, dennoch ist
+				es über ein <em>Markup</em> möglich, Elemente Ihrer Anzeige (z.B. die Sektionen "Voraussetzungen", "Ihre Aufgaben", etc.) 
+				hervorzuheben. Das Markup entspricht dem des Textfeldes für die <strong>Beschreibung</strong>.</p>
+			</div>
+		<li>
+			
+
+</fieldset>
+
+<fieldset>
+	<legend>Ihr Unternehmen</legend>
+		<li>
+			<label for="company">Unternehmen</label>
+			<input size=70 type="text" name="company" value="" id="company">
+		</li>
+		
+		<li>
+			<label for="company_hp">Homepage des Unternehmens</label>
+			<input size=70 type="text" name="company_hp" value="" id="company_hp">
+			<div class="help"><p>Homepage des Unternehmens, alternativ können 
+				Sie auf einen Link auf Ihre Anzeige setzen, sofern sich Ihre
+				Ausschreibung auf Ihrer Webseite befindet.</p></div>
+		</li>
+
+</fieldset>
+
+		<fieldset>
+			<legend>Arbeitsort</legend>
+		<li>
+			<label for="zipcode">PLZ</label>
+			<input size=10 type="text" name="zipcode" value="" id="zipcode">
+		</li>
+		<li>
+			<label for="city">Stadt</label>
+			<input size=70 type="text" name="city" value="" id="city">
+		</li>
+		<li>
+			<label for="country">Land</label>
+			<input size=70 type="text" name="country" value="" id="country">
+		</li>
+		
+		<div class="help">Geben Sie, falls möglich Postleitzahl und Ort an. Falls der
+			Arbeitsort in Deutschland liegt, können Sie die Angabe <strong>Land</strong>
+			weglassen. Bezieht sich das Angebot auf verschiedene Arbeitsorte, so
+			geben Sie die Städtenamen kommasepariert an, z.B. <em>Leipzig, Berlin</em>.
+			Liegt ein Arbeitsort außerhalb Deutschlands, so geben Sie bitte das 
+			entsprechende Land mit an, bzw. bei verschiedenen Ländern eine kommaseparierte
+			Liste der Länder, z.B. <em>Deutschland, Schweiz, Frankreich</em>.</div>
+		
+		</fieldset>
+
+
+<fieldset>
+	<legend>Abschluß</legend>
+		
+		<li><label for="job_student">Student</label><input type="checkbox" name="job_student" value="" id="job_student"></li>
+		<li><label for="job_bachelor">Bachelor</label><input type="checkbox" name="job_bachelor" value="" id="job_bachelor"></li>
+		<li><label for="job_master">Master</label><input type="checkbox" name="job_master" value="" id="job_master"></li>
+		<li><label for="job_ma">M.A.</label><input type="checkbox" name="job_ma" value="" id="job_ma"></li>
+		<li><label for="job_phd">PhD.</label><input type="checkbox" name="job_phd" value="" id="job_phd"></li>
+		<li><label for="job_postdoc">Postdoc</label><input type="checkbox" name="job_postdoc" value="" id="job_postdoc"></li>
+		
+		<div class="help">Optional können sie hier einen oder mehrere erwartete akademische Grade angeben. </div>
+</fieldset>
+<fieldset>
+	<legend>Art des Angebotes</legend>
+		<li><label for="is_fulltime">Vollzeit</label><input type="checkbox" name="is_fulltime" value="" id="is_fulltime"></li>
+		<li><label for="is_parttime">Teilzeit</label><input type="checkbox" name="is_parttime" value="" id="is_parttime"></li>
+		<li><label for="is_internship">Praktikum</label><input type="checkbox" name="is_internship" value="" id="is_internship"></li>
+		<li><label for="is_working_student">Werkstudent</label><input type="checkbox" name="is_working_student" value="" id="is_working_student"></li>
+		<li><label for="is_thesis">Abschlussarbeit</label><input type="checkbox" name="is_thesis" value="" id="is_thesis"></li>
+		<li><label for="is_scholarship">Stipendium</label><input type="checkbox" name="is_scholarship" value="" id="is_scholarship"> </li>
+
+		<div class="help">Optional können sie hier einen oder mehrere Eigenschaften Ihres Angebots angeben. </div>
+</fieldset>
+
+
+<fieldset>
+	<legend>PDF Version Ihrer Anzeige und Ablaufdatum</legend>
+		<li>
+			<label for="upload">Anhang (PDF)</label>
+			<input type="file" name="upload" value="" id="upload">
+			<div class="help">Optional können Sie hier eine PDF-Version Ihres Angebotes hochladen. Es werden keine
+				Format ausser PDF akzeptiert; die maximale Dateigröße beträgt 2MB.</div>
+		</li>
+		
+		<li>
+			<label for="expiration_date">Ablaufdatum</label>
+			<input size=10 type="text" name="expiration_date" value="" id="expiration_date">
+			<div class="help">
+				Format: <strong>TT.MM.YYYY</strong> &mdash; Die maximale Laufzeit der Anzeige beträgt sechs Wochen. 
+			</div>
+		</li>
+
+</fieldset>		
+		
+		<fieldset>
+			<legend>Ihre Kontaktdaten</legend>
+		
+		<li>
+			<label for="name">Name</label>
+			<input size=70 type="text" name="name" value="" id="name">
+		</li>
+		<li>
+			<label for="telephon">Telefon</label>
+			<input size=70 type="text" name="telephon" value="" id="telephon">
+		</li>
+		<li>
+			<label for="email">E-Mail</label>
+			<input size=70 type="text" name="email" value="" id="email">
+		</li>
+		
+		<div class="help">
+			Wir bitten Sie die folgenden optionalen Felder auszufüllen,
+			damit wir Sie bei inhaltlichen Fragen zu Ihrem Angebot persönlich
+			 kontaktieren können. Diese Angaben werden nicht veröffentlicht
+			und nicht an Dritte weitergegeben.
+		</div>
+		
+		</fieldset>
+
+<fieldset>
+	<legend>Absenden</legend>
+		<li>
+			<label for="secq">Sicherheitabfrage</label>
+			<input type="text" name="secq" value="" id="secq">
+		</li>
+		<li>
+			<label for="submit"></label>
+			<input type="submit" value="Vorschau und Absenden"></li>
+
+</fieldset>
+		</ol>
+	</form>
+</body>
+</html>

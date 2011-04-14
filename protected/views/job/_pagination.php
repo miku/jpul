@@ -1,16 +1,19 @@
 <?php if ($models): ?>
+
 	<div id="pagination">
 		
 	<?php 
 		
 		$kvlist = explode('&', urldecode(Yii::app()->request->queryString)); 
 		$params = array("page" => 1);
+
 		foreach ($kvlist as $index => $kvitem) {
 			$kv = explode('=', $kvitem);
 			if (count($kv) == 2) {
 				$params[$kv[0]] = $kv[1];
 			}
 		}
+
 		if (isset($params["page"])) {
 			if ($params["page"] < 1) {
 				$params["page"] = 1;
@@ -20,12 +23,14 @@
 				$params["page"] = ceil($total / $this->items_per_page);
 			}
 		}
+
 		if (isset($params["size"])) {
 			unset($params["size"]);
 		}
 		
 		$number_of_pages = ceil($total / $this->items_per_page);
 		$current_page = $params["page"];
+
 	?>
 	
 	<p class="alignleft"> 
@@ -39,6 +44,7 @@
 			<a class="<?php if ($this->items_per_page == 50) { echo 'current-page'; } ?>" href="<?php echo $this->createUrl('job/index', $params_50); ?>">50</a>
 			<span class="dimmed">Angebote per Seite</span>
 	</p>
+	
 	<p class="alignright">
 
 		<!-- PREVIOUS PAGE -->	
@@ -133,11 +139,7 @@
 
 			<?php endif ?>
 			
-
-			
-			
 		<?php endif ?>
-
 
 		<!-- NEXT PAGE -->
 		<?php $current_end = ($this->items_per_page * ($params["page"] - 1)) + $this->items_per_page; ?>
@@ -152,6 +154,7 @@
 			<span class="inactive">Nächste &gt;</span>
 		<?php endif; ?>
 	</p>
+	
 	</div> <!-- pagination -->
 	
 	<div class="clear"></div>

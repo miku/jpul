@@ -1,0 +1,89 @@
+<!doctype html> 
+<head>
+	<meta charset="utf-8">
+	<title>Wireframe Draft v3</title>
+	<style type="text/css" media="screen">
+		* { font-family: Verdana, "Lucida Grande", sans-serif;}
+		div#container {
+			font-size: 12px;
+			background: #ECECEC;
+			width: 750px;
+		}
+		
+		input[type=text] { font-size: 14px; padding: 4px; }
+		textarea { font-size: 12px; padding: 4px; }
+		
+		tr {
+			background: white;
+		}
+		tr.info { background: #EFEFEF; }
+	</style>
+</head>
+<body>
+	
+	<div id='container'>
+
+	<!-- TODO add multipart -->
+	<form action="#" method="post" accept-charset="utf-8">
+		
+		<table border="0" cellspacing="5" cellpadding="5">
+
+		<tr><td><label for="title">Titel</label></td><td><input size=75 type="text" name="title" value="" id="titel"></td></tr>
+		
+		<tr><td><label for="description">Beschreibung</label></td><td><textarea rows=30 cols=90 id="description"></textarea></td></tr>
+		
+		<tr><td><label for="company">Unternehmen</label></td><td><input size=75 type="text" name="company" value="" id="company"></td></tr>
+		<tr><td><label for="company_hp">Homepage<br>des Unternehmens</label></td><td><input size=75 type="text" name="company_hp" value="" id="company_hp"></td></tr>
+
+		<tr><td><label for="zipcode">PLZ</label></td><td><input type="text" name="zipcode" value="" id="zipcode"></td></tr>
+		<tr><td><label for="city">Stadt</label></td><td><input size=75 type="text" name="city" value="" id="city"></td></tr>
+		<tr><td><label for="country">Land</label></td><td><input size=75 type="text" name="country" value="" id="country"></td></tr>
+
+		
+		<tr><td>Abschluss</td>
+			<td>
+		<input type="checkbox" name="job_student" value="" id="job_student"><label for="job_student">Student</label>
+		<input type="checkbox" name="job_bachelor" value="" id="job_bachelor"><label for="job_bachelor">Bachelor</label>
+		<input type="checkbox" name="job_master" value="" id="job_master"><label for="job_master">Master</label>
+		<input type="checkbox" name="job_ma" value="" id="job_ma"><label for="job_ma">M.A.</label>
+		<input type="checkbox" name="job_phd" value="" id="job_phd"><label for="job_phd">PhD.</label>
+		<input type="checkbox" name="job_postdoc" value="" id="job_postdoc"><label for="job_postdoc">Postdoc</label>
+			</td>
+			</tr>
+		
+		<tr><td>Art des Angebots</td>
+			<td>
+
+		<input type="checkbox" name="is_fulltime" value="" id="is_fulltime"><label for="is_fulltime">Vollzeit</label>
+		<input type="checkbox" name="is_parttime" value="" id="is_parttime"><label for="is_parttime">Teilzeit</label>
+		<input type="checkbox" name="is_internship" value="" id="is_internship"><label for="is_internship">Praktikum</label>
+		<br>
+		<input type="checkbox" name="is_working_student" value="" id="is_working_student"><label for="is_working_student">Werkstudent</label>
+		<input type="checkbox" name="is_thesis" value="" id="is_thesis"><label for="is_thesis">Abschlussarbeit</label>
+		<input type="checkbox" name="is_scholarship" value="" id="is_scholarship"><label for="is_scholarship">Stipendium</label>
+				
+			</td>
+			</tr>
+		
+		<tr><td><label for="upload">Anhang</label></td><td><input type="file" name="upload" value="" id="upload"></td></tr>
+		
+		<tr><td><label for="expiration_date">Ablaufdatum</label></td><td><input type="text" name="expiration_date" value="" id="expiration_date"></td></tr>
+		
+		
+		<tr class="info"><td></td><td>Kontaktdaten</td></tr>
+		
+		<tr><td><label for="name">Name</label></td><td><input size=75 type="text" name="name" value="" id="name"></td></tr>
+		<tr><td><label for="telephon">Telefon</label></td><td><input size=75 type="text" name="telephon" value="" id="telephon"></td></tr>
+		<tr><td><label for="email">E-Mail</label></td><td><input size=75 type="text" name="email" value="" id="email"></td></tr>
+
+		<tr class="info"><td></td><td>
+			
+		</td></tr>
+
+		<tr><td><label for="secq">Sicherheitabfrage</label></td><td><input type="text" name="secq" value="" id="secq"></td></tr>
+		<tr><td></td><td><input type="submit" value="Submit"></td></tr>
+		</table>		
+	</form>
+	</div>
+</body>
+</html>

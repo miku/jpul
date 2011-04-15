@@ -46,7 +46,6 @@
  * @property string $publisher_phone
  * @property string $publisher_email
  * @property string $job_version
- * @property string $ukey
  *
  * The followings are the available model relations:
  */
@@ -88,7 +87,7 @@ class Job extends CActiveRecord
 			array('title, attachment, company_homepage, city, state, country, study, sector, source', 'length', 'max'=>255),
 			array('company', 'length', 'max'=>1000),
 			array('zipcode', 'length', 'max'=>10),
-			array('publisher_name, publisher_phone, publisher_email, ukey', 'length', 'max'=>128),
+			array('publisher_name, publisher_phone, publisher_email', 'length', 'max'=>128),
 			array('job_version', 'length', 'max'=>16),
 			array('how_to_apply', 'safe'),
 			// The following rule is used by search().
@@ -105,10 +104,7 @@ class Job extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			
-			// Degree is obsolete, since we store flags in 'Job' directly ...
-			// 'degree' => array(self::BELONGS_TO, 'Degree', 'degree_id'),
-			
+			'degree' => array(self::BELONGS_TO, 'Degree', 'degree_id'),
 			'status' => array(self::BELONGS_TO, 'JobStatus', 'status_id'),
 		);
 	}
@@ -161,7 +157,6 @@ class Job extends CActiveRecord
 			'publisher_phone' => Yii::t('app', 'Publisher Phone'),
 			'publisher_email' => Yii::t('app', 'Publisher Email'),
 			'job_version' => Yii::t('app', 'Job Version'),
-			'ukey' => Yii::t('app', 'Ukey'),
 		);
 	}
 
@@ -218,7 +213,6 @@ class Job extends CActiveRecord
 		$criteria->compare('publisher_phone',$this->publisher_phone,true);
 		$criteria->compare('publisher_email',$this->publisher_email,true);
 		$criteria->compare('job_version',$this->job_version,true);
-		$criteria->compare('ukey',$this->ukey,true);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,

@@ -329,11 +329,24 @@ class JobController extends Controller
 	 */
 	public function actionDownload($id)
 	{
+		Yii::log("Initiating Download, id = " . $id, CLogger::LEVEL_INFO, __FUNCTION__);
+		
 		$model = Job::model()->findByPk($id);		
+		
 		if ($model) {
+			
+			Yii::log("Model exists, id = " . $id, CLogger::LEVEL_INFO, __FUNCTION__);
+			
 			$fname = $this->getUploadFilePath('job', $id);
+			
 			if (file_exists($fname)) {
+				
+				Yii::log("File exists, filename = " . $fname, CLogger::LEVEL_INFO, __FUNCTION__);
+				
 				$target_fname = slugify($model->attachment . "-idtag-" . $model->id) . ".pdf";
+				
+				Yii::log("Client will see the following filename = " . $target_fname, CLogger::LEVEL_INFO, __FUNCTION__);
+				
 				$this->renderPartial('download', 
 					// array('fname' => $fname, 'target_fname' => $target_fname), 
 					array('fname' => $fname, 'target_fname' => $target_fname), 
@@ -345,27 +358,14 @@ class JobController extends Controller
 			throw new CHttpException(404, Yii::t('app', 'Your request is not valid.'));
 		}
 	}
-	
+
 	
 	/**
 	 * Create a new job posting.
 	 */
 	public function actionDraft($id = null, $version = "3")
 	{
-		
-		if (isset($id) && $id != null) {
-			// Edit Draft
-			$model = Job::model()->findByPk($id);
-			if (!$model) {
-				Yii::log("No such model: " . $id, CLogger::LEVEL_INFO, "actionUpdate");
-				throw new CHttpException(400, Yii::t('app', 'Your request is not valid.'));
-			}
-			
-		} else {
-			// New Draft
-			$model = new Job;
-		}
-		
+		$model = new Job;	
 		$current_time = time();
 		$captcha_error = false;
 		
@@ -410,20 +410,31 @@ class JobController extends Controller
 
 			// generic anonymous author id
 			$model->author_id = 1000;
+			
+			// unique ukey
+			$model->ukey = gen_uuid();
 
 			$model->attachment=CUploadedFile::getInstance($model, 'attachment');
 
 			if ($model->validate()) {
 				Yii::log("Model validated successfully.", CLogger::LEVEL_INFO, __FUNCTION__);
+				
 				if (captcha_passed($_POST) && $model->save()) {
 					Yii::log("Captcha passed. Model saved.", CLogger::LEVEL_INFO, __FUNCTION__);
 					if (isset($model->attachment)) {
+						
+						Yii::log("Storing uploaded file. (Filename: " . 
+							$this->getUploadFilePath("job", $model->id) . 
+							")", CLogger::LEVEL_INFO, __FUNCTION__);
+						
 						$filename = $this->getUploadFilePath("job", $model->id);
 						$model->attachment->saveAs($filename);
 					}
 					$this->updateSearchIndex($model, "admin");
 					$this->mailOnDraft($model);
-					$this->redirect(array('index'));
+					
+					$this->redirect($this->createUrl('ukey/preview', array('id' => $model->ukey)));
+					// $this->redirect(array('ukey/preview', 'ukey' => $model->ukey));
 				} else {
 					Yii::log("Captcha error or failed to save model.", CLogger::LEVEL_INFO, __FUNCTION__);
 					$captcha_error = true;

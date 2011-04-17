@@ -108,15 +108,15 @@
 	
 	function captcha_passed($post_hash) 
 	{
-		Yii::log("Verifing captcha...", CLogger::LEVEL_INFO, "captcha_passed");
+		Yii::log("Verifing CAPTCHA", CLogger::LEVEL_INFO, __FUNCTION__);
 
 		foreach (array_keys($post_hash) as $k) {
-			Yii::log($k, CLogger::LEVEL_INFO, "captcha_passed");
+			Yii::log("post_hash key = " . $k, CLogger::LEVEL_INFO, __FUNCTION__);
 		}
 		
 		if (isset($post_hash["CHALLENGE_ID"]) && isset($post_hash["CHALLENGE_ANSWER"])) {
 			
-			Yii::log($post_hash["CHALLENGE_ID"], CLogger::LEVEL_INFO, "captcha_passed");
+			Yii::log("CHALLENGE_ID = " . $post_hash["CHALLENGE_ID"], CLogger::LEVEL_INFO, __FUNCTION__);
 			
 			$challenge_id = $post_hash["CHALLENGE_ID"];
 			
@@ -124,9 +124,9 @@
 				
 				$captcha_passed = ($post_hash["CHALLENGE_ANSWER"] == Yii::app()->session[$challenge_id]);
 
-				Yii::log($post_hash["CHALLENGE_ANSWER"], CLogger::LEVEL_INFO, "captcha_passed");
-				Yii::log(Yii::app()->session[$challenge_id], CLogger::LEVEL_INFO, "captcha_passed");
-				Yii::log($captcha_passed, CLogger::LEVEL_INFO, "captcha_passed");
+				Yii::log("CHALLENGE_ANSWER = " . $post_hash["CHALLENGE_ANSWER"], CLogger::LEVEL_INFO, __FUNCTION__);
+				Yii::log("CHALLENGE_ID in session = " . Yii::app()->session[$challenge_id], CLogger::LEVEL_INFO, __FUNCTION__);
+				Yii::log("CAPCHA_PASSED (return value) = " . $captcha_passed, CLogger::LEVEL_INFO, __FUNCTION__);
 				
 				unset(Yii::app()->session[$challenge_id]); 
 				return $captcha_passed;

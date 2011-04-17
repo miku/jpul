@@ -23,17 +23,19 @@
 			<div class="help">
 				<p><strong>Formattierungshinweise</strong>: Das obige Textfeld unterstützt keine WYSIWYG Formattierung, dennoch ist
 				es über ein <em>Markup</em> möglich, Elemente Ihrer Anzeige (z.B. die Sektionen "Voraussetzungen", "Ihre Aufgaben", etc.) 
-				hervorzuheben. Folgende zwei Markup-Hilfen stehen Ihnen zur Verfügung:</p>
-
-				<p>Text zwischen Sternchen, also z.B. *dieser Text*, wird <strong>fett</strong> ausgegeben.</p>
-				<p>Sie können einen eine Liste ebenfalls mit Sternchen erstellen. Beispiel
-					<pre><code>
-* Hello
-* World
-					</code></pre></p>
-
+				hervorzuheben. Folgende Markup-Hilfen stehen Ihnen zur Verfügung:</p>
 		
-				<p>Sie möchten ein Beispiel sehen? Kopieren Sie einen <a href="#" id="example-formatting">Beispieltext</a>
+				<table border="0" cellspacing="5" cellpadding="5">
+					<tr><th>Art des Markup</th><th>im Text</th> <th>in der Anzeige</th></tr>
+			
+					<tr><td>Kursiver Text</td> <td>*kursiv*</td> <td><em>kursiv</em></td></tr>
+					<tr><td>Fetter Text</td> <td>**fett**</td> <td><strong>fett</strong></td></tr>
+			
+					<tr><td>Stichpunkte</td><td>* schnell<br>* zuverlässig</td> 
+						<td><ul><li>schnell</li><li>zuverlässig</li></ul></td></tr>						
+				</table>				
+		
+				<p>Sie möchten ein Beispiel sehen? Kopieren Sie einen <a href="#">Beispieltext</a>
 					in das Textfeld.</p>				
 			</div>
 			<div class="form-error"><?php echo $form->error($model,'description'); ?></div>
@@ -138,6 +140,16 @@
 		<li>
 			<?php echo $form->labelEx($model,'attachment'); ?>
 			<?php echo $form->fileField($model,'attachment'); ?>
+
+			<?php if ($model->attachment != ''): ?>
+				<div class="keep-file" style="margin-left: 140px;">
+					<input type="checkbox" name="keep_file" checked value="<?php echo $model->attachment ?>" id="keep_file">
+					&nbsp;<a href="<?php echo $this->createUrl('job/download', array('id' => $model->id)); ?>"><?php echo $model->attachment ?></a> 
+					<span class="file-size"><?php echo $this->getUploadFileSize("Job", $model->id); ?></span>
+				</div>
+			<?php endif ?>
+
+
 			<div class="help">Optional können Sie hier eine PDF-Version Ihres Angebotes hochladen. Es werden keine
 				Format ausser PDF akzeptiert; die maximale Dateigröße beträgt 2MB.
 			</div>
@@ -197,9 +209,9 @@
 		
 		<li>
 			<label for="submit"><!-- 0 --></label>
-			<?php echo CHtml::submitButton('Vorschau'); ?> 
+			<?php echo CHtml::submitButton(Yii::t('app', 'Submit')); ?> 
 			<?php echo Yii::t('app', 'or') ?> 
-			<a href="<?php echo $this->createUrl('job/index') ?>"><?php echo Yii::t('app', 'cancel'); ?></a>.
+			<a href="<?php echo $this->createUrl('ukey/preview', array('id' => $model->ukey)) ?>"><?php echo Yii::t('app', 'cancel'); ?></a>.
 		</li>
 </fieldset>
 </ol>
@@ -216,9 +228,9 @@ $(document).ready(function() {
     });
 
 	$('#Job_title').focus();
-	
-	$('#example-formatting').click(function(){
-		$('#Job_description').val('Die ist ein Beispieltext zur Veranschaulichung der Formatierungsoptionen.\n\n*Diese Überschrift wird Fett*\n\nNormaler Text, und noch mehr normaler Text.\n\n* Eine Stichpunktliste\n* wird durch eine Liste von\n* Zeilen dargestellt,\n* die jeweils mit einem Sternchen\n* anfangen.\n\nAus wenn wir nur wenige Formattierungsoptionen anbieten, hoffen wir, daß Sie Ihre Anzeige ausreichend übersichtlich und strukturiert darstellen können.');
-	});
 });
 </script>
+
+
+
+

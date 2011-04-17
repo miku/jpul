@@ -51,28 +51,29 @@ class Controller extends CController
 	
 	protected function beforeAction($action) {
 
-		Yii::log("Entering beforeAction:" . $action->getId(), CLogger::LEVEL_INFO, __FUNCTION__);		
+		Yii::log("Entering beforeAction: " . $action->getId(), CLogger::LEVEL_INFO, __FUNCTION__);		
 
-		// See if the user agent is Googlebot and
-		// try to avoid ugly URLs like
-		// wwwdup.uni-leipzig.de/jobportal/index.php/job/137?PHPSESSID ...
-		$isGoogle = stripos($_SERVER['HTTP_USER_AGENT'], 'Googlebot');
-		// If it is, use ini_set to only allow cookies for the session variable
-		if ($isGoogle !== false) {
-			Yii::log("Hello Googlebot!", CLogger::LEVEL_INFO, __FUNCTION__);
-			ini_set('session.use_only_cookies', '1');
-			// experimental ...
-			ini_set('session.use_trans_sid', false);
-			ini_set("url_rewriter.tags",""); 			
-		} 
-
-		// No '*' after required fields
-		CHtml::$afterRequiredLabel = '';
+		// // See if the user agent is Googlebot and
+		// // try to avoid ugly URLs like
+		// // wwwdup.uni-leipzig.de/jobportal/index.php/job/137?PHPSESSID ...
+		// $isGoogle = stripos($_SERVER['HTTP_USER_AGENT'], 'Googlebot');
+		// // If it is, use ini_set to only allow cookies for the session variable
+		// if ($isGoogle !== false) {
+		// 	Yii::log("Hello Googlebot!", CLogger::LEVEL_INFO, __FUNCTION__);
+		// 	ini_set('session.use_only_cookies', '1');
+		// 	// experimental ...
+		// 	ini_set('session.use_trans_sid', false);
+		// 	ini_set("url_rewriter.tags",""); 			
+		// } 
+		// 
+		// // No '*' after required fields
+		// CHtml::$afterRequiredLabel = '';
 		
 		// This section provides a helper GET parameter, to test new views
 		// Simply put ?useLayout=<layoutname> into your request url, to 
 		// switch over to a new view for this session.
 		// <layoutname> should be 16 chars long or less.
+
 		if (isset($_GET['useLayout'])) {
 			Yii::app()->session['useLayout'] = $_GET['useLayout'];
 		}
@@ -106,8 +107,6 @@ class Controller extends CController
 				$this->items_per_page = $items_per_page;
 			}
 		}
-		
-		
 		
 		return parent::beforeAction($action);
 	}

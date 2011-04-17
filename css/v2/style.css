@@ -211,6 +211,20 @@ margin: 0px 0 10px 0;
 	padding: 8px 25px 8px 25px;
 }
 
+#view-description ul {
+	margin: 0 0 0 20px;
+	padding: 0px;
+}
+
+#view-description ul li {
+	margin: 0;
+	padding: 0;
+}
+
+#view-description p {
+	margin: 8px 0 8px 0;
+}
+
 #view-degree {
 	margin-top: 5px;
 	background: #EFEFEE;	
@@ -437,12 +451,14 @@ label {
 
 .required {
 	font-weight: bold;
-	color: #0077CC;
+	/*color: #0077CC;*/
+	color: orange;
 }
 
 .errorMessage {
 	font-size: 12px;
-	color: #F88635;
+	color: red;
+/*	color: #F88635;*/
 }
 
 .job-count {
@@ -899,15 +915,15 @@ button.regular, .buttons a.regular{
 .focusField { background: #F3F0F1; }
 
 /** { font-family: Verdana, Arial, sans-serif; }*/
-form { font-size: 12px; background: #F8F8F8; padding: 10px;}
-form ol { list-style: none; }
-input[type=text] { font-size: 12px; padding: 4px; }
+form#job-create-form { font-size: 12px; background: #F8F8F8; padding: 10px;}
+form#job-create-form ol { list-style: none; }
+form#job-create-form input[type=text] { font-size: 12px; padding: 4px; }
 textarea { font-size: 12px; padding: 4px; color: #343434; }
 
 div.help table tr th { color: black; }
 div.help table { background: #FAFAFA; }
 
-form label {
+form#job-create-form label {
 			display: block;
 			float: left;
 			width: 130px;
@@ -917,7 +933,7 @@ form label {
 	color: #676767;
 }
 
-form div.help {
+form#job-create-form div.help {
 	margin: 0 0 0 138px;
 	padding: 8px;
 	color: gray;
@@ -927,7 +943,8 @@ form div.help {
 div.form-error {
 	margin: 0 0 0 138px;
 	padding: 8px;
-	color: orange;
+	color: red;
+	font-weight: bold;
 	font-size: 12px;	
 }
 
@@ -940,3 +957,9 @@ fieldset {
 	background: #FAFAFA; border-top: solid thin gray;
 }
 legend { font-weight: bold; margin: 0 0 0 140px; color: gray; padding: 0 10px 0 10px;   }
+
+/* other */
+
+.hspace-10 {
+	margin-right: 10px;
+}

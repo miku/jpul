@@ -94,6 +94,7 @@ class Job extends CActiveRecord
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, title, description, how_to_apply, attachment, company, company_homepage, zipcode, city, state, country, is_telecommute, is_nation_wide, degree_id, study, sector, author_id, date_added, expiration_date, reviewer_id, source, status_id, degree_student, degree_bachelor, degree_master, degree_ma, degree_diploma, degree_phd, degree_postdoc, degree_encoded, is_fulltime, is_parttime, is_internship, is_working_student, is_thesis, is_scholarship, is_regular_job, is_scientific_position, publisher_name, publisher_phone, publisher_email, job_version', 'safe', 'on'=>'search'),
+			array('attachment', 'file', 'types'=>'pdf', 'allowEmpty'=>true, 'maxSize' => 2097152),
 		);
 	}
 
@@ -107,7 +108,8 @@ class Job extends CActiveRecord
 		return array(
 			
 			// Degree is obsolete, since we store flags in 'Job' directly ...
-			// 'degree' => array(self::BELONGS_TO, 'Degree', 'degree_id'),
+			// But still, we need it, why (TODO)
+			'degree' => array(self::BELONGS_TO, 'Degree', 'degree_id'),
 			
 			'status' => array(self::BELONGS_TO, 'JobStatus', 'status_id'),
 		);

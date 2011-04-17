@@ -26,7 +26,7 @@
 				hervorzuheben. Folgende zwei Markup-Hilfen stehen Ihnen zur Verfügung:</p>
 
 				<p>Text zwischen Sternchen, also z.B. *dieser Text*, wird <strong>fett</strong> ausgegeben.</p>
-				<p>Sie können einen eine Liste ebenfalls mit Sternchen erstellen. Beispiel
+				<p>Sie können einen eine Liste ebenfalls mit Sternchen erstellen. Beispiel:
 					<pre><code>
 * Hello
 * World
@@ -179,7 +179,7 @@
 	</li>
 	
 	<div class="help">
-		Wir bitten Sie die folgenden optionalen Felder auszufüllen,
+		Wir bitten Sie die folgenden Felder auszufüllen,
 		damit wir Sie bei inhaltlichen Fragen zu Ihrem Angebot persönlich
 		 kontaktieren können. Diese Angaben werden nicht veröffentlicht
 		und nicht an Dritte weitergegeben.

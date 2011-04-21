@@ -424,7 +424,7 @@ span.post-location {
 .post .post-posted {
 	float: right;
 	font-size: 10px;
-	color: white;
+	color: gray;
 	padding: 3px;
 	font-weight: normal;
 }
@@ -432,7 +432,7 @@ span.post-location {
 .post-expired .post-posted {
 	float: right;
 	font-size: 10px;
-	color: gray;
+	color: white;
 	padding: 3px;
 	font-weight: normal;
 }

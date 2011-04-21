@@ -23,19 +23,17 @@
 			<div class="help">
 				<p><strong>Formattierungshinweise</strong>: Das obige Textfeld unterstützt keine WYSIWYG Formattierung, dennoch ist
 				es über ein <em>Markup</em> möglich, Elemente Ihrer Anzeige (z.B. die Sektionen "Voraussetzungen", "Ihre Aufgaben", etc.) 
-				hervorzuheben. Folgende Markup-Hilfen stehen Ihnen zur Verfügung:</p>
+				hervorzuheben. Folgende zwei Markup-Hilfen stehen Ihnen zur Verfügung:</p>
+
+				<p>Text zwischen Sternchen, also z.B. *dieser Text*, wird <strong>fett</strong> ausgegeben.</p>
+				<p>Sie können eine Liste ebenfalls mit Sternchen erstellen. Beispiel:
+					<pre><code>
+* Hello
+* World
+
+</code></pre></p>
 		
-				<table border="0" cellspacing="5" cellpadding="5">
-					<tr><th>Art des Markup</th><th>im Text</th> <th>in der Anzeige</th></tr>
-			
-					<tr><td>Kursiver Text</td> <td>*kursiv*</td> <td><em>kursiv</em></td></tr>
-					<tr><td>Fetter Text</td> <td>**fett**</td> <td><strong>fett</strong></td></tr>
-			
-					<tr><td>Stichpunkte</td><td>* schnell<br>* zuverlässig</td> 
-						<td><ul><li>schnell</li><li>zuverlässig</li></ul></td></tr>						
-				</table>				
-		
-				<p>Sie möchten ein Beispiel sehen? Kopieren Sie einen <a href="#">Beispieltext</a>
+				<p>Sie möchten ein Beispiel sehen? Kopieren Sie einen <a href="#description-example" id="example-formatting">Beispieltext</a>
 					in das Textfeld.</p>				
 			</div>
 			<div class="form-error"><?php echo $form->error($model,'description'); ?></div>
@@ -228,9 +226,12 @@ $(document).ready(function() {
     });
 
 	$('#Job_title').focus();
+	
+	$('#example-formatting').click(function(){
+		$('#Job_description').val('Die ist ein Beispieltext zur Veranschaulichung der Formatierungsoptionen.\n\n*Diese Überschrift wird Fett*\n\nNormaler Text, und noch mehr normaler Text.\n\n* Eine Stichpunktliste\n* wird durch eine Liste von\n* Zeilen dargestellt,\n* die jeweils mit einem Sternchen\n* anfangen.\n\nAuch wenn wir nur wenige Formattierungsoptionen anbieten, hoffen wir, daß Sie Ihre Anzeige ausreichend übersichtlich und strukturiert darstellen können.');
+	});
 });
 </script>
-
 
 
 

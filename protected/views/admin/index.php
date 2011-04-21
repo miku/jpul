@@ -35,7 +35,8 @@ $(document).ready(function() {
 				<option <?php if ($sort === "d"): ?>selected="selected" <?php endif; ?> value="d">Datum</option>
 				<option <?php if ($sort === "t"): ?>selected="selected" <?php endif; ?> value="d">Titel</option>
 				<option <?php if ($sort === "u"): ?>selected="selected" <?php endif; ?> value="d">Unternehmen</option>
-				<option <?php if ($sort === "o"): ?>selected="selected" <?php endif; ?> value="d">Ort</option>															
+				<option <?php if ($sort === "o"): ?>selected="selected" <?php endif; ?> value="d">Ort</option>
+				<option <?php if ($sort === "s"): ?>selected="selected" <?php endif; ?> value="d">Status</option>															
 			</select>
 		</div>
 
@@ -69,6 +70,7 @@ $(document).ready(function() {
 	<div id="sidebar">
 		<?php $this->renderPartial('_sidebar_filter'); ?>
 		<?php $this->renderPartial('_sidebar_index_actions'); ?>
+		<?php $this->renderPartial('_sidebar_index_misc'); ?>
 	</div>
 </div>
 

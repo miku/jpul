@@ -6,7 +6,15 @@
 
 <div id="main-container">
 	<div id="main">	
-		<div id="generic-header">Neues Angebot erstellen</div>
+		<div id="generic-header">
+			<h1>Neues Angebot erstellen</h1>
+			<p>Hier können Sie ein neues Jobangebot selbständig einstellen.
+				Folgende Felder sind Pflichtfelder (*): Titel, Beschreibung,
+				Name des Unternehmens, Stadt, Ablaufdatum 
+				und Ihre Kontaktdaten (Name, Telefon und E-Mail).</p>
+			<p>Nachdem Sie die Form ausgefüllt haben, kommen Sie auf eine Vorschauseite.</p>
+		</div>
+
 		<div id="main-content">
 
 		<?php $this->renderPartial('_form', array("model" => $model)); ?>
@@ -17,6 +25,5 @@
 
 <div id="sidebar-container">
 	<div id="sidebar">
-		<?php $this->renderPartial('_sidebar_filter'); ?>
 	</div>	
 </div>

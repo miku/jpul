@@ -162,6 +162,8 @@ class Controller extends CController
 	 */	
 	protected function updateSearchIndex($model, $useIndex = "default") {
 		
+		Yii::log("Updating lucene search index <" . $useIndex . "> ...", CLogger::LEVEL_INFO, __FUNCTION__);
+		
 		if ($useIndex === "admin") {
 			$index = new Zend_Search_Lucene($this->getAdminSearchIndexStore(), false);
 		} else {
@@ -173,7 +175,10 @@ class Controller extends CController
 		}
 	
 		if ($useIndex !== "admin") {
-			if ($model->status_id != 2 || $model->isExpired()) { return; }
+			if ($model->status_id != 2 || $model->isExpired()) { 
+				Yii::log("No index changes needed in index <" . $useIndex . "> since job is not public or is expired.", CLogger::LEVEL_INFO, __FUNCTION__);
+				return; 
+			}
 		}
 		
 		$doc = new Zend_Search_Lucene_Document();
@@ -191,7 +196,7 @@ class Controller extends CController
 	
 		$index->addDocument($doc);
 		$index->commit();
-		Yii::log("Updated search index for document id: " . $model->id, CLogger::LEVEL_INFO, "updateSearchIndex");		
+		Yii::log("Updated <" . $useIndex . "> search index for document id: " . $model->id, CLogger::LEVEL_INFO, "updateSearchIndex");		
 	}
 	
 

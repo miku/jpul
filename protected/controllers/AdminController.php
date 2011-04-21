@@ -46,7 +46,7 @@ class AdminController extends Controller
 		
 		$adminIndexFilter = Yii::app()->session['adminindexfilter'];
 		
-		Yii::log($adminIndexFilter . ", filter = " . $filter, CLogger::LEVEL_INFO, "actionFilter");
+		Yii::log("current filter = " . $adminIndexFilter . ", new filter = " . $filter, CLogger::LEVEL_INFO, "actionFilter");
 
 		if (contains($adminIndexFilter, $filter)) {
 			$adminIndexFilter = str_replace($filter, "", $adminIndexFilter);
@@ -61,7 +61,7 @@ class AdminController extends Controller
 	}
 	
 
-	public function actionIndex($page = 1, $sort = "d", $filter = "pd", $term = "") {
+	public function actionIndex($page = 1, $sort = "d", $filter = "d", $term = "") {
 		
 		$current_time = time();
 
@@ -79,6 +79,9 @@ class AdminController extends Controller
 				break;
 			case 'o': // order by city name
 				$criteria->order = 'city';
+				break;
+			case 's':
+				$criteria->order = 'status_id, date_added DESC';
 				break;
 			default:
 				$criteria->order = 'date_added DESC';
@@ -126,7 +129,7 @@ class AdminController extends Controller
 		$criteria->condition = $_condition_string;
 		$criteria->params = $_params;
 		
-		Yii::log($_condition_string, CLogger::LEVEL_INFO, "actionIndex");
+		Yii::log("Rendering with condition: " . $_condition_string, CLogger::LEVEL_INFO, "actionIndex");
 
 		// if we have a term query ...
 		if (isset($_GET['q']) && $_GET['q'] != '') {
@@ -323,11 +326,13 @@ class AdminController extends Controller
 		if (!$model) {
 			throw new CHttpException(400, Yii::t('app', 'Your request is not valid.'));
 		}
+		$previous_status_id = $model->status_id;
 		$model->status_id = $status_id;
-		$model->save();
+		$model->saveAttributes(array('status_id'));
+		Yii::log("Changed status of job id " . $id . " from " . $previous_status_id . " to " . $model->status_id, CLogger::LEVEL_INFO, __FUNCTION__);
 		
 		$this->updateSearchIndex($model);
-		$this->updateSearchIndex($model, "admin");
+		$this->updateSearchIndex($model, $useIndex="admin");
 		
 		$this->redirect(array('admin/view', 'id' => $id));
 	}

@@ -344,15 +344,26 @@ input#search {
 	background: #FFFFEE;
 }
 
-.post-title {
+.post .post-title {
 	font-size: 14px;
 	color: #0077CC;
 	font-weight: bold;
 }
 
-.post-title a {
+.post-expired .post-title {
+	font-size: 14px;
+	color: gray;
+	font-weight: bold;
+}
+
+.post .post-title a {
 	color: #0077CC;
 }
+
+.post-expired .post-title a {
+	color: gray;
+}
+
 
 .post-title a:visited {
 	color: gray;
@@ -367,6 +378,10 @@ input#search {
 }
 
 .post-expired {
+	border-bottom: solid thin black;
+	/*	margin-bottom: 8px;*/
+	padding: 10px;
+	color: gray;	
 	background: #EFEFEF;
 }
 
@@ -406,12 +421,22 @@ span.post-location {
 	margin: 5px 0 0 10px;
 }
 
-.post-posted {
+.post .post-posted {
 	float: right;
 	font-size: 10px;
-	color: #808080;
+	color: white;
+	padding: 3px;
 	font-weight: normal;
 }
+
+.post-expired .post-posted {
+	float: right;
+	font-size: 10px;
+	color: gray;
+	padding: 3px;
+	font-weight: normal;
+}
+
 
 .post-highlighted {
 	background: aliceblue;
@@ -598,6 +623,10 @@ float: right;
 	color: gray;
 }
 
+.filter-option:hover {
+	background: #FEFEFE;
+}
+
 .filter-option-active {
 	color: #3366CC;
 	background: #FFFFEF;	
@@ -692,7 +721,7 @@ Proper commands
 
 */
 
-/*.proper-commands { position: absolute; }
+.proper-commands { position: absolute; }
 
 .proper-commands .command {
 	position:relative;
@@ -759,14 +788,14 @@ Proper commands
 	-moz-box-shadow:    1px 0px 0px rgba(255,255,255,0.5);
 	box-shadow:         1px 0px 0px rgba(255,255,255,0.5);
 }
-*/
+
 
 
 /* 
 Page setup for proper / draft
 */
 
-/*.clear { clear: both; }
+.clear { clear: both; }
 
 :focus {
 	outline: 0;
@@ -792,15 +821,15 @@ em { background: #eee; padding: 2px; }
 }
 
 .content[contenteditable=true] { border-color: #aaa; }
-*/
+
 
 /* 
 Draft page css
 TODO: refactor
 */
 
-/*
-#job-create-form { background: aliceblue; }
+
+/*#job-create-form { background: aliceblue; }*/
 input { font-size: 14px; padding: 3px;}
 .bt { border-top: solid thin #EFEFEF; }
 .bb { border-bottom: solid thin #EFEFEF; }
@@ -816,7 +845,7 @@ input { font-size: 14px; padding: 3px;}
 
 ul, li { margin: 0 0 0 10px; padding: 2px;}
 .horizontal label { margin: 0 10px 0 0px; padding: 5px;}
-*/
+
 
 
 
@@ -934,6 +963,7 @@ button.regular, .buttons a.regular{
 form#job-create-form { font-size: 12px; padding: 0px;}
 form#job-create-form ol { list-style: none; }
 form#job-create-form input[type=text] { font-size: 12px; padding: 4px; }
+form#job-create-form input[type=file] { font-size: 12px; }
 textarea { font-size: 12px; padding: 4px; color: #343434; }
 
 div.help table tr th { color: black; }

@@ -2,7 +2,7 @@
 
 <div class="sidebar-box">
 Status <span class="post-status status-tag-<?php echo strtolower($model->status->status); ?>"><?php echo $model->status->status ?></span><br>
-ID <?php echo $model->id; ?>
+<span style="font-size: 10px; color: gray;">Job-Version: <?php echo $model->job_version ?></span>
 </div>
 
 

@@ -27,12 +27,12 @@
 				hervorzuheben. Folgende zwei Markup-Hilfen stehen Ihnen zur Verfügung:</p>
 
 				<p>Text zwischen Sternchen, also z.B. *dieser Text*, wird <strong>fett</strong> ausgegeben.</p>
-				<p>Sie können einen eine Liste ebenfalls mit Sternchen erstellen. Beispiel:
+				<p>Sie können eine Liste ebenfalls mit Sternchen erstellen. Beispiel:
 					<pre><code>
 * Hello
 * World
-					</code></pre></p>
 
+</code></pre></p>
 		
 				<p>Sie möchten ein Beispiel sehen? Kopieren Sie einen <a href="#description-example" id="example-formatting">Beispieltext</a>
 					in das Textfeld.</p>				
@@ -219,9 +219,7 @@ $(document).ready(function() {
 	$('#Job_title').focus();
 	
 	$('#example-formatting').click(function(){
-		console.log("Adding text for example formatting.");
 		$('#Job_description').val('Die ist ein Beispieltext zur Veranschaulichung der Formatierungsoptionen.\n\n*Diese Überschrift wird Fett*\n\nNormaler Text, und noch mehr normaler Text.\n\n* Eine Stichpunktliste\n* wird durch eine Liste von\n* Zeilen dargestellt,\n* die jeweils mit einem Sternchen\n* anfangen.\n\nAuch wenn wir nur wenige Formattierungsoptionen anbieten, hoffen wir, daß Sie Ihre Anzeige ausreichend übersichtlich und strukturiert darstellen können.');
-		console.log("Added text for example formatting.");
 	});
 });
 </script>

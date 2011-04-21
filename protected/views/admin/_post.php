@@ -1,27 +1,36 @@
 <!-- <div class="post post-highlighted">	 -->
-<?php if ($model->isExpired()): ?>
-	<div class="post post-expired">
+
+<?php if ($model->isExpired() || $model->status_id == 3 || $model->status_id == 4): ?>
+	<div class="post-expired" name="post-<?php echo $model->id; ?>">
 <?php else: ?>
-	<div class="post status-<?php echo strtolower($model->status->status); ?>">
+	<div class="post" name="post-<?php echo $model->id; ?>">
 <?php endif ?>
 
+	
 	<p class="post-title">
-		<span class="post-status status-tag-<?php echo strtolower($model->status->status); ?>"><?php echo $model->status->status ?></span>
-		<?php if ($model->isExpired()): ?>
-			<span class="post-status">Expired</span>
+		<?php if (isset($original_query) && $original_query !== ""): ?>
+			<a href="<?php echo $this->createUrl('admin/view', array('id' => $model->id, 'from' => $original_query)); ?>" title="<?php echo $model->title; ?>">
+				<?php echo cut_text($model->title, 65); ?></a> 
+		<?php else: ?>
+			<a href="<?php echo $this->createUrl('admin/view', array('id' => $model->id)); ?>" title="<?php echo $model->title; ?>">
+				<?php echo cut_text($model->title, 65); ?></a> 
 		<?php endif ?>
-
-		<a href="<?php echo $this->createUrl('admin/view', array('id' => $model->id)); ?>" 
-			title="<?php echo $model->title; ?>"><?php echo cut_text($model->title, 50); ?></a> 
-		<span class="post-company"><?php echo cut_text($model->company, 40) ?></span>
-		<span class="post-posted"><?php echo time_since($model->date_added) ?></span>
+				
+		
+		<span class="post-posted status-tag-<?php echo strtolower($model->status->status); ?>"><strong><?php echo time_since($model->date_added) ?></strong></span>
 	</p>
 	<p>
-		<span class="post-location"><?php echo format_model_location($model); ?></span>
+		<span class="post-location"><?php echo cut_text(format_model_location($model), 80); ?> &middot;</span>
+		<span class="post-company"><?php echo cut_text($model->company, 40) ?></span>
 	</p>
-	<p class="post-description-teaser"><?php echo cut_text(strip_tags($model->description), 100) ?></p>
-	<p class="post-attachment"><?php if ($model->attachment): ?>
-		<a class="pdf" href="<?php echo $this->createUrl('job/download', array('id' => $model->id)); ?>"><?php echo $model->attachment ?></a>
-	<?php endif ?></p>
-	<p></p>
+	<p>
+		<span class="post-status status-tag-<?php echo strtolower($model->status->status); ?>">
+			<?php echo $model->status->status ?>
+		</span>
+		<span style="font-size: 10px; color: gray; padding: 0 0 0 10px;">
+			<?php if ($model->ukey != null || $model->ukey != ''): ?>
+				<?php echo 'http://' . Yii::app()->request->serverName . $this->createUrl('ukey/preview', array('id' => $model->ukey)); ?>
+			<?php endif ?>
+		</span>
+	</p>
 </div>

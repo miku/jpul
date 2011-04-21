@@ -6,7 +6,10 @@
 
 <div id="main-container">
 	<div id="main">	
-		<div id="generic-header">Angebot bearbeiten</div>
+		<div id="generic-header">
+			<h1>Angebot bearbeiten</h1>
+		</div>
+
 		<div id="main-content">
 
 		<?php $this->renderPartial('_form', array("model" => $model)); ?>
@@ -17,6 +20,5 @@
 
 <div id="sidebar-container">
 	<div id="sidebar">
-		<?php $this->renderPartial('_sidebar_filter'); ?>
 	</div>	
 </div>

@@ -17,25 +17,24 @@
 
 		<!-- Description -->
 		<li>
-			<?php echo $form->labelEx($model,'description'); ?>
-			<?php echo $form->textArea($model,'description', array("rows" => "40", "cols" => "70")); ?>
+			<a name="description-example"></a>
+			<?php echo $form->labelEx($model,'description'); ?>			
+			<?php echo $form->textArea($model,'description', array("rows" => "40", "cols" => "75")); ?>
 
 			<div class="help">
 				<p><strong>Formattierungshinweise</strong>: Das obige Textfeld unterstützt keine WYSIWYG Formattierung, dennoch ist
 				es über ein <em>Markup</em> möglich, Elemente Ihrer Anzeige (z.B. die Sektionen "Voraussetzungen", "Ihre Aufgaben", etc.) 
-				hervorzuheben. Folgende Markup-Hilfen stehen Ihnen zur Verfügung:</p>
+				hervorzuheben. Folgende zwei Markup-Hilfen stehen Ihnen zur Verfügung:</p>
+
+				<p>Text zwischen Sternchen, also z.B. *dieser Text*, wird <strong>fett</strong> ausgegeben.</p>
+				<p>Sie können eine Liste ebenfalls mit Sternchen erstellen. Beispiel:
+					<pre><code>
+* Hello
+* World
+					</code></pre></p>
+
 		
-				<table border="0" cellspacing="5" cellpadding="5">
-					<tr><th>Art des Markup</th><th>im Text</th> <th>in der Anzeige</th></tr>
-			
-					<tr><td>Kursiver Text</td> <td>*kursiv*</td> <td><em>kursiv</em></td></tr>
-					<tr><td>Fetter Text</td> <td>**fett**</td> <td><strong>fett</strong></td></tr>
-			
-					<tr><td>Stichpunkte</td><td>* schnell<br>* zuverlässig</td> 
-						<td><ul><li>schnell</li><li>zuverlässig</li></ul></td></tr>						
-				</table>				
-		
-				<p>Sie möchten ein Beispiel sehen? Kopieren Sie einen <a href="#">Beispieltext</a>
+				<p>Sie möchten ein Beispiel sehen? Kopieren Sie einen <a href="#description-example" id="example-formatting">Beispieltext</a>
 					in das Textfeld.</p>				
 			</div>
 			<div class="form-error"><?php echo $form->error($model,'description'); ?></div>
@@ -44,7 +43,7 @@
 		<!-- How to apply -->
 		<li>
 			<?php echo $form->labelEx($model,'how_to_apply'); ?>
-			<?php echo $form->textArea($model,'how_to_apply', array("rows" => "10", "cols" => "70")); ?>
+			<?php echo $form->textArea($model,'how_to_apply', array("rows" => "10", "cols" => "75")); ?>
 			<div class="help">
 				<p><strong>Formattierungshinweise</strong>: Das obige Textfeld unterstützt keine WYSIWYG Formattierung, dennoch ist
 				es über ein <em>Markup</em> möglich, Elemente Ihrer Anzeige (z.B. die Sektionen "Voraussetzungen", "Ihre Aufgaben", etc.) 
@@ -181,7 +180,7 @@
 	</li>
 	
 	<div class="help">
-		Wir bitten Sie die folgenden optionalen Felder auszufüllen,
+		Wir bitten Sie die folgenden Felder auszufüllen,
 		damit wir Sie bei inhaltlichen Fragen zu Ihrem Angebot persönlich
 		 kontaktieren können. Diese Angaben werden nicht veröffentlicht
 		und nicht an Dritte weitergegeben.
@@ -190,18 +189,22 @@
 	</fieldset>
 
 <fieldset>
+	<legend>Status</legend>
+	<li>
+		<?php echo $form->labelEx($model,'status_id'); ?>
+		<?php echo $form->dropDownList($model, 'status_id', CHtml::listData(JobStatus::model()->findAll(), 'id', 'status')); ?>
+	</li>
+
+</fieldset>
+
+<fieldset>
 	<legend>Absenden</legend>
-		<li>
-			<label for="captcha"><!-- 0 --></label>
-			<?php echo get_captcha_html(); ?>
-			<div class="form-error"><?php if ($captcha_error == true) { echo "Bitte beantworten Sie die Sicherheitsfrage."; }; ?></div>
-		</li>
 		
 		<li>
 			<label for="submit"><!-- 0 --></label>
-			<?php echo CHtml::submitButton(Yii::t('app', 'Submit')); ?> 
+			<?php echo CHtml::submitButton('Absenden'); ?> 
 			<?php echo Yii::t('app', 'or') ?> 
-			<a href="<?php echo $this->createUrl('job/index') ?>"><?php echo Yii::t('app', 'cancel'); ?></a>.
+			<a href="<?php echo $this->createUrl('admin/index') ?>"><?php echo Yii::t('app', 'cancel'); ?></a>.
 		</li>
 </fieldset>
 </ol>
@@ -218,5 +221,9 @@ $(document).ready(function() {
     });
 
 	$('#Job_title').focus();
+	
+	$('#example-formatting').click(function(){
+		$('#Job_description').val('Die ist ein Beispieltext zur Veranschaulichung der Formatierungsoptionen.\n\n*Diese Überschrift wird Fett*\n\nNormaler Text, und noch mehr normaler Text.\n\n* Eine Stichpunktliste\n* wird durch eine Liste von\n* Zeilen dargestellt,\n* die jeweils mit einem Sternchen\n* anfangen.\n\nAuch wenn wir nur wenige Formattierungsoptionen anbieten, hoffen wir, daß Sie Ihre Anzeige ausreichend übersichtlich und strukturiert darstellen können.');
+	});
 });
 </script>

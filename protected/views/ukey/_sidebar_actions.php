@@ -1,9 +1,13 @@
 <h1>Angebotsvorschau und Verwaltung</h1>
+
+<?php if ($model->status_id == 1): ?>
 <p>
 	Sie sehen auf der linken Seite eine Vorschau Ihres Angebotes. <strong>Wenn
 	Sie zufrieden sind, brauchen Sie nichts weiter zu machen - das Angebot
 	wird durch unsere Mitarbeiter geprüft und in Kürze freigeschaltet.</strong> 
 </p>
+<?php endif ?>
+
 <p>
 	Noch nicht perfekt? Sie möchten Ihr Angebot noch einmal bearbeiten? 
 	Nutzen sie folgenden Link:<br>
@@ -11,7 +15,9 @@
 </p>
 <p>
 	Sie möchten das Angebot gänzlich löschen? Nutzen sie folgenden Link:<br>
-	<a style="color:red; font-weight:bold;" href="<?php echo $this->createUrl('ukey/delete', array('id' => $id)) ?>">Angebot löschen</a>.<br>
+	<a style="color:red; font-weight:bold;" 
+		onclick="return confirm('Diese Aktion läßt sich nicht rückgängig machen. Angebot jetzt wirklich löschen?')"
+		href="<?php echo $this->createUrl('ukey/delete', array('id' => $model->ukey)) ?>">Angebot löschen</a>.<br>
 </p>
 <p>Sie möchten ein weiteres Angebot einstellen? Nutzen Sie den 
 	folgenden Link:<br>

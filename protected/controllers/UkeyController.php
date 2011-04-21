@@ -99,10 +99,28 @@ class UkeyController extends Controller
 				"Date added: " . strftime('%d.%m.%Y %H:%M', $model->date_added) . " " .
 				"(" . time_since($model->date_added) . ")", CLogger::LEVEL_INFO, __FUNCTION__);
 		}
+
+		// If this model was deleted or archived: 404
+		if ($model->status_id == 3 || $model->status_id == 4) {
+			Yii::log("No model with ukey: " . $ukey, CLogger::LEVEL_INFO, __FUNCTION__);
+			throw new CHttpException(404, Yii::t('app', 'Page not found.'));
+		}
 		
 		$this->render('preview', array('model' => $model, 'id' => $ukey));
 	}
-
+	
+	public function actionDelete($id) {
+		Yii::log("Deleting job offer with ukey " . $id, CLogger::LEVEL_INFO, __FUNCTION__);
+		$ukey = $id;
+		$model = Job::model()->findBySql("SELECT * FROM job WHERE ukey = :ukey", array('ukey' => $ukey));
+		if (!$model) {
+			Yii::log("No model with ukey: " . $ukey, CLogger::LEVEL_INFO, __FUNCTION__);
+			throw new CHttpException(404, Yii::t('app', 'Page not found.'));
+		}
+		$model->status_id = 4; // deleted
+		$model->saveAttributes(array('status_id'));
+		$this->redirect($this->createUrl('job/index'));
+	}
 }
 
 ?>

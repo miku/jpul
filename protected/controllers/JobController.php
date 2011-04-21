@@ -347,6 +347,8 @@ class JobController extends Controller
 				
 				Yii::log("Client will see the following filename = " . $target_fname, CLogger::LEVEL_INFO, __FUNCTION__);
 				
+				
+				
 				$this->renderPartial('download', 
 					// array('fname' => $fname, 'target_fname' => $target_fname), 
 					array('fname' => $fname, 'target_fname' => $target_fname), 

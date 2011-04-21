@@ -313,6 +313,7 @@ class AdminController extends Controller
 					}
 					$this->updateSearchIndex($model);
 					$this->updateSearchIndex($model, "admin");
+					
 					$this->redirect(array('admin/view', 'id' => $id));
 				}
 			}
@@ -446,6 +447,13 @@ class AdminController extends Controller
 		}
 
 		$index->commit();
+		
+		// optimize index
+		// http://framework.zend.com/manual/en/zend.search.lucene.best-practice.html#zend.search.lucene.best-practice.indexing-performance
+		Yii::log("Optimizing index...", CLogger::LEVEL_INFO, __FUNCTION__);
+		$index->optimize();
+		
+		Yii::log("Rebuild complete.", CLogger::LEVEL_INFO, __FUNCTION__);
 		$this->redirect(array('index'));
 	}
 }

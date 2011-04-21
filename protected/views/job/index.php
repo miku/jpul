@@ -69,7 +69,8 @@
 			<?php endif ?>
 			
 		</p>
-		<p class="alignright"><strong><span style="background: gray; color: white; padding:2px;"><?php echo $total; ?></span></strong> Ergebnis<?php if ($total > 1) { echo "se"; } ?></p>
+		<p class="alignright"><strong><span style="background: gray; color: white; padding:2px;">
+			<?php echo $total; ?></span></strong> Ergebnis<?php if ($total > 1) { echo "se"; } ?></p>
 		<div class="clear"></div>
 	</div>
 
@@ -84,9 +85,9 @@
 				} else {
 					$this->renderPartial('_post', array('model' => $model, 'index' => $i));
 				}
-				
 			}
 			?>
+			
 			<?php if (!$models): ?>
 				<p class="noresults-box">
 					Keine Ergebnisse gefunden. Versuchen Sie bitte weniger spezifische Suchbegriffe.
@@ -138,6 +139,7 @@
 </div> <!-- main -->
 </div> <!-- main-container -->
 
+
 <div id="sidebar-container">
 	<div id="sidebar">
 		<?php $this->renderPartial('/shared/_sidebar_contact'); ?>
@@ -147,26 +149,23 @@
 	</div>	
 </div>
 
-
 <script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		$("#search").focus();
+	
+		$("a.fav-toggle").click(function(){
+			if ($(this).hasClass("isfav")) {
+				$(this).removeClass("isfav");
+			} else {
+				$(this).addClass("isfav");
+			}
+		});
 
-$(document).ready(function() {
-	$("#search").focus();
-
-	$("a.fav-toggle").click(function(){
-		if ($(this).hasClass("isfav")) {
-			$(this).removeClass("isfav");
-		} else {
-			$(this).addClass("isfav");
-		}
+		$("#sort").change(function() {
+			var sortOrder = $("#sort option:selected").text();
+			var value = sortOrder.substr(0, 1).toLowerCase();
+			var c = $("#sort").attr("baseurl") + "sort=" + value;
+			window.location.replace(c);
+		});
 	});
-
-	$("#sort").change(function() {
-		var sortOrder = $("#sort option:selected").text();
-		var value = sortOrder.substr(0, 1).toLowerCase();
-		var c = $("#sort").attr("baseurl") + "sort=" + value;
-		window.location.replace(c);
-	});
-
-});
 </script>

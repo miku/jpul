@@ -18,6 +18,6 @@
 <div id="sidebar-container">
 	<div id="sidebar">		
 		<?php $this->renderPartial('_sidebar_actions', array('model' => $model, 'id' => $id)); ?>		
-		<?php $this->renderPartial('_sidebar_contact'); ?>		
+		<?php $this->renderPartial('/shared/_sidebar_contact'); ?>		
 	</div>	
 </div>

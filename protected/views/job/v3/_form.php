@@ -17,8 +17,9 @@
 
 		<!-- Description -->
 		<li>
-			<?php echo $form->labelEx($model,'description'); ?>
-			<?php echo $form->textArea($model,'description', array("rows" => "40", "cols" => "70")); ?>
+			<a name="description-example"></a>
+			<?php echo $form->labelEx($model,'description'); ?>			
+			<?php echo $form->textArea($model,'description', array("rows" => "40", "cols" => "75")); ?>
 
 			<div class="help">
 				<p><strong>Formattierungshinweise</strong>: Das obige Textfeld unterstützt keine WYSIWYG Formattierung, dennoch ist
@@ -33,7 +34,7 @@
 					</code></pre></p>
 
 		
-				<p>Sie möchten ein Beispiel sehen? Kopieren Sie einen <a href="#" id="example-formatting">Beispieltext</a>
+				<p>Sie möchten ein Beispiel sehen? Kopieren Sie einen <a href="#description-example" id="example-formatting">Beispieltext</a>
 					in das Textfeld.</p>				
 			</div>
 			<div class="form-error"><?php echo $form->error($model,'description'); ?></div>
@@ -42,7 +43,7 @@
 		<!-- How to apply -->
 		<li>
 			<?php echo $form->labelEx($model,'how_to_apply'); ?>
-			<?php echo $form->textArea($model,'how_to_apply', array("rows" => "10", "cols" => "70")); ?>
+			<?php echo $form->textArea($model,'how_to_apply', array("rows" => "10", "cols" => "75")); ?>
 			<div class="help">
 				<p><strong>Formattierungshinweise</strong>: Das obige Textfeld unterstützt keine WYSIWYG Formattierung, dennoch ist
 				es über ein <em>Markup</em> möglich, Elemente Ihrer Anzeige (z.B. die Sektionen "Voraussetzungen", "Ihre Aufgaben", etc.) 
@@ -218,7 +219,9 @@ $(document).ready(function() {
 	$('#Job_title').focus();
 	
 	$('#example-formatting').click(function(){
-		$('#Job_description').val('Die ist ein Beispieltext zur Veranschaulichung der Formatierungsoptionen.\n\n*Diese Überschrift wird Fett*\n\nNormaler Text, und noch mehr normaler Text.\n\n* Eine Stichpunktliste\n* wird durch eine Liste von\n* Zeilen dargestellt,\n* die jeweils mit einem Sternchen\n* anfangen.\n\nAus wenn wir nur wenige Formattierungsoptionen anbieten, hoffen wir, daß Sie Ihre Anzeige ausreichend übersichtlich und strukturiert darstellen können.');
+		console.log("Adding text for example formatting.");
+		$('#Job_description').val('Die ist ein Beispieltext zur Veranschaulichung der Formatierungsoptionen.\n\n*Diese Überschrift wird Fett*\n\nNormaler Text, und noch mehr normaler Text.\n\n* Eine Stichpunktliste\n* wird durch eine Liste von\n* Zeilen dargestellt,\n* die jeweils mit einem Sternchen\n* anfangen.\n\nAuch wenn wir nur wenige Formattierungsoptionen anbieten, hoffen wir, daß Sie Ihre Anzeige ausreichend übersichtlich und strukturiert darstellen können.');
+		console.log("Added text for example formatting.");
 	});
 });
 </script>

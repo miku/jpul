@@ -37,7 +37,7 @@
 				<a href="<?php echo $this->createUrl('job/index', array('q' => "marketing")) ?>">marketing</a>,
 				<a href="<?php echo $this->createUrl('job/index', array('q' => "wissenschaft")) ?>">wissenschaft</a>,
 				<a href="<?php echo $this->createUrl('job/index', array('q' => "leipzig")) ?>">leipzig</a>, 
-				<a href="<?php echo $this->createUrl('job/index', array('q' => "praktik")) ?>">praktik</a>, etc.
+				<a href="<?php echo urldecode($this->createUrl('job/index', array('q' => "praktik*"))) ?>">praktik*</a>, etc.
 			<?php else: ?>
 				<?php
 					include("t-simple-html-dom.php");
@@ -60,7 +60,7 @@
 						<a href="<?php echo $this->createUrl('job/index', array('q' => "marketing")) ?>">marketing</a>,
 						<a href="<?php echo $this->createUrl('job/index', array('q' => "wissenschaft")) ?>">wissenschaft</a>,
 						<a href="<?php echo $this->createUrl('job/index', array('q' => "leipzig")) ?>">leipzig</a>, 
-						<a href="<?php echo $this->createUrl('job/index', array('q' => "praktik")) ?>">praktik</a>, etc.
+						<a href="<?php echo urldecode($this->createUrl('job/index', array('q' => "praktik*"))) ?>">praktik*</a>, etc.
 				  <?php }
 					error_reporting(E_ALL);
 				 ?>
@@ -94,7 +94,7 @@
 				<a href="<?php echo $this->createUrl('job/index', array('q' => "marketing")) ?>">marketing</a>,
 				<a href="<?php echo $this->createUrl('job/index', array('q' => "wissenschaft")) ?>">wissenschaft</a>,
 				<a href="<?php echo $this->createUrl('job/index', array('q' => "leipzig")) ?>">leipzig</a>, 
-				<a href="<?php echo $this->createUrl('job/index', array('q' => "praktik")) ?>">praktik</a>, etc.
+				<a href="<?php echo urldecode($this->createUrl('job/index', array('q' => "praktik*"))) ?>">praktik*</a>, etc.
 					
 					</p>
 			<?php endif ?>
@@ -124,7 +124,7 @@
 			<a href="<?php echo urldecode($this->createUrl('job/index', array("q" => "übersetz*+OR+translate+OR+translation"))); ?>">Übersetzung</a> &middot;
 			<a href="<?php echo $this->createUrl('job/index', array("q" => "public relation")); ?>">PR Jobs</a> &middot;
 			<a href="<?php echo $this->createUrl('job/index', array("q" => "sport")); ?>">Jobs im Sport</a> &middot;
-			<a href="<?php echo urldecode($this->createUrl('job/index', array("q" => "informatik+-praktik*"))); ?>">Informatik (ohne Praktika)</a> &middot;
+			<a href="<?php echo urldecode($this->createUrl('job/index', array("q" => "informatik+-praktik*"))); ?>">Informatik (ohne Praktika)</a>
 		</p>
 		<br>
 		<p><strong>Suchoperatoren</strong> &middot;
@@ -142,10 +142,10 @@
 
 <div id="sidebar-container">
 	<div id="sidebar">
-		<?php $this->renderPartial('_sidebar_contact'); ?>
+		<?php $this->renderPartial('/shared/_sidebar_contact'); ?>
 		<?php $this->renderPartial('_sidebar_for_employer'); ?>
 		<?php $this->renderPartial('_sidebar_fb'); ?>
-		<?php $this->renderPartial('_sidebar_supporter'); ?>
+		<?php $this->renderPartial('/shared/_sidebar_supporter'); ?>
 	</div>	
 </div>
 

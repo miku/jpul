@@ -81,7 +81,7 @@
 
 <div id="sidebar-container">
 	<div id="sidebar">
-		<?php $this->renderPartial('_sidebar_contact'); ?>
+		<?php $this->renderPartial('/shared/_sidebar_contact'); ?>
 		<?php // $this->renderPartial('_sidebar_sharing', array('model' => $model)); ?>
 		<?php $this->renderPartial('_sidebar_for_employer'); ?>
 
@@ -91,7 +91,7 @@
 		<?php endif ?>
 		
 		<?php $this->renderPartial('_sidebar_fb'); ?>
-		<?php $this->renderPartial('_sidebar_supporter'); ?>
+		<?php $this->renderPartial('/shared/_sidebar_supporter'); ?>
 		
 	</div>	
 </div>

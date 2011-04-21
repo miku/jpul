@@ -143,7 +143,22 @@ a:hover {
 
 #generic-header {
 	padding: 10px;
-	margin: 0 10px 0 10px;
+	margin: 0 0px 0px 0px;
+}
+
+#generic-header h1, h2, h3, h4, h5, h6 {
+	border-bottom: dotted thin gray;
+	padding: 0 0 10px 0;
+	margin: 0 0px 10px 0px;
+}
+
+#generic-header p {
+	margin: 0 0px 10px 0px;	
+	font-size: 12px;
+	color: #787878;
+}
+
+.bgef {
 	background: #EFEFEF;
 }
 
@@ -909,13 +924,14 @@ button.regular, .buttons a.regular{
 }
 
 
+
 /* v3 draft */
 
 .idleField { background: ; }
 .focusField { background: #F3F0F1; }
 
 /** { font-family: Verdana, Arial, sans-serif; }*/
-form#job-create-form { font-size: 12px; background: #F8F8F8; padding: 10px;}
+form#job-create-form { font-size: 12px; padding: 0px;}
 form#job-create-form ol { list-style: none; }
 form#job-create-form input[type=text] { font-size: 12px; padding: 4px; }
 textarea { font-size: 12px; padding: 4px; color: #343434; }

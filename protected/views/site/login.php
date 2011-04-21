@@ -14,7 +14,7 @@ $this->breadcrumbs=array(
 <div id="main">
 
 <div id="generic-header">
-<p>Login</p>	
+	<h1>Login</h1>	
 </div>
 
 <div id="main-content">

@@ -53,7 +53,7 @@ def main(args):
             shard = item['date']
             print '-' * (len(item['id'] + item['date']) + 2)
         try:
-            print item['id'], Colors.OKGREEN, item['date'], \
+            print '%05s' % item['id'], Colors.OKGREEN, item['date'], \
                 Colors.ENDC, item['title'].encode('utf-8')
         except KeyError:
             print item

@@ -17,7 +17,7 @@
 		<?php endif ?>
 				
 		
-		<span class="post-posted status-tag-<?php echo strtolower($model->status->status); ?>"><strong><?php echo time_since($model->date_added) ?></strong></span>
+		<span class="post-posted-admin status-tag-<?php echo strtolower($model->status->status); ?>"><strong><?php echo time_since($model->date_added) ?></strong></span>
 	</p>
 	<p>
 		<span class="post-location"><?php echo cut_text(format_model_location($model), 80); ?> &middot;</span>

@@ -398,6 +398,7 @@ input#search {
 }
 
 .status-tag-draft {
+	color: white;
 	background: #b39123;
 }
 
@@ -425,6 +426,14 @@ span.post-location {
 	float: right;
 	font-size: 10px;
 	color: gray;
+	padding: 3px;
+	font-weight: normal;
+}
+
+.post .post-posted-admin {
+	float: right;
+	font-size: 10px;
+	color: white;
 	padding: 3px;
 	font-weight: normal;
 }

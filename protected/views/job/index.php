@@ -31,16 +31,18 @@
 	
 	<div id="info-subbar">
 		<p class="alignleft">
-			
-			<?php if (rand(1, 100) > 40): ?>
+			<?php $adslot = rand(1, 100); ?>
+			<?php if ($adslot > 70): ?>
 				Finden Sie passende Angebote über Suchbegriffe, z.B.
 				<a href="<?php echo $this->createUrl('job/index', array('q' => "marketing")) ?>">marketing</a>,
 				<a href="<?php echo $this->createUrl('job/index', array('q' => "wissenschaft")) ?>">wissenschaft</a>,
 				<a href="<?php echo $this->createUrl('job/index', array('q' => "leipzig")) ?>">leipzig</a>, 
 				<a href="<?php echo urldecode($this->createUrl('job/index', array('q' => "praktik*"))) ?>">praktik*</a>, etc.
+			<?php elseif ($adslot > 30): ?>				
+				09.-13. Mai 2011 <a href="http://www.zv.uni-leipzig.de/studium/career-center/karrierewoche.html">Karrierewoche der Universität Leipzig | Workshops | Berufseinstiegstag | und mehr ...</a>
 			<?php else: ?>
 				<?php
-					include("t-simple-html-dom.php");
+					include_once("t-simple-html-dom.php");
 					error_reporting(0);
 					$html = file_get_html('http://www.zv.uni-leipzig.de/studium/career-center/aktuelles.html');
 					

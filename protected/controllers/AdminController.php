@@ -313,7 +313,7 @@ class AdminController extends Controller
 					}
 					$this->updateSearchIndex($model);
 					$this->updateSearchIndex($model, "admin");
-					$this->redirect(array('index'));
+					$this->redirect(array('admin/view', 'id' => $id));
 				}
 			}
 		}

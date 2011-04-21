@@ -33,4 +33,9 @@
 			<?php endif ?>
 		</span>
 	</p>
+	<p class="post-attachment"><?php if ($model->attachment): ?>
+		<a class="pdf" href="<?php echo $this->createUrl('job/download', array('id' => $model->id)); ?>"><?php echo $model->attachment ?></a>
+	<?php endif ?>
+	</p>
+
 </div>

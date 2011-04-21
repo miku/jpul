@@ -28,7 +28,7 @@
 		$text = ereg_replace("[[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/]","<a href=\"\\0\">\\0</a>", $text);
 		// email addresses
 		// http://stackoverflow.com/questions/201323/what-is-the-best-regular-expression-for-validating-email-addresses
-		$text = ereg_replace("[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})", "<a href=\"mailto:\\0\">\\0</a>", $text);
+		$text = ereg_replace("[_a-zA-Z0-9-]+(\.[._a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,4})", "<a href=\"mailto:\\0\">\\0</a>", $text);
 		return $text;
 	}
 	

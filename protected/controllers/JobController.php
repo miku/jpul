@@ -431,10 +431,15 @@ class JobController extends Controller
 						$model->attachment->saveAs($filename);
 					}
 					$this->updateSearchIndex($model, "admin");
-					$this->mailOnDraft($model);
+					
+					if ($model->title != "test") {
+						Yii::log("Mailing notifications...", CLogger::LEVEL_INFO, __FUNCTION__);
+						$this->mailOnDraft($model);
+					} else {
+						Yii::log("Suppressing e-mail notifications since job title is 'test'.", CLogger::LEVEL_INFO, __FUNCTION__);
+					}
 					
 					$this->redirect($this->createUrl('ukey/preview', array('id' => $model->ukey)));
-					// $this->redirect(array('ukey/preview', 'ukey' => $model->ukey));
 				} else {
 					Yii::log("Captcha error or failed to save model.", CLogger::LEVEL_INFO, __FUNCTION__);
 					$captcha_error = true;

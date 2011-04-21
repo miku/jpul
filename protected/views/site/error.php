@@ -2,18 +2,19 @@
 
 <div id="main">
 
-<div id="generic-header">
-	<p>Sorry, something went wrong.</p>
+<div style="margin: 10px; padding: 10px;" id="main-content">
+	
+<div style="margin: 0px 0px 10px 0px">
+	<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/v2/404/code_flag_o_1_sm.gif" alt="" width="120px"/>
+	<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/v2/404/code_flag_h_1_sm.gif" alt="" width="120px"/>
+	<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/v2/404/code_flag_n_1_sm.gif" alt="" width="120px"/>
+	<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/v2/404/code_flag_o_1_sm.gif" alt="" width="120px"/>
 </div>
 
-<div style="margin: 10px; padding: 10px; background: aliceblue;" id="main-content">
-
-	<p>Diese Seite existiert nicht oder ist nicht verfügbar &mdash; HTTP Status <?php echo $code; ?>.</p>
-	<br>
-	<a href="<?php echo $this->createUrl('job/index') ?>">Zur Homepage</a>
+<p style="font-size: 80px">We call it <?php echo $code; ?>.</p><br>
+		
+	<p style="font-size: 16px">&bdquo;Diese Seite existiert nicht oder ist nicht verfügbar.&ldquo;
+		<a href="<?php echo $this->createUrl('job/index') ?>">Zurück zur Homepage</a>?</p>
 </div>	
 
-<div style="margin: 10px">
-	<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/v2/404.png" alt="" />
-</div>
 </div>

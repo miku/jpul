@@ -32,15 +32,17 @@
 	<div id="info-subbar">
 		<p class="alignleft">
 			<?php $adslot = rand(1, 100); ?>
+			
 			<?php if ($adslot > 70): ?>
+			
 				Finden Sie passende Angebote über Suchbegriffe, z.B.
-				<a href="<?php echo $this->createUrl('job/index', array('q' => "marketing")) ?>">marketing</a>,
-				<a href="<?php echo $this->createUrl('job/index', array('q' => "wissenschaft")) ?>">wissenschaft</a>,
-				<a href="<?php echo $this->createUrl('job/index', array('q' => "leipzig")) ?>">leipzig</a>, 
-				<a href="<?php echo urldecode($this->createUrl('job/index', array('q' => "praktik*"))) ?>">praktik*</a>, etc.
+				<?php $this->renderPartial('_snippet_example_searches') ?>			
+			
 			<?php elseif ($adslot > 30): ?>				
 				<strong>09.-13. Mai 2011</strong> <a href="http://www.zv.uni-leipzig.de/studium/career-center/karrierewoche.html">Karrierewoche der Universität Leipzig | Workshops | Berufseinstiegstag | und mehr ...</a>
+			
 			<?php else: ?>
+			
 				<?php
 					include_once("t-simple-html-dom.php");
 					error_reporting(0);
@@ -59,15 +61,13 @@
 						echo "Aktuelle Qualifizierungsangebote: " . strip_tags($item, "<a><strong>");
 					} else { ?>
 						Finden Sie passende Angebote über Suchbegriffe, z.B.
-						<a href="<?php echo $this->createUrl('job/index', array('q' => "marketing")) ?>">marketing</a>,
-						<a href="<?php echo $this->createUrl('job/index', array('q' => "wissenschaft")) ?>">wissenschaft</a>,
-						<a href="<?php echo $this->createUrl('job/index', array('q' => "leipzig")) ?>">leipzig</a>, 
-						<a href="<?php echo urldecode($this->createUrl('job/index', array('q' => "praktik*"))) ?>">praktik*</a>, etc.
+						<?php $this->renderPartial('_snippet_example_searches') ?>
 				  <?php }
 					error_reporting(E_ALL);
 				 ?>
-				
+			
 			<?php endif ?>
+			
 		</p>
 		<p class="alignright"><strong><span style="background: gray; color: white; padding:2px;"><?php echo $total; ?></span></strong> Ergebnis<?php if ($total > 1) { echo "se"; } ?></p>
 		<div class="clear"></div>
@@ -93,11 +93,7 @@
 					Um wieder alle Angebote zu sehen, löschen Sie bitte Ihre Eingabe aus dem Suchfeld und drücken Sie &lt;ENTER&gt;.
 					<br>
 						Hier ein paar exemplarische Suchbegriffe:
-				<a href="<?php echo $this->createUrl('job/index', array('q' => "marketing")) ?>">marketing</a>,
-				<a href="<?php echo $this->createUrl('job/index', array('q' => "wissenschaft")) ?>">wissenschaft</a>,
-				<a href="<?php echo $this->createUrl('job/index', array('q' => "leipzig")) ?>">leipzig</a>, 
-				<a href="<?php echo urldecode($this->createUrl('job/index', array('q' => "praktik*"))) ?>">praktik*</a>, etc.
-					
+						<?php $this->renderPartial('_snippet_example_searches') ?>					
 					</p>
 			<?php endif ?>
 		</div>

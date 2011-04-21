@@ -39,7 +39,7 @@
 				<a href="<?php echo $this->createUrl('job/index', array('q' => "leipzig")) ?>">leipzig</a>, 
 				<a href="<?php echo urldecode($this->createUrl('job/index', array('q' => "praktik*"))) ?>">praktik*</a>, etc.
 			<?php elseif ($adslot > 30): ?>				
-				09.-13. Mai 2011 <a href="http://www.zv.uni-leipzig.de/studium/career-center/karrierewoche.html">Karrierewoche der Universität Leipzig | Workshops | Berufseinstiegstag | und mehr ...</a>
+				<strong>09.-13. Mai 2011</strong> <a href="http://www.zv.uni-leipzig.de/studium/career-center/karrierewoche.html">Karrierewoche der Universität Leipzig | Workshops | Berufseinstiegstag | und mehr ...</a>
 			<?php else: ?>
 				<?php
 					include_once("t-simple-html-dom.php");

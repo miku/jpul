@@ -37,7 +37,8 @@
 	<p class="post-description-teaser">
 		<?php if ($model->attachment != null): ?>
 			<a href="<?php echo $this->createUrl('job/download', array('id' => $model->id)); ?>">
-				<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/v2/pdf_icon_6.jpg" height="12px" alt="" /></a>
+				<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/v2/pdf_icon_6.jpg" height="12px" alt="[]" 
+					title="PDF-Anhang herunterladen" /></a>
 		<?php endif ?>
 		
 		<?php echo cut_text(strip_tags($model->description), 90) ?>

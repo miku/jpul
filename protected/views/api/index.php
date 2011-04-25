@@ -22,6 +22,11 @@
 			margin: auto;
 		}
 		.apifunction { padding: 5px 10px 5px 10px; background: #f8f8f8; margin-bottom: 5px; }
+		
+		pre {
+			padding: 10px;
+			background: white;
+		}
 	</style>
 </head>
 <body>
@@ -35,11 +40,31 @@
 <div class="apifunction">
 <p><strong><a href="<?php echo $this->createUrl('/api/version') ?>"><?php echo $this->createUrl('/api/version') ?></a></strong> 
 	<br><br>Version</p>
+	<pre><code>
+{
+    "version" : "0.1.0", 
+    "date" : 1303681634,
+}
+	</code></pre>
 </div>
 
 <div class="apifunction">
 <p><strong><a href="<?php echo $this->createUrl('/api/summary') ?>"><?php echo $this->createUrl('/api/summary') ?></a></strong> 
 	<br><br>Überblick</p>
+	<pre><code>
+{
+    "jobs" : 809, 
+    "requests" : 91022,
+    "first_request" : 1291714497,
+    "last_request" : 1303735984,
+    "homepage" : "http://www.uni-leipzig.de/jobportal",
+    "info" : "(C) 2010 - 2011 Jobportal des Career Centers der Universität Leipzig",
+    "address" : "Career Center, Universität Leipzig, Burgstraße 21, 1. Etage, 04109 Leipzig",
+    "email" : "martin.czygan@gmail.com, claudia.schoder@uni-leipzig.de",
+    "phone" : "0049 341 9730030",
+    "fax" : "0049 341 9730069"
+}
+</code></pre>	
 </div>
 
 <div class="apifunction">
@@ -56,13 +81,15 @@
 <p><strong>max_ts</strong> TIMESTAMP ... <a href="<?php echo $this->createUrl('/api/jobs', array('max_ts' => time())) ?>"><?php echo $this->createUrl('/api/jobs', array('max_ts' => time())) ?></a></p>
 <p><strong>since_ts</strong> TIMESTAMP ... <a href="<?php echo $this->createUrl('/api/jobs', array('since_ts' => time())) ?>"><?php echo $this->createUrl('/api/jobs', array('since_ts' => time())) ?></a></p>
 <p><strong>q</strong> QUERYSTRING ... <a href="<?php echo $this->createUrl('/api/jobs', array('q' => 'marketing')) ?>"><?php echo $this->createUrl('/api/jobs', array('q' => 'marketing')) ?></a></p>
-<p><strong>size</strong> INT &#8804; 100 ... <em>(100)</em> ... <a href="<?php echo $this->createUrl('/api/jobs', array('size' => '100')) ?>"><?php echo $this->createUrl('/api/jobs', array('size' => '100')) ?></a></p>
+<p><strong>size</strong> INT &#8804; 100 ... <em>(400)</em> ... <a href="<?php echo $this->createUrl('/api/jobs', array('size' => '100')) ?>"><?php echo $this->createUrl('/api/jobs', array('size' => '100')) ?></a></p>
+<p><strong>expired</strong> [0|1] ... <em>(0)</em> ... <a href="<?php echo $this->createUrl('/api/jobs', array('expired' => '1')) ?>"><?php echo $this->createUrl('/api/jobs', array('expired' => '1')) ?></a></p>
+
 
 </div>
 
 <div class="apifunction">
 
-<p><strong><a href="<?php echo $this->createUrl('/api/job', array('id' => 736)) ?>"><?php echo $this->createUrl('/api/job', array('id' => 736)) ?></a></strong> 
+<p><strong><a href="<?php echo $this->createUrl('/api/job', array('id' => 1000)) ?>"><?php echo $this->createUrl('/api/job', array('id' => 1000)) ?></a></strong> 
 	<br><br>
 	Detailinformationen zu Job (ID)
 </p>

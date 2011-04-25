@@ -1,21 +1,26 @@
-<?php header('Content-type: application/json'); ?>
-{
-    "jobs" : <?php echo $data['jobs'] ?>, 
-    "active_jobs" : <?php echo $data['active_jobs'] ?>,
-    "requests" : <?php echo $data['requests'] ?>,
-    "requests_24h" : <?php echo $data['requests_24h'] ?>,
-    "requests_7d" : <?php echo $data['requests_7d'] ?>,
-    "requests_30d" : <?php echo $data['requests_30d'] ?>,
-    "visitors" : <?php echo $data['visitors'] ?>,
-    "visitors_24h" : <?php echo $data['visitors_24h'] ?>,
-    "visitors_7d" : <?php echo $data['visitors_7d'] ?>,
-    "visitors_30d" : <?php echo $data['visitors_30d'] ?>,
-    "first_request" : <?php echo $data['first_request'] ?>,
-    "last_request" : <?php echo $data['last_request'] ?>,
-    "homepage" : "http://www.uni-leipzig.de/jobportal",
-    "info" : "(C) 2010 - <?php echo date("Y"); ?> Jobportal des Career Centers der Universität Leipzig",
-    "address" : "Career Center, Universität Leipzig, Burgstraße 21, 1. Etage, 04109 Leipzig",
-    "email" : "martin.czygan@gmail.com, claudia.schoder@uni-leipzig.de",
-    "phone" : "0049 341 9730030",
-    "fax" : "0049 341 9730069"
-}
+<?php 
+header('Content-type: application/json'); 
+
+$item = array();
+$item["jobs"] = $data['jobs']; 
+$item["active_jobs"] = $data['active_jobs'];
+// $item["requests"] = $data['requests'];
+// $item["requests_24h"] = $data['requests_24h'];
+// $item["requests_7d"] = $data['requests_7d'];
+$item["requests_30d"] = $data['requests_30d'];
+// $item["visitors"] = $data['visitors'];
+// $item["visitors_24h"] = $data['visitors_24h'];
+// $item["visitors_7d"] = $data['visitors_7d'];
+$item["visitors_30d"] = $data['visitors_30d'];
+$item["first_request"] = $data['first_request'];
+$item["last_request"] = $data['last_request'];
+$item["homepage"] = "http://www.uni-leipzig.de/jobportal";
+$item["info"] = "(C) 2010 - " .  date("Y") . "Jobportal des Career Centers der Universität Leipzig";
+$item["address"] = "Career Center, Universität Leipzig, Burgstraße 21, 1. Etage, 04109 Leipzig";
+$item["email"] = "martin.czygan@gmail.com, claudia.schoder@uni-leipzig.de";
+$item["phone"] = "0049 341 9730030";
+$item["fax"] = "0049 341 9730069";
+
+echo json_encode($item);
+
+?>

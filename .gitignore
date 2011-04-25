@@ -13,6 +13,7 @@ protected/runtime/application.log*
 protected/runtime/gii-1.1.4/*
 protected/runtime/search/*
 protected/runtime/adminsearch/*
+protected/runtime/apisearch/*
 protected/runtime/state.bin
 
 protected/data/*sql

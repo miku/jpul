@@ -139,6 +139,14 @@
 		<li>
 			<?php echo $form->labelEx($model,'attachment'); ?>
 			<?php echo $form->fileField($model,'attachment'); ?>
+			
+			<div class="keep-file" style="margin-left: 140px;">
+				<input type="checkbox" name="keep_file" checked value="<?php echo $model->attachment ?>" id="keep_file">
+				&nbsp;<a href="<?php echo $this->createUrl('job/download', array('id' => $model->id)); ?>"><?php echo $model->attachment ?></a> 
+				<span class="file-size"><?php echo $this->getUploadFileSize("Job", $model->id); ?></span>
+			</div>
+
+			
 			<div class="help">Optional können Sie hier eine PDF-Version Ihres Angebotes hochladen. Es werden keine
 				Format ausser PDF akzeptiert; die maximale Dateigröße beträgt 2MB.
 			</div>

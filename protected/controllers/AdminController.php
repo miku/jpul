@@ -393,39 +393,92 @@ class AdminController extends Controller
 	}
 	
 	public function actionRebuildAllSearchIndices() {
-		$this->actionRebuildSearchIndex("default");
-		$this->actionRebuildSearchIndex("admin");
+		
+		Yii::log("Checking presence of directories ...", CLogger::LEVEL_INFO, __FUNCTION__);
+		if (file_exists($this->getSearchIndexStore())) {
+			Yii::log("[OK] => " . $this->getSearchIndexStore(), CLogger::LEVEL_INFO, __FUNCTION__);	
+		} else {
+			Yii::log("[EE] => " . $this->getSearchIndexStore() . " does not exist.", 
+				CLogger::LEVEL_INFO, __FUNCTION__);
+		}
+
+		if (file_exists($this->getApiSearchIndexStore())) {
+			Yii::log("[OK] => " . $this->getApiSearchIndexStore(), CLogger::LEVEL_INFO, __FUNCTION__);	
+		} else {
+			Yii::log("[EE] => " . $this->getApiSearchIndexStore() . " does not exist.", 
+				CLogger::LEVEL_INFO, __FUNCTION__);
+
+			$oldumask = umask(0);
+			if (mkdir($this->getApiSearchIndexStore(), 0777)) {
+				Yii::log("Successfully created " . $this->getApiSearchIndexStore() . " with mode 0777.", 
+					CLogger::LEVEL_INFO, __FUNCTION__);
+			} else {
+				Yii::log("Failed to create directory: " . $this->getApiSearchIndexStore(), 
+					CLogger::LEVEL_INFO, __FUNCTION__);
+			}
+			umask($oldumask);
+		}
+
+		if (file_exists($this->getAdminSearchIndexStore())) {
+			Yii::log("[OK] => " . $this->getAdminSearchIndexStore(), CLogger::LEVEL_INFO, __FUNCTION__);	
+		} else {
+			Yii::log("[EE] => " . $this->getAdminSearchIndexStore() . " does not exist.", 
+				CLogger::LEVEL_INFO, __FUNCTION__);
+		}
+		
+		
+		$this->rebuildSearchIndex("default");
+		$this->rebuildSearchIndex("admin");
+		$this->rebuildSearchIndex("api");
+		$this->redirect(array('index'));
+	}
+	
+	public function actionRebuildSearchIndex($index = "default") {
+		if ($index == "default" || $index == "admin" || $index == "api") {
+			$this->rebuildSearchIndex($index);
+		}
+		$this->redirect(array('index'));
 	}
 	
 	/**
 	 * Rebuild search index.
 	 */	
-	public function actionRebuildSearchIndex($useIndex = "default") {
+	public function rebuildSearchIndex($useIndex = "default") {
+		
+		$current_time = time();
 		
 		Zend_Search_Lucene_Analysis_Analyzer::setDefault(
     		new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8_CaseInsensitive());
 		
-
-		if ($useIndex === "admin") {
-			$index = new Zend_Search_Lucene($this->getAdminSearchIndexStore(), true);
-		} else {
+		if ($useIndex == "default") {
 			$index = new Zend_Search_Lucene($this->getSearchIndexStore(), true);
+		} elseif ($useIndex == "api") {
+			$index = new Zend_Search_Lucene($this->getApiSearchIndexStore(), true);
+		} elseif ($useIndex == "admin") {
+			$index = new Zend_Search_Lucene($this->getAdminSearchIndexStore(), true);
 		}
 		
 		$criteria=new CDbCriteria;
 
-		if ($useIndex !== "admin") {
+		if ($useIndex == "default") {
+			$criteria->condition = 'status_id=:status_id AND expiration_date > :current_time';
+			$criteria->params=array(':status_id' => 2, ':current_time' => $current_time);
+		} elseif ($useIndex == "api") {
 			$criteria->condition = 'status_id=:status_id';
-			$criteria->params=array(':status_id'=>2);
+			$criteria->params=array(':status_id' => 2);			
 		}
 
 		$models = Job::model()->findAll($criteria);
 		
 		foreach ($models as $model) {
 
-			if ($useIndex !== "admin") {
+			if ($useIndex == "default") {
 				// only include public and not expired 
 				if ($model->status_id != 2 || $model->isExpired()) { continue; }
+			}
+			
+			if ($useIndex == "api") {
+				if ($model->status_id != 2) { continue; }
 			}
 
 			$doc = new Zend_Search_Lucene_Document();
@@ -443,7 +496,8 @@ class AdminController extends Controller
 
 			$index->addDocument($doc);
 			
-			Yii::log("Added document id: " . $model->id, CLogger::LEVEL_INFO, "actionRebuildSearchIndex");
+			Yii::log("Added document id: " . $model->id, 
+				CLogger::LEVEL_INFO, __FUNCTION__);
 		}
 
 		$index->commit();
@@ -454,6 +508,5 @@ class AdminController extends Controller
 		$index->optimize();
 		
 		Yii::log("Rebuild complete.", CLogger::LEVEL_INFO, __FUNCTION__);
-		$this->redirect(array('index'));
 	}
 }

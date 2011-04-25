@@ -334,20 +334,14 @@ class JobController extends Controller
 		$model = Job::model()->findByPk($id);		
 		
 		if ($model) {
-			
-			Yii::log("Model exists, id = " . $id, CLogger::LEVEL_INFO, __FUNCTION__);
-			
+			Yii::log("Model exists, id = " . $id, CLogger::LEVEL_INFO, __FUNCTION__);			
 			$fname = $this->getUploadFilePath('job', $id);
 			
 			if (file_exists($fname)) {
 				
-				Yii::log("File exists, filename = " . $fname, CLogger::LEVEL_INFO, __FUNCTION__);
-				
-				$target_fname = slugify($model->attachment . "-idtag-" . $model->id) . ".pdf";
-				
+				Yii::log("File exists, filename = " . $fname, CLogger::LEVEL_INFO, __FUNCTION__);				
+				$target_fname = strftime('%Y_%m_%d', $model->date_added) . '_' . $model->id . '_' . slugify($model->company . '_' . $model->title . '_' . $model->city, '_') . ".pdf";
 				Yii::log("Client will see the following filename = " . $target_fname, CLogger::LEVEL_INFO, __FUNCTION__);
-				
-				
 				
 				$this->renderPartial('download', 
 					// array('fname' => $fname, 'target_fname' => $target_fname), 
@@ -361,7 +355,6 @@ class JobController extends Controller
 		}
 	}
 
-	
 	/**
 	 * Create a new job posting.
 	 */

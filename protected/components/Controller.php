@@ -156,27 +156,47 @@ class Controller extends CController
 		return Yii::app()->basePath . '/runtime/adminsearch';
 	}
 
+	public function getApiSearchIndexStore() {
+		return Yii::app()->basePath . '/runtime/apisearch';
+	}
+
 	
 	/**
 	 * Update search index.
 	 */	
 	protected function updateSearchIndex($model, $useIndex = "default") {
 		
-		Yii::log("Updating lucene search index <" . $useIndex . "> ...", CLogger::LEVEL_INFO, __FUNCTION__);
+		Yii::log("Updating lucene search index <" . $useIndex . "> ...", 
+			CLogger::LEVEL_INFO, __FUNCTION__);
 		
-		if ($useIndex === "admin") {
+		if ($useIndex == "admin") {
 			$index = new Zend_Search_Lucene($this->getAdminSearchIndexStore(), false);
-		} else {
+		} elseif ($useIndex == "api") {
+			$index = new Zend_Search_Lucene($this->getApiSearchIndexStore(), false);
+		} elseif ($useIndex == "default") {
 			$index = new Zend_Search_Lucene($this->getSearchIndexStore(), false);
+		} else {
+			Yii::log("Unknown search index requested: " . $useIndex, 
+				CLogger::LEVEL_INFO, __FUNCTION__);
+			return;
 		}
 	
 		foreach ($index->find('pk:' . $model->id) as $hit) {
-	    		$index->delete($hit->id);
+			$index->delete($hit->id);
+		}
+
+		if ($useIndex == "api") {
+			if ($model->status_id != 2) { 
+				Yii::log("No index changes needed in index <" . $useIndex . "> since job is not public.", 
+					CLogger::LEVEL_INFO, __FUNCTION__);
+				return; 
+			}
 		}
 	
-		if ($useIndex !== "admin") {
+		if ($useIndex == "default") {
 			if ($model->status_id != 2 || $model->isExpired()) { 
-				Yii::log("No index changes needed in index <" . $useIndex . "> since job is not public or is expired.", CLogger::LEVEL_INFO, __FUNCTION__);
+				Yii::log("No index changes needed in index <" . $useIndex . "> since job is neither public nor expired.", 
+					CLogger::LEVEL_INFO, __FUNCTION__);
 				return; 
 			}
 		}

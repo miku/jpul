@@ -8,6 +8,8 @@
 # Header set Expires "max-age=172800, public"
 #</FilesMatch>
 
+php_value max_execution_time 200
+
 <IfModule mod_deflate.c>
 	<FilesMatch "\.(js|css)$">
 		SetOutputFilter DEFLATE

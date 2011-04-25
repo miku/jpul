@@ -240,6 +240,7 @@ class AdminController extends Controller
 					}
 					$this->updateSearchIndex($model);
 					$this->updateSearchIndex($model, "admin");
+					$this->updateSearchIndex($model, "api");
 					
 					$this->redirect(array('index'));
 				}
@@ -313,6 +314,7 @@ class AdminController extends Controller
 					}
 					$this->updateSearchIndex($model);
 					$this->updateSearchIndex($model, "admin");
+					$this->updateSearchIndex($model, "api");
 					
 					$this->redirect(array('admin/view', 'id' => $id));
 				}
@@ -333,7 +335,8 @@ class AdminController extends Controller
 		Yii::log("Changed status of job id " . $id . " from " . $previous_status_id . " to " . $model->status_id, CLogger::LEVEL_INFO, __FUNCTION__);
 		
 		$this->updateSearchIndex($model);
-		$this->updateSearchIndex($model, $useIndex="admin");
+		$this->updateSearchIndex($model, "admin");
+		$this->updateSearchIndex($model, "api");
 		
 		$this->redirect(array('admin/view', 'id' => $id));
 	}

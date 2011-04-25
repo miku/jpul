@@ -426,6 +426,7 @@ class JobController extends Controller
 						$model->attachment->saveAs($filename);
 					}
 					$this->updateSearchIndex($model, "admin");
+					$this->updateSearchIndex($model, "api");
 					
 					if ($model->title != "test") {
 						Yii::log("Mailing notifications...", CLogger::LEVEL_INFO, __FUNCTION__);

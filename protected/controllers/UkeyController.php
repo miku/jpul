@@ -74,6 +74,8 @@ class UkeyController extends Controller
 					}
 					$this->updateSearchIndex($model);
 					$this->updateSearchIndex($model, "admin");
+					$this->updateSearchIndex($model, "api");
+					
 					$this->redirect($this->createUrl('ukey/preview', array('id' => $model->ukey)));
 				} else {
 					Yii::log("Captcha error or failed to save model.", CLogger::LEVEL_INFO, __FUNCTION__);

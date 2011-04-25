@@ -1,4 +1,32 @@
 CHANGELOG
 ---------
 
+2011-04-25
 
+    - finished read-only API (version 0.1.0), 
+        documentation available under
+        http://wwwdup.uni-leipzig.de/jobportal/api
+    - added small PDf icon as download shortcut to the main
+        overview page
+    - fixed email regex bug
+    - fixed job offer attachment filename, now conforms to CC file naming
+        conventions: YYYY_MM_DD_OfferID_CompanyName_JobTitle_JobLocation.pdf
+    - fixed routing, so the attachments are really ending in ".pdf" - 
+        was at least an issue with wget and the like, e.g.
+        http://wwwdup.uni-leipzig.de/jobportal/job/download/1000.pdf
+
+2011-04-24
+
+    - API (0.1.0)
+    - New 404 page, which actually fits on the screen, 
+        flags from http://etc.usf.edu/clipart
+
+2011-04-23
+
+    - API (0.1.0)
+    - Worked on free-form documentation, see drafty draft:
+        http://wwwdup.uni-leipzig.de/jobportal/docs/README_AFTER_6_MONTHS.html
+
+2011-04-22
+    
+    - Starting CHANGELOG :)

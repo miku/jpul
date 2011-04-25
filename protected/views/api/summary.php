@@ -1,6 +1,7 @@
 <?php header('Content-type: application/json'); ?>
 {
     "jobs" : <?php echo $data['jobs'] ?>, 
+    "active_jobs" : <?php echo $data['active_jobs'] ?>,
     "requests" : <?php echo $data['requests'] ?>,
     "first_request" : <?php echo $data['first_request'] ?>,
     "last_request" : <?php echo $data['last_request'] ?>,

@@ -22,6 +22,7 @@ class ApiController extends Controller
 
 	public function actionSummary() {
 		
+		$current_time = time();
 		$data = array();
 		
 		$sql = "select count(*) as job_count from job where status_id = 2";
@@ -30,6 +31,14 @@ class ApiController extends Controller
 		$command = $connection->createCommand($sql);
 		$dataReader = $command->queryRow();
 		$data['jobs'] = $dataReader['job_count'];
+
+		$sql = "select count(*) as active_job_count from job where status_id = 2 and expiration_date > " . $current_time;
+		Yii::log("SQL: " . $sql, CLogger::LEVEL_INFO, __FUNCTION__);
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand($sql);
+		$dataReader = $command->queryRow();
+		$data['active_jobs'] = $dataReader['active_job_count'];
+
 
 		$sql = "select count(*) as request_count from request";
 		Yii::log("SQL: " . $sql, CLogger::LEVEL_INFO, __FUNCTION__);

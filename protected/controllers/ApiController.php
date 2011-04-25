@@ -47,6 +47,55 @@ class ApiController extends Controller
 		$dataReader = $command->queryRow();
 		$data['requests'] = $dataReader['request_count'];
 
+		$sql = "select count(*) as request_count from request where request_time > " . ($current_time - 86400);
+		Yii::log("SQL: " . $sql, CLogger::LEVEL_INFO, __FUNCTION__);
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand($sql);
+		$dataReader = $command->queryRow();
+		$data['requests_24h'] = $dataReader['request_count'];
+
+		$sql = "select count(*) as request_count from request where request_time > " . ($current_time - 604800);
+		Yii::log("SQL: " . $sql, CLogger::LEVEL_INFO, __FUNCTION__);
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand($sql);
+		$dataReader = $command->queryRow();
+		$data['requests_7d'] = $dataReader['request_count'];
+
+		$sql = "select count(*) as request_count from request where request_time > " . ($current_time - 2592000);
+		Yii::log("SQL: " . $sql, CLogger::LEVEL_INFO, __FUNCTION__);
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand($sql);
+		$dataReader = $command->queryRow();
+		$data['requests_30d'] = $dataReader['request_count'];
+
+		$sql = "select count(distinct tracking_id) as tid from request";
+		Yii::log("SQL: " . $sql, CLogger::LEVEL_INFO, __FUNCTION__);
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand($sql);
+		$dataReader = $command->queryRow();
+		$data['visitors'] = $dataReader['tid'];
+
+		$sql = "select count(distinct tracking_id) as tid from request where request_time > " . ($current_time - 86400);
+		Yii::log("SQL: " . $sql, CLogger::LEVEL_INFO, __FUNCTION__);
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand($sql);
+		$dataReader = $command->queryRow();
+		$data['visitors_24h'] = $dataReader['tid'];
+
+		$sql = "select count(distinct tracking_id) as tid from request where request_time > " . ($current_time - 604800);
+		Yii::log("SQL: " . $sql, CLogger::LEVEL_INFO, __FUNCTION__);
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand($sql);
+		$dataReader = $command->queryRow();
+		$data['visitors_7d'] = $dataReader['tid'];
+
+		$sql = "select count(distinct tracking_id) as tid from request where request_time > " . ($current_time - 2592000);
+		Yii::log("SQL: " . $sql, CLogger::LEVEL_INFO, __FUNCTION__);
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand($sql);
+		$dataReader = $command->queryRow();
+		$data['visitors_30d'] = $dataReader['tid'];
+
 		$sql = "select request_time as first_request from request order by request_time limit 1";
 		Yii::log("SQL: " . $sql, CLogger::LEVEL_INFO, __FUNCTION__);
 		$connection = Yii::app()->db;

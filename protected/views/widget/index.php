@@ -48,6 +48,10 @@
 			margin: 2px 0 2px 0;
 			color: gray;
 		}
+		.line {
+			margin: 16px 0 16px 0;
+			border-bottom: solid 3px #EFEFEF;
+		}
 	</style>
 </head>
 <body>
@@ -84,6 +88,7 @@
 	<input type="submit" value="Vorschau aktualisieren">
 </form>
 
+<div class="line"></div>
 
 <h3>Vorschau</h3>
 
@@ -96,6 +101,7 @@
 <?php endif ?>
 </div>
 
+<div class="line"></div>
 
 <h3>Code</h3>
 

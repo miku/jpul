@@ -95,7 +95,7 @@
 <div id="snippet">
 <script type="text/javascript" charset="utf-8" src="http://wwwdup.uni-leipzig.de/jobportal/js/ccul-jobportal-widget-0.1.0.js"></script><script type="text/javascript" charset="utf-8">ccul_jobportal_load.widget("<?php echo $original_query; ?>");</script>
 <?php if ($width != null && $width != ''): ?>
-	<div style="width: <?php echo $width; ?>" id="ccul_jobportal_widget"></div>
+	<div style="width: <?php echo cut_text($width, 10); ?>" id="ccul_jobportal_widget"></div>
 <?php else: ?>
 	<div id="ccul_jobportal_widget"></div>	
 <?php endif ?>
@@ -117,7 +117,7 @@
 	}
 	$(document).ready(function(){
 		$("#code").html(function() {
-			var snippet = $("#snippet").html();
+			var snippet = $("div#snippet").html();
 			return htmlEntities(snippet);
 		});
 	});

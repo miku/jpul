@@ -109,6 +109,18 @@
 
 <textarea id="code" name="code" rows="8" cols="70">
 </textarea>
+
+<div class="line"></div>
+
+<h3>Kontakt</h3>
+
+<p><strong>Career Center</strong>
+Universität Leipzig,
+Burgstraße 21, 1. Etage,
+04109 Leipzig, +49 341 97-30030</p>
+<p>Technische Fragen: <a href="mailto:martin.czygan@googlemail.com">martin.czygan@googlemail.com</a></p>
+
+
 </div></body></html>
 
 <script type="text/javascript" charset="utf-8">
@@ -124,4 +136,3 @@
 	// IE innerHTML issues ...
 	// document.getElementById("code").innerHTML = document.getElementById("snippet").innerHTML;
 </script>
-

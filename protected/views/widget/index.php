@@ -66,7 +66,7 @@
 	<label for="q">Suchbegriffe</label><br>
 	<p class="help">Falls Sie nur Jobs für bestimmte
 		Suchbegriffe erhalten wollen, geben diese bitte
-		hier an.</p>
+		hier an. <a href="<?php echo $this->createUrl('widget/index'); ?>">Suche zurücksetzen</a>.</p>
 	<input type="text" size="80" name="q" value="<?php echo $original_query; ?>" id="q">
 	
 	<br><br>	

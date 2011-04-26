@@ -54,7 +54,7 @@
 <h1>Jobportal Widget Docs</h1>
 
 <p><em>Ein Service des <a href="http://www.zv.uni-leipzig.de/studium/career-center.html">Career Centers</a> der Universität Leipzig.</em></p>
-<br>
+
 <p>Betten Sie aktuelle Jobangebote aus unserem <a href="http://www.uni-leipzig.de/jobportal">Jobportal</a> mit unserem Widget in Ihre Webseite ein.
 	Unter <strong>Vorschau</strong> sehen Sie eine Beispielansicht des Widgets, darunter den <strong>Code</strong>, den Sie in
 	Ihre Seite einbetten müssen, damit das Widget angezeigt wird. Sie können die 

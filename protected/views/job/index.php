@@ -129,7 +129,7 @@
 		</p>
 		<br>
 		<p><strong>Suchoperatoren</strong> &middot;
-			Ausschluß: -suchbegriff &middot; AND, OR, NOT &middot; Position: "nach Vereinbarung",  Fuzzy: suchbergiff~
+			Ausschluß: -suchbegriff &middot; AND, OR, NOT &middot; Position: "nach Vereinbarung",  Fuzzy: suchbegriff~
 		</p>
 		<br>
 		<p><strong>Unser Jobportal in klein für Ihre Webseite</strong> &middot;

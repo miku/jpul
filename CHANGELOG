@@ -8,7 +8,7 @@ CHANGELOG
         sites, since it is self-contained - the basic version looks like this:
         
         <script type="text/javascript" charset="utf-8" 
-        src="http://wwwdup.uni-leipzig.de/jobportal/js/ccul-jobportal-widget.0.1.0.js">
+        src="http://wwwdup.uni-leipzig.de/jobportal/js/ccul-jobportal-widget-0.1.0.js">
         </script><script type="text/javascript" charset="utf-8">
         ccul_jobportal_load.widget("");</script>
         <div id="ccul_jobportal_widget"></div>

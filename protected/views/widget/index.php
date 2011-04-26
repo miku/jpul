@@ -77,7 +77,7 @@
 
 <h3>Vorschau</h3>
 
-<div id="snippet"><script type="text/javascript" charset="utf-8" src="<?php echo Yii::app()->request->hostInfo ?>/js/ul-jobportal-widget.0.1.0.js"></script><script type="text/javascript" charset="utf-8">ccul_jobportal_load.widget("<?php echo $original_query; ?>");</script><div id="ccul_widget"></div></div>
+<div id="snippet"><script type="text/javascript" charset="utf-8" src="<?php echo Yii::app()->request->baseUrl ?>/js/ul-jobportal-widget.0.1.0.js"></script><script type="text/javascript" charset="utf-8">ccul_jobportal_load.widget("<?php echo $original_query; ?>");</script><div id="ccul_widget"></div></div>
 
 
 <h3>Code</h3>

@@ -9,6 +9,8 @@
 	<meta charset="utf-8">
 	<title>Jobportal Widget</title>
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.4.3.min.js"></script>
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/tracker.min.js"></script>
+	<script>$(document).ready(function() { ccul_track('<?php echo $this->createUrl("stats/track"); ?>'); });</script>	
 	<style type="text/css" media="screen">
 		body {
 			background: #EFEFEF;

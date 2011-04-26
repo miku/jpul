@@ -21,10 +21,10 @@ ccul_jobportal_load = function() {
 
 ccul_jobportal_load.getJQueryOnDemand = function(src) {
 	if (typeof $ == "undefined") {
-		console.log("jQuery seems absent.");
+		// console.log("jQuery seems absent.");
 		ccul_jobportal_load.getScript(src);
 	} else {
-		console.log("jQuery already loaded. Attempting to using it.");
+		// console.log("jQuery already loaded. Attempting to using it.");
 	}
 }
 
@@ -42,14 +42,20 @@ ccul_jobportal_load();
 
 ccul_jobportal_load.widget = function(query) {
 	if (typeof $ == "undefined") {
-		console.log("jQuery hasn't arrived.");
+		// console.log("jQuery hasn't arrived.");
 		setTimeout("ccul_jobportal_load.widget(\"" + query + "\")", 100);
 	} else {
-		console.log("jQuery is up.");
+		// console.log("jQuery is up.");
 		if (typeof query != "undefined") {
-			$.get('http://wwwdup.uni-leipzig.de/jobportal/widget/get?q=' + query, function(data) { console.log("Got data."); $('#ccul_jobportal_widget').html(data); });	
+			$.get('http://wwwdup.uni-leipzig.de/jobportal/widget/get?q=' + query, function(data) { 
+				// console.log("Got data."); 
+				$('#ccul_jobportal_widget').html(data); 
+			});	
 		} else {
-			$.get('http://wwwdup.uni-leipzig.de/jobportal/widget/get', function(data) { console.log("Got data."); $('#ccul_joportal_widget').html(data); });	
+			$.get('http://wwwdup.uni-leipzig.de/jobportal/widget/get', function(data) { 
+				// console.log("Got data."); 
+				$('#ccul_joportal_widget').html(data); 
+			});	
 		}
 	}
 }

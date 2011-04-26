@@ -45,7 +45,7 @@
 <div id="ccul_jobportal_widget_box" style="">
 
 <p>Universität Leipzig | Jobportal<br>
-	<a href="http://wwwdup.uni-leipzig.de<?php echo urldecode($this->createUrl('job/index', $params_headline_link)); ?>">Aktuelle Jobangebote<?php if (isset($original_query) && $original_query != ''): ?> für <em><?php echo cut_text($original_query, 25); ?></em><?php endif ?></a><br>
+	<a target="_blank" href="http://wwwdup.uni-leipzig.de<?php echo urldecode($this->createUrl('job/index', $params_headline_link)); ?>">Aktuelle Jobangebote<?php if (isset($original_query) && $original_query != ''): ?> für <em><?php echo cut_text($original_query, 25); ?></em><?php endif ?></a><br>
 </p>
 
 <?php if ($models): ?>
@@ -59,5 +59,5 @@
 <br>
 <?php endif ?>
 
-<a href="http://www.zv.uni-leipzig.de/studium/career-center.html"><img style="" src="http://wwwdup.uni-leipzig.de/jobportal/images/v2/cc_logo.gif" width="100px" alt="Career Center" /></a>
+<a target="_blank" href="http://www.zv.uni-leipzig.de/studium/career-center.html"><img style="" src="http://wwwdup.uni-leipzig.de/jobportal/images/v2/cc_logo.gif" width="100px" alt="Career Center" /></a>
 </div>

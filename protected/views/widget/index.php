@@ -99,7 +99,7 @@
 
 <p>Fügen Sie einfach dieses Snippet an der Stelle Ihrer Seite ein, wo das Widget erscheinen soll.</p>
 
-<textarea id="code" name="code" rows="8" cols="60">
+<textarea id="code" name="code" rows="8" cols="70">
 </textarea>
 </div></body></html>
 

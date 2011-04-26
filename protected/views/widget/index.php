@@ -68,6 +68,12 @@
 		Suchbegriffe erhalten wollen, geben diese bitte
 		hier an. <a href="<?php echo $this->createUrl('widget/index'); ?>">Suche zurücksetzen</a>.</p>
 	<input type="text" size="80" name="q" value="<?php echo $original_query; ?>" id="q">
+	<br><br>
+	<label for="q">Breite des Widgets</label><br>
+	<p class="help">Falls Sie die Breite des Widgets eingrenzen möchten,
+		geben Sie bitte hier die Breite an, z.B. <a href="<?php echo $this->createUrl('widget/index', array('q' => $original_query, 'width' => '400px')); ?>">400px</a>.
+		<a href="<?php echo $this->createUrl('widget/index', array('q' => $original_query)); ?>">Standardbreite wiederherstellen</a>.</p>
+	<input type="text" size="10" name="width" value="<?php echo $width; ?>" id="width">
 	
 	<br><br>	
 
@@ -77,14 +83,21 @@
 
 <h3>Vorschau</h3>
 
-<div id="snippet"><script type="text/javascript" charset="utf-8" src="http://wwwdup.uni-leipzig.de/jobportal/js/ccul-jobportal-widget.0.1.0.js"></script><script type="text/javascript" charset="utf-8">ccul_jobportal_load.widget("<?php echo $original_query; ?>");</script><div id="ccul_jobportal_widget"></div></div>
+<div id="snippet">
+<script type="text/javascript" charset="utf-8" src="http://wwwdup.uni-leipzig.de/jobportal/js/ccul-jobportal-widget.0.1.0.js"></script><script type="text/javascript" charset="utf-8">ccul_jobportal_load.widget("<?php echo $original_query; ?>");</script>
+<?php if ($width != null && $width != ''): ?>
+	<div style="width: <?php echo $width; ?>" id="ccul_jobportal_widget"></div>
+<?php else: ?>
+	<div id="ccul_jobportal_widget"></div>	
+<?php endif ?>
+</div>
 
 
 <h3>Code</h3>
 
 <p>Fügen Sie einfach dieses Snippet an der Stelle Ihrer Seite ein, wo das Widget erscheinen soll.</p>
 
-<textarea id="code" name="code" rows="8" cols="40">
+<textarea id="code" name="code" rows="8" cols="60">
 </textarea>
 
 <script type="text/javascript" charset="utf-8">

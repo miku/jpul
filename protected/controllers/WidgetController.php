@@ -8,11 +8,16 @@ class WidgetController extends Controller
 {
 	public function actionIndex() {
 		$original_query = null;
+		$width = null;
 		if (isset($_GET['q']) && $_GET['q'] != '') {
 			$original_query = $_GET['q'];
 		}
+		if (isset($_GET['width']) && $_GET['width'] != '') {
+			$width = $_GET['width'];
+		}
 		$this->layout = 'v2/plain';
-		$this->render('index', array('original_query' => $original_query));
+		$this->render('index', 
+			array('original_query' => $original_query, 'width' => $width));
 	}
 	
 	public function actionGet() {

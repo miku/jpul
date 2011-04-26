@@ -1,11 +1,38 @@
 CHANGELOG
 ---------
 
+2011-04-26
+
+	- created new widget-interface (version 0.1.0)
+		this widget is now easily embeddable into other
+		sites, since it is self-contained - the basic version looks like this:
+		
+		<script type="text/javascript" charset="utf-8" 
+		src="http://wwwdup.uni-leipzig.de/jobportal/js/ccul-jobportal-widget.0.1.0.js">
+		</script><script type="text/javascript" charset="utf-8">
+		ccul_jobportal_load.widget("");</script>
+		<div id="ccul_jobportal_widget"></div>
+		
+		that's all. widget uses any existing jquery library if present
+		on the hosts page - otherwise it will lazy load jquery from
+		our own server - javascript white magic
+		
+		widget also supports basic customization (search terms, widget width)
+
+	- created web page for creating widget code:
+	
+		http://wwwdup.uni-leipzig.de/jobportal/widget
+		
+	- fixed innerHTML bug to make widget cross-platform
+	- site-backup (maintenance)
+
 2011-04-25
 
     - finished read-only API (version 0.1.0), 
         documentation available under
+
         http://wwwdup.uni-leipzig.de/jobportal/api
+
     - added small PDf icon as download shortcut to the main
         overview page
     - fixed email regex bug
@@ -13,7 +40,10 @@ CHANGELOG
         conventions: YYYY_MM_DD_OfferID_CompanyName_JobTitle_JobLocation.pdf
     - fixed routing, so the attachments are really ending in ".pdf" - 
         was at least an issue with wget and the like, e.g.
+
         http://wwwdup.uni-leipzig.de/jobportal/job/download/1000.pdf
+
+	- site-backup (maintenance)
 
 2011-04-24
 
@@ -25,8 +55,12 @@ CHANGELOG
 
     - API (0.1.0)
     - Worked on free-form documentation, see drafty draft:
+
         http://wwwdup.uni-leipzig.de/jobportal/docs/README_AFTER_6_MONTHS.html
 
 2011-04-22
     
     - Starting CHANGELOG :)
+	- For anything happened before, see
+	
+		https://github.com/miku/ccul

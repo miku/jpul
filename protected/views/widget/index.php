@@ -53,9 +53,9 @@
 
 <h1>Jobportal Widget Docs</h1>
 
-<p>Ein Service des <a href="http://www.zv.uni-leipzig.de/studium/career-center.html">Career Centers</a> der Universität Leipzig.</p>
+<p><em>Ein Service des <a href="http://www.zv.uni-leipzig.de/studium/career-center.html">Career Centers</a> der Universität Leipzig.</em></p>
 <br>
-<p>Betten Sie aktuelle Jobangebote mit unserem Widget in Ihre Webseite ein.
+<p>Betten Sie aktuelle Jobangebote aus unserem <a href="http://www.uni-leipzig.de/jobportal">Jobportal</a> mit unserem Widget in Ihre Webseite ein.
 	Unter <strong>Vorschau</strong> sehen Sie eine Beispielansicht des Widgets, darunter den <strong>Code</strong>, den Sie in
 	Ihre Seite einbetten müssen, damit das Widget angezeigt wird. Sie können die 
 	angezeigten Jobangebote anpassen, in dem Sie bestimmte Suchbegriffe angeben, z.B. 
@@ -87,7 +87,7 @@
 <h3>Vorschau</h3>
 
 <div id="snippet">
-<script type="text/javascript" charset="utf-8" src="http://wwwdup.uni-leipzig.de/jobportal/js/ccul-jobportal-widget.0.1.0.js"></script><script type="text/javascript" charset="utf-8">ccul_jobportal_load.widget("<?php echo $original_query; ?>");</script>
+<script type="text/javascript" charset="utf-8" src="http://wwwdup.uni-leipzig.de/jobportal/js/ccul-jobportal-widget-0.1.0.js"></script><script type="text/javascript" charset="utf-8">ccul_jobportal_load.widget("<?php echo $original_query; ?>");</script>
 <?php if ($width != null && $width != ''): ?>
 	<div style="width: <?php echo $width; ?>" id="ccul_jobportal_widget"></div>
 <?php else: ?>
@@ -102,6 +102,7 @@
 
 <textarea id="code" name="code" rows="8" cols="60">
 </textarea>
+</div></body></html>
 
 <script type="text/javascript" charset="utf-8">
 	function htmlEntities(str) {
@@ -117,5 +118,3 @@
 	// document.getElementById("code").innerHTML = document.getElementById("snippet").innerHTML;
 </script>
 
-
-</div></body></html>

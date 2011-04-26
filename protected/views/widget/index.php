@@ -8,6 +8,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Jobportal Widget</title>
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.4.3.min.js"></script>
 	<style type="text/css" media="screen">
 		body {
 			background: #EFEFEF;
@@ -101,7 +102,17 @@
 </textarea>
 
 <script type="text/javascript" charset="utf-8">
-	document.getElementById("code").innerHTML = document.getElementById("snippet").innerHTML;
+	function htmlEntities(str) {
+    	return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+	}
+	$(document).ready(function(){
+		$("#code").html(function() {
+			var snippet = $("#snippet").html();
+			return htmlEntities(snippet);
+		});
+	});
+	// IE innerHTML issues ...
+	// document.getElementById("code").innerHTML = document.getElementById("snippet").innerHTML;
 </script>
 
 

@@ -45,13 +45,13 @@
 
 <?php if ($models): ?>
 <p>Universität Leipzig | Jobportal<br>
-	<a href="<?php echo urldecode($this->createUrl('job/index', $params_headline_link)); ?>">Aktuelle Jobangebote<?php if (isset($original_query) && $original_query != ''): ?> für <em><?php echo $original_query ?></em><?php endif ?></a>
+	<a href="http://wwwdup.uni-leipzig.de/jobportal/<?php echo urldecode($this->createUrl('job/index', $params_headline_link)); ?>">Aktuelle Jobangebote<?php if (isset($original_query) && $original_query != ''): ?> für <em><?php echo $original_query ?></em><?php endif ?></a>
 	<br>
 </p>
 
 <ul style="">
 	<?php foreach ($models as $index => $model): ?>
-	<li style="<?php if ($index % 2 == 0) { echo 'background: aliceblue'; } ?>"><a style="" href="<?php echo Yii::app()->request->hostInfo . $this->createUrl('job/view', array('id' => $model->id)); ?>">
+	<li style="<?php if ($index % 2 == 0) { echo 'background: aliceblue'; } ?>"><a style="" href="http://wwwdup.uni-leipzig.de/jobportal<?php echo $this->createUrl('job/view', array('id' => $model->id)); ?>">
 				<?php echo cut_text($model->title, 40); ?></a> <span class="ccul_date" style="">
 				<?php echo strftime("%d.%m.%Y", $model->date_added); ?></span></li>
 	<?php endforeach ?>

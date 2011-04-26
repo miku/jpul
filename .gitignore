@@ -23,7 +23,8 @@ protected/config/main.*php
 docs/Anzeigen-*
 docs/Anzeigen/*
 
-docs/Agile.*pdf
+docs/b/Agile.*
+docs/tmp/*
 benchmarks/*
 *.patch
 

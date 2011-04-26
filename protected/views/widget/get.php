@@ -43,11 +43,12 @@
 
 <div id="ccul_jobportal_widget" style="">
 
-<?php if ($models): ?>
 <p>Universität Leipzig | Jobportal<br>
 	<a href="http://wwwdup.uni-leipzig.de/jobportal/<?php echo urldecode($this->createUrl('job/index', $params_headline_link)); ?>">Aktuelle Jobangebote<?php if (isset($original_query) && $original_query != ''): ?> für <em><?php echo $original_query ?></em><?php endif ?></a>
 	<br>
 </p>
+
+<?php if ($models): ?>
 
 <ul style="">
 	<?php foreach ($models as $index => $model): ?>

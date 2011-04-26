@@ -57,7 +57,7 @@
 <body>
 <div id="main">
 
-<h1>Jobportal Widget Docs</h1>
+<h1>Jobportal Widget</h1>
 
 <p><em>Ein Service des <a href="http://www.zv.uni-leipzig.de/studium/career-center.html">Career Centers</a> der Universität Leipzig.</em></p>
 

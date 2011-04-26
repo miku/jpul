@@ -52,7 +52,14 @@
 
 <h1>Jobportal Widget Docs</h1>
 
-<p>Betten Sie aktuelle Jobangebote mit unserem Widget in Ihre Webseite ein.</p>
+<p>Betten Sie aktuelle Jobangebote mit unserem Widget in Ihre Webseite ein.
+	Unter <strong>Vorschau</strong> sehen Sie eine Beispielansicht des Widgets, darunter den <strong>Code</strong>, den Sie in
+	Ihre Seite einbetten müssen, damit das Widget angezeigt wird. Sie können die 
+	angezeigten Jobangebote anpassen, in dem Sie bestimmte Suchbegriffe angeben, z.B. 
+	<a href="<?php echo $this->createUrl('widget/index', array('q' => 'informatik')); ?>">informatik</a>,
+	<a href="<?php echo $this->createUrl('widget/index', array('q' => 'bwl')); ?>">bwl</a>,
+	<a href="<?php echo $this->createUrl('widget/index', array('q' => 'sport')); ?>">sport</a>, etc.
+	</p>
 
 <form action="" method="get" accept-charset="utf-8">
 	

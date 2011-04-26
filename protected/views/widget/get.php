@@ -29,7 +29,7 @@
 		margin:0; padding:0; list-style:none;
 	}
 	div#ccul_jobportal_widget_box ul li {
-		padding: 2px;
+		padding: 2px; list-style:none;
 	}
 	div#ccul_jobportal_widget_box ul li a {
 		text-decoration: none;

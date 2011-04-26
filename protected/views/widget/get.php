@@ -50,7 +50,7 @@
 <?php if ($models): ?>
 <ul style="">
 	<?php foreach ($models as $index => $model): ?>
-	<li style="<?php if ($index % 2 == 0) { echo 'background: aliceblue'; } ?>"><a style="" href="http://wwwdup.uni-leipzig.de<?php echo $this->createUrl('job/view', array('id' => $model->id)); ?>">
+	<li style="<?php if ($index % 2 == 0) { echo 'background: aliceblue'; } ?>"><a style="" href="http://wwwdup.uni-leipzig.de<?php echo $this->createUrl('job/view', array('id' => $model->id, 'from' => '_widget_010')); ?>">
 				<?php echo cut_text($model->title, 40); ?></a> <span class="ccul_date" style="">
 				<?php echo strftime("%d.%m.%Y", $model->date_added); ?></span></li>
 	<?php endforeach ?>

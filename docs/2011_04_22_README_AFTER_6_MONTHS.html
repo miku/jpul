@@ -1,0 +1,143 @@
+<!DOCTYPE html> 
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html lang="de" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="de" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="de" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="de" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="de" class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>README AFTER 6 MONTH</title>
+	<style type="text/css" media="screen">
+		#main {
+			font-family: monospace, sans-serif;
+			font-size: 12px;
+			width: 600px;
+		}
+	</style>
+</head>
+<body>
+<div id="main">
+
+<p>
+This is a short braindump, while I was near the code. 
+I'm not sure if I forget everything after six months.
+</p>
+
+<p>
+We choose Yii as the framework. We looked at Symfony,
+but we didn't liked it very much: The documenation
+was kind of verbose, yet leaving questions. The
+somehow useful - but then again too intruding split between
+frontend and backend, and mostly the too nested 
+directory structure turned us off. We like yaml, but 
+there were too many things, we didn't understand. 
+We looked at microframeworks briefly, also later in the
+process, but gluephp looked a little too bare.	
+</p>
+
+<p>
+So Yii. What we basically wanted was a request abstraction,
+some reasonable routing, maybe an auth component, form validation
+with CSRF protection built-in and some active record cake
+over the database.
+</p>
+
+<p>
+Yii comes with all that. It also does not force one into the
+frontend/backend decision, even though we have an "AdminController"
+which serves as our backend interface. Basically a Yii app starts
+in a short 40 line long "index.html" which mainly loads some configuration.
+We have a few of configurations now, a sqlite3 and mysql development version
+and a production version. Now this is the only sensitive part
+of the app, so it's excluded from VC. DB connection, routing, filters,
+logging, language are defined there.
+"index.html" finally "runs" the application, which means it finds
+a route, calls the appropriate controller, if allowed, and continues
+to the template. Simple. 
+</p>
+
+<p>
+Yii has built-in support for auth, but we don't use it - at least not fully, 
+we do take advantage of WebUser and UserIDentity components, even tough the
+remain pretty default. We only have one
+explicit user, which is admin. So all we do is check before each request,
+if the user has the role "admin". In "Controller", the base class of all our
+specific controllers, there is a simple function "filterAdminOnly", which
+will raise 404, if the view is protected and the user isn't admin. 403 Forbidden
+would be more appropriate, but this way, we can mask the existence 
+of any "admin" interface. 
+</p>
+
+<p>
+We have a manageable set of controllers: Admin, Api, Job, List, Site, Stats, Ukey.
+</p>
+
+<p>Admin takes care of the task for our admin user: Creating jobs, Publish user-generated
+	offers. That's basically it
+</p>
+
+<p>Api is not yet there as I write this, but it will be a full-blown RO-API
+	which will enable us to script againts the database. I'm thinking of
+	some standalone statistics scripts, which generate some data, metadata
+	or aggregated information about the kind of content the site offers. 
+	This is the part I like most. We have an early incarnation of this
+	via /docs/embed.html, basically our "homepage" view "job/index" 
+	accepts a parameter, "v", indicating the kind of interface, which
+	is expected by the client: browser, embed or json. 
+	Data and parameters stay the same, json just looks much nicer.
+	A short script for a command line jobboard client was fun to write,
+	even though the fun only lasted a few hours or less. Api should 
+	be focussed on the machine-machine stuff. 
+</p>
+
+<p>
+Job controller is takes draft, makes listings, makes queries, views jobs
+or downloads attachments. 
+</p>
+
+<p>List is stats, as far as we get without queueing and cron. Just list some
+	stuff, cities, companies, for the moment.
+</p>
+
+<p>Site just provides us with a login view and a sitemap for google, which
+	get generated on each request - if has a special route, directly to /sitemap.xml
+	as it is custom.
+</p>
+
+<p>Stats is our non-evil asnyc tracking. Viewing the stats is horrendously
+	slow, since we tackle all the almost 100K rows in our tracking table, 
+	but we will introduce something if it gets unbearable (namely a 
+	key-value cache in the DB)</p>
+
+<p>
+Now Ukey is the last to the party. If manages the heavily stripped down
+admin for the employer, without logins and password but with UUIDs, which 
+aren't built in PHP we learned, so we offer them as part of our "helpers/Util"
+agglutination.
+</p>
+
+<p>
+We use jquery, but not the one shipped with Yii, but our own. And for that
+we need to explicitly disable the asset, which happens in layouts/v2/main.php.
+</p>
+
+<p>Oh yes, layouts: We missed template inheritance in the beginning. 
+Yii comes with a layout, which has a drop-in point where the rendered
+view gets placed. Just that one. But fortunately, it provides a 
+renderPartial function, which mitigates the missing TI. The layout
+we use is actually under v2 because we had a quite large version jump
+in the early life of the portal, were we just completely redesigned the
+view. This was v2. Now this still lives on in /css and /images as well.
+It not nice, and it will be changed, when the time comes, so maybe never.
+</p>
+
+<p>
+Now how do we deal with the models? 
+... 
+TBC
+</p>
+
+</div>
+</body>
+</html>

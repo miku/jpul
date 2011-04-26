@@ -10,10 +10,10 @@ class WidgetController extends Controller
 		$original_query = null;
 		$width = null;
 		if (isset($_GET['q']) && $_GET['q'] != '') {
-			$original_query = $_GET['q'];
+			$original_query = strip_tags($_GET['q']);
 		}
 		if (isset($_GET['width']) && $_GET['width'] != '') {
-			$width = $_GET['width'];
+			$width = strip_tags($_GET['width']);
 		}
 		$this->layout = 'v2/plain';
 		$this->render('index', 

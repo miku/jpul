@@ -254,7 +254,7 @@
 	}
 	
 	function detoxify($text, $replacement = '') {
-		$text = preg_replace('[\.\)\(\{\};,]', $replacement, $text);
+		$text = preg_replace('/[\.\)\(\{\};,]/', $replacement, $text);
 		return $text;
 	}
 	

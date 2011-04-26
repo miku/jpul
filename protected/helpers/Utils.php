@@ -255,6 +255,7 @@
 	
 	function detoxify($text, $replacement = '') {
 		$text = preg_replace('[\.\)\(\{\};,]', $replacement, $text);
+		return $text;
 	}
 	
 	function purify($text, $replacement = '-') {

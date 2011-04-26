@@ -253,6 +253,10 @@
 		}
 	}
 	
+	function detoxify($text, $replacement = '') {
+		$text = preg_replace('[\.)(}{};,]', $replacement, $text);
+	}
+	
 	function purify($text, $replacement = '-') {
 		$im = slugify($text, $replacement);
 		$text = preg_replace('/[\d]/', '', $im);

@@ -21,27 +21,27 @@
 ?>
 
 <style>
-	div#ccul_jobportal_widget {
+	div#ccul_jobportal_widget_box {
 		width:400px; padding:10px; border:dashed thin #ABABAB; font-size:75%; font: normal 10pt Verdana,"Helvetica Neue",Arial,Tahoma,sans-serif;
 	}
-	div#ccul_jobportal_widget ul {
+	div#ccul_jobportal_widget_box ul {
 		margin:0; padding:0; list-style:none;
 	}
-	div#ccul_jobportal_widget ul li {
+	div#ccul_jobportal_widget_box ul li {
 		padding: 2px;
 	}
-	div#ccul_jobportal_widget ul li a {
+	div#ccul_jobportal_widget_box ul li a {
 		text-decoration: none;
 	}
-	div#ccul_jobportal_widget .ccul_date {
+	div#ccul_jobportal_widget_box .ccul_date {
 		font-size: 60%; color: gray;
 	}
-	div#ccul_jobportal_widget img {
+	div#ccul_jobportal_widget_box img {
 		border: none;
 	}
 </style>
 
-<div id="ccul_jobportal_widget" style="">
+<div id="ccul_jobportal_widget_box" style="">
 
 <p>Universität Leipzig | Jobportal<br>
 	<a href="http://wwwdup.uni-leipzig.de<?php echo urldecode($this->createUrl('job/index', $params_headline_link)); ?>">Aktuelle Jobangebote<?php if (isset($original_query) && $original_query != ''): ?> für <em><?php echo cut_text($original_query, 25); ?></em><?php endif ?></a><br>

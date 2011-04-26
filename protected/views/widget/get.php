@@ -34,7 +34,7 @@
 		text-decoration: none;
 	}
 	div#ccul_jobportal_widget .ccul_date {
-		font-size: 50%; color: gray;
+		font-size: 60%; color: gray;
 	}
 	div#ccul_jobportal_widget img {
 		border: none;

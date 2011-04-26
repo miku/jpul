@@ -79,8 +79,7 @@
 	<input type="text" size="10" name="width" value="<?php echo $width; ?>" id="width">
 	
 	<br><br>	
-
-	<p><input type="submit" value="Vorschau"></p>
+	<input type="submit" value="Vorschau aktualisieren">
 </form>
 
 

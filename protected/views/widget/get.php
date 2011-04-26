@@ -18,6 +18,7 @@
 	if (isset($params_headline_link["v"])) {
 		unset($params_headline_link["v"]);
 	}
+	$params_headline_link['src'] = 'widget';
 ?>
 
 <style>

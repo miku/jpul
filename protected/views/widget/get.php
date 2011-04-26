@@ -23,7 +23,7 @@
 
 <style>
 	div#ccul_jobportal_widget_box {
-		width:400px; margin: 5px 0 5px 0; padding:10px; border:dashed thin #ABABAB; font-size:75%; font: normal 10pt Verdana,"Helvetica Neue",Arial,Tahoma,sans-serif;
+		margin: 5px 0 5px 0; padding:10px; border:dashed thin #ABABAB; font-size:75%; font: normal 10pt Verdana,"Helvetica Neue",Arial,Tahoma,sans-serif;
 	}
 	div#ccul_jobportal_widget_box ul {
 		margin:0; padding:0; list-style:none;

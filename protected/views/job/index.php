@@ -132,8 +132,8 @@
 			Ausschluß: -suchbegriff &middot; AND, OR, NOT &middot; Position: "nach Vereinbarung",  Fuzzy: suchbergiff~
 		</p>
 		<br>
-		<p><strong>Jobportal Widget und API</strong> &middot;
-			<a href="http://wwwdup.uni-leipzig.de/jobportal/docs/embed.html">Anleitung</a>
+		<p><strong>Unser Jobportal in klein für Ihre Webseite</strong> &middot;
+			<a href="<?php echo $this->createUrl('widget/index'); ?>">Jobportal Widget</a>
 		</p>
 			
 	</div>

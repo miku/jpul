@@ -2,6 +2,10 @@
 
 // production environment
 $yii = dirname(__FILE__) . '/../src/yii-1.1.4.r2429/framework/yii.php';
+
+// prepare for upgrade ...
+// $yii = dirname(__FILE__) . '/../src/yii-1.1.7.r3135/framework/yii.php';
+
 $config = dirname(__FILE__) . '/protected/config/main.php';
 define('YII_DEBUG', false);
 // define('YII_DEBUG', true);

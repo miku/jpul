@@ -1,6 +1,18 @@
 CHANGELOG
 ---------
 
+
+2011-04-27
+
+    - Besprechungen: Claudia, Katrin (ITMitte), Bianca (Newsletter)
+    - site-backup (maintenance)
+
+    - Up Next: Filter (Vollzeit, SHK/WHK/Nebenjob/Teilzeit/Stipendium/..., Praktikum)
+    - Up Next: PDF => text ?
+    - Up Next: Ähnliche Jobangebote in der Sidebar
+    - Up Next: Back–button in der admin/update Ansicht auf /admin/index setzen!
+    - Up Next: Aggressiverer Text-to-Hyperlink?
+
 2011-04-26
 
     - created new widget-interface (version 0.1.0)

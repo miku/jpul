@@ -10,10 +10,16 @@ chmod -Rv 777 protected/runtime/
 chmod -Rv 777 protected/views/
 
 mkdir protected/runtime/search
+mkdir protected/runtime/adminsearch
+mkdir protected/runtime/apisearch
+mkdir protected/runtime/cache
 touch protected/runtime/application.log
 touch protected/runtime/state.bin
 
 chmod 777 protected/runtime/search
+chmod 777 protected/runtime/adminsearch
+chmod 777 protected/runtime/apisearch
+chmod 777 protected/runtime/cache
 chmod 777 protected/runtime/application.log
 chmod 777 protected/runtime/state.bin
 

@@ -149,7 +149,7 @@ class JobController extends Controller
 				$criteria->offset = ($page - 1) * $this->items_per_page; # self::PAGE_SIZE;;
 			}
 
-			$models = Job::model()->findAllByAttributes(array('id' => $pks), $criteria);
+			$models = Job::model()->cache(600)->findAllByAttributes(array('id' => $pks), $criteria);
 			$current_start = ($page - 1) * self::PAGE_SIZE;;
 			$current_end = ($page - 1) * self::PAGE_SIZE + self::PAGE_SIZE;
 
@@ -206,7 +206,7 @@ class JobController extends Controller
 			// $criteria->offset = ($page - 1) * self::PAGE_SIZE;;
 
 			// just the default index action ...
-			$models = Job::model()->findAll($criteria);
+			$models = Job::model()->cache(600)->findAll($criteria);
 			
 			$original_query = null;
 			Yii::app()->session['snapBackSearchTerm'] = '';
@@ -276,7 +276,7 @@ class JobController extends Controller
 	public function actionView($id, $from = '')
 	{
 		
-		$model = Job::model()->findByPk($id);
+		$model = Job::model()->cache(600)->findByPk($id);
 		if (!$model) {
 			throw new CHttpException(404, Yii::t('app', 'Your request is not valid.'));
 		}
@@ -331,7 +331,7 @@ class JobController extends Controller
 	{
 		Yii::log("Initiating Download, id = " . $id, CLogger::LEVEL_INFO, __FUNCTION__);
 		
-		$model = Job::model()->findByPk($id);		
+		$model = Job::model()->cache(600)->findByPk($id);		
 		
 		if ($model) {
 			Yii::log("Model exists, id = " . $id, CLogger::LEVEL_INFO, __FUNCTION__);			

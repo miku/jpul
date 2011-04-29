@@ -9,7 +9,7 @@ class StatsController extends Controller
 	// public function actionIndex() {
 	// 	$this->render("empty");
 	// }
-
+	
 	public function actionChronology() {
 		// Show #pageviews, #visitors and #jobs for the last three month
 		$cutoff_timestamp = date('U', mktime(0, 0, 0, 12, 16, 2010));
@@ -97,7 +97,7 @@ class StatsController extends Controller
 					and request_time < :upper ;";
 	
 			$connection = Yii::app()->db;
-			$command = $connection->cache(86400)->createCommand($sql);
+			$command = $connection->createCommand($sql);
 			
 			$command->bindParam(":lower", $value['lower'], PDO::PARAM_INT);
 			$command->bindParam(":upper", $value['upper'], PDO::PARAM_INT);
@@ -113,7 +113,7 @@ class StatsController extends Controller
 					and request_time < :upper ;";
 	
 			$connection = Yii::app()->db;
-			$command = $connection->cache(86400)->createCommand($sql);
+			$command = $connection->createCommand($sql);
 			
 			$command->bindParam(":lower", $value['lower'], PDO::PARAM_INT);
 			$command->bindParam(":upper", $value['upper'], PDO::PARAM_INT);
@@ -130,7 +130,7 @@ class StatsController extends Controller
 					and date_added < :upper ;";
 	
 			$connection = Yii::app()->db;
-			$command = $connection->cache(86400)->createCommand($sql);
+			$command = $connection->createCommand($sql);
 			
 			$command->bindParam(":lower", $value['lower'], PDO::PARAM_INT);
 			$command->bindParam(":upper", $value['upper'], PDO::PARAM_INT);

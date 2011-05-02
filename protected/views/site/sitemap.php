@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <?php $current_time = time(); ?>
 <url>
-<loc>http://wwwdup.uni-leipzig.de/jobportal/docs/2011_02_07_Einstellung_eines_Angebotes_im_Jobportal.pdf</loc>
+<loc>http://wwwdup.uni-leipzig.de/jobportal/docs/2011_04_21_Einstellung_eines_Angebotes_im_Jobportal.pdf</loc>
 <lastmod>2011-02-17</lastmod>
 <priority>0.2</priority>
 </url>

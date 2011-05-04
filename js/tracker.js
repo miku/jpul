@@ -119,8 +119,8 @@ BrowserDetect.init();
 // ccul_track - poor man's analytics
 function ccul_track(beaconSink) {
  	$.get(beaconSink + 
-		'?b=' + document.location +         // the current URL
-		'&ref=' + document.referrer +       // previous page
+		'?b=' + encodeURIComponent(document.location.href) +         // the current URL
+		'&ref=' + encodeURIComponent(document.referrer) +       // previous page
 		'&ww=' + $(window).width() +        
 		'&wh=' + $(window).height() +
 		'&sw=' + screen.width + 

@@ -364,9 +364,9 @@ class StatsController extends Controller
 			}
 	
 			$request->tracking_id = $beacon['id'];
-			$request->request_uri = $b;
+			$request->request_uri = urldecode($b);
 			$request->request_method = isset($_SERVER['REQUEST_METHOD']) ? $_SERVER['REQUEST_METHOD'] : '';
-			$request->http_referer = $ref; // and the page before the previous page
+			$request->http_referer = urldecode($ref); // and the page before the previous page
 			$request->http_accept = isset($_SERVER['HTTP_ACCEPT']) ? $_SERVER['HTTP_ACCEPT'] : '';
 			$request->http_accept_charset = isset($_SERVER['HTTP_ACCEPT_CHARSET']) ? $_SERVER['HTTP_ACCEPT_CHARSET'] : '';
 			$request->http_accept_encoding = isset($_SERVER['HTTP_ACCEPT_ENCODING']) ? $_SERVER['HTTP_ACCEPT_ENCODING'] : '';

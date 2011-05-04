@@ -2,37 +2,41 @@
 <div id="main">	
 	<div id="main-header">
 		<div id="searchbox">
-			<form action="<?php echo $this->createUrl('job/index') ?>" method="get" accept-charset="utf-8">
+				<form action="<?php echo $this->createUrl('job/index') ?>" method="get" accept-charset="utf-8">
 				<input size="40" type="text" name="q" value="<?php if (isset($original_query)) echo $original_query ?>" id="search">
+				<?php if ($f == '-internship'): ?>
+					<input type="hidden" name="f" value="<?php echo $f ?>" id="f">
+				<?php endif; ?>
 				<input type="submit" value="Suchen" class="button">
 			</form>
 		</div>
 		
 		<div id="sortmenu">
 			<p style="padding: 8px 0 0 0; font-size:10px">
-				Praktika 
+				
 				
 				<?php if ($f == '-internship'): ?>
 
 					<?php if (isset($original_query)): ?>
-						<a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox', 'q' => $original_query)) ?>"><strong>einblenden</strong></a>
+						&#x03c6; <span style="border-bottom: solid red 1px">Praktika</span> <a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox', 'q' => $original_query)) ?>">anzeigen</a>
 					<?php else: ?>
-						<a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox')) ?>"><strong>einblenden</strong></a>
+						&#x03c6; <span style="border-bottom: solid red 1px">Praktika</span> <a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox')) ?>">anzeigen</a>
 					<?php endif ?>
+					
 				
 				<?php else: ?>
 
 					<?php if (isset($original_query)): ?>
-						<a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox', 'f' => '-internship', 'q' => $original_query)) ?>"><strong>ausblenden</strong></a>
+						&#x2716; <span style="border-bottom: solid green 1px">Praktika</span> <a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox', 'f' => '-internship', 'q' => $original_query)) ?>">ausblenden</a>
 					<?php else: ?>
-						<a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox', 'f' => '-internship')) ?>"><strong>ausblenden</strong></a>
+						&#x2716; <span style="border-bottom: solid green 1px">Praktika</span> <a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox', 'f' => '-internship')) ?>">ausblenden</a>
 					<?php endif ?>
 					
 				<?php endif ?>
 				
 				|
 				
-				<?php if ($original_query == 'praktik* OR werkstudent'): ?>
+				<?php if ($original_query == 'praktik* OR werkstudent OR volontariat OR shk'): ?>
 					<a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox')) ?>">Alle anzeigen</a>
 				<?php else: ?>
 					<a href="<?php echo $this->createUrl('job/index', array('q' => 'praktik* OR werkstudent OR volontariat OR shk', 'src' => 'topbox')) ?>">Nur Praktika anzeigen</a>
@@ -43,7 +47,7 @@
 			
 			<!-- 
 				select * from ____ where ____ like '%?sort=%' and not ____ like '10_6_7' and ____ like '%de%';  
-				yield 938 rows of 101488 match, which are 0.92% - so we stash this feature for now
+				yields 938 rows of 101488 match, which are 0.92% - so we stash this feature for now
 			-->
 			
 			<!-- sortieren nach: 

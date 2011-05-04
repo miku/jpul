@@ -39,7 +39,7 @@
 				<?php if ($original_query == 'praktik* OR werkstudent OR volontariat OR shk'): ?>
 					<a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox')) ?>">Alle anzeigen</a>
 				<?php else: ?>
-					<a href="<?php echo urldecode($this->createUrl('job/index', array('q' => 'praktik*+OR+werkstudent+OR+volontariat+OR+shk', 'src' => 'topbox'))) ?>">Nur Praktika anzeigen</a>
+					<a href="<?php echo urldecode($this->createUrl('job/index', array('src' => 'topbox', 'q' => 'praktik*+OR+werkstudent+OR+volontariat+OR+shk'))) ?>">Nur Praktika anzeigen</a>
 				<?php endif ?>
 				
 				 

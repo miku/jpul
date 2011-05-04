@@ -497,6 +497,8 @@ class AdminController extends Controller
 			$doc->addField(Zend_Search_Lucene_Field::UnStored('in', $model->city, 'utf-8'));
 			$doc->addField(Zend_Search_Lucene_Field::UnStored('description', $model->description, 'utf-8'));
 
+			$doc->addField(Zend_Search_Lucene_Field::UnStored('shadowtags', $model->shadowtags, 'utf-8'));
+
 			$index->addDocument($doc);
 			
 			Yii::log("Added document id: " . $model->id, 

@@ -84,6 +84,10 @@ class JobController extends Controller
 		if ($f === '-internship') {
 			$criteria->condition .= " AND is_internship = 0 ";
 			$criteria->condition .= " AND NOT title LIKE '%praktik%' ";
+			$criteria->condition .= " AND NOT title LIKE '%werkstud%' ";
+			$criteria->condition .= " AND NOT title LIKE '%werksstud%' ";
+			$criteria->condition .= " AND NOT title LIKE '%studentische Hilfs%' ";
+			$criteria->condition .= " AND NOT title LIKE '%studentischen Hilfs%' ";
 		}
 
 		// Determine the view to use ...

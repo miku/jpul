@@ -15,17 +15,17 @@
 				<?php if ($f == '-internship'): ?>
 
 					<?php if (isset($original_query)): ?>
-						<a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox', 'q' => $original_query)) ?>">einblenden</a>
+						<a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox', 'q' => $original_query)) ?>"><strong>einblenden</strong></a>
 					<?php else: ?>
-						<a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox')) ?>">einblenden</a>
+						<a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox')) ?>"><strong>einblenden</strong></a>
 					<?php endif ?>
 				
 				<?php else: ?>
 
 					<?php if (isset($original_query)): ?>
-						<a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox', 'f' => '-internship', 'q' => $original_query)) ?>">ausblenden</a>
+						<a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox', 'f' => '-internship', 'q' => $original_query)) ?>"><strong>ausblenden</strong></a>
 					<?php else: ?>
-						<a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox', 'f' => '-internship')) ?>">ausblenden</a>
+						<a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox', 'f' => '-internship')) ?>"><strong>ausblenden</strong></a>
 					<?php endif ?>
 					
 				<?php endif ?>
@@ -35,7 +35,7 @@
 				<?php if ($original_query == 'praktik* OR werkstudent'): ?>
 					<a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox')) ?>">Alle anzeigen</a>
 				<?php else: ?>
-					<a href="<?php echo $this->createUrl('job/index', array('q' => 'praktik* OR werkstudent', 'src' => 'topbox')) ?>">Nur Praktika anzeigen</a>
+					<a href="<?php echo $this->createUrl('job/index', array('q' => 'praktik* OR werkstudent OR volontariat OR shk', 'src' => 'topbox')) ?>">Nur Praktika anzeigen</a>
 				<?php endif ?>
 				
 				 

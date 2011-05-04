@@ -211,6 +211,9 @@ class Controller extends CController
 		$doc->addField(Zend_Search_Lucene_Field::UnStored('city', $model->city, 'utf-8'));
 		$doc->addField(Zend_Search_Lucene_Field::UnStored('description', $model->description, 'utf-8'));
 		
+		
+		$doc->addField(Zend_Search_Lucene_Field::UnStored('shadowtags', $model->shadowtags, 'utf-8'));
+		
 		$doc->addField(Zend_Search_Lucene_Field::UnStored('sector', $model->sector, 'utf-8'));
 		$doc->addField(Zend_Search_Lucene_Field::UnStored('study', $model->study, 'utf-8'));
 	

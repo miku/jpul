@@ -47,7 +47,6 @@
  * @property string $publisher_email
  * @property string $job_version
  * @property string $ukey
- * @property string $shadowtags
  *
  * The followings are the available model relations:
  */
@@ -94,7 +93,7 @@ class Job extends CActiveRecord
 			array('how_to_apply', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, description, how_to_apply, attachment, company, company_homepage, zipcode, city, state, country, is_telecommute, is_nation_wide, degree_id, study, sector, author_id, date_added, expiration_date, reviewer_id, source, status_id, degree_student, degree_bachelor, degree_master, degree_ma, degree_diploma, degree_phd, degree_postdoc, degree_encoded, is_fulltime, is_parttime, is_internship, is_working_student, is_thesis, is_scholarship, is_regular_job, is_scientific_position, publisher_name, publisher_phone, publisher_email, job_version, shadowtags', 'safe', 'on'=>'search'),
+			array('id, title, description, how_to_apply, attachment, company, company_homepage, zipcode, city, state, country, is_telecommute, is_nation_wide, degree_id, study, sector, author_id, date_added, expiration_date, reviewer_id, source, status_id, degree_student, degree_bachelor, degree_master, degree_ma, degree_diploma, degree_phd, degree_postdoc, degree_encoded, is_fulltime, is_parttime, is_internship, is_working_student, is_thesis, is_scholarship, is_regular_job, is_scientific_position, publisher_name, publisher_phone, publisher_email, job_version', 'safe', 'on'=>'search'),
 			array('attachment', 'file', 'types'=>'pdf', 'allowEmpty'=>true, 'maxSize' => 2097152),
 		);
 	}
@@ -165,7 +164,6 @@ class Job extends CActiveRecord
 			'publisher_email' => Yii::t('app', 'Publisher Email'),
 			'job_version' => Yii::t('app', 'Job Version'),
 			'ukey' => Yii::t('app', 'Ukey'),
-			'shadowtags' => 'shadowtags',
 		);
 	}
 
@@ -223,8 +221,6 @@ class Job extends CActiveRecord
 		$criteria->compare('publisher_email',$this->publisher_email,true);
 		$criteria->compare('job_version',$this->job_version,true);
 		$criteria->compare('ukey',$this->ukey,true);
-		$criteria->compare('shadowtags',$this->shadowtags,true);
-		
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,

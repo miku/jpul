@@ -6,7 +6,7 @@
 			<div id="view-header">
 
 				<div id="mini-nav">
-					<a href="javascript:history.go(-1)">Zurück zur Übersicht</a>			
+					<a href="<?php echo $this->createUrl('admin/index'); ?>">Zurück zur Übersicht</a>			
 				</div>
 
 				<div id="view-job-title"><?php echo $model->title ?></div>
@@ -70,6 +70,8 @@
 <div id="sidebar-container">
 	<div id="sidebar">
 		<?php $this->renderPartial('_sidebar_view_actions', array('model' => $model)); ?>
+		<?php $this->renderPartial('_sidebar_publisher_contact', array('model' => $model)); ?>
+		<?php $this->renderPartial('_sidebar_ukey', array('model' => $model)); ?>
 		<?php // $this->renderPartial('_sidebar_sharing', array('model' => $model)); ?>
 		<?php // $this->renderPartial('_sidebar_for_employer'); ?>
 	</div>	

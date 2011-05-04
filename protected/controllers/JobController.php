@@ -52,7 +52,7 @@ class JobController extends Controller
 	 *      If it's clear, we don't need it: TODO simplify 'favStore'.
 	 *      
 	 */
-	public function actionIndex($page = 1, $sort = null, $v = "browser") {
+	public function actionIndex($page = 1, $sort = null, $v = "browser", $f = null) {
 
 		Zend_Search_Lucene_Analysis_Analyzer::setDefault(
     		new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8_CaseInsensitive());
@@ -76,10 +76,15 @@ class JobController extends Controller
 				$criteria->order = 'date_added DESC';
 				break;
 		}
-
+		
 		// just show the public offers, which are not expired ...
 		$criteria->condition = 'status_id=:status_id AND expiration_date > :current_time';
 		$criteria->params=array(':status_id' => 2, ':current_time' => $current_time);
+		
+		if ($f === '-internship') {
+			$criteria->condition .= " AND is_internship = 0 ";
+			$criteria->condition .= " AND NOT title LIKE '%praktik%' ";
+		}
 
 		// Determine the view to use ...
 		$viewName = "default";
@@ -241,7 +246,8 @@ class JobController extends Controller
 				'number_of_pages' => $number_of_pages,
 				'sort' => $sort,
 				'original_query' => $original_query,
-				'viewName' => $viewName) 
+				'viewName' => $viewName,
+				'f' => $f) 
 			);
 			
 		} elseif ($v == "json") {
@@ -253,7 +259,8 @@ class JobController extends Controller
 				'number_of_pages' => $number_of_pages,
 				'sort' => $sort,
 				'original_query' => $original_query,
-				'viewName' => $viewName) 
+				'viewName' => $viewName,
+				'f' => $f) 
 			);
 			
 		} elseif ($v == "embed") {			
@@ -265,7 +272,8 @@ class JobController extends Controller
 				'number_of_pages' => $number_of_pages,
 				'sort' => $sort,
 				'original_query' => $original_query,
-				'viewName' => $viewName) 
+				'viewName' => $viewName,
+				'f' => $f) 
 			);
 		}
 	}

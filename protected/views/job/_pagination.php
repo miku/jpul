@@ -27,6 +27,10 @@
 		if (isset($params["size"])) {
 			unset($params["size"]);
 		}
+
+		if (isset($params["src"])) {
+			unset($params["src"]);
+		}
 		
 		$number_of_pages = ceil($total / $this->items_per_page);
 		$current_page = $params["page"];
@@ -36,8 +40,8 @@
 	<p class="alignleft"> 
 			<?php
 				$params_10 = $params; $params_10["size"] = 10; $params_10["page"] = 1;
-				$params_20 = $params; $params_20["size"] = 20; $params_20["page"] = 1;
-				$params_50 = $params; $params_50["size"] = 50; $params_50["page"] = 1;
+				$params_20 = $params; $params_20["size"] = 20; $params_20["page"] = 1; 
+				$params_50 = $params; $params_50["size"] = 50; $params_50["page"] = 1; 
 			?>
 			<a class="<?php if ($this->items_per_page == 10) { echo 'current-page'; } ?>" href="<?php echo $this->createUrl('job/index', $params_10); ?>">10</a>
 			<a class="<?php if ($this->items_per_page == 20) { echo 'current-page'; } ?>" href="<?php echo $this->createUrl('job/index', $params_20); ?>">20</a>

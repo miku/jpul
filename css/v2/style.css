@@ -326,6 +326,7 @@ input#search {
 
 .button {
 	padding: 4px 8px 4px 8px;
+	font-size: 12px;
 	border: solid thin #ECECEC;
 	color: white;
 	font-weight: bold;

@@ -3,13 +3,50 @@
 	<div id="main-header">
 		<div id="searchbox">
 			<form action="<?php echo $this->createUrl('job/index') ?>" method="get" accept-charset="utf-8">
-				<input size="50" type="text" name="q" value="<?php if (isset($original_query)) echo $original_query ?>" id="search">
+				<input size="40" type="text" name="q" value="<?php if (isset($original_query)) echo $original_query ?>" id="search">
 				<input type="submit" value="Suchen" class="button">
 			</form>
 		</div>
 		
 		<div id="sortmenu">
-			sortieren nach: 
+			<p style="padding: 8px 0 0 0; font-size:10px">
+				Praktika 
+				
+				<?php if ($f == '-internship'): ?>
+
+					<?php if (isset($original_query)): ?>
+						<a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox', 'q' => $original_query)) ?>">einblenden</a>
+					<?php else: ?>
+						<a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox')) ?>">einblenden</a>
+					<?php endif ?>
+				
+				<?php else: ?>
+
+					<?php if (isset($original_query)): ?>
+						<a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox', 'f' => '-internship', 'q' => $original_query)) ?>">ausblenden</a>
+					<?php else: ?>
+						<a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox', 'f' => '-internship')) ?>">ausblenden</a>
+					<?php endif ?>
+					
+				<?php endif ?>
+				
+				|
+				
+				<?php if ($original_query == 'praktik* OR werkstudent'): ?>
+					<a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox')) ?>">Alle anzeigen</a>
+				<?php else: ?>
+					<a href="<?php echo $this->createUrl('job/index', array('q' => 'praktik* OR werkstudent', 'src' => 'topbox')) ?>">Nur Praktika anzeigen</a>
+				<?php endif ?>
+				
+				 
+			</p>
+			
+			<!-- 
+				select * from ____ where ____ like '%?sort=%' and not ____ like '10_6_7' and ____ like '%de%';  
+				yield 938 rows of 101488 match, which are 0.92% - so we stash this feature for now
+			-->
+			
+			<!-- sortieren nach: 
 			<?php if (isset($original_query)): ?>
 				<select baseurl="<?php echo $this->createUrl('job/index', array('q' => $original_query)) ?>&" id="sort" name="sort">
 			<?php else: ?>
@@ -19,16 +56,18 @@
 				<option <?php if ($sort === "t"): ?>selected="selected" <?php endif; ?> value="d">Titel</option>
 				<option <?php if ($sort === "u"): ?>selected="selected" <?php endif; ?> value="d">Unternehmen</option>
 				<option <?php if ($sort === "o"): ?>selected="selected" <?php endif; ?> value="d">Ort</option>															
-			</select>
+			</select> -->
 		</div>
 		
 		<div class="clear"></div>
 	</div>
 
 	<div id="fav-subbar" style="border: solid thin #EFEFEF; font-size: 10px; margin: 0 10px 0 10px; padding: 10px 10px 10px 10px; background: aliceblue;">		
-		<?php $this->renderPartial('_favbar') ?>
+		<div class="alignleft">
+			<?php $this->renderPartial('_favbar') ?>
+		</div>
 	</div>
-	
+		
 	<div id="info-subbar">
 		<p class="alignleft">
 			<?php $adslot = rand(1, 100); ?>

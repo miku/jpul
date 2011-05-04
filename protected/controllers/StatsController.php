@@ -152,7 +152,7 @@ class StatsController extends Controller
 		$sql = "select * from request where request_uri not like '%stats%' and request_uri not like '%activity%' order by request_time desc limit 50;";
 	
 		$connection = Yii::app()->db;
-		$command = $connection->cache(86400)->createCommand($sql);
+		$command = $connection->createCommand($sql);
 		$dataReader = $command->queryAll();
 	
 		$this->layout = "v2/plain";

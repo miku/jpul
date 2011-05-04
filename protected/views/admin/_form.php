@@ -165,17 +165,17 @@
 	
 	<li>
 		<?php echo $form->labelEx($model,'publisher_name'); ?>
-		<?php echo $form->textField($model,'publisher_name', array('size' => '70')); ?>
+		<?php echo $form->textField($model,'publisher_name', array('size' => '70', 'value' => 'Career Center')); ?>
 		<div class="form-error"><?php echo $form->error($model,'publisher_name'); ?></div>
 	</li>
 	<li>
 		<?php echo $form->labelEx($model,'publisher_phone'); ?>
-		<?php echo $form->textField($model,'publisher_phone', array('size' => '70')); ?>
+		<?php echo $form->textField($model,'publisher_phone', array('size' => '70', 'value' => '+49 341 97-30030')); ?>
 		<div class="form-error"><?php echo $form->error($model,'publisher_phone'); ?></div>
 	</li>
 	<li>
 		<?php echo $form->labelEx($model,'publisher_email'); ?>
-		<?php echo $form->textField($model,'publisher_email', array('size' => '70')); ?>
+		<?php echo $form->textField($model,'publisher_email', array('size' => '70', 'value' => 'careercenter@uni-leipzig.de')); ?>
 		<div class="form-error"><?php echo $form->error($model,'publisher_email'); ?></div>
 	</li>
 	

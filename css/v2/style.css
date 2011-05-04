@@ -13,7 +13,8 @@ body {
 	padding: 0;
 	color: #333;
 	font: normal 10pt Verdana,"Helvetica Neue",Arial,Tahoma,sans-serif;
-	background: #fff;
+	background: #FFF;
+/*	background: url(../../images/v2/stripe.png) repeat scroll 0 0;	*/
 	min-width:985px;
 	font-size:11pt;	
 }
@@ -558,9 +559,10 @@ float: right;
 #broadcast {
 	text-align: center;
 	padding: 8px;
-	background: black;
-	border-bottom: solid thin white;
-	color: white;
+	background: #EFEFEF; /*url(../../images/v2/stripe.png) repeat scroll 0 0;	*/
+	border-top: solid 3px orange;
+	border-bottom: solid 3px orange;
+	color: #444444;
 }
 
 

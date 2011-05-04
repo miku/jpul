@@ -60,7 +60,6 @@
 <body>
 	<div class="container" id="page">
 		<div id="title">
-			<noscript><div id="broadcast">Bitte aktivieren Sie Javascript.</div></noscript>
 			<div id="title-nav">
 				<div id="title-nav-left">
 					<ul>
@@ -94,6 +93,7 @@
 			<div id="title-border">&nbsp;</div> 
 		</div>
 		<div class="clear"></div>
+		<noscript><div id="broadcast">Bitte aktivieren Sie Javascript.</div></noscript>
 		<div id="content">
 			<?php echo $content; ?>
 		</div>

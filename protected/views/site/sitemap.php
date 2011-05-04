@@ -17,7 +17,14 @@
 <loc><?php echo 'http://' . Yii::app()->request->serverName  . $this->createUrl('job/view', array('id' => $model->id)); ?></loc>
 <lastmod><?php echo strftime("%Y-%m-%d", $model->date_added); ?></lastmod>
 <priority><?php if ($model->expiration_date < $current_time): ?>0.1<?php else: ?>0.8<?php endif ?></priority>
+</url>
+<?php if ($model->attachment != null || $model->attachment != ''): ?>
+<url>
+<loc><?php echo 'http://' . Yii::app()->request->serverName  . $this->createUrl('job/download', array('id' => $model->id)); ?></loc>
+<lastmod><?php echo strftime("%Y-%m-%d", $model->date_added); ?></lastmod>
+<priority><?php if ($model->expiration_date < $current_time): ?>0.1<?php else: ?>0.8<?php endif ?></priority>
 </url>	
+<?php endif ?>
 <?php endif ?>
 <?php endforeach ?>
 </urlset>

@@ -18,9 +18,9 @@
 				<?php if ($f == '-internship'): ?>
 
 					<?php if (isset($original_query)): ?>
-						&#x03c6; <span style="border-bottom: solid red 1px">Praktika</span> <a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox', 'q' => $original_query)) ?>">anzeigen</a>
+						<strong>&#x03c0;</strong> <span style="border-bottom: solid red 1px">Praktika</span> <a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox', 'q' => $original_query)) ?>">einblenden</a>
 					<?php else: ?>
-						&#x03c6; <span style="border-bottom: solid red 1px">Praktika</span> <a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox')) ?>">anzeigen</a>
+						<strong>&#x03c0;</strong> <span style="border-bottom: solid red 1px">Praktika</span> <a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox')) ?>">einblenden</a>
 					<?php endif ?>
 					
 				

@@ -331,6 +331,7 @@ class StatsController extends Controller
 		}
 		
 		$beacon = Yii::app()->session[Yii::app()->params['ccul_stats_v1']];
+		if ( !(isset($beacon)) || $beacon == null ) { return; }
 
 		try {
 			$outbound = new Outbound();

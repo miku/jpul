@@ -315,6 +315,17 @@ class StatsController extends Controller
 			'gcurl_os' => $gcurl_os, 'gcurl_browser' => $gcurl_browser));
 	}
 	
+	public function actionOutboundLinks() {
+		$sql = "select * from outbound order by request_time desc;";
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand($sql);
+		$outbound = $command->queryAll();
+		$this->layout = "v2/main";
+		$this->render("outbound", array("outbound" => $outbound));
+	
+
+	}
+	
 	public function actionOutbound($location = '', $url = '', $text = '') {
 		Yii::log("Outbound link detected on page: " . urldecode($location) . " to: " . urldecode($url) . " (text: " . $text . ")", CLogger::LEVEL_INFO, __FUNCTION__);
 		

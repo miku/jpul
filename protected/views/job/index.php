@@ -80,7 +80,7 @@
 				<?php $this->renderPartial('_snippet_example_searches') ?>			
 			
 			<?php elseif ($adslot > 30): ?>				
-				<strong>09.-13. Mai 2011</strong> <a class="gated" href="http://www.zv.uni-leipzig.de/studium/career-center/karrierewoche.html">Karrierewoche der Universität Leipzig | Workshops | Berufseinstiegstag | und mehr ...</a>
+				<strong>09.-13. Mai 2011</strong> <a class="outbound" href="http://www.zv.uni-leipzig.de/studium/career-center/karrierewoche.html">Karrierewoche der Universität Leipzig | Workshops | Berufseinstiegstag | und mehr ...</a>
 			
 			<?php else: ?>
 			
@@ -211,8 +211,12 @@
 			window.location.replace(c);
 		});
 		
-		$(".gated").click(function(){
-			
-		})
+		// intern is a class added by T3 - it may change!
+		$("a.outbound, a.intern").click(function(){
+			var text = $(this).text();
+			var url = $(this).attr("href");
+			$.get("<?php echo $this->createUrl('stats/outbound'); ?>", 
+				{ "url":encodeURIComponent(url), "text": text, "location": encodeURIComponent(document.location.href) });
+		});
 	});
 </script>

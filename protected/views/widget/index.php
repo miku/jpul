@@ -59,7 +59,7 @@
 
 <h1>Jobportal Widget</h1>
 
-<p><em>Ein Service des <a href="http://www.zv.uni-leipzig.de/studium/career-center.html">Career Centers</a> der Universität Leipzig.</em></p>
+<p><em>Ein Service des <a class="outbound" href="http://www.zv.uni-leipzig.de/studium/career-center.html">Career Centers</a> der Universität Leipzig.</em></p>
 
 <p>Betten Sie aktuelle Jobangebote aus unserem <a href="http://www.uni-leipzig.de/jobportal">Jobportal</a> mit unserem Widget in Ihre Webseite ein.
 	Unter <strong>Vorschau</strong> sehen Sie eine Beispielansicht des Widgets, darunter den <strong>Code</strong>, den Sie in
@@ -124,13 +124,22 @@ Burgstraße 21, 1. Etage,
 </div></body></html>
 
 <script type="text/javascript" charset="utf-8">
+	
 	function htmlEntities(str) {
     	return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 	}
+	
 	$(document).ready(function(){
 		$("#code").html(function() {
 			var snippet = $("div#snippet").html();
 			return htmlEntities(snippet);
+		});
+		
+		$("a.outbound").click(function(){
+			var text = $(this).text();
+			var url = $(this).attr("href");
+			$.get("<?php echo $this->createUrl('stats/outbound'); ?>", 
+				{ "url": encodeURIComponent(url), "text": text, "location": encodeURIComponent(document.location.href) });
 		});
 	});
 	// IE innerHTML issues ...

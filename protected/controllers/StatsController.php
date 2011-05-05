@@ -314,6 +314,51 @@ class StatsController extends Controller
 		$this->render("index", array("stats" => $stats, 
 			'gcurl_os' => $gcurl_os, 'gcurl_browser' => $gcurl_browser));
 	}
+	
+	public function actionOutbound($location = '', $url = '', $text = '') {
+		Yii::log("Outbound link detected on page: " . urldecode($location) . " to: " . urldecode($url) . " (text: " . $text . ")", CLogger::LEVEL_INFO, __FUNCTION__);
+		
+		if (isset(Yii::app()->session[Yii::app()->params['ccul_stats_v1']])) {
+			$beacon = Yii::app()->session[Yii::app()->params['ccul_stats_v1']];			
+			$beacon['last-access'] = time();
+			Yii::app()->session[Yii::app()->params['ccul_stats_v1']] = $beacon;
+		} else {
+			Yii::app()->session[Yii::app()->params['ccul_stats_v1']] = array(
+				"id" => uniqid(), 
+				"first-access" => time(), 
+				"last-access" => time()
+			);
+		}
+		
+		$beacon = Yii::app()->session[Yii::app()->params['ccul_stats_v1']];
+
+		try {
+			$outbound = new Outbound();
+		
+			$outbound->location = urldecode($location);
+			$outbound->url = urldecode($url);
+			$outbound->text = $text;
+		
+			$request->tracking_id = $beacon['id'];
+		
+			$outbound->tracking_version = 2; // version "1" was untagged
+
+			$outbound->remote_addr = isset($_SERVER["REMOTE_ADDR"]) ? $_SERVER["REMOTE_ADDR"] : '';
+			$outbound->remote_host = isset($_SERVER["REMOTE_HOST"]) ? $_SERVER["REMOTE_HOST"] : '';
+			$outbound->request_time = time();
+			$outbound->http_user_agent = isset($_SERVER["HTTP_USER_AGENT"]) ? $_SERVER["HTTP_USER_AGENT"] : '';		
+			$outbound->http_accept = isset($_SERVER['HTTP_ACCEPT']) ? $_SERVER['HTTP_ACCEPT'] : '';
+			$outbound->http_accept_charset = isset($_SERVER['HTTP_ACCEPT_CHARSET']) ? $_SERVER['HTTP_ACCEPT_CHARSET'] : '';
+			$outbound->http_accept_encoding = isset($_SERVER['HTTP_ACCEPT_ENCODING']) ? $_SERVER['HTTP_ACCEPT_ENCODING'] : '';
+			$outbound->http_accept_language = isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? $_SERVER['HTTP_ACCEPT_LANGUAGE'] : '';
+			$outbound->http_connection = isset($_SERVER['HTTP_CONNECTION']) ? $_SERVER['HTTP_CONNECTION'] : '';
+			$outbound->http_host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '';
+			$outbound->remote_port = isset($_SERVER['REMOTE_PORT']) ? $_SERVER['REMOTE_PORT'] : '';			
+			$outbound->save();
+		} catch (Exception $e) {
+			Yii::log("Failed to record outbound: " . $e, CLogger::LEVEL_INFO, __FUNCTION__);
+		} 
+	}
 		
 	public function actionTrack(
 		$b = '', $ref= '', $ww = '', $wh = '', 

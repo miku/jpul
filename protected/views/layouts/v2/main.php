@@ -63,8 +63,8 @@
 			<div id="title-nav">
 				<div id="title-nav-left">
 					<ul>
-						<li><a href="<?php echo $this->createUrl('job/index'); ?>">Jobportal Homepage</a></li>
-						<li><a href="http://www.zv.uni-leipzig.de/studium/career-center.html">Career Center</a></li>
+						<li><a class="outbound" href="<?php echo $this->createUrl('job/index'); ?>">Jobportal Homepage</a></li>
+						<li><a class="outbound" href="http://www.zv.uni-leipzig.de/studium/career-center.html">Career Center</a></li>
 					</ul>
 				</div>
 				<div id="title-nav-right">
@@ -88,7 +88,7 @@
 				</div>
 			</div>
 			<div id="title-logo">
-				<a href="http://www.uni-leipzig.de" title="Universität Leipzig"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/v2/logo.jpg" alt="Universität Leipzig" /></a>
+				<a class="outbound" href="http://www.uni-leipzig.de" title="Universität Leipzig"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/v2/logo.jpg" alt="Universität Leipzig" /></a>
 			</div>			 
 			<div id="title-border">&nbsp;</div> 
 		</div>

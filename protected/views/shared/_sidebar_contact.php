@@ -15,7 +15,7 @@
 	Di. bis Do. 9:00 &mdash; 17:00 Uhr<br>
 	Fr. 9:00 &mdash; 15:00 Uhr<br>
 </p>
-<a href="http://www.zv.uni-leipzig.de/studium/career-center.html">
+<a class="outbound" href="http://www.zv.uni-leipzig.de/studium/career-center.html">
 <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/v2/cc_logo.gif" alt="CC-Logo" />
 </a>
 

@@ -8,7 +8,6 @@
  * @property string $location
  * @property string $url
  * @property string $text
- * @property string $user_agent
  * @property string $more_info
  * @property string $tracking_id
  * @property integer $tracking_version
@@ -52,13 +51,13 @@ class Outbound extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('tracking_version, request_time', 'numerical', 'integerOnly'=>true),
-			array('location, url, text, user_agent, tracking_id, remote_host, http_user_agent, http_accept, http_accept_charset, http_accept_encoding, http_accept_language, http_connection, http_host', 'length', 'max'=>512),
+			array('location, url, text, tracking_id, remote_host, http_user_agent, http_accept, http_accept_charset, http_accept_encoding, http_accept_language, http_connection, http_host', 'length', 'max'=>512),
 			array('more_info', 'length', 'max'=>1024),
 			array('remote_addr', 'length', 'max'=>255),
 			array('remote_port', 'length', 'max'=>32),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, location, url, text, user_agent, more_info, tracking_id, tracking_version, remote_addr, remote_host, request_time, http_user_agent, http_accept, http_accept_charset, http_accept_encoding, http_accept_language, http_connection, http_host, remote_port', 'safe', 'on'=>'search'),
+			array('id, location, url, text, more_info, tracking_id, tracking_version, remote_addr, remote_host, request_time, http_user_agent, http_accept, http_accept_charset, http_accept_encoding, http_accept_language, http_connection, http_host, remote_port', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -83,7 +82,6 @@ class Outbound extends CActiveRecord
 			'location' => 'Location',
 			'url' => 'Url',
 			'text' => 'Text',
-			'user_agent' => 'User Agent',
 			'more_info' => 'More Info',
 			'tracking_id' => 'Tracking',
 			'tracking_version' => 'Tracking Version',
@@ -116,7 +114,6 @@ class Outbound extends CActiveRecord
 		$criteria->compare('location',$this->location,true);
 		$criteria->compare('url',$this->url,true);
 		$criteria->compare('text',$this->text,true);
-		$criteria->compare('user_agent',$this->user_agent,true);
 		$criteria->compare('more_info',$this->more_info,true);
 		$criteria->compare('tracking_id',$this->tracking_id,true);
 		$criteria->compare('tracking_version',$this->tracking_version);

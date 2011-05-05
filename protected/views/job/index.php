@@ -82,7 +82,7 @@
 				<?php $this->renderPartial('_snippet_example_searches') ?>			
 			
 			<?php elseif ($adslot > 30): ?>				
-				<strong>09.-13. Mai 2011</strong> <a href="http://www.zv.uni-leipzig.de/studium/career-center/karrierewoche.html">Karrierewoche der Universität Leipzig | Workshops | Berufseinstiegstag | und mehr ...</a>
+				<strong>09.-13. Mai 2011</strong> <a class="gated" href="http://www.zv.uni-leipzig.de/studium/career-center/karrierewoche.html">Karrierewoche der Universität Leipzig | Workshops | Berufseinstiegstag | und mehr ...</a>
 			
 			<?php else: ?>
 			
@@ -212,5 +212,9 @@
 			var c = $("#sort").attr("baseurl") + "sort=" + value;
 			window.location.replace(c);
 		});
+		
+		$(".gated").click(function(){
+			
+		})
 	});
 </script>

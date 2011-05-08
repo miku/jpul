@@ -116,6 +116,7 @@
 
 <ul>
 	<li><a href="http://wwwdup.uni-leipzig.de/~sportwi/studium/praktikum-und-jobportal">http://wwwdup.uni-leipzig.de/~sportwi/studium/praktikum-und-jobportal</a></li>
+	<li><a href="http://www.informatik.uni-leipzig.de/ifi/kontakt/jobs.html">http://www.informatik.uni-leipzig.de/ifi/kontakt/jobs.html</a></li>
 </ul>
 
 <div class="line"></div>

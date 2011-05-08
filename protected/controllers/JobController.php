@@ -112,7 +112,7 @@ class JobController extends Controller
 			$criteria->condition='id=:id';
 			$criteria->params=array(':id'=>$original_query);
 			$model = Job::model()->find($criteria);
-			if ($model->expiration_date > $current_time && $model->status_id == 2) {
+			if ($model->status_id == 2) {
 				$this->redirect($this->createUrl('job/view', array('id' => $original_query)));
 			} else {
 				$this->redirect($this->createUrl('job/index'));

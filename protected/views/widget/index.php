@@ -112,13 +112,23 @@
 
 <div class="line"></div>
 
+<h3>Live Beispiele</h3>
+
+<ul>
+	<li><a href="http://wwwdup.uni-leipzig.de/~sportwi/studium/praktikum-und-jobportal">http://wwwdup.uni-leipzig.de/~sportwi/studium/praktikum-und-jobportal</a></li>
+</ul>
+
+<div class="line"></div>
+
+
+
 <h3>Kontakt</h3>
 
 <p><strong>Career Center</strong>
 Universität Leipzig,
 Burgstraße 21, 1. Etage,
 04109 Leipzig, +49 341 97-30030</p>
-<p>Technische Fragen: <a href="mailto:martin.czygan@googlemail.com">martin.czygan@googlemail.com</a></p>
+<p>Technische Fragen: <a href="mailto:martin.czygan@uni-leipzig.de">martin.czygan@uni-leipzig.de</a></p>
 
 
 </div></body></html>

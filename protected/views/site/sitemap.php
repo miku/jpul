@@ -3,11 +3,26 @@
 <?php $current_time = time(); ?>
 <url>
 <loc>http://wwwdup.uni-leipzig.de/jobportal/docs/2011_04_21_Einstellung_eines_Angebotes_im_Jobportal.pdf</loc>
-<lastmod>2011-02-17</lastmod>
-<priority>0.2</priority>
+<lastmod>2011-04-21</lastmod>
+<priority>0.5</priority>
 </url>
 <url>
 <loc><?php echo 'http://' . Yii::app()->request->serverName .  $this->createUrl('job/index'); ?></loc>
+<lastmod><?php echo strftime("%Y-%m-%d"); ?></lastmod>
+<priority>1.0</priority>
+</url>
+<url>
+<loc><?php echo 'http://' . Yii::app()->request->serverName .  $this->createUrl('widget/index'); ?></loc>
+<lastmod><?php echo strftime("%Y-%m-%d"); ?></lastmod>
+<priority>1.0</priority>
+</url>
+<url>
+<loc><?php echo 'http://' . Yii::app()->request->serverName .  $this->createUrl('list/cities'); ?></loc>
+<lastmod><?php echo strftime("%Y-%m-%d"); ?></lastmod>
+<priority>1.0</priority>
+</url>
+<url>
+<loc><?php echo 'http://' . Yii::app()->request->serverName .  $this->createUrl('list/companies'); ?></loc>
 <lastmod><?php echo strftime("%Y-%m-%d"); ?></lastmod>
 <priority>1.0</priority>
 </url>

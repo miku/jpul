@@ -163,7 +163,7 @@ class StatsController extends Controller
 	public function actionReferer() {
 		$sql = "select count(*) as cnt, http_referer as referer from request where http_referer is NOT null and http_referer != '' and http_referer not like '%wwwdup%' and http_referer not like '%localhost%' group by http_referer order by cnt desc;";
 		$connection = Yii::app()->db;
-		$command = $connection->cache(86400)->createCommand($sql);
+		$command = $connection->cache(600)->createCommand($sql);
 		$dataReader = $command->queryAll();
 	
 		$this->layout = "v2/main";
@@ -182,7 +182,7 @@ class StatsController extends Controller
 			group by request_uri 
 			order by cnt desc;";
 		$connection = Yii::app()->db;
-		$command = $connection->cache(86400)->createCommand($sql);
+		$command = $connection->cache(600)->createCommand($sql);
 		$searches = $command->queryAll();
 	
 		$sql = "select request_uri as uri, request_time from request where 
@@ -195,7 +195,7 @@ class StatsController extends Controller
 			order by request_time desc limit 25;";
 	
 		$connection = Yii::app()->db;
-		$command = $connection->cache(86400)->createCommand($sql);
+		$command = $connection->cache(600)->createCommand($sql);
 		$recent = $command->queryAll();
 	
 		$this->layout = "v2/main";
@@ -219,7 +219,7 @@ class StatsController extends Controller
 		// Events
 		$sql = "select count(tracking_id) as events from request where tracking_id is not null;";
 		$connection = Yii::app()->db;
-		$command = $connection->cache(86400)->createCommand($sql);
+		$command = $connection->cache(600)->createCommand($sql);
 		$dataReader = $command->queryRow();
 	
 		$stats["Pageviews Total"] = $dataReader["events"];
@@ -227,7 +227,7 @@ class StatsController extends Controller
 		// Average pageviews
 		$sql = "select avg(q.r) as avg from (select distinct tracking_id, count(request_uri) as r from request where tracking_id is not null group by tracking_id) as q;";
 		$connection = Yii::app()->db;
-		$command = $connection->cache(86400)->createCommand($sql);
+		$command = $connection->cache(600)->createCommand($sql);
 		$dataReader = $command->queryRow();
 	
 		$stats["Average Page Views"] = $dataReader["avg"];
@@ -235,7 +235,7 @@ class StatsController extends Controller
 		// Unique Visitors
 		$sql = "select count(distinct tracking_id) as uniq from request where tracking_id is not null;";
 		$connection = Yii::app()->db;
-		$command = $connection->cache(86400)->createCommand($sql);
+		$command = $connection->cache(600)->createCommand($sql);
 		$dataReader = $command->queryRow();
 	
 		$stats["Unique Visitors Total"] = $dataReader["uniq"];
@@ -244,7 +244,7 @@ class StatsController extends Controller
 		// Unique Visitors 24h
 		$sql = "select count(distinct tracking_id) as uniq from request where tracking_id is not null and request_time > ". ($current_time - $_24h) . ";";
 		$connection = Yii::app()->db;
-		$command = $connection->cache(86400)->createCommand($sql);
+		$command = $connection->cache(600)->createCommand($sql);
 		$dataReader = $command->queryRow();
 	
 		$stats["Unique Visitors Last 24h"] = $dataReader["uniq"];
@@ -253,7 +253,7 @@ class StatsController extends Controller
 		// Unique Visitors 1w
 		$sql = "select count(distinct tracking_id) as uniq from request where tracking_id is not null and request_time > ". ($current_time - $_1w) . ";";
 		$connection = Yii::app()->db;
-		$command = $connection->cache(86400)->createCommand($sql);
+		$command = $connection->cache(600)->createCommand($sql);
 		$dataReader = $command->queryRow();
 	
 		$stats["Unique Visitors Last 7 days"] = $dataReader["uniq"];
@@ -261,7 +261,7 @@ class StatsController extends Controller
 		// Unique Visitors 30d
 		$sql = "select count(distinct tracking_id) as uniq from request where tracking_id is not null and request_time > ". ($current_time - $_30d) . ";";
 		$connection = Yii::app()->db;
-		$command = $connection->cache(86400)->createCommand($sql);
+		$command = $connection->cache(600)->createCommand($sql);
 		$dataReader = $command->queryRow();
 	
 		$stats["Unique Visitors Last 30 days"] = $dataReader["uniq"];
@@ -270,7 +270,7 @@ class StatsController extends Controller
 		// browser distribution		
 		$sql = "select count(*) as cnt, bt_browser as browser from request where bt_browser is NOT null and bt_browser != '' group by bt_browser;";
 		$connection = Yii::app()->db;
-		$command = $connection->cache(86400)->createCommand($sql);
+		$command = $connection->cache(600)->createCommand($sql);
 		$dataReader = $command->queryAll();
 		
 		$gcurl_browser = "https://chart.googleapis.com/chart?chs=350x140&cht=p3";
@@ -292,7 +292,7 @@ class StatsController extends Controller
 		// OS distribution
 		$sql = "select count(*) as cnt, bt_os as os from request where bt_os is NOT null and bt_os != '' group by bt_os;";
 		$connection = Yii::app()->db;
-		$command = $connection->cache(86400)->createCommand($sql);
+		$command = $connection->cache(600)->createCommand($sql);
 		$dataReader = $command->queryAll();
 		
 		$gcurl_os = "https://chart.googleapis.com/chart?chs=350x140&cht=p3";

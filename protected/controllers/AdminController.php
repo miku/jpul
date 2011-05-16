@@ -188,7 +188,8 @@ class AdminController extends Controller
 			'current_end' => $current_end,
 			'page' => $page,
 			'number_of_pages' => $number_of_pages,
-			'sort' => $sort) 
+			'sort' => $sort,
+			'original_query' => $original_query) 
 		);
 	}
 		

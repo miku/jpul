@@ -27,6 +27,8 @@ import org.apache.lucene.store.FSDirectory;
  *
  */
 public class Main {
+    
+    private static final String DEFAULT_INDEX = "/Users/ronit/projects/jobportal-uni-leipzig/protected/runtime/search";
 
     public static void main(String[] args) throws ParseException, IOException {
 
@@ -34,12 +36,12 @@ public class Main {
         Option indexOption = OptionBuilder.withArgName("index").hasArg().withDescription("Index directory").create("index");
         Option docOption = OptionBuilder.withArgName("doc").hasArg().withDescription("Target document").create("doc");
         
-
         options.addOption(indexOption);
         options.addOption(docOption);
 
         CommandLineParser parser = new GnuParser();
         CommandLine line = null;
+        
         try {
             line = parser.parse(options, args);
         } catch (ParseException exp) {
@@ -54,13 +56,14 @@ public class Main {
             indexDir = line.getOptionValue("index");
             System.out.println("Using Index: " + indexDir);
         } else {
-            indexDir = "/Users/ronit/projects/jobportal-uni-leipzig/protected/runtime/search";
+            indexDir = DEFAULT_INDEX;
         }
 
         Directory dir = FSDirectory.open(new File(indexDir));
         IndexSearcher is = new IndexSearcher(dir);
         IndexReader ir = is.getIndexReader();
 
+        System.err.println("Index: " + ir.directory());
         System.err.println("Index version: " + ir.getVersion());
         System.err.println("Number of documents: " + ir.numDocs());
 
@@ -84,7 +87,7 @@ public class Main {
         if (line.hasOption("doc")) {
             String requestedJob = line.getOptionValue("doc");
             if (!jobMap.containsKey(requestedJob)) {
-                System.err.println("No such job.");
+                System.err.println("=> " + requestedJob + ": No such job");
             } else {
 
                 System.err.println("\nFinding documents similar to:");
@@ -118,7 +121,7 @@ public class Main {
                 TopDocs similarDocs = is.search(query, 5);
 
                 if (similarDocs.totalHits == 0) {
-                    System.err.println("None like this.");
+                    System.err.println("None like this");
                 }
 
                 for (int i = 0; i < similarDocs.scoreDocs.length; i++) {

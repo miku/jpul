@@ -96,7 +96,7 @@
 					if (count($offers) > 0) {
 						$item = $offers[array_rand($offers)];
 						$item = preg_replace("/<br[^>]*>/", " ", $item);
-						echo "Aktuelle Qualifizierungsangebote: " . strip_tags($item, "<a><strong>");
+						echo "Aktuell im CC: " . strip_tags($item, "<a><strong>");
 					} else { ?>
 						Finden Sie passende Angebote über Suchbegriffe, z.B.
 						<?php $this->renderPartial('_snippet_example_searches') ?>

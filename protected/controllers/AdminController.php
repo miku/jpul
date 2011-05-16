@@ -490,14 +490,13 @@ class AdminController extends Controller
 			$doc->addField(Zend_Search_Lucene_Field::Keyword('pk', $model->id));
 
 			// index job fields
-			$doc->addField(Zend_Search_Lucene_Field::UnStored('id', $model->id, 'utf-8'));
-			$doc->addField(Zend_Search_Lucene_Field::UnStored('cc', purify($model->company, ''), 'utf-8'));
-			$doc->addField(Zend_Search_Lucene_Field::UnStored('title', $model->title, 'utf-8'));
-			$doc->addField(Zend_Search_Lucene_Field::UnStored('company', $model->company, 'utf-8'));
-			$doc->addField(Zend_Search_Lucene_Field::UnStored('in', $model->city, 'utf-8'));
-			$doc->addField(Zend_Search_Lucene_Field::UnStored('description', $model->description, 'utf-8'));
-
-			$doc->addField(Zend_Search_Lucene_Field::UnStored('shadowtags', $model->shadowtags, 'utf-8'));
+			$doc->addField(Zend_Search_Lucene_Field::Text('id', $model->id, 'utf-8'));
+			$doc->addField(Zend_Search_Lucene_Field::Text('cc', purify($model->company, ''), 'utf-8'));
+			$doc->addField(Zend_Search_Lucene_Field::Text('title', $model->title, 'utf-8'));
+			$doc->addField(Zend_Search_Lucene_Field::Text('company', $model->company, 'utf-8'));
+			$doc->addField(Zend_Search_Lucene_Field::Text('in', $model->city, 'utf-8'));
+			$doc->addField(Zend_Search_Lucene_Field::Text('description', $model->description, 'utf-8'));
+			$doc->addField(Zend_Search_Lucene_Field::Text('shadowtags', $model->shadowtags, 'utf-8'));
 
 			$index->addDocument($doc);
 			

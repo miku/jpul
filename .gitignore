@@ -31,3 +31,6 @@ benchmarks/*
 *.patch
 
 tmp/*
+
+ext/index-inspector/target/*
+

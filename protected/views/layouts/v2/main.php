@@ -63,7 +63,7 @@
 			<div id="title-nav">
 				<div id="title-nav-left">
 					<ul>
-						<li><a class="outbound" href="<?php echo $this->createUrl('job/index'); ?>">Jobportal Homepage</a></li>
+						<li><a href="<?php echo $this->createUrl('job/index'); ?>">Jobportal Homepage</a></li>
 						<li><a class="outbound" href="http://www.zv.uni-leipzig.de/studium/career-center.html">Career Center</a></li>
 					</ul>
 				</div>

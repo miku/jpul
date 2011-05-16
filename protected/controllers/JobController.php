@@ -282,6 +282,32 @@ class JobController extends Controller
 		}
 	}
 	
+	public function actionRelated($id) {
+
+		$model = Job::model()->cache(600)->findByPk($id);
+		if (!$model) {
+			throw new CHttpException(404, Yii::t('app', 'Your request is not valid.'));
+		}
+
+		if ($model->status_id != 2) {
+			throw new CHttpException(404, 'Kein Angebot mit dieser ID gefunden.');
+		}
+
+		Zend_Search_Lucene_Analysis_Analyzer::setDefault(
+    		new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8_CaseInsensitive());
+		Zend_Search_Lucene_Search_QueryParser::setDefaultEncoding('utf-8');
+
+		$index = new Zend_Search_Lucene($this->getSearchIndexStore());
+
+		$results = $index->find($model->title);
+		$terms = $index->terms();
+		
+		
+		Yii::log("Related results: " . $results, CLogger::LEVEL_INFO, __FUNCTION__);
+		
+		$this->render('related');
+	}
+	
 	/**
 	 * Job details.
 	 */

@@ -3,7 +3,7 @@
 	<?php if ($model->status_id == 1): ?>
 		<span style="background: #FFF380;">Dieses Angebot befindet sich im Review-Prozess.</span>
 		Es wird öffentlich auf dem Jobportal sichtbar sein,
-		nachdem das Career Centers das Angebot freigeschaltet hat.
+		nachdem das Career Center das Angebot freigeschaltet hat.
 	<?php endif ?>
 	
 	<?php if ($model->status_id == 2): ?>

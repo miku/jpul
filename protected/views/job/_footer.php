@@ -33,7 +33,7 @@
 	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "biolog*"))); ?>">Biologie</a></li>
 	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "geolog*+OR+geograph*+OR+mineralog*+OR+kristallo*+OR+meteo*"))); ?>">Geowissenschaften</a></li>
 	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "chemie"))); ?>">Chemie</a></li>
-	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "informatik"))); ?>">Informatik</a></li>
+	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "informatik+software+hardware"))); ?>">Informatik</a></li>
 	</ul>
 
 	</div>

@@ -1,3 +1,16 @@
+CI and graphics
+---------------
+
+Copyright (C) 2010, 2011 Career Center, University of Leipzig
+All rights reserved.
+
+Use, duplication and reproduction of CI material without prior approval
+is prohibited.
+
+
+Sourcecode 
+----------
+
 Copyright (c) 2010, 2011 Martin Czygan
 All rights reserved.
 

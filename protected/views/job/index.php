@@ -96,7 +96,7 @@
 					if (count($offers) > 0) {
 						$item = $offers[array_rand($offers)];
 						$item = preg_replace("/<br[^>]*>/", " ", $item);
-						echo "Aktuell im CC: " . strip_tags($item, "<a><strong>");
+						echo "Aktuell im CC: <span style='padding: 3px; border: dotted thin darkorange'>" . strip_tags($item, "<a><strong>") . "</span>";
 					} else { ?>
 						Finden Sie passende Angebote über Suchbegriffe, z.B.
 						<?php $this->renderPartial('_snippet_example_searches') ?>

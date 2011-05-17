@@ -41,12 +41,11 @@
 	
 	<ul class="example-searches">
 	
-	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "kultur+OR+theater+OR+verlag+OR+geisteswiss*+OR+kulturwiss*+OR+NGO+OR+redaktion"))); ?>">Kultur</a>,
-		<a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "journalis*+OR+redaktion"))); ?>">Journalistik</a>
-		</li>
+	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "kultur+OR+theater+OR+verlag+OR+geisteswiss*+OR+kulturwiss*+OR+NGO+OR+redaktion"))); ?>">Kultur</a></li>
+	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "journalis*+OR+redaktion+OR+presse"))); ?>">Journalistik</a></li>
 	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "politik"))); ?>">Politik</a></li>
-		<li><a href="<?php echo $this->createUrl('job/index', array("src" => "eq", "q" => "marketing")); ?>">Marketing</a>,
-		<a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "öffentlichkeitsarbeit+OR+'public+relation'"))); ?>">PR Jobs</a></li>
+		<li><a href="<?php echo $this->createUrl('job/index', array("src" => "eq", "q" => "marketing")); ?>">Marketing</a><li>
+	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "öffentlichkeitsarbeit+OR+'public+relation'"))); ?>">PR Jobs</a></li>
 	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "jura+OR+jurist*+OR+rechtswissenschaft"))); ?>">Jura</a></li>
 
 	</ul>
@@ -79,7 +78,11 @@
 
 		<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "Microsoft+OR+Excel+OR+Access+OR+Word+OR+Powerpoint+OR+MSOffice"))); ?>">Microsoft Office</a></li>
 	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "SPSS+OR+'stata'+OR+statistik*"))); ?>">SPSS, stata, Statistik</a></li>
-	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "MySQL+PHP"))); ?>">PHP/MySQL</a></li>
+	
+	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "MySQL+PHP"))); ?>">PHP/MySQL</a>,
+		<a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "Java"))); ?>">Java</a>,
+		<a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "HTML+OR+CSS"))); ?>">HTML/CSS</a></li>
+	
 	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "Android+OR+iOS+OR+iPhone+OR+ObjectiveC+OR+ObjC+OR+iPad+OR+mobile+OR+apps"))); ?>">Apps/Mobile</a></li>
 
 	</ul>
@@ -98,8 +101,14 @@
 	
 	<ul class="example-searches">
 
+
+
+	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "praktik*+OR+werkstudent+OR+volontariat+OR+shk"))); ?>">Praktika</a>,
+		<a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "werkstudent"))); ?>">Werkstudent</a>,
+		<a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "nebenjob+OR+honorar"))); ?>">Nebenjob</a></li>
 	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "SHK"))); ?>">Studentische Hilfskraft</a></li>
 	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "bachelorarbeit+OR+masterarbeit+OR+diplomarbeit+OR+abschlussarbeit"))); ?>">Abschlussarbeit</a></li>
+	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "trainee"))); ?>">Trainee</a></li>
 
 	</ul>
 

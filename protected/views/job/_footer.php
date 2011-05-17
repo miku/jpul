@@ -63,7 +63,7 @@
 	<li><a href="<?php echo $this->createUrl('job/index', array("src" => "eq", "q" => "sport")); ?>">Jobs im Sport</a></li>
 	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "medizin"))); ?>">Medizin</a></li>
 	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "psycholo*"))); ?>">Psychologie</a></li>
-	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "arzt+OR+ärztin+OR+assistenzarzt+OR+assistenzärztin+OR+AIP"))); ?>">Ärztin</a></li>
+	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "arzt+OR+ärztin+OR+assistenzarzt+OR+assistenzärztin+OR+AIP"))); ?>">Ärztin, Arzt</a></li>
 
 	
 

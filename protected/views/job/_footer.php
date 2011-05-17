@@ -44,8 +44,12 @@
 	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "kultur+OR+theater+OR+verlag+OR+geisteswiss*+OR+kulturwiss*+OR+NGO+OR+redaktion"))); ?>">Kultur</a></li>
 	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "journalis*+OR+redaktion+OR+presse"))); ?>">Journalistik</a></li>
 	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "politik"))); ?>">Politik</a></li>
-		<li><a href="<?php echo $this->createUrl('job/index', array("src" => "eq", "q" => "marketing")); ?>">Marketing</a><li>
-	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "öffentlichkeitsarbeit+OR+'public+relation'"))); ?>">PR Jobs</a></li>
+		<li><a href="<?php echo $this->createUrl('job/index', array("src" => "eq", "q" => "marketing")); ?>">Marketing</a>,
+		<a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "öffentlichkeitsarbeit+OR+'public+relation'"))); ?>">PR Jobs</a></li>
+	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "BWL+OR+VWL"))); ?>">BWL/VWL</a>,
+		<a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "SAP"))); ?>">SAP</a>,
+		<a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "consult*"))); ?>">Consulting</a></li>
+
 	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "jura+OR+jurist*+OR+rechtswissenschaft"))); ?>">Jura</a></li>
 
 	</ul>
@@ -88,20 +92,10 @@
 	</ul>
 
 	</div>
-	
-	
-	
-	
-	
-	
-
-
 
 	<div class="column-200">
 	
 	<ul class="example-searches">
-
-
 
 	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "praktik*+OR+werkstudent+OR+volontariat+OR+shk"))); ?>">Praktika</a>,
 		<a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "werkstudent"))); ?>">Werkstudent</a>,
@@ -113,10 +107,6 @@
 	</ul>
 
 	</div>
-
-
-
-
 
 	<div class="clear"></div>
 

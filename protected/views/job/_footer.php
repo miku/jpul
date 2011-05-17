@@ -112,7 +112,6 @@
 
 	
 
-<br>
 <!-- <p><strong>Suchoperatoren</strong> &middot;
 	Ausschluß: -suchbegriff &middot; AND, OR, NOT &middot; Position: "nach Vereinbarung",  Fuzzy: suchbegriff~
 </p> -->
@@ -120,4 +119,3 @@
 <p><strong>Micro&mdash;Jobportal</strong> &middot;
 	<a href="<?php echo $this->createUrl('widget/index'); ?>">Jobportal Widget</a>
 </p>
-	

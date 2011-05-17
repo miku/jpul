@@ -247,7 +247,7 @@ class StatsController extends Controller
 		$command = $connection->cache(600)->createCommand($sql);
 		$dataReader = $command->queryRow();
 	
-		$stats["Unique Visitors Last 24h"] = $dataReader["uniq"];
+		$stats["Unique Visitors (last 24h)"] = $dataReader["uniq"];
 	
 	
 		// Unique Visitors 1w
@@ -256,7 +256,7 @@ class StatsController extends Controller
 		$command = $connection->cache(600)->createCommand($sql);
 		$dataReader = $command->queryRow();
 	
-		$stats["Unique Visitors Last 7 days"] = $dataReader["uniq"];
+		$stats["Unique Visitors (last 7 days)"] = $dataReader["uniq"];
 	
 		// Unique Visitors 30d
 		$sql = "select count(distinct tracking_id) as uniq from request where tracking_id is not null and request_time > ". ($current_time - $_30d) . ";";
@@ -264,7 +264,7 @@ class StatsController extends Controller
 		$command = $connection->cache(600)->createCommand($sql);
 		$dataReader = $command->queryRow();
 	
-		$stats["Unique Visitors Last 30 days"] = $dataReader["uniq"];
+		$stats["Unique Visitors (last 30 days)"] = $dataReader["uniq"];
 
 
 		// Visitors from widget 30d
@@ -273,7 +273,7 @@ class StatsController extends Controller
 		$command = $connection->cache(600)->createCommand($sql);
 		$dataReader = $command->queryRow();
 	
-		$stats["Visits/Pageviews via Widget 30 days"] = $dataReader["from_widget"];
+		$stats["Visits/Pageviews via Widget (last 30 days)"] = $dataReader["from_widget"];
 	
 		
 		// browser distribution		

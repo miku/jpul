@@ -52,7 +52,7 @@ class JobController extends Controller
 	 *      If it's clear, we don't need it: TODO simplify 'favStore'.
 	 *      
 	 */
-	public function actionIndex($page = 1, $sort = null, $v = "browser", $f = null) {
+	public function actionIndex($page = 1, $sort = null, $v = "browser", $f = null, $l = null) {
 
 		Zend_Search_Lucene_Analysis_Analyzer::setDefault(
     		new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8_CaseInsensitive());
@@ -89,6 +89,10 @@ class JobController extends Controller
 			$criteria->condition .= " AND NOT title LIKE '%studentische Hilfs%' ";
 			$criteria->condition .= " AND NOT title LIKE '%studentischen Hilfs%' ";
 		}
+		
+		if ($l === 'international') {
+			$criteria->condition .= " AND country is not null and country != '' and country not like '%eutschland%' and country not like '%eutsch%' and country != 'D' and country != 'BRD' and country != 'deu' and country not like '%ermany%';";
+		}
 
 		// Determine the view to use ...
 		$viewName = "default";
@@ -112,6 +116,11 @@ class JobController extends Controller
 			$criteria->condition='id=:id';
 			$criteria->params=array(':id'=>$original_query);
 			$model = Job::model()->find($criteria);
+			
+			if (!$model) {
+				throw new CHttpException(404, Yii::t('app', 'Your request is not valid.'));
+			}
+			
 			if ($model->status_id == 2) {
 				$this->redirect($this->createUrl('job/view', array('id' => $original_query)));
 			} else {

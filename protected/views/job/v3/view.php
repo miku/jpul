@@ -17,7 +17,26 @@
 						
 					?>
 					
-					<a href="javascript:history.go(-1)">Zurück zur Übersicht</a>
+					<?php
+						$kvlist = explode('&', urldecode(Yii::app()->request->queryString)); 
+						$params = array("page" => 1);
+
+						foreach ($kvlist as $index => $kvitem) {
+							$kv = explode('=', $kvitem);
+							if (count($kv) == 2) {
+								$params[$kv[0]] = $kv[1];
+							}
+						}
+					?>
+					
+					
+					
+					<?php if (isset($params['src']) && $params['src'] == 'widget'): ?>
+						<a href="<?php echo $this->createUrl('job/index'); ?>">Zurück zur Übersicht</a>
+					<?php else: ?>
+						<a href="javascript:history.go(-1)">Zurück zur Übersicht</a>
+					<?php endif ?>
+					
 											
 				</div>
 

@@ -78,7 +78,7 @@
 	<ul class="example-searches">
 
 		<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "Microsoft+OR+Excel+OR+Access+OR+Word+OR+Powerpoint+OR+MSOffice"))); ?>">Microsoft Office</a></li>
-	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "SPSS+OR+'stata'"))); ?>">SPSS, stata</a></li>
+	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "SPSS+OR+'stata'+OR+statistik*"))); ?>">SPSS, stata, Statistik</a></li>
 	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "MySQL+PHP"))); ?>">PHP/MySQL</a></li>
 	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "Android+OR+iOS+OR+iPhone+OR+ObjectiveC+OR+ObjC+OR+iPad+OR+mobile+OR+apps"))); ?>">Apps/Mobile</a></li>
 

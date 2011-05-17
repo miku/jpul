@@ -19,7 +19,7 @@
 		
 	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "übersetz*+OR+translate+OR+translation"))); ?>">Übersetzung</a></li>
 	<li><a href="<?php echo $this->createUrl('job/index', array("src" => "eq", "q" => "marketing")); ?>">Marketing</a></li>
-	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "public+relation+OR+öffentlichkeitsarbeit"))); ?>">PR Jobs</a></li>
+	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "öffentlichkeitsarbeit+OR+'public+relation'"))); ?>">PR Jobs</a></li>
 	<li><a href="<?php echo $this->createUrl('job/index', array("src" => "eq", "q" => "sport")); ?>">Jobs im Sport</a></li>
 	</ul>
 	</div>
@@ -31,7 +31,7 @@
 	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "mathematik"))); ?>">Mathematik</a></li>
 	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "physik"))); ?>">Physik</a></li>
 	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "biolog*"))); ?>">Biologie</a></li>
-	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "geolog*+geograph*"))); ?>">Geologie</a></li>
+	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "geolog*+OR+geograph*+OR+mineralog*+OR+kristallo*+OR+meteo*"))); ?>">Geowissenschaften</a></li>
 	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "chemie"))); ?>">Chemie</a></li>
 	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "informatik"))); ?>">Informatik</a></li>
 	</ul>

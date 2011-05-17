@@ -67,7 +67,7 @@
 	Ausschluß: -suchbegriff &middot; AND, OR, NOT &middot; Position: "nach Vereinbarung",  Fuzzy: suchbegriff~
 </p> -->
 <br>
-<p><strong>Nano&mdash;Jobportal</strong> &middot;
+<p><strong>Micro&mdash;Jobportal</strong> &middot;
 	<a href="<?php echo $this->createUrl('widget/index'); ?>">Jobportal Widget</a>
 </p>
 	

@@ -265,6 +265,15 @@ class StatsController extends Controller
 		$dataReader = $command->queryRow();
 	
 		$stats["Unique Visitors Last 30 days"] = $dataReader["uniq"];
+
+
+		// Visitors from widget 30d
+		$sql = "select count(*) as from_widget from request where request_uri like '%src=widget%' and request_time > ". ($current_time - $_30d) . ";";
+		$connection = Yii::app()->db;
+		$command = $connection->cache(600)->createCommand($sql);
+		$dataReader = $command->queryRow();
+	
+		$stats["Visits/Pageviews via Widget 30 days"] = $dataReader["from_widget"];
 	
 		
 		// browser distribution		

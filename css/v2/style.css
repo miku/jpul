@@ -1021,3 +1021,23 @@ legend { font-weight: bold; margin: 0 0 0 140px; color: gray; padding: 0 10px 0 
 .hspace-10 {
 	margin-right: 10px;
 }
+
+ul.example-searches {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+ul.example-searches li {
+	margin: 4px 0 0 0 ;
+	padding: 0px;
+	list-style: none;
+}
+
+.column-200 {
+	margin: 10px 10px 0 0;
+	padding: 10px;
+	width: 200px;
+	float: left;
+	background: #F9F9F9;
+}

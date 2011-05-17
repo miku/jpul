@@ -1,4 +1,4 @@
-<p>(C) 2010 &mdash; <?php echo date("Y"); ?> Career Center der Universität Leipzig</p>
+<p>(C) 2010 &mdash; <?php echo date("Y"); ?> <a href="http://www.zv.uni-leipzig.de/studium/career-center.html">Career Center</a> der Universität Leipzig</p>
 
 <br>
 <p><strong>Listen</strong> &middot;

@@ -18,9 +18,9 @@
 				<?php if ($f == '-internship'): ?>
 
 					<?php if (isset($original_query)): ?>
-						<strong>&#x03c0;</strong> <span style="border-bottom: solid red 1px">Praktika</span> <a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox', 'q' => $original_query)) ?>">einblenden</a>
+						 <span style="border-bottom: solid red 1px">Praktika</span> <a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox', 'q' => $original_query)) ?>">einblenden</a>
 					<?php else: ?>
-						<strong>&#x03c0;</strong> <span style="border-bottom: solid red 1px">Praktika</span> <a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox')) ?>">einblenden</a>
+						 <span style="border-bottom: solid red 1px">Praktika</span> <a href="<?php echo $this->createUrl('job/index', array('src' => 'topbox')) ?>">einblenden</a>
 					<?php endif ?>
 					
 				
@@ -107,8 +107,14 @@
 			<?php endif ?>
 			
 		</p>
-		<p class="alignright"><strong><span style="background: gray; color: white; padding:2px;">
-			<?php echo $total; ?></span></strong> Ergebnis<?php if ($total > 1) { echo "se"; } ?></p>
+		<p class="alignright">
+			<?php if ($total == 0): ?>
+				&#8709;
+			<?php else: ?>
+				<strong><span style="background: gray; color: white; padding:2px;">
+				<?php echo $total; ?></span></strong> Ergebnis<?php if ($total > 1) { echo "se"; } ?></p>
+			<?php endif ?>
+			
 		<div class="clear"></div>
 	</div>
 
@@ -127,12 +133,10 @@
 			?>
 			
 			<?php if (!$models): ?>
-				<p class="noresults-box">
+				<div style="text-align:center; color: gray; font-size: 40px; margin: 0; padding:0;">&#8709;</div>
+				<p class="noresults-box" >
 					Keine Ergebnisse gefunden. Versuchen Sie bitte weniger spezifische Suchbegriffe.
-					Um wieder alle Angebote zu sehen, löschen Sie bitte Ihre Eingabe aus dem Suchfeld und drücken Sie &lt;ENTER&gt;.
-					<br>
-						Hier ein paar exemplarische Suchbegriffe:
-						<?php $this->renderPartial('_snippet_example_searches') ?>					
+					Um wieder <a href="<?php echo $this->createUrl('job/index'); ?>">alle Angebote</a> zu sehen, löschen Sie bitte Ihre Eingabe aus dem Suchfeld und drücken Sie &lt;ENTER&gt;.
 					</p>
 			<?php endif ?>
 		</div>

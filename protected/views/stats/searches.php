@@ -28,7 +28,7 @@
 			<div class="col-by-total">
 				<p>Letzte Suchanfragen</p><br>
 			<?php foreach ($recent as $key => $value): ?>
-				<li><?php echo time_since($value['request_time']); ?> 
+				<li style="padding: 0px 0 3px 10px; margin: 0;"><?php echo time_since($value['request_time']); ?> 
 					<a href="<?php echo ($value['uri']); ?>"><?php echo preg_replace('/(.*)(q=)(.*)/', '$3', $value['uri']); ?></a>
 				</li>
 			<?php endforeach ?>
@@ -39,8 +39,8 @@
 			<div class="col-by-total">
 				<p>Suchen nach Häufigkeit</p><br>
 			<?php foreach ($searches as $key => $value): ?>
-				<li><?php echo $value['cnt']; ?> 
-					<a href="<?php echo ($value['uri']); ?>"><?php echo preg_replace('/(.*)(q=)(.*)/', '$3', $value['uri']); ?></a>
+				<li style="padding: 0px 0 3px 10px; margin: 0;"><?php echo $value['cnt']; ?> x 
+					<a href="<?php echo ($value['uri']); ?>"><?php echo strip_tags(preg_replace('/(.*)(q=)(.*)/', '$3', $value['uri'])); ?></a>
 				</li>
 			<?php endforeach ?>
 			</div>

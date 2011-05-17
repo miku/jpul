@@ -113,7 +113,7 @@
 <div id="main-container">
 	<div id="main">
 		<div id="main-header">
-				<p>Stats - Activity</p>
+				<p><a href="<?php echo $this->createUrl('stats/index'); ?>">Stats</a> - Activity</p>
 				<p class="small countdown">Diese Seite wird in <span id="countdown_text">30</span> Sekunden neu geladen. <a id="switch" href="#" onclick="pause();">Pause</a></p>
 		</div>
 		<div id="main-content">

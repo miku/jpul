@@ -163,7 +163,7 @@ class StatsController extends Controller
 	public function actionReferer() {
 		$sql = "select count(*) as cnt, http_referer as referer from request where http_referer is NOT null and http_referer != '' and http_referer not like '%wwwdup%' and http_referer not like '%localhost%' group by http_referer order by cnt desc;";
 		$connection = Yii::app()->db;
-		$command = $connection->cache(600)->createCommand($sql);
+		$command = $connection->createCommand($sql);
 		$dataReader = $command->queryAll();
 	
 		$this->layout = "v2/main";
@@ -182,7 +182,7 @@ class StatsController extends Controller
 			group by request_uri 
 			order by cnt desc;";
 		$connection = Yii::app()->db;
-		$command = $connection->cache(600)->createCommand($sql);
+		$command = $connection->createCommand($sql);
 		$searches = $command->queryAll();
 	
 		$sql = "select request_uri as uri, request_time from request where 
@@ -195,7 +195,7 @@ class StatsController extends Controller
 			order by request_time desc limit 25;";
 	
 		$connection = Yii::app()->db;
-		$command = $connection->cache(600)->createCommand($sql);
+		$command = $connection->createCommand($sql);
 		$recent = $command->queryAll();
 	
 		$this->layout = "v2/main";
@@ -268,12 +268,12 @@ class StatsController extends Controller
 	
 		
 		// browser distribution		
-		$sql = "select count(*) as cnt, bt_browser as browser from request where bt_browser is NOT null and bt_browser != '' group by bt_browser;";
+		$sql = "select (count(*) / 1000) as cnt, bt_browser as browser from request where bt_browser is NOT null and bt_browser != '' group by bt_browser;";
 		$connection = Yii::app()->db;
 		$command = $connection->cache(600)->createCommand($sql);
 		$dataReader = $command->queryAll();
 		
-		$gcurl_browser = "https://chart.googleapis.com/chart?chs=350x140&cht=p3";
+		$gcurl_browser = "https://chart.googleapis.com/chart?chs=450x200&cht=p3";
 		$chd = "";
 		$chl = "";
 		$resultLength = count($dataReader);
@@ -290,12 +290,12 @@ class StatsController extends Controller
 	
 	
 		// OS distribution
-		$sql = "select count(*) as cnt, bt_os as os from request where bt_os is NOT null and bt_os != '' group by bt_os;";
+		$sql = "select (count(*) / 1000) as cnt, bt_os as os from request where bt_os is NOT null and bt_os != '' group by bt_os;";
 		$connection = Yii::app()->db;
 		$command = $connection->cache(600)->createCommand($sql);
 		$dataReader = $command->queryAll();
 		
-		$gcurl_os = "https://chart.googleapis.com/chart?chs=350x140&cht=p3";
+		$gcurl_os = "https://chart.googleapis.com/chart?chs=450x200&cht=p3";
 		$chd = "";
 		$chl = "";
 		$resultLength = count($dataReader);
@@ -316,7 +316,7 @@ class StatsController extends Controller
 	}
 	
 	public function actionOutboundLinks() {
-		$sql = "select * from outbound order by request_time desc;";
+		$sql = "select * from outbound order by request_time desc limit 100;";
 		$connection = Yii::app()->db;
 		$command = $connection->createCommand($sql);
 		$outbound = $command->queryAll();

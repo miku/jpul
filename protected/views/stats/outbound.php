@@ -27,9 +27,15 @@
 
 			<div class="col-by-total">
 			<?php foreach ($outbound as $key => $value): ?>
-				<li>
-					<?php echo time_since($value['request_time']); ?> | <a href="<?php echo ($value['url']); ?>"><?php echo ($value['url']); ?></a> | <?php echo ($value['text']); ?>
-				</li>
+				<?php if ($value['url'] != null && $value['url'] != ''): ?>
+				<li style="padding: 0px 0 3px 10px; margin: 0;">
+					<span style="color:gray"><?php echo time_since($value['request_time']); ?> </span>
+						&middot; <a href="<?php echo ($value['url']); ?>"><?php echo ($value['url']); ?></a>
+						<?php if ($value['text'] != null && $value['text'] != ''): ?>
+							&middot; <?php echo ($value['text']); ?>
+						<?php endif ?>
+				</li>					
+				<?php endif ?>
 			<?php endforeach ?>
 			</div>
 

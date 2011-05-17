@@ -29,17 +29,17 @@
 
 			<div class="col-by-total">
 			<?php foreach ($stats as $key => $value): ?>
-				<li><?php echo $key; ?>: <?php echo $value; ?></li>
+				<li style="padding: 0px 0 3px 10px; margin: 0;"><span style="color:gray"><?php echo $key; ?></span>: <?php echo $value; ?></li>
 			<?php endforeach ?>
 			</div>
 
 			<div style="margin-top: 20px;" class="browser-chart col-by-total">
-				<li>Browser type distribution:</li>
+				<li style="padding: 0px 0 3px 10px; margin: 0;">Browser type distribution:</li>
 				<img src="<?php echo $gcurl_browser; ?>" alt="Browser vendor distibution not available." />	
 			</div>
 
 			<div style="margin-top: 20px;" class="browser-chart col-by-total">
-				<li>OS distribution:</li>
+				<li style="padding: 0px 0 3px 10px; margin: 0;">OS distribution:</li>
 				<img src="<?php echo $gcurl_os; ?>" alt="OS distibution not available." />	
 			</div>
 

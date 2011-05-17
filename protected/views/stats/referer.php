@@ -22,7 +22,7 @@
 
 			<div class="col-by-total">
 			<?php foreach ($stats as $key => $value): ?>
-				<li><?php echo $value['cnt']; ?> <a href="<?php echo ($value['referer']); ?>"><?php echo cut_text($value['referer'], 80); ?></a></li>
+				<li style="padding: 0px 0 3px 10px; margin: 0;"><?php echo $value['cnt']; ?> x <a href="<?php echo ($value['referer']); ?>"><?php echo cut_text($value['referer'], 80); ?></a></li>
 			<?php endforeach ?>
 			</div>
 

@@ -62,6 +62,8 @@ public class Main {
         Directory dir = FSDirectory.open(new File(indexDir));
         IndexSearcher is = new IndexSearcher(dir);
         IndexReader ir = is.getIndexReader();
+        
+        System.out.println("IndexReader is of class: " + ir.getClass().getCanonicalName());
 
         System.err.println("Index: " + ir.directory());
         System.err.println("Index version: " + ir.getVersion());
@@ -109,6 +111,8 @@ public class Main {
                 TermFreqVector tfv = ir.getTermFreqVector(docId, "title");
                 if (tfv != null) {
                     System.out.println(tfv.getTerms());
+                } else {
+                    System.out.println("TermFreqVector == null");
                 }
 
                 mlt.setStopWords(stopwords);

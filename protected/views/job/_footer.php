@@ -99,7 +99,7 @@
 
 	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "praktik*+OR+werkstudent+OR+volontariat+OR+shk"))); ?>">Praktika</a>,
 		<a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "werkstudent"))); ?>">Werkstudent</a>,
-		<a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "nebenjob+OR+honorar"))); ?>">Nebenjob</a></li>
+		<a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "nebenjob* OR honorar* OR freelanc* "))); ?>">Nebenjob</a></li>
 	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "SHK"))); ?>">Studentische Hilfskraft</a></li>
 	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "bachelorarbeit+OR+masterarbeit+OR+diplomarbeit+OR+abschlussarbeit"))); ?>">Abschlussarbeit</a></li>
 	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "trainee"))); ?>">Trainee</a></li>

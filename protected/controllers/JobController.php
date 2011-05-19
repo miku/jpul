@@ -52,7 +52,7 @@ class JobController extends Controller
 	 *      If it's clear, we don't need it: TODO simplify 'favStore'.
 	 *      
 	 */
-	public function actionIndex($page = 1, $sort = null, $v = "browser", $f = null, $l = null) {
+	public function actionIndex($page = 1, $sort = null, $v = "browser", $f = null, $l = null, $tab = 'all') {
 
 		Zend_Search_Lucene_Analysis_Analyzer::setDefault(
     		new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8_CaseInsensitive());
@@ -82,16 +82,31 @@ class JobController extends Controller
 		$criteria->params=array(':status_id' => 2, ':current_time' => $current_time);
 		
 		if ($f === '-internship') {
-			$criteria->condition .= " AND is_internship = 0 ";
+			$tab = '-internship';
+			$criteria->condition .= " AND (is_internship = 0 OR is_internship is null) ";
 			$criteria->condition .= " AND NOT title LIKE '%praktik%' ";
 			$criteria->condition .= " AND NOT title LIKE '%werkstud%' ";
 			$criteria->condition .= " AND NOT title LIKE '%werksstud%' ";
 			$criteria->condition .= " AND NOT title LIKE '%studentische Hilfs%' ";
 			$criteria->condition .= " AND NOT title LIKE '%studentischen Hilfs%' ";
+			$criteria->condition .= " AND NOT title LIKE '%studentische Mitar%' ";
+			$criteria->condition .= " AND NOT title LIKE '%studentischen Mitar%' ";
+			
+		} elseif ($f === 'internship') {
+			$tab = 'internship';
+			$criteria->condition .= " AND ( (is_internship = 1 OR is_internship is null) ";
+			$criteria->condition .= " OR title LIKE '%praktik%' ";
+			$criteria->condition .= " OR title LIKE '%werkstud%' ";
+			$criteria->condition .= " OR title LIKE '%werksstud%' ";
+			$criteria->condition .= " OR title LIKE '%studentische Hilfs%' ";
+			$criteria->condition .= " OR title LIKE '%studentischen Hilfs%' ";
+			$criteria->condition .= " OR title LIKE '%volontariat%' ";
+			$criteria->condition .= " OR shadowtags LIKE '%shk%')";
 		}
 		
-		if ($l === 'international') {
-			$criteria->condition .= " AND country is not null and country != '' and country not like '%eutschland%' and country not like '%eutsch%' and country != 'D' and country != 'BRD' and country != 'deu' and country not like '%ermany%';";
+		if ($l === 'i11n') {
+			$tab = 'i11n';
+			$criteria->condition .= " AND country is not null and country != '' and country not like '%eutschland%' and country not like '%eutsch%' and country != 'D' and country != 'BRD' and country != 'deu' and country not like '%ermany%'";
 		}
 
 		// Determine the view to use ...
@@ -115,7 +130,7 @@ class JobController extends Controller
 			Yii::log("Direct to: " . $original_query, CLogger::LEVEL_INFO, __FUNCTION__);
 			$criteria->condition='id=:id';
 			$criteria->params=array(':id'=>$original_query);
-			$model = Job::model()->find($criteria);
+			$model = Job::model()->cache(600)->find($criteria);
 			
 			if (!$model) {
 				throw new CHttpException(404, Yii::t('app', 'Your request is not valid.'));
@@ -156,7 +171,7 @@ class JobController extends Controller
 				$pks[] = $result->pk;
 			}
 
-			$total = count(Job::model()->findAllByAttributes(array('id' => $pks), $criteria));
+			$total = count(Job::model()->cache(600)->findAllByAttributes(array('id' => $pks), $criteria));
 
 			// fix number of offers per page ...
 			if ($v == "embed") {
@@ -187,7 +202,7 @@ class JobController extends Controller
 			$favList = Yii::app()->session[Yii::app()->params['favStore']];
 			$models = array();
 			foreach ($favList as $key => $value) {
-				Yii::log($key . " => " . $value['id'], CLogger::LEVEL_INFO, "actionIndex");
+				Yii::log($key . " => " . $value['id'], CLogger::LEVEL_INFO, __FUNCTION__);
 				array_push($models, Job::model()->findByPk($value['id']));
 			}
 
@@ -260,7 +275,8 @@ class JobController extends Controller
 				'sort' => $sort,
 				'original_query' => $original_query,
 				'viewName' => $viewName,
-				'f' => $f) 
+				'f' => $f, 'l' => $l,
+				'tab' => $tab) 
 			);
 			
 		} elseif ($v == "json") {
@@ -293,7 +309,7 @@ class JobController extends Controller
 	
 	public function actionRelated($id) {
 
-		$model = Job::model()->cache(600)->findByPk($id);
+		$model = Job::model()->findByPk($id);
 		if (!$model) {
 			throw new CHttpException(404, Yii::t('app', 'Your request is not valid.'));
 		}

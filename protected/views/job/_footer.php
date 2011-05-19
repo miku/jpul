@@ -115,6 +115,12 @@
 <!-- <p><strong>Suchoperatoren</strong> &middot;
 	Ausschluß: -suchbegriff &middot; AND, OR, NOT &middot; Position: "nach Vereinbarung",  Fuzzy: suchbegriff~
 </p> -->
+
+<br>
+<p>Sie können Favoriten markieren, in dem Sie auf den Stern links neben dem Titel klicken. Meine Favoriten
+	<a href="<?php echo $this->createUrl('job/index', array('s' => 'favs')); ?>">anzeigen</a>.
+</p>
+
 <br>
 <p><strong>Micro&mdash;Jobportal</strong> &middot;
 	<a href="<?php echo $this->createUrl('widget/index'); ?>">Jobportal Widget</a>

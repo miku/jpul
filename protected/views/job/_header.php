@@ -118,7 +118,7 @@
 
 
 <div id="info-subbar" style="padding: 0 0 12px 0; border-bottom: solid thin #ABABAB;">
-	<p class="alignleft" style="font-size: 10px; margin: 10px 0 0 0;">
+	<p class="alignleft" style="font-size: 10px; margin: 10px 0 0 0; width: 600px;">
 	<?php $adslot = rand(1, 100); ?>
 
 	<?php if ($adslot > 70): ?>

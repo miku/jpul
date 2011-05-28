@@ -33,4 +33,5 @@ benchmarks/*
 tmp/*
 
 ext/index-inspector/target/*
+ext/diversions/downloads/*
 

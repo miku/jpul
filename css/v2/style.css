@@ -320,19 +320,30 @@ width: 980px;
 	font-size: 10px;
 }
 
-input#search {
+input.search {
 	font-size: 12px;
 	padding: 2px;
 }
 
-.button {
+.searchbutton {
 	padding: 4px 8px 4px 8px;
 	font-size: 12px;
 	border: solid thin #ECECEC;
 	color: white;
 	font-weight: bold;
-	background: #FF7b04;
+/*	background: #FF7b04;*/
+	background: #ABABAB;
 }
+
+.searchbutton:hover {
+	padding: 4px 8px 4px 8px;
+	font-size: 12px;
+	border: solid thin #ECECEC;
+	color: white;
+	font-weight: bold;
+	background: #fb8f45;
+}
+
 
 /* Index post partial */
 

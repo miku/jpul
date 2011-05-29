@@ -29,17 +29,19 @@ class Controller extends CController
 	
 	// The number of items per page (only 10, 20 or 50 as possible at the moment!)
 	public $items_per_page = 10;
+
+	// Caching the complete listings
 	
-	public function filters()
-	{
-    	return array(
-        	array(
-            	'COutputCache',
-            	'duration'=>3,
-            	'varyByParam'=>array('id', 'f', 'q', 'size', 'l', 'page'),
-        	),
-    	);
-	}
+	// public function filters()
+	// {
+	//     	return array(
+	//         	array(
+	//             	'COutputCache',
+	//             	'duration'=>2,
+	//             	'varyByParam'=>array('id', 'q', 'size', 'cache', 'page'),
+	//         	),
+	//     	);
+	// }
 	
 	
 	/**

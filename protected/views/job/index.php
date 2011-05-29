@@ -3,7 +3,7 @@
 
 	<div id="generic-header">
 	<?php $this->renderPartial('_header', 
-		array("original_query" => $original_query, "f" => $f, "total" => $total, "l" => $l, "tab" => $tab)) ?>
+		array("original_query" => $original_query, "total" => $total,"tab" => $tab)) ?>
 	</div>
 	
 	<div id="main-content">

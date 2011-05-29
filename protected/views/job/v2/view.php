@@ -7,18 +7,21 @@
 
 				<div id="mini-nav">
 					<?php
-						$_params = array();
-						if (Yii::app()->session['snapBackSearchTerm'] !== "") {
-							$_params['q'] = Yii::app()->session['snapBackSearchTerm'];
+						$kvlist = explode('&', urldecode(Yii::app()->request->queryString)); 
+						$params = array("page" => 1);
+						foreach ($kvlist as $index => $kvitem) {
+							$kv = explode('=', $kvitem);
+							if (count($kv) == 2) {
+								$params[$kv[0]] = $kv[1];
+							}
 						}
-						if (Yii::app()->session['snapBackPage'] !== "") {
-							$_params['page'] = Yii::app()->session['snapBackPage'];
-						}
-						
 					?>
 					
-					<a href="javascript:history.go(-1)">Zurück zur Übersicht</a>
-						
+					<?php if (isset($params['src']) && $params['src'] == 'widget'): ?>
+						<a href="<?php echo $this->createUrl('job/index'); ?>">Zurück zur Übersicht</a>
+					<?php else: ?>
+						<a href="javascript:history.go(-1)">Zurück zur Übersicht</a>
+					<?php endif ?>
 				</div>
 
 				<div id="view-job-title"><?php echo $model->title ?></div>

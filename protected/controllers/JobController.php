@@ -184,9 +184,6 @@ class JobController extends Controller
 			$current_end = ($page - 1) * self::PAGE_SIZE + self::PAGE_SIZE;
 
 			$number_of_pages = ceil($total / self::PAGE_SIZE);
-			
-			Yii::app()->session['snapBackSearchTerm'] = $original_query;			
-			Yii::app()->session['detailSnapBackUrl'] = $this->createUrl('job/index', array('q' => $original_query, 'page' => $page));
 		}	
 
 		// special pages, likes favorite filter
@@ -213,9 +210,6 @@ class JobController extends Controller
 			$number_of_pages = 1;			
 			$current_start = 0;
 			$current_end = $total;
-
-
-			Yii::app()->session['detailSnapBackUrl'] = $this->createUrl('job/index', array('s' => 'favs'));
 		}
 		
 		// if the user neither searched or requested her favs, use the default view ...	
@@ -239,18 +233,13 @@ class JobController extends Controller
 			$models = Job::model()->cache(600)->findAll($criteria);
 			
 			$original_query = null;
-			Yii::app()->session['snapBackSearchTerm'] = '';
-			Yii::app()->session['detailSnapBackUrl'] = $this->createUrl('job/index', array('page' => $page));
-			
+
 			// pagination
 			$number_of_pages = ceil($total / self::PAGE_SIZE);
 			$current_start = ($page - 1) * self::PAGE_SIZE;;
 			$current_end = ($page - 1) * self::PAGE_SIZE + self::PAGE_SIZE;			
 		}
 		
-		Yii::app()->session['snapBackPage'] = $page;
-		Yii::log("snapBackPage: " . $page, CLogger::LEVEL_INFO, __FUNCTION__);
-
 		if ($v == "browser") {
 
 			$this->pageTitle = 'Jobportal der Universität Leipzig'; // ' (' . $total . ' aktuelle Jobangebote)';

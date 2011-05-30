@@ -10,13 +10,30 @@ require_once('Utils.php');
 class AlertController extends Controller
 {
 	
+	public function check_if_match($alert_id, $job_id) {
+		
+		Yii::log("Inside check_if_match: " . $alert_id . ", " . $job_id, 
+			CLogger::LEVEL_INFO, __FUNCTION__);
+	}
+	
 	public function actionCreate($aq = null) {
+		
+		call_user_func_array(__NAMESPACE__ . '\Yii::log', array('
+			Via call_user_func_array, NS is ' . __NAMESPACE__, CLogger::LEVEL_INFO, __FUNCTION__));
+
+		call_user_func_array(__NAMESPACE__ . '\AlertController::check_if_match', array(1, 2));
+		
 		
 		$models = null;
 		$total = null;
 		
 		if ($aq != null) {
-			
+
+			Zend_Search_Lucene_Analysis_Analyzer::setDefault(
+    			new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8_CaseInsensitive());
+			Zend_Search_Lucene_Search_QueryParser::setDefaultEncoding('utf-8');
+			Zend_Search_Lucene_Search_QueryParser::setDefaultOperator(Zend_Search_Lucene_Search_QueryParser::B_AND);
+
 			$current_time = time();
 			$criteria = new CDbCriteria;		
 			// just show the public offers, which are not expired ...
@@ -24,7 +41,6 @@ class AlertController extends Controller
 			$criteria->params=array(':status_id' => 2, ':current_time' => $current_time);
 			
 			$index = new Zend_Search_Lucene($this->getSearchIndexStore());
-			Zend_Search_Lucene_Search_QueryParser::setDefaultOperator(Zend_Search_Lucene_Search_QueryParser::B_AND);
 
 			$original_query = $aq;
 			$query = $original_query;
@@ -36,7 +52,7 @@ class AlertController extends Controller
 				$results = $index->find($query);
 			} catch (Exception $e) {
 				Yii::log("Failed Query: '" . $query . "' - Exception: " . $e, CLogger::LEVEL_INFO, __FUNCTION__);
-				$this->redirect(array('index'));
+				$this->redirect(array('job/index'));
 			}
 
 			$pks = array();

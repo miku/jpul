@@ -57,6 +57,7 @@ class JobController extends Controller
 		Zend_Search_Lucene_Analysis_Analyzer::setDefault(
     		new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8_CaseInsensitive());
 		Zend_Search_Lucene_Search_QueryParser::setDefaultEncoding('utf-8');
+		Zend_Search_Lucene_Search_QueryParser::setDefaultOperator(Zend_Search_Lucene_Search_QueryParser::B_AND);
 
 		$current_time = time();
 		$criteria = new CDbCriteria;
@@ -181,7 +182,6 @@ class JobController extends Controller
 
 			$models = Job::model()->cache(600)->findAllByAttributes(array('id' => $pks), $criteria);
 
-			$number_of_pages = ceil($total / self::PAGE_SIZE);
 		}	
 
 		// special pages, likes favorite filter
@@ -204,8 +204,6 @@ class JobController extends Controller
 			$page = 1;
 			$original_query = null;
 			
-			// pagination
-			$number_of_pages = 1;			
 		}
 		
 		// if the user neither searched or requested her favs, use the default view ...	
@@ -230,8 +228,6 @@ class JobController extends Controller
 			
 			$original_query = null;
 
-			// pagination
-			$number_of_pages = ceil($total / self::PAGE_SIZE);
 		}
 		
 		if ($v == "browser") {
@@ -246,13 +242,11 @@ class JobController extends Controller
 			} 
 			
 			$this->render('index', array(
-				'models'=>$models, 
+				'models'=> $models, 
 				'total' => $total,
 				'page' => $page,
-				'number_of_pages' => $number_of_pages,
 				'sort' => $sort,
 				'original_query' => $original_query,
-				'viewName' => $viewName,
 				'tab' => $tab) 
 			);
 			
@@ -262,10 +256,8 @@ class JobController extends Controller
 				'models'=>$models, 
 				'total' => $total,
 				'page' => $page,
-				'number_of_pages' => $number_of_pages,
 				'sort' => $sort,
 				'original_query' => $original_query,
-				'viewName' => $viewName,
 				'tab' => $tab) 
 			);
 			
@@ -275,60 +267,14 @@ class JobController extends Controller
 				'models'=>$models, 
 				'total' => $total,
 				'page' => $page,
-				'number_of_pages' => $number_of_pages,
 				'sort' => $sort,
 				'original_query' => $original_query,
-				'viewName' => $viewName,
 				'tab' => $tab) 
 			);
 		}
 	}
 	
-	public function actionAlerts($aq = null) {
-		
-		$models = null;
-		$total = null;
-		
-		if ($aq != null) {
-			
-			$current_time = time();
-			$criteria = new CDbCriteria;		
-			// just show the public offers, which are not expired ...
-			$criteria->condition = 'status_id=:status_id AND expiration_date > :current_time';
-			$criteria->params=array(':status_id' => 2, ':current_time' => $current_time);
-			
-			$index = new Zend_Search_Lucene($this->getSearchIndexStore());
-			Zend_Search_Lucene_Search_QueryParser::setDefaultOperator(Zend_Search_Lucene_Search_QueryParser::B_AND);
 
-			$original_query = $aq;
-			$query = $original_query;
-
-			
-			Yii::log("Q: " . $query, CLogger::LEVEL_INFO, __FUNCTION__);
-			
-			try {
-				$results = $index->find($query);
-			} catch (Exception $e) {
-				Yii::log("Failed Query: '" . $query . "' - Exception: " . $e, CLogger::LEVEL_INFO, __FUNCTION__);
-				$this->redirect(array('index'));
-			}
-
-			$pks = array();
- 			foreach ($results as $result) {
-				$pks[] = $result->pk;
-			}
-
-			$total = count(Job::model()->cache(600)->findAllByAttributes(array('id' => $pks), $criteria));
-
-			$criteria->limit = 10;
-			$criteria->offset = 0;
-
-			$models = Job::model()->cache(600)->findAllByAttributes(array('id' => $pks), $criteria);
-		}	
-
-		$this->render('alerts', array("aq" => $aq, "models" => $models, "total" => $total));
-		
-	}
 	
 	public function actionRelated($id) {
 

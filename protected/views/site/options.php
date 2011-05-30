@@ -3,32 +3,41 @@
   		$("#emails").focus();
 	});
 </script>
+<style type="text/css" media="screen">
+	input { font-size: 12px; }
+	.help {
+		font-size: 10px;
+		color: gray;
+	}
+</style>
 
 
 <div id="main">
 
 <div id="generic-header">
-<p>Einstellungen</p>	
+<h3>Einstellungen</h3>	
 </div>
 
 <div id="main-content">
 
 <div class="form">
-	<table border="0" cellspacing="2" cellpadding="4">
+<ol style="list-style: none;">
 	<?php $form=$this->beginWidget('CActiveForm', array('id'=>'site-options-form')); ?>
-
-		<tr class="even-dark"><td><?php echo $form->labelEx($model,'Emails'); ?></td></tr>
-		<tr class="even"><td class="small">E-Mail-Adresse oder E-Mail-Adressen (kommasepariert), an
-			die eine Notifikation geschickt werden soll, falls ein neues Jobangebot von
-			einem Benutzer eingestellt wurde.
-		</td></tr>	
-		<tr class="even"><td><?php echo $form->textField($model,'value', array('size' => '80')); ?></td></tr>
-		<tr class="even error"><td><?php echo $form->error($model,'option'); ?></td></tr>
-
-		<tr class="even-dark"><td><input type="submit" value="Speichern"> <span style="font-size:12px;">oder</span> <a style="font-size: 12px" href="<?php echo $this->createUrl('admin/index'); ?>">Abbrechen</a></td></tr>
-
+		<fieldset>
+		<legend>E-Mail Notifikationen</legend>
+		<li>
+			<?php echo $form->labelEx($model,'E-Mail'); ?>
+			<?php echo $form->textField($model,'value', array('size' => '100')); ?>
+			<?php echo $form->error($model,'option'); ?>
+		</li>
+		
+		<div class="help">Kommaseparierte E-Mail-Addressen, an die eine
+			Notifikation gesendet werden soll, wenn ein neues Angebot von 
+			einem Arbeitgeber eingestellt wird.</div>
+	</fieldset>
+	<?php echo CHtml::submitButton('Speichern', array("class" => "searchbutton")); ?> <span style="font-size:12px;">oder</span> <a style="font-size: 12px" href="<?php echo $this->createUrl('admin/index'); ?>">Abbrechen</a></td>
 	<?php $this->endWidget(); ?>
-	</table>
+</ol>
 </div><!-- form -->
 
 </div>	
@@ -41,3 +50,5 @@
 
 
 
+
+	

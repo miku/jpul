@@ -338,20 +338,20 @@ class AdminController extends Controller
 		$this->updateSearchIndex($model, "api");
 		
 		// Queue one job
-		if ($status_id == 2) {
-			// Job got made public
-			$queueEntry = new QueueEntry;
-			$queueEntry->priority = 1;
-			$queueEntry->func = "create_queue_entries_for_job";
-			$queueEntry->args = $id;
-			$queueEntry->date_added = time();
-		} else {
-			$queueEntry = new QueueEntry;
-			$queueEntry->priority = 0;
-			$queueEntry->func = "delete_queue_entries_for_job";
-			$queueEntry->args = $id;
-			$queueEntry->date_added = time();			
-		}
+		// if ($status_id == 2) {
+		// 	// Job got made public
+		// 	$queueEntry = new QueueEntry;
+		// 	$queueEntry->priority = 1;
+		// 	$queueEntry->func = "create_queue_entries_for_job";
+		// 	$queueEntry->args = $id;
+		// 	$queueEntry->date_added = time();
+		// } else {
+		// 	$queueEntry = new QueueEntry;
+		// 	$queueEntry->priority = 0;
+		// 	$queueEntry->func = "delete_queue_entries_for_job";
+		// 	$queueEntry->args = $id;
+		// 	$queueEntry->date_added = time();			
+		// }
 		
 		$this->redirect(array('admin/view', 'id' => $id));
 	}

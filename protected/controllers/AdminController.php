@@ -233,7 +233,7 @@ class AdminController extends Controller
 						$filename = $this->getUploadFilePath("job", $model->id);
 						$model->attachment->saveAs($filename);
 					}
-					$this->updateSearchIndex($model);
+					$this->updateSearchIndex($model, "default");
 					$this->updateSearchIndex($model, "admin");
 					$this->updateSearchIndex($model, "api");
 					
@@ -307,7 +307,7 @@ class AdminController extends Controller
 						$filename = $this->getUploadFilePath("job", $model->id);
 						$model->attachment->saveAs($filename);
 					}
-					$this->updateSearchIndex($model);
+					$this->updateSearchIndex($model, "default");
 					$this->updateSearchIndex($model, "admin");
 					$this->updateSearchIndex($model, "api");
 					
@@ -327,11 +327,28 @@ class AdminController extends Controller
 		$previous_status_id = $model->status_id;
 		$model->status_id = $status_id;
 		$model->saveAttributes(array('status_id'));
+		
 		Yii::log("Changed status of job id " . $id . " from " . $previous_status_id . " to " . $model->status_id, CLogger::LEVEL_INFO, __FUNCTION__);
 		
-		$this->updateSearchIndex($model);
+		$this->updateSearchIndex($model, "default");
 		$this->updateSearchIndex($model, "admin");
 		$this->updateSearchIndex($model, "api");
+		
+		// Queue one job
+		if ($status_id == 2) {
+			// Job got made public
+			$queueEntry = new QueueEntry;
+			$queueEntry->priority = 1;
+			$queueEntry->func = "create_queue_entries_for_job";
+			$queueEntry->args = $id;
+			$queueEntry->date_added = time();
+		} else {
+			$queueEntry = new QueueEntry;
+			$queueEntry->priority = 0;
+			$queueEntry->func = "delete_queue_entries_for_job";
+			$queueEntry->args = $id;
+			$queueEntry->date_added = time();			
+		}
 		
 		$this->redirect(array('admin/view', 'id' => $id));
 	}

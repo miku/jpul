@@ -9,13 +9,17 @@ CREATE TABLE IF NOT EXISTS `alert` (
 	
 	`email` varchar(512) default NULL,
 	`query` varchar(512) default NULL,
-	`date_added` int(11) default NULL,  	
+	`date_added` int(11) default NULL,
+	`alert_key` varchar(512) default NULL,
+	`verified` boolean default 0,
+	`date_verified` int(11) default NULL,
 	PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 
-CREATE TABLE IF NOT EXISTS `queue` (
-	`id` int(11) NOT NULL auto_increment,	
+CREATE TABLE IF NOT EXISTS `queue_entry` (
+	`id` int(11) NOT NULL auto_increment,
+	`priority` int(4) default NULL,
 	`func` varchar(512) default NULL,
 	`args` varchar(512) default NULL,
 	`date_added` int(11) default NULL,

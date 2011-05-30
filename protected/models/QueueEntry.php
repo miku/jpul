@@ -1,19 +1,20 @@
 <?php
 
 /**
- * This is the model class for table "alert".
+ * This is the model class for table "queue_entry".
  *
- * The followings are the available columns in table 'alert':
+ * The followings are the available columns in table 'queue_entry':
  * @property integer $id
- * @property string $email
- * @property string $query
+ * @property integer $priority
+ * @property string $func
+ * @property string $args
  * @property integer $date_added
  */
-class Alert extends CActiveRecord
+class QueueEntry extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
-	 * @return Alert the static model class
+	 * @return QueueEntry the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -25,7 +26,7 @@ class Alert extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'alert';
+		return 'queue_entry';
 	}
 
 	/**
@@ -36,13 +37,11 @@ class Alert extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('date_added', 'numerical', 'integerOnly'=>true),
-			array('email, query', 'length', 'max'=>512),
-			array('email, query', 'required'),
-			array('email', 'email'),
+			array('priority, date_added', 'numerical', 'integerOnly'=>true),
+			array('func, args', 'length', 'max'=>512),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, email, query, date_added', 'safe', 'on'=>'search'),
+			array('id, priority, func, args, date_added', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -64,8 +63,9 @@ class Alert extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'email' => 'Email',
-			'query' => 'Filter',
+			'priority' => 'Priority',
+			'func' => 'Func',
+			'args' => 'Args',
 			'date_added' => 'Date Added',
 		);
 	}
@@ -82,8 +82,9 @@ class Alert extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('email',$this->email,true);
-		$criteria->compare('query',$this->query,true);
+		$criteria->compare('priority',$this->priority);
+		$criteria->compare('func',$this->func,true);
+		$criteria->compare('args',$this->args,true);
 		$criteria->compare('date_added',$this->date_added);
 
 		return new CActiveDataProvider(get_class($this), array(

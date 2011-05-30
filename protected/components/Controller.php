@@ -233,8 +233,8 @@ class Controller extends CController
 		$index->addDocument($doc);
 		$index->commit();
 		
-		Yii::log("Optimizing index...", CLogger::LEVEL_INFO, __FUNCTION__);
-		$index->optimize();
+		// Yii::log("Optimizing index...", CLogger::LEVEL_INFO, __FUNCTION__);
+		// $index->optimize();
 		
 		Yii::log("Updated <" . $useIndex . "> search index for document id: " . $model->id, CLogger::LEVEL_INFO, __FUNCTION__);		
 	}

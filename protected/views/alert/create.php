@@ -109,6 +109,7 @@
 					wird ausschließlich für diesen Service genutzt und nicht an 
 					Dritte weitergegeben.</p>
 
+<!--
 			<form action="<?php echo $this->createUrl('alert/create'); ?>" method="post" accept-charset="utf-8">
 				<input type="hidden" name="query" value="<?php echo $aq ?>" id="query">
 				<table class="aq-table" border="0" cellspacing="5" cellpadding="15">
@@ -120,6 +121,39 @@
 					<tr><td></td><td><input class="searchbutton" type="submit" value="Alert einrichten"></td></tr>
 				</table>
 			</form>
+-->
+
+			<?php $form=$this->beginWidget('CActiveForm'); ?>
+
+				<?php echo $form->errorSummary($alert); ?>
+				<?php if ($captcha_error == true): ?> 
+				
+					<p style="color:darkred">Bitte beantworten Sie die Sicherheitsfrage</p>
+						
+				<?php endif ?>
+				
+				<table class="aq-table" border="0" cellspacing="5" cellpadding="15">
+					<tr>
+						<td width="20%"><?php echo $form->label($alert, 'query'); ?></td>
+						<td><?php echo $form->textField($alert, 'query', 
+							array('size' => '70', 'value' => $aq)) ?></td>
+					</tr>
+					<tr>
+						<td><?php echo $form->label($alert, 'email'); ?></td>
+						<td><?php echo $form->textField($alert, 'email', array('size' => '70')) ?></td>
+					</tr>
+					<tr>
+						<td>Sicherheitsfrage</td><td><?php echo get_captcha_html() ?></td>
+					</tr>
+					<tr><td></td>
+						<td><?php echo CHtml::submitButton('Alert einrichten', array('class' => 'searchbutton')); ?></td>
+					</tr>
+				</table>
+ 
+			<?php $this->endWidget(); ?>
+
+
+
 
 			</div>
 			

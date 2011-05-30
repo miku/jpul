@@ -269,7 +269,9 @@ class AdminController extends Controller
 
 			// $model->attributes = $_POST['Job'];
 			$model->attributes = $sanitized_post;
-			$model->date_added = time();
+			
+			// Keep the original date
+			// $model->date_added = time();
 			
 
 			// Expiration date ...

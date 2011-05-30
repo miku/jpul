@@ -31,9 +31,9 @@
 			<?php echo $form->error($model,'option'); ?>
 		</li>
 		
-		<div class="help">Kommaseparierte E-Mail-Addressen, an die eine
+		<div class="help">Kommaseparierte Liste von E-Mail-Addressen, an die eine
 			Notifikation gesendet werden soll, wenn ein neues Angebot von 
-			einem Arbeitgeber eingestellt wird.</div>
+			einem Arbeitgeber eingestellt wurde.</div>
 	</fieldset>
 	<?php echo CHtml::submitButton('Speichern', array("class" => "searchbutton")); ?> <span style="font-size:12px;">oder</span> <a style="font-size: 12px" href="<?php echo $this->createUrl('admin/index'); ?>">Abbrechen</a></td>
 	<?php $this->endWidget(); ?>

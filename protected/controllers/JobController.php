@@ -9,8 +9,6 @@ require_once('Utils.php');
 
 class JobController extends Controller
 {
-	// jobs per page, defaults to 20
-	const PAGE_SIZE = 20;
 	// 6 * 7 * 24 * 60 * 60 = six weeks
 	const DEFAULT_EXPIRATION_SECONDS = 3628800; 		
 	
@@ -123,25 +121,25 @@ class JobController extends Controller
 			$viewName = "favs";
 		}
 		
+		// If a number is entered in the search field, and a job with such an
+		// id exists, go directly there.
 		if ($viewName == "direct") {
 			$original_query = $_GET['q'];
 			Yii::log("Direct to: " . $original_query, CLogger::LEVEL_INFO, __FUNCTION__);
 			$criteria->condition='id=:id';
 			$criteria->params=array(':id'=>$original_query);
 			$model = Job::model()->cache(600)->find($criteria);
-			
 			if (!$model) {
 				throw new CHttpException(404, Yii::t('app', 'Your request is not valid.'));
 			}
-			
 			if ($model->status_id == 2) {
 				$this->redirect($this->createUrl('job/view', array('id' => $original_query)));
 			} else {
-				$this->redirect($this->createUrl('job/index'));
+				throw new CHttpException(404, Yii::t('app', 'Your request is not valid.'));
 			}
 		}
 
-		// if we have a term query ...
+		// Search term detected.
 		if ($viewName == "search") {
 			
 			$index = new Zend_Search_Lucene($this->getSearchIndexStore());
@@ -154,6 +152,9 @@ class JobController extends Controller
 			} else {
 				$query = $original_query;
 			}
+
+			// Correct the user input to the query we are actually executing.
+			$original_query = $query;
 			
 			Yii::log("Q: " . $query, CLogger::LEVEL_INFO, __FUNCTION__);
 			
@@ -173,11 +174,11 @@ class JobController extends Controller
 
 			// fix number of offers per page ...
 			if ($v == "embed") {
-				$criteria->limit = 10; # self::PAGE_SIZE;
-				$criteria->offset = ($page - 1) * 10; # self::PAGE_SIZE;;
+				$criteria->limit = 10;
+				$criteria->offset = ($page - 1) * 10;
 			} else {
-				$criteria->limit = $this->items_per_page; # self::PAGE_SIZE;
-				$criteria->offset = ($page - 1) * $this->items_per_page; # self::PAGE_SIZE;;
+				$criteria->limit = $this->items_per_page;
+				$criteria->offset = ($page - 1) * $this->items_per_page;
 			}
 
 			$models = Job::model()->cache(600)->findAllByAttributes(array('id' => $pks), $criteria);
@@ -213,15 +214,12 @@ class JobController extends Controller
 
 			// fix number of offers per page ...
 			if ($v == "embed") {
-				$criteria->limit = 10; # self::PAGE_SIZE;
-				$criteria->offset = ($page - 1) * 10; # self::PAGE_SIZE;;
+				$criteria->limit = 10;
+				$criteria->offset = ($page - 1) * 10;
 			} else {
-				$criteria->limit = $this->items_per_page; # self::PAGE_SIZE;
-				$criteria->offset = ($page - 1) * $this->items_per_page; # self::PAGE_SIZE;;
+				$criteria->limit = $this->items_per_page;
+				$criteria->offset = ($page - 1) * $this->items_per_page;
 			}
-
-			// $criteria->limit = self::PAGE_SIZE;
-			// $criteria->offset = ($page - 1) * self::PAGE_SIZE;;
 
 			// just the default index action ...
 			$models = Job::model()->cache(600)->findAll($criteria);

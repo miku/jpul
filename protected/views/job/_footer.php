@@ -117,8 +117,16 @@
 </p> -->
 
 <br>
-<p>Sie können Favoriten markieren, in dem Sie auf den Stern links neben dem Titel klicken. Meine Favoriten
-	<a href="<?php echo $this->createUrl('job/index', array('s' => 'favs')); ?>">anzeigen</a>.
+
+<p>Sie können Favoriten markieren, in dem Sie auf den Stern links neben dem Titel klicken. 
+	
+	<?php if (isset(Yii::app()->session[Yii::app()->params['favStore']])): ?>
+		<?php if (count(Yii::app()->session[Yii::app()->params['favStore']]) > 0): ?>
+			Meine Favoriten
+			<a href="<?php echo $this->createUrl('job/index', array('s' => 'favs')); ?>">anzeigen</a>.
+		<?php endif ?>
+	<?php endif ?>
+	
 </p>
 
 <br>

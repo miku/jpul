@@ -1,3 +1,5 @@
+
+
 <?php if (isset(Yii::app()->session[Yii::app()->params['favStore']])): ?>
 
 	<?php if (mb_strlen($_SERVER['QUERY_STRING']) > 0 && 

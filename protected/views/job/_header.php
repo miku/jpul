@@ -176,7 +176,7 @@
 	<div id="searchbox">
 
 		<form action="<?php echo $this->createUrl('job/index') ?>" method="get" accept-charset="utf-8">
-		<input size="70" type="text" name="q" value="<?php if (isset($original_query)) echo $original_query ?>" class="search">
+		<input size="70" type="text" name="q" value="<?php if (isset($original_query)) echo $original_query ?>" id="search" class="search">
 
 			<input type="hidden" name="tab" value="<?php echo $tab ?>" id="f">
 		

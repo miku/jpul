@@ -157,8 +157,6 @@ class AdminController extends Controller
 			// $criteria->offset = ($page - 1) * self::PAGE_SIZE;;
 			
 			$models = Job::model()->findAllByAttributes(array('id' => $pks), $criteria);
-			$current_start = ($page - 1) * self::PAGE_SIZE;;
-			$current_end = ($page - 1) * self::PAGE_SIZE + self::PAGE_SIZE;
 		} else {
 			
 			$total = count(Job::model()->findAll($criteria));
@@ -178,14 +176,10 @@ class AdminController extends Controller
 		}
 
 		$number_of_pages = ceil($total / self::PAGE_SIZE);
-		$current_start = ($page - 1) * self::PAGE_SIZE;;
-		$current_end = ($page - 1) * self::PAGE_SIZE + self::PAGE_SIZE;
 		
 		$this->render('index', array(
 			'models'=>$models, 
 			'total' => $total,
-			'current_start' => $current_start, 
-			'current_end' => $current_end,
 			'page' => $page,
 			'number_of_pages' => $number_of_pages,
 			'sort' => $sort,
@@ -433,7 +427,7 @@ class AdminController extends Controller
 		
 		$this->rebuildSearchIndex("default");
 		$this->rebuildSearchIndex("admin");
-		$this->rebuildSearchIndex("api");
+		// $this->rebuildSearchIndex("api");
 		$this->redirect(array('index'));
 	}
 	

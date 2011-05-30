@@ -180,8 +180,6 @@ class JobController extends Controller
 			}
 
 			$models = Job::model()->cache(600)->findAllByAttributes(array('id' => $pks), $criteria);
-			$current_start = ($page - 1) * self::PAGE_SIZE;;
-			$current_end = ($page - 1) * self::PAGE_SIZE + self::PAGE_SIZE;
 
 			$number_of_pages = ceil($total / self::PAGE_SIZE);
 		}	
@@ -208,8 +206,6 @@ class JobController extends Controller
 			
 			// pagination
 			$number_of_pages = 1;			
-			$current_start = 0;
-			$current_end = $total;
 		}
 		
 		// if the user neither searched or requested her favs, use the default view ...	
@@ -236,8 +232,6 @@ class JobController extends Controller
 
 			// pagination
 			$number_of_pages = ceil($total / self::PAGE_SIZE);
-			$current_start = ($page - 1) * self::PAGE_SIZE;;
-			$current_end = ($page - 1) * self::PAGE_SIZE + self::PAGE_SIZE;			
 		}
 		
 		if ($v == "browser") {
@@ -254,8 +248,6 @@ class JobController extends Controller
 			$this->render('index', array(
 				'models'=>$models, 
 				'total' => $total,
-				'current_start' => $current_start, 
-				'current_end' => $current_end,
 				'page' => $page,
 				'number_of_pages' => $number_of_pages,
 				'sort' => $sort,

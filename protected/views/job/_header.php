@@ -162,14 +162,14 @@
 
 		</ul>
 		
-		<ul id="tabs-ul-right"  class="alignright">
+		<!-- <ul id="tabs-ul-right"  class="alignright">
 			<?php if (isset($original_query) && $original_query != ''): ?>
 				<li><a href="<?php echo $this->createUrl('alert/create', array('aq' => $original_query)); ?>">E-Mail Alert</a></li>
 			<?php else: ?>
 				<li><a href="<?php echo $this->createUrl('alert/create'); ?>">E-Mail Alert</a></li>
 			<?php endif ?>
 			
-		</ul>
+		</ul> -->
 		
 		<div class="clear"></div>
 		

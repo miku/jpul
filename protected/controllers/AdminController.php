@@ -267,9 +267,10 @@ class AdminController extends Controller
 			$_POST['Job']['company_homepage'] = sanitize_url($_POST['Job']['company_homepage']);
 			$sanitized_post = $_POST['Job']; // array_strip_tags($_POST['Job'], '<br>');
 
-			// $model->attributes = $_POST['Job'];			
+			// $model->attributes = $_POST['Job'];
 			$model->attributes = $sanitized_post;
 			$model->date_added = time();
+			
 
 			// Expiration date ...
 			if (!isset($sanitized_post['expiration_date']) || $sanitized_post['expiration_date'] === '') {

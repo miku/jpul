@@ -91,7 +91,7 @@ class Job extends CActiveRecord
 			array('zipcode', 'length', 'max'=>10),
 			array('publisher_name, publisher_phone, publisher_email, ukey', 'length', 'max'=>128),
 			array('job_version', 'length', 'max'=>16),
-			array('how_to_apply', 'safe'),
+			array('how_to_apply, shadowtags', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, title, description, how_to_apply, attachment, company, company_homepage, zipcode, city, state, country, is_telecommute, is_nation_wide, degree_id, study, sector, author_id, date_added, expiration_date, reviewer_id, source, status_id, degree_student, degree_bachelor, degree_master, degree_ma, degree_diploma, degree_phd, degree_postdoc, degree_encoded, is_fulltime, is_parttime, is_internship, is_working_student, is_thesis, is_scholarship, is_regular_job, is_scientific_position, publisher_name, publisher_phone, publisher_email, job_version, shadowtags', 'safe', 'on'=>'search'),
@@ -165,7 +165,7 @@ class Job extends CActiveRecord
 			'publisher_email' => Yii::t('app', 'Publisher Email'),
 			'job_version' => Yii::t('app', 'Job Version'),
 			'ukey' => Yii::t('app', 'Ukey'),
-			'shadowtags' => 'shadowtags',
+			'shadowtags' => Yii::t('app', 'Shadow Tags'),
 		);
 	}
 

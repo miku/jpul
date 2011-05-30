@@ -52,6 +52,7 @@
 			<!-- TODO ... -->
 			<div class="form-error"><?php echo $form->error($model,'how_to_apply'); ?></div>
 		<li>
+			
 </fieldset>
 
 <fieldset>
@@ -180,7 +181,7 @@
 	</li>
 	
 	<div class="help">
-		Wir bitten Sie die folgenden Felder auszufüllen,
+		Wir bitten Sie die obigen Felder auszufüllen,
 		damit wir Sie bei inhaltlichen Fragen zu Ihrem Angebot persönlich
 		 kontaktieren können. Diese Angaben werden nicht veröffentlicht
 		und nicht an Dritte weitergegeben.

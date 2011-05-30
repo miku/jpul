@@ -5,6 +5,7 @@ $main = "main.dev.mysql.php";
 // development hosts
 // using development configuration (see config/main.dev.php)
 $devhosts = array("chiba", "chiba.local", "localhost",
+	"wlan0021.rz.uni-leipzig.de",
 	"wlan0094.rz.uni-leipzig.de",
 	"wlan0104.rz.uni-leipzig.de",
 	"wlan0241.rz.uni-leipzig.de",

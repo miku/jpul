@@ -52,6 +52,17 @@
 			<!-- TODO ... -->
 			<div class="form-error"><?php echo $form->error($model,'how_to_apply'); ?></div>
 		<li>
+			
+		<li>
+			<?php echo $form->labelEx($model,'shadowtags'); ?>
+			<?php echo $form->textField($model,'shadowtags', array('size' => '70')); ?>
+			<div class="help">
+				<p>Versteckte Tags werden bei der Suche berücksichtigt, dem Besucher aber
+					nicht angezeigt.</p>
+			</div>
+			<div class="form-error"><?php echo $form->error($model,'shadowtags'); ?></div>
+		</li>
+
 </fieldset>
 
 <fieldset>

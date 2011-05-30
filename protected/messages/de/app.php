@@ -67,4 +67,5 @@ return array (
   'Zipcode' => 'Postleitzahl',
   'cancel' => 'Abbrechen',
   'or' => 'oder',
+  'Shadow Tags' => 'Versteckte Tags',
 );

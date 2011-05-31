@@ -18,5 +18,11 @@
 		</div>
 		</a>
 
+		<a class="no-underline" href="<?php echo $this->createUrl('admin/feedback'); ?>">
+		<div class="filter-option filter-option-active">
+			Feedback
+		</div>
+		</a>
+
 
 		

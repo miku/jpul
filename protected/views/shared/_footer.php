@@ -1,4 +1,6 @@
-<p>(C) 2010 &mdash; <?php echo date("Y"); ?> <a href="http://www.zv.uni-leipzig.de/studium/career-center.html">Career Center</a> der Universität Leipzig</p>
+<p>(C) 2010 &mdash; <?php echo date("Y"); ?> Jobportal des <a href="http://www.zv.uni-leipzig.de/studium/career-center.html">Career Centers</a> der Universität Leipzig
+	| <a href="<?php echo $this->createUrl('feedback/index', array('context' => 'listing')); ?>">Feedback</a>
+	</p>
 
 <br>
 <p><strong>Listen</strong> &middot;

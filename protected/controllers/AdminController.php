@@ -355,6 +355,15 @@ class AdminController extends Controller
 		
 		$this->redirect(array('admin/view', 'id' => $id));
 	}
+	
+	public function actionFeedback() {
+		
+		$criteria = new CDbCriteria;
+		$criteria->order = 'date_added DESC';
+		
+		$models = Feedback::model()->findAll($criteria);
+		$this->render('feedback', array('models' => $models));
+	}
 
 	/**
 	 * Job details.

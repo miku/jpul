@@ -37,7 +37,7 @@
 	
 	
 	<div id="footer">
-		<?php $this->renderPartial('_footer') ?>			
+		<?php $this->renderPartial('/shared/_footer') ?>			
 	</div>
 	
 </div> <!-- main -->

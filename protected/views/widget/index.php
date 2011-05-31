@@ -131,7 +131,9 @@
 Universität Leipzig,
 Burgstraße 21, 1. Etage,
 04109 Leipzig, +49 341 97-30030</p>
-<p>Technische Fragen: <a href="mailto:martin.czygan@uni-leipzig.de">martin.czygan@uni-leipzig.de</a></p>
+
+<p><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget')); ?>">Feedback</a></p>
+<!-- <p>Technische Fragen: <a href="mailto:martin.czygan@uni-leipzig.de">martin.czygan@uni-leipzig.de</a></p> -->
 
 
 </div></body></html>

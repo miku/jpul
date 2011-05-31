@@ -129,6 +129,36 @@ select CONCAT("x", jid) from
 
 -- select unix_timestamp()
 
+select distinct http_referer from request where request_uri like '%src=widget%'</string>
+		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
+
+-- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
+
+-- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
+
+/*
+select 
+	(select count(*) as cnt from 
+		(select distinct tracking_id, request_uri_wo_qs_and_hostname 
+		from request
+		where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname like CONCAT('%/job/', 1119)
+		) as Q
+	) from job;
+
+*/	
+
+
+/*
+select CONCAT("x", jid) from 
+	(select id as jid from job) as Q;
+
+*/
+
+-- (select CONCAT('%/job/', jid) from 
+--	(select id as jid from job) as Q);
+
+-- select unix_timestamp()
+
 select http_referer from request where request_uri like '%src=widget%'</string>
 		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
 
@@ -602,27 +632,6 @@ select CONCAT("x", jid) from
 
 
 (select id as jid from job) as Q</string>
-		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
-
--- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
-
--- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
-
-/*
-select 
-	(select count(*) as cnt from 
-		(select distinct tracking_id, request_uri_wo_qs_and_hostname 
-		from request
-		where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname like CONCAT('%/job/', 1119)
-		) as Q
-	) from job;
-
-*/	
-
-
-
-select CONCAT("x", jid) from 
-	(select id as jid from job) as Q</string>
 	</array>
 	<key>rdbms_type</key>
 	<string>mysql</string>

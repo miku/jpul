@@ -341,6 +341,20 @@ class JobController extends Controller
 			$command = $connection->createCommand($sql);
 			$dataReader = $command->queryRow();
 			$view_count = $dataReader['view_count'];
+			
+			$job_viewcount = JobViewcount::model()->findBySql("SELECT * FROM job_viewcount WHERE job_id = :job_id", array('job_id' => $id));
+			if (!$job_viewcount) {
+				$job_viewcount = new JobViewcount;
+				$job_viewcount->job_id = $id;
+				$job_viewcount->job_title = $model->title;
+				$job_viewcount->job_date_added = $model->date_added;
+				Yii::log("Created job_viewcount cache entry for job id " . $id, CLogger::LEVEL_INFO, __FUNCTION__);
+			}
+			$job_viewcount->view_count = $view_count;
+			$job_viewcount->date_updated = time();
+			$job_viewcount->save();
+			Yii::log("Updated job_viewcount cache for job " . $id . " to: " . $view_count, CLogger::LEVEL_INFO, __FUNCTION__);
+
 		} catch (Exception $e) {
 			Yii::log($e, CLogger::LEVEL_INFO, __FUNCTION__);
 			$view_count = null;

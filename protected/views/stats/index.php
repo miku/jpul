@@ -17,6 +17,7 @@
 				<p>Stats / 15.12.2010 &mdash; <?php echo date("d.m.Y") ?></p>
 				<br>
 				<p class="normal">
+					<a href="<?php echo $this->createUrl('stats/charts') ?>">Charts</a> |
 					<a href="<?php echo $this->createUrl('stats/searches') ?>">Searches</a> |
 					<a href="<?php echo $this->createUrl('stats/referer') ?>">Referrer</a> |
 					<a href="<?php echo $this->createUrl('stats/outboundLinks') ?>">Outbound</a> |

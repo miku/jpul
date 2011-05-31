@@ -203,6 +203,36 @@ class StatsController extends Controller
 	
 	}
 	
+	public function actionCharts() {
+		
+		$current_time = time();
+		$_1w = 604800;
+		$_30d = 2592000;
+				
+		$criteria = new CDbCriteria;
+		$criteria->order = 'view_count DESC';
+		$criteria->limit = 100;		
+		$models = JobViewcount::model()->findAll($criteria);
+		
+		$criteria->condition = 'job_date_added > :time';
+		$criteria->params=array(':time' => ($current_time - $_30d));
+		$criteria->limit = 15;
+		
+		$models_last_month = JobViewcount::model()->findAll($criteria);
+		
+		
+		$criteria->condition = 'job_date_added > :time';
+		$criteria->params=array(':time' => ($current_time - $_1w));
+		$criteria->limit = 10;		
+		$models_last_week = JobViewcount::model()->findAll($criteria);
+
+		$this->render('charts', array(
+			'models' => $models, 
+			'models_last_month' => $models_last_month,
+			'models_last_week' => $models_last_week
+		));
+	}
+	
 	
 	public function actionIndex() {
 		

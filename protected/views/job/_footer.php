@@ -19,6 +19,10 @@
 		
 	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "übersetz*+OR+translate+OR+translation"))); ?>">Übersetzung</a></li>
 		</li>
+
+		<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "bildung*+OR+erziehungs*+OR+pädagog*"))); ?>">Erziehung und Bildung</a></li>
+		
+		
 	</ul>
 	</div>
 

@@ -32,17 +32,6 @@ class Controller extends CController
 
 	// Caching the complete listings
 	
-	// public function filters()
-	// {
-	//     	return array(
-	//         	array(
-	//             	'COutputCache',
-	//             	'duration'=>2,
-	//             	'varyByParam'=>array('id', 'q', 'size', 'cache', 'page'),
-	//         	),
-	//     	);
-	// }
-	
 	
 	/**
 	 * Simple authentication filter. Make sure the user has the role 'admin'

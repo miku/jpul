@@ -46,7 +46,7 @@
 			<a class="<?php if ($this->items_per_page == 10) { echo 'current-page'; } ?>" href="<?php echo $this->createUrl('job/index', $params_10); ?>">10</a>
 			<a class="<?php if ($this->items_per_page == 20) { echo 'current-page'; } ?>" href="<?php echo $this->createUrl('job/index', $params_20); ?>">20</a>
 			<a class="<?php if ($this->items_per_page == 50) { echo 'current-page'; } ?>" href="<?php echo $this->createUrl('job/index', $params_50); ?>">50</a>
-			<span class="dimmed">Angebote per Seite</span>
+			<span class="dimmed">Angebote pro Seite</span>
 	</p>
 	
 	<p class="alignright">

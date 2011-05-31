@@ -168,6 +168,9 @@ class JobController extends Controller
 			$pks = array();
  			foreach ($results as $result) {
 				$pks[] = $result->pk;
+				// Yii::log("Search result content [". $result->pk . "]: " . 
+				// 	$query_parsed->highlightMatches($result->description), CLogger::LEVEL_INFO, __FUNCTION__);
+				
 			}
 
 			$total = count(Job::model()->cache(600)->findAllByAttributes(array('id' => $pks), $criteria));
@@ -541,7 +544,7 @@ class JobController extends Controller
 						'Unternehmen: ' . $model->company . $newline . 
 						'Ort: ' . $model->city . $newline .
 						'Ablauf der Bewerbungsfrist: ' . date("d.m.Y", $model->expiration_date) . $newline . $newline .
-						'URL im Jobportal: http://wwwdup.uni-leipzig.de' . $this->createUrl('job/view', array('id' => $model->id));
+						'URL im Jobportal: http://wwwdup.uni-leipzig.de' . $this->createUrl('admin/view', array('id' => $model->id));
 						
 			$headers = 'From: careercenter@uni-leipzig.de' . "\r\n" .
 	    		'Reply-To: careercenter@uni-leipzig.de' . "\r\n" .

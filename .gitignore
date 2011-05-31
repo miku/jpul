@@ -17,6 +17,7 @@ protected/runtime/adminsearch/*
 protected/runtime/apisearch/*
 protected/runtime/cache/*
 protected/runtime/state.bin
+protected/runtime/cache-*.db
 
 protected/data/*sql
 protected/data/*.db

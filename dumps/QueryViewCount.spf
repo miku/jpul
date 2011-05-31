@@ -14,8 +14,6 @@
 			<string>jobportal</string>
 			<key>host</key>
 			<string>127.0.0.1</string>
-			<key>kcid</key>
-			<string>1235123123336422783</string>
 			<key>name</key>
 			<string>Jobportal</string>
 			<key>port</key>
@@ -30,19 +28,28 @@
 			<key>connectionEncoding</key>
 			<string>latin1</string>
 			<key>contentFilter</key>
-			<dict/>
+			<dict>
+				<key>filterComparison</key>
+				<string>is</string>
+				<key>filterComparisonTag</key>
+				<integer>0</integer>
+				<key>filterField</key>
+				<string>request_uri</string>
+				<key>filterValue</key>
+				<string>%src=widget%</string>
+				<key>firstBetweenField</key>
+				<string></string>
+				<key>menuLabel</key>
+				<string>`request_uri` LIKE BINARY '%src=widget%'</string>
+				<key>secondBetweenField</key>
+				<string></string>
+			</dict>
 			<key>contentPageNumber</key>
 			<integer>1</integer>
-			<key>contentSelectedIndexSet</key>
-			<array>
-				<integer>6</integer>
-			</array>
-			<key>contentSortCol</key>
-			<string>id</string>
 			<key>contentSortColIsAsc</key>
-			<false/>
+			<true/>
 			<key>contentViewport</key>
-			<string>{{0, 0}, {1233, 666}}</string>
+			<string>{{807, 851}, {1231, 666}}</string>
 			<key>isToolbarVisible</key>
 			<true/>
 			<key>queries</key>
@@ -52,11 +59,32 @@
 
 -- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
 
-select count(*) as cnt from (
-	select distinct tracking_id, request_uri_wo_qs_and_hostname 
-	from request 
-	where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164'
-) as Q;
+/*
+select 
+	(select count(*) as cnt from 
+		(select distinct tracking_id, request_uri_wo_qs_and_hostname 
+		from request
+		where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname like CONCAT('%/job/', 1119)
+		) as Q
+	) from job;
+
+*/	
+
+
+/*
+select CONCAT("x", jid) from 
+	(select id as jid from job) as Q;
+
+*/
+
+-- (select CONCAT('%/job/', jid) from 
+--	(select id as jid from job) as Q);
+
+-- select unix_timestamp()
+
+select distinct http_referer from request where request_uri like '%src=widget%';
+
+	
 </string>
 			<key>table</key>
 			<string>request</string>
@@ -78,154 +106,523 @@ select count(*) as cnt from (
 
 -- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
 
-select count(*) as cnt from (
-	select distinct tracking_id, request_uri_wo_qs_and_hostname 
-	from request 
-	where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164'
-) as Q</string>
+/*
+select 
+	(select count(*) as cnt from 
+		(select distinct tracking_id, request_uri_wo_qs_and_hostname 
+		from request
+		where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname like CONCAT('%/job/', 1119)
+		) as Q
+	) from job;
+
+*/	
+
+
+/*
+select CONCAT("x", jid) from 
+	(select id as jid from job) as Q;
+
+*/
+
+-- (select CONCAT('%/job/', jid) from 
+--	(select id as jid from job) as Q);
+
+-- select unix_timestamp()
+
+select http_referer from request where request_uri like '%src=widget%'</string>
 		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
 
 -- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
 
 -- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
 
-select count(*) as cnt from (
-	select distinct tracking_id, request_uri_wo_qs_and_hostname 
-	from request 
-	where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164'
-)</string>
+/*
+select 
+	(select count(*) as cnt from 
+		(select distinct tracking_id, request_uri_wo_qs_and_hostname 
+		from request
+		where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname like CONCAT('%/job/', 1119)
+		) as Q
+	) from job;
+
+*/	
+
+
+/*
+select CONCAT("x", jid) from 
+	(select id as jid from job) as Q;
+
+*/
+
+-- (select CONCAT('%/job/', jid) from 
+--	(select id as jid from job) as Q);
+
+select unix_timestamp()</string>
 		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
 
 -- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
 
 -- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
 
-select count(*) as cnt, (
-	select distinct tracking_id, request_uri_wo_qs_and_hostname 
-	from request 
-	where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164'
-)</string>
+/*
+select 
+	(select count(*) as cnt from 
+		(select distinct tracking_id, request_uri_wo_qs_and_hostname 
+		from request
+		where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname like CONCAT('%/job/', 1119)
+		) as Q
+	) from job;
+
+*/	
+
+
+/*
+select CONCAT("x", jid) from 
+	(select id as jid from job) as Q;
+
+*/
+
+-- (select CONCAT('%/job/', jid) from 
+--	(select id as jid from job) as Q);
+
+select sysdate()</string>
 		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
 
 -- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
 
 -- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
 
-select count(*) as cnt, (
-	select distinct tracking_id, request_uri_wo_qs_and_hostname 
-	from request 
-	where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164'</string>
+/*
+select 
+	(select count(*) as cnt from 
+		(select distinct tracking_id, request_uri_wo_qs_and_hostname 
+		from request
+		where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname like CONCAT('%/job/', 1119)
+		) as Q
+	) from job;
+
+*/	
+
+
+/*
+select CONCAT("x", jid) from 
+	(select id as jid from job) as Q;
+
+*/
+
+-- (select CONCAT('%/job/', jid) from 
+--	(select id as jid from job) as Q);
+
+select now()</string>
 		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
 
 -- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
 
 -- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
 
-select count(*) as cnt, (
-	select distinct tracking_id, request_uri_wo_qs_and_hostname 
-	from request 
-	where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164' as Q</string>
+/*
+select 
+	(select count(*) as cnt from 
+		(select distinct tracking_id, request_uri_wo_qs_and_hostname 
+		from request
+		where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname like CONCAT('%/job/', 1119)
+		) as Q
+	) from job;
+
+*/	
+
+
+/*
+select CONCAT("x", jid) from 
+	(select id as jid from job) as Q;
+
+*/
+
+(select CONCAT('%/job/', jid) from 
+	(select id as jid from job) as Q)</string>
 		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
 
 -- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
 
 -- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
 
-select count() from (
-	select distinct tracking_id, request_uri_wo_qs_and_hostname 
-	from request 
-	where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164' as Q</string>
+/*
+select 
+	(select count(*) as cnt from 
+		(select distinct tracking_id, request_uri_wo_qs_and_hostname 
+		from request
+		where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname like CONCAT('%/job/', 1119)
+		) as Q
+	) from job;
+
+*/	
+
+
+/*
+select CONCAT("x", jid) from 
+	(select id as jid from job) as Q;
+
+*/
+
+select request_uri from request where request_uri in (select CONCAT('%/job/', jid) from 
+	(select id as jid from job) as Q)</string>
 		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
 
 -- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
 
 -- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
 
-select distinct tracking_id, request_uri_wo_qs_and_hostname from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164' group by tracking_id</string>
+/*
+select 
+	(select count(*) as cnt from 
+		(select distinct tracking_id, request_uri_wo_qs_and_hostname 
+		from request
+		where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname like CONCAT('%/job/', 1119)
+		) as Q
+	) from job;
+
+*/	
+
+
+/*
+select CONCAT("x", jid) from 
+	(select id as jid from job) as Q;
+
+*/
+
+select id from job where id in (select CONCAT('%/job/', jid) from 
+	(select id as jid from job) as Q)</string>
 		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
 
 -- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
 
 -- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
 
-select distinct tracking_id from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164' group by tracking_id</string>
+/*
+select 
+	(select count(*) as cnt from 
+		(select distinct tracking_id, request_uri_wo_qs_and_hostname 
+		from request
+		where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname like CONCAT('%/job/', 1119)
+		) as Q
+	) from job;
+
+*/	
+
+
+/*
+select CONCAT("x", jid) from 
+	(select id as jid from job) as Q;
+
+*/
+
+select id from job where (select CONCAT('%/job/', jid) from 
+	(select id as jid from job) as Q)</string>
 		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
 
 -- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
 
 -- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
 
-select distinct tracking_id, count(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164' group by tracking_id</string>
+/*
+select 
+	(select count(*) as cnt from 
+		(select distinct tracking_id, request_uri_wo_qs_and_hostname 
+		from request
+		where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname like CONCAT('%/job/', 1119)
+		) as Q
+	) from job;
+
+*/	
+
+
+/*
+select CONCAT("x", jid) from 
+	(select id as jid from job) as Q;
+
+*/
+
+select jid from Q where (select CONCAT('%/job/', jid) from 
+	(select id as jid from job) as Q)</string>
 		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
 
 -- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
 
 -- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
 
-select distinct tracking_id, count(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164' group by request_uri_wo_qs_and_hostname</string>
+/*
+select 
+	(select count(*) as cnt from 
+		(select distinct tracking_id, request_uri_wo_qs_and_hostname 
+		from request
+		where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname like CONCAT('%/job/', 1119)
+		) as Q
+	) from job;
+
+*/	
+
+
+/*
+select CONCAT("x", jid) from 
+	(select id as jid from job) as Q;
+
+*/
+
+	(select CONCAT('%/job/', jid) from 
+		(select id as jid from job) as Q)</string>
 		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
 
 -- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
 
 -- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
 
-select distinct count(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164' group by request_uri_wo_qs_and_hostname</string>
+/*
+select 
+	(select count(*) as cnt from 
+		(select distinct tracking_id, request_uri_wo_qs_and_hostname 
+		from request
+		where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname like CONCAT('%/job/', 1119)
+		) as Q
+	) from job;
+
+*/	
+
+
+/*
+select CONCAT("x", jid) from 
+	(select id as jid from job) as Q;
+
+*/
+
+select count(*) from request where request_uri in 
+	(select CONCAT('%/job/', jid) from 
+		(select id as jid from job) as Q)</string>
 		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
 
 -- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
 
 -- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
 
-select distinct count(request_uri_wo_qs_and_hostname) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164' group by request_uri_wo_qs_and_hostname</string>
+/*
+select 
+	(select count(*) as cnt from 
+		(select distinct tracking_id, request_uri_wo_qs_and_hostname 
+		from request
+		where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname like CONCAT('%/job/', 1119)
+		) as Q
+	) from job;
+
+*/	
+
+
+/*
+select CONCAT("x", jid) from 
+	(select id as jid from job) as Q;
+
+*/
+
+select jid, count(*) from request where request_uri in 
+	(select CONCAT('%/job/', jid), jid  from 
+		(select id as jid from job) as Q)</string>
 		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
 
 -- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
 
 -- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
 
-select distinct count(request_uri_wo_qs_and_hostname) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164' group by tracking_id</string>
+/*
+select 
+	(select count(*) as cnt from 
+		(select distinct tracking_id, request_uri_wo_qs_and_hostname 
+		from request
+		where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname like CONCAT('%/job/', 1119)
+		) as Q
+	) from job;
+
+*/	
+
+
+/*
+select CONCAT("x", jid) from 
+	(select id as jid from job) as Q;
+
+*/
+
+select Q.jid, count(*) from request where request_uri in (select CONCAT('%/job/', jid) from (select id as jid from job) as Q)</string>
 		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
 
 -- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
 
 -- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
 
-select distinct count(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164' group by tracking_id</string>
+/*
+select 
+	(select count(*) as cnt from 
+		(select distinct tracking_id, request_uri_wo_qs_and_hostname 
+		from request
+		where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname like CONCAT('%/job/', 1119)
+		) as Q
+	) from job;
+
+*/	
+
+
+/*
+select CONCAT("x", jid) from 
+	(select id as jid from job) as Q;
+
+*/
+
+select jid, count(*) from request where request_uri in (select CONCAT('%/job/', jid) from (select id as jid from job) as Q)</string>
 		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
 
 -- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
 
 -- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
 
-select distinct tracking_id, request_uri_wo_qs_and_hostname from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164'</string>
+/*
+select 
+	(select count(*) as cnt from 
+		(select distinct tracking_id, request_uri_wo_qs_and_hostname 
+		from request
+		where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname like CONCAT('%/job/', 1119)
+		) as Q
+	) from job;
+
+*/	
+
+
+/*
+select CONCAT("x", jid) from 
+	(select id as jid from job) as Q;
+
+*/
+
+select id from request where request_uri in (select CONCAT('%/job/', jid) from (select id as jid from job) as Q)</string>
 		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
 
 -- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
 
 -- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
 
-select distinct count(*) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164'</string>
+/*
+select 
+	(select count(*) as cnt from 
+		(select distinct tracking_id, request_uri_wo_qs_and_hostname 
+		from request
+		where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname like CONCAT('%/job/', 1119)
+		) as Q
+	) from job;
+
+*/	
+
+
+/*
+select CONCAT("x", jid) from 
+	(select id as jid from job) as Q;
+
+*/
+
+select request_uri from request where request_uri in (select CONCAT('%/job/', jid) from (select id as jid from job) as Q)</string>
 		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
 
 -- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
 
 -- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
 
-select distinct count(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164'</string>
+/*
+select 
+	(select count(*) as cnt from 
+		(select distinct tracking_id, request_uri_wo_qs_and_hostname 
+		from request
+		where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname like CONCAT('%/job/', 1119)
+		) as Q
+	) from job;
+
+*/	
+
+
+/*
+select CONCAT("x", jid) from 
+	(select id as jid from job) as Q;
+
+*/
+
+select CONCAT('%/job/', jid) from
+	(select id as jid from job) as Q</string>
 		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
 
 -- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
 
 -- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
 
-select distinct tracking_id from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164'</string>
+/*
+select 
+	(select count(*) as cnt from 
+		(select distinct tracking_id, request_uri_wo_qs_and_hostname 
+		from request
+		where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname like CONCAT('%/job/', 1119)
+		) as Q
+	) from job;
+
+*/	
+
+
+/*
+select CONCAT("x", jid) from 
+	(select id as jid from job) as Q;
+
+*/
+
+select CONCAT('%/job/', jid)
+	(select id as jid from job) as Q</string>
 		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
 
-select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL</string>
+-- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
+
+-- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
+
+/*
+select 
+	(select count(*) as cnt from 
+		(select distinct tracking_id, request_uri_wo_qs_and_hostname 
+		from request
+		where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname like CONCAT('%/job/', 1119)
+		) as Q
+	) from job;
+
+*/	
+
+
+/*
+select CONCAT("x", jid) from 
+	(select id as jid from job) as Q;
+
+*/
+
+
+(select id as jid from job) as Q</string>
 		<string>-- select distinct count(request_uri_wo_qs_and_hostname) from request group by tracking_id;
 
-select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL;
--- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';</string>
+-- select distinct tracking_id, request_uri_wo_qs_and_hostname from request where tracking_id IS NOT NULL and request_uri_wo_qs_and_hostname IS NOT NULL ;
+
+-- select distinct COUNT(tracking_id) from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname = '/job/164';
+
+/*
+select 
+	(select count(*) as cnt from 
+		(select distinct tracking_id, request_uri_wo_qs_and_hostname 
+		from request
+		where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND request_uri_wo_qs_and_hostname like CONCAT('%/job/', 1119)
+		) as Q
+	) from job;
+
+*/	
+
+
+
+select CONCAT("x", jid) from 
+	(select id as jid from job) as Q</string>
 	</array>
 	<key>rdbms_type</key>
 	<string>mysql</string>

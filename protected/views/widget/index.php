@@ -115,10 +115,10 @@
 <h3>Live Beispiele</h3>
 
 <ul>
-	<li><a href="http://wwwdup.uni-leipzig.de/~sportwi/studium/praktikum-und-jobportal">http://wwwdup.uni-leipzig.de/~sportwi/studium/praktikum-und-jobportal</a></li>
-	<li><a href="http://www.informatik.uni-leipzig.de/ifi/kontakt/jobs.html">http://www.informatik.uni-leipzig.de/ifi/kontakt/jobs.html</a></li>
-	<li><a href="http://www.stura.uni-leipzig.de/stura/fachschaften/sportwissenschaftliche-fakultaet/fsr-sportwissenschaften/serviceprojekte/job-portal/">http://www.stura.uni-leipzig.de/stura/fachschaften/sportwissenschaftliche-fakultaet/fsr-sportwissenschaften/serviceprojekte/job-portal/</a></li>
-	<li><a href="http://www.wifa.uni-leipzig.de/iufb/jobs.html">http://www.wifa.uni-leipzig.de/iufb/jobs.html</a></li>
+	<li><a href="http://wwwdup.uni-leipzig.de/~sportwi/studium/praktikum-und-jobportal">Sportwissenschaftliche Fakultät</a></li>
+	<li><a href="http://www.stura.uni-leipzig.de/stura/fachschaften/sportwissenschaftliche-fakultaet/fsr-sportwissenschaften/serviceprojekte/job-portal/">FSR Sportwissenschaften</a></li>
+	<li><a href="http://www.informatik.uni-leipzig.de/ifi/kontakt/jobs.html">Institut für Informatik</a></li>
+	<li><a href="http://www.wifa.uni-leipzig.de/iufb/jobs.html">Institut für Unternehmensrechnung, Finanzierung und Besteuerung</a></li>
 </ul>
 
 <div class="line"></div>

@@ -138,4 +138,8 @@
 <br>
 <p><strong>Micro&mdash;Jobportal</strong> &middot;
 	<a href="<?php echo $this->createUrl('widget/index'); ?>">Jobportal Widget</a>
+	<?php if (isset($original_query) && $original_query !== ""): ?>
+		&#9733; <a href="<?php echo $this->createUrl('widget/index', array('q' => $original_query)); ?>">Widget für die aktuelle Suche <span style="font-style: italic; font-weight: bold"><?php echo cut_text($original_query, 30); ?></span></a>
+	<?php endif ?>
+	
 </p>

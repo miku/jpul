@@ -98,7 +98,7 @@
 		$obf_r = "";
 		$str_r = $r + "";
 		for ($i = 0; $i < strlen($str_r); $i++) {
-			$obf_r .= "<script>document.write(\"" . substr($str_r, $i, 1) . "\");</script>";
+			$obf_r .= "<script>document.write(\"" . mb_substr($str_r, $i, 1) . "\");</script>";
 		}
 		
 		return '<span class="CHALLENGE_QUESTION">' . $obf_r . ' plus ' . $s . ' ist gleich </span>' .

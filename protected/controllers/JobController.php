@@ -101,7 +101,7 @@ class JobController extends Controller
 			$criteria->condition .= " OR shadowtags LIKE '%shk%')";
 		}
 		
-		if ($tab === 'i11n') {
+		if ($tab === 'international') {
 			$criteria->condition .= " AND country is not null and country != '' and country not like '%eutschland%' and country not like '%eutsch%' and country != 'D' and country != 'BRD' and country != 'deu' and country not like '%ermany%'";
 		}
 

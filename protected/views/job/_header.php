@@ -141,20 +141,20 @@
 			<?php endif ?>
 
 
-			<?php if ('i11n' === $tab): ?>
+			<?php if ('international' === $tab): ?>
 				
 				<?php if (isset($original_query)): ?>
-					<li><a class="active" href="<?php echo $this->createUrl('job/index', array('tab' => 'i11n', 'q' => $original_query)) ?>">International</a></li>
+					<li><a class="active" href="<?php echo $this->createUrl('job/index', array('tab' => 'international', 'q' => $original_query)) ?>">International</a></li>
 				<?php else: ?>
-					<li><a class="active" href="<?php echo $this->createUrl('job/index', array('tab' => 'i11n')) ?>">International</a></li>
+					<li><a class="active" href="<?php echo $this->createUrl('job/index', array('tab' => 'international')) ?>">International</a></li>
 				<?php endif ?>
 				
 			<?php else: ?>
 
 				<?php if (isset($original_query)): ?>
-					<li><a class="inactive-tab" href="<?php echo $this->createUrl('job/index', array('tab' => 'i11n', 'q' => $original_query)) ?>">International</a></li>
+					<li><a class="inactive-tab" href="<?php echo $this->createUrl('job/index', array('tab' => 'international', 'q' => $original_query)) ?>">International</a></li>
 				<?php else: ?>
-					<li><a class="inactive-tab" href="<?php echo $this->createUrl('job/index', array('tab' => 'i11n')) ?>">International</a></li>
+					<li><a class="inactive-tab" href="<?php echo $this->createUrl('job/index', array('tab' => 'international')) ?>">International</a></li>
 				<?php endif ?>
 				
 			<?php endif ?>

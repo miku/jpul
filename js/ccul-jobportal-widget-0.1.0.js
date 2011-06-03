@@ -41,11 +41,11 @@ ccul_jobportal_load.getScript = function(src) {
 ccul_jobportal_load();
 
 ccul_jobportal_load.widget = function(query) {
-	$('#ccul_jobportal_widget').html('<p style="background: aliceblue; padding: 3px; color: gray;">Loading...</p>');
 	if (typeof $ == "undefined") {
 		// console.log("jQuery hasn't arrived.");
 		setTimeout("ccul_jobportal_load.widget(\"" + query + "\")", 100);
 	} else {
+		$('#ccul_jobportal_widget').html('<p style="background: aliceblue; padding: 3px; color: gray;">Loading...</p>');
 		// console.log("jQuery is up.");
 		if (typeof query != "undefined") {
 			$.get('http://wwwdup.uni-leipzig.de/jobportal/widget/get?q=' + query, function(data) { 

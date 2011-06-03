@@ -46,6 +46,7 @@ ccul_jobportal_load.widget = function(query) {
 		setTimeout("ccul_jobportal_load.widget(\"" + query + "\")", 100);
 	} else {
 		// console.log("jQuery is up.");
+		$('#ccul_jobportal_widget').html('<p style="background: aliceblue; padding: 3px; color: gray;">Loading...</p>');
 		if (typeof query != "undefined") {
 			$.get('http://wwwdup.uni-leipzig.de/jobportal/widget/get?q=' + query, function(data) { 
 				// console.log("Got data."); 

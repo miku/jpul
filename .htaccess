@@ -1,13 +1,4 @@
-# 480 weeks
-# <FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)$">
-#   Header set Cache-Control "max-age=172800, public"
-#   Header set Expires "max-age=172800, public"
-# </FilesMatch>
-
-#<FilesMatch ".(ico|flv|jpg|jpeg|png|gif|js|css|swf)$">
-# Header set Expires "max-age=172800, public"
-#</FilesMatch>
-
+# We need this, since a complete reindexing takes minutes with Zend Lucene!
 php_value max_execution_time 200
 
 <IfModule mod_deflate.c>
@@ -22,10 +13,6 @@ php_value max_execution_time 200
        ExpiresDefault "access plus 1 year"
    </FilesMatch>
 </IfModule>
-
-# <IfModule mod_deflate.c>
-#   AddOutputFilterByType DEFLATE text/xhtml text/html text/plain text/xml text/javascript application/x-javascript text/css
-# </IfModule>
 
 FileETag none
 

@@ -1,5 +1,14 @@
 CHANGELOG
----------
+=========
+
+Infrequently updated list of features added or removed. For a complete
+list, please refer to https://github.com/miku/jpul
+
+----------------
+
+2011-06-07
+
+	- charts
 
 2011-05-05
 
@@ -80,4 +89,4 @@ CHANGELOG
     - Starting CHANGELOG :)
     - For anything happened before, see
     
-        https://github.com/miku/ccul
+        https://github.com/miku/jpul

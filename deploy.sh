@@ -5,8 +5,8 @@
 
 # Rules
 # (1) Production code should not be altered in place
-# (2) Always backup `webdir` before pulls
-# (3) Enjoy git
+# (2) Always backup `webdir` (and the DB) before pulls
+# (3) (Try) enjoy git (over sshfs)
 
 TARGET=/Volumes/jobp--wwwdup.uni-leipzig.de/webdir
 

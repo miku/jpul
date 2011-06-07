@@ -1,1 +1,6 @@
-All external files and scripts. 
+External files and scripts. Nothing here is needed for a production
+environment. The most useful things here right now might be 
+
+	luke - a lucene index GUI
+	index-inspector - MoreLikeThis testing
+

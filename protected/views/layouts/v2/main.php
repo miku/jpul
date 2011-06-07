@@ -25,9 +25,8 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <!-- <link rel="apple-touch-icon" href="/apple-touch-icon.png"> -->
 
-    <!-- <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/v2/style.min.css" />   -->
-    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/v2/reset.min.css" />   
-    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/v2/style.css" />
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/reset.min.css" />   
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" />
     
     <!-- <link rel="canonical" href="<?php echo Yii::app()->request->url; ?>"/> -->
     

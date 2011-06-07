@@ -28,7 +28,7 @@ import org.apache.lucene.store.FSDirectory;
  */
 public class Main {
     
-    private static final String DEFAULT_INDEX = "/Users/ronit/projects/jobportal-uni-leipzig/protected/runtime/search";
+    private static final String DEFAULT_INDEX = "/Users/ronit/gh/miku-jpul/protected/runtime/search";
 
     public static void main(String[] args) throws ParseException, IOException {
 

@@ -22,8 +22,10 @@
 					<?php else: ?>
 						<a href="javascript:history.go(-1)">Zurück zur Übersicht</a>
 					<?php endif ?>
+					
+					| <a href="<?php echo $this->createUrl('job/print', array('id' => $model->id)); ?>">Druckansicht</a>
 				</div>
-
+				
 				<div id="view-job-title"><?php echo $model->title ?></div>
 
 				<div id="view-job-subtitle">

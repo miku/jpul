@@ -302,6 +302,22 @@ class JobController extends Controller
 		
 		$this->render('related');
 	}
+
+
+	public function actionPrint($id) {
+		$model = Job::model()->cache(600)->findByPk($id);
+		if (!$model) {
+			throw new CHttpException(404, Yii::t('app', 'Your request is not valid.'));
+		}
+
+		if ($model->status_id != 2) {
+			throw new CHttpException(404, 'Kein Angebot mit dieser ID gefunden.');
+		}
+		
+		$this->pageTitle = 'Jobs - ' . cut_text($model->title, 50) . ' in ' . cut_text($model->city, 40) . ' - ' . strftime("%d.%m.%Y", $model->date_added);
+		$this->layout = 'v2/plain';		
+		$this->render('print', array('model' => $model));
+	}
 	
 	/**
 	 * Job details.

@@ -17,7 +17,7 @@
 		<li><a href="<?php echo $this->createUrl('job/index', array("src" => "eq", "q" => "english OR englisch")); ?>">Englischkenntnisse</a></li>
 		<li><a href="<?php echo $this->createUrl('job/index', 
 		array("src" => "eq", "q" => 
-			"french OR französisch OR spanish OR spanisch OR chinese OR chinesisch OR russian OR russisch OR turkish OR türkisch OR polish OR polnisch OR czech OR tschechisch OR serbian OR serbisch OR italian OR italienisch OR hungarian OR ungarisch OR swedish OR schwedisch OR norwegian OR norwegisch OR finnish OR finnisch OR estonian OR estnisch OR bulgarian OR bulgarisch OR romanian OR rumänisch OR ukrainian OR ukrainisch")); ?>">Sprachen außer Englisch</a></li>
+			"french OR französisch OR spanish OR spanisch OR chinese OR chinesisch OR russian OR russisch OR turkish OR türkisch OR polish OR polnisch OR czech OR tschechisch OR serbian OR serbisch OR italian OR italienisch OR hungarian OR ungarisch OR swedish OR schwedisch OR norwegian OR norwegisch OR finnish OR finnisch OR estonian OR estnisch OR bulgarian OR bulgarisch OR romanian OR rumänisch OR ukrainian OR ukrainisch OR arabic OR arabisch OR farsi OR persisch")); ?>">Sprachen außer Englisch</a></li>
 		
 	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "übersetz*+OR+translate+OR+translation"))); ?>">Übersetzung</a></li>
 		</li>

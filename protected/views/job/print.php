@@ -5,7 +5,6 @@
 			font-family: Arial, "MS Trebuchet", sans-serif;
 			width: 600px;
 			font-size: 80%;
-			margin: auto;
 			margin-top: 10px;
 		}
 		.line {

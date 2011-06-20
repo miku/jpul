@@ -1,11 +1,11 @@
 Hallo <?php echo $model->publisher_name ?>,
 
-Ihr Angebot (ID im Jobportal: <?php echo $model->id ?>)
+Ihr am <?php echo strftime('%d.%m.%Y %H:%M', $model->date_added) ?> eingestelltes Angebot (ID <?php echo $model->id ?>)
 
     <?php echo $model->title ?>
 
 
-wurde freigeschaltet. Sie finden das Angebot unter der URL:
+wurde soeben freigeschaltet. Sie finden das Angebot unter der URL:
 
     <?php echo $serverPrefix . $this->createUrl('job/view', array('id' => $model->id)) ?>
 
@@ -21,6 +21,11 @@ Ihr Career Center Team
 
 
 
+P.S. Können wir die Angebotserstellung besser gestalten? Wir freuen uns
+über Ihr Feedback - <?php echo $serverPrefix . $this->createUrl('feedback/index', array('context' => 'notification-email')); ?>
+
+
+----
 
 Career Center
 Universität Leipzig

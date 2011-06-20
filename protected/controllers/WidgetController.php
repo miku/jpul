@@ -15,7 +15,7 @@ class WidgetController extends Controller
 		if (isset($_GET['width']) && $_GET['width'] != '') {
 			$width = detoxify(strip_tags($_GET['width']));
 		}
-		$this->layout = 'v2/plain';
+		$this->layout = 'plain';
 		$this->render('index', 
 			array('original_query' => $original_query, 'width' => $width));
 	}
@@ -77,7 +77,7 @@ class WidgetController extends Controller
 			$models = Job::model()->findAll($criteria);
 		}
 
-		$this->layout = 'v2/plain';
+		$this->layout = 'plain';
 		$this->render('get', array('models' => $models, 'original_query' => $original_query));		
 	}
 }

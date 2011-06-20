@@ -11,12 +11,12 @@ class ApiController extends Controller
 	const MAX_SIZE = 400;
 
 	public function actionIndex() {		
-		$this->layout = 'v2/plain';
+		$this->layout = 'plain';
 		$this->render('index');
 	}
 	
 	public function actionVersion() {
-		$this->layout = 'v2/plain';
+		$this->layout = 'plain';
 		$this->render('version', array('date' => self::LAST_MODIFIED));
 	}
 
@@ -118,7 +118,7 @@ class ApiController extends Controller
 		$data['last_request'] = $dataReader['last_request'];
 
 		
-		$this->layout = 'v2/plain';
+		$this->layout = 'plain';
 		$this->render('summary', array('data' => $data));		
 	}
 
@@ -232,7 +232,7 @@ class ApiController extends Controller
 		}
 		
 		
-		$this->layout = 'v2/plain';
+		$this->layout = 'plain';
 		$this->render('jobs', array('models' => $models));			
 		
 	}
@@ -272,7 +272,7 @@ class ApiController extends Controller
 			$view_count = null;
 		}
 
-		$this->layout = 'v2/plain';
+		$this->layout = 'plain';
 		$this->render('job', array('model' => $model, 'view_count' => $view_count));
 	}
 }

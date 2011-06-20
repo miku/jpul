@@ -15,7 +15,7 @@ class Controller extends CController
 	 * meaning using a single column layout. See 'protected/views/layouts/column1.php'.
 	 */
 	// public $layout='//layouts/column1';
-	public $layout='//layouts/v2/main';
+	public $layout='//layouts/main';
 	/**
 	 * @var array context menu items. This property will be assigned to {@link CMenu::items}.
 	 */
@@ -27,12 +27,9 @@ class Controller extends CController
 	 */
 	public $breadcrumbs=array();
 	
-	// The number of items per page (only 10, 20 or 50 as possible at the moment!)
+	// The number of items per page (only 10, 20 or 50 are possible at the moment!)
 	public $items_per_page = 10;
 
-	// Caching the complete listings
-	
-	
 	/**
 	 * Simple authentication filter. Make sure the user has the role 'admin'
 	 * @return Result of the filter chain
@@ -87,7 +84,7 @@ class Controller extends CController
 					CLogger::LEVEL_INFO, __FUNCTION__);
 				$this->layout = "//layouts/" . $useLayout;
 			} else {
-				$this->layout = "//layouts/v2/main";
+				$this->layout = "//layouts/main";
 			}
 		}
 		

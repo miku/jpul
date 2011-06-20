@@ -252,7 +252,7 @@ class JobController extends Controller
 			);
 			
 		} elseif ($v == "json") {
-			$this->layout = "v2/plain";
+			$this->layout = "plain";
 			$this->render('index_json', array(
 				'models'=>$models, 
 				'total' => $total,
@@ -263,7 +263,7 @@ class JobController extends Controller
 			);
 			
 		} elseif ($v == "embed") {			
-			$this->layout = "v2/plain";
+			$this->layout = "plain";
 			$this->render('index_embed', array(
 				'models'=>$models, 
 				'total' => $total,
@@ -315,7 +315,7 @@ class JobController extends Controller
 		}
 		
 		$this->pageTitle = 'Jobs - ' . cut_text($model->title, 50) . ' in ' . cut_text($model->city, 40) . ' - ' . strftime("%d.%m.%Y", $model->date_added);
-		$this->layout = 'v2/plain';		
+		$this->layout = 'plain';		
 		$this->render('print', array('model' => $model));
 	}
 	

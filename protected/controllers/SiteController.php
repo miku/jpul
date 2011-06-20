@@ -31,7 +31,7 @@ class SiteController extends Controller
 		$criteria->condition = 'status_id=:status_id AND expiration_date > :current_time';
 		$criteria->params=array(':status_id' => 2, ':current_time' => $current_time);
 		$models = Job::model()->findAll($criteria);
-		$this->layout = "v2/plain";
+		$this->layout = "plain";
 		$this->render('sitemap', array('models' => $models));
 	}
 	

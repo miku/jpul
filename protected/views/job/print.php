@@ -1,10 +1,5 @@
 <html>
 <head>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.color.e95e088.min.js"></script>
-    <!-- <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.6.1.min.js"></script> -->
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/tracker.min.js"></script>
-    <script>$(document).ready(function() { ccul_track('<?php echo $this->createUrl("stats/track"); ?>'); });</script>
 	<style>
 		body {
 			font-family: Arial, "MS Trebuchet", sans-serif;
@@ -59,5 +54,9 @@
 <p><?php echo text_to_links(textilize($model->description)) ?></p>
 <div class="line"></div>
 <p><?php echo text_to_links(textilize($model->how_to_apply)) ?></p>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.color.e95e088.min.js"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/tracker.min.js"></script>
+<script>$(document).ready(function() { ccul_track('<?php echo $this->createUrl("stats/track"); ?>'); });</script>
 </body>
 </html>

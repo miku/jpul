@@ -331,7 +331,14 @@ class AdminController extends Controller
 		$model->status_id = $status_id;
 		$model->saveAttributes(array('status_id'));
 		
-		Yii::log("Changed status of job id " . $id . " from " . $previous_status_id . " to " . $model->status_id, CLogger::LEVEL_INFO, __FUNCTION__);
+		Yii::log("Changed status of job id " . $id . 
+			" from " . $previous_status_id . 
+			" to " . $model->status_id, 
+			CLogger::LEVEL_INFO, __FUNCTION__);
+
+		if ($model->status_id == 2) {
+			$this->mailOnActivation($model);
+		}
 		
 		$this->updateSearchIndex($model, "default");
 		$this->updateSearchIndex($model, "admin");
@@ -537,4 +544,32 @@ class AdminController extends Controller
 		
 		Yii::log("Rebuild complete.", CLogger::LEVEL_INFO, __FUNCTION__);
 	}
+	
+	public function mailOnActivation($model) {		
+		if ($model->ukey == null || $model->ukey == '') { return; }
+		$newline = chr(13) . chr(10);
+		
+		if (Yii::app()->request->serverPort == 80) {
+			$serverPrefix = 'http://' . Yii::app()->request->serverName;
+		} else {
+			$serverPrefix = 'http://' . Yii::app()->request->serverName . ':' . Yii::app()->request->serverPort;
+		}
+			
+		$to      = $model->publisher_email;
+		$subject = '[Jobportal Universität Leipzig | Job ID ' . $model->id . ' ] Ihre Ausschreibung wurde veröffentlicht';
+		
+		$message = $this->renderPartial('_activation_notification_email', array('model' => $model, 'serverPrefix' => $serverPrefix), true);
+		$headers = 'From: careercenter@uni-leipzig.de' . "\r\n" .
+						'Reply-To: careercenter@uni-leipzig.de' . "\r\n" .
+						'X-Mailer: PHP/' . phpversion();
+		
+		Yii::log("Message:\n" . $message, CLogger::LEVEL_INFO, __FUNCTION__);
+		
+		if (mail($to, $subject, $message, $headers)) {
+			Yii::log("Notification-Mail queued. " . $to, CLogger::LEVEL_INFO, __FUNCTION__);
+		} else {
+			Yii::log("Notification-Mail NOT queued.", CLogger::LEVEL_INFO, __FUNCTION__);
+		}
+	}
+
 }

@@ -47,6 +47,7 @@
 <div id="sidebar-container">
 	<div id="sidebar">
 		<?php $this->renderPartial('/shared/_sidebar_contact'); ?>
+		<?php $this->renderPartial('/shared/_sidebar_feedback'); ?>
 		<?php $this->renderPartial('/shared/_sidebar_for_employer'); ?>
 		<?php $this->renderPartial('/shared/_sidebar_fb'); ?>
 		<?php $this->renderPartial('/shared/_sidebar_supporter'); ?>

@@ -25,6 +25,7 @@
 <div id="sidebar-container">
 	<div id="sidebar">
 		<?php $this->renderPartial('/shared/_sidebar_contact'); ?>
+		<?php $this->renderPartial('/shared/_sidebar_feedback'); ?>
 		
 		<h1 class="spacetop">Für Arbeitgeber</h1>
 <p>Als Arbeitgeber haben Sie die Möglichkeit,

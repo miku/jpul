@@ -10,6 +10,9 @@
 		.line {
 			border-bottom: solid thin gray;
 		}
+		.expiration-date {
+			border-bottom: solid 3px gray;
+		}
 	</style>
 </head>
 <body>
@@ -27,7 +30,7 @@
 </p>
 <div class="line"></div>
 <h2><?php echo $model->title ?></h2>
-<p>Eingestellt am <?php echo strftime('%d.%m.%Y %H:%M', $model->date_added) ?> | Bewerbungsschluß: <strong><?php echo strftime('%d.%m.%Y', $model->expiration_date) ?></strong></p>
+<p>Eingestellt am <?php echo strftime('%d.%m.%Y %H:%M', $model->date_added) ?> | <span class="expiration-date">Bewerbungsschluß: <?php echo strftime('%d.%m.%Y', $model->expiration_date) ?></span></p>
 <h3><?php echo $model->company ?>, 
 <?php 
 

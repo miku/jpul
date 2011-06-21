@@ -337,7 +337,8 @@ class AdminController extends Controller
 			CLogger::LEVEL_INFO, __FUNCTION__);
 
 		if ($model->status_id == 2) {
-			$this->mailOnActivation($model);
+			// Disabled for now
+			// $this->mailOnActivation($model);
 		}
 		
 		$this->updateSearchIndex($model, "default");

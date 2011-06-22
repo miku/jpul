@@ -34,3 +34,7 @@ Burgstraße 21, 1. Etage
 
 Telefon: +49 341 97-30030
 Telefax: +49 341 97-30069
+
+Homepage  | http://www.zv.uni-leipzig.de/studium/career-center.html
+Facebook  | http://www.facebook.com/universitaet.leipzig.career.center
+Jobportal | http://www.uni-leipzig.de/jobportal

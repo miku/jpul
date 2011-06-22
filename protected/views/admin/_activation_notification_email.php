@@ -1,6 +1,6 @@
 Hallo <?php echo $model->publisher_name ?>,
 
-Ihr am <?php echo strftime('%d.%m.%Y %H:%M', $model->date_added) ?> eingestelltes Angebot (ID <?php echo $model->id ?>)
+Ihr am <?php echo strftime('%d.%m.%Y', $model->date_added) ?> um <?php echo strftime('%H:%M', $model->date_added) ?> eingestelltes Angebot (ID <?php echo $model->id ?>) mit dem Titel
 
     <?php echo $model->title ?>
 
@@ -10,7 +10,7 @@ wurde soeben freigeschaltet. Sie finden das Angebot unter der URL:
     <?php echo $serverPrefix . $this->createUrl('job/view', array('id' => $model->id)) ?>
 
 
-Sie können Ihr Angebot ändern oder löschen unter der URL:
+Sie können Ihr Angebot ändern, verlängern oder löschen unter der URL:
 
     <?php echo $serverPrefix . $this->createUrl('ukey/preview', array('id' => $model->ukey)) ?>
 

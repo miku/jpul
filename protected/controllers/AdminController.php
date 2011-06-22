@@ -557,7 +557,7 @@ class AdminController extends Controller
 		}
 			
 		$to      = 'martin.czygan@gmail.com'; // for production: $model->publisher_email;
-		$subject = '[Jobportal Universität Leipzig | Job ID ' . $model->id . ' ] Ihre Ausschreibung wurde veröffentlicht';
+		$subject = '[Jobportal Universität Leipzig | Job ID ' . $model->id . '] Ihre Ausschreibung wurde veröffentlicht';
 		
 		$message = $this->renderPartial('_activation_notification_email', array('model' => $model, 'serverPrefix' => $serverPrefix), true);
 		$headers = 'From: careercenter@uni-leipzig.de' . "\r\n" .

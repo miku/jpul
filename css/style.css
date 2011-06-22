@@ -14,7 +14,7 @@ body {
 	color: #333;
 	font: normal 10pt Verdana,"Helvetica Neue",Arial,Tahoma,sans-serif;
 	background: #FFF;
-/*	background: url(../../images/v2/stripe.png) repeat scroll 0 0;	*/
+/*	background: url(../images/v2/stripe.png) repeat scroll 0 0;	*/
 	min-width:985px;
 	font-size:11pt;	
 }
@@ -42,9 +42,9 @@ a:hover {
 	width: 100%;
 	float: left;
 	/*    background: transparent url(../images/header_studium_repeat.jpg) repeat-x scroll right 22px;    */
-	/*	background: transparent url(../../images/v2/banner-u4.png) repeat-x scroll right 22px;    */
-	/*	background: transparent url(../../images/v2/header-jobportal-repeat.jpg) repeat-x scroll right 22px;*/
-	background: transparent url(../../images/v2/testme-repeat-x.png) repeat-x scroll right 22px;
+	/*	background: transparent url(../images/v2/banner-u4.png) repeat-x scroll right 22px;    */
+	/*	background: transparent url(../images/v2/header-jobportal-repeat.jpg) repeat-x scroll right 22px;*/
+	background: transparent url(../images/v2/testme-repeat-x.png) repeat-x scroll right 22px;
 
 }
 
@@ -106,19 +106,19 @@ a:hover {
 	float: left;
 	padding: 23px 0 0 20px;
 	/*    background: #ffffff url(../images/header_studium.jpg) no-repeat scroll right bottom;*/
-	/*	background: #ffffff url(../../images/v2/banner-u3.png) no-repeat scroll right bottom;*/
+	/*	background: #ffffff url(../images/v2/banner-u3.png) no-repeat scroll right bottom;*/
 
 
-	background: #ffffff url(../../images/v2/UNI_Header_Portalseiten_Generic_neu.png) no-repeat scroll right bottom;	
-/*	background: #ffffff url(../../images/v2/header-jobportal.jpg) no-repeat scroll right bottom;	*/
+	background: #ffffff url(../images/v2/UNI_Header_Portalseiten_Generic_neu.png) no-repeat scroll right bottom;	
+/*	background: #ffffff url(../images/v2/header-jobportal.jpg) no-repeat scroll right bottom;	*/
 	
-/*	background: #ffffff url(../../images/v2/UNI-Header-Portalseiten.6XXx8x.jpg) no-repeat scroll right bottom;	*/
+/*	background: #ffffff url(../images/v2/UNI-Header-Portalseiten.6XXx8x.jpg) no-repeat scroll right bottom;	*/
 }
 
 /* Line */
 #title-border {
 	float: left;
-	background: #fff url(../../images/v2/bg_header-nav.jpg) repeat-x scroll 0 0;
+	background: #fff url(../images/v2/bg_header-nav.jpg) repeat-x scroll 0 0;
 	height: 20px;
 	width: 100%;
 }
@@ -184,7 +184,7 @@ float: right;
 	font-size: 12px;
 	font-weight: bold;
 	padding:3px 3px 3px 5px;
-	background: orange url(../../images/v2/bg_teaserbalken_studium.jpg) repeat-x scroll 0 0;
+	background: orange url(../images/v2/bg_teaserbalken_studium.jpg) repeat-x scroll 0 0;
 	margin-bottom: 5px;
 }
 
@@ -267,7 +267,7 @@ margin: 0px 0 10px 0;
 	padding: 0 0 10px 0;
 	margin: 0 0 10px 0;	
 	padding-left: 26px;
-	background: url(../../images/v2/arrow-left-orange-dbl.png) no-repeat 0px 0px;
+	background: url(../images/v2/arrow-left-orange-dbl.png) no-repeat 0px 0px;
 	margin-right: 18px;
 }
 
@@ -277,7 +277,7 @@ margin: 0px 0 10px 0;
 	padding: 15px 0 0px 0;
 	margin: 40px 0 0px 0;	
 	padding-left: 26px;
-	background: url(../../images/v2/arrow-left-orange-dbl.png) no-repeat 0px 15px;
+	background: url(../images/v2/arrow-left-orange-dbl.png) no-repeat 0px 15px;
 	margin-right: 18px;
 
 }
@@ -486,12 +486,12 @@ a.fav-toggle
 	margin-left:2px;
 	padding-top:2px;
 	width:14px;
-	background:url(../../images/v2/fav-star-off.png?v=2) no-repeat 0 1px;
+	background:url(../images/v2/fav-star-off.png?v=2) no-repeat 0 1px;
 }
 
 a.fav-toggle.isfav
 {
-	background:url(../../images/v2/fav-star-on.png?v=2) no-repeat 0 1px;
+	background:url(../images/v2/fav-star-on.png?v=2) no-repeat 0 1px;
 }
 
 a.fav-link {
@@ -500,7 +500,7 @@ a.fav-link {
 	margin-left:0px;
 	padding-top:2px;
 	padding-left: 20px;
-	background:url(../../images/v2/fav-star-on.png?v=2) no-repeat 0 1px;
+	background:url(../images/v2/fav-star-on.png?v=2) no-repeat 0 1px;
 }
 
 /* default input textfield */
@@ -573,7 +573,7 @@ float: right;
 #broadcast {
 	text-align: center;
 	padding: 8px;
-	background: #EFEFEF; /*url(../../images/v2/stripe.png) repeat scroll 0 0;	*/
+	background: #EFEFEF; /*url(../images/v2/stripe.png) repeat scroll 0 0;	*/
 	border-top: solid 3px orange;
 	border-bottom: solid 3px orange;
 	color: #444444;
@@ -683,7 +683,7 @@ a.no-underline:hover {
 
 #static-header {
 	padding: 5px 15px 5px 15px;
-	background: url(../../images/v2/bg_headerbalken_studium.gif) repeat-x scroll 0 0;	
+	background: url(../images/v2/bg_headerbalken_studium.gif) repeat-x scroll 0 0;	
 	font-weight: bold;
 }
 
@@ -718,7 +718,7 @@ a.pdf {
 	margin-left:2px;
 	padding-left: 20px;
 	padding-top: 5px;
-	background:url(../../images/v2/pdf.gif) no-repeat 0 1px;
+	background:url(../images/v2/pdf.gif) no-repeat 0 1px;
 }
 
 .shadow {

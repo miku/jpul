@@ -3,6 +3,15 @@
 
 """
 Find matching DB and FS dumps.
+
+Example output:
+
+$ ./find-matching.py webdir.1292420023.zip
+Target: 1292420023 (2010-12-15T14:33:43)
+
+webdir.1292420023.zip               0.00 minute(s) away
+jobportal.1292431416.sql.gz         189.00 minute(s) away
+
 """
 
 import datetime

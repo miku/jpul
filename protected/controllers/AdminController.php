@@ -337,8 +337,8 @@ class AdminController extends Controller
 			CLogger::LEVEL_INFO, __FUNCTION__);
 
 		if ($model->status_id == 2) {
-			// Disabled for now
-			// $this->mailOnActivation($model);
+			// In debug mode for now
+			$this->mailOnActivation($model);
 		}
 		
 		$this->updateSearchIndex($model, "default");
@@ -556,7 +556,7 @@ class AdminController extends Controller
 			$serverPrefix = 'http://' . Yii::app()->request->serverName . ':' . Yii::app()->request->serverPort;
 		}
 			
-		$to      = $model->publisher_email;
+		$to      = 'martin.czygan@gmail.com'; // for production: $model->publisher_email;
 		$subject = '[Jobportal Universität Leipzig | Job ID ' . $model->id . ' ] Ihre Ausschreibung wurde veröffentlicht';
 		
 		$message = $this->renderPartial('_activation_notification_email', array('model' => $model, 'serverPrefix' => $serverPrefix), true);

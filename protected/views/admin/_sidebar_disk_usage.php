@@ -20,5 +20,5 @@
 	<?php endif ?>
 	<p class="dimmed">Es gibt ein Quota von 3GB auf dem Host-Rechner.
 		Eine Erhöhung des Quota für den Account 'jobp' kann beim URZ beantragt werden. 
-		Kontakt: Heiko Schwarzenberg (Stand Juli 2011)</p>
+		Kontakt: <a href="mailto:heiko.schwarzenberg@uni-leipzig.de">Heiko Schwarzenberg</a> (Stand Juli 2011)</p>
 	

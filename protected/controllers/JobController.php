@@ -330,7 +330,7 @@ class JobController extends Controller
     public function actionView($id, $from = '')
     {
         
-		$dependency = new CDbCacheDependency('SELECT `date_updated` FROM `job` WHERE `id` = ' . $model->id);
+		$dependency = new CDbCacheDependency('SELECT MAX(date_updated) FROM job');
 		
         $model = Job::model()->cache(3600, $dependency)->findByPk($id);
         if (!$model) {

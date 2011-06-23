@@ -1,14 +1,10 @@
 <div id="main-container">
 <div id="main">	
 
-<?php if($this->beginCache("job_index_header")) { ?>
-	
 	<div id="generic-header">
 	<?php $this->renderPartial('_header', 
 		array("original_query" => $original_query, "total" => $total,"tab" => $tab)) ?>
 	</div>
-
-<?php $this->endCache(); } ?>
 
 	<div id="main-content">
 

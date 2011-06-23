@@ -570,14 +570,10 @@ class AdminController extends Controller
 		$headers = 'From: careercenter@uni-leipzig.de' . "\r\n" .
 		$headers .= 'Reply-To: careercenter@uni-leipzig.de' . "\r\n" .
 		$headers .= 'X-Mailer: PHP/' . phpversion() . "\r\n";
-		
-		$headers .= 'MIME-Version: 1.0' . "\r\n";
-		$headers .= 'Content-Type: text/plain; charset=ISO-8859-1' . "\r\n";
-		// $headers .= 'Content-Transfer-Encoding: 8bit'. "\n\r\n";
 
 		Yii::log("Message:\n" . $message, CLogger::LEVEL_INFO, __FUNCTION__);
 
-		if (mail($to, $subject, $message, $headers)) {
+		if (mail_utf8($to, $subject, $message, $headers)) {
 			Yii::log("Notification-Mail queued. " . $to, CLogger::LEVEL_INFO, __FUNCTION__);
 		} else {
 			Yii::log("Notification-Mail NOT queued.", CLogger::LEVEL_INFO, __FUNCTION__);

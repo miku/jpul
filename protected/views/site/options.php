@@ -16,7 +16,9 @@
 		padding: 10px 0 10px 0;
 	}
 	#site-options-form li {
-		border-bottom: dashed thin #ABABAB;
+		padding: 10px;
+		background: #EFEFEF;
+		border-bottom: solid thin #ABABAB;
 	}
 </style>
 

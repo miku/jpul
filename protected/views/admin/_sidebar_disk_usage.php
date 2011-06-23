@@ -15,8 +15,6 @@
 	 	$filecount = count(glob("$directory*.pdf"));
 	}
 	
-	echo $filecount;
-	
 	// Jobs added
 	$_30d = 2592000;
 	$sql = "select count(*) as jobs_added_last_30_d from job where 

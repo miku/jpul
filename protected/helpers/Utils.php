@@ -203,16 +203,16 @@
 		$_90d = 60 * 60 * 24 * 90;
 		$_1y = 60 * 60 * 24 * 365;
 	
-		if($since > $_90d) {
-			$print = date("M jS", $original);
-	
-			if($since > $_1y) {
-					$print .= ", " . date("Y", $original);
-				}
-
-			return $print;
-
-		}
+		// if($since > $_90d) {
+		// 	$print = date("M jS", $original);
+		// 	
+		// 	if($since > $_1y) {
+		// 			$print .= ", " . date("Y", $original);
+		// 		}
+		// 
+		// 	return $print;
+		// 
+		// }
     
 	    // $j saves performing the count function each time around the loop
 	    for ($i = 0, $j = count($chunks); $i < $j; $i++) {

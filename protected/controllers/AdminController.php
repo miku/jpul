@@ -562,14 +562,18 @@ class AdminController extends Controller
 		} else {
 			$serverPrefix = 'http://' . Yii::app()->request->serverName . ':' . Yii::app()->request->serverPort;
 		}
-			
+
 		$to      = 'martin.czygan@gmail.com'; // for production: $model->publisher_email;
 		$subject = '[Jobportal Universität Leipzig | Job ID ' . $model->id . '] Ihre Ausschreibung wurde veröffentlicht';
 
-		$message = utf8_encode($this->renderPartial('_activation_notification_email', array('model' => $model, 'serverPrefix' => $serverPrefix), true));
+		$message = $this->renderPartial('_activation_notification_email', array('model' => $model, 'serverPrefix' => $serverPrefix), true);
 		$headers = 'From: careercenter@uni-leipzig.de' . "\r\n" .
-						'Reply-To: careercenter@uni-leipzig.de' . "\r\n" .
-						'X-Mailer: PHP/' . phpversion();
+		$headers .= 'Reply-To: careercenter@uni-leipzig.de' . "\r\n" .
+		$headers .= 'X-Mailer: PHP/' . phpversion() . "\r\n";
+		
+		$headers .= 'MIME-Version: 1.0' . "\r\n";
+		$headers .= 'Content-Type: text/HTML; charset=ISO-8859-1' . "\r\n";
+		$headers .= 'Content-Transfer-Encoding: 8bit'. "\n\r\n";
 
 		Yii::log("Message:\n" . $message, CLogger::LEVEL_INFO, __FUNCTION__);
 

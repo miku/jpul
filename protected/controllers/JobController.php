@@ -75,7 +75,10 @@ class JobController extends Controller
                 $criteria->order = 'date_added DESC';
                 break;
         }
-        
+
+        // cache dep
+        $dependency = new CDbCacheDependency('SELECT MAX(date_updated) FROM job');
+
         // just show the public offers, which are not expired ...
         $criteria->condition = 'status_id=:status_id AND expiration_date > :current_time';
         $criteria->params=array(':status_id' => 2, ':current_time' => $current_time);
@@ -130,7 +133,8 @@ class JobController extends Controller
 
             $criteria->condition='id=:id';
             $criteria->params=array(':id'=>$original_query);
-            $model = Job::model()->find($criteria);
+
+            $model = Job::model()->cache(3600, $dependency)->find($criteria);
             if (!$model) {
                 // Fallback to search
                 $viewName = "search";
@@ -178,7 +182,7 @@ class JobController extends Controller
                 
             }
 
-            $total = count(Job::model()->findAllByAttributes(array('id' => $pks), $criteria));
+            $total = count(Job::model()->cache(3600, $dependency)->findAllByAttributes(array('id' => $pks), $criteria));
 
             // fix number of offers per page ...
             if ($v == "embed") {
@@ -218,7 +222,7 @@ class JobController extends Controller
         // if the user neither searched or requested her favs, use the default view ... 
         if ($viewName == "default") {
 
-            $total = count(Job::model()->findAll($criteria));
+            $total = count(Job::model()->cache(3600, $dependency)->findAll($criteria));
 
             // fix number of offers per page ...
             if ($v == "embed") {
@@ -330,8 +334,8 @@ class JobController extends Controller
     public function actionView($id, $from = '')
     {
         
-		$dependency = new CDbCacheDependency('SELECT MAX(date_updated) FROM job');
-		
+        $dependency = new CDbCacheDependency('SELECT MAX(date_updated) FROM job');
+
         $model = Job::model()->cache(3600, $dependency)->findByPk($id);
         if (!$model) {
             throw new CHttpException(404, Yii::t('app', 'Your request is not valid.'));

@@ -572,8 +572,8 @@ class AdminController extends Controller
 		$headers .= 'X-Mailer: PHP/' . phpversion() . "\r\n";
 		
 		$headers .= 'MIME-Version: 1.0' . "\r\n";
-		$headers .= 'Content-Type: text/HTML; charset=ISO-8859-1' . "\r\n";
-		$headers .= 'Content-Transfer-Encoding: 8bit'. "\n\r\n";
+		$headers .= 'Content-Type: text/plain; charset=ISO-8859-1' . "\r\n";
+		// $headers .= 'Content-Transfer-Encoding: 8bit'. "\n\r\n";
 
 		Yii::log("Message:\n" . $message, CLogger::LEVEL_INFO, __FUNCTION__);
 

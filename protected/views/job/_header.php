@@ -207,7 +207,11 @@
 		<?php
 			include_once("t-simple-html-dom.php");
 			error_reporting(0);
-			$html = file_get_html('http://www.zv.uni-leipzig.de/studium/career-center/aktuelles.html');
+			$html = Yii::app()->cache->get("career_center_news_page");
+			if ($html == false) {
+				$html = file_get_html('http://www.zv.uni-leipzig.de/studium/career-center/aktuelles.html');
+				Yii::app()->cache->set("career_center_news_page", $html, 3600);
+			}
 		
 			$offers = array();
 			foreach($html->find('p') as $e) {

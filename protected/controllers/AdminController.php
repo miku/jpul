@@ -563,19 +563,24 @@ class AdminController extends Controller
 			$serverPrefix = 'http://' . Yii::app()->request->serverName . ':' . Yii::app()->request->serverPort;
 		}
 
-		$to      = 'martin.czygan@gmail.com'; // for production: $model->publisher_email;
+		if (YII_DEBUG) {
+			$to = 'martin.czygan@gmail.com';
+		} else {
+			$to = $model->publisher_email; // production: ;
+		}
+		
 		$subject = '[Jobportal Universität Leipzig | Job ID ' . $model->id . '] Ihre Ausschreibung wurde veröffentlicht';
 
 		$message = $this->renderPartial('_activation_notification_email', array('model' => $model, 'serverPrefix' => $serverPrefix), true);
-		$headers = 'From: careercenter@uni-leipzig.de' . "\r\n" .
-		$headers .= 'Reply-To: careercenter@uni-leipzig.de' . "\r\n" .
+		$headers = 'From: careercenter@uni-leipzig.de' . "\r\n";
+		$headers .= 'Reply-To: careercenter@uni-leipzig.de' . "\r\n";
 
 		Yii::log("Message:\n" . $message, CLogger::LEVEL_INFO, __FUNCTION__);
 
 		if (mail_utf8($to, $subject, $message, $headers)) {
-			Yii::log("Notification-Mail queued. " . $to, CLogger::LEVEL_INFO, __FUNCTION__);
+			Yii::log("Notification-Mail queued (Recp: " . $to . ")", CLogger::LEVEL_INFO, __FUNCTION__);
 		} else {
-			Yii::log("Notification-Mail NOT queued.", CLogger::LEVEL_INFO, __FUNCTION__);
+			Yii::log("Notification-Mail NOT queued (Recp: " . $to . ")", CLogger::LEVEL_INFO, __FUNCTION__);
 		}
 	}
 

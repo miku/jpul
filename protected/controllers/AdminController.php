@@ -565,14 +565,14 @@ class AdminController extends Controller
 			
 		$to      = 'martin.czygan@gmail.com'; // for production: $model->publisher_email;
 		$subject = '[Jobportal Universität Leipzig | Job ID ' . $model->id . '] Ihre Ausschreibung wurde veröffentlicht';
-		
-		$message = $this->renderPartial('_activation_notification_email', array('model' => $model, 'serverPrefix' => $serverPrefix), true);
+
+		$message = utf8_encode($this->renderPartial('_activation_notification_email', array('model' => $model, 'serverPrefix' => $serverPrefix), true));
 		$headers = 'From: careercenter@uni-leipzig.de' . "\r\n" .
 						'Reply-To: careercenter@uni-leipzig.de' . "\r\n" .
 						'X-Mailer: PHP/' . phpversion();
-		
+
 		Yii::log("Message:\n" . $message, CLogger::LEVEL_INFO, __FUNCTION__);
-		
+
 		if (mail($to, $subject, $message, $headers)) {
 			Yii::log("Notification-Mail queued. " . $to, CLogger::LEVEL_INFO, __FUNCTION__);
 		} else {

@@ -200,10 +200,13 @@
 	    $today = time(); /* Current unix time  */
 	    $since = $today - $original;
 	
-		if($since > 4838400) {
+		$_90d = 60 * 60 * 24 * 90;
+		$_1y = 60 * 60 * 24 * 365;
+	
+		if($since > $_90d) {
 			$print = date("M jS", $original);
 	
-			if($since > 31536000) {
+			if($since > $_1y) {
 					$print .= ", " . date("Y", $original);
 				}
 

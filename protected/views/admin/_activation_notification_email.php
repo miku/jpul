@@ -16,7 +16,7 @@ Sie können Ihr Angebot ändern, verlängern oder löschen unter der URL:
 
 
 
-Vielen Dank für die Nutzung des Jobportal der Universität Leipzig,
+Vielen Dank für die Nutzung des Jobportals der Universität Leipzig,
 Ihr Career Center Team
 
 

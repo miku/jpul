@@ -577,13 +577,18 @@ class AdminController extends Controller
 			$to = 'martin.czygan@gmail.com';
 		} else {
 			$to = $model->publisher_email; // production: ;
-		}
+		}		
 		
 		$subject = '[Jobportal Universität Leipzig | Job ID ' . $model->id . '] Ihre Ausschreibung wurde veröffentlicht';
 
 		$message = $this->renderPartial('_activation_notification_email', array('model' => $model, 'serverPrefix' => $serverPrefix), true);
 		$headers = 'From: careercenter@uni-leipzig.de' . "\r\n";
 		$headers .= 'Reply-To: careercenter@uni-leipzig.de' . "\r\n";
+		
+		$bcc = Options::model()->findBySql("SELECT * FROM options WHERE `option` = 'activation-notification-bcc'");
+		if ($bcc != null && $bcc != '') {
+			$headers .= 'Bcc: ' $bcc . "\r\n";
+		}
 
 		Yii::log("Message:\n" . $message, CLogger::LEVEL_INFO, __FUNCTION__);
 

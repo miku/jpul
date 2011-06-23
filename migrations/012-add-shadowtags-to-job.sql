@@ -10,7 +10,8 @@ UPDATE `job` SET
 	shadowtags = CONCAT_WS(',', shadowtags, 'shk') 
 	WHERE title LIKE '%Studentische Hilfskr%' OR
 		title LIKE '%Studentische Mitarbeit%' OR
-		title LIKE '%Studentische Aushilfskr%' OR	
+		title LIKE '%Studentischer Mitarbeit%' OR
+		title LIKE '%Studentische Aushilf%' OR	
 		title LIKE '%Studentischen Hilfskr%' OR
 		title LIKE '%Studentischen Mitarbeit%' OR
 		title LIKE '%Studentischen Aushilfskr%';	

@@ -1,11 +1,15 @@
 <div id="main-container">
 <div id="main">	
 
+<?php if($this->beginCache("job_index_header")) { ?>
+	
 	<div id="generic-header">
 	<?php $this->renderPartial('_header', 
 		array("original_query" => $original_query, "total" => $total,"tab" => $tab)) ?>
 	</div>
-	
+
+<?php $this->endCache(); } ?>
+
 	<div id="main-content">
 
 		<div id="listing">
@@ -43,6 +47,7 @@
 </div> <!-- main -->
 </div> <!-- main-container -->
 
+<?php if($this->beginCache("job_index_sidebar")) { ?>
 
 <div id="sidebar-container">
 	<div id="sidebar">
@@ -53,6 +58,8 @@
 		<?php $this->renderPartial('/shared/_sidebar_supporter'); ?>
 	</div>	
 </div>
+
+<?php $this->endCache(); } ?>
 
 <script type="text/javascript" charset="utf-8">
 	$(document).ready(function() {

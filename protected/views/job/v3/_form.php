@@ -150,7 +150,7 @@
 			<?php echo $form->labelEx($model,'expiration_date'); ?>
 			<?php echo $form->textField($model,'expiration_date', 
 				array(
-					'value' => date('d.m.Y', time() + (6 * 7 * 24 * 60 * 60)),
+					'value' => date('d.m.Y', time() + (4 * 7 * 24 * 60 * 60)),
 					'size' => '10')); ?>
 			<div class="help">
 				Format: <strong>TT.MM.YYYY</strong> &mdash; Die maximale Laufzeit der Anzeige beträgt sechs Wochen. 

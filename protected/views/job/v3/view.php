@@ -40,7 +40,7 @@
 				</div>		
 			</div>
 
-			<div id="view-description">
+			<div id="view-description" class="shadow">
 				<?php echo text_to_links(textilize($model->description)) ?>
 				<?php if ($model->degree): ?>
 					<p><strong>Abschluß:</strong> <?php echo $model->degree->name ?></p>
@@ -48,14 +48,14 @@
 			</div>
 			
 			<?php if ($model->attachment): ?>
-				<div id="view-download">
+				<div id="view-download" class="shadow">
 					<a href="<?php echo $this->createUrl('job/download', array('id'=>$model->id)); ?>">PDF dieser Anzeige</a>
 				</div>
 			<?php endif; ?>
 
 
 			<?php if ($model->how_to_apply): ?>
-				<div id="view-howtoapply">
+				<div id="view-howtoapply" class="shadow">
 					<p id="how-to-apply">Bewerbungsweg</p>
 					<p><?php echo text_to_links(textilize($model->how_to_apply)) ?></p>
 				</div>
@@ -98,7 +98,7 @@
 		<?php $this->endCache(); } ?>
 
 		<?php if (Yii::app()->user->isAdmin()): ?>
-			<h1>Admin</h1>
+			<h1 class="spacetop">Admin</h1>
 			<p><a href="<?php echo $this->createUrl('admin/update', array('id' => $model->id)) ?>">Dieses Angebot bearbeiten</a></p>
 		<?php endif ?>
 		

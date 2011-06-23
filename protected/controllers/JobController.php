@@ -352,9 +352,7 @@ class JobController extends Controller
 					(tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND
             		request_uri_wo_qs_and_hostname LIKE '%". $this->createUrl('job/view', array("id" => $id)) . "') as Q;";
 
-			Yii::log("SQL: " . $sql, CLogger::LEVEL_INFO, __FUNCTION__);
-			
-			// Yii::log($sql, CLogger::LEVEL_INFO, "actionView");
+			// Yii::log("SQL: " . $sql, CLogger::LEVEL_INFO, __FUNCTION__);			
 			
 			$connection = Yii::app()->db;
 			$command = $connection->createCommand($sql);
@@ -367,12 +365,12 @@ class JobController extends Controller
 				$job_viewcount->job_id = $id;
 				$job_viewcount->job_title = $model->title;
 				$job_viewcount->job_date_added = $model->date_added;
-				Yii::log("Created job_viewcount cache entry for job id " . $id, CLogger::LEVEL_INFO, __FUNCTION__);
+				// Yii::log("Created job_viewcount cache entry for job id " . $id, CLogger::LEVEL_INFO, __FUNCTION__);
 			}
 			$job_viewcount->view_count = $view_count;
 			$job_viewcount->date_updated = time();
 			$job_viewcount->save();
-			Yii::log("Updated job_viewcount cache for job " . $id . " to: " . $view_count, CLogger::LEVEL_INFO, __FUNCTION__);
+			// Yii::log("Updated job_viewcount cache for job " . $id . " to: " . $view_count, CLogger::LEVEL_INFO, __FUNCTION__);
 
 		} catch (Exception $e) {
 			Yii::log($e, CLogger::LEVEL_INFO, __FUNCTION__);
@@ -384,7 +382,7 @@ class JobController extends Controller
 			$job_version = 1;
 		}
 		
-		Yii::log(Yii::app()->request->userHostAddress, CLogger::LEVEL_INFO, __FILE__ . ' | ' . __FUNCTION__ . ' | ' . __LINE__);
+		// Yii::log(Yii::app()->request->userHostAddress, CLogger::LEVEL_INFO, __FILE__ . ' | ' . __FUNCTION__ . ' | ' . __LINE__);
 		$this->pageTitle = 'Jobs - ' . cut_text($model->title, 50) . ' in ' . cut_text($model->city, 40) . ' - ' . strftime("%d.%m.%Y", $model->date_added);
 		$this->render('v' . $job_version . '/view', array('model' => $model, 'view_count' => $view_count));
 	}

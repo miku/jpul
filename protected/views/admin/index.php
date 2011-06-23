@@ -71,6 +71,7 @@ $(document).ready(function() {
 		<?php $this->renderPartial('_sidebar_filter'); ?>
 		<?php $this->renderPartial('_sidebar_index_actions'); ?>
 		<?php $this->renderPartial('_sidebar_index_misc'); ?>
+		<?php $this->renderPartial('_sidebar_disk_usage'); ?>
 	</div>
 </div>
 

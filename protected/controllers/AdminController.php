@@ -569,7 +569,6 @@ class AdminController extends Controller
 		$message = $this->renderPartial('_activation_notification_email', array('model' => $model, 'serverPrefix' => $serverPrefix), true);
 		$headers = 'From: careercenter@uni-leipzig.de' . "\r\n" .
 		$headers .= 'Reply-To: careercenter@uni-leipzig.de' . "\r\n" .
-		$headers .= 'X-Mailer: PHP/' . phpversion() . "\r\n";
 
 		Yii::log("Message:\n" . $message, CLogger::LEVEL_INFO, __FUNCTION__);
 

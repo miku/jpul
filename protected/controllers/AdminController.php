@@ -589,7 +589,6 @@ class AdminController extends Controller
 		if ($bcc->value != null && $bcc->value != '') {
 			$headers .= 'Bcc: ' . $bcc->value . "\r\n";
 			Yii::log("Notification-BCC: " . $bcc->value, CLogger::LEVEL_INFO, __FUNCTION__);
-			
 		}
 
 		Yii::log("Message:\n" . $message, CLogger::LEVEL_INFO, __FUNCTION__);

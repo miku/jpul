@@ -128,7 +128,7 @@ class JobController extends Controller
 			Yii::log("Direct to: " . $original_query, CLogger::LEVEL_INFO, __FUNCTION__);
 			$criteria->condition='id=:id';
 			$criteria->params=array(':id'=>$original_query);
-			$model = Job::model()->cache(600)->find($criteria);
+			$model = Job::model()->find($criteria);
 			if (!$model) {
 				throw new CHttpException(404, Yii::t('app', 'Your request is not valid.'));
 			}
@@ -173,7 +173,7 @@ class JobController extends Controller
 				
 			}
 
-			$total = count(Job::model()->cache(600)->findAllByAttributes(array('id' => $pks), $criteria));
+			$total = count(Job::model()->findAllByAttributes(array('id' => $pks), $criteria));
 
 			// fix number of offers per page ...
 			if ($v == "embed") {
@@ -184,7 +184,7 @@ class JobController extends Controller
 				$criteria->offset = ($page - 1) * $this->items_per_page;
 			}
 
-			$models = Job::model()->cache(600)->findAllByAttributes(array('id' => $pks), $criteria);
+			$models = Job::model()->findAllByAttributes(array('id' => $pks), $criteria);
 
 		}	
 
@@ -225,7 +225,7 @@ class JobController extends Controller
 			}
 
 			// just the default index action ...
-			$models = Job::model()->cache(600)->findAll($criteria);
+			$models = Job::model()->findAll($criteria);
 			
 			$original_query = null;
 

@@ -84,7 +84,7 @@ class AdminController extends Controller
 				$criteria->order = 'status_id, date_added DESC';
 				break;
 			default:
-				$criteria->order = 'date_added DESC';
+				$criteria->order = 'date_updated DESC';
 				break;
 		}
 		
@@ -270,9 +270,8 @@ class AdminController extends Controller
 			// $model->attributes = $_POST['Job'];
 			$model->attributes = $sanitized_post;
 			
-			// Keep the original date
-			// $model->date_added = time();
-			
+			// Keep the original date, modify date_updated instead (new since migration 024)
+			$model->date_updated = time();
 
 			// Expiration date ...
 			if (!isset($sanitized_post['expiration_date']) || $sanitized_post['expiration_date'] === '') {

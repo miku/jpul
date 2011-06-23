@@ -452,6 +452,7 @@ class JobController extends Controller
 			}
 
 			$model->date_added = time();
+			$model->date_updated = time();
 			$model->status_id = 1; // "1" means draft; needs review
 			
 			if (!isset($sanitized_post['expiration_date']) || $sanitized_post['expiration_date'] === '') {

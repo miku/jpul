@@ -50,22 +50,6 @@
         return false;
     }
 
-    // buggy
-    function in_array_recursive($needle, $haystack) {
-        $found = false;
-        foreach ($haystack as $key => $value) {
-            if (is_array($value)) {
-                return in_array_recursive($needle, $value);
-            } else {
-                if ($value == $needle) {
-                    $found = true;
-                }
-            }
-        }
-        return $found;
-    }
-
-
     /**
      * Cut the text, without splitting within words.
      * @param string the text to be splitted
@@ -73,29 +57,31 @@
      * @param string replacement, defaults to '...'
      * @return shortened string
      */
-    function cut_text_wo_wordsplit($string, $length, $replacer = '...') 
+    function cut_text_wo_wordsplit($string, $length, $suffix = '...') 
     { 
         if(mb_strlen($string) > $length) 
             return (preg_match('/^(.*)\W.*$/', 
-                mb_substr($string, 0, $length+1), $matches) ? $matches[1] : mb_substr($string, 0, $length)) . $replacer; 
+                mb_substr($string, 0, $length + 1), $matches) ? $matches[1] : mb_substr($string, 0, $length)) . $suffix; 
         return $string; 
     }
 
     /**
-     * Cut the text, without splitting within words.
+     * Cut the text
      * @param string the text to be splitted
      * @param integer cut to this length (maximum)
      * @param string replacement, defaults to '...'
      * @return shortened string
      */
-    function cut_text($string, $length, $replacer = '...') 
+    function cut_text($string, $length, $suffix = '...') 
     { 
         if (mb_strlen($string) > $length) {
-            $string = mb_substr($string, 0, $length+1) . $replacer;
+            $string = mb_substr($string, 0, $length + 1) . $suffix;
         }
         return $string; 
     }
-    
+
+    // One-size fits all text-captcha HTML generator 
+    // Works in conjuction with `captcha_passed`
     function get_captcha_html() {
         $r = rand(100, 500);
         $s = rand(1, 5);
@@ -142,21 +128,8 @@
         }
         return false;
     }
-    
-    function recapchta_passed($privatekey, $remote_addr, $post_hash) 
-    {
-        if (isset($post_hash["recaptcha_challenge_field"])) {
-            
-            $resp = recaptcha_check_answer($privatekey,
-                                    $remote_addr,
-                                    $post_hash["recaptcha_challenge_field"],
-                                    $post_hash["recaptcha_response_field"]);
 
-            return ($resp->is_valid);
-        }
-        return true;
-    }
-
+    // strip_tags, but for all values in an array
     function array_strip_tags($ary, $allowable = '')
     {
         $sanitized = $ary;
@@ -188,6 +161,8 @@
         return (strcasecmp(mb_substr($haystack, strlen($haystack) - strlen($needle)),$needle)===0);
     }
     
+    // add some human touch to timestamps
+    // german version
     function time_since($original) {
         // array of time period chunks
         $chunks = array(
@@ -227,7 +202,8 @@
 
         return "vor " . $print;
     }
-    
+
+    // small shortcut to display job locations properly
     function format_model_location($model) {
         $result = "";
         if ($model->zipcode) { $result .= $model->zipcode . " "; }
@@ -249,7 +225,8 @@
             return true;
         }
     }
-    
+
+    // used in widget context
     function detoxify($text, $replacement = '') {
         $text = preg_replace('/[\.\)\(\{\};,]/', $replacement, $text);
         return $text;
@@ -305,7 +282,9 @@
 
         return round($bytes, $precision) . ' ' . $units[$pow]; 
     }
-    
+
+    // we use UUIDs for as 'ukey' - to have unique, unguessable URLs for
+    // job offers
     function gen_uuid() {
         return sprintf( '%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
             // 32 bits for "time_low"

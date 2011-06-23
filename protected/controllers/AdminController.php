@@ -343,11 +343,11 @@ class AdminController extends Controller
 				array('name' => 'job-activation-notification-sent', 'message' => '%job_id:' . $model->id . ";%"));
 			
 			if ($notification_event == null) {
-				$should_send = Options::model()->findBySql("SELECT value FROM options WHERE `option` = 'send-activation-notification-to-publisher'");
+				$should_send = Options::model()->findBySql("SELECT * FROM options WHERE `option` = 'send-activation-notification-to-publisher'");
 				if ($should_send != null && (
-						mb_strtolower($should_send) == 'ja' ||
-						mb_strtolower($should_send) == 'yes' ||
-						mb_strtolower($should_send) == 'true')) {
+						mb_strtolower($should_send->value) == 'ja' ||
+						mb_strtolower($should_send->value) == 'yes' ||
+						mb_strtolower($should_send->value) == 'true')) {
 
 					Yii::log("Preparing notification e-mail.", CLogger::LEVEL_INFO, __FUNCTION__);
 					// send the actual e-mail
@@ -585,8 +585,8 @@ class AdminController extends Controller
 		$headers = 'From: careercenter@uni-leipzig.de' . "\r\n";
 		$headers .= 'Reply-To: careercenter@uni-leipzig.de' . "\r\n";
 		
-		$bcc = Options::model()->findBySql("SELECT value FROM options WHERE `option` = 'activation-notification-bcc'");
-		if ($bcc != null && $bcc != '') {
+		$bcc = Options::model()->findBySql("SELECT * FROM options WHERE `option` = 'activation-notification-bcc'");
+		if ($bcc->value != null && $bcc->value != '') {
 			$headers .= 'Bcc: ' . $bcc . "\r\n";
 		}
 

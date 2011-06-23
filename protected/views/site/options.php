@@ -39,7 +39,7 @@
 		<legend>Einstellungen</legend>
 		
 			<?php foreach($options as $i=>$option): ?>
-			<li>		
+			<li class="shadow">		
 				<div class="option-name"><?php echo $option->option_human ?></div>
 				<?php echo CHtml::activeTextField($option,"[$i]value", array('size' => '110')); ?>
 				<div class="help"><?php echo $option->help ?></div>

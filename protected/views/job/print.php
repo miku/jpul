@@ -1,5 +1,7 @@
+<!DOCTYPE html> 
 <html>
 <head>
+	<meta charset="utf-8">
 	<style>
 		body {
 			font-family: Arial, "MS Trebuchet", sans-serif;

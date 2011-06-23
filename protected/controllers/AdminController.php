@@ -587,7 +587,9 @@ class AdminController extends Controller
 		
 		$bcc = Options::model()->findBySql("SELECT * FROM options WHERE `option` = 'activation-notification-bcc'");
 		if ($bcc->value != null && $bcc->value != '') {
-			$headers .= 'Bcc: ' . $bcc . "\r\n";
+			$headers .= 'Bcc: ' . $bcc->value . "\r\n";
+			Yii::log("Notification-BCC: " . $bcc->value, CLogger::LEVEL_INFO, __FUNCTION__);
+			
 		}
 
 		Yii::log("Message:\n" . $message, CLogger::LEVEL_INFO, __FUNCTION__);

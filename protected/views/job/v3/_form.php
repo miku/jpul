@@ -183,7 +183,8 @@
 		Wir bitten Sie die obigen Felder auszufüllen,
 		damit wir Sie bei inhaltlichen Fragen zu Ihrem Angebot persönlich
 		 kontaktieren können. Diese Angaben werden nicht veröffentlicht
-		und nicht an Dritte weitergegeben.
+		und nicht an Dritte weitergegeben. An die hier angegebene E-Mail-Adresse
+		senden wir Ihnen eine kurze Nachricht, wenn Ihr Angebot veröffentlicht wurde.
 	</div>
 	
 	</fieldset>

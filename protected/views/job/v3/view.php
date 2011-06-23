@@ -86,17 +86,21 @@
 
 <div id="sidebar-container">
 	<div id="sidebar">
-		<?php $this->renderPartial('/shared/_sidebar_contact'); ?>
-		<?php $this->renderPartial('/shared/_sidebar_feedback'); ?>
-		<?php $this->renderPartial('/shared/_sidebar_for_employer'); ?>
+		
+		<?php if($this->beginCache("job_view_sidebar")) { ?>
+		
+			<?php $this->renderPartial('/shared/_sidebar_contact'); ?>
+			<?php $this->renderPartial('/shared/_sidebar_feedback'); ?>
+			<?php $this->renderPartial('/shared/_sidebar_for_employer'); ?>
+			<?php $this->renderPartial('/shared/_sidebar_fb'); ?>
+			<?php $this->renderPartial('/shared/_sidebar_supporter'); ?>
+		
+		<?php $this->endCache(); } ?>
 
 		<?php if (Yii::app()->user->isAdmin()): ?>
 			<h1>Admin</h1>
 			<p><a href="<?php echo $this->createUrl('admin/update', array('id' => $model->id)) ?>">Dieses Angebot bearbeiten</a></p>
 		<?php endif ?>
-		
-		<?php $this->renderPartial('/shared/_sidebar_fb'); ?>
-		<?php $this->renderPartial('/shared/_sidebar_supporter'); ?>
 		
 	</div>	
 </div>

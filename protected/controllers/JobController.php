@@ -130,12 +130,15 @@ class JobController extends Controller
 			$criteria->params=array(':id'=>$original_query);
 			$model = Job::model()->find($criteria);
 			if (!$model) {
-				throw new CHttpException(404, Yii::t('app', 'Your request is not valid.'));
-			}
-			if ($model->status_id == 2) {
-				$this->redirect($this->createUrl('job/view', array('id' => $original_query)));
+				// Fallback to search
+				$viewName = "search";
+				// throw new CHttpException(404, Yii::t('app', 'Your request is not valid.'));
 			} else {
-				throw new CHttpException(404, Yii::t('app', 'Your request is not valid.'));
+				if ($model->status_id == 2) {
+					$this->redirect($this->createUrl('job/view', array('id' => $original_query)));
+				} else {
+					throw new CHttpException(404, Yii::t('app', 'Your request is not valid.'));
+				}
 			}
 		}
 

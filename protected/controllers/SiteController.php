@@ -44,7 +44,69 @@ class SiteController extends Controller
 		return array('adminOnly + options');
 	}
 	
+	
+
+
+
 	public function actionOptions()
+	{
+		
+		// multiple items, but not really batch, since rendering may differ
+		// - on_draft_notification_email_addresses
+		// - send_activation_notification
+		
+		if(isset($_POST["Options"]))
+		{
+			// on_draft_notification_email_addresses
+			// =====================================
+			// $m_on_draft_notification_email_addresses = 
+			// 	Options::model()->findByAttributes(array("option" => "on-draft-notification-email-addresses"));
+			// 	
+			// $emails = $_POST["M_on_draft_notification_email_addresses"]["value"];
+			// 
+			// if ($email == null || $emails === '') {
+			// 	$this->redirect(array('index'));
+			// }
+			// 
+			// $email_list = split("(,|;)", $emails);
+			// $updates_emails = array();
+			// 
+			// foreach ($email_list as $email) {
+			// 	$email = trim($email);
+			// 	if (is_valid_email_address($email)) {
+			// 		array_push($updates_emails, $email);
+			// 	}
+			// }
+			// $m_on_draft_notification_email_addresses->value = implode(", ", $updates_emails);
+			// $m_on_draft_notification_email_addresses->save();
+			// 
+			// Yii::log("New emails: " . $model->value, CLogger::LEVEL_INFO, "actionOptions");			
+			// Yii::app()->user->setFlash('success', "E-Mail Benachrichtigungen gehen an: " . implode(", ", $updates_emails));
+
+			// ----			
+			
+			// send_activation_notification
+			// ============================
+
+			// $m_send_activation_notification = 
+			// 	Options::model()->findByAttributes(array("option" => "send-activation-notification"));
+			// 
+			// $m_send_activation_notification = $_POST["M_send_activation_notification"]["value"];
+			// $m_send_activation_notification->save();
+
+			// ----
+			
+			 // $this->redirect(array('index'));
+		} else {
+			$options = Options::model()->findAll();
+		}
+		
+		$this->render('options', array('options' => $options));
+	}
+
+
+	
+	public function actionOptionsDefunkt()
 	{
 		if(isset($_POST["Options"]))
 		{
@@ -72,7 +134,10 @@ class SiteController extends Controller
 		} else {
 			$model = Options::model()->findByAttributes(array("option" => "on-draft-notification-email-addresses"));
 		}
-		$this->render('options', array('model' => $model));
+		
+		$this->render('options', 
+			array('model' => $model)
+		);
 	}
 	
 	

@@ -7,8 +7,9 @@
  * @property integer $id
  * @property string $option
  * @property string $value
- *
- * The followings are the available model relations:
+ * @property string $type
+ * @property string $help
+ * @property string $option_human
  */
 class Options extends CActiveRecord
 {
@@ -38,11 +39,12 @@ class Options extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('option, value', 'required'),
-			array('option', 'length', 'max'=>128),
-			array('value', 'length', 'max'=>255),
+			array('option, value, option_human', 'length', 'max'=>255),
+			array('type', 'length', 'max'=>32),
+			array('help', 'length', 'max'=>1024),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, option, value', 'safe', 'on'=>'search'),
+			array('id, option, value, type, help, option_human', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,6 +68,9 @@ class Options extends CActiveRecord
 			'id' => 'ID',
 			'option' => 'Option',
 			'value' => 'Value',
+			'type' => 'Type',
+			'help' => 'Help',
+			'option_human' => 'Option Human',
 		);
 	}
 
@@ -83,6 +88,9 @@ class Options extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('option',$this->option,true);
 		$criteria->compare('value',$this->value,true);
+		$criteria->compare('type',$this->type,true);
+		$criteria->compare('help',$this->help,true);
+		$criteria->compare('option_human',$this->option_human,true);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,

@@ -4,7 +4,7 @@ ALTER TABLE `options` ADD COLUMN `type` VARCHAR(32) default NULL;
 ALTER TABLE `options` ADD COLUMN `help` VARCHAR(1024) default NULL;
 
 INSERT INTO schema_version(`migration_code`, `extra_notes`) VALUES (
-	'018', 'added type and help columns to options; type should indicate the type of the value, e.g. string or boolean, which is eventually used to render the form; help is just a short description');
+	'019', 'added type and help columns to options; type should indicate the type of the value, e.g. string or boolean, which is eventually used to render the form; help is just a short description');
 
 COMMIT;
 

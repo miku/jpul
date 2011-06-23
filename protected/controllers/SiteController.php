@@ -51,9 +51,7 @@ class SiteController extends Controller
 	public function actionOptions()
 	{
 		
-		// multiple items, but not really batch, since rendering may differ
-		// - on_draft_notification_email_addresses
-		// - send_activation_notification
+		$options = Options::model()->findAll();
 		
 		if(isset($_POST["Options"]))
 		{
@@ -83,24 +81,18 @@ class SiteController extends Controller
 			// Yii::log("New emails: " . $model->value, CLogger::LEVEL_INFO, "actionOptions");			
 			// Yii::app()->user->setFlash('success', "E-Mail Benachrichtigungen gehen an: " . implode(", ", $updates_emails));
 
-			// ----			
-			
-			// send_activation_notification
-			// ============================
-
-			// $m_send_activation_notification = 
-			// 	Options::model()->findByAttributes(array("option" => "send-activation-notification"));
-			// 
-			// $m_send_activation_notification = $_POST["M_send_activation_notification"]["value"];
-			// $m_send_activation_notification->save();
-
 			// ----
 			
-			 // $this->redirect(array('index'));
-		} else {
-			$options = Options::model()->findAll();
+	        $valid=true;
+	        foreach($options as $i=>$option)
+	        {
+				if (isset($_POST['Options'][$i])) {
+					$option->attributes=$_POST['Options'][$i];
+	            	$option->save();
+				}
+	        }
+			 $this->redirect(array('index'));
 		}
-		
 		$this->render('options', array('options' => $options));
 	}
 

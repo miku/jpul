@@ -567,7 +567,7 @@ class JobController extends Controller
 		
 		$emails = $email_model->value;
 		
-		if ($emails != '') {
+		if ($emails != null && $emails != '') {
 			$to      = $emails;
 			$subject = '[CC-Jobportal] Neues Jobangebot erstellt (Unternehmen: ' . $model->company . ')';
 			$message = 'Neues Jobangebot erstellt (' . $model->title . ')' . $newline . 

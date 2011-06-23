@@ -336,30 +336,37 @@ class AdminController extends Controller
 			" to " . $model->status_id, 
 			CLogger::LEVEL_INFO, __FUNCTION__);
 
-		if ($model->status_id == 2) {
+		if ($model->status_id == 2 && isset($model->ukey) && $model->ukey != null) {
 			// In debug mode for now
-			$this->mailOnActivation($model);
+			// find the first row using the specified SQL statement
+			$notification_event = EventLog::model()->findBySql("SELECT * FROM event_log WHERE name = :name AND message LIKE :message", 
+				array('name' => 'job-activation-notification-sent', 'message' => '%job_id:' . $model->id . ";%"));
+			
+			if ($notification_event == null) {
+				Yii::log("Preparing notification e-mail.", CLogger::LEVEL_INFO, __FUNCTION__);
+				// send the actual e-mail
+				$this->mailOnActivation($model);
+				// create an entry in out event log
+				
+				Yii::log("Make a note in our event log.", CLogger::LEVEL_INFO, __FUNCTION__);
+				$notification_event = new EventLog;
+				$notification_event->timestamp = time();
+				$notification_event->name = 'job-activation-notification-sent';
+				$notification_event->message = 'job_id:' . $model->id . ";to:" . $model->publisher_email . ";";
+				if ($notification_event->save()) {
+					Yii::log("event_log saved.", CLogger::LEVEL_INFO, __FUNCTION__);
+				} else {
+					Yii::log("event_log FAILED.", CLogger::LEVEL_INFO, __FUNCTION__);
+				}
+			} else {
+				Yii::log("This is a repost. Not sending out another message for now.", 
+					CLogger::LEVEL_INFO, __FUNCTION__);
+			}
 		}
 		
 		$this->updateSearchIndex($model, "default");
 		$this->updateSearchIndex($model, "admin");
 		$this->updateSearchIndex($model, "api");
-		
-		// Queue one job
-		// if ($status_id == 2) {
-		// 	// Job got made public
-		// 	$queueEntry = new QueueEntry;
-		// 	$queueEntry->priority = 1;
-		// 	$queueEntry->func = "create_queue_entries_for_job";
-		// 	$queueEntry->args = $id;
-		// 	$queueEntry->date_added = time();
-		// } else {
-		// 	$queueEntry = new QueueEntry;
-		// 	$queueEntry->priority = 0;
-		// 	$queueEntry->func = "delete_queue_entries_for_job";
-		// 	$queueEntry->args = $id;
-		// 	$queueEntry->date_added = time();			
-		// }
 		
 		$this->redirect(array('admin/view', 'id' => $id));
 	}

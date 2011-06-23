@@ -93,7 +93,7 @@
 		<a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "java+-javascript"))); ?>">Java</a>,
 		<a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "HTML+OR+CSS"))); ?>">HTML/CSS</a></li>
 	
-	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "linux+AIX+solaris+freebsd+irix+GNU"))); ?>">Unix</a>,
+	<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "linux+OR+AIX+OR+solaris+OR+freebsd+OR+irix+OR+GNU"))); ?>">Unix</a>,
 		<a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "Android+OR+iOS+OR+iPhone+OR+ObjectiveC+OR+ObjC+OR+iPad+OR+mobile+OR+apps"))); ?>">Apps/Mobile</a></li>
 
 	</ul>

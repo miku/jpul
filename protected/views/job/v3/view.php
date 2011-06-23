@@ -87,7 +87,7 @@
 <div id="sidebar-container">
 	<div id="sidebar">
 		
-		<?php if($this->beginCache("job_view_sidebar")) { ?>
+		<?php if($this->beginCache("job_view_sidebar", array('duration'=>86400))) { ?>
 		
 			<?php $this->renderPartial('/shared/_sidebar_contact'); ?>
 			<?php $this->renderPartial('/shared/_sidebar_feedback'); ?>

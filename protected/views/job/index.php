@@ -43,7 +43,7 @@
 </div> <!-- main -->
 </div> <!-- main-container -->
 
-<?php if($this->beginCache("job_index_sidebar")) { ?>
+<?php if($this->beginCache("job_index_sidebar", array('duration'=>86400))) { ?>
 
 <div id="sidebar-container">
 	<div id="sidebar">

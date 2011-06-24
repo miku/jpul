@@ -249,7 +249,7 @@ margin: 0px 0 10px 0;
 }
 
 #view-howtoapply {
-	margin-top: 15px;
+/*	margin-top: 15px;*/
 	background: #EFEFEE;
 	padding: 8px 25px 8px 25px;
 }
@@ -284,7 +284,7 @@ margin: 0px 0 10px 0;
 
 #view-download {
 	padding: 10px 10px 10px 25px;
-	background: #EAEAEA;
+	background: #DADADA;
 	font-weight: bold;
 }
 

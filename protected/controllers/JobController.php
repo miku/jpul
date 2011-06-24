@@ -334,9 +334,10 @@ class JobController extends Controller
     public function actionView($id, $from = '')
     {
         
-        $dependency = new CDbCacheDependency('SELECT MAX(date_updated) FROM job');
+        // $dependency = new CDbCacheDependency('SELECT MAX(date_updated) FROM job');
 
-        $model = Job::model()->cache(3600, $dependency)->findByPk($id);
+        // $model = Job::model()->cache(3600, $dependency)->findByPk($id);
+        $model = Job::model()->findByPk($id);
         if (!$model) {
             throw new CHttpException(404, Yii::t('app', 'Your request is not valid.'));
         }

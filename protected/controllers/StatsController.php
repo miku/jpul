@@ -88,56 +88,98 @@ class StatsController extends Controller
 		
 		$stats = array();
 		
+		$key_for_current_month = $current_year . "/" . $current_month;
+		$key_for_current_year = $current_year;
 		
 		foreach ($ranges as $key => $value) {
-	
-			// Pageviews
-			$sql = "select count(*) as pageviews from request where tracking_id is not null 
-					and request_time > :lower 
-					and request_time < :upper ;";
-	
-			$connection = Yii::app()->db;
-			$command = $connection->createCommand($sql);
-			
-			$command->bindParam(":lower", $value['lower'], PDO::PARAM_INT);
-			$command->bindParam(":upper", $value['upper'], PDO::PARAM_INT);
-			
-			$dataReader = $command->queryRow();
-	
+		
 			// $stats["Pageviews " . $key] = $dataReader["pageviews"];
-			$stats[$key . " Pageviews"] = $dataReader["pageviews"];
+			$stats[$key . " Pageviews"] = Yii::app()->cache->get($key . " Pageviews");
+			
+			if ($stats[$key . " Pageviews"] === false) {
+				
+				Yii::log("Not cached: " . $key, CLogger::LEVEL_INFO, __FUNCTION__);
+				
+				// Pageviews
+				$sql = "select count(*) as pageviews from request where tracking_id is not null 
+						and request_time > :lower 
+						and request_time < :upper ;";
+	
+				$connection = Yii::app()->db;
+				$command = $connection->createCommand($sql);
+			
+				$command->bindParam(":lower", $value['lower'], PDO::PARAM_INT);
+				$command->bindParam(":upper", $value['upper'], PDO::PARAM_INT);
+			
+				$dataReader = $command->queryRow();
+				$stats[$key . " Pageviews"] = $dataReader["pageviews"];
+				
+				if ($key != $key_for_current_month && $key != $key_for_current_year) {
+					Yii::app()->cache->set($key . " Pageviews", $stats[$key . " Pageviews"]);
+				}
+			} else {
+				Yii::log("Cached: " . $key, CLogger::LEVEL_INFO, __FUNCTION__);
+			}
+
+
 		
 			// Unique Visitors
-			$sql = "select count(distinct tracking_id) as uniq from request where tracking_id is not null
-					and request_time > :lower 
-					and request_time < :upper ;";
-	
-			$connection = Yii::app()->db;
-			$command = $connection->createCommand($sql);
 			
-			$command->bindParam(":lower", $value['lower'], PDO::PARAM_INT);
-			$command->bindParam(":upper", $value['upper'], PDO::PARAM_INT);
+			$stats[$key . " Unique"] = Yii::app()->cache->get($key . " Unique");
+			
+			if ($stats[$key . " Unique"] === false) {
+				
+				Yii::log("Not cached: " . $key, CLogger::LEVEL_INFO, __FUNCTION__);
+				
+				$sql = "select count(distinct tracking_id) as uniq from request where tracking_id is not null
+						and request_time > :lower 
+						and request_time < :upper ;";
 	
-			$dataReader = $command->queryRow();
+				$connection = Yii::app()->db;
+				$command = $connection->createCommand($sql);
+			
+				$command->bindParam(":lower", $value['lower'], PDO::PARAM_INT);
+				$command->bindParam(":upper", $value['upper'], PDO::PARAM_INT);
 	
-			// $stats["Unique Visitors " . $key] = $dataReader["uniq"];
-			$stats[$key . " Unique"] = $dataReader["uniq"];
+				$dataReader = $command->queryRow();
 	
+				// $stats["Unique Visitors " . $key] = $dataReader["uniq"];
+				$stats[$key . " Unique"] = $dataReader["uniq"];
+				
+				if ($key != $key_for_current_month && $key != $key_for_current_year) {
+					Yii::app()->cache->set($key . " Unique", $stats[$key . " Unique"]);
+				}
+			} else {
+				Yii::log("Cached: " . $key, CLogger::LEVEL_INFO, __FUNCTION__);
+			}	
 	
 			// Jobs added
-			$sql = "select count(*) as jobs_added from job where 
-					date_added > :lower 
-					and date_added < :upper ;";
-	
-			$connection = Yii::app()->db;
-			$command = $connection->createCommand($sql);
+			$stats[$key . " Jobs"] = Yii::app()->cache->get($key . " Jobs");
 			
-			$command->bindParam(":lower", $value['lower'], PDO::PARAM_INT);
-			$command->bindParam(":upper", $value['upper'], PDO::PARAM_INT);
+			if ($stats[$key . " Jobs"] === false) {
+			
+				Yii::log("Not cached: " . $key, CLogger::LEVEL_INFO, __FUNCTION__);
+
+				$sql = "select count(*) as jobs_added from job where 
+						date_added > :lower 
+						and date_added < :upper ;";
 	
-			$dataReader = $command->queryRow();
+				$connection = Yii::app()->db;
+				$command = $connection->createCommand($sql);
+			
+				$command->bindParam(":lower", $value['lower'], PDO::PARAM_INT);
+				$command->bindParam(":upper", $value['upper'], PDO::PARAM_INT);
 	
-			$stats[$key . " Jobs"] = $dataReader["jobs_added"];
+				$dataReader = $command->queryRow();
+	
+				$stats[$key . " Jobs"] = $dataReader["jobs_added"];
+
+				if ($key != $key_for_current_month && $key != $key_for_current_year) {
+					Yii::app()->cache->set($key . " Jobs", $stats[$key . " Jobs"]);
+				}
+			} else {
+				Yii::log("Cached: " . $key, CLogger::LEVEL_INFO, __FUNCTION__);
+			}
 	
 		}
 	

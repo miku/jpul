@@ -11,9 +11,9 @@
 </p>
 <p>
 	<strong>Servicezeiten:</strong><br>
-	Mo. 13:00 &mdash; 17:00 Uhr<br>
-	Di. bis Do. 9:00 &mdash; 17:00 Uhr<br>
-	Fr. 9:00 &mdash; 15:00 Uhr<br>
+	Mo. 13:00 - 17:00 Uhr<br>
+	Di. bis Do. 9:00 - 17:00 Uhr<br>
+	Fr. 9:00 - 15:00 Uhr<br>
 </p>
 <a class="outbound" href="http://www.zv.uni-leipzig.de/studium/career-center.html">
 <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/v2/cc_logo.gif" alt="CC-Logo" />

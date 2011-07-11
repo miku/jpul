@@ -40,7 +40,7 @@
 				</div>		
 			</div>
 
-			<div id="view-description" class="shadow">
+			<div id="view-description">
 				<?php echo text_to_links(textilize($model->description)) ?>
 				<?php if ($model->degree): ?>
 					<p><strong>Abschluß:</strong> <?php echo $model->degree->name ?></p>
@@ -48,14 +48,14 @@
 			</div>
 			
 			<?php if ($model->attachment): ?>
-				<div id="view-download" class="shadow">
+				<div id="view-download">
 					<a href="<?php echo $this->createUrl('job/download', array('id'=>$model->id)); ?>">PDF dieser Anzeige</a>
 				</div>
 			<?php endif; ?>
 
 
 			<?php if ($model->how_to_apply): ?>
-				<div id="view-howtoapply" class="shadow">
+				<div id="view-howtoapply">
 					<p id="how-to-apply">Bewerbungsweg</p>
 					<p><?php echo text_to_links(textilize($model->how_to_apply)) ?></p>
 				</div>

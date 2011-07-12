@@ -72,7 +72,7 @@
 	        // sort criteria ...
 	        switch ($options["sort"]) {
 				case 'd': // order by job title
-					$criteria->order = 'date_added';
+					$criteria->order = 'date_added DESC';
 					break;
 				case 't': // order by job title
 					$criteria->order = 'title';
@@ -164,7 +164,7 @@
 	        // sort criteria ...
 	        switch ($options["sort"]) {
 				case 'd': // order by job title
-					$criteria->order = 'date_added';
+					$criteria->order = 'date_added DESC';
 					break;
 				case 't': // order by job title
 					$criteria->order = 'title';

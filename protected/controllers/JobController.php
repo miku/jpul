@@ -84,7 +84,9 @@ class JobController extends Controller
         $criteria->condition = 'status_id=:status_id AND expiration_date > :current_time';
         $criteria->params=array(':status_id' => 2, ':current_time' => $current_time);
 
-		if ($tab == '-internship') {
+		if ($tab == 'all') {
+			// just go
+		} elseif ($tab == '-internship') {
 			$criteria->condition .= get_fragment('MINUS_INTERNSHIP');            
 		} elseif ($tab == 'internship') {
 			$criteria->condition .= get_fragment('INTERNSHIP');
@@ -92,31 +94,6 @@ class JobController extends Controller
 			$criteria->condition .= get_fragment('I18N');
 		}
         
-        // if ($tab === '-internship') {
-        //     $criteria->condition .= " AND (is_internship = 0 OR is_internship is null) ";
-        //     $criteria->condition .= " AND NOT title LIKE '%praktik%' ";
-        //     $criteria->condition .= " AND NOT title LIKE '%werkstud%' ";
-        //     $criteria->condition .= " AND NOT title LIKE '%werksstud%' ";
-        //     $criteria->condition .= " AND NOT title LIKE '%studentische Hilfs%' ";
-        //     $criteria->condition .= " AND NOT title LIKE '%studentischen Hilfs%' ";
-        //     $criteria->condition .= " AND NOT title LIKE '%studentische Mitar%' ";
-        //     $criteria->condition .= " AND NOT title LIKE '%studentischen Mitar%' ";
-        //     
-        // } elseif ($tab === 'internship') {
-        //     $criteria->condition .= " AND ( (is_internship = 1 OR is_internship is null) ";
-        //     $criteria->condition .= " OR title LIKE '%praktik%' ";
-        //     $criteria->condition .= " OR title LIKE '%werkstud%' ";
-        //     $criteria->condition .= " OR title LIKE '%werksstud%' ";
-        //     $criteria->condition .= " OR title LIKE '%studentische Hilfs%' ";
-        //     $criteria->condition .= " OR title LIKE '%studentischen Hilfs%' ";
-        //     $criteria->condition .= " OR title LIKE '%volontariat%' ";
-        //     $criteria->condition .= " OR shadowtags LIKE '%shk%')";
-        // }
-        // 
-        // if ($tab === 'international') {
-        //     $criteria->condition .= " AND country is not null and country != '' and country not like '%eutschland%' and country not like '%eutsch%' and country != 'D' and country != 'BRD' and country != 'deu' and country not like '%ermany%'";
-        // }
-
         // Determine the view to use ...
         $viewName = "default";
 

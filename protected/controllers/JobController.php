@@ -6,6 +6,7 @@ require_once('Zend/Search/Lucene.php'); // Zend Lucene Imports
 // Textile via Utils.php
 Yii::import('application.helpers.*');
 require_once('Utils.php');
+require_once('SearchHub.php');
 
 class JobController extends Controller
 {
@@ -51,7 +52,7 @@ class JobController extends Controller
      *      
      */
     public function actionIndex($page = 1, $sort = null, $v = "browser", $tab = 'all') {
-
+	
         Zend_Search_Lucene_Analysis_Analyzer::setDefault(
             new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8_CaseInsensitive());
         Zend_Search_Lucene_Search_QueryParser::setDefaultEncoding('utf-8');
@@ -82,31 +83,39 @@ class JobController extends Controller
         // just show the public offers, which are not expired ...
         $criteria->condition = 'status_id=:status_id AND expiration_date > :current_time';
         $criteria->params=array(':status_id' => 2, ':current_time' => $current_time);
+
+		if ($tab == '-internship') {
+			$criteria->condition .= get_fragment('MINUS_INTERNSHIP');            
+		} elseif ($tab == 'internship') {
+			$criteria->condition .= get_fragment('INTERNSHIP');
+		} elseif ($tab == 'international') {
+			$criteria->condition .= get_fragment('I18N');
+		}
         
-        if ($tab === '-internship') {
-            $criteria->condition .= " AND (is_internship = 0 OR is_internship is null) ";
-            $criteria->condition .= " AND NOT title LIKE '%praktik%' ";
-            $criteria->condition .= " AND NOT title LIKE '%werkstud%' ";
-            $criteria->condition .= " AND NOT title LIKE '%werksstud%' ";
-            $criteria->condition .= " AND NOT title LIKE '%studentische Hilfs%' ";
-            $criteria->condition .= " AND NOT title LIKE '%studentischen Hilfs%' ";
-            $criteria->condition .= " AND NOT title LIKE '%studentische Mitar%' ";
-            $criteria->condition .= " AND NOT title LIKE '%studentischen Mitar%' ";
-            
-        } elseif ($tab === 'internship') {
-            $criteria->condition .= " AND ( (is_internship = 1 OR is_internship is null) ";
-            $criteria->condition .= " OR title LIKE '%praktik%' ";
-            $criteria->condition .= " OR title LIKE '%werkstud%' ";
-            $criteria->condition .= " OR title LIKE '%werksstud%' ";
-            $criteria->condition .= " OR title LIKE '%studentische Hilfs%' ";
-            $criteria->condition .= " OR title LIKE '%studentischen Hilfs%' ";
-            $criteria->condition .= " OR title LIKE '%volontariat%' ";
-            $criteria->condition .= " OR shadowtags LIKE '%shk%')";
-        }
-        
-        if ($tab === 'international') {
-            $criteria->condition .= " AND country is not null and country != '' and country not like '%eutschland%' and country not like '%eutsch%' and country != 'D' and country != 'BRD' and country != 'deu' and country not like '%ermany%'";
-        }
+        // if ($tab === '-internship') {
+        //     $criteria->condition .= " AND (is_internship = 0 OR is_internship is null) ";
+        //     $criteria->condition .= " AND NOT title LIKE '%praktik%' ";
+        //     $criteria->condition .= " AND NOT title LIKE '%werkstud%' ";
+        //     $criteria->condition .= " AND NOT title LIKE '%werksstud%' ";
+        //     $criteria->condition .= " AND NOT title LIKE '%studentische Hilfs%' ";
+        //     $criteria->condition .= " AND NOT title LIKE '%studentischen Hilfs%' ";
+        //     $criteria->condition .= " AND NOT title LIKE '%studentische Mitar%' ";
+        //     $criteria->condition .= " AND NOT title LIKE '%studentischen Mitar%' ";
+        //     
+        // } elseif ($tab === 'internship') {
+        //     $criteria->condition .= " AND ( (is_internship = 1 OR is_internship is null) ";
+        //     $criteria->condition .= " OR title LIKE '%praktik%' ";
+        //     $criteria->condition .= " OR title LIKE '%werkstud%' ";
+        //     $criteria->condition .= " OR title LIKE '%werksstud%' ";
+        //     $criteria->condition .= " OR title LIKE '%studentische Hilfs%' ";
+        //     $criteria->condition .= " OR title LIKE '%studentischen Hilfs%' ";
+        //     $criteria->condition .= " OR title LIKE '%volontariat%' ";
+        //     $criteria->condition .= " OR shadowtags LIKE '%shk%')";
+        // }
+        // 
+        // if ($tab === 'international') {
+        //     $criteria->condition .= " AND country is not null and country != '' and country not like '%eutschland%' and country not like '%eutsch%' and country != 'D' and country != 'BRD' and country != 'deu' and country not like '%ermany%'";
+        // }
 
         // Determine the view to use ...
         $viewName = "default";
@@ -150,51 +159,34 @@ class JobController extends Controller
 
         // Search term detected.
         if ($viewName == "search") {
-            
-            $index = new Zend_Search_Lucene($this->getSearchIndexStore());
+	
+			$original_query = $_GET['q'];
 
-            $original_query = $_GET['q'];
+			// If the user does not use anything from the extended search
+			// syntax, append kleene star to terms
+			if (preg_match("/( OR | AND |\"|:|~|-|\*| NOT )/", $original_query) == 0) {
+			    $query = trim($original_query) . '*';
+			    $query = preg_replace("/\s+/", "* ", $query);
+			} else {
+			    $query = $original_query;
+			}
+			
+			// Correct the user input to the query we are actually executing.
+			$original_query = $query;
 
-            if (preg_match("/( OR | AND |\"|:|~|-|\*| NOT )/", $original_query) == 0) {
-                $query = trim($original_query) . '*';
-                $query = preg_replace("/\s+/", "* AND ", $query);
-            } else {
-                $query = $original_query;
+			$options = array("q" => $query, "tab" => $tab,
+				"limit" => $this->items_per_page,
+				"offset" => ($page - 1) * $this->items_per_page);
+
+			// fix
+			if ($v == "embed") {
+				$options["offset"] = 0;
+            	$options["limit"] = 10;
             }
 
-            // Correct the user input to the query we are actually executing.
-            $original_query = $query;
-            
-            // Yii::log("Q: " . $query, CLogger::LEVEL_INFO, __FUNCTION__);
-            
-            try {
-                $results = $index->find($query);
-            } catch (Exception $e) {
-                // Yii::log("Failed Query: '" . $query . "' - Exception: " . $e, CLogger::LEVEL_INFO, __FUNCTION__);
-                $this->redirect(array('index'));
-            }
-
-            $pks = array();
-            foreach ($results as $result) {
-                $pks[] = $result->pk;
-                // Yii::log("Search result content [". $result->pk . "]: " . 
-                //  $query_parsed->highlightMatches($result->description), CLogger::LEVEL_INFO, __FUNCTION__);
-                
-            }
-
-            $total = count(Job::model()->cache(3600, $dependency)->findAllByAttributes(array('id' => $pks), $criteria));
-
-            // fix number of offers per page ...
-            if ($v == "embed") {
-                $criteria->limit = 10;
-                $criteria->offset = ($page - 1) * 10;
-            } else {
-                $criteria->limit = $this->items_per_page;
-                $criteria->offset = ($page - 1) * $this->items_per_page;
-            }
-
-            $models = Job::model()->findAllByAttributes(array('id' => $pks), $criteria);
-
+			$result = getResultSetAndSize($options);
+			$models = $result["models"];
+			$total = $result["total"];
         }   
 
         // special pages, likes favorite filter

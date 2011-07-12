@@ -5,7 +5,7 @@
 Veröffentlichen Sie in unserem Jobportal Ihre Praktikums- und Stellenangebote.
 Orientieren Sie sich bei der Suche nach qualifizierten Nachwuchskräften an den
 <a href="http://www.zv.uni-leipzig.de/studium/angebot/studienangebot.html">Studiengängen</a> der Universität
-Leipzig. Klassische Nebentätigkeiten senden Sie bitte an das <a href="http://www.studentenwerk-leipzig.de/">Studentenwerk</a>.
+Leipzig. Klassische Nebentätigkeiten senden Sie bitte an das <a href="http://www.studentenwerk-leipzig.de/service/studentenjobs">Studentenwerk</a>.
 
 </p>
 

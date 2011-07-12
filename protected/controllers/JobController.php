@@ -53,11 +53,6 @@ class JobController extends Controller
      */
     public function actionIndex($page = 1, $sort = null, $v = "browser", $tab = 'all') {
 	
-        Zend_Search_Lucene_Analysis_Analyzer::setDefault(
-            new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8_CaseInsensitive());
-        Zend_Search_Lucene_Search_QueryParser::setDefaultEncoding('utf-8');
-        Zend_Search_Lucene_Search_QueryParser::setDefaultOperator(Zend_Search_Lucene_Search_QueryParser::B_AND);
-
         $current_time = time();
         $criteria = new CDbCriteria;
 
@@ -253,6 +248,24 @@ class JobController extends Controller
         }
     }
     
+
+	public function actionSearchHits() {
+		$original_query = $_GET['q'];
+		// If the user does not use anything from the extended search
+		// syntax, append kleene star to terms
+		if (preg_match("/( OR | AND |\"|:|~|-|\*| NOT )/", $original_query) == 0) {
+		    $query = trim($original_query) . '*';
+		    $query = preg_replace("/\s+/", "* ", $query);
+		} else {
+		    $query = $original_query;
+		}
+		// Correct the user input to the query we are actually executing.
+		$original_query = $query;
+		$options = array("q" => $query, "tab" => 'all');
+		$this->layout = "plain";
+		$this->renderText(getResultSetSize($options));
+		
+	}
 
     
     public function actionRelated($id) {

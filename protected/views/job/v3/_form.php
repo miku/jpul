@@ -244,12 +244,10 @@ $(document).ready(function() {
 	
 	$('#Job_description').wysiwym(Wysiwym.Markdown, {
 		"containerButtons" : $("#Job_description_buttons"),
-		"helpEnabled" : false
 	});
 
 	$('#Job_how_to_apply').wysiwym(Wysiwym.Markdown, {
 		"containerButtons" : $("#Job_how_to_apply_buttons"),
-		"helpEnabled" : false
 	});
 	
 });

@@ -95,8 +95,8 @@ $.fn.wysiwym = function(markupSet, options) {
     this.textarea.wrap(this.editor);
     this.initializeButtons();
     this.initializeAutoIndent();
-    this.initializeHelp();
-    this.initializeHelpToggle();
+    // this.initializeHelp();
+    // this.initializeHelpToggle();
 };
 
 

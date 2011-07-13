@@ -37,7 +37,7 @@
 	
 	
 	<div id="footer">
-		<?php $this->renderPartial('/shared/_footer', array('original_query' => $original_query)) ?>			
+		<?php $this->renderPartial('/shared/_footer', array('original_query' => $original_query, 'tab' => $tab)) ?>			
 	</div>
 	
 </div> <!-- main -->

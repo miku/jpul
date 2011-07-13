@@ -18,8 +18,12 @@
 		<!-- Description -->
 		<li>
 			<a name="description-example"></a>
-			<?php echo $form->labelEx($model,'description'); ?>			
-			<?php echo $form->textArea($model,'description', array("rows" => "40", "cols" => "75")); ?>
+			<?php echo $form->labelEx($model,'description'); ?>
+			
+			<div class="textarea">
+				<div id="Job_description_buttons"></div>
+					<?php echo $form->textArea($model,'description', array("rows" => "40", "cols" => "75")); ?>
+			</div>
 
 			<div class="help">
 				<p><strong>Formattierungshinweise</strong>: Das obige Textfeld unterstützt keine WYSIWYG Formattierung, dennoch ist
@@ -43,7 +47,10 @@
 		<!-- How to apply -->
 		<li>
 			<?php echo $form->labelEx($model,'how_to_apply'); ?>
-			<?php echo $form->textArea($model,'how_to_apply', array("rows" => "10", "cols" => "75")); ?>
+			<div class="textarea">
+				<div id="Job_how_to_apply_buttons"></div>
+				<?php echo $form->textArea($model,'how_to_apply', array("rows" => "10", "cols" => "75")); ?>
+			</div>
 			<div class="help">
 				<p><strong>Formattierungshinweise</strong>: Das obige Textfeld unterstützt keine WYSIWYG Formattierung, dennoch ist
 				es über ein <em>Markup</em> möglich, Elemente Ihrer Anzeige (z.B. die Sektionen "Voraussetzungen", "Ihre Aufgaben", etc.) 
@@ -209,11 +216,23 @@
 
 <script type="text/javascript" charset="utf-8">
 $(document).ready(function() {
-    $('input[type="text"], input[type="file"], textarea').addClass("idleField");
-	$('input[type="text"], input[type="file"], textarea').focus(function() {
+    $('textarea').addClass("idleField");
+	$('textarea').focus(function() {
+		$(this).parent().parent().parent().parent().removeClass("idleField").addClass("focusField");
+    });
+
+    $('textarea').blur(function() {
+    	$(this).parent().parent().parent().parent().removeClass("focusField").addClass("idleField");
+    });
+
+
+
+    $('input[type="text"], input[type="file"]').addClass("idleField");
+	$('input[type="text"], input[type="file"]').focus(function() {
 		$(this).parent().parent().removeClass("idleField").addClass("focusField");
     });
-    $('input[type="text"], input[type="file"], textarea').blur(function() {
+
+    $('input[type="text"], input[type="file"]').blur(function() {
     	$(this).parent().parent().removeClass("focusField").addClass("idleField");
     });
 
@@ -222,5 +241,16 @@ $(document).ready(function() {
 	$('#example-formatting').click(function(){
 		$('#Job_description').val('Die ist ein Beispieltext zur Veranschaulichung der Formatierungsoptionen.\n\n*Diese Überschrift wird Fett*\n\nNormaler Text, und noch mehr normaler Text.\n\n* Eine Stichpunktliste\n* wird durch eine Liste von\n* Zeilen dargestellt,\n* die jeweils mit einem Sternchen\n* anfangen.\n\nAuch wenn wir nur wenige Formattierungsoptionen anbieten, hoffen wir, daß Sie Ihre Anzeige ausreichend übersichtlich und strukturiert darstellen können.');
 	});
+	
+	$('#Job_description').wysiwym(Wysiwym.Markdown, {
+		"containerButtons" : $("#Job_description_buttons"),
+		"helpEnabled" : false
+	});
+
+	$('#Job_how_to_apply').wysiwym(Wysiwym.Markdown, {
+		"containerButtons" : $("#Job_how_to_apply_buttons"),
+		"helpEnabled" : false
+	});
+	
 });
 </script>

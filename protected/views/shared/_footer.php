@@ -121,9 +121,7 @@
 	$(document).ready(function(){
 		$(".example-searches > li > a").each(function(index, item) {
 			var url = $.url(item.href);
-			console.log(url.param('q'));
 			$.get("<?php echo $this->createUrl('job/searchHits'); ?>?q=" + url.param('q'), function(data) {
-				console.log(data);
 				$('<span style="margin-left: 3px; font-size:8px;">' + data + '</span>').insertAfter(item);
 			});
 		});

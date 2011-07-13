@@ -20,9 +20,10 @@
 			<li><a href="<?php echo $this->createUrl('job/index', array("src" => "eq", "q" => "english OR englisch")); ?>">Englischkenntnisse</a></li>
 			<li><a href="<?php echo $this->createUrl('job/index', 
 			array("src" => "eq", "q" => 
-				"french OR französisch OR spanish OR spanisch OR chinese OR chinesisch OR russian OR russisch OR turkish OR türkisch OR polish OR polnisch OR czech OR tschechisch OR serbian OR serbisch OR italian OR italienisch OR hungarian OR ungarisch OR swedish OR schwedisch OR norwegian OR norwegisch OR finnish OR finnisch OR estonian OR estnisch OR bulgarian OR bulgarisch OR romanian OR rumänisch OR ukrainian OR ukrainisch OR arabic OR arabisch OR farsi OR persisch")); ?>">Sprachen außer Englisch</a></li>
+				"french OR französisch OR spanish OR spanisch OR chinese OR chinesisch OR russian OR russisch OR turkish OR türkisch OR polish OR polnisch OR czech OR tschechisch OR serbian OR serbisch OR italian OR italienisch OR hungarian OR ungarisch OR swedish OR schwedisch OR norwegian OR norwegisch OR finnish OR finnisch OR estonian OR estnisch OR bulgarian OR bulgarisch OR romanian OR rumänisch OR ukrainian OR ukrainisch OR arabic OR arabisch OR farsi OR persisch OR latin OR latein OR greek OR griechisch OR hebrew OR hebräisch")); ?>">Sprachen außer Englisch</a></li>
 		
 			<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "übersetz*+OR+translate+OR+translation"))); ?>">Übersetzung</a></li>
+			<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "philologie+OR+anglistik+OR+amerikanistik+OR+germanistik+OR+kanadistik+OR+romanistik+OR+slawistik+OR+slavistik+OR+lusitanistik+OR+afrikanistik+OR+ägyptologie+OR+indologie+OR+judaistik+OR+japanologie+OR+skandinavistik+OR+hungarologie+OR+fennistik+OR+russistik+OR+polonistik+OR+keltologie+OR+sprachwissenschaft"))); ?>">Philologien</a></li>
 			<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "bildung*+OR+erziehungs*+OR+pädagog*"))); ?>">Erziehung und Bildung</a></li>
 		</ul>
 	</div>
@@ -83,7 +84,7 @@
 	<div class="column-200">
 		<ul class="example-searches">
 			<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "praktik*+OR+werkstudent+OR+volontariat+OR+shk"))); ?>">Praktika</a>,
-				<a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "werkstudent"))); ?>">Werkstudent</a>,
+				<a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "werkstudent"))); ?>">Werkstudent</a>
 				<!-- <a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "nebenjob* OR honorar* OR freelanc* "))); ?>">Nebenjob</a></li> -->
 
 			<li><a href="<?php echo urldecode($this->createUrl('job/index', array("src" => "eq", "q" => "SHK"))); ?>">Studentische Hilfskraft</a></li>

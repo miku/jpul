@@ -249,7 +249,7 @@ class JobController extends Controller
     }
     
 
-	public function actionSearchHits() {
+	public function actionSearchHits($tab = 'all') {
 		$original_query = $_GET['q'];
 		// If the user does not use anything from the extended search
 		// syntax, append kleene star to terms
@@ -261,7 +261,7 @@ class JobController extends Controller
 		}
 		// Correct the user input to the query we are actually executing.
 		$original_query = $query;
-		$options = array("q" => $query, "tab" => 'all');
+		$options = array("q" => $query, "tab" => $tab);
 		$this->layout = "plain";
 		$this->renderText(getResultSetSize($options));
 		

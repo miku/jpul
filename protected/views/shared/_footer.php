@@ -121,7 +121,9 @@
 	$(document).ready(function(){
 		$(".example-searches > li > a").each(function(index, item) {
 			var url = $.url(item.href);
-			$.get("<?php echo $this->createUrl('job/searchHits'); ?>?q=" + url.param('q'), function(data) {
+			var current_url = $.url();
+			var tab = current_url.param('tab');
+			$.get("<?php echo $this->createUrl('job/searchHits'); ?>?q=" + url.param('q') + "&tab=" + tab, function(data) {
 				$('<span style="margin-left: 3px; font-size:8px;">' + data + '</span>').insertAfter(item);
 			});
 		});

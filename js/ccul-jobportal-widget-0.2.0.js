@@ -56,13 +56,13 @@ ccul_jobportal_load.widget = function(query) {
 		if (typeof query != "undefined") {
 			$.getJSON('http://wwwdup.uni-leipzig.de/jobportal/widget/getJSONP?callback=?&q=' + query, function(data) {
 				$.each(data, function(index, job) {
-					$("#ccul_jobportal_widget").append("<li style='padding: 2px; list-style:none;'><a href='wwwdup.uni-leipzig.de/jobportal/job/" + job["id"] + "'>" + job["title"] + "</a></li>");
+					$("#ccul_jobportal_widget").append("<li style='padding: 2px; list-style:none;'><a href='http://wwwdup.uni-leipzig.de/jobportal/job/" + job["id"] + "?src=widget'>" + job["title"] + "</a></li>");
 				});
 			});
 		} else {
 			$.getJSON('http://wwwdup.uni-leipzig.de/jobportal/widget/getJSONP?callback=?', function(data) {
 				$.each(data, function(index, job) {
-					$("#ccul_jobportal_widget").append("<li style='padding: 2px; list-style:none;'><a href='wwwdup.uni-leipzig.de/jobportal/job/" + job["id"] + "'>" + job["title"] + "</a></li>");
+					$("#ccul_jobportal_widget").append("<li style='padding: 2px; list-style:none;'><a href='http://wwwdup.uni-leipzig.de/jobportal/job/" + job["id"] + "?src=widget'>" + job["title"] + "</a></li>");
 				});
 			});
 		}

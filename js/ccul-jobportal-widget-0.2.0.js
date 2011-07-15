@@ -40,8 +40,8 @@ ccul_jobportal_load.getScript = function(src) {
 
 ccul_jobportal_load();
 
-function sayhi() {
-	alert("Hi");
+function sayhi(data) {
+	console.log(data);
 }
 
 ccul_jobportal_load.widget = function(query) {

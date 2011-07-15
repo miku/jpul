@@ -36,6 +36,34 @@ class WidgetController extends Controller
 			array('original_query' => $original_query, 'width' => $width));
 	}
 
+
+	public function actionGetJSONP($q = null, $tab = 'all', $limit = 10, $callback = 'ccul_widget_callback') {
+		Yii::log("Widget-Request from " . isset($_SERVER["REMOTE_ADDR"]) 
+			? $_SERVER["REMOTE_ADDR"] : '', CLogger::LEVEL_INFO, __FUNCTION__);
+
+		$result = $this->getModelsAndOriginalQuery($q, $tab, $limit);
+		$models = $result["models"];
+		$original_query = $result["original_query"];
+		
+		// turn the query result into an array, with only the key we actually
+		// need for the widget
+		$stripped = array();
+		foreach ($models as $key => $value) {
+			$stripped[$key] = array(
+				"id" => $value["id"],
+				"title" => $value["title"],
+				"date_added" => $value["date_added"]
+			);
+		}
+
+		$this->layout = 'plain';
+		$this->render('getJSONP', array(
+			'models' => $stripped, 
+			'original_query' => $original_query,
+			'callback' => $callback)
+		);		
+	}
+
 	
 	public function actionGetJSON($q = null, $tab = 'all', $limit = 10) {
 		Yii::log("Widget-Request from " . isset($_SERVER["REMOTE_ADDR"]) 

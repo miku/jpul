@@ -52,6 +52,8 @@ ccul_jobportal_load.render = function(data) {
 	$("div#ccul_jobportal_widget_box").css("font-size", "75%");
 	$("div#ccul_jobportal_widget_box").css("font", "normal 10pt Verdana,'Helvetica Neue',Arial,Tahoma,sans-serif");
 	
+	$("div#ccul_jobportal_widget_box").append('<p>Universität Leipzig | Jobportal<br><a target="_blank" href="http://wwwdup.uni-leipzig.de/jobportal/index">Aktuelle Jobangebote</a></p>');
+	
 	$("div#ccul_jobportal_widget_box").append("<ul>");
 	$("div#ccul_jobportal_widget_box > ul").css("margin", "0");
 	$("div#ccul_jobportal_widget_box > ul").css("padding", "0");

@@ -46,6 +46,11 @@ ccul_jobportal_load();
 
 ccul_jobportal_load.render = function(data) {
 	$("div#ccul_jobportal_widget").append("<div id='ccul_jobportal_widget_box'>");
+	$("div#ccul_jobportal_widget_box").css("margin", "5px 0 5px 0");
+	$("div#ccul_jobportal_widget_box").css("padding", "10px");	
+	$("div#ccul_jobportal_widget_box").css("border", "dashed thin #ABABAB");
+	$("div#ccul_jobportal_widget_box").css("font-size", "75%");
+	$("div#ccul_jobportal_widget_box").css("font", "normal 10pt Verdana,"Helvetica Neue",Arial,Tahoma,sans-serif");
 	// $.each(data, function(index, job) {
 	// 	$("#ccul_jobportal_widget").append("<li style='padding: 2px; list-style:none;'><a href='http://wwwdup.uni-leipzig.de/jobportal/job/" + job["id"] + "?src=widget'>" + job["title"] + "</a></li>");
 	// });	

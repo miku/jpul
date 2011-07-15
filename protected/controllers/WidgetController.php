@@ -22,16 +22,69 @@ class WidgetController extends Controller
 			array('original_query' => $original_query, 'width' => $width));
 	}
 	
-	public function actionGet($tab = 'all', $limit = 10) {
-		
+	public function actionBeta() {
+		$original_query = null;
+		$width = null;
+		if (isset($_GET['q']) && $_GET['q'] != '') {
+			$original_query = detoxify(strip_tags($_GET['q']));
+		}
+		if (isset($_GET['width']) && $_GET['width'] != '') {
+			$width = detoxify(strip_tags($_GET['width']));
+		}
+		$this->layout = 'plain';
+		$this->render('beta', 
+			array('original_query' => $original_query, 'width' => $width));
+	}
+
+	
+	public function actionGetJSON($q = null, $tab = 'all', $limit = 10) {
 		Yii::log("Widget-Request from " . isset($_SERVER["REMOTE_ADDR"]) 
 			? $_SERVER["REMOTE_ADDR"] : '', CLogger::LEVEL_INFO, __FUNCTION__);
 
+		$result = $this->getModelsAndOriginalQuery($q, $tab, $limit);
+		$models = $result["models"];
+		$original_query = $result["original_query"];
+		
+		// turn the query result into an array, with only the key we actually
+		// need for the widget
+		$stripped = array();
+		foreach ($models as $key => $value) {
+			$stripped[$key] = array(
+				"id" => $value["id"],
+				"title" => $value["title"],
+				"date_added" => $value["date_added"]
+			);
+		}
+
+		$this->layout = 'plain';
+		$this->render('getJSON', array(
+			'models' => $stripped, 
+			'original_query' => $original_query)
+		);		
+	}
+	
+	public function actionGet($q = null, $tab = 'all', $limit = 10) {
+		Yii::log("HTML-Widget-Request from " . isset($_SERVER["REMOTE_ADDR"]) 
+			? $_SERVER["REMOTE_ADDR"] : '', CLogger::LEVEL_INFO, __FUNCTION__);
+		$result = $this->getModelsAndOriginalQuery($q, $tab, $limit);		
+		$this->layout = 'plain';
+		$this->render('get', array(
+			'models' => $result["models"], 
+			'original_query' => $result["original_query"])
+		);		
+	}
+	
+		protected function getModelsAndOriginalQuery($q = null, $tab = 'all', $limit = 10) {
+
 		$current_time = time();
+		$original_query = '';
 
 		// Determine the view to use ...
 		$viewName = "default";
-		$original_query = '';
+
+		if ($q != null && $q != '') {
+			$viewName = "search";
+		} 
 		
 		if (!is_numeric($limit)) {
 			$limit = 10;
@@ -39,12 +92,8 @@ class WidgetController extends Controller
 			$limit = 10;
 		}
 
-		if (isset($_GET['q']) && $_GET['q'] != '') {
-			$viewName = "search";
-		}
-
 		if ($viewName == "search") {
-			$original_query = $_GET['q'];
+			$original_query = $q;
 
 			// If the user does not use anything from the extended search
 			// syntax, append kleene star to terms
@@ -75,10 +124,9 @@ class WidgetController extends Controller
 			
 			$models = Job::model()->findAll($criteria);
 		}
-
-		$this->layout = 'plain';
-		$this->render('get', array('models' => $models, 'original_query' => $original_query));		
+		return array("models" => $models, "original_query" => $original_query);
 	}
+
 }
 
 ?>

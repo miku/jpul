@@ -54,12 +54,12 @@ ccul_jobportal_load.widget = function(query) {
 		// console.log("jQuery is up.");
 		
 		if (typeof query != "undefined") {
-			$.getJSON('http://wwwdup.uni-leipzig.de/jobportal/widget/getJSONP?callback=?&sayhi&q=' + query, function(data) {
-				console.log(data);
+			$.getJSON('http://wwwdup.uni-leipzig.de/jobportal/widget/getJSONP?callback=?&q=' + query, function(data) {
+				alert(data);
 			});
 		} else {
-			$.getJSON('http://wwwdup.uni-leipzig.de/jobportal/widget/getJSONP?callback=sayhi', function(data) {
-				console.log(data);
+			$.getJSON('http://wwwdup.uni-leipzig.de/jobportal/widget/getJSONP?callback=?', function(data) {
+				alert(data);
 			});
 		}
 	}

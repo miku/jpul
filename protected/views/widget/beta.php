@@ -128,8 +128,11 @@
 Das Widget wurde auf folgenden Betriebssystemen und Browsern getestet.
 
 <table border="0" cellspacing="5" cellpadding="5">
-	<tr><th></th><th>Windows</th><th>Mac OS X</th><th>Linux</th></tr>
-	<tr><td>FF 3.5</td><td>?</td><td></td><td>?</td></tr>
+	<tr><th></th>				<th>Windows</th><th>Mac OS X</th><th>Linux</th></tr>
+	<tr><td>FF 3.6.18</td>		<td>?</td><td>OK</td><td>?</td></tr>
+	<tr><td>Safari 5.0.5</td>	<td>?</td><td>OK</td><td>?</td></tr>
+	<tr><td>Camino 2.0.7</td>   <td>-</td><td>OK</td><td>?</td></tr>
+	<tr><td>Chrome 14</td>      <td>-</td><td>OK</td><td>?</td></tr>
 </table>
 
 

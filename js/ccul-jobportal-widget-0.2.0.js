@@ -75,7 +75,7 @@ ccul_jobportal_load.render = function(data) {
 	$("div#ccul_jobportal_widget_box > ul > li > a").css("text-decoration", "none");
 	$("div#ccul_jobportal_widget_box > ul > li:nth-child(odd)").css("background", "white");
 	
-	$("div#ccul_jobportal_widget_box").append('<br><a target="_blank" href="http://www.zv.uni-leipzig.de/studium/career-center.html"><img style="" src="http://wwwdup.uni-leipzig.de/jobportal/images/v2/cc_logo.gif" width="100px" alt="Career Center" /></a><br><br><div style="color: gray; font-size: 8px">Jobportal-Widget für die eigene Seite <a href="http://wwwdup.uni-leipzig.de/jobportal/widget">erstellen ...</a></div>')
+	$("div#ccul_jobportal_widget_box").append('<br><a target="_blank" href="http://www.zv.uni-leipzig.de/studium/career-center.html"><img style="" src="http://wwwdup.uni-leipzig.de/jobportal/images/v2/cc_logo.gif" width="100px" alt="Career Center" /></a><br><br><div style="float:right; color: gray; font-size: 9px">Jobportal-Widget für die eigene Seite <a href="http://wwwdup.uni-leipzig.de/jobportal/widget">erstellen ...</a></div>')
 }
 
 ccul_jobportal_load.widget = function(query) {

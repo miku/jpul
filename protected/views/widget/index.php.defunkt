@@ -57,7 +57,7 @@
 <body>
 <div id="main">
 
-<h1>Jobportal Widget <span style="color: darkorange">Beta</span></h1>
+<h1>Jobportal Widget</h1>
 
 <p><em>Ein Service des <a class="outbound" href="http://www.zv.uni-leipzig.de/studium/career-center.html">Career Centers</a> der Universität Leipzig.</em></p>
 
@@ -77,6 +77,12 @@
 		Suchbegriffe erhalten wollen, geben diese bitte
 		hier an. <a href="<?php echo $this->createUrl('widget/index'); ?>">Suche zurücksetzen</a>.</p>
 	<input type="text" size="80" name="q" value="<?php echo $original_query; ?>" id="q">
+	<br><br>
+	<label for="width">Breite des Widgets</label><br>
+	<p class="help">Falls Sie die Breite des Widgets eingrenzen möchten,
+		geben Sie bitte hier die Breite an, z.B. <a href="<?php echo $this->createUrl('widget/index', array('q' => $original_query, 'width' => '400px')); ?>">400px</a>.
+		<a href="<?php echo $this->createUrl('widget/index', array('q' => $original_query)); ?>">Standardbreite wiederherstellen</a>.</p>
+	<input type="text" size="10" name="width" value="<?php echo $width; ?>" id="width">
 	
 	<br><br>	
 	<input type="submit" value="Vorschau aktualisieren">
@@ -86,7 +92,8 @@
 
 <h3>Vorschau</h3>
 
-<div id="snippet"><script type="text/javascript" charset="utf-8" src="http://wwwdup.uni-leipzig.de/jobportal/js/ccul-jobportal-widget-0.2.0.js"></script><script type="text/javascript" charset="utf-8">ccul_jobportal_load.widget("<?php echo $original_query; ?>");</script>
+<div id="snippet">
+<script type="text/javascript" charset="utf-8" src="http://wwwdup.uni-leipzig.de/jobportal/js/ccul-jobportal-widget-0.1.0.js.defunkt"></script><script type="text/javascript" charset="utf-8">ccul_jobportal_load.widget("<?php echo $original_query; ?>");</script>
 <?php if ($width != null && $width != ''): ?>
 	<div style="width: <?php echo cut_text($width, 10); ?>" id="ccul_jobportal_widget"></div>
 <?php else: ?>
@@ -100,7 +107,8 @@
 
 <p>Fügen Sie einfach dieses Snippet an der Stelle Ihrer Seite ein, wo das Widget erscheinen soll.</p>
 
-<textarea id="code" name="code" rows="8" cols="70"></textarea>
+<textarea id="code" name="code" rows="8" cols="70">
+</textarea>
 
 <div class="line"></div>
 
@@ -115,29 +123,7 @@
 
 <div class="line"></div>
 
-<h3>Kompatibilität</h3>
 
-Das Widget wurde auf folgenden Betriebssystemen und Browsern getestet.
-
-<table border="0" cellspacing="3" cellpadding="3">
-	<tr><th></th>							<th>Windows</th><th>Mac OS X</th><th>Linux</th></tr>
-	<tr><td>Internet Explorer 7</td>		<td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td><td>&mdash;</td><td>&mdash;</td></tr>
-	<tr><td>Internet Explorer 8</td>		<td><span style="background:green; color:white; font-size:8px; padding: 2px;">OK</span></td><td>&mdash;</td><td>&mdash;</td></tr>
-	<tr><td>Internet Explorer 9</td>		<td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td><td>&mdash;</td><td>&mdash;</td></tr>
-	<tr><td>Firefox 3.6</td>				<td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td><td><span style="background:green; color:white; font-size:8px; padding: 2px;">OK</span></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td></tr>
-	<tr><td>Firefox 4</td>					<td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td></tr>	
-	<tr><td>Firefox 5</td>					<td><span style="background:green; color:white; font-size:8px; padding: 2px;">OK</span></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td></tr>
-	<tr><td>Opera 11</td>					<td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td><td><span style="background:orange; color:white; font-size:8px; padding: 2px;">nope</span></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td></tr>	
-	<tr><td>Safari 5.0.5</td>				<td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td><td><span style="background:green; color:white; font-size:8px; padding: 2px;">OK</span></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td></tr>
-	<tr><td>Chrome 12</td>      			<td><span style="background:green; color:white; font-size:8px; padding: 2px;">OK</span></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td></tr>	
-	<tr><td>Chrome 14</td>      			<td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td><td><span style="background:green; color:white; font-size:8px; padding: 2px;">OK</span></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td></tr>
-	<tr><td>Camino 2.0.7</td>   			<td>&mdash;</td><td><span style="background:green; color:white; font-size:8px; padding: 2px;">OK</span></td><td>&mdash;</td></tr>
-	
-</table>
-
-
-
-<div class="line"></div>
 
 <h3>Kontakt</h3>
 
@@ -158,19 +144,10 @@ Burgstraße 21, 1. Etage,
     	return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 	}
 	
-	function selectAllText(textbox) {
-    	textbox.focus();
-    	textbox.select();
-	}
-	
 	$(document).ready(function(){
 		$("#code").html(function() {
 			var snippet = $("div#snippet").html();
 			return htmlEntities(snippet);
-		});
-		
-		$("#code").click(function(){
-			selectAllText($(this));
 		});
 		
 		$("a.outbound").click(function(){

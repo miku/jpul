@@ -127,7 +127,7 @@
 
 Das Widget wurde auf folgenden Betriebssystemen und Browsern getestet.
 
-<table border="0" cellspacing="5" cellpadding="5">
+<table border="0" cellspacing="3" cellpadding="3">
 	<tr><th></th>							<th>Windows</th><th>Mac OS X</th><th>Linux</th></tr>
 	<tr><td>Internet Explorer 7</td>		<td>?</td><td>-</td><td>-</td></tr>
 	<tr><td>Internet Explorer 8</td>		<td>OK</td><td>-</td><td>-</td></tr>

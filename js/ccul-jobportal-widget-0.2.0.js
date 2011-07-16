@@ -69,7 +69,7 @@ ccul_jobportal_load.render = function(data) {
 	$("div#ccul_jobportal_widget_box > ul").css("list-style", "none");
 	
 	$.each(models, function(index, job) {
-		$("div#ccul_jobportal_widget_box > ul").append("<li style='padding: 2px; list-style:none;'><span style='color:#BCBCBC'>" + job["date_added"] + "</span> <a href='http://wwwdup.uni-leipzig.de/jobportal/job/" + job["id"] + "?src=widget'>" + job["title"] + "</a></li>");
+		$("div#ccul_jobportal_widget_box > ul").append("<li style='padding: 2px; list-style:none;'><span style='background:#0000ee; color:white; padding: 2px; font-size: 7px;'>" + job["date_added"] + "</span> <a href='http://wwwdup.uni-leipzig.de/jobportal/job/" + job["id"] + "?src=widget'>" + job["title"] + "</a></li>");
 	});	
 	
 	$("div#ccul_jobportal_widget_box > ul > li > a").css("text-decoration", "none");

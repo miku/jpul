@@ -3,4 +3,7 @@
 	header('Content-type: application/json');	
 ?>
 
-<?php echo $callback . "(" . json_encode($models) . ")"; ?>
+<?php echo $callback . "(" . json_encode(
+		array("query" => $original_query, "models" => $models)) . 
+	")"; 
+?>

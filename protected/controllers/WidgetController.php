@@ -102,7 +102,7 @@ class WidgetController extends Controller
 		);		
 	}
 	
-		protected function getModelsAndOriginalQuery($q = null, $tab = 'all', $limit = 10) {
+	protected function getModelsAndOriginalQuery($q = null, $tab = 'all', $limit = 10) {
 
 		$current_time = time();
 		$original_query = '';

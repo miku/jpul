@@ -160,10 +160,19 @@ Burgstraße 21, 1. Etage,
     	return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 	}
 	
+	function selectAllText(textbox) {
+    	textbox.focus();
+    	textbox.select();
+	}
+	
 	$(document).ready(function(){
 		$("#code").html(function() {
 			var snippet = $("div#snippet").html();
 			return htmlEntities(snippet);
+		});
+		
+		$("#code").onclick(function(){
+			selectAllText($(this));
 		});
 		
 		$("a.outbound").click(function(){

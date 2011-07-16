@@ -73,7 +73,9 @@ ccul_jobportal_load.render = function(data) {
 	});	
 	
 	$("div#ccul_jobportal_widget_box > ul > li > a").css("text-decoration", "none");
-	$('div#ccul_jobportal_widget_box > ul > li:nth-child(odd)').css("background", "white");
+	$("div#ccul_jobportal_widget_box > ul > li:nth-child(odd)").css("background", "white");
+	
+	$("div#ccul_jobportal_widget_box").append('<a target="_blank" href="http://www.zv.uni-leipzig.de/studium/career-center.html"><img style="" src="http://wwwdup.uni-leipzig.de/jobportal/images/v2/cc_logo.gif" width="100px" alt="Career Center" /></a>')
 }
 
 ccul_jobportal_load.widget = function(query) {

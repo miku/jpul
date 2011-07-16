@@ -68,7 +68,7 @@ ccul_jobportal_load.render = function(data) {
 	$("div#ccul_jobportal_widget_box > ul").css("padding", "0");
 	$("div#ccul_jobportal_widget_box > ul").css("list-style", "none");
 	
-	if (models.size < 1) {
+	if (models.length < 1) {
 		$("div#ccul_jobportal_widget_box > ul").append
 	} else {
 		$.each(models, function(index, job) {

@@ -73,7 +73,7 @@ ccul_jobportal_load.render = function(data) {
 	});	
 	
 	$("div#ccul_jobportal_widget_box > ul > li > a").css("text-decoration", "none");
-	$('div#ccul_jobportal_widget_box > ul > li:nth-child(odd)').css("background", "aliceblue");
+	$('div#ccul_jobportal_widget_box > ul > li:nth-child(odd)').css("background", "white");
 }
 
 ccul_jobportal_load.widget = function(query) {

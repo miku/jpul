@@ -62,24 +62,21 @@ ccul_jobportal_load.render = function(data) {
 		$("div#ccul_jobportal_widget_box").append('<p>Universität Leipzig | Jobportal<br><a target="_blank" href="http://wwwdup.uni-leipzig.de/jobportal/index">Aktuelle Jobangebote</a></p>');	
 	}
 	
-	
 	$("div#ccul_jobportal_widget_box").append("<ul>");
 	$("div#ccul_jobportal_widget_box > ul").css("margin", "0");
 	$("div#ccul_jobportal_widget_box > ul").css("padding", "0");
 	$("div#ccul_jobportal_widget_box > ul").css("list-style", "none");
 	
-	if (models.length < 1) {
-		$("div#ccul_jobportal_widget_box > ul").append
+	if (models.size < 1) {
+		$("div#ccul_jobportal_widget_box > ul").append("<li style='padding: 2px; list-style:none;'>Wir haben keine aktuellen Angebote für die angegebenen Suchbegriffe im Jobportal gefunden.</li>");
 	} else {
 		$.each(models, function(index, job) {
-			$("div#ccul_jobportal_widget_box > ul").append("<li style='padding: 2px; list-style:none;'>Wir haben keine aktuellen Angebote für die angegebenen Suchbegriffe im Jobportal gefunden.</li>");
+			$("div#ccul_jobportal_widget_box > ul").append("<li style='padding: 2px; list-style:none;'><span style='background:#EFEFEF; color:#464646; padding: 2px 8px 2px 8px; font-size: 9px; -moz-border-radius: 5px; border-radius: 5px;'>" + job["date_added"] + "</span> <a title='" + job["title"] + "' href='http://wwwdup.uni-leipzig.de/jobportal/job/" + job["id"] + "?src=widget'>" + job["title"].substring(0, 80) + " ...</a></li>");
 		});	
 	}
 	
-	
 	$("div#ccul_jobportal_widget_box > ul > li > a").css("text-decoration", "none");
 	$("div#ccul_jobportal_widget_box > ul > li:nth-child(odd)").css("background", "white");
-	
 	$("div#ccul_jobportal_widget_box").append('<br><div style="float:left"><a target="_blank" href="http://www.zv.uni-leipzig.de/studium/career-center.html"><img style="" src="http://wwwdup.uni-leipzig.de/jobportal/images/v2/cc_logo.gif" width="100px" alt="Career Center" /></a></div><div style="float:right; color: gray; font-size: 9px">Jobportal-Widget für <a href="http://wwwdup.uni-leipzig.de/jobportal/widget">die eigene Seite erstellen ...</a></div><div style="clear:both;"></div>')
 }
 

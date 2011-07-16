@@ -77,12 +77,6 @@
 		Suchbegriffe erhalten wollen, geben diese bitte
 		hier an. <a href="<?php echo $this->createUrl('widget/index'); ?>">Suche zurücksetzen</a>.</p>
 	<input type="text" size="80" name="q" value="<?php echo $original_query; ?>" id="q">
-	<br><br>
-	<label for="width">Breite des Widgets</label><br>
-	<p class="help">Falls Sie die Breite des Widgets eingrenzen möchten,
-		geben Sie bitte hier die Breite an, z.B. <a href="<?php echo $this->createUrl('widget/index', array('q' => $original_query, 'width' => '400px')); ?>">400px</a>.
-		<a href="<?php echo $this->createUrl('widget/index', array('q' => $original_query)); ?>">Standardbreite wiederherstellen</a>.</p>
-	<input type="text" size="10" name="width" value="<?php echo $width; ?>" id="width">
 	
 	<br><br>	
 	<input type="submit" value="Vorschau aktualisieren">

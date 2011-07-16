@@ -52,7 +52,7 @@ class WidgetController extends Controller
 			$stripped[$key] = array(
 				"id" => $value["id"],
 				"title" => $value["title"],
-				"date_added" => $value["date_added"]
+				"date_added" => strftime("%d.%m.%Y", $value["date_added"]);
 			);
 		}
 
@@ -80,7 +80,7 @@ class WidgetController extends Controller
 			$stripped[$key] = array(
 				"id" => $value["id"],
 				"title" => $value["title"],
-				"date_added" => $value["date_added"]
+				"date_added" => strftime("%d.%m.%Y", $value["date_added"])
 			);
 		}
 

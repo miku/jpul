@@ -129,15 +129,15 @@ Das Widget wurde auf folgenden Betriebssystemen und Browsern getestet.
 
 <table border="0" cellspacing="3" cellpadding="3">
 	<tr><th></th>							<th>Windows</th><th>Mac OS X</th><th>Linux</th></tr>
-	<tr><td>Internet Explorer 7</td>		<td>?</td><td>-</td><td>-</td></tr>
+	<tr><td>Internet Explorer 7</td>		<td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>">?</a></td><td>-</td><td>-</td></tr>
 	<tr><td>Internet Explorer 8</td>		<td>OK</td><td>-</td><td>-</td></tr>
-	<tr><td>Internet Explorer 9</td>		<td>OK</td><td>-</td><td>-</td></tr>
-	<tr><td>Firefox 3.6</td>				<td>?</td><td>OK</td><td>?</td></tr>
-	<tr><td>Firefox 5</td>					<td>OK</td><td>?</td><td>?</td></tr>
-	<tr><td>Safari 5.0.5</td>				<td>?</td><td>OK</td><td>?</td></tr>
-	<tr><td>Chrome 12</td>      			<td>?</td><td>OK</td><td>?</td></tr>	
-	<tr><td>Chrome 14</td>      			<td>?</td><td>OK</td><td>?</td></tr>
-	<tr><td>Camino 2.0.7</td>   			<td>-</td><td>OK</td><td>?</td></tr>
+	<tr><td>Internet Explorer 9</td>		<td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>">?</a></td><td>-</td><td>-</td></tr>
+	<tr><td>Firefox 3.6</td>				<td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>">?</a></td><td>OK</td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>">?</a></td></tr>
+	<tr><td>Firefox 5</td>					<td>OK</td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>">?</a></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>">?</a></td></tr>
+	<tr><td>Safari 5.0.5</td>				<td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>">?</a></td><td>OK</td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>">?</a></td></tr>
+	<tr><td>Chrome 12</td>      			<td>OK</td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>">?</a></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>">?</a></td></tr>	
+	<tr><td>Chrome 14</td>      			<td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>">?</a></td><td>OK</td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>">?</a></td></tr>
+	<tr><td>Camino 2.0.7</td>   			<td>-</td><td>OK</td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>">?</a></td></tr>
 </table>
 
 

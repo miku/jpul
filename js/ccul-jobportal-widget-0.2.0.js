@@ -15,10 +15,6 @@
  *
  */
 
-function sayhi(data) {
-	console.log(data);
-}
-
 ccul_jobportal_load = function() {
   ccul_jobportal_load.getJQueryOnDemand("http://wwwdup.uni-leipzig.de/jobportal/js/jquery-1.6.1.min.js");
 }

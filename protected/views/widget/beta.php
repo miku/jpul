@@ -123,7 +123,18 @@
 
 <div class="line"></div>
 
+<h3>Kompatibilität</h3>
 
+Das Widget wurde auf folgenden Betriebssystemen und Browsern getestet.
+
+<table border="0" cellspacing="5" cellpadding="5">
+	<tr><th></th><th>Windows</th><th>Mac OS X</th><th>Linux</th></tr>
+	<tr><td>FF 3.5</td><td>?</td><td></td><td>?</td></tr>
+</table>
+
+
+
+<div class="line"></div>
 
 <h3>Kontakt</h3>
 

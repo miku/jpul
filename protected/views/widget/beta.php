@@ -171,7 +171,7 @@ Burgstraße 21, 1. Etage,
 			return htmlEntities(snippet);
 		});
 		
-		$("#code").onclick(function(){
+		$("#code").click(function(){
 			selectAllText($(this));
 		});
 		

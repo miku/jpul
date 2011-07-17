@@ -16,197 +16,197 @@ SNIPPETS
 --------
 
 <?php if (isset(Yii::app()->session['ufk__v3']) && count(Yii::app()->session['ufk__v3']) > 0): ?>
-	<?php if (isset($fav_view) && ($fav_view)): ?>
-		<a class="fav-link" href="<?php echo $this->createUrl('job/index') ?>">Zurück zur Übersicht</a>
-	<?php else: ?>
-		<a class="fav-link" href="<?php echo $this->createUrl('job/index', array('s' => "favs")) ?>">Meine Favoriten anzeigen (<?php echo count(Yii::app()->session['ufk__v3']) ?>)</a>			
-	<?php endif ?>
+    <?php if (isset($fav_view) && ($fav_view)): ?>
+        <a class="fav-link" href="<?php echo $this->createUrl('job/index') ?>">Zurück zur Übersicht</a>
+    <?php else: ?>
+        <a class="fav-link" href="<?php echo $this->createUrl('job/index', array('s' => "favs")) ?>">Meine Favoriten anzeigen (<?php echo count(Yii::app()->session['ufk__v3']) ?>)</a>         
+    <?php endif ?>
 <?php else: ?>
 <?php endif ?>
 
 
 // debug ...
-Yii::log("[2 ==>] Sanitized POST: ", CLogger::LEVEL_INFO, "actionUpdate");			
+Yii::log("[2 ==>] Sanitized POST: ", CLogger::LEVEL_INFO, "actionUpdate");          
 foreach ($sanitized_post as $key => $value) {
-	Yii::log($key . " => " . $value . "(type: " . gettype($value) . ")", CLogger::LEVEL_INFO, "actionUpdate");
+    Yii::log($key . " => " . $value . "(type: " . gettype($value) . ")", CLogger::LEVEL_INFO, "actionUpdate");
 }
 
 // debug ...
-Yii::log("[3 ==> \$_FILES]: ", CLogger::LEVEL_INFO, "actionUpdate");			
+Yii::log("[3 ==> \$_FILES]: ", CLogger::LEVEL_INFO, "actionUpdate");            
 foreach ($_FILES as $key => $value) {
-	Yii::log($key . " => " . $value . "(type: " . gettype($value) . ")", CLogger::LEVEL_INFO, "actionUpdate");
-	if (is_array($value)) {
-		foreach ($value as $k => $v) {
-			Yii::log("\t" . $k . " => " . $v . "(type: " . gettype($v) . ")", CLogger::LEVEL_INFO, "actionUpdate");
-			if (is_array($v)) {
-				foreach ($v as $kk => $vv) {
-					Yii::log("\t\t" . $kk . " => " . $vv . "(type: " . gettype($vv) . ")", CLogger::LEVEL_INFO, "actionUpdate");
-				}
-			}
-		}
-	}
+    Yii::log($key . " => " . $value . "(type: " . gettype($value) . ")", CLogger::LEVEL_INFO, "actionUpdate");
+    if (is_array($value)) {
+        foreach ($value as $k => $v) {
+            Yii::log("\t" . $k . " => " . $v . "(type: " . gettype($v) . ")", CLogger::LEVEL_INFO, "actionUpdate");
+            if (is_array($v)) {
+                foreach ($v as $kk => $vv) {
+                    Yii::log("\t\t" . $kk . " => " . $vv . "(type: " . gettype($vv) . ")", CLogger::LEVEL_INFO, "actionUpdate");
+                }
+            }
+        }
+    }
 }
 
 
 
 // debug ...
-Yii::log("[1 ==>] Sanitized POST: ", CLogger::LEVEL_INFO, "actionUpdate");			
+Yii::log("[1 ==>] Sanitized POST: ", CLogger::LEVEL_INFO, "actionUpdate");          
 foreach ($sanitized_post as $key => $value) {
-	Yii::log($key . " => " . $value . "(type: " . gettype($value) . ")", CLogger::LEVEL_INFO, "actionUpdate");
+    Yii::log($key . " => " . $value . "(type: " . gettype($value) . ")", CLogger::LEVEL_INFO, "actionUpdate");
 }
 
 
 
-// // attachment handling			
+// // attachment handling           
 if ($_FILES['Job']['name']['attachment'] != '') {
 
-	Yii::log("Got a file: " . $_FILES['Job']['name']['attachment'], CLogger::LEVEL_INFO, "actionUpdate");
+    Yii::log("Got a file: " . $_FILES['Job']['name']['attachment'], CLogger::LEVEL_INFO, "actionUpdate");
 
-	$upload_name = $_FILES['Job']['name']['attachment'];
-	$upload_type = $_FILES['Job']['type']['attachment'];
-	$upload_size = $_FILES['Job']['size']['attachment'];
-	$upload_tmp_name = $_FILES['Job']['tmp_name']['attachment'];
-	$upload_error = $_FILES['Job']['error']['attachment'];
-	
-	Yii::log("Upload: " . $upload_name, CLogger::LEVEL_INFO, "actionUpdate");
-	Yii::log("Upload: " . $upload_type, CLogger::LEVEL_INFO, "actionUpdate");
-	Yii::log("Upload: " . $upload_size, CLogger::LEVEL_INFO, "actionUpdate");
-	Yii::log("Upload: " . $upload_tmp_name, CLogger::LEVEL_INFO, "actionUpdate");
-	Yii::log("Upload: " . $upload_error, CLogger::LEVEL_INFO, "actionUpdate");
-	
+    $upload_name = $_FILES['Job']['name']['attachment'];
+    $upload_type = $_FILES['Job']['type']['attachment'];
+    $upload_size = $_FILES['Job']['size']['attachment'];
+    $upload_tmp_name = $_FILES['Job']['tmp_name']['attachment'];
+    $upload_error = $_FILES['Job']['error']['attachment'];
+    
+    Yii::log("Upload: " . $upload_name, CLogger::LEVEL_INFO, "actionUpdate");
+    Yii::log("Upload: " . $upload_type, CLogger::LEVEL_INFO, "actionUpdate");
+    Yii::log("Upload: " . $upload_size, CLogger::LEVEL_INFO, "actionUpdate");
+    Yii::log("Upload: " . $upload_tmp_name, CLogger::LEVEL_INFO, "actionUpdate");
+    Yii::log("Upload: " . $upload_error, CLogger::LEVEL_INFO, "actionUpdate");
+    
 } else {
-	Yii::log("No file.", CLogger::LEVEL_INFO, "actionUpdate");				
+    Yii::log("No file.", CLogger::LEVEL_INFO, "actionUpdate");              
 }
 
 
 
 
 <div class="fi" style="font-size: 12px;">
-	<?php echo CHtml::submitButton(Yii::t('app', 'Submit'), array('id' => 'submitDraft')); ?> <?php echo Yii::t('app', 'or') ?> <a href="<?php echo $this->createUrl('job/index') ?>"><?php echo Yii::t('app', 'cancel'); ?>.</a>
+    <?php echo CHtml::submitButton(Yii::t('app', 'Submit'), array('id' => 'submitDraft')); ?> <?php echo Yii::t('app', 'or') ?> <a href="<?php echo $this->createUrl('job/index') ?>"><?php echo Yii::t('app', 'cancel'); ?>.</a>
 
 
 
 
-			<?php for ($i = 1; $i < 4; $i++): ?>
-				<?php $params_for_page = $params; $params_for_page["page"] = $i ?>
-				<a class="" href="<?php echo $this->createUrl('job/index', $params_for_page) ?>">
-				<?php echo $params_for_page["page"] ?></a>
-			<?php endfor ?>
-			<span style="">&middot;&middot;&middot;</span>
-			<?php for ($i = $number_of_pages - 3; $i < $number_of_pages; $i++): ?>
-				<?php $params_for_page = $params; $params_for_page["page"] = $i ?>
-				<a class="" href="<?php echo $this->createUrl('job/index', $params_for_page) ?>">
-				<?php echo $params_for_page["page"] ?></a>
-			<?php endfor ?>
-			
+            <?php for ($i = 1; $i < 4; $i++): ?>
+                <?php $params_for_page = $params; $params_for_page["page"] = $i ?>
+                <a class="" href="<?php echo $this->createUrl('job/index', $params_for_page) ?>">
+                <?php echo $params_for_page["page"] ?></a>
+            <?php endfor ?>
+            <span style="">&middot;&middot;&middot;</span>
+            <?php for ($i = $number_of_pages - 3; $i < $number_of_pages; $i++): ?>
+                <?php $params_for_page = $params; $params_for_page["page"] = $i ?>
+                <a class="" href="<?php echo $this->createUrl('job/index', $params_for_page) ?>">
+                <?php echo $params_for_page["page"] ?></a>
+            <?php endfor ?>
+            
 
 
 
 --------
 
-		<?php if ($number_of_pages == 1): ?>
-			<!-- CURRENT PAGE -->
-			<a class="current-page" href="<?php echo $this->createUrl('job/index', $params) ?>"><?php echo $params["page"] ?></a>
-			
-		<?php elseif ($number_of_pages < 7): ?>		
-			
-			<?php for ($i = 1; $i <= $number_of_pages; $i++): ?>
-				<?php $params_for_page = $params; $params_for_page["page"] = $i ?>
-				<a class="<?php if ($i == $current_page) { echo 'current-page'; } ?>" href="<?php echo $this->createUrl('job/index', $params_for_page) ?>">
-				<?php echo $params_for_page["page"] ?></a>
-			<?php endfor ?>
-		
-		<?php elseif ($number_of_pages >= 7): ?>
-			
+        <?php if ($number_of_pages == 1): ?>
+            <!-- CURRENT PAGE -->
+            <a class="current-page" href="<?php echo $this->createUrl('job/index', $params) ?>"><?php echo $params["page"] ?></a>
+            
+        <?php elseif ($number_of_pages < 7): ?>     
+            
+            <?php for ($i = 1; $i <= $number_of_pages; $i++): ?>
+                <?php $params_for_page = $params; $params_for_page["page"] = $i ?>
+                <a class="<?php if ($i == $current_page) { echo 'current-page'; } ?>" href="<?php echo $this->createUrl('job/index', $params_for_page) ?>">
+                <?php echo $params_for_page["page"] ?></a>
+            <?php endfor ?>
+        
+        <?php elseif ($number_of_pages >= 7): ?>
+            
 
 
-			<?php if ($current_page < 3): ?>
+            <?php if ($current_page < 3): ?>
 
-				<?php for ($i = 1; $i < 4; $i++): ?>
-					<?php $params_for_page = $params; $params_for_page["page"] = $i ?>
-					<a class="<?php if ($i == $current_page) { echo 'current-page'; } ?>" href="<?php echo $this->createUrl('job/index', $params_for_page) ?>">
-					<?php echo $params_for_page["page"] ?></a>
-				<?php endfor ?>
-				
-				<span style="">&middot;&middot;&middot;</span>
-				
-				<?php for ($i = $number_of_pages - 3; $i < $number_of_pages; $i++): ?>
-					<?php $params_for_page = $params; $params_for_page["page"] = $i ?>
-					<a class="<?php if ($i == $current_page) { echo 'current-page'; } ?>" href="<?php echo $this->createUrl('job/index', $params_for_page) ?>">
-					<?php echo $params_for_page["page"] ?></a>
-				<?php endfor ?>
+                <?php for ($i = 1; $i < 4; $i++): ?>
+                    <?php $params_for_page = $params; $params_for_page["page"] = $i ?>
+                    <a class="<?php if ($i == $current_page) { echo 'current-page'; } ?>" href="<?php echo $this->createUrl('job/index', $params_for_page) ?>">
+                    <?php echo $params_for_page["page"] ?></a>
+                <?php endfor ?>
+                
+                <span style="">&middot;&middot;&middot;</span>
+                
+                <?php for ($i = $number_of_pages - 3; $i < $number_of_pages; $i++): ?>
+                    <?php $params_for_page = $params; $params_for_page["page"] = $i ?>
+                    <a class="<?php if ($i == $current_page) { echo 'current-page'; } ?>" href="<?php echo $this->createUrl('job/index', $params_for_page) ?>">
+                    <?php echo $params_for_page["page"] ?></a>
+                <?php endfor ?>
 
-			<?php elseif ($current_page > 3 && $current_page < $number_of_pages - 1): ?>
+            <?php elseif ($current_page > 3 && $current_page < $number_of_pages - 1): ?>
 
-				<?php for ($i = 1; $i < 2; $i++): ?>
-					<?php $params_for_page = $params; $params_for_page["page"] = $i ?>
-					<a class="<?php if ($i == $current_page) { echo 'current-page'; } ?>" href="<?php echo $this->createUrl('job/index', $params_for_page) ?>">
-					<?php echo $params_for_page["page"] ?></a>
-				<?php endfor ?>
+                <?php for ($i = 1; $i < 2; $i++): ?>
+                    <?php $params_for_page = $params; $params_for_page["page"] = $i ?>
+                    <a class="<?php if ($i == $current_page) { echo 'current-page'; } ?>" href="<?php echo $this->createUrl('job/index', $params_for_page) ?>">
+                    <?php echo $params_for_page["page"] ?></a>
+                <?php endfor ?>
 
-				<span style="">&middot;&middot;&middot;</span>
-				
-				<?php for ($i = $current_page - 2; $i < $current_page + 3; $i++): ?>
-					<?php $params_for_page = $params; $params_for_page["page"] = $i ?>
-					<a class="<?php if ($i == $current_page) { echo 'current-page'; } ?>" href="<?php echo $this->createUrl('job/index', $params_for_page) ?>">
-					<?php echo $params_for_page["page"] ?></a>
-				<?php endfor ?>
-				
-				<span style="">&middot;&middot;&middot;</span>
-				
-				<?php for ($i = $number_of_pages - 1; $i < $number_of_pages; $i++): ?>
-					<?php $params_for_page = $params; $params_for_page["page"] = $i ?>
-					<a class="<?php if ($i == $current_page) { echo 'current-page'; } ?>" href="<?php echo $this->createUrl('job/index', $params_for_page) ?>">
-					<?php echo $params_for_page["page"] ?></a>
-				<?php endfor ?>
+                <span style="">&middot;&middot;&middot;</span>
+                
+                <?php for ($i = $current_page - 2; $i < $current_page + 3; $i++): ?>
+                    <?php $params_for_page = $params; $params_for_page["page"] = $i ?>
+                    <a class="<?php if ($i == $current_page) { echo 'current-page'; } ?>" href="<?php echo $this->createUrl('job/index', $params_for_page) ?>">
+                    <?php echo $params_for_page["page"] ?></a>
+                <?php endfor ?>
+                
+                <span style="">&middot;&middot;&middot;</span>
+                
+                <?php for ($i = $number_of_pages - 1; $i < $number_of_pages; $i++): ?>
+                    <?php $params_for_page = $params; $params_for_page["page"] = $i ?>
+                    <a class="<?php if ($i == $current_page) { echo 'current-page'; } ?>" href="<?php echo $this->createUrl('job/index', $params_for_page) ?>">
+                    <?php echo $params_for_page["page"] ?></a>
+                <?php endfor ?>
 
-			<?php else: ?>
+            <?php else: ?>
 
-				<?php for ($i = 1; $i < 3; $i++): ?>
-					<?php $params_for_page = $params; $params_for_page["page"] = $i ?>
-					<a class="<?php if ($i == $current_page) { echo 'current-page'; } ?>" href="<?php echo $this->createUrl('job/index', $params_for_page) ?>">
-					<?php echo $params_for_page["page"] ?></a>
-				<?php endfor ?>
-				
-				<span style="">&middot;&middot;&middot;</span>
-				
-				<?php for ($i = $number_of_pages - 3; $i <= $number_of_pages; $i++): ?>
-					<?php $params_for_page = $params; $params_for_page["page"] = $i ?>
-					<a class="<?php if ($i == $current_page) { echo 'current-page'; } ?>" href="<?php echo $this->createUrl('job/index', $params_for_page) ?>">
-					<?php echo $params_for_page["page"] ?></a>
-				<?php endfor ?>
+                <?php for ($i = 1; $i < 3; $i++): ?>
+                    <?php $params_for_page = $params; $params_for_page["page"] = $i ?>
+                    <a class="<?php if ($i == $current_page) { echo 'current-page'; } ?>" href="<?php echo $this->createUrl('job/index', $params_for_page) ?>">
+                    <?php echo $params_for_page["page"] ?></a>
+                <?php endfor ?>
+                
+                <span style="">&middot;&middot;&middot;</span>
+                
+                <?php for ($i = $number_of_pages - 3; $i <= $number_of_pages; $i++): ?>
+                    <?php $params_for_page = $params; $params_for_page["page"] = $i ?>
+                    <a class="<?php if ($i == $current_page) { echo 'current-page'; } ?>" href="<?php echo $this->createUrl('job/index', $params_for_page) ?>">
+                    <?php echo $params_for_page["page"] ?></a>
+                <?php endfor ?>
 
-			<?php endif ?>
-			
+            <?php endif ?>
+            
 
-			
-			
-		<?php endif ?>
+            
+            
+        <?php endif ?>
 
 
 --------
 
-				<?php if (isset(Yii::app()->session['detailSnapBackUrl'])): ?>
-					<a href="<?php echo Yii::app()->session['detailSnapBackUrl']; ?>">Zurück zu den Ergebnissen</a>
-				<?php else: ?>
-					<a href="<?php echo $this->createUrl('job/index'); ?>">Zurück zur Übersicht</a>
-				<?php endif ?>
-			</div>
+                <?php if (isset(Yii::app()->session['detailSnapBackUrl'])): ?>
+                    <a href="<?php echo Yii::app()->session['detailSnapBackUrl']; ?>">Zurück zu den Ergebnissen</a>
+                <?php else: ?>
+                    <a href="<?php echo $this->createUrl('job/index'); ?>">Zurück zur Übersicht</a>
+                <?php endif ?>
+            </div>
 
 ---------
 
 
-	<!-- Always load jquery (via CDN or fallback (and trckr) -->
+    <!-- Always load jquery (via CDN or fallback (and trckr) -->
 <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script> -->
- 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/c.js"></script> 
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/c.js"></script> 
 
-	<script type="text/javascript" src="https://www.google.com/jsapi?key=ABQIAAAAwZHBf7XN4DXK4QBh4sq4rxSq_2kWzEPveyg2_i9v3i3ALbSyFhRlqWoPkNMIMdTjcY7d2DNMQ5vRsg"></script>
-	<script>if (typeof jQuery == 'undefined') { document.write(unescape("%3Cscript src='<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.4.3.min.js' type='text/javascript'%3E%3C/script%3E")); }</script>
+    <script type="text/javascript" src="https://www.google.com/jsapi?key=ABQIAAAAwZHBf7XN4DXK4QBh4sq4rxSq_2kWzEPveyg2_i9v3i3ALbSyFhRlqWoPkNMIMdTjcY7d2DNMQ5vRsg"></script>
+    <script>if (typeof jQuery == 'undefined') { document.write(unescape("%3Cscript src='<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.4.3.min.js' type='text/javascript'%3E%3C/script%3E")); }</script>
 
-	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/tracker.min.js"></script>
-	<script>$(document).ready(function() { ccul_track('<?php echo $this->createUrl("stats/track"); ?>'); });</script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/tracker.min.js"></script>
+    <script>$(document).ready(function() { ccul_track('<?php echo $this->createUrl("stats/track"); ?>'); });</script>
 
-	<!-- assert =|= jquery != undefined -->
-	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/underscore.min.js"></script>
-	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/sanitize.min.js"></script>
-	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/proper.min.js"></script>
+    <!-- assert =|= jquery != undefined -->
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/underscore.min.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/sanitize.min.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/proper.min.js"></script>

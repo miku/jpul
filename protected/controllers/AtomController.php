@@ -1,7 +1,4 @@
-<?php 
-
-// Textile via Utils.php
-Yii::import('application.helpers.*');
+<?php Yii::import('application.helpers.*');
 require_once('Utils.php');
 require_once('SearchHub.php');
 require_once('TabHelper.php');

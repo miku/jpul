@@ -80,7 +80,7 @@
 
     <br><br>
     
-    <p style="color: gray"><strong>Hinweise zu Anfragesyntax</strong>: Standardmäßig sind alle Suchterme UND-verknüpft, also <a href="<?php echo $this->createUrl('widget/index', array('q' => 'BWL Leipzig')); ?>">BWL Leipzig</a> sucht nach Angeboten, in denen BWL und Leipzig vorkommt.<br>
+    <p style="color: gray"><strong>Hinweise zur Anfragesyntax</strong>: Standardmäßig sind alle Suchterme UND-verknüpft, also <a href="<?php echo $this->createUrl('widget/index', array('q' => 'BWL Leipzig')); ?>">BWL Leipzig</a> sucht nach Angeboten, in denen BWL und Leipzig vorkommt.<br>
         ODER-Verknüpfungen sind mit dem OR-Operator möglich, z.B. liefert <a href="<?php echo $this->createUrl('widget/index', array('q' => 'Mathematik OR Physik OR Chemie')); ?>">Mathematik OR Physik OR Chemie</a> Angebote in denen einer der Begiffe auftaucht (oder auch mehrere).<br>
         Ein Stern erfaßt beliebig viele Buchstaben; z.B. passt <a href="<?php echo $this->createUrl('widget/index', array('q' => 'wirtschafts*')); ?>">wirtschafts*</a> auf Wirtschaftsinformatik, Wirtschaftsmathematik, etc.
     </p>

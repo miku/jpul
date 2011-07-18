@@ -55,9 +55,10 @@ class EFeedItemAtom extends EFeedItemAbstract {
 	 * @see EFeedItemAbstract::setLink()
 	 */
 	public function setLink( $link ){
-		$validator = new CUrlValidator();
-		if(!$validator->validateValue($link))
-			throw new CException( Yii::t('EFeed', $link. ' does not seem to be a valid URL') );
+		// !!! Code below does not recognize localhost - disabled !!!
+		// $validator = new CUrlValidator();
+		// if(!$validator->validateValue($link))
+		// 	throw new CException( Yii::t('EFeed', $link. ' does not seem to be a valid URL') );
 			
 		$this->addTag('link','',array('href'=>$link));
 		$this->addTag('id', EFeed::uuid($link,'urn:uuid:'));

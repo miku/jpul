@@ -1,4 +1,6 @@
-<?php Yii::import('application.helpers.*');
+<?php 
+
+Yii::import('application.helpers.*');
 require_once('Utils.php');
 require_once('SearchHub.php');
 require_once('TabHelper.php');
@@ -7,8 +9,12 @@ Yii::import('ext.feed.*');
 class AtomController extends Controller
 {
 	
-	public function actionIndex($q = '') {
-		$this->redirect($this->createUrl('atom/feed', array('q' => $q)));
+	public function actionIndex() {
+		if (isset($_GET['q'])) {
+			$this->redirect($this->createUrl('atom/feed', array('q' => $_GET['q'])));
+		} else {
+			$this->redirect($this->createUrl('atom/feed'));
+		}
 	}
 
 	public function actionFeed() {
@@ -97,14 +103,13 @@ class AtomController extends Controller
 			
 			// we can also insert well formatted date strings
 			$item->date = strftime("%d.%m.%Y", $value["date_added"]);
-			$item->description = $value["description"];
+			$item->description = mb_substr($value["description"], 0, 400) . ' ...';
  
 			$feed->addItem($item);
 		}
  
 		$feed->generateFeed();
 	}
-
 }
 
 ?>

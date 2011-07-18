@@ -50,8 +50,8 @@
 		$cache_key_models = "models:" . $options_fingerprint;
 		$cache_key_total = "total:" . $options_fingerprint;
 		
-		Yii::log($cache_key_models, CLogger::LEVEL_INFO, __FUNCTION__);
-		Yii::log($cache_key_total, CLogger::LEVEL_INFO, __FUNCTION__);
+		// Yii::log($cache_key_models, CLogger::LEVEL_INFO, __FUNCTION__);
+		// Yii::log($cache_key_total, CLogger::LEVEL_INFO, __FUNCTION__);
 		
 		$result_total = Yii::app()->cache->get($cache_key_total);
 		
@@ -142,8 +142,8 @@
 		$cache_key_models = "models:" . $options_fingerprint;
 		$cache_key_total = "total:" . $options_fingerprint;
 		
-		Yii::log($cache_key_models, CLogger::LEVEL_INFO, __FUNCTION__);
-		Yii::log($cache_key_total, CLogger::LEVEL_INFO, __FUNCTION__);
+		// Yii::log($cache_key_models, CLogger::LEVEL_INFO, __FUNCTION__);
+		// Yii::log($cache_key_total, CLogger::LEVEL_INFO, __FUNCTION__);
 		
 		$result_total = Yii::app()->cache->get($cache_key_total);
 		
@@ -215,7 +215,7 @@
 		
 			$models = Job::model()->findAllByAttributes(array('id' => $pks), $criteria);
 			
-			Yii::log("Serialized result set: " . serialize($models), CLogger::LEVEL_INFO, __FUNCTION__);
+			// Yii::log("Serialized result set: " . serialize($models), CLogger::LEVEL_INFO, __FUNCTION__);
 			
 			
 			Yii::app()->cache->set($cache_key_models, serialize($models), 3600);

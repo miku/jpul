@@ -10,7 +10,7 @@
     <title>Jobportal Widget</title>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.6.1.min.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/tracker.min.js"></script>
-    <script>$(document).ready(function() { ccul_track('<?php echo $this->createUrl("stats/track"); ?>'); });</script>	
+    <script>$(document).ready(function() { ccul_track('<?php echo $this->createUrl("stats/track"); ?>'); });</script>   
     <style type="text/css" media="screen">
         body {
             background: #EFEFEF;
@@ -78,12 +78,12 @@
         hier an. <a href="<?php echo $this->createUrl('widget/index'); ?>">Suche zurücksetzen</a>.</p>
     <input type="text" size="80" name="q" value="<?php echo $original_query; ?>" id="q">
 
-	<br><br>
-	
-	<p style="color: gray"><strong>Hinweise zu Anfragesyntax</strong>: Standardmäßig sind alle Suchterme UND-verknüpft, also <a href="<?php echo $this->createUrl('widget/index', array('q' => 'BWL Leipzig')); ?>">BWL Leipzig</a> sucht nach Angeboten, in denen BWL und Leipzig vorkommt.<br>
-		ODER-Verknüpfungen sind mit dem OR-Operator möglich, z.B. liefert <a href="<?php echo $this->createUrl('widget/index', array('q' => 'Mathematik OR Physik OR Chemie')); ?>">Mathematik OR Physik OR Chemie</a> Angebote in denen einer der Begiffe auftaucht (oder auch mehrere).<br>
-		Ein Stern erfaßt beliebig viele Buchstaben; z.B. passt <a href="<?php echo $this->createUrl('widget/index', array('q' => 'wirtschafts*')); ?>">wirtschafts*</a> auf Wirtschaftsinformatik, Wirtschaftsmathematik, etc.
-	</p>
+    <br><br>
+    
+    <p style="color: gray"><strong>Hinweise zu Anfragesyntax</strong>: Standardmäßig sind alle Suchterme UND-verknüpft, also <a href="<?php echo $this->createUrl('widget/index', array('q' => 'BWL Leipzig')); ?>">BWL Leipzig</a> sucht nach Angeboten, in denen BWL und Leipzig vorkommt.<br>
+        ODER-Verknüpfungen sind mit dem OR-Operator möglich, z.B. liefert <a href="<?php echo $this->createUrl('widget/index', array('q' => 'Mathematik OR Physik OR Chemie')); ?>">Mathematik OR Physik OR Chemie</a> Angebote in denen einer der Begiffe auftaucht (oder auch mehrere).<br>
+        Ein Stern erfaßt beliebig viele Buchstaben; z.B. passt <a href="<?php echo $this->createUrl('widget/index', array('q' => 'wirtschafts*')); ?>">wirtschafts*</a> auf Wirtschaftsinformatik, Wirtschaftsmathematik, etc.
+    </p>
     
     <br>
     <input type="submit" value="Vorschau aktualisieren">
@@ -97,7 +97,7 @@
 <?php if ($width != null && $width != ''): ?>
     <div style="width: <?php echo cut_text($width, 10); ?>" id="ccul_jobportal_widget"></div>
 <?php else: ?>
-    <div id="ccul_jobportal_widget"></div>	
+    <div id="ccul_jobportal_widget"></div>  
 <?php endif ?>
 </div>
 
@@ -127,18 +127,18 @@
 Das Widget wurde auf folgenden Betriebssystemen und Browsern getestet.
 
 <table border="0" cellspacing="3" cellpadding="3">
-    <tr><th></th>							<th>Windows</th><th>Mac OS X</th><th>Linux</th></tr>
-    <tr><td>Internet Explorer 7</td>		<td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td><td>&mdash;</td><td>&mdash;</td></tr>
-    <tr><td>Internet Explorer 8</td>		<td><span style="background:green; color:white; font-size:8px; padding: 2px;">OK</span></td><td>&mdash;</td><td>&mdash;</td></tr>
-    <tr><td>Internet Explorer 9</td>		<td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td><td>&mdash;</td><td>&mdash;</td></tr>
-    <tr><td>Firefox 3.6</td>				<td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td><td><span style="background:green; color:white; font-size:8px; padding: 2px;">OK</span></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td></tr>
-    <tr><td>Firefox 4</td>					<td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td></tr>	
-    <tr><td>Firefox 5</td>					<td><span style="background:green; color:white; font-size:8px; padding: 2px;">OK</span></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td></tr>
-    <tr><td>Opera 11</td>					<td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td><td><span style="background:orange; color:white; font-size:8px; padding: 2px;">nope</span></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td></tr>	
-    <tr><td>Safari 5.0.5</td>				<td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td><td><span style="background:green; color:white; font-size:8px; padding: 2px;">OK</span></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td></tr>
-    <tr><td>Chrome 12</td>      			<td><span style="background:green; color:white; font-size:8px; padding: 2px;">OK</span></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td></tr>	
-    <tr><td>Chrome 14</td>      			<td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td><td><span style="background:green; color:white; font-size:8px; padding: 2px;">OK</span></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td></tr>
-    <tr><td>Camino 2.0.7</td>   			<td>&mdash;</td><td><span style="background:green; color:white; font-size:8px; padding: 2px;">OK</span></td><td>&mdash;</td></tr>
+    <tr><th></th>                           <th>Windows</th><th>Mac OS X</th><th>Linux</th></tr>
+    <tr><td>Internet Explorer 7</td>        <td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td><td>&mdash;</td><td>&mdash;</td></tr>
+    <tr><td>Internet Explorer 8</td>        <td><span style="background:green; color:white; font-size:8px; padding: 2px;">OK</span></td><td>&mdash;</td><td>&mdash;</td></tr>
+    <tr><td>Internet Explorer 9</td>        <td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td><td>&mdash;</td><td>&mdash;</td></tr>
+    <tr><td>Firefox 3.6</td>                <td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td><td><span style="background:green; color:white; font-size:8px; padding: 2px;">OK</span></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td></tr>
+    <tr><td>Firefox 4</td>                  <td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td></tr>  
+    <tr><td>Firefox 5</td>                  <td><span style="background:green; color:white; font-size:8px; padding: 2px;">OK</span></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td></tr>
+    <tr><td>Opera 11</td>                   <td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td><td><span style="background:orange; color:white; font-size:8px; padding: 2px;">nope</span></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td></tr>  
+    <tr><td>Safari 5.0.5</td>               <td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td><td><span style="background:green; color:white; font-size:8px; padding: 2px;">OK</span></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td></tr>
+    <tr><td>Chrome 12</td>                  <td><span style="background:green; color:white; font-size:8px; padding: 2px;">OK</span></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td></tr> 
+    <tr><td>Chrome 14</td>                  <td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td><td><span style="background:green; color:white; font-size:8px; padding: 2px;">OK</span></td><td><a href="<?php echo $this->createUrl('feedback/index', array('context' => 'widget-compat')); ?>"><span style="font-size:8px">not yet tested</span></a></td></tr>
+    <tr><td>Camino 2.0.7</td>               <td>&mdash;</td><td><span style="background:green; color:white; font-size:8px; padding: 2px;">OK</span></td><td>&mdash;</td></tr>
     
 </table>
 
@@ -160,14 +160,13 @@ Burgstraße 21, 1. Etage,
 </div></body></html>
 
 <script type="text/javascript" charset="utf-8">
-    
     function htmlEntities(str) {
-    	return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
     
     function selectAllText(textbox) {
-    	textbox.focus();
-    	textbox.select();
+        textbox.focus();
+        textbox.select();
     }
     
     $(document).ready(function(){
@@ -186,7 +185,7 @@ Burgstraße 21, 1. Etage,
             $.get("<?php echo $this->createUrl('stats/outbound'); ?>", 
                 { "url": encodeURIComponent(url), "text": text, "location": encodeURIComponent(document.location.href) });
         });
+
+        $("#q").focus();
     });
-    // IE innerHTML issues ...
-    // document.getElementById("code").innerHTML = document.getElementById("snippet").innerHTML;
 </script>

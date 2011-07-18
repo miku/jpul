@@ -63,6 +63,7 @@ class AtomController extends Controller
 			
 			$criteria = new CDbCriteria;
 			$criteria->order = 'date_added DESC';
+			$criteria->limit = 20;
 			// just show the public offers, which are not expired ...
 	        $criteria->condition = 'status_id=:status_id AND expiration_date > :current_time';
 	        $criteria->params=array(':status_id' => 2, ':current_time' => $current_time);

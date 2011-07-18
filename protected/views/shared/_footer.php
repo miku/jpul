@@ -129,7 +129,7 @@
             var current_url = $.url();
             var tab = current_url.param('tab');
             $.get("<?php echo $this->createUrl('job/searchHits'); ?>?q=" + url.param('q') + "&tab=" + tab, function(data) {
-                $('<span style="color: #656565; margin-left: 3px; font-size:8px;">' + data + '</span>').insertAfter(item);
+                $('<span style="color: #656565; margin-left: 3px; font-size:9px;">' + data + '</span>').insertAfter(item);
             });
         });
     });

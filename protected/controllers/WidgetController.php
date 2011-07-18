@@ -41,7 +41,7 @@ class WidgetController extends Controller
 		Yii::log("Widget-Request from " . isset($_SERVER["REMOTE_ADDR"]) 
 			? $_SERVER["REMOTE_ADDR"] : '', CLogger::LEVEL_INFO, __FUNCTION__);
 
-		$result = $this->getModelsAndOriginalQuery($q, $tab, $limit);
+		$result = $this->getModelsAndOriginalQuery(urldecode($q), $tab, $limit);
 		$models = $result["models"];
 		$original_query = $result["original_query"];
 		
@@ -69,7 +69,7 @@ class WidgetController extends Controller
 		Yii::log("Widget-Request from " . isset($_SERVER["REMOTE_ADDR"]) 
 			? $_SERVER["REMOTE_ADDR"] : '', CLogger::LEVEL_INFO, __FUNCTION__);
 
-		$result = $this->getModelsAndOriginalQuery($q, $tab, $limit);
+		$result = $this->getModelsAndOriginalQuery(urldecode($q), $tab, $limit);
 		$models = $result["models"];
 		$original_query = $result["original_query"];
 		

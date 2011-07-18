@@ -129,7 +129,7 @@
             var url = $.url(item.href);
             var current_url = $.url();
             var tab = current_url.param('tab');
-            $.get("<?php echo $this->createUrl('job/searchHits'); ?>?q=" + base64_encode(url.param('q')) + "&tab=" + tab, function(data) {
+            $.get("<?php echo $this->createUrl('job/searchHits'); ?>?q=" + encodeURIComponent(url.param('q')) + "&tab=" + tab, function(data) {
                 $('<span style="color: #656565; margin-left: 3px; font-size:9px;">' + data + '</span>').insertAfter(item);
             });
         });

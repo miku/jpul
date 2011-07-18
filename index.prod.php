@@ -1,7 +1,7 @@
 <?php
 
 // Production Environment
-$yii = dirname(__FILE__) . '/../src/yii-1.1.7.r3135/framework/yii.php';
+$yii = dirname(__FILE__) . '/../src/yii-1.1.8.r3324/framework/yii.php';
 
 // This configuration is not vc'd
 $config = dirname(__FILE__) . '/protected/config/main.php';

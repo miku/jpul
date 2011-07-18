@@ -47,7 +47,8 @@
 
         <li><a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "kultur+OR+theater+OR+verlag+OR+geisteswiss*+OR+kulturwiss*+OR+NGO+OR+redaktion"))); ?>">Kultur</a>,
         	<a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "journalis*+OR+redaktion+OR+presse"))); ?>">Journalistik</a></li>
-        <li><a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "politik"))); ?>">Politik</a></li>
+        <li><a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "politik*"))); ?>">Politik</a>,
+			<a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "soziologie*"))); ?>">Soziologie</a></li>
         <li><a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "marketing"))); ?>">Marketing</a>,
             <a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "öffentlichkeitsarbeit+OR+'public+relation'"))); ?>">PR Jobs</a></li>
         <li><a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "BWL+OR+VWL"))); ?>">BWL/VWL</a>,

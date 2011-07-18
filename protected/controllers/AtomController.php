@@ -83,12 +83,16 @@ class AtomController extends Controller
 		$feed = new EFeed(EFeed::ATOM);
  
 		// IMPORTANT : No need to add id for feed or channel. It will be automatically created from link.
-		$feed->title = 'Jobportal Universität Leipzig';
+		if ($viewName == 'default') {
+			$feed->title = 'Jobportal Universität Leipzig';
+		} else {
+			$feed->title = 'Jobportal Universität Leipzig (Filter: ' . $original_query . ')';
+		}
+		
 		$feed->link = 'http://www.uni-leipzig.de';
  
 		$feed->addChannelTag('updated', date(DATE_ATOM, $current_time));
-		$feed->addChannelTag('author', array('name'=>'Career Center der Universität Leipzig'));
-		
+		$feed->addChannelTag('author', array('name'=>'Career Center der Universität Leipzig'));		
 		
 		$serverPrefix = 'http://' . Yii::app()->request->serverName;
 		if (Yii::app()->request->serverPort != 80) {
@@ -102,7 +106,7 @@ class AtomController extends Controller
 			$item->link  = $serverPrefix . $this->createUrl('job/view', array('id' => $value["id"]));
 			
 			// we can also insert well formatted date strings
-			$item->date = strftime("%d.%m.%Y", $value["date_added"]);
+			$item->date = strftime("%m/%d/%Y", $value["date_added"]);
 			$item->description = mb_substr($value["description"], 0, 400) . ' ...';
  
 			$feed->addItem($item);

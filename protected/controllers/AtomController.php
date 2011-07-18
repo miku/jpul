@@ -84,9 +84,9 @@ class AtomController extends Controller
  
 		// IMPORTANT : No need to add id for feed or channel. It will be automatically created from link.
 		if ($viewName == 'default') {
-			$feed->title = 'Jobportal Universität Leipzig';
+			$feed->title = 'Jobportal Universität Leipzig (' . $tab . ')';
 		} else {
-			$feed->title = 'Jobportal Universität Leipzig (Filter: ' . $original_query . ')';
+			$feed->title = 'Jobportal Universität Leipzig (' . $tab . ', ' . $original_query . ')';
 		}
 		
 		$feed->link = 'http://www.uni-leipzig.de';

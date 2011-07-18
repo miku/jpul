@@ -53,7 +53,7 @@ ccul_jobportal_load.render = function(data) {
 	$("div#ccul_jobportal_widget_box").css("font", "normal 10pt Verdana,'Helvetica Neue',Arial,Tahoma,sans-serif");
 	
 	if (query != null && query != '') {
-		$("div#ccul_jobportal_widget_box").append('<p>Universität Leipzig | Jobportal<br><a target="_blank" href="http://wwwdup.uni-leipzig.de/jobportal/job/index?q=' + query + '">Aktuelle Jobangebote für <strong>' + query.substring(0, 25) + ' ...</strong></a></p>');	
+		$("div#ccul_jobportal_widget_box").append('<p>Universität Leipzig | Jobportal<br><a target="_blank" href="http://wwwdup.uni-leipzig.de/jobportal/job/index?q=' + encodeURIComponent(query) + '">Aktuelle Jobangebote für <strong>' + query.substring(0, 25) + ' ...</strong></a></p>');	
 	} else {
 		$("div#ccul_jobportal_widget_box").append('<p>Universität Leipzig | Jobportal<br><a target="_blank" href="http://wwwdup.uni-leipzig.de/jobportal/job/index">Aktuelle Jobangebote</a></p>');	
 	}

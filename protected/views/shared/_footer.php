@@ -20,9 +20,9 @@
 <div class="column-210">    
     <ul class="example-searches">
         <li><a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "english+OR+englisch"))); ?>">Englischkenntnisse</a></li>
-        <li><a href="<?php echo $this->createUrl('job/index', 
+        <li><a href="<?php echo urldecode($this->createUrl('job/index', 
         array("tab" => $tab, "src" => "eq", "q" => 
-            "french%2BOR%2Bfranz%C3%B6sisch%2BOR%2Bspanish%2BOR%2Bspanisch%2BOR%2Bchinese%2BOR%2Bchinesisch%2BOR%2Brussian%2BOR%2Brussisch%2BOR%2Bturkish%2BOR%2Bt%C3%BCrkisch%2BOR%2Bpolish%2BOR%2Bpolnisch%2BOR%2Bczech%2BOR%2Btschechisch%2BOR%2Bserbian%2BOR%2Bserbisch%2BOR%2Bitalian%2BOR%2Bitalienisch%2BOR%2Bhungarian%2BOR%2Bungarisch%2BOR%2Bswedish%2BOR%2Bschwedisch%2BOR%2Bnorwegian%2BOR%2Bnorwegisch%2BOR%2Bfinnish%2BOR%2Bfinnisch%2BOR%2Bestonian%2BOR%2Bestnisch%2BOR%2Bbulgarian%2BOR%2Bbulgarisch%2BOR%2Bromanian%2BOR%2Brum%C3%A4nisch%2BOR%2Bukrainian%2BOR%2Bukrainisch%2BOR%2Barabic%2BOR%2Barabisch%2BOR%2Bfarsi%2BOR%2Bpersisch")); ?>">Sprachen außer Englisch</a></li>
+            "french+OR+französisch+OR+spanish+OR+spanisch+OR+chinese+OR+chinesisch+OR+russian+OR+russisch+OR+turkish+OR+türkisch+OR+polish+OR+polnisch+OR+czech+OR+tschechisch+OR+serbian+OR+serbisch+OR+italian+OR+italienisch+OR+hungarian+OR+ungarisch+OR+swedish+OR+schwedisch+OR+norwegian+OR+norwegisch+OR+finnish+OR+finnisch+OR+estonian+OR+estnisch+OR+bulgarian+OR+bulgarisch+OR+romanian+OR+rumänisch+OR+ukrainian+OR+ukrainisch+OR+arabic+OR+arabisch+OR+farsi+OR+persisch"))); ?>">Sprachen außer Englisch</a></li>
     
         <li><a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "übersetz*+OR+translate+OR+translation"))); ?>">Übersetzung</a></li>
         <li><a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "philologie+OR+anglistik+OR+amerikanistik+OR+germanistik+OR+kanadistik+OR+romanistik+OR+slawistik+OR+slavistik+OR+lusitanistik+OR+afrikanistik+OR+ägyptologie+OR+indologie+OR+judaistik+OR+japanologie+OR+skandinavistik+OR+hungarologie+OR+fennistik+OR+russistik+OR+polonistik+OR+keltologie+OR+sprachwissenschaft"))); ?>">Philologien</a></li>

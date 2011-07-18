@@ -122,13 +122,14 @@
     <?php endif ?>  
 </p>
 
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/b64.min.js"></script>
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function(){
         $(".example-searches > li > a").each(function(index, item) {
             var url = $.url(item.href);
             var current_url = $.url();
             var tab = current_url.param('tab');
-            $.get("<?php echo $this->createUrl('job/searchHits'); ?>?q=" + url.param('q') + "&tab=" + tab, function(data) {
+            $.get("<?php echo $this->createUrl('job/searchHits'); ?>?q=" + base64_encode(url.param('q')) + "&tab=" + tab, function(data) {
                 $('<span style="color: #656565; margin-left: 3px; font-size:9px;">' + data + '</span>').insertAfter(item);
             });
         });

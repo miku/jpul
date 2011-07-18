@@ -250,7 +250,7 @@ class JobController extends Controller
     
 
 	public function actionSearchHits($tab = 'all') {
-		$original_query = $_GET['q'];
+		$original_query = base64_decode($_GET['q']);
 		// If the user does not use anything from the extended search
 		// syntax, append kleene star to terms
 		if (preg_match("/( OR | AND |\"|:|~|-|\*| NOT )/", $original_query) == 0) {

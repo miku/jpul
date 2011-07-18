@@ -122,7 +122,6 @@
     <?php endif ?>  
 </p>
 
-<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/b64.min.js"></script>
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function(){
         $(".example-searches > li > a").each(function(index, item) {

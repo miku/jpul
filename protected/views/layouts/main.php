@@ -49,10 +49,10 @@
     -->
     
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.color.e95e088.min.js"></script>
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.url.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.url.min.js"></script>
     
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/wysiwym/wysiwym.js"></script>
-    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/js/wysiwym/wysiwym.css" />
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/wysiwym/wysiwym.min.js"></script>
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/js/wysiwym/wysiwym.min.css" />
     
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/tracker.min.js"></script>
     <script>$(document).ready(function() { ccul_track('<?php echo $this->createUrl("stats/track"); ?>'); });</script>

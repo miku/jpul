@@ -102,7 +102,7 @@ class AtomController extends Controller
 		foreach ($models as $key => $value) {
 			$item = $feed->createNewItem();
  
-			$item->title = $value["title"] . "(" . $value["company"] . ")";
+			$item->title = $value["title"] . " (" . $value["company"] . ")";
 			$item->link  = $serverPrefix . $this->createUrl('job/view', array('id' => $value["id"]));
 			
 			// we can also insert well formatted date strings

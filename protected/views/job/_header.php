@@ -162,6 +162,18 @@
 
 		</ul>
 		
+		<ul id="tabs-ul-right"  class="alignright">
+			<span style="font-size:10px">
+			<?php if ($original_query == null || $original_query == ''): ?>
+				<a href="<?php echo $this->createUrl('atom/feed', array('tab' => $tab)); ?>">Atom-Feed</a>
+			<?php else: ?>
+				<a href="<?php echo $this->createUrl('atom/feed', array('q' => $original_query, 'tab' => $tab)); ?>">Atom-Feed für diese Suche</a>
+			<?php endif ?>
+			</span>
+		</ul>
+		
+		<div class="clear"></div>
+		
 		<!-- <ul id="tabs-ul-right"  class="alignright">
 			<?php if (isset($original_query) && $original_query != ''): ?>
 				<li><a href="<?php echo $this->createUrl('alert/create', array('aq' => $original_query)); ?>">E-Mail Alert</a></li>

@@ -1,0 +1,26 @@
+README widget
+=============
+
+Files
+-----
+
+    get.php
+        The original delivery script. Used CORS (http://www.w3.org/TR/cors/)
+        to allow cross domain requests (in particular this method
+        uses a Access-Control-Allow-Origin HTTP header) - since it does not
+        seem to work with IE, this script is no longer in use, except for
+        some legacy clients. This script returns the complete HTML, incl
+        style etc. 
+    
+    getJSON.php
+        Returns plain JSON.
+    
+    getJSONP.php
+        Returns json wrapped in a callback.
+    
+    index.php
+        Widget How-To.
+        
+    index.php.defunkt
+        To-Be-Removed.
+    

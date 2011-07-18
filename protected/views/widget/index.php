@@ -82,8 +82,7 @@
 	
 	<p style="color: gray"><strong>Hinweise zu Anfragesyntax</strong>: Standardmäßig sind alle Suchterme UND-verknüpft, also <a href="<?php echo $this->createUrl('widget/index', array('q' => 'BWL Leipzig')); ?>">BWL Leipzig</a> sucht nach Angeboten, in denen BWL und Leipzig vorkommt.<br>
 		ODER-Verknüpfungen sind mit dem OR-Operator möglich, z.B. liefert <a href="<?php echo $this->createUrl('widget/index', array('q' => 'Mathematik OR Physik OR Chemie')); ?>">Mathematik OR Physik OR Chemie</a> Angebote in denen einer der Begiffe auftaucht (oder auch mehrere).<br>
-		Schließlich können auch Suchbegriffe explizit ausgeschlossen werden. Ein Beispiel dafür wäre <a href="<?php echo $this->createUrl('widget/index', array('q' => 'java -javascript')); ?>">java -javascript</a>, welches
-		hilft zwei weit verbreitete, aber unterschiedliche Programmiersprachen auseinander zu halten (der ausgeschlossene Term muß mindestens an zweiter Stelle stehen).
+		Ein Stern erfaßt beliebig viele Buchstaben; z.B. passt <a href="<?php echo $this->createUrl('widget/index', array('q' => 'wirtschafts*')); ?>">wirtschafts*</a> auf Wirtschaftsinformatik, Wirtschaftsmathematik, etc.
 	</p>
     
     <br>

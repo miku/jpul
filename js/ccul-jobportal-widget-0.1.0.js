@@ -84,7 +84,7 @@ ccul_jobportal_load.widget = function(query) {
 	} else {		
 		// console.log("jQuery is up.");
 		if (typeof query != "undefined") {
-			$.getJSON('http://wwwdup.uni-leipzig.de/jobportal/widget/getJSONP?callback=?&q=' + encodeURIComponent(query), ccul_jobportal_load.render);
+			$.getJSON('http://wwwdup.uni-leipzig.de/jobportal/widget/getJSONP?' + encodeURIComponent('callback=?&q=' + query), ccul_jobportal_load.render);
 		} else {
 			$.getJSON('http://wwwdup.uni-leipzig.de/jobportal/widget/getJSONP?callback=?', ccul_jobportal_load.render);
 		}

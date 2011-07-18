@@ -51,8 +51,8 @@ class Controller extends CController
 	
 	protected function beforeAction($action) {
 
-		Yii::log("IP: " . Yii::app()->request->userHostAddress, CLogger::LEVEL_INFO, __FUNCTION__);
-		Yii::log("Entering beforeAction: " . $action->getId(), CLogger::LEVEL_INFO, __FUNCTION__);		
+		// Yii::log("IP: " . Yii::app()->request->userHostAddress, CLogger::LEVEL_INFO, __FUNCTION__);
+		// Yii::log("Entering beforeAction: " . $action->getId(), CLogger::LEVEL_INFO, __FUNCTION__);		
 
 		// // See if the user agent is Googlebot and
 		// // try to avoid ugly URLs like
@@ -81,8 +81,8 @@ class Controller extends CController
 		if (isset(Yii::app()->session['useLayout'])) {
 			$useLayout = Yii::app()->session['useLayout'];
 			if (preg_match("/[a-zA-z\/]{1,16}/", $useLayout)) {
-				Yii::log("Setting Layout for this session to " . $useLayout, 
-					CLogger::LEVEL_INFO, __FUNCTION__);
+				// Yii::log("Setting Layout for this session to " . $useLayout, 
+				// 	CLogger::LEVEL_INFO, __FUNCTION__);
 				$this->layout = "//layouts/" . $useLayout;
 			} else {
 				$this->layout = "//layouts/main";
@@ -101,8 +101,8 @@ class Controller extends CController
 		if (isset(Yii::app()->session['items_per_page'])) {
 			$items_per_page = Yii::app()->session['items_per_page'];			
 			if (preg_match("/[\d]{1,3}/", $items_per_page)) {
-				Yii::log("Setting items_per_page for this session to " . $items_per_page, 
-					CLogger::LEVEL_INFO, __FUNCTION__);
+				// Yii::log("Setting items_per_page for this session to " . $items_per_page, 
+				// 	CLogger::LEVEL_INFO, __FUNCTION__);
 				$this->items_per_page = $items_per_page;
 			} else {
 				$this->items_per_page = $items_per_page;

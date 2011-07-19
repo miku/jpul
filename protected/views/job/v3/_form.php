@@ -52,7 +52,7 @@
 				<?php echo $form->textArea($model,'how_to_apply', array("rows" => "10", "cols" => "75")); ?>
 			</div>
 			<div class="help">
-				<p><strong>Formattierungshinweise</strong>: Das obige Textfeld unterstützt keine WYSIWYG Formattierung, dennoch ist
+				<p><strong>Formatierungshinweise</strong>: Das obige Textfeld unterstützt keine WYSIWYG Formattierung, dennoch ist
 				es über ein <em>Markup</em> möglich, Elemente Ihrer Anzeige (z.B. die Sektionen "Voraussetzungen", "Ihre Aufgaben", etc.) 
 				hervorzuheben. Das Markup entspricht dem des Textfeldes für die <strong>Beschreibung</strong>.</p>
 			</div>

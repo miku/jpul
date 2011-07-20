@@ -78,7 +78,7 @@ class FeedController extends Controller
 			$serverPrefix .= ':' . Yii::app()->request->serverPort;
 		}
 
-		$feed = new EFeed(EFeed::RSS1);
+		$feed = new EFeed(EFeed::RSS2);
  
 		// IMPORTANT : No need to add id for feed or channel. It will be automatically created from link.
 		if ($viewName == 'default') {

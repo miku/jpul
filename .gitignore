@@ -5,6 +5,7 @@ uploads/*
 dumps/*.sql
 dumps/*.sql.gz
 dumps/webdir*.zip
+dumps/webdir/*
 dumps/*.db
 dumps/*Jobportal_Backup.zip
 

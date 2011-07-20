@@ -88,10 +88,11 @@ class FeedController extends Controller
 			$feed->title = 'Jobportal Universität Leipzig (' . $tab . ', ' . $original_query . ')';
 			$feed->link = $serverPrefix . $this->createUrl('job/index', array('tab' => $tab, 'q' => $original_query));
 		}
-
+		
+		$feed->description = 'Aktuelle Jobangebote';
  		$feed->addChannelTag('languge', 'de');
 		$feed->addChannelTag('pubDate', date(DATE_RSS, $current_time));
-		$feed->addChannelTag('description', 'Aktuelle Jobangebote');
+		
 		
 		foreach ($models as $key => $value) {
 			$item = $feed->createNewItem();

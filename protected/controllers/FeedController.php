@@ -82,14 +82,14 @@ class FeedController extends Controller
  
 		// IMPORTANT : No need to add id for feed or channel. It will be automatically created from link.
 		if ($viewName == 'default') {
-			$feed->title = 'Jobportal Universität Leipzig (' . $tab . ')';
-			$feed->link = $serverPrefix . $this->createUrl('job/index', array('tab' => $tab));
+			$feed->addChannelTag('title', 'Jobportal Universität Leipzig (' . $tab . ')');;
+			$feed->addChannelTag('link', $serverPrefix . $this->createUrl('job/index', array('tab' => $tab)));
 		} else {
-			$feed->title = 'Jobportal Universität Leipzig (' . $tab . ', ' . $original_query . ')';
-			$feed->link = $serverPrefix . $this->createUrl('job/index', array('tab' => $tab, 'q' => $original_query));
+			$feed->addChannelTag('title', 'Jobportal Universität Leipzig (' . $tab . ', ' . $original_query . ')');
+			$feed->addChannelTag('link', $serverPrefix . $this->createUrl('job/index', array('tab' => $tab, 'q' => $original_query)));
 		}
 		
-		$feed->description = 'Aktuelle Jobangebote';
+		$feed->addChannelTag('description', 'Aktuelle Jobangebote');
  		$feed->addChannelTag('languge', 'de');
 		$feed->addChannelTag('pubDate', date(DATE_RSS, $current_time));
 		

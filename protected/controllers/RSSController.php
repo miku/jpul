@@ -11,9 +11,9 @@ class RSSController extends Controller
 	
 	public function actionIndex() {
 		if (isset($_GET['q'])) {
-			$this->redirect($this->createUrl('atom/feed', array('q' => $_GET['q'])));
+			$this->redirect($this->createUrl('rss/feed', array('q' => $_GET['q'])));
 		} else {
-			$this->redirect($this->createUrl('atom/feed'));
+			$this->redirect($this->createUrl('rss/feed'));
 		}
 	}
 
@@ -99,17 +99,14 @@ class RSSController extends Controller
 
  		$feed->addChannelTag('languge', 'de');
 		$feed->addChannelTag('pubDate', date(DATE_RSS, $current_time));
-
+		
 		foreach ($models as $key => $value) {
 			$item = $feed->createNewItem();
- 
 			$item->title = $value["title"] . " (" . $value["company"] . ")";
-			$item->link  = $serverPrefix . $this->createUrl('job/view', array('id' => $value["id"]));
-			
+			$item->link  = $serverPrefix . $this->createUrl('job/view', array('id' => $value["id"]));			
 			// we can also insert well formatted date strings
 			$item->date = $value["date_added"];
 			$item->description = mb_substr($value["description"], 0, 400) . ' ...';
- 
 			$feed->addItem($item);
 		}
  
@@ -118,5 +115,3 @@ class RSSController extends Controller
 }
 
 ?>
-
-

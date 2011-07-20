@@ -272,7 +272,7 @@ class EFeed extends CComponent{
 	 * Generates the Feed
 	 */
 	public function generateFeed(){
-		header("Content-type: application/atom+xml");
+		header("Content-type: text/xml");
 		$this->renderHead();
 		$this->renderChannels();
 		$this->renderItems();

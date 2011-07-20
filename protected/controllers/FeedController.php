@@ -8,14 +8,6 @@ Yii::import('ext.feed.*');
 
 class FeedController extends Controller
 {
-	
-	// public function actionIndex() {
-	// 	if (isset($_GET['q'])) {
-	// 		$this->redirect($this->createUrl('rss/feed', array('q' => $_GET['q'])));
-	// 	} else {
-	// 		$this->redirect($this->createUrl('rss/feed'));
-	// 	}
-	// }
 
 	public function actionIndex() {
 
@@ -99,6 +91,7 @@ class FeedController extends Controller
 
  		$feed->addChannelTag('languge', 'de');
 		$feed->addChannelTag('pubDate', date(DATE_RSS, $current_time));
+		$feed->addChannelTag('description', 'Aktuelle Jobangebote');
 		
 		foreach ($models as $key => $value) {
 			$item = $feed->createNewItem();

@@ -165,9 +165,9 @@
 		<ul id="tabs-ul-right"  class="alignright">
 			<span style="font-size:10px">
 			<?php if ($original_query == null || $original_query == ''): ?>
-				<a href="<?php echo $this->createUrl('rss/feed', array('tab' => $tab)); ?>">RSS-Feed</a>
+				<a href="<?php echo $this->createUrl('feed/index', array('tab' => $tab)); ?>">RSS-Feed</a>
 			<?php else: ?>
-				<a href="<?php echo $this->createUrl('rss/feed', array('q' => $original_query, 'tab' => $tab)); ?>">RSS-Feed für diese Suche</a>
+				<a href="<?php echo $this->createUrl('feed/index', array('q' => $original_query, 'tab' => $tab)); ?>">RSS-Feed für diese Suche</a>
 			<?php endif ?>
 			</span>
 		</ul>

@@ -90,7 +90,6 @@ class FeedController extends Controller
 		}
 		
 		$feed->addChannelTag('description', 'Aktuelle Jobangebote');
- 		$feed->addChannelTag('languge', 'de');
 		$feed->addChannelTag('pubDate', date(DATE_RSS, $current_time));
 		
 		

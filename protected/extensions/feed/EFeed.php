@@ -164,9 +164,9 @@ class EFeed extends CComponent{
 	 */
 	public function setLink($link)
 	{
-		$validator = new CUrlValidator();
-		if(!$validator->validateValue($link))
-			throw new CException( Yii::t('EFeed', $link. ' does not seem to be a valid URL') );
+		// $validator = new CUrlValidator();
+		// if(!$validator->validateValue($link))
+		// 	throw new CException( Yii::t('EFeed', $link. ' does not seem to be a valid URL') );
 			
 		$this->addChannelTag('link', $link);
 	}

@@ -106,11 +106,11 @@ abstract class EFeedItemAbstract extends CComponent {
 	 * @param string URI $link
 	 */
 	public function setLink($link) {
-		$validator = new CUrlValidator();
-		$validator->pattern = '/(((f|ht){1}tp:\/\/)[-a-zA-Z0-9@:%_\+.~#?&\/\/=]+)/i';
-		
-		if(!$validator->validateValue($link))
-			throw new CException( Yii::t('EFeed', $link. ' does not seem to be a valid URL') );
+		// $validator = new CUrlValidator();
+		// $validator->pattern = '/(((f|ht){1}tp:\/\/)[-a-zA-Z0-9@:%_\+.~#?&\/\/=]+)/i';
+		// 
+		// if(!$validator->validateValue($link))
+		// 	throw new CException( Yii::t('EFeed', $link. ' does not seem to be a valid URL') );
 		$this->addTag('link', $link); 
 	}
 	/**

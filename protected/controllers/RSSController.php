@@ -6,7 +6,7 @@ require_once('SearchHub.php');
 require_once('TabHelper.php');
 Yii::import('ext.feed.*');
 
-class RSSController extends Controller
+class RssController extends Controller
 {
 	
 	public function actionIndex() {

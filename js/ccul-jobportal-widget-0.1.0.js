@@ -16,7 +16,9 @@
  */
 
 ccul_jobportal_load = function() {
-  ccul_jobportal_load.getJQueryOnDemand("http://wwwdup.uni-leipzig.de/jobportal/js/jquery-1.6.1.min.js");
+	var _el = document.getElementById("ccul_jobportal_widget");
+	_el.innerHTML = "Loading jQuery...";
+	ccul_jobportal_load.getJQueryOnDemand("http://wwwdup.uni-leipzig.de/jobportal/js/jquery-1.6.1.min.js");
 }
 
 ccul_jobportal_load.getJQueryOnDemand = function(src) {
@@ -41,6 +43,8 @@ ccul_jobportal_load.getScript = function(src) {
 ccul_jobportal_load();
 
 ccul_jobportal_load.render = function(data) {
+	var _el = document.getElementById("ccul_jobportal_widget");
+	_el.innerHTML = "Rendering...";
 
     var models = data["models"];
     var query = data["query"];
@@ -78,11 +82,13 @@ ccul_jobportal_load.render = function(data) {
 }
 
 ccul_jobportal_load.widget = function(query) {
-    if (typeof $ == "undefined") {
+	var _el = document.getElementById("ccul_jobportal_widget");
+	_el.innerHTML = "Querying...";
+ 
+   if (typeof $ == "undefined") {
         // console.log("jQuery hasn't arrived.");
         setTimeout("ccul_jobportal_load.widget(\"" + query + "\")", 200);
     } else {
-		$("#ccul_jobportal_widget").html("Loading...");
         // console.log("jQuery is up.");
         if (typeof query != "undefined") {
             $.getJSON('http://wwwdup.uni-leipzig.de/jobportal/widget/getJSONP?callback=?&q=' + encodeURIComponent(query), ccul_jobportal_load.render);

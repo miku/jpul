@@ -21,7 +21,7 @@
     <!-- <link rel="apple-touch-icon" href="/apple-touch-icon.png"> -->
 
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/reset.min.css" />   
-    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" />    
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.min.css" />    
     
     <!-- CSS : implied media="all" -->
     <!-- Suppress built-in jquery.js -->

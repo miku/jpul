@@ -209,6 +209,7 @@ class AdminController extends Controller
 			// $model->attributes = $_POST['Job']; // mass assignment
 			$model->attributes = $sanitized_post; 
 			$model->date_added = time();
+			$model->date_updated = time();
 			$model->job_version = $_POST['Job']['job_version'];
 			
 			if (!isset($sanitized_post['expiration_date']) || $sanitized_post['expiration_date'] === '') {
@@ -328,7 +329,8 @@ class AdminController extends Controller
 		}
 		$previous_status_id = $model->status_id;
 		$model->status_id = $status_id;
-		$model->saveAttributes(array('status_id'));
+		$model->date_updated = time();
+		$model->saveAttributes(array('status_id', 'date_updated'));
 		
 		Yii::log("Changed status of job id " . $id . 
 			" from " . $previous_status_id . 

@@ -102,7 +102,7 @@ class WidgetController extends Controller
 		);		
 	}
 	
-	protected function getModelsAndOriginalQuery($q = null, $tab = 'all', $limit = 10) {
+	protected function getModelsAndOriginalQuery($q = null, $tab = 'all', $limit = 15) {
 
 		$current_time = time();
 		$original_query = '';
@@ -115,9 +115,9 @@ class WidgetController extends Controller
 		} 
 		
 		if (!is_numeric($limit)) {
-			$limit = 10;
+			$limit = 15;
 		} elseif ($limit > 50 || $limit < 3) {
-			$limit = 10;
+			$limit = 15;
 		}
 
 		if ($viewName == "search") {

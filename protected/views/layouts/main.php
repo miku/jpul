@@ -22,6 +22,8 @@
 
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/reset.min.css" />   
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.min.css" />    
+
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/js/wysiwym/wysiwym.min.css" />
     
     <!-- CSS : implied media="all" -->
     <!-- Suppress built-in jquery.js -->
@@ -52,7 +54,6 @@
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.url.min.js"></script>
     
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/wysiwym/wysiwym.min.js"></script>
-    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/js/wysiwym/wysiwym.min.css" />
     
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/tracker.min.js"></script>
     <script>$(document).ready(function() { ccul_track('<?php echo $this->createUrl("stats/track"); ?>'); });</script>

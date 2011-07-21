@@ -448,7 +448,7 @@ class StatsController extends Controller
 			$outbound->http_host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '';
 			$outbound->remote_port = isset($_SERVER['REMOTE_PORT']) ? $_SERVER['REMOTE_PORT'] : '';			
 			$outbound->save();
-			Yii::log("Recorded outbound (tracking id: " . $outbound->tracking_id . ")", CLogger::LEVEL_INFO, __FUNCTION__);
+			// Yii::log("Recorded outbound (tracking id: " . $outbound->tracking_id . ")", CLogger::LEVEL_INFO, __FUNCTION__);
 		} catch (Exception $e) {
 			Yii::log("Failed to record outbound: " . $e, CLogger::LEVEL_INFO, __FUNCTION__);
 		} 
@@ -524,7 +524,7 @@ class StatsController extends Controller
 			$request->bt_os = $btos;
 	
 			$request->save();
-			Yii::log("Recorded request (tracking id: " . $request->tracking_id . ")", CLogger::LEVEL_INFO, __FUNCTION__);
+			// Yii::log("Recorded request (tracking id: " . $request->tracking_id . ")", CLogger::LEVEL_INFO, __FUNCTION__);
 		} catch (Exception $e) {
 			Yii::log("Failed to record request: " . $e, CLogger::LEVEL_INFO, __FUNCTION__);
 		} 

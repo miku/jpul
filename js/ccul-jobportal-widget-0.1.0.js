@@ -78,7 +78,7 @@ ccul_jobportal_load.render = function(data) {
 }
 
 ccul_jobportal_load.widget = function(query) {
-	document.getElementById("ccul_jobportal_widget").innerHTML("Loading...");
+	document.getElementById("ccul_jobportal_widget").innerHTML = "Loading...";
     if (typeof $ == "undefined") {
         // console.log("jQuery hasn't arrived.");
         setTimeout("ccul_jobportal_load.widget(\"" + query + "\")", 200);

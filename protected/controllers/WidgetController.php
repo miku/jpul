@@ -22,22 +22,7 @@ class WidgetController extends Controller
 			array('original_query' => $original_query, 'width' => $width));
 	}
 	
-	public function actionBeta() {
-		$original_query = null;
-		$width = null;
-		if (isset($_GET['q']) && $_GET['q'] != '') {
-			$original_query = detoxify(strip_tags($_GET['q']));
-		}
-		if (isset($_GET['width']) && $_GET['width'] != '') {
-			$width = detoxify(strip_tags($_GET['width']));
-		}
-		$this->layout = 'plain';
-		$this->render('beta', 
-			array('original_query' => $original_query, 'width' => $width));
-	}
-
-
-	public function actionGetJSONP($q = null, $tab = 'all', $limit = 10, $callback = 'ccul_widget_callback') {
+	public function actionGetJSONP($q = null, $tab = 'all', $limit = 15, $callback = 'ccul_widget_callback') {
 		Yii::log("Widget-Request from " . isset($_SERVER["REMOTE_ADDR"]) 
 			? $_SERVER["REMOTE_ADDR"] : '', CLogger::LEVEL_INFO, __FUNCTION__);
 
@@ -65,7 +50,7 @@ class WidgetController extends Controller
 	}
 
 	
-	public function actionGetJSON($q = null, $tab = 'all', $limit = 10) {
+	public function actionGetJSON($q = null, $tab = 'all', $limit = 15) {
 		Yii::log("Widget-Request from " . isset($_SERVER["REMOTE_ADDR"]) 
 			? $_SERVER["REMOTE_ADDR"] : '', CLogger::LEVEL_INFO, __FUNCTION__);
 
@@ -91,7 +76,7 @@ class WidgetController extends Controller
 		);		
 	}
 	
-	public function actionGet($q = null, $tab = 'all', $limit = 10) {
+	public function actionGet($q = null, $tab = 'all', $limit = 15) {
 		Yii::log("HTML-Widget-Request from " . isset($_SERVER["REMOTE_ADDR"]) 
 			? $_SERVER["REMOTE_ADDR"] : '', CLogger::LEVEL_INFO, __FUNCTION__);
 		$result = $this->getModelsAndOriginalQuery($q, $tab, $limit);		

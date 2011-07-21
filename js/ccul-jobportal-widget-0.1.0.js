@@ -66,7 +66,7 @@ ccul_jobportal_load.render = function(data) {
         $("div#ccul_jobportal_widget_box > ul").append("<li style='padding: 2px; list-style:none;'>Wir haben keine aktuellen Angebote für die angegebenen Suchbegriffe im Jobportal gefunden.</li>");
     } else {
         $.each(models, function(index, job) {
-            $("div#ccul_jobportal_widget_box > ul").append("<li style='padding: 2px; list-style:none;'><span style='background:#EFEFEF; color:#464646; padding: 2px 8px 2px 8px; font-size: 9px; -moz-border-radius: 5px; border-radius: 5px;'>" + job["date_added"] + "</span> <a title='" + job["title"] + "' href='http://wwwdup.uni-leipzig.de/jobportal/job/" + job["id"] + "?src=widget'>" + job["title"].substring(0, 62) + " ...</a></li>");
+            $("div#ccul_jobportal_widget_box > ul").append("<li style='padding: 2px; list-style:none;'><span style='background:#EFEFEF; color:#464646; padding: 2px 8px 2px 8px; font-size: 9px; -moz-border-radius: 5px; border-radius: 5px;'>" + job["date_added"] + "</span> <a target='_blank' title='" + job["title"] + "' href='http://wwwdup.uni-leipzig.de/jobportal/job/" + job["id"] + "?src=widget'>" + job["title"].substring(0, 62) + " ...</a></li>");
         }); 
     }
     

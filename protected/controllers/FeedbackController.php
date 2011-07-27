@@ -19,7 +19,7 @@ class FeedbackController extends Controller
 			
 			if ($model->validate()) {
 				if (captcha_passed($_POST) && $model->save()) {
-					mailOnFeedback($model);
+					$this->mailOnFeedback($model);
 					$this->redirect($this->createUrl('feedback/thanks'));
 				} else {
 					Yii::log("Captcha error or failed to save model.", CLogger::LEVEL_INFO, __FUNCTION__);
@@ -30,8 +30,8 @@ class FeedbackController extends Controller
 		$this->render('index', array('model' => $model, 'captcha_error' => $captcha_error));
 	}
 	
-	public function actionThanks() {
-		$this->render('thanks');
+	public function actionThanks($tab = 'all') {
+		$this->render('thanks', array("tab" => $tab));
 	}
 	
 	protected function mailOnFeedback($model) {

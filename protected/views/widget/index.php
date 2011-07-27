@@ -118,6 +118,7 @@
     <li><a href="http://www.stura.uni-leipzig.de/stura/fachschaften/sportwissenschaftliche-fakultaet/fsr-sportwissenschaften/serviceprojekte/job-portal/">FSR Sportwissenschaften</a></li>
     <li><a href="http://www.informatik.uni-leipzig.de/ifi/kontakt/jobs.html">Institut für Informatik</a></li>
     <li><a href="http://www.wifa.uni-leipzig.de/iufb/jobs.html">Institut für Unternehmensrechnung, Finanzierung und Besteuerung</a></li>
+    <li><a href="http://www.wifa.uni-leipzig.de/iwi/jobs-und-berufswelt.html">Institut für Wirtschaftsinformatik</a></li>
 </ul>
 
 <div class="line"></div>

@@ -23,7 +23,7 @@
 	</div>
 	
 	<div id="footer">
-		<?php $this->renderPartial('/shared/_footer') ?>			
+		<?php $this->renderPartial('/shared/_footer', array("tab" => $tab)) ?>			
 	</div>
 
 		

@@ -95,7 +95,7 @@ class FeedController extends Controller
 		
 		foreach ($models as $key => $value) {
 			$item = $feed->createNewItem();
-			$item->title = $value["title"] . " (" . $value["company"] . ")";
+			$item->title = mb_substr($value["title"], 0, 60) . " (" . $value["company"] . ", " . $value["city"] . ")";
 			$item->link = $serverPrefix . $this->createUrl('job/view', array('id' => $value["id"]));
 			// $item->guid = $serverPrefix . $this->createUrl('job/view', array('id' => $value["id"]));
 			// we can also insert well formatted date strings

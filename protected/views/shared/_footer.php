@@ -34,8 +34,8 @@
     <ul class="example-searches">
         <li><a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "mathematik"))); ?>">Mathematik</a></li>
         <li><a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "physik"))); ?>">Physik</a></li>
-        <li><a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "biolog*"))); ?>">Biologie</a></li>
-        <li><a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "chemie"))); ?>">Chemie</a></li>
+        <li><a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "biolog*"))); ?>">Biologie</a>, <a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "chemie"))); ?>">Chemie</a></li>
+        <li><a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "umwelt*+OR+klima*"))); ?>">Umwelt und Klima</a></li>
         <li><a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "geolog*+OR+geograph*+OR+mineralog*+OR+kristallo*+OR+meteo*"))); ?>">Geowissenschaften</a></li>
         <li><a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "informatik+OR+software+OR+hardware"))); ?>">Informatik</a></li>
     </ul>
@@ -46,14 +46,14 @@
     <ul class="example-searches">
 
         <li><a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "kultur+OR+theater+OR+verlag+OR+geisteswiss*+OR+kulturwiss*+OR+NGO+OR+redaktion"))); ?>">Kultur</a>,
-        	<a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "journalis*+OR+redaktion+OR+presse"))); ?>">Journalistik</a></li>
+            <a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "journalis*+OR+redaktion+OR+presse"))); ?>">Journalistik</a></li>
         <li><a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "politik*"))); ?>">Politik</a>,
-			<a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "soziologie*"))); ?>">Soziologie</a></li>
+            <a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "soziologie*"))); ?>">Soziologie</a></li>
         <li><a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "marketing"))); ?>">Marketing</a>,
             <a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "öffentlichkeitsarbeit+OR+'public+relation'"))); ?>">PR Jobs</a></li>
         <li><a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "BWL+OR+VWL"))); ?>">BWL/VWL</a>,
             <a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "accounting+OR+audit+OR+controlling+OR+finance+OR+finanz*+OR+rechnungswesen+OR+risikomanagement+OR+steuerberat*+OR+tax+OR+unternehmensrechnung+OR+wirtschaftsprüfung"))); ?>">Controlling</a></li>
-		<li><a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "SAP"))); ?>">SAP</a>,
+        <li><a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "SAP"))); ?>">SAP</a>,
             <a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "consult*"))); ?>">Consulting</a></li>
         <li><a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "jura+OR+jurist*+OR+rechtswissenschaft"))); ?>">Jura</a></li>
 
@@ -82,7 +82,7 @@
             <a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "HTML+OR+CSS"))); ?>">HTML</a></li>
 
         <li><a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "datenbank*+OR+database+OR+mysql+OR+postgres*+OR+oracle"))); ?>">DB</a>,
-			<a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "linux+OR+AIX+OR+solaris+OR+freebsd+OR+irix+OR+GNU"))); ?>">Unix</a>,
+            <a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "linux+OR+AIX+OR+solaris+OR+freebsd+OR+irix+OR+GNU"))); ?>">Unix</a>,
             <a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "Android+OR+iOS+OR+iPhone+OR+ObjectiveC+OR+ObjC+OR+iPad+OR+mobile+OR+apps"))); ?>">Apps/Mobile</a></li>
     </ul>
 </div>

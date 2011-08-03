@@ -26,7 +26,6 @@
                     | <a href="<?php echo $this->createUrl('job/print', array('id' => $model->id)); ?>">Druckansicht</a>
                     <script type="text/javascript" charset="utf-8">
                         $(document).ready(function(){
-                            console.log("Hi");
                             $.get("<?php echo $this->createUrl('job/searchHits'); ?>?q=cc:<?php echo purify($model->company, '') ?>", function(data) {
                                 if (data > 1) {
                                     $("#more-from-company").show();

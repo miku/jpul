@@ -52,7 +52,8 @@ class FeedbackController extends Controller
 			$subject = '[CC-Jobportal] Neues Feedback zu Jobportal';
 			$message =  'Neues Feedback zum Jobportal' . $newline . $newline . 
 						'Datum: ' . strftime('%d.%m.%Y', $model->date_added) . $newline . $newline . 
-						'Text: ' . $model->text . $newline;
+						'Text: ' . $model->text . $newline . $newline .
+						'E-Mail-Addresse des Absenders (falls angegeben): ' . $model->email . $newline;
 					
 			$headers = 	'From: careercenter@uni-leipzig.de' . "\r\n" .
 	    				'Reply-To: careercenter@uni-leipzig.de' . "\r\n";

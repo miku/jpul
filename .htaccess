@@ -1,6 +1,9 @@
 # We need this, since a complete reindexing takes minutes with Zend Lucene!
 php_value max_execution_time 200
 
+# Again, Zend lucene failed with the default (32M, 33554432)
+php_value memory_limit 64M
+
 <IfModule mod_deflate.c>
 	<FilesMatch "\.(js|css)$">
 		SetOutputFilter DEFLATE

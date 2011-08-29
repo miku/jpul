@@ -29,16 +29,46 @@
         }
         return $url;
     }
+
+
+    function text_to_links($str='') {
+
+        if($str=='' or !preg_match('/(http|www\.|@)/i', $str)) { return $str; }
+
+        $lines = explode("\n", $str); $new_text = '';
+        while (list($k,$l) = each($lines)) { 
+            // replace links:
+            $l = preg_replace("/([ \t]|^)www\./i", "\\1http://www.", $l);
+            $l = preg_replace("/([ \t]|^)ftp\./i", "\\1ftp://ftp.", $l);
+
+            $l = preg_replace("/(http:\/\/[^ )\r\n!]+)/i", 
+                "<a href=\"\\1\">\\1</a>", $l);
+
+            $l = preg_replace("/(https:\/\/[^ )\r\n!]+)/i", 
+                "<a href=\"\\1\">\\1</a>", $l);
+
+            $l = preg_replace("/(ftp:\/\/[^ )\r\n!]+)/i", 
+                "<a href=\"\\1\">\\1</a>", $l);
+
+            $l = preg_replace(
+                "/([-a-z0-9_]+(\.[_a-z0-9-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)+))/i", 
+                "<a href=\"mailto:\\1\">\\1</a>", $l);
+
+            $new_text .= $l."\n";
+        }
+
+        return $new_text;
+    }
     
     // make links clickable (cautious version)
-    function text_to_links($text) {
-        // hyperlinks, starting with ...://
-        $text = ereg_replace("[[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/]","<a href=\"\\0\">\\0</a>", $text);
-        // .. and email addresses
-        // http://stackoverflow.com/questions/201323/what-is-the-best-regular-expression-for-validating-email-addresses
-        $text = ereg_replace("[_a-zA-Z0-9-]+(\.[._a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,4})", "<a href=\"mailto:\\0\">\\0</a>", $text);
-        return $text;
-    }
+    // function text_to_links($text) {
+    //     // hyperlinks, starting with ...://
+    //     $text = preg_replace("[[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/]","<a href=\"\\0\">\\0</a>", $text);
+    //     // .. and email addresses
+    //     // http://stackoverflow.com/questions/201323/what-is-the-best-regular-expression-for-validating-email-addresses
+    //     $text = preg_replace("[_a-zA-Z0-9-]+(\.[._a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,4})", "<a href=\"mailto:\\0\">\\0</a>", $text);
+    //     return $text;
+    // }
     
     function in_nested_array($needle, $haystack) {
         if ($needle == null || $haystack == null) { return false; } 

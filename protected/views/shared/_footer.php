@@ -35,7 +35,7 @@
         <li><a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "mathematik"))); ?>">Mathematik</a></li>
         <li><a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "physik"))); ?>">Physik</a></li>
         <li><a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "biolog*"))); ?>">Biologie</a>, <a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "chemie"))); ?>">Chemie</a></li>
-        <li><a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "umwelt*+OR+klima*"))); ?>">Umwelt und Klima</a></li>
+        <li><a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "umwelt*+OR+klima*+OR+renewable*+OR+erneuerbar*"))); ?>">Umwelt und Klima</a></li>
         <li><a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "geolog*+OR+geograph*+OR+mineralog*+OR+kristallo*+OR+meteo*"))); ?>">Geowissenschaften</a></li>
         <li><a href="<?php echo urldecode($this->createUrl('job/index', array("tab" => $tab, "src" => "eq", "q" => "informatik+OR+software+OR+hardware"))); ?>">Informatik</a></li>
     </ul>

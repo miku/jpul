@@ -101,7 +101,7 @@
 
             <div id="view-count">
                 <p>Dieses Angebot wurde
-                    <span id="view-count-data">1</span>
+                    <span id="view-count-data">...</span>
                 mal angesehen.</p>
             </div>
 

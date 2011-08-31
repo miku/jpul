@@ -5,6 +5,8 @@
 
             <div id="view-header">
 
+<?php if($this->beginCache("job_details_header_testing_" . $model->id, array('duration'=>3600))) { ?>
+
                 <div id="mini-nav">
                     <?php
                         $kvlist = explode('&', urldecode(Yii::app()->request->queryString)); 
@@ -53,6 +55,9 @@
                 </div>      
             </div>
 
+<?php $this->endCache(); } ?>
+<?php if($this->beginCache("job_details_rest_testing_" . $model->id, array('duration'=>3600))) { ?>
+
             <div id="view-description">
                 <?php echo text_to_links(textilize($model->description)) ?>
                 <?php if ($model->degree): ?>
@@ -79,6 +84,8 @@
             <div id="view-deadline">
                 <span class="fat">Bewerbungsschluss: <span class="sticky"><?php echo date("d.m.Y", $model->expiration_date); ?></span></span>
             </div>
+
+<?php $this->endCache(); } ?>
             
             <?php if (isset($view_count)): ?>
             <div id="view-count">

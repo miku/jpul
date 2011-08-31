@@ -164,7 +164,11 @@
 
 		var url = "<?php echo $this->createUrl('job/viewCount', array('id' => '__ID__')); ?>".replace('__ID__', '<?php echo $model->id ?>');
 		$.get(url, function(data) {
-			$("#view-count-data").html(data);
+			if (data < 1) {
+				$("#view-count-data").html("1");
+			} else {
+				$("#view-count-data").html(data);
+			}
         });
     });
 </script>

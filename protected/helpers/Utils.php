@@ -41,13 +41,13 @@
             $l = preg_replace("/([ \t]|^)www\./i", "\\1http://www.", $l);
             $l = preg_replace("/([ \t]|^)ftp\./i", "\\1ftp://ftp.", $l);
 
-            $l = preg_replace("/(http:\/\/[^ )\r\n!]+)/i", 
+            $l = preg_replace("/(http:\/\/[^ ,)\r\n!]+)/i", 
                 "<a href=\"\\1\">\\1</a>", $l);
 
-            $l = preg_replace("/(https:\/\/[^ )\r\n!]+)/i", 
+            $l = preg_replace("/(https:\/\/[^ ,)\r\n!]+)/i", 
                 "<a href=\"\\1\">\\1</a>", $l);
 
-            $l = preg_replace("/(ftp:\/\/[^ )\r\n!]+)/i", 
+            $l = preg_replace("/(ftp:\/\/[^ ,)\r\n!]+)/i", 
                 "<a href=\"\\1\">\\1</a>", $l);
 
             $l = preg_replace(

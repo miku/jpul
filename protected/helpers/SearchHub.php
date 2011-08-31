@@ -41,7 +41,7 @@
 	function getResultSetSize($options) {
 		
 		$default_options = array("q" => null, "offset" => 0, "limit" => 10,
-			"sort" => "d", "tab" => "all");
+			"sort" => "d", "tab" => "all", "update_id_list" => false);
 		
 		$options = array_merge($default_options, $options);
 		
@@ -49,6 +49,7 @@
 		
 		$cache_key_models = "models:" . $options_fingerprint;
 		$cache_key_total = "total:" . $options_fingerprint;
+		$cache_key_idlist = "idlist:" . $options_fingerprint;
 		
 		// Yii::log($cache_key_models, CLogger::LEVEL_INFO, __FUNCTION__);
 		// Yii::log($cache_key_total, CLogger::LEVEL_INFO, __FUNCTION__);
@@ -116,7 +117,14 @@
 				$pks[] = $result->pk;
 			}
 
-			$total = count(Job::model()->findAllByAttributes(array('id' => $pks), $criteria));
+			$_result = Job::model()->findAllByAttributes(array('id' => $pks), $criteria);
+
+			$_idlist = array();
+			foreach ($_result as $key => $value) {
+				$_idlist[] = $value["id"];
+			}
+
+			$total = count($_result);
 
 			$criteria->limit = $options["limit"];
 			$criteria->offset = $options["offset"];
@@ -125,6 +133,11 @@
 			
 			Yii::app()->cache->set($cache_key_models, serialize($models), 3600);
 			Yii::app()->cache->set($cache_key_total, $total, 3600);
+			Yii::app()->cache->set($cache_key_idlist, serialize($_idlist), 3600);
+		}
+		
+		if ($options["update_id_list"] == true) {
+			Yii::app()->session["idlist"] = unserialize(Yii::app()->cache->get($cache_key_idlist));
 		}
 		
 		return Yii::app()->cache->get($cache_key_total);
@@ -133,7 +146,7 @@
 	function getResultSet($options) {
 		
 		$default_options = array("q" => null, "offset" => 0, "limit" => 10,
-			"sort" => "d", "tab" => "all");
+			"sort" => "d", "tab" => "all", "update_id_list" => false);
 		
 		$options = array_merge($default_options, $options);
 		
@@ -141,6 +154,7 @@
 		
 		$cache_key_models = "models:" . $options_fingerprint;
 		$cache_key_total = "total:" . $options_fingerprint;
+		$cache_key_idlist = "idlist:" . $options_fingerprint;
 		
 		// Yii::log($cache_key_models, CLogger::LEVEL_INFO, __FUNCTION__);
 		// Yii::log($cache_key_total, CLogger::LEVEL_INFO, __FUNCTION__);
@@ -208,7 +222,14 @@
 				$pks[] = $result->pk;
 			}
 
-			$total = count(Job::model()->findAllByAttributes(array('id' => $pks), $criteria));
+			$_result = Job::model()->findAllByAttributes(array('id' => $pks), $criteria);
+
+			$_idlist = array();
+			foreach ($_result as $key => $value) {
+				$_idlist[] = $value["id"];
+			}
+
+			$total = count($_result);
 
 			$criteria->limit = $options["limit"];
 			$criteria->offset = $options["offset"];
@@ -220,6 +241,12 @@
 			
 			Yii::app()->cache->set($cache_key_models, serialize($models), 3600);
 			Yii::app()->cache->set($cache_key_total, $total, 3600);
+			Yii::app()->cache->set($cache_key_idlist, serialize($_idlist), 3600);
+			
+		} 
+
+		if ($options["update_id_list"] == true) {
+			Yii::app()->session["idlist"] = unserialize(Yii::app()->cache->get($cache_key_idlist));
 		}
 		
 		return unserialize(Yii::app()->cache->get($cache_key_models));

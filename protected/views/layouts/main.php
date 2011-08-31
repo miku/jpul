@@ -54,6 +54,7 @@
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.url.min.js"></script>
     
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/wysiwym/wysiwym.min.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/keymaster.min.js"></script>
     
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/tracker.min.js"></script>
     <script>$(document).ready(function() { ccul_track('<?php echo $this->createUrl("stats/track"); ?>'); });</script>

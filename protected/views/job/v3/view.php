@@ -36,8 +36,8 @@
                     </script>
                     
                     <span id="more-from-company" style="display:none">| Mehr Angebote von <a href="<?php echo urldecode($this->createUrl('job/index', array('q' => 'cc:' . purify($model->company, ''), 'src' => 'more-from-company' ))); ?>"><?php echo cut_text($model->company, 30); ?></a></span>
-                    
                 </div>
+
                 
                 <div id="view-job-title"><?php echo $model->title ?></div>
 
@@ -90,7 +90,8 @@
             
             <div id="bottom-nav">   
                 
-                <a href="javascript:history.go(-1)">Zurück zur Übersicht</a>
+				<a href="javascript:history.go(-1)">Zurück zur Übersicht</a>
+				<span class="alignright" style="color: #767676">Tip: Mit <strong>&larr;</strong> und <strong>&rarr;</strong> können Sie in ihren Suchergebnissen navigieren.</span>
             </div>
                 
         </div>  
@@ -118,3 +119,21 @@
     </div>  
 </div>
 
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function(){
+		key("right, j, l", function(){
+			$.get("<?php echo $this->createUrl('job/nextId'); ?>?c=<?php echo $model->id ?>", function(data) {
+				if (data == -1) { return false; }
+				var url = "<?php echo $this->createUrl('job/view', array('id' => '__ID__')); ?>".replace('__ID__', data);
+				window.location.replace(url);
+			});
+		});
+		key("left, h, k", function(){ 
+			$.get("<?php echo $this->createUrl('job/previousId'); ?>?c=<?php echo $model->id ?>", function(data) {
+				if (data == -1) { return false; }
+				var url = "<?php echo $this->createUrl('job/view', array('id' => '__ID__')); ?>".replace('__ID__', data);
+				window.location.replace(url);
+			});
+		});
+	});
+</script>

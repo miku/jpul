@@ -1,5 +1,5 @@
 <div id="main-container">
-<div id="main">	
+<div id="main">
 
 	<div id="generic-header">
 	<?php $this->renderPartial('_header', 

@@ -63,15 +63,18 @@
     <div class="container" id="page">
         <div id="title">
             <div id="title-nav">
+				
                 <div id="title-nav-left">
                     <ul>
                         <li><a href="<?php echo $this->createUrl('job/index'); ?>">Jobportal Homepage</a></li>
                         <li><a class="outbound" href="http://www.zv.uni-leipzig.de/studium/career-center.html">Career Center</a></li>
+						<li><span id="flash-message" style="color:black; background: #EFEFEF;"></span></li>
                     </ul>
                 </div>
 
                 <div id="title-nav-right">
                     <ul>
+						
                         <?php if (Yii::app()->user->getId() != NULL): ?>
                             <?php if (Yii::app()->user->isAdmin()): ?>
                                 <li><a href="<?php echo $this->createUrl('site/options'); ?>">Einstellungen</a></li>

@@ -128,19 +128,21 @@
 <script type="text/javascript" charset="utf-8">
 	$(document).ready(function(){
 		key("right, j, l", function(){
+			$("#flash-message").html("Nächstes Angebot...");
 			$.get("<?php echo $this->createUrl('job/nextId'); ?>?c=<?php echo $model->id ?>", function(data) {
-				if (data == -1) { return false; }
+				if (data == -1) { $("#flash-message").html(""); return false; }
 				var url = "<?php echo $this->createUrl('job/view', array('id' => '__ID__')); ?>".replace('__ID__', data);
 				window.location.replace(url);
 			});
 		});
 		key("left, h, k", function(){ 
+			$("#flash-message").html("Vorheriges Angebot...");
 			$.get("<?php echo $this->createUrl('job/previousId'); ?>?c=<?php echo $model->id ?>", function(data) {
-				if (data == -1) { return false; }
+				if (data == -1) { $("#flash-message").html(""); return false; }
 				var url = "<?php echo $this->createUrl('job/view', array('id' => '__ID__')); ?>".replace('__ID__', data);
 				window.location.replace(url);
 			});
 		});
-		key("esc, q, z", function(){ history.go(-1); });
+		key("esc, q, z", function(){ $("#flash-message").html("Übersicht..."); history.go(-1); });
 	});
 </script>

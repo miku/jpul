@@ -183,7 +183,7 @@
 
         key("esc, q, z", function(){ 
 			viewCountRequest.abort();
-			$("#flash-message").html("Übersicht..."); 
+			$("#flash-message").html("Übersicht...").css("padding", "0 3px 0 3px"); 
 			history.go(-1); 
 		});
 

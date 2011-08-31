@@ -286,38 +286,38 @@ class JobController extends Controller
     }
 
     public function actionNextId($c = null) {
-		$result = -1;
-		if ($c != null && 
-			isset(Yii::app()->session["idlist"]) && 
-			Yii::app()->session["idlist"] != null && 
-			count(Yii::app()->session["idlist"]) > 0) {
-				$_idlist = Yii::app()->session["idlist"];
-				for ($i = 0; $i < count($_idlist) - 1; $i++) { 
-					if ($_idlist[$i] == $c) {
-						$result = $_idlist[$i + 1];
-					}
-				}
-			}
-		$this->layout = "plain";
+        $result = -1;
+        if ($c != null &&
+            isset(Yii::app()->session["idlist"]) &&
+            Yii::app()->session["idlist"] != null &&
+            count(Yii::app()->session["idlist"]) > 0) {
+                $_idlist = Yii::app()->session["idlist"];
+                for ($i = 0; $i < count($_idlist) - 1; $i++) {
+                    if ($_idlist[$i] == $c) {
+                        $result = $_idlist[$i + 1];
+                    }
+                }
+            }
+        $this->layout = "plain";
         $this->renderText($result);
-	}
+    }
 
     public function actionPreviousId($c = null) {
-		$result = -1;
-		if ($c != null && 
-			isset(Yii::app()->session["idlist"]) && 
-			Yii::app()->session["idlist"] != null && 
-			count(Yii::app()->session["idlist"]) > 0) {
-				$_idlist = Yii::app()->session["idlist"];
-				for ($i = count($_idlist) - 1; $i > 0; $i--) { 
-					if ($_idlist[$i] == $c) {
-						$result = $_idlist[$i - 1];
-					}
-				}
-			}
-		$this->layout = "plain";
+        $result = -1;
+        if ($c != null &&
+            isset(Yii::app()->session["idlist"]) &&
+            Yii::app()->session["idlist"] != null &&
+            count(Yii::app()->session["idlist"]) > 0) {
+                $_idlist = Yii::app()->session["idlist"];
+                for ($i = count($_idlist) - 1; $i > 0; $i--) {
+                    if ($_idlist[$i] == $c) {
+                        $result = $_idlist[$i - 1];
+                    }
+                }
+            }
+        $this->layout = "plain";
         $this->renderText($result);
-	}
+    }
 
 
     public function actionRelated($id) {
@@ -393,12 +393,13 @@ class JobController extends Controller
                 select distinct tracking_id, request_uri_wo_qs_and_hostname from
                 request where
                     (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND
-                    request_uri_wo_qs_and_hostname LIKE '%". $this->createUrl('job/view', array("id" => $id)) . "') as Q;";
+                    request_uri_wo_qs_and_hostname = :url) as Q;";
 
             // Yii::log("SQL: " . $sql, CLogger::LEVEL_INFO, __FUNCTION__);
 
             $connection = Yii::app()->db;
             $command = $connection->createCommand($sql);
+            $command->bindParam(":url", $this->createUrl('job/view', array("id" => $id)));
             $dataReader = $command->queryRow();
             $view_count = $dataReader['view_count'];
 

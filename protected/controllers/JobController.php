@@ -380,6 +380,17 @@ class JobController extends Controller
             throw new CHttpException(404, 'Kein Angebot mit dieser ID gefunden.');
         }
 
+        $job_version = $model->job_version;
+        if ($job_version == null) {
+            $job_version = 1;
+        }
+
+        // Yii::log(Yii::app()->request->userHostAddress, CLogger::LEVEL_INFO, __FILE__ . ' | ' . __FUNCTION__ . ' | ' . __LINE__);
+        $this->pageTitle = 'Jobs - ' . cut_text($model->title, 50) . ' in ' . cut_text($model->city, 40) . ' - ' . strftime("%d.%m.%Y", $model->date_added);
+        $this->render('v' . $job_version . '/view', array('model' => $model));
+    }
+
+    public function actionViewCount($id) {
         // job view count:
         // select distinct COUNT(tracking_id) from request where
         // (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL
@@ -420,16 +431,9 @@ class JobController extends Controller
             Yii::log($e, CLogger::LEVEL_INFO, __FUNCTION__);
             $view_count = null;
         }
-
-        $job_version = $model->job_version;
-        if ($job_version == null) {
-            $job_version = 1;
-        }
-
-        // Yii::log(Yii::app()->request->userHostAddress, CLogger::LEVEL_INFO, __FILE__ . ' | ' . __FUNCTION__ . ' | ' . __LINE__);
-        $this->pageTitle = 'Jobs - ' . cut_text($model->title, 50) . ' in ' . cut_text($model->city, 40) . ' - ' . strftime("%d.%m.%Y", $model->date_added);
-        $this->render('v' . $job_version . '/view', array('model' => $model, 'view_count' => $view_count));
-    }
+		$this->layout = 'plain';
+        $this->renderText($view_count);
+	}
 
     /**
      * Download job attachment.

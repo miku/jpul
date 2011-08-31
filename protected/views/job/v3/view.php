@@ -99,13 +99,11 @@
 
 <?php $this->endCache(); } ?>
 
-            <?php if (isset($view_count)): ?>
             <div id="view-count">
                 <p>Dieses Angebot wurde
-                    <?php echo ($view_count == 0) ? 1 : $view_count; ?>
+                    <span id="view-count-data">1</span>
                 mal angesehen.</p>
             </div>
-            <?php endif ?>
 
             <div id="bottom-nav">
 
@@ -163,5 +161,10 @@
             });
         });
         key("esc, q, z", function(){ $("#flash-message").html("Übersicht..."); history.go(-1); });
+
+		var url = "<?php echo $this->createUrl('job/viewCount', array('id' => '__ID__')); ?>".replace('__ID__', '<?php echo $model->id ?>');
+		$.get(url, function(data) {
+			$("#view-count-data").html(data);
+        });
     });
 </script>

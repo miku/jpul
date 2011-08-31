@@ -3,7 +3,6 @@
     .expiration-wrapper {
     	opacity : 0.4;
     	filter: alpha(opacity=40);
-    	background-color: #555;
     }
 </style>
 <div id="main-container">

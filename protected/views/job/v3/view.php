@@ -144,39 +144,48 @@
 
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function(){
-        key("right, j, l", function(){
-            $("#flash-message").html("<?php 
-				echo min(array_search($model->id, Yii::app()->session["idlist"]) + 2, count(Yii::app()->session["idlist"])); 
-				echo '/'; 
-				echo count(Yii::app()->session["idlist"]); 
-			?>" + " &rarr;");
-            $.get("<?php echo $this->createUrl('job/nextId'); ?>?c=<?php echo $model->id ?>", function(data) {
-                if (data.status == "Error") { $("#flash-message").html(""); return false; }
-                var url = "<?php echo $this->createUrl('job/view', array('id' => '__ID__', 'src' => 'kb')); ?>".replace('__ID__', data.result);
-                window.location.replace(url);
-            });
-        });
-        key("left, h, k", function(){
-            $("#flash-message").html("&larr; " + "<?php 
-				echo max(1, array_search($model->id, Yii::app()->session["idlist"])); 
-				echo '/'; 
-				echo count(Yii::app()->session["idlist"]); 
-			?>");
-            $.get("<?php echo $this->createUrl('job/previousId'); ?>?c=<?php echo $model->id ?>", function(data) {
-                if (data.status == "Error") { $("#flash-message").html(""); return false; }
-                var url = "<?php echo $this->createUrl('job/view', array('id' => '__ID__', 'src' => 'kb')); ?>".replace('__ID__', data.result);
-                window.location.replace(url);
-            });
-        });
-        key("esc, q, z", function(){ $("#flash-message").html("Übersicht..."); history.go(-1); });
-
 		var url = "<?php echo $this->createUrl('job/viewCount', array('id' => '__ID__')); ?>".replace('__ID__', '<?php echo $model->id ?>');
-		$.get(url, function(data) {
+		var viewCountRequest = $.get(url, function(data) {
 			if (data < 1) {
 				$("#view-count-data").html("1");
 			} else {
 				$("#view-count-data").html(data);
 			}
         });
+
+        key("right, j, l", function(){
+			viewCountRequest.abort();
+            $("#flash-message").html("<?php 
+				echo min(array_search($model->id, Yii::app()->session["idlist"]) + 2, count(Yii::app()->session["idlist"])); 
+				echo '/'; 
+				echo count(Yii::app()->session["idlist"]); 
+			?>" + " &rarr;").css("padding", "0 3px 0 3px");
+            $.get("<?php echo $this->createUrl('job/nextId'); ?>?c=<?php echo $model->id ?>", function(data) {
+                if (data.status == "Error") { $("#flash-message").html(""); return false; }
+                var url = "<?php echo $this->createUrl('job/view', array('id' => '__ID__', 'src' => 'kb')); ?>".replace('__ID__', data.result);
+                window.location.replace(url);
+            });
+        });
+
+        key("left, h, k", function(){
+			viewCountRequest.abort();
+            $("#flash-message").html("&larr; " + "<?php 
+				echo max(1, array_search($model->id, Yii::app()->session["idlist"])); 
+				echo '/'; 
+				echo count(Yii::app()->session["idlist"]); 
+			?>").css("padding", "0 3px 0 3px");
+            $.get("<?php echo $this->createUrl('job/previousId'); ?>?c=<?php echo $model->id ?>", function(data) {
+                if (data.status == "Error") { $("#flash-message").html(""); return false; }
+                var url = "<?php echo $this->createUrl('job/view', array('id' => '__ID__', 'src' => 'kb')); ?>".replace('__ID__', data.result);
+                window.location.replace(url);
+            });
+        });
+
+        key("esc, q, z", function(){ 
+			viewCountRequest.abort();
+			$("#flash-message").html("Übersicht..."); 
+			history.go(-1); 
+		});
+
     });
 </script>

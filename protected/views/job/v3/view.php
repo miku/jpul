@@ -145,18 +145,26 @@
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function(){
         key("right, j, l", function(){
-            $("#flash-message").html("Nächstes Angebot...");
+            $("#flash-message").html("<?php 
+				echo min(array_search($model->id, Yii::app()->session["idlist"]) + 2, count(Yii::app()->session["idlist"])); 
+				echo '/'; 
+				echo count(Yii::app()->session["idlist"]); 
+			?>" + " &rarr;");
             $.get("<?php echo $this->createUrl('job/nextId'); ?>?c=<?php echo $model->id ?>", function(data) {
-                if (data == -1) { $("#flash-message").html(""); return false; }
-                var url = "<?php echo $this->createUrl('job/view', array('id' => '__ID__', 'src' => 'kb')); ?>".replace('__ID__', data);
+                if (data.status == "Error") { $("#flash-message").html(""); return false; }
+                var url = "<?php echo $this->createUrl('job/view', array('id' => '__ID__', 'src' => 'kb')); ?>".replace('__ID__', data.result);
                 window.location.replace(url);
             });
         });
         key("left, h, k", function(){
-            $("#flash-message").html("Vorheriges Angebot...");
+            $("#flash-message").html("&larr; " + "<?php 
+				echo max(1, array_search($model->id, Yii::app()->session["idlist"])); 
+				echo '/'; 
+				echo count(Yii::app()->session["idlist"]); 
+			?>");
             $.get("<?php echo $this->createUrl('job/previousId'); ?>?c=<?php echo $model->id ?>", function(data) {
-                if (data == -1) { $("#flash-message").html(""); return false; }
-                var url = "<?php echo $this->createUrl('job/view', array('id' => '__ID__', 'src' => 'kb')); ?>".replace('__ID__', data);
+                if (data.status == "Error") { $("#flash-message").html(""); return false; }
+                var url = "<?php echo $this->createUrl('job/view', array('id' => '__ID__', 'src' => 'kb')); ?>".replace('__ID__', data.result);
                 window.location.replace(url);
             });
         });

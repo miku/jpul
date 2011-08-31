@@ -286,7 +286,7 @@ class JobController extends Controller
     }
 
     public function actionNextId($c = null) {
-        $result = -1;
+        $result = array("status" => "Error");
         if ($c != null &&
             isset(Yii::app()->session["idlist"]) &&
             Yii::app()->session["idlist"] != null &&
@@ -294,16 +294,18 @@ class JobController extends Controller
                 $_idlist = Yii::app()->session["idlist"];
                 for ($i = 0; $i < count($_idlist) - 1; $i++) {
                     if ($_idlist[$i] == $c) {
-                        $result = $_idlist[$i + 1];
+                        $result["result"] = $_idlist[$i + 1];
+						$result["status"] = "OK";
+						$result["hint"] = ($i + 1) . "/" . count($_idlist);						
                     }
                 }
             }
-        $this->layout = "plain";
-        $this->renderText($result);
+        $this->layout = "json";
+        $this->renderText(json_encode($result));
     }
 
     public function actionPreviousId($c = null) {
-        $result = -1;
+        $result = array("status" => "Error");
         if ($c != null &&
             isset(Yii::app()->session["idlist"]) &&
             Yii::app()->session["idlist"] != null &&
@@ -311,39 +313,14 @@ class JobController extends Controller
                 $_idlist = Yii::app()->session["idlist"];
                 for ($i = count($_idlist) - 1; $i > 0; $i--) {
                     if ($_idlist[$i] == $c) {
-                        $result = $_idlist[$i - 1];
+                        $result["result"] = $_idlist[$i - 1];
+						$result["status"] = "OK";
+						$result["hint"] = ($i) . "/" . count($_idlist);
                     }
                 }
             }
-        $this->layout = "plain";
-        $this->renderText($result);
-    }
-
-
-    public function actionRelated($id) {
-
-        $model = Job::model()->findByPk($id);
-        if (!$model) {
-            throw new CHttpException(404, Yii::t('app', 'Your request is not valid.'));
-        }
-
-        if ($model->status_id != 2) {
-            throw new CHttpException(404, 'Kein Angebot mit dieser ID gefunden.');
-        }
-
-        Zend_Search_Lucene_Analysis_Analyzer::setDefault(
-            new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8_CaseInsensitive());
-        Zend_Search_Lucene_Search_QueryParser::setDefaultEncoding('utf-8');
-
-        $index = new Zend_Search_Lucene($this->getSearchIndexStore());
-
-        $results = $index->find($model->title);
-        $terms = $index->terms();
-
-
-        Yii::log("Related results: " . $results, CLogger::LEVEL_INFO, __FUNCTION__);
-
-        $this->render('related');
+        $this->layout = "json";
+        $this->renderText(json_encode($result));
     }
 
 
@@ -367,11 +344,7 @@ class JobController extends Controller
      */
     public function actionView($id, $from = '')
     {
-
-        // $dependency = new CDbCacheDependency('SELECT MAX(date_updated) FROM job');
-
-        // $model = Job::model()->cache(3600, $dependency)->findByPk($id);
-        $model = Job::model()->findByPk($id);
+   		$model = Job::model()->findByPk($id);
         if (!$model) {
             throw new CHttpException(404, Yii::t('app', 'Your request is not valid.'));
         }
@@ -385,7 +358,6 @@ class JobController extends Controller
             $job_version = 1;
         }
 
-        // Yii::log(Yii::app()->request->userHostAddress, CLogger::LEVEL_INFO, __FILE__ . ' | ' . __FUNCTION__ . ' | ' . __LINE__);
         $this->pageTitle = 'Jobs - ' . cut_text($model->title, 50) . ' in ' . cut_text($model->city, 40) . ' - ' . strftime("%d.%m.%Y", $model->date_added);
         $this->render('v' . $job_version . '/view', array('model' => $model));
     }

@@ -91,7 +91,13 @@
             <div id="bottom-nav">   
                 
 				<a href="javascript:history.go(-1)">Zurück zur Übersicht</a>
-				<span class="alignright" style="color: #767676">Tip: Mit <strong>&larr;</strong> und <strong>&rarr;</strong> können Sie in ihren Suchergebnissen navigieren.</span>
+				
+				<?php if (isset(Yii::app()->session["idlist"]) && 
+					Yii::app()->session["idlist"] != null && 
+					count(Yii::app()->session["idlist"]) > 0): ?>
+					<span class="alignright" style="color: #767676">Tip: Mit <strong>&larr;</strong> und <strong>&rarr;</strong> können Sie in ihren Suchergebnissen navigieren.</span>					
+				<?php endif ?>
+
             </div>
                 
         </div>  
@@ -135,5 +141,6 @@
 				window.location.replace(url);
 			});
 		});
+		key("esc, q, z", function(){ history.go(-1); });
 	});
 </script>

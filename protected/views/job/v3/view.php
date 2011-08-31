@@ -138,7 +138,7 @@
 			$("#flash-message").html("Nächstes Angebot...");
 			$.get("<?php echo $this->createUrl('job/nextId'); ?>?c=<?php echo $model->id ?>", function(data) {
 				if (data == -1) { $("#flash-message").html(""); return false; }
-				var url = "<?php echo $this->createUrl('job/view', array('id' => '__ID__')); ?>".replace('__ID__', data);
+				var url = "<?php echo $this->createUrl('job/view', array('id' => '__ID__', 'src' => 'kb')); ?>".replace('__ID__', data);
 				window.location.replace(url);
 			});
 		});
@@ -146,7 +146,7 @@
 			$("#flash-message").html("Vorheriges Angebot...");
 			$.get("<?php echo $this->createUrl('job/previousId'); ?>?c=<?php echo $model->id ?>", function(data) {
 				if (data == -1) { $("#flash-message").html(""); return false; }
-				var url = "<?php echo $this->createUrl('job/view', array('id' => '__ID__')); ?>".replace('__ID__', data);
+				var url = "<?php echo $this->createUrl('job/view', array('id' => '__ID__', 'src' => 'kb')); ?>".replace('__ID__', data);
 				window.location.replace(url);
 			});
 		});

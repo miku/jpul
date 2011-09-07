@@ -119,11 +119,11 @@ OS X
     
     Copy the patch to your TARGET. Check the patch:
     
-        $ git apply --check update.check
+        $ git apply --check update.patch
     
     If everything is fine, apply: 
     
-        $ git apply update.check
+        $ git apply update.patch
 
 
 Search query language

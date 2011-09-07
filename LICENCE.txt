@@ -8,8 +8,8 @@ Use, distribution, duplication and reproduction of CI material without prior
 approval is prohibited.
 
 
-Sourcecode 
-----------
+Source
+------
 
 Copyright (c) 2010, 2011 Martin Czygan
 All rights reserved.

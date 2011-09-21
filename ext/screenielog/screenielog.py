@@ -131,3 +131,4 @@ def dump_table():
 
 if __name__ == '__main__':
 	dump_table()
+	list_of_dumps()[8].import_to_db()

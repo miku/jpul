@@ -6,7 +6,6 @@ import subprocess
 import logging
 import time
 import datetime
-from colorlog import ColorizingStreamHandler
 
 FORMAT = '%(asctime)-15s [%(name)s] %(message)s'
 logging.basicConfig(

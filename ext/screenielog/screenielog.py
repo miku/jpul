@@ -125,8 +125,8 @@ def list_of_dumps():
 	return result
 
 def dump_table():
-	for dump in list_of_dumps():
-		print dump.timestamp, dump.date, dump.nearest_commit()
+	for i, dump in enumerate(list_of_dumps()):
+		print i, dump.timestamp, dump.date, dump.nearest_commit()
 	
 
 if __name__ == '__main__':

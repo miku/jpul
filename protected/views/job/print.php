@@ -4,10 +4,12 @@
 	<meta charset="utf-8">
 	<style>
 		body {
-			font-family: Arial, "MS Trebuchet", sans-serif;
+			font: normal 10pt Verdana,"Helvetica Neue",Arial,Tahoma,sans-serif;
 			width: 600px;
-			font-size: 80%;
-			margin-top: 10px;
+			
+			font-size: 10px;
+			margin-left: 50px;
+			line-height: 14px;
 		}
 		.line {
 			border-bottom: solid thin gray;

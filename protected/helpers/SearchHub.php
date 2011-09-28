@@ -61,6 +61,10 @@
 			if ($options["q"] == null) { 
 				return 0;
 			}
+			
+			if ($options["q"] == "*") {
+				$options["q"] = '';
+			}
 		
 	        Zend_Search_Lucene_Analysis_Analyzer::setDefault(
 	            new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8_CaseInsensitive());
@@ -101,35 +105,48 @@
 				$criteria->condition .= get_fragment('INTERNSHIP');
 			} elseif ($options["tab"] == 'international') {
 				$criteria->condition .= get_fragment('I18N');
-			}		
-		
-			$index = new Zend_Search_Lucene(getSearchIndexStore('default'));
-		
-			try {
-				$results = $index->find($options["q"]);
-			} catch (Exception $e) {
-				Yii::log('Failed to execute query: ' . $q, CLogger::LEVEL_ERROR, __FUNCTION__);
-				throw $e;
 			}
-		
-			$pks = array();
-			foreach ($results as $result) {
-				$pks[] = $result->pk;
+			
+			if ($options["q"] != '') {
+				$index = new Zend_Search_Lucene(getSearchIndexStore('default'));
+
+				try {
+					$results = $index->find($options["q"]);
+				} catch (Exception $e) {
+					Yii::log('Failed to execute query: ' . $options["q"], CLogger::LEVEL_ERROR, __FUNCTION__);
+					throw $e;
+				}
+				$pks = array();
+				foreach ($results as $result) {
+					$pks[] = $result->pk;
+				}
+
+				$_result = Job::model()->findAllByAttributes(array('id' => $pks), $criteria);
+				
+				$_idlist = array();
+				foreach ($_result as $key => $value) {
+					$_idlist[] = $value["id"];
+				}
+
+				
+				$total = count($_result);
+
+				$criteria->limit = $options["limit"];
+				$criteria->offset = $options["offset"];
+
+				$models = Job::model()->findAllByAttributes(array('id' => $pks), $criteria);				
+				
+			} else {
+				$_result = Job::model()->findAll($criteria);
+				$total = count($_result);
+
+				$_idlist = array();
+				foreach ($_result as $key => $value) {
+					$_idlist[] = $value["id"];
+				}
+				
+				$models = $_result;
 			}
-
-			$_result = Job::model()->findAllByAttributes(array('id' => $pks), $criteria);
-
-			$_idlist = array();
-			foreach ($_result as $key => $value) {
-				$_idlist[] = $value["id"];
-			}
-
-			$total = count($_result);
-
-			$criteria->limit = $options["limit"];
-			$criteria->offset = $options["offset"];
-		
-			$models = Job::model()->findAllByAttributes(array('id' => $pks), $criteria);
 			
 			Yii::app()->cache->set($cache_key_models, serialize($models), 3600);
 			Yii::app()->cache->set($cache_key_total, $total, 3600);

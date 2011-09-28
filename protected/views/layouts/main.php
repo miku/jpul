@@ -64,6 +64,8 @@
 </head>
 <body>
     <div class="container" id="page">
+	    <noscript><div id="broadcast">Um die volle Funktionalität dieser Website nutzen zu können, aktivieren Sie bitte Javascript.</div></noscript>
+    
         <div id="title">
             <div id="title-nav">
 
@@ -107,7 +109,6 @@
 
         <div class="clear"></div>
 
-        <noscript><div id="broadcast">Bitte aktivieren Sie Javascript.</div></noscript>
 
         <div id="content">
             <?php echo $content; ?>

@@ -37,3 +37,4 @@ tmp/*
 ext/index-inspector/target/*
 ext/diversions/downloads/*
 
+docs/manual/_build/*

@@ -261,13 +261,13 @@ class JobController extends Controller
     }
 
 
-    public function actionSearchHits($tab = 'all', $format = 'plain') {
+    public function actionSearchHits($q = '', $tab = 'all', $format = 'plain') {
 
         if ($format == 'plain') {
-            $original_query = urldecode($_GET['q']);
+            $original_query = urldecode($q);
         } elseif ($format == 'b64') {
-            $original_query = base64_decode($_GET['q']);
-        }
+            $original_query = base64_decode($q);
+        }			
 
         // If the user does not use anything from the extended search
         // syntax, append kleene star to terms

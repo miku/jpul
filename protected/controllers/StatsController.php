@@ -280,6 +280,7 @@ class StatsController extends Controller
         $criteria = new CDbCriteria;
         $criteria->condition = 'status_id=:status_id';
         $criteria->params=array(':status_id' => 2);
+		$criteria->order = 'id';
 		$_result = Job::model()->findAll($criteria);
 
 		foreach ($_result as $model) {

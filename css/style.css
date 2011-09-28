@@ -573,11 +573,11 @@ float: right;
 /* braodcast */
 
 #broadcast {
+	font-size: 10px;
     text-align: center;
-    padding: 8px;
-    background: #EFEFEF; /*url(../images/v2/stripe.png) repeat scroll 0 0;	*/
-    border-top: solid 3px orange;
-    border-bottom: solid 3px orange;
+    padding: 5px;
+    background: #FFF380; /*url(../images/v2/stripe.png) repeat scroll 0 0;	*/
+    border: solid 1px #DADADA;
     color: #444444;
 }
 

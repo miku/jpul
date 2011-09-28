@@ -368,6 +368,7 @@ class JobController extends Controller
         // (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL
         // AND request_uri_wo_qs_and_hostname = '/job/164';
         try {
+			$model = Job::model()->findByPk($id);
             // $sql = "select distinct COUNT(tracking_id) as view_count
             // from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL
             // AND request_uri_wo_qs_and_hostname = '" . $this->createUrl('job/view', array("id" => $id)) . "';";

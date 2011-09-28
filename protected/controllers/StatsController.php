@@ -275,6 +275,44 @@ class StatsController extends Controller
 		));
 	}
 	
+	public function actionRebuildCharts() {
+
+        $criteria = new CDbCriteria;
+        $criteria->condition = 'status_id=:status_id';
+        $criteria->params=array(':status_id' => 2);
+		$_result = Job::model()->findAll($criteria);
+
+		foreach ($_result as $model) {
+	        try {
+	            $sql = "select count(*) as view_count from (
+	                select distinct tracking_id, request_uri_wo_qs_and_hostname from
+	                request where
+	                    (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND
+	                    request_uri_wo_qs_and_hostname = :url) as Q;";
+
+	            $connection = Yii::app()->db;
+	            $command = $connection->createCommand($sql);
+	            $command->bindParam(":url", $this->createUrl('job/view', array("id" => $model->id)));
+	            $dataReader = $command->queryRow();
+	            $view_count = $dataReader['view_count'];
+
+	            $job_viewcount = JobViewcount::model()->findBySql("SELECT * FROM job_viewcount WHERE job_id = :job_id", array('job_id' => $model->id));
+	            if (!$job_viewcount) {
+	                $job_viewcount = new JobViewcount;
+	                $job_viewcount->job_id = $model->id;
+	                $job_viewcount->job_title = $model->title;
+	                $job_viewcount->job_date_added = $model->date_added;
+	            }
+	            $job_viewcount->view_count = $view_count;
+	            $job_viewcount->date_updated = time();
+	            $job_viewcount->save();
+	        } catch (Exception $e) {
+	            Yii::log($e, CLogger::LEVEL_INFO, __FUNCTION__);
+	            $view_count = null;
+	        }			
+		}
+		$this->redirect($this->createUrl('stats/charts'));
+	}
 	
 	public function actionIndex() {
 		

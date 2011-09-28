@@ -1,5 +1,5 @@
 # We need this, since a complete reindexing takes minutes with Zend Lucene!
-php_value max_execution_time 600
+php_value max_execution_time 900
 
 # Again, Zend lucene failed with the default (32M, 33554432)
 php_value memory_limit 64M

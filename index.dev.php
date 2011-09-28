@@ -1,6 +1,6 @@
 <?php
 
-$main = "main.dev.mysql.php"; // main config
+$main = "main.dev.php"; // main config
 $yii = '/Users/ronit/src/yii-1.1.8.r3324/framework/yii.php';
 $config = dirname(__FILE__) . '/protected/config/' . $main;
 

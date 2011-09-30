@@ -144,7 +144,7 @@
 					</div>
 					<div class="small dimmed">
 						
-						<span class="addr"><a href="http://myyn.org/iai/index?q=<?php echo $value['remote_addr']; ?>"><?php echo $value['remote_addr']; ?></a> </span>
+						<span class="addr"><a href="http://freegeoip.net/json/<?php echo $value['remote_addr']; ?>"><?php echo $value['remote_addr']; ?></a> </span>
 						
 						| <?php echo $value['bt_os']; ?> 
 						& <?php echo $value['bt_browser']; ?> <?php echo $value['bt_version']; ?>

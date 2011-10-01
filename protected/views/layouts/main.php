@@ -64,7 +64,7 @@
 </head>
 <body>
     <div class="container" id="page">
-	    <noscript><div id="broadcast">Um die volle Funktionalität dieser Website nutzen zu können, aktivieren Sie bitte Javascript.</div></noscript>
+	    <noscript><div id="broadcast">Um die volle Funktionalität dieser Website nutzen zu können, aktivieren Sie bitte <a href="http://support.mozilla.com/de/kb/JavaScript-Einstellungen">Javascript</a>.</div></noscript>
     
         <div id="title">
             <div id="title-nav">

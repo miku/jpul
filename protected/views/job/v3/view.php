@@ -33,7 +33,12 @@
                     <?php if (isset($params['src']) && $params['src'] == 'widget'): ?>
                         <a href="<?php echo $this->createUrl('job/index'); ?>">Zurück zur Übersicht</a>
                     <?php else: ?>
-                        <a href="javascript:history.go(-1)">Zurück zur Übersicht</a>
+                        <noscript>
+                            <a href="<?php echo $this->createUrl("job/index"); ?>">Zurück zur Übersicht</a>
+                        </noscript>
+                        <script>
+                            document.write('<a href="javascript:history.go(-1)">Zurück zur Übersicht</a>');
+                        </script>
                     <?php endif ?>
 
                     | <a href="<?php echo $this->createUrl('job/print', array('id' => $model->id)); ?>">Druckansicht</a>

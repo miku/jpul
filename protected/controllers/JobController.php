@@ -323,6 +323,19 @@ class JobController extends Controller
         $this->renderText(json_encode($result));
     }
 
+    public function actionIdList() {
+        $sql = "select id from job where status_id = 2 order by id desc";
+        $connection = Yii::app()->db;
+        $command = $connection->createCommand($sql);
+        $dataReader = $command->queryAll();
+        $result = array();
+        foreach ($dataReader as $key => $value) {
+            array_push($result, $value["id"]);
+        }
+        $this->layout = "json";
+        $this->renderText(json_encode($result));
+    }
+
 
     public function actionPrint($id) {
         $model = Job::model()->cache(600)->findByPk($id);
@@ -381,9 +394,7 @@ class JobController extends Controller
             $job_version = 1;
         }
 
-        $this->layout = "json";
         $content = array();
-
         $content["id"] = $model->id;
         $content["html"] = getServerPrefix() . $this->createUrl("job/view", array("id" => $model->id));
 
@@ -400,16 +411,14 @@ class JobController extends Controller
         $content["description"] = $model->description;
         $content["how_to_apply"] = $model->how_to_apply;
         $content["expiration_date"] = $model->expiration_date;
-
         $content["city"] = $model->city;
         $content["zipcode"] = $model->zipcode;
         $content["state"] = $model->state;
         $content["country"] = $model->country;
-
         $content["view_count"] = $this->getViewCount($model->id);
 
-        $data = json_encode($content);
-        $this->render('json', array('data' => $data));
+        $this->layout = "json";
+        $this->renderText(json_encode($content));
     }
 
     public function getViewCount($id) {

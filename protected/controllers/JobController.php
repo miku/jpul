@@ -336,6 +336,21 @@ class JobController extends Controller
         $this->renderText(json_encode($result));
     }
 
+    // Example:
+    // for url in `curl -s http://localhost:8888/jobportal/job/urllist.json | tr ",[]\"" " "`; do curl $(echo $url | sed -e "s/\\\\//g"); done
+    public function actionJobUrlsAsJson() {
+        $sql = "select id from job where status_id = 2 order by id desc";
+        $connection = Yii::app()->db;
+        $command = $connection->createCommand($sql);
+        $dataReader = $command->queryAll();
+        $result = array();
+        foreach ($dataReader as $key => $value) {
+            array_push($result, getServerPrefix() . $this->createUrl("job/viewAsJson", array("id" => $value["id"])));
+        }
+        $this->layout = "json";
+        $this->renderText(json_encode($result));
+    }
+
 
     public function actionPrint($id) {
         $model = Job::model()->cache(600)->findByPk($id);

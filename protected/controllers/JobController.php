@@ -395,6 +395,7 @@ class JobController extends Controller
 
         $content["title"] = $model->title;
         $content["company"] = $model->company;
+        $content["company_homepage"] = $model->company_homepage;
         $content["date_added"] = $model->date_added;
         $content["description"] = $model->description;
         $content["how_to_apply"] = $model->how_to_apply;

@@ -267,7 +267,7 @@ class JobController extends Controller
             $original_query = urldecode($q);
         } elseif ($format == 'b64') {
             $original_query = base64_decode($q);
-        }			
+        }
 
         // If the user does not use anything from the extended search
         // syntax, append kleene star to terms
@@ -295,8 +295,8 @@ class JobController extends Controller
                 for ($i = 0; $i < count($_idlist) - 1; $i++) {
                     if ($_idlist[$i] == $c) {
                         $result["result"] = $_idlist[$i + 1];
-						$result["status"] = "OK";
-						$result["hint"] = ($i + 1) . "/" . count($_idlist);						
+                        $result["status"] = "OK";
+                        $result["hint"] = ($i + 1) . "/" . count($_idlist);
                     }
                 }
             }
@@ -314,8 +314,8 @@ class JobController extends Controller
                 for ($i = count($_idlist) - 1; $i > 0; $i--) {
                     if ($_idlist[$i] == $c) {
                         $result["result"] = $_idlist[$i - 1];
-						$result["status"] = "OK";
-						$result["hint"] = ($i) . "/" . count($_idlist);
+                        $result["status"] = "OK";
+                        $result["hint"] = ($i) . "/" . count($_idlist);
                     }
                 }
             }
@@ -362,13 +362,62 @@ class JobController extends Controller
         $this->render('v' . $job_version . '/view', array('model' => $model));
     }
 
-    public function actionViewCount($id) {
+    /**
+     * Job details as JSON.
+     */
+    public function actionViewAsJson($id)
+    {
+   		$model = Job::model()->findByPk($id);
+        if (!$model) {
+            throw new CHttpException(404, Yii::t('app', 'Your request is not valid.'));
+        }
+
+        if ($model->status_id != 2) {
+            throw new CHttpException(404, 'Kein Angebot mit dieser ID gefunden.');
+        }
+
+        $job_version = $model->job_version;
+        if ($job_version == null) {
+            $job_version = 1;
+        }
+
+        $this->layout = "json";
+        $content = array();
+
+        $content["id"] = $model->id;
+        $content["html"] = getServerPrefix() . $this->createUrl("job/view", array("id" => $model->id));
+
+        if ($model->attachment) {
+            $content["attachment"] = getServerPrefix() . $this->createUrl("job/download", array("id" => $model->id));
+        } else {
+            $content["attachment"] = "";
+        }
+
+        $content["title"] = $model->title;
+        $content["company"] = $model->company;
+        $content["date_added"] = $model->date_added;
+        $content["description"] = $model->description;
+        $content["how_to_apply"] = $model->how_to_apply;
+        $content["expiration_date"] = $model->expiration_date;
+
+        $content["city"] = $model->city;
+        $content["zipcode"] = $model->zipcode;
+        $content["state"] = $model->state;
+        $content["country"] = $model->country;
+
+        $content["view_count"] = $this->getViewCount($model->id);
+
+        $data = json_encode($content);
+        $this->render('json', array('data' => $data));
+    }
+
+    public function getViewCount($id) {
         // job view count:
         // select distinct COUNT(tracking_id) from request where
         // (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL
         // AND request_uri_wo_qs_and_hostname = '/job/164';
         try {
-			$model = Job::model()->findByPk($id);
+            $model = Job::model()->findByPk($id);
             // $sql = "select distinct COUNT(tracking_id) as view_count
             // from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL
             // AND request_uri_wo_qs_and_hostname = '" . $this->createUrl('job/view', array("id" => $id)) . "';";
@@ -404,9 +453,14 @@ class JobController extends Controller
             Yii::log($e, CLogger::LEVEL_INFO, __FUNCTION__);
             $view_count = null;
         }
-		$this->layout = 'plain';
-        $this->renderText($view_count);
-	}
+        return $view_count;
+    }
+
+
+    public function actionViewCount($id) {
+        $this->layout = 'plain';
+        $this->renderText($this->getViewCount($id));
+    }
 
     /**
      * Download job attachment.

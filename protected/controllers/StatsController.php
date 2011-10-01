@@ -47,7 +47,7 @@ class StatsController extends Controller
 					
 						$lower = date('U', mktime(0, 0, 0, $j, 1, $i));
 						$item = array("lower" => $lower, "upper" => $upper);
-						$ranges[$i . "/" . $j] = $item;
+						$ranges[$i . "/" . str_pad($j, 2, "0", STR_PAD_LEFT)] = $item;
 						$upper = $lower;
 					
 					} else { break; } 
@@ -65,7 +65,7 @@ class StatsController extends Controller
 						
 						$lower = date('U', mktime(0, 0, 0, $j, 1, $i));
 						$item = array("lower" => $lower, "upper" => $upper);
-						$ranges[$i . "/" . $j] = $item;
+						$ranges[$i . "/" . str_pad($j, 2, "0", STR_PAD_LEFT)] = $item;
 						$upper = $lower;
 	
 					} else { break; }

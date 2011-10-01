@@ -323,7 +323,7 @@ class JobController extends Controller
         $this->renderText(json_encode($result));
     }
 
-    public function actionIdList() {
+    public function actionJobIdsAsJson() {
         $sql = "select id from job where status_id = 2 order by id desc";
         $connection = Yii::app()->db;
         $command = $connection->createCommand($sql);

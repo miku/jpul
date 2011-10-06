@@ -73,7 +73,7 @@
 
 <p style="font-size: 80px">1, 2, 3 ... <?php echo $code; ?>!</p><br>
 		
-	<p style="font-size: 16px">Diese von Ihnen aufgerufene Seite existiert nicht oder ist nicht verfügbar.
+	<p style="font-size: 16px">Die von Ihnen aufgerufene Seite existiert nicht oder ist nicht verfügbar.
 		<a href="<?php echo $this->createUrl('job/index') ?>">Zurück zur Homepage</a>?</p>
 </div>	
 

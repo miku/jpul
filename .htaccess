@@ -1,3 +1,5 @@
+Options -Indexes +FollowSymLinks
+
 # We need this, since a complete reindexing takes minutes with Zend Lucene!
 php_value max_execution_time 1200
 
@@ -19,7 +21,6 @@ php_value memory_limit 64M
 
 FileETag none
 
-Options +FollowSymLinks
 IndexIgnore */*
 RewriteEngine on
 
@@ -28,4 +29,4 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 # otherwise forward it to index.php
-RewriteRule . index.php
+RewriteRule . /~jobp/index.php

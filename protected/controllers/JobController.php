@@ -447,17 +447,20 @@ class JobController extends Controller
             // from request where (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL
             // AND request_uri_wo_qs_and_hostname = '" . $this->createUrl('job/view', array("id" => $id)) . "';";
 
-            $sql = "select count(*) as view_count from (
-                select distinct tracking_id, request_uri_wo_qs_and_hostname from
-                request where
-                    (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND
-                    request_uri_wo_qs_and_hostname = :url) as Q;";
+            $sql = "select count(*) as view_count from
+                (select distinct tracking_id, request_uri_wo_qs_and_hostname from
+                    request where
+                        (tracking_id AND request_uri_wo_qs_and_hostname) IS NOT NULL AND
+                        (request_uri_wo_qs_and_hostname = :url OR request_uri_wo_qs_and_hostname = :legacyurl)) as Q"; 
+                        // Q <= "Every derived table must have its own alias"
 
-            // Yii::log("SQL: " . $sql, CLogger::LEVEL_INFO, __FUNCTION__);
+            Yii::log("SQL: " . $sql, CLogger::LEVEL_INFO, __FUNCTION__);
 
             $connection = Yii::app()->db;
             $command = $connection->createCommand($sql);
             $command->bindParam(":url", $this->createUrl('job/view', array("id" => $id)));
+            $_legacy_url = '/jobportal/job/' . $id;
+            $command->bindParam(":legacyurl", $_legacy_url);
             $dataReader = $command->queryRow();
             $view_count = $dataReader['view_count'];
 

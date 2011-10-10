@@ -45,13 +45,13 @@
 <div id="ccul_jobportal_widget_box" style="">
 
 <p>Universität Leipzig | Jobportal<br>
-    <a target="_blank" href="http://wwwdup.uni-leipzig.de<?php echo urldecode($this->createUrl('job/index', $params_headline_link)); ?>">Aktuelle Jobangebote<?php if (isset($original_query) && $original_query != ''): ?> für <em><?php echo cut_text($original_query, 25); ?></em><?php endif ?></a><br>
+    <a target="_blank" href="<?php echo getServerPrefix() . urldecode($this->createUrl('job/index', $params_headline_link)); ?>">Aktuelle Jobangebote<?php if (isset($original_query) && $original_query != ''): ?> für <em><?php echo cut_text($original_query, 25); ?></em><?php endif ?></a><br>
 </p>
 
 <?php if ($models): ?>
 <ul style="">
     <?php foreach ($models as $index => $model): ?>
-    <li style="<?php if ($index % 2 == 0) { echo 'background: aliceblue'; } ?>"><a target="_blank" style="" href="http://wwwdup.uni-leipzig.de<?php echo $this->createUrl('job/view', array('id' => $model->id, 'src' => 'widget')); ?>">
+    <li style="<?php if ($index % 2 == 0) { echo 'background: aliceblue'; } ?>"><a target="_blank" style="" href="<?php echo getServerPrefix() . $this->createUrl('job/view', array('id' => $model->id, 'src' => 'widget')); ?>">
         <?php echo cut_text($model->title, 60); ?></a> <span class="ccul_date" style="">
         <?php echo strftime("%d.%m.%Y", $model->date_added); ?></span></li>
     <?php endforeach ?>
@@ -59,5 +59,5 @@
 <br>
 <?php endif ?>
 
-<a target="_blank" href="http://www.zv.uni-leipzig.de/studium/career-center.html"><img style="" src="http://wwwdup.uni-leipzig.de/jobportal/images/v2/cc_logo.gif" width="100px" alt="Career Center" /></a>
+<a target="_blank" href="http://www.zv.uni-leipzig.de/studium/career-center.html"><img style="" src="<?php echo getServerPrefix() . Yii::app()->request->baseUrl . '/images/v2/cc_logo.gif'; ?>" width="100px" alt="Career Center" /></a>
 </div>

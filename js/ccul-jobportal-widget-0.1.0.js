@@ -1,6 +1,6 @@
 /*
  * Jobboard Career Center University of Leipzig - Widget
- * Docs: http://wwwdup.uni-leipzig.de/jobportal/widget/
+ * Docs: http://www.uni-leipzig.de/~jobp/widget/
  *
  * Dev Resources:
  *
@@ -16,7 +16,7 @@
  */
 
 ccul_jobportal_load = function() {
-    ccul_jobportal_load.getJQueryOnDemand("http://wwwdup.uni-leipzig.de/jobportal/js/jquery-1.6.1.min.js");
+    ccul_jobportal_load.getJQueryOnDemand("http://www.uni-leipzig.de/~jobp/js/jquery-1.6.1.min.js");
 }
 
 ccul_jobportal_load.getJQueryOnDemand = function(src) {
@@ -52,9 +52,9 @@ ccul_jobportal_load.render = function(data) {
     $("div#ccul_jobportal_widget_box").css("font", "normal 10pt Verdana,'Helvetica Neue',Arial,Tahoma,sans-serif");
     
     if (query != null && query != '') {
-        $("div#ccul_jobportal_widget_box").append('<p>Universität Leipzig | Jobportal<br><a target="_blank" href="http://wwwdup.uni-leipzig.de/jobportal/job/index?q=' + encodeURIComponent(query) + '">Aktuelle Jobangebote für <strong>' + query.substring(0, 25) + ' ...</strong></a></p>'); 
+        $("div#ccul_jobportal_widget_box").append('<p>Universität Leipzig | Jobportal<br><a target="_blank" href="http://www.uni-leipzig.de/~jobp/job/index?q=' + encodeURIComponent(query) + '">Aktuelle Jobangebote für <strong>' + query.substring(0, 25) + ' ...</strong></a></p>'); 
     } else {
-        $("div#ccul_jobportal_widget_box").append('<p>Universität Leipzig | Jobportal<br><a target="_blank" href="http://wwwdup.uni-leipzig.de/jobportal/job/index">Aktuelle Jobangebote</a></p>'); 
+        $("div#ccul_jobportal_widget_box").append('<p>Universität Leipzig | Jobportal<br><a target="_blank" href="http://www.uni-leipzig.de/~jobp/job/index">Aktuelle Jobangebote</a></p>'); 
     }
     
     $("div#ccul_jobportal_widget_box").append("<ul>");
@@ -66,13 +66,13 @@ ccul_jobportal_load.render = function(data) {
         $("div#ccul_jobportal_widget_box > ul").append("<li style='padding: 2px; list-style:none;'>Wir haben keine aktuellen Angebote für die angegebenen Suchbegriffe im Jobportal gefunden.</li>");
     } else {
         $.each(models, function(index, job) {
-            $("div#ccul_jobportal_widget_box > ul").append("<li style='padding: 2px; list-style:none;'><span style='background:#EFEFEF; color:#464646; padding: 2px 8px 2px 8px; font-size: 9px; -moz-border-radius: 5px; border-radius: 5px;'>" + job["date_added"] + "</span> <a target='_blank' title='" + job["title"] + "' href='http://wwwdup.uni-leipzig.de/jobportal/job/" + job["id"] + "?src=widget'>" + job["title"].substring(0, 62) + " ...</a></li>");
+            $("div#ccul_jobportal_widget_box > ul").append("<li style='padding: 2px; list-style:none;'><span style='background:#EFEFEF; color:#464646; padding: 2px 8px 2px 8px; font-size: 9px; -moz-border-radius: 5px; border-radius: 5px;'>" + job["date_added"] + "</span> <a target='_blank' title='" + job["title"] + "' href='http://www.uni-leipzig.de/~jobp/job/" + job["id"] + "?src=widget'>" + job["title"].substring(0, 62) + " ...</a></li>");
         }); 
     }
     
     $("div#ccul_jobportal_widget_box > ul > li > a").css("text-decoration", "none");
     $("div#ccul_jobportal_widget_box > ul > li:nth-child(odd)").css("background", "white");
-    $("div#ccul_jobportal_widget_box").append('<br><div style="float:left"><a target="_blank" href="http://www.zv.uni-leipzig.de/studium/career-center.html"><img style="" src="http://wwwdup.uni-leipzig.de/jobportal/images/v2/cc_logo.gif" width="100px" alt="Career Center" /></a></div><div style="float:right; color: gray; font-size: 9px">Jobportal-Widget für <a target="_blank" href="http://wwwdup.uni-leipzig.de/jobportal/widget">die eigene Seite erstellen ...</a></div><div style="clear:both;"></div>')
+    $("div#ccul_jobportal_widget_box").append('<br><div style="float:left"><a target="_blank" href="http://www.zv.uni-leipzig.de/studium/career-center.html"><img style="" src="http://www.uni-leipzig.de/~jobp/images/v2/cc_logo.gif" width="100px" alt="Career Center" /></a></div><div style="float:right; color: gray; font-size: 9px">Jobportal-Widget für <a target="_blank" href="http://www.uni-leipzig.de/~jobp/widget?src=wild">die eigene Seite erstellen ...</a></div><div style="clear:both;"></div>')
     $("div#ccul_jobportal_widget_box img").css("border", "none");
 }
 
@@ -83,9 +83,9 @@ ccul_jobportal_load.widget = function(query) {
     } else {
         // console.log("jQuery is up.");
         if (typeof query != "undefined") {
-            $.getJSON('http://wwwdup.uni-leipzig.de/jobportal/widget/getJSONP?callback=?&q=' + encodeURIComponent(query), ccul_jobportal_load.render);
+            $.getJSON('http://www.uni-leipzig.de/~jobp/widget/getJSONP?callback=?&q=' + encodeURIComponent(query), ccul_jobportal_load.render);
         } else {
-            $.getJSON('http://wwwdup.uni-leipzig.de/jobportal/widget/getJSONP?callback=?', ccul_jobportal_load.render);
+            $.getJSON('http://www.uni-leipzig.de/~jobp/widget/getJSONP?callback=?', ccul_jobportal_load.render);
         }
     }
 }

@@ -105,9 +105,14 @@
 
 <h3>Code</h3>
 
-<p>Fügen Sie einfach dieses Snippet an der Stelle Ihrer Seite ein, wo das Widget erscheinen soll.</p>
 
-<textarea id="code" name="code" rows="8" cols="70"></textarea>
+
+<?php if (Yii::app()->user->isAdmin()): ?>
+	<p>Fügen Sie einfach dieses Snippet an der Stelle Ihrer Seite ein, wo das Widget erscheinen soll.</p>
+	<textarea id="code" name="code" rows="8" cols="70"></textarea>
+<?php else: ?>
+	<p>Für eine Anleitung zur Einbettung des Widget, kontaktieren Sie bitte Claudia Schoder per E-Mail (<a href="mailto:claudia.schoder@uni-leipzig.de">claudia.schoder@uni-leipzig.de</a>) oder Telefon (+49 341 97- 30043).</p>
+<?php endif ?>
 
 <div class="line"></div>
 

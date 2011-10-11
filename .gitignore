@@ -38,3 +38,5 @@ ext/index-inspector/target/*
 ext/diversions/downloads/*
 
 docs/manual/*
+exclude.txt
+syncnow.sh

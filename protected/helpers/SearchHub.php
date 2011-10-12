@@ -255,7 +255,6 @@
 			
 			// Yii::log("Serialized result set: " . serialize($models), CLogger::LEVEL_INFO, __FUNCTION__);
 			
-			
 			Yii::app()->cache->set($cache_key_models, serialize($models), 3600);
 			Yii::app()->cache->set($cache_key_total, $total, 3600);
 			Yii::app()->cache->set($cache_key_idlist, serialize($_idlist), 3600);

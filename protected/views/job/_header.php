@@ -261,6 +261,14 @@
 <script type="text/javascript" charset="utf-8">
 	$(document).ready(function(){
 		
+		$("#tabs-ul li a").each(function(){
+			var _this = $(this);
+			var tab = _this.attr("href").split("?")[1];
+            $.get("<?php echo $this->createUrl('job/searchHits'); ?>?" + tab, function(data) {
+				_this.html(_this.html() + "&nbsp;<span style='font-size:8px'>" + data + "</span>")
+            });
+		});
+		
 		$("a.inactive-tab").hover(
 			function() {
 				$(this).animate({"backgroundColor": "#fb8f45", "color" : "white"}, 90);

@@ -1,0 +1,14 @@
+Parameter,URLs monitored,Last configured,Effect on content,What Googlebot should crawl,Value
+PHPSESSID,90362, --, --,One representative URL, --
+q,55276, --, --,Let Googlebot decide, --
+page,48209, --, --,One representative URL, --
+tab,31345, --, --,Let Googlebot decide, --
+size,24287, --, --,One representative URL, --
+from,19474, --, --,One representative URL, --
+f,4194, --, --,Every URL, --
+src,2902, --, --,Let Googlebot decide, --
+ipp,2130, --, --,One representative URL, --
+l,1654, --, --,Let Googlebot decide, --
+context,1449, --, --,Let Googlebot decide, --
+c,1285, --, --,Let Googlebot decide, --
+s,487, --, --,Let Googlebot decide, --

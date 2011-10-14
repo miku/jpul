@@ -1,0 +1,5 @@
+Feed,Google subscribers,Submit feed as Sitemap
+http://wwwdup.uni-leipzig.de/jobportal/feed/index?tab=all,2,No
+http://wwwdup.uni-leipzig.de/jobportal/atom/feed?q=informatik&tab=-internship,1,No
+http://wwwdup.uni-leipzig.de/jobportal/feed/index?q=informatik+OR+software+OR+hardware&tab=all,1,No
+http://wwwdup.uni-leipzig.de/jobportal/feed/index?tab=-internship,1,No

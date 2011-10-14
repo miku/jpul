@@ -57,15 +57,18 @@ class Controller extends CController
 		// // See if the user agent is Googlebot and
 		// // try to avoid ugly URLs like
 		// // wwwdup.uni-leipzig.de/jobportal/index.php/job/137?PHPSESSID ...
-		// $isGoogle = stripos($_SERVER['HTTP_USER_AGENT'], 'Googlebot');
+		$isGoogle = stripos($_SERVER['HTTP_USER_AGENT'], 'Googlebot');
 		// // If it is, use ini_set to only allow cookies for the session variable
-		// if ($isGoogle !== false) {
+		if ($isGoogle != false) {
 		// 	Yii::log("Hello Googlebot!", CLogger::LEVEL_INFO, __FUNCTION__);
 		// 	ini_set('session.use_only_cookies', '1');
 		// 	// experimental ...
 		// 	ini_set('session.use_trans_sid', false);
-		// 	ini_set("url_rewriter.tags",""); 			
-		// } 
+		// 	ini_set("url_rewriter.tags","");
+			Yii::app()->session['isBot'] == true;
+		}  else {
+			Yii::app()->session['isBot'] == false;
+		}
 		// 
 		// // No '*' after required fields
 		// CHtml::$afterRequiredLabel = '';

@@ -56,11 +56,13 @@
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/wysiwym/wysiwym.min.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/keymaster.min.js"></script>
 
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/tracker.min.js"></script>
-    <script>$(document).ready(function() {
-        ccul_track('<?php echo $this->createUrl("stats/track"); ?>');
-    });
-    </script>
+	<?php if (isset(Yii::app()->session['isBot']) && Yii::app()->session['isBot']): ?>
+	    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/tracker.min.js"></script>
+	    <script>$(document).ready(function() {
+	        ccul_track('<?php echo $this->createUrl("stats/track"); ?>');
+	    });
+	    </script>
+	<?php endif ?>
 </head>
 <body>
     <div class="container" id="page">

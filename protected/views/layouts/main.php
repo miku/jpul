@@ -8,9 +8,9 @@
     <meta charset="utf-8">
 
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
-    <meta name="description" content="Jobportal des Career Centers der Universität Leipzig.">
+    <meta name="description" content="Jobportal des Career Centers der Universität Leipzig. Aktuelle Stellenangebote, Praktika und Stipendien.">
     <meta name="author" content="Career Center, careercenter@uni-leipzig.de">
-    <meta name="keywords" content="Arbeitsangebote, Job, Studenten, Absolventen, Hochschule, Jobportal, Listing">
+    <meta name="keywords" content="Stellenangebote, Jobs, Studenten, Absolventen, Hochschule, Jobportal, Listing">
 
     <!-- Mobile viewport optimized: j.mp/bplateviewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

@@ -8,9 +8,7 @@ class ListController extends Controller
 	
 	public function actionIndex() {
 		$this->render("index");
-	}
-	
-	
+	}	
 	
 	public function actionCompanies($sort = 'total') {
 		
@@ -43,6 +41,11 @@ class ListController extends Controller
 
 		$this->pageTitle = 'Jobangebote von ' . count($dataReader) . ' Unternehmen und Institutionen - Jobportal des Career Centers der Universität Leipzig';
 		$this->render("companies", array("dataReader" => $dataReader));
+	}
+	
+	public function actionHello()
+	{
+		$this->renderText("Hello World");
 	}
 	
 	public function actionCities($sort = "total") {

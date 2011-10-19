@@ -552,7 +552,7 @@ class JobController extends Controller
             Yii::log("Job version = " . $model->job_version, CLogger::LEVEL_INFO, __FUNCTION__);
 
             if (!isset($model->job_version) || $model->job_version == null || $model->job_version == '') {
-                $model->job_version = 2;
+                $model->job_version = 3;
             }
 
             $model->date_added = time();

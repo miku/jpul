@@ -7,6 +7,7 @@ dumps/*.sql.gz
 dumps/webdir*.zip
 dumps/webdir/*
 dumps/*.db
+dumps/raw.*gz
 dumps/*Jobportal_Backup.zip
 
 /index.php

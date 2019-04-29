@@ -1,4 +1,4 @@
-# ⚠ Status: Unmaintained
+# STATUS: UNMAINTAINED
 
 ----
 

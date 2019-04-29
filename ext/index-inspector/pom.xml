@@ -30,15 +30,15 @@
         <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-core</artifactId>
-            <version>3.1.0</version>
+            <version>[7.1.0,)</version>
         </dependency>
       <dependency>
         <groupId>org.apache.lucene</groupId>
         <artifactId>lucene-queries</artifactId>
-        <version>3.1.0</version>
+        <version>[7.1.0,)</version>
       </dependency>
     </dependencies>
-  
+
     <build>
         <plugins>
             <plugin>
@@ -63,7 +63,7 @@
                             <!-- Optional -->
                             <onejarVersion>0.97</onejarVersion>
                             <!-- Optional, use only if you need to include native libraries (dll's) -->
-                            
+
                             <!-- <binlibs>
                                 <fileSet>
                                     <directory>${project.build.directory}/dllextract</directory>
@@ -73,7 +73,7 @@
                                 </fileSet>
                             </binlibs>
                             -->
-                            
+
                             <!-- Optional, default is false -->
                             <attachToBuild>true</attachToBuild>
                             <!-- Optional, default is "onejar" -->

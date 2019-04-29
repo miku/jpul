@@ -1,4 +1,4 @@
-Note: **This project is not maintained**.
+## Status: Unmaintained
 
 ----
 
